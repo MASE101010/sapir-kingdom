@@ -32,6 +32,7 @@ jobs:
       - if: ${{ github.event_name == 'push' || inputs.post }}
         run: |
           node reel/publish.mjs --day ${{ steps.day.outputs.n }}
+          node reel/replies.mjs --day ${{ steps.day.outputs.n }}
           curl -fsS -X POST "$SITE_URL/api/export" -H "authorization: Bearer $EXPORT_TOKEN" -H 'content-type: application/json' -d "{\"day\": $(node -p "require('./site/data/kingdom.json').day")}"
         env: { IG_TOKEN: '${{ secrets.IG_TOKEN }}', IG_USER_ID: '${{ secrets.IG_USER_ID }}', EXPORT_TOKEN: '${{ secrets.EXPORT_TOKEN }}' }
       - run: |

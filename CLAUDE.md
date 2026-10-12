@@ -53,6 +53,9 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
    `[laughs]`, `[pause]`, `[whispers]`, `[gasps]`. Read handles out naturally ("שרון", not "sharon_123"): say the
    name in the line, show the exact handle on the card.
    Also `caption` (the Instagram caption: two lines, the CTA, 3 to 5 hashtags) and `firstComment`.
+   And `replies`: Michael's own answers to up to 15 of yesterday's comments (`[{ "id", "text" }]` from the inbox):
+   the winner, the funniest, the runners up ("אולי מחר!"), people who asked a question. Short, personal, in character,
+   never the same sentence twice, no links. Skip anything rude rather than answering it.
 6. **Check and look.** `node tools/check.mjs --day N+1` must pass. Then
    `node reel/render.mjs --day N+1 --frames 1,<rise>,<reveal>,<idcard>,<michael>` with `--dev` only if you need test
    houses, and look at every still with the Read tool. Fix: the subject hidden behind a house, a card covering the
@@ -107,7 +110,8 @@ the camera eases into it over `ease` seconds (1.6) and turns `orbit` degrees a s
 
 - `site/` the public site (Cloudflare Pages): `app/` the code, `data/` plan, residents, kingdom, honours,
   `episodes/` every day's reel script and voice timings.
-- `functions/api/` the live API: `verify` and `me` (DM codes), `ig` (Instagram webhook), `delta`, `export`.
+- `functions/api/` the live API: `verify` and `me` (DM codes), `ig` (Instagram webhook: builds houses, answers DMs
+  once a day per person, replies under a first comment), `delta`, `export`.
 - `tools/` bake (the frozen plan), ingest (the daily count), check, dev-seed (test residents, never deployed).
 - `reel/` voice (ElevenLabs), render (frame by frame in headless Chromium), publish (Instagram Graph API).
 - `.github/workflows/` deploy, ingest, publish, token (refreshes the Instagram token weekly).
