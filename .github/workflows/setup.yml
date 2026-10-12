@@ -1,0 +1,30 @@
+# הדלקה: run once after KINGDOM_ENV is saved. Creates the Cloudflare site and database, gives the site its secrets,
+# deploys it, subscribes the Instagram account to the webhook, and prints what to paste into the Meta app.
+name: setup
+on: { workflow_dispatch: }
+permissions: { contents: write }
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci && node tools/env.mjs
+        env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
+      - name: Cloudflare site and database
+        run: |
+          npx wrangler@3 pages project create sapir-kingdom --production-branch main || echo "site exists"
+          npx wrangler@3 d1 create sapir-kingdom || echo "database exists"
+          ID=$(npx wrangler@3 d1 list --json | jq -r '.[] | select(.name=="sapir-kingdom") | .uuid')
+          sed -i "s/database_id = \".*\"/database_id = \"$ID\"/" wrangler.toml
+          npx wrangler@3 d1 migrations apply sapir-kingdom --remote
+          for k in META_APP_SECRET IG_TOKEN IG_USER_ID EXPORT_TOKEN IG_VERIFY_TOKEN SITE_URL; do printf '%s' "${!k}" | npx wrangler@3 pages secret put $k --project-name sapir-kingdom; done
+          npx wrangler@3 pages deploy site --project-name sapir-kingdom --branch main --commit-dirty=true
+          git config user.name "kingdom-bot"; git config user.email "kingdom-bot@users.noreply.github.com"
+          git add wrangler.toml && git commit -m "setup: database id" && git push || true
+      - name: Instagram webhook
+        run: |
+          curl -fsS -X POST "https://graph.instagram.com/v21.0/me/subscribed_apps?subscribed_fields=comments,messages&access_token=$IG_TOKEN" || echo "subscribe later, after the webhook is set in the Meta app"
+          echo "::notice title=Meta app → Webhooks::Callback URL: $SITE_URL/api/ig   Verify token: $IG_VERIFY_TOKEN   Fields: comments, messages"
+          echo "::notice title=The site::$SITE_URL"

@@ -12,8 +12,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
+      - run: node tools/env.mjs
+        env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
       - run: node tools/ingest.mjs
-        env: { SITE_URL: '${{ vars.SITE_URL }}', EXPORT_TOKEN: '${{ secrets.EXPORT_TOKEN }}', IG_TOKEN: '${{ secrets.IG_TOKEN }}' }
       - run: |
           git config user.name "kingdom-bot"; git config user.email "kingdom-bot@users.noreply.github.com"
           git add site/data/residents.json inbox/ && git commit -m "count: day $(node -p "require('./site/data/kingdom.json').day")" && git push || echo "nothing new"

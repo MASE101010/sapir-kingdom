@@ -3,7 +3,7 @@
 //   POST events, signed with the app secret (META_APP_SECRET). A DM holding a code from /api/verify builds the sender's house
 //        if they follow the kingdom, and answers them; a comment on a reel builds the commenter's house and is kept for the
 //        daily count of likes (the likes themselves are read later, tools/ingest.mjs).
-import { addResident } from '../_lib.js';
+import { addResident, igToken } from '../_lib.js';
 const GRAPH = 'https://graph.instagram.com/v21.0';
 
 export async function onRequestGet({ request, env }) {
@@ -15,7 +15,7 @@ async function signed(request, env, body) {
   const mac = [...new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(body)))].map(b => b.toString(16).padStart(2, '0')).join('');
   return sig === `sha256=${mac}`;
 }
-const say = (env, to, text) => fetch(`${GRAPH}/${env.IG_USER_ID}/messages`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${env.IG_TOKEN}` }, body: JSON.stringify({ recipient: { id: to }, message: { text } }) });
+const say = async (env, to, text) => fetch(`${GRAPH}/${env.IG_USER_ID}/messages`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${await igToken(env)}` }, body: JSON.stringify({ recipient: { id: to }, message: { text } }) });
 
 export async function onRequestPost({ request, env, waitUntil }) {
   const body = await request.text();
@@ -34,7 +34,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
       }
       const row = await env.DB.prepare('SELECT device, at, u FROM codes WHERE code = ?').bind(code).first();
       if (!row || Date.now() - row.at > 20 * 60e3) { waitUntil(say(env, from, 'הקוד הזה לא מוכר או שפג תוקפו. בקשו קוד חדש באתר.')); continue; }
-      const who = await fetch(`${GRAPH}/${from}?fields=username,is_user_follow_business&access_token=${env.IG_TOKEN}`).then(r => r.json());
+      const who = await fetch(`${GRAPH}/${from}?fields=username,is_user_follow_business&access_token=${await igToken(env)}`).then(r => r.json());
       if (!who.username) continue;
       if (!who.is_user_follow_business) { waitUntil(say(env, from, 'כמעט! בית מקבלים רק עוקבים. עקבו אחרי הממלכה ושלחו את הקוד שוב.')); continue; }
       const r = await addResident(env, who.username, 'dm');
@@ -55,7 +55,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
           const lines = [`ברוכים הבאים לממלכה @${r.u}! הבית שלך, מספר ${r.n.toLocaleString('he-IL')}, כבר עומד 🏠 חפשו את השם שלכם באתר שבביו`,
             `@${r.u} נבנה לך בית! מספר ${r.n.toLocaleString('he-IL')}. כנסו לאתר שבביו ותמצאו אותו 👑`,
             `תושב חדש! @${r.u} גר עכשיו בבית מספר ${r.n.toLocaleString('he-IL')} בממלכה. הקישור בביו 🏰`];
-          waitUntil(fetch(`${GRAPH}/${v.id}/replies`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${env.IG_TOKEN}` }, body: JSON.stringify({ message: lines[r.n % 3] }) }));
+          waitUntil(fetch(`${GRAPH}/${v.id}/replies`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${await igToken(env)}` }, body: JSON.stringify({ message: lines[r.n % 3] }) }));
         }
       }
     }

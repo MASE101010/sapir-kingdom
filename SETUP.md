@@ -1,41 +1,45 @@
-# הקמה: מה מיכאל עושה פעם אחת
+# הקמה: חצי שעה, פעם אחת, הכל בדפדפן
 
-הכל בדפדפן, בלי להתקין כלום במחשב. בסוף כל שלב יש מפתח או מזהה שנכנסים ל-GitHub כ"סוד" (Secret).
-את המפתחות מקלידים רק בהגדרות של GitHub ושל Cloudflare, לא בצ'אט.
+הכל רשום על מייל חדש של הממלכה, בלי שום קשר לחשבונות שלך. בסוף יש **סוד אחד** להדביק ב-GitHub.
 
-## 1. GitHub (5 דקות)
-1. ב-claude.ai: הגדרות ← Connectors ← GitHub ← לחבר. ככה אני יכול לדחוף קוד ולהריץ את הממלכה.
-2. ליצור ריפו פרטי בשם `sapir-kingdom`. אני מעלה אליו את כל הקוד.
-3. Settings ← Secrets and variables ← Actions. שם נכנסים כל הסודות מהשלבים הבאים.
+## 1. מייל חדש (3 דקות)
+פותחים Gmail חדש, למשל `sapir.kingdom@gmail.com`. כל השלבים הבאים נרשמים איתו.
 
-## 2. אינסטגרם (20 דקות)
-1. לפתוח חשבון חדש `@sapir.kingdom` (או שם אחר, ואז מעדכנים את `data-account` ב-`site/index.html`).
-2. בהגדרות החשבון: מעבר לחשבון מקצועי (Creator). לסמן בפרופיל "AI-generated profile" אם אינסטגרם מציעה.
-3. ב-developers.facebook.com: Create App ← סוג Business ← להוסיף את המוצר **Instagram** ← "API setup with Instagram login".
-4. Generate token לחשבון החדש. ההרשאות: `instagram_business_basic`, `instagram_business_content_publish`,
-   `instagram_business_manage_messages`, `instagram_business_manage_comments`.
-5. Webhooks: Callback URL = `https://<הדומיין>/api/ig`, Verify token = מחרוזת שתמציא, ולהירשם ל-`messages` ול-`comments`.
-6. סודות ל-GitHub: `IG_TOKEN` (הטוקן), `IG_USER_ID` (מזהה החשבון), `META_APP_SECRET` (App secret), `IG_VERIFY_TOKEN` (המחרוזת).
-   האפליקציה נשארת במצב פיתוח, אין צורך ב-App Review כשזה רק החשבון שלך.
+## 2. אינסטגרם (5 דקות)
+1. נרשמים לאינסטגרם עם המייל החדש. שם משתמש: `sapir.kingdom` (אם תפוס, תגיד לי ואעדכן בקוד).
+2. הגדרות ← סוג חשבון ← מעבר לחשבון מקצועי ← Creator.
+3. **לא** מוסיפים אותו ל-Accounts Center של החשבון שלך. ככה הם לא מקושרים.
 
-## 3. Cloudflare (10 דקות)
-1. dash.cloudflare.com ← Workers & Pages ← Create ← Pages ← "Direct upload" ← שם הפרויקט `sapir-kingdom`.
-2. Storage ← D1 ← Create database בשם `sapir-kingdom`. להעתיק את ה-Database ID ולשלוח לי (זה לא סוד), ואני מעדכן את `wrangler.toml`.
-3. בפרויקט ה-Pages: Settings ← Bindings ← D1 ← שם `DB` ← הדאטהבייס.
-4. My Profile ← API Tokens ← Create ← תבנית "Edit Cloudflare Workers" + הרשאות Pages ו-D1.
-5. סודות ל-GitHub: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
-6. משתנה (Variable, לא סוד) ב-GitHub: `SITE_URL` = כתובת האתר, למשל `https://sapir-kingdom.pages.dev` או דומיין משלך.
+## 3. אפליקציית Meta (10 דקות, אפשר יחד איתי בדפדפן)
+1. developers.facebook.com ← Create app ← Business ← מוסיפים את **Instagram** ← "API setup with Instagram login".
+   (Meta דורשת להיכנס עם פייסבוק כדי להיות מפתח. זה לא נראה לאף אחד ולא מקשר את החשבונות.)
+2. "Generate access tokens" ← Add account ← מתחברים עם `sapir.kingdom` ← מעתיקים את הטוקן.
+3. App settings ← Basic ← מעתיקים את ה-App secret.
 
-## 4. ElevenLabs (2 דקות)
-1. Profile ← API Keys ← Create. סוד ל-GitHub: `ELEVENLABS_API_KEY`.
-2. הקול המשובט שלך ← Voice ID. סוד ל-GitHub: `ELEVENLABS_VOICE_ID`.
+## 4. Cloudflare (5 דקות)
+1. נרשמים ל-Cloudflare עם המייל החדש (חינם).
+2. מעתיקים את ה-Account ID (בצד ימין בדף הבית של החשבון).
+3. My Profile ← API Tokens ← Create Token ← Custom: הרשאות Account ← **Cloudflare Pages: Edit**, **D1: Edit**. מעתיקים.
 
-## 5. עוד שני סודות
-- `EXPORT_TOKEN`: מחרוזת אקראית ארוכה (למשל מ-1password או מ-random.org). מגינה על הייצוא היומי.
-- `GH_ADMIN_TOKEN`: ב-GitHub ← Settings ← Developer settings ← Fine-grained token לריפו הזה בלבד, עם "Secrets: Read and write".
-  בזכותו הטוקן של אינסטגרם מתחדש לבד כל שבוע.
+## 5. ElevenLabs (2 דקות)
+API Key, ו-Voice ID של הקול שמיכאל ידבר בו.
 
-## 6. הדלקה
-1. Actions ← deploy ← Run workflow, לסמן "Copy the API secrets to Cloudflare". האתר עולה.
-2. Actions ← publish ← Run workflow, day = 1. הריל הראשון (הטירה הריקה) עולה לאינסטגרם.
-3. מכאן אני רץ כל יום ב-16:30 לבד. אתה מקבל ממני סיכום של שלוש שורות.
+## 6. GitHub (5 דקות)
+1. נרשמים ל-GitHub עם המייל החדש, ומחברים אותו ב-claude.ai: הגדרות ← Connectors ← GitHub. אני יוצר ריפו ציבורי ומעלה את הקוד (ציבורי = דקות רינדור בחינם בלי הגבלה ומכונה מהירה יותר; הסודות נשארים סודיים).
+2. בריפו: Settings ← Secrets and variables ← Actions ← New secret, שם: `KINGDOM_ENV`, ובתוכו שש שורות:
+
+```
+IG_TOKEN=הטוקן מאינסטגרם
+META_APP_SECRET=ה-App secret
+CLOUDFLARE_API_TOKEN=הטוקן מ-Cloudflare
+CLOUDFLARE_ACCOUNT_ID=ה-Account ID
+ELEVENLABS_API_KEY=המפתח
+ELEVENLABS_VOICE_ID=מזהה הקול
+```
+
+## 7. הדלקה
+1. Actions ← **setup** ← Run workflow. הוא בונה את האתר והדאטהבייס ומדפיס כתובת webhook.
+2. באפליקציית Meta ← Webhooks: מדביקים את הכתובת שהודפסה, Verify token: `sapir-kingdom`, ומסמנים comments ו-messages.
+3. Actions ← **publish** ← Run workflow, day = 1. הריל הראשון עולה.
+
+מכאן אני מנהל הכל: כל יום ב-16:30 אני בונה, מצלם ומפרסם, והמערכת עונה לתגובות ולהודעות. אתה מקבל סיכום של שלוש שורות.

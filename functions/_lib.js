@@ -11,3 +11,5 @@ export async function addResident(env, name, src) {
   return env.DB.prepare('SELECT n, u, h, day, src FROM residents WHERE u = ?').bind(u).first();
 }
 export const row = r => ({ u: r.u, h: r.h, plot: r.n - 1, day: r.day, src: r.src });
+/** the Instagram token: the fresh one kept in the database (token.yml), or the one set at the start */
+export async function igToken(env) { return (await env.DB.prepare("SELECT v FROM state WHERE k = 'ig_token'").first('v')) ?? env.IG_TOKEN; }
