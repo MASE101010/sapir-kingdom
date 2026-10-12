@@ -84,3 +84,4 @@ body.reel #overlay { width: 1080px; height: 1920px; pointer-events: none; font-f
 .r-caption .on { color: var(--gold); }
 .r-handle { position: absolute; bottom: 40px; left: 50px; font: 700 30px var(--body); color: #fff; -webkit-text-stroke: 8px rgba(19,33,59,.6); paint-order: stroke fill; direction: ltr; }
 body.reel .r-out { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+@media (max-width: 480px) { .hud { flex-wrap: nowrap; } .brand { font-size: 16px; padding: 10px; white-space: nowrap; } .stat { padding: 4px 9px; } .card { top: calc(env(safe-area-inset-top, 0px) + 76px); } }
