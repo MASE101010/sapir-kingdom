@@ -1,0 +1,14 @@
+# Instagram tokens last 60 days. Every week this swaps the token for a fresh one and saves it back as the IG_TOKEN secret.
+# Needs GH_ADMIN_TOKEN: a fine-grained token for this repository with "Secrets: read and write".
+name: token
+on: { schedule: [{ cron: '0 6 * * 1' }], workflow_dispatch: }
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          NEW=$(curl -fsS "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$IG_TOKEN" | jq -r .access_token)
+          [ -n "$NEW" ] && [ "$NEW" != null ] || exit 1
+          gh secret set IG_TOKEN --repo "$GITHUB_REPOSITORY" --body "$NEW"
+          printf '%s' "$NEW" | npx wrangler@3 pages secret put IG_TOKEN --project-name sapir-kingdom
+        env: { IG_TOKEN: '${{ secrets.IG_TOKEN }}', GH_TOKEN: '${{ secrets.GH_ADMIN_TOKEN }}', CLOUDFLARE_API_TOKEN: '${{ secrets.CLOUDFLARE_API_TOKEN }}', CLOUDFLARE_ACCOUNT_ID: '${{ secrets.CLOUDFLARE_ACCOUNT_ID }}' }

@@ -1,0 +1,9 @@
+# Cloudflare Pages: the site folder is served as is, functions/ answers /api/*. Fill database_id after `wrangler d1 create sapir-kingdom` (SETUP.md).
+name = "sapir-kingdom"
+pages_build_output_dir = "site"
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sapir-kingdom"
+database_id = "FILL-ME"

@@ -1,0 +1,157 @@
+{
+ "day": 2,
+ "clock": 20,
+ "visit": "test_0042",
+ "notes": "PREVIEW ONLY: test residents and an invented comment, to show how a day looks. Never posted.",
+ "preview": {
+  "landmarks": [
+   {
+    "key": "bakery",
+    "lot": 0,
+    "day": 2,
+    "by": [
+     "test_0042"
+    ]
+   }
+  ]
+ },
+ "lines": [
+  "[excited] יום 2 בממלכה של משפחת ספיר!",
+  "תראו כמה אתם! אתמול הייתי פה לבד, והיום כבר שלושת אלפים תושבים.",
+  "והתגובה עם הכי הרבה לייקים ביקשה...",
+  "[laughs] מאפייה. עם לחמניות ענקיות.",
+  "אז קדימה, בונים!",
+  "[gasps] תראו את זה. מאפיית הממלכה! עם כיכר לחם ענקית על הגג.",
+  "ומי שביקש את זה, מקבל תואר רשמי: אדריכל הממלכה.",
+  "ואני? [pause] אני הולך עכשיו להביא לו לחמניה חמה.",
+  "אז מה בונים מחר?",
+  "תגיבו בתגובות. התגובה עם הכי הרבה לייקים, נבנית."
+ ],
+ "houses": {
+  "from": 0,
+  "to": 3000,
+  "line": 1,
+  "dur": 5.5
+ },
+ "rise": {
+  "key": "bakery",
+  "line": 4,
+  "dur": 4
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "castle",
+   "dist": 700,
+   "yaw": -40,
+   "pitch": 40,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 1500,
+   "yaw": -20,
+   "pitch": 62,
+   "orbit": 2
+  },
+  {
+   "line": 2,
+   "target": "landmark:bakery",
+   "dist": 260,
+   "yaw": 25,
+   "pitch": 40
+  },
+  {
+   "line": 4,
+   "target": "landmark:bakery",
+   "dist": 130,
+   "yaw": 15,
+   "pitch": 26,
+   "orbit": 4
+  },
+  {
+   "line": 5,
+   "target": "landmark:bakery",
+   "dist": 95,
+   "yaw": 0,
+   "pitch": 16,
+   "orbit": 9
+  },
+  {
+   "line": 6,
+   "target": "house:test_0042",
+   "dist": 70,
+   "yaw": 30,
+   "pitch": 34
+  },
+  {
+   "line": 7,
+   "target": "michael",
+   "dist": 55,
+   "yaw": -20,
+   "pitch": 30
+  },
+  {
+   "line": 8,
+   "target": "castle",
+   "dist": 650,
+   "yaw": 50,
+   "pitch": 36,
+   "orbit": 3
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dur": 3,
+   "text": "יום 2"
+  },
+  {
+   "type": "counter",
+   "line": 1,
+   "dur": 5.5,
+   "from": 1,
+   "to": 3000
+  },
+  {
+   "type": "comment",
+   "line": 2,
+   "dt": 0.2,
+   "dur": 4.5,
+   "u": "test_0042",
+   "text": "שתהיה מאפייה עם לחמניות ענקיות!",
+   "likes": 2317
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dur": 3.6,
+   "text": "בבנייה · מאפיית הממלכה"
+  },
+  {
+   "type": "idcard",
+   "line": 6,
+   "dur": 4.2,
+   "u": "test_0042",
+   "honours": [
+    "אדריכל · מאפיית הממלכה"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 8,
+   "dur": 6.5,
+   "text": "מה בונים מחר?",
+   "sub": "תגיבו בתגובות"
+  }
+ ],
+ "caption": "יום 2: ביקשתם מאפייה, קיבלתם מאפייה.\nמה בונים מחר? התגובה עם הכי הרבה לייקים נבנית.",
+ "firstComment": "מה בונים מחר? 👇"
+}

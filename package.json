@@ -1,0 +1,24 @@
+{
+  "name": "sapir-kingdom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "node tools/check.mjs",
+    "preview": "node reel/render.mjs --frames",
+    "render": "node reel/render.mjs",
+    "voice": "node reel/voice.mjs",
+    "bake": "node tools/bake.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fontsource/rubik": "^5.1.0",
+    "@fontsource/secular-one": "^5.1.0",
+    "playwright-core": "^1.48.2",
+    "three": "^0.169.0"
+  },
+  "type": "module"
+}

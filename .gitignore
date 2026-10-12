@@ -1,0 +1,6 @@
+node_modules/
+out/
+site/data/dev/
+site/reels/*.mp4
+site/episodes/*.mp3
+.wrangler/

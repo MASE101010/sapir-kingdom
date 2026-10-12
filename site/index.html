@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="he" dir="rtl" data-account="sapir.kingdom">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>הממלכה של משפחת ספיר · איפה הבית שלי?</title>
+<meta name="description" content="ממלכה שלמה שנבנית מהעוקבים. כל עוקב מקבל בית עם כתובת, והתגובה עם הכי הרבה לייקים קובעת מה נבנה מחר.">
+<meta property="og:title" content="הממלכה של משפחת ספיר · כל עוקב = בית">
+<meta property="og:description" content="מחפשים את שם המשתמש שלכם באינסטגרם, ומקבלים רחוב ומספר בית בממלכה.">
+<meta name="theme-color" content="#0f6f73">
+<link rel="stylesheet" href="ui.css">
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js" } }</script>
+</head>
+<body>
+<div id="scene"></div>
+<div id="labels"></div>
+<div id="overlay"></div>
+
+<header class="hud ui">
+  <div class="brand">הממלכה של משפחת ספיר</div>
+  <div class="stat"><small>יום</small><b id="h-day">1</b></div>
+  <div class="stat"><small>תושבים</small><b id="h-res">0</b></div>
+</header>
+
+<aside class="dock ui">
+  <p class="status" id="status"></p>
+  <form id="find" class="row">
+    <label class="sr" for="who">שם המשתמש באינסטגרם</label>
+    <input id="who" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="@instagram">
+    <button class="btn gold" type="submit">איפה הבית שלי?</button>
+  </form>
+  <p class="err" id="find-err" hidden></p>
+  <button class="btn" id="get" type="button">אין לי בית עדיין · קבלו בית עכשיו</button>
+  <div id="verify" class="verify" hidden></div>
+  <div class="places" id="places" aria-label="מקומות בממלכה"></div>
+</aside>
+<section id="card" class="card ui" hidden></section>
+<script type="module" src="app/main.js"></script>
+</body>
+</html>

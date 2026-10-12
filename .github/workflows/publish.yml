@@ -1,0 +1,39 @@
+# A day's reel: voice → render → deploy (so Instagram can fetch the video) → post → move the kingdom to the next day.
+# Runs when the daily run pushes a commit whose message has "[publish day N]", or by hand.
+name: publish
+on:
+  push: { branches: [main], paths: ['site/episodes/**'] }
+  workflow_dispatch: { inputs: { day: { description: 'Day', required: true }, post: { description: 'Post to Instagram', type: boolean, default: true } } }
+concurrency: { group: kingdom, cancel-in-progress: false }
+permissions: { contents: write }
+jobs:
+  reel:
+    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[publish day') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      SITE_URL: '${{ vars.SITE_URL }}'
+      CLOUDFLARE_API_TOKEN: '${{ secrets.CLOUDFLARE_API_TOKEN }}'
+      CLOUDFLARE_ACCOUNT_ID: '${{ secrets.CLOUDFLARE_ACCOUNT_ID }}'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci && npx playwright-core install --with-deps chromium-headless-shell && sudo apt-get install -y ffmpeg
+      - id: day
+        run: echo "n=${{ inputs.day }}$(echo '${{ github.event.head_commit.message }}' | grep -oP '\[publish day \K\d+' || true)" >> $GITHUB_OUTPUT
+      - run: node tools/check.mjs --day ${{ steps.day.outputs.n }}
+      - run: node reel/voice.mjs --day ${{ steps.day.outputs.n }}
+        env: { ELEVENLABS_API_KEY: '${{ secrets.ELEVENLABS_API_KEY }}', ELEVENLABS_VOICE_ID: '${{ secrets.ELEVENLABS_VOICE_ID }}' }
+      - run: node reel/render.mjs --day ${{ steps.day.outputs.n }}
+      - uses: actions/upload-artifact@v4
+        with: { name: 'day${{ steps.day.outputs.n }}', path: 'site/reels/day${{ steps.day.outputs.n }}.mp4' }
+      - run: npx wrangler@3 pages deploy site --project-name sapir-kingdom --branch main --commit-dirty=true
+      - if: ${{ github.event_name == 'push' || inputs.post }}
+        run: |
+          node reel/publish.mjs --day ${{ steps.day.outputs.n }}
+          curl -fsS -X POST "$SITE_URL/api/export" -H "authorization: Bearer $EXPORT_TOKEN" -H 'content-type: application/json' -d "{\"day\": $(node -p "require('./site/data/kingdom.json').day")}"
+        env: { IG_TOKEN: '${{ secrets.IG_TOKEN }}', IG_USER_ID: '${{ secrets.IG_USER_ID }}', EXPORT_TOKEN: '${{ secrets.EXPORT_TOKEN }}' }
+      - run: |
+          git config user.name "kingdom-bot"; git config user.email "kingdom-bot@users.noreply.github.com"
+          git add site/data/kingdom.json site/episodes/*.voice.json && git commit -m "posted: day ${{ steps.day.outputs.n }}" && git push || echo "nothing to commit"
