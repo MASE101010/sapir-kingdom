@@ -6,17 +6,32 @@ import * as THREE from 'three';
 const mat = c => new THREE.MeshLambertMaterial({ color: c });
 const hash = (a, b) => { let h = Math.imul(a * 73856093 ^ b * 19349663, 2654435761); h ^= h >>> 15; return (h >>> 0) / 4294967296; };
 
-/** a voxel dragon: body, neck, head with horns, a tail in segments, two wings that flap */
-function dragon(color, belly) {
-  const g = new THREE.Group(), box = (w, h, d, c, x, y, z, parent = g) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat(c)); m.position.set(x, y, z); m.castShadow = true; parent.add(m); return m; };
-  box(5, 4, 11, color, 0, 0, 0); box(4.2, 1.4, 9, belly, 0, -2.2, 0);                 // body and belly
-  box(2.6, 2.6, 5, color, 0, 1.8, 7); box(3.6, 3, 4.6, color, 0, 3.2, 10.6);           // neck, head
-  box(3, 1.2, 2.6, belly, 0, 2.2, 13.4); box(.6, .6, .3, 0xffe066, -1.1, 4, 12.9); box(.6, .6, .3, 0xffe066, 1.1, 4, 12.9);   // jaw, eyes
-  box(.6, 2.2, .6, 0xf3ead8, -1.2, 5.6, 9.4); box(.6, 2.2, .6, 0xf3ead8, 1.2, 5.6, 9.4);  // horns
-  for (let i = 0; i < 4; i++) box(3.6 - i * .7, 3 - i * .55, 3.4, color, 0, -.4 - i * .3, -7 - i * 3.2);  // tail
-  box(.4, 2.4, 2, belly, 0, 3, -2); box(.4, 2, 2, belly, 0, 2.8, 2);                       // spikes
-  const wing = side => { const pivot = new THREE.Group(); pivot.position.set(side * 2.4, 1.4, 1); g.add(pivot);
-    box(9, .5, 7, color, side * 4.5, 0, 0, pivot); box(7, .4, 5, belly, side * 10.5, 0, -1, pivot); return pivot; };
+/** a voxel dragon: a long neck rising to a horned head, a tapering tail with a spade, four tucked legs, and bat wings
+ *  (an arm, three fingers and the skin between them) that flap from the shoulder and bend at the elbow */
+function dragon(color, belly, skin) {
+  const g = new THREE.Group(), box = (w, h, d, c, x, y, z, parent = g, rx = 0) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat(c)); m.position.set(x, y, z); m.rotation.x = rx; m.castShadow = true; parent.add(m); return m; };
+  box(4.4, 3.8, 9, color, 0, 0, 0); box(3.6, 1.2, 8, belly, 0, -2.1, .3);                      // body, belly
+  box(5, 4.4, 3.6, color, 0, .5, 3.6);                                                           // chest
+  [[2.8, 6.2, -.5], [2.4, 7.8, -.75], [2.1, 9.6, -.95]].forEach(([s, z, rx], i) => box(s, s, 2.6, color, 0, 1.6 + i * 1.5, z, g, rx));   // the neck, rising
+  const head = new THREE.Group(); head.position.set(0, 6.2, 11.4); g.add(head);
+  box(3.2, 2.6, 3.6, color, 0, 0, 0, head); box(2.4, 1.6, 2.8, color, 0, -.3, 2.8, head); box(2.2, .7, 2.6, belly, 0, -1.4, 2.4, head);  // skull, snout, jaw
+  box(.5, .5, .3, 0xffe066, -1.05, .6, 1.4, head); box(.5, .5, .3, 0xffe066, 1.05, .6, 1.4, head);                                      // eyes
+  box(.5, .5, .5, 0x2b2f36, -.6, .1, 4.15, head); box(.5, .5, .5, 0x2b2f36, .6, .1, 4.15, head);                                      // nostrils
+  box(.5, 2.4, .5, 0xf3ead8, -1, 1.9, -1.2, head, -.6); box(.5, 2.4, .5, 0xf3ead8, 1, 1.9, -1.2, head, -.6);                          // horns, swept back
+  for (let i = 0; i < 6; i++) box(3.2 - i * .45, 2.8 - i * .4, 3, color, 0, -.2 - i * .45, -5.8 - i * 2.7);                         // tail, tapering down
+  box(2.6, .4, 2.2, belly, 0, -2.9, -22.4); box(.3, 1.6, 1.4, belly, 0, -2.2, -22.4);                                                // the spade at its tip
+  for (let i = 0; i < 6; i++) box(.4, 1.4 - i * .12, 1.2, belly, 0, 2.5 - i * .25, 3 - i * 3);                                        // spikes on the back
+  for (const [x, z] of [[-1.8, 2.8], [1.8, 2.8], [-1.8, -3], [1.8, -3]]) { box(1.2, 2.4, 1.4, color, x, -2.6, z, g, .5); box(1.2, .5, 1.6, belly, x, -3.8, z + .9); }   // legs, tucked
+  const wing = side => {
+    const shoulder = new THREE.Group(); shoulder.position.set(side * 2.2, 1.6, 2.4); g.add(shoulder);
+    box(8, .7, .9, color, side * 4, 0, 0, shoulder);                                             // upper arm
+    const elbow = new THREE.Group(); elbow.position.set(side * 8, 0, 0); shoulder.add(elbow);
+    box(7, .6, .8, color, side * 3.5, 0, 0, elbow);                                              // forearm
+    [[10, -.25], [9, -.75], [7.5, -1.25]].forEach(([len, a]) => { const f = box(len, .4, .5, color, 0, 0, 0, elbow);
+      f.position.set(side * (7 + Math.cos(a) * len / 2), 0, Math.sin(a) * len / 2); f.rotation.y = -side * a; });           // fingers
+    box(14, .2, 9, skin, side * 7, -.1, -4.6, elbow); box(8, .2, 6, skin, side * 4, -.1, -3.4, shoulder);   // the skin
+    return { shoulder, elbow };
+  };
   g.userData.wings = [wing(-1), wing(1)];
   return g;
 }
@@ -25,8 +40,8 @@ export class Life {
   constructor(scene, plan) {
     this.scene = scene; this.plan = plan; const r0 = plan.rings.r0, step = plan.rings.step;
     // dragons: each flies its own loop round the kingdom at its own height and speed
-    this.dragons = [[0xc2412d, 0xf2b632, 260, 120, .06, 0], [0x2f7a4a, 0xd8e8a0, 420, 160, -.045, 2], [0x3b4fa6, 0xb6c8f2, 180, 95, .08, 4]].map(([c, b, R, H, w, ph]) => {
-      const d = dragon(c, b); d.scale.setScalar(1.3); scene.add(d); return { d, R, H, w, ph }; });
+    this.dragons = [[0xb83a2a, 0xf2b632, 0xe3793f, 300, 130, .055, 0], [0x2f7a4a, 0xd8e8a0, 0x7fb069, 460, 170, -.04, 2], [0x3b4fa6, 0xb6c8f2, 0x6d86d6, 220, 105, .07, 4]].map(([c, b, sk, R, H, w, ph]) => {
+      const d = dragon(c, b, sk); d.scale.setScalar(1.1); scene.add(d); return { d, R, H, w, ph }; });
     // birds: little flocks of V shapes
     const bird = new THREE.BoxGeometry(1.8, .2, .6); this.birds = new THREE.InstancedMesh(bird, mat(0x2b2f36), 60); this.birds.frustumCulled = false; scene.add(this.birds);
     // clouds: clusters of white balls high up, drifting with the wind
@@ -52,7 +67,8 @@ export class Life {
       const a = t * w + ph, wob = Math.sin(t * .7 + ph) * 18;
       d.position.set(Math.cos(a) * (R + wob), H + Math.sin(t * .9 + ph) * 12, Math.sin(a) * (R + wob));
       d.rotation.set(Math.sin(t * .9 + ph) * .12, Math.atan2(-Math.sin(a) * Math.sign(w), Math.cos(a) * Math.sign(w)), -Math.sign(w) * .35);
-      const f = Math.sin(t * 4.2 + ph) * .55; d.userData.wings[0].rotation.z = f; d.userData.wings[1].rotation.z = -f;
+      const f = Math.sin(t * 3.4 + ph), [L, Rw] = d.userData.wings;           // the wing beats down, and folds a little on the way up
+      L.shoulder.rotation.z = f * .6; Rw.shoulder.rotation.z = -f * .6; L.elbow.rotation.z = Math.max(0, f) * .5; Rw.elbow.rotation.z = -Math.max(0, f) * .5;
     }
     for (let i = 0; i < 60; i++) {
       const flock = Math.floor(i / 12), k = i % 12, a = t * (.09 + flock * .01) + flock * 1.3, R = 300 + flock * 140, side = k % 2 ? 1 : -1, row = Math.ceil(k / 2);

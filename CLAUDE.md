@@ -121,7 +121,7 @@ Keep reels about 30 seconds. Captions: at most three words, cut at the voice's p
 ```
 
 Times hang on lines: `line` is the index of the line it starts with, `dt` shifts it in seconds, `dur` is how long.
-Shot targets: `castle`, `statue` (the king), `house:<handle>`, `landmark:<key>`, or `[x, y, z]`. A shot holds until the next one;
+Shot targets: `castle`, `statue` (the king), `dragon:0` to `dragon:2` (follows a dragon),  `house:<handle>`, `landmark:<key>`, or `[x, y, z]`. A shot holds until the next one;
 the camera eases into it over `ease` seconds (1.6) and turns `orbit` degrees a second. `dist` in metres, `yaw` and
 `pitch` in degrees; on a `landmark:` target yaw 0 looks straight at its front (its signs). Cards stack at the top third; captions sit at 1290 to 1500 px; keep the subject between them.
 

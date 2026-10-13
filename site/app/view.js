@@ -16,7 +16,7 @@ export class World {
     Object.assign(this, { renderer, plan, residents, kingdom });
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0xbfe3f5); this.scene.fog = new THREE.Fog(0xbfe3f5, 1400, 3400);
-    this.camera = new THREE.PerspectiveCamera(42, 1, 1, 9000);
+    this.camera = new THREE.PerspectiveCamera(42, 1, 2, 9000);
     const hemi = new THREE.HemisphereLight(0xffffff, 0xb7c99a, 1.25), sun = new THREE.DirectionalLight(0xfff4e0, 2.1);
     sun.position.set(-260, 420, 300); sun.castShadow = true; sun.shadow.mapSize.setScalar(new URLSearchParams(location.search).has('reel') ? 4096 : 2048); sun.shadow.bias = -.0005;
     Object.assign(sun.shadow.camera, { left: -420, right: 420, top: 420, bottom: -420, near: 10, far: 1400 });
@@ -29,7 +29,7 @@ export class World {
   land() {
     const s = this.scene, W = this.plan.wall;
     const ground = new THREE.Mesh(new THREE.CircleGeometry(4200, 96), new THREE.MeshLambertMaterial({ color: FIELD })); ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; s.add(ground);
-    const inside = new THREE.Mesh(new THREE.CircleGeometry(W, 160), new THREE.MeshLambertMaterial({ color: GRASS, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -2 })); inside.rotation.x = -Math.PI / 2; inside.position.y = .02; inside.receiveShadow = true; s.add(inside);
+    const inside = new THREE.Mesh(new THREE.CircleGeometry(W, 160), new THREE.MeshLambertMaterial({ color: GRASS })); inside.rotation.x = -Math.PI / 2; inside.position.y = .02; inside.receiveShadow = true; s.add(inside);
     const hill = new THREE.Mesh(new THREE.CylinderGeometry(74, 86, HILL, 64), new THREE.MeshLambertMaterial({ color: 0x79b85a })); hill.position.y = HILL / 2; hill.receiveShadow = true; s.add(hill);
     // the river: a lake near the castle, and a ribbon from it out past the wall, with sandy banks
     const R = this.plan.river, ux = Math.cos(R.a), uz = Math.sin(R.a);
@@ -38,8 +38,7 @@ export class World {
       for (let t = R.lake, i = 0; t <= 4300; t += 15, i++) { const o = riverBend(R, t), cx = ux * t - uz * o, cz = uz * t + ux * o;
         v.push(cx + uz * half, y, cz - ux * half, cx - uz * half, y, cz + ux * half); if (i) { const k = (i - 1) * 2; idx.push(k, k + 1, k + 2, k + 1, k + 3, k + 2); } }
       const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(v, 3)); g.setIndex(idx); g.computeVertexNormals();
-      // pulled towards the camera in the depth test, so far away the water never flickers through the sand and grass
-      const m = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2 * y * 20, polygonOffsetUnits: -4 * y * 20 })); m.receiveShadow = true; s.add(m);
+      const m = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color, side: THREE.DoubleSide })); m.receiveShadow = true; s.add(m);
       const lake = new THREE.Mesh(new THREE.CircleGeometry(R.lakeR + half - R.half, 48), m.material); lake.rotation.x = -Math.PI / 2; lake.position.set(ux * R.lake, y, uz * R.lake); lake.receiveShadow = true; s.add(lake);
     };
     strip(R.half + 5, .05, SAND); strip(R.half, .1, WATER);

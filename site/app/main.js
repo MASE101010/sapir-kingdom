@@ -18,7 +18,7 @@ const ACCOUNT = document.documentElement.dataset.account;
 const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch { } } };
 
 const data = await loadKingdom('.');
-const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: q.has('reel') || q.has('catalog') });
+const renderer = new THREE.WebGLRenderer({ antialias: true, logarithmicDepthBuffer: true, preserveDrawingBuffer: q.has('reel') || q.has('catalog') });
 renderer.setPixelRatio(q.has('reel') ? 1 : Math.min(devicePixelRatio, matchMedia('(pointer: coarse)').matches ? 1.5 : 2)); renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 $('scene').appendChild(renderer.domElement);
 

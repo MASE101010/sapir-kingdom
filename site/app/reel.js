@@ -46,6 +46,7 @@ export async function startReel({ renderer, data, day }) {
   function focus(spec, t) {
     if (Array.isArray(spec)) return new THREE.Vector3(...spec);
     if (spec === 'statue' || spec === 'michael') return new THREE.Vector3(STATUE[0], 18, STATUE[1]);      // the king
+    if (spec?.startsWith('dragon:')) { const d = world.life.dragons[+spec.slice(7)]?.d; if (d) return d.position.clone(); }   // follows it
     if (spec?.startsWith('house:')) { const r = resident(spec.slice(6)), pl = r && data.plan.plots[r.plot]; if (pl) return new THREE.Vector3(pl[0], 5, pl[1]); }
     if (spec?.startsWith('landmark:')) { const l = world.lm[spec.slice(9)]; if (l) return new THREE.Vector3(l.at[0], (l.mod.top ?? 20) * .35, l.at[1]); }
     return new THREE.Vector3(0, 18, 0);
