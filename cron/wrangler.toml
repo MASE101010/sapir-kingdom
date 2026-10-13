@@ -1,0 +1,6 @@
+# The kingdom's clock (cron/worker.js): a Cloudflare Worker woken every minute. Free plan.
+name = "sapir-kingdom-clock"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+[triggers]
+crons = ["* * * * *"]

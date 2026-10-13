@@ -1,7 +1,7 @@
 # Puts the site and the API on Cloudflare Pages whenever the kingdom changes.
 name: deploy
 on:
-  push: { branches: [main], paths: ['site/**', 'functions/**', 'migrations/**', 'wrangler.toml'] }
+  push: { branches: [main], paths: ['site/**', 'functions/**', 'migrations/**', 'wrangler.toml', 'cron/**'] }
   workflow_dispatch:
 concurrency: { group: deploy, cancel-in-progress: false }
 jobs:
@@ -19,3 +19,7 @@ jobs:
         run: npx wrangler@3 d1 migrations apply sapir-kingdom --remote
       - if: env.READY == '1'
         run: npx wrangler@3 pages deploy site --project-name sapir-kingdom --branch main --commit-dirty=true
+      - if: env.READY == '1'
+        name: the kingdom's clock (a Worker woken every minute)
+        continue-on-error: true
+        run: npx wrangler@3 deploy --config cron/wrangler.toml
