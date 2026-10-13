@@ -5,6 +5,7 @@ import { Pen } from './pen.js';
 import { drawHome, drawShared } from './homes.js';
 import { LANDMARKS } from './landmarks/index.js';
 import { HILL } from './landmarks/castle.js';
+import { Life } from './life.js';
 
 const GRASS = 0x86c766, FIELD = 0x9fd27a, ROAD = 0x6f737b, ROAD_LINE = 0xf4f1e8, WATER = 0x3fa9d6, SAND = 0xe8dcb5, STONE = 0xd2c8b2, ROOF = 0x2f5fa6;
 const hash = (a, b) => { let h = Math.imul(a * 73856093 ^ b * 19349663, 2654435761); h ^= h >>> 15; return (h >>> 0) / 4294967296; };
@@ -14,12 +15,13 @@ export class World {
     Object.assign(this, { renderer, plan, residents, kingdom });
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0xbfe3f5); this.scene.fog = new THREE.Fog(0xbfe3f5, 1400, 3400);
-    this.camera = new THREE.PerspectiveCamera(38, 1, 1, 6000);
+    this.camera = new THREE.PerspectiveCamera(42, 1, 1, 9000);
     const hemi = new THREE.HemisphereLight(0xffffff, 0xb7c99a, 1.25), sun = new THREE.DirectionalLight(0xfff4e0, 2.1);
-    sun.position.set(-260, 420, 300); sun.castShadow = true; sun.shadow.mapSize.set(4096, 4096); sun.shadow.bias = -.0005;
+    sun.position.set(-260, 420, 300); sun.castShadow = true; sun.shadow.mapSize.setScalar(new URLSearchParams(location.search).has('reel') ? 4096 : 2048); sun.shadow.bias = -.0005;
     Object.assign(sun.shadow.camera, { left: -420, right: 420, top: 420, bottom: -420, near: 10, far: 1400 });
     this.sun = sun; this.scene.add(hemi, sun, sun.target);
     this.land(); this.roads(); this.trees(); this.wall();
+    this.life = new Life(this.scene, plan);
     this.houses(); this.landmarks();
   }
   /** the ground, the castle hill, the river with its sandy banks, and mountains round the edge */
@@ -68,7 +70,9 @@ export class World {
     }
   }
   /** shows the rings up to n (the outermost ring anyone lives on, and one more) */
-  setExtent(n) { this.bands.forEach((g, k) => g.visible = k <= n); }
+  setExtent(n) { this.bands.forEach((g, k) => g.visible = k <= n); this.life?.setExtent(n); }
+  /** everything that moves, at time t (seconds) */
+  animate(t) { this.life.update(t); }
   /** forests outside the wall */
   trees() {
     const p = new Pen(), W = this.plan.wall;
@@ -97,13 +101,20 @@ export class World {
       this.homeMarks.push(p.mark());
     });
     this.homes = p; this.homeGroup = p.build(); this.scene.add(this.homeGroup);
+    // the next free plots: a patch of earth and four fence posts each, so the room for hundreds more houses is plain to see
+    if (this.emptyGroup) this.scene.remove(this.emptyGroup);
+    const e = new Pen(), used = new Set(this.residents.map(r => r.plot)), upto = Math.min(this.plan.plots.length, Math.max(this.residents.length + 400, 900));
+    for (let k = 0; k < upto; k++) { if (used.has(k)) continue; const pl = this.plan.plots[k]; e.at(pl[0], pl[1], pl[2]);
+      e.box(0, 0, 0, 9, .12, 9, 0xc9b58f); for (const [x, z] of [[-4.2, -4.2], [4.2, -4.2], [-4.2, 4.2], [4.2, 4.2]]) e.box(x, 0, z, .35, 1.3, .35, 0x8a6240); e.box(0, .9, 4.2, 8.4, .18, .18, 0x8a6240); }
+    this.emptyGroup = e.build(new THREE.Group(), { shadows: false }); this.scene.add(this.emptyGroup);
+    this.lotRing = this.plan.plots[upto - 1]?.[3] ?? 0;
     this.outerRing = this.residents.reduce((m, r) => Math.max(m, this.plan.plots[r.plot]?.[3] ?? 0), 0);
-    this.setExtent(this.outerRing + 1);
+    this.setExtent(Math.max(this.outerRing + 1, this.lotRing));
   }
   /** everyone who lives in the house on this plot (indexes into residents, owner first) */
   housemates(plot) { return this.byPlot.get(plot) ?? []; }
   showHouses(n) { n = Math.max(0, Math.min(Math.round(n), this.homeMarks.length - 1)); this.homes.showUpTo(this.homeMarks[n]);
-    const last = this.residents[n - 1]; this.setExtent((last ? this.plan.plots[last.plot]?.[3] ?? 0 : 0) + 1); }
+    const last = this.residents[n - 1]; this.setExtent(Math.max((last ? this.plan.plots[last.plot]?.[3] ?? 0 : 0) + 1, this.lotRing ?? 0)); }
   landmarks() {
     this.lm = {};
     const list = [{ key: 'castle' }, ...(this.kingdom.landmarks ?? []).filter(l => l.key !== 'castle')];

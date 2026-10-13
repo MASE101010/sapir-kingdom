@@ -1,0 +1,77 @@
+// What moves in the kingdom: dragons circling the palace, flocks of birds, clouds drifting, carts and people on the ring
+// roads, flags in the wind. Everything is a function of time, so the site (the clock) and a reel (its own time) show the
+// same kingdom, and every viewer sees the dragons in the same place at the same moment.
+import * as THREE from 'three';
+
+const mat = c => new THREE.MeshLambertMaterial({ color: c });
+const hash = (a, b) => { let h = Math.imul(a * 73856093 ^ b * 19349663, 2654435761); h ^= h >>> 15; return (h >>> 0) / 4294967296; };
+
+/** a voxel dragon: body, neck, head with horns, a tail in segments, two wings that flap */
+function dragon(color, belly) {
+  const g = new THREE.Group(), box = (w, h, d, c, x, y, z, parent = g) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat(c)); m.position.set(x, y, z); m.castShadow = true; parent.add(m); return m; };
+  box(5, 4, 11, color, 0, 0, 0); box(4.2, 1.4, 9, belly, 0, -2.2, 0);                 // body and belly
+  box(2.6, 2.6, 5, color, 0, 1.8, 7); box(3.6, 3, 4.6, color, 0, 3.2, 10.6);           // neck, head
+  box(3, 1.2, 2.6, belly, 0, 2.2, 13.4); box(.6, .6, .3, 0xffe066, -1.1, 4, 12.9); box(.6, .6, .3, 0xffe066, 1.1, 4, 12.9);   // jaw, eyes
+  box(.6, 2.2, .6, 0xf3ead8, -1.2, 5.6, 9.4); box(.6, 2.2, .6, 0xf3ead8, 1.2, 5.6, 9.4);  // horns
+  for (let i = 0; i < 4; i++) box(3.6 - i * .7, 3 - i * .55, 3.4, color, 0, -.4 - i * .3, -7 - i * 3.2);  // tail
+  box(.4, 2.4, 2, belly, 0, 3, -2); box(.4, 2, 2, belly, 0, 2.8, 2);                       // spikes
+  const wing = side => { const pivot = new THREE.Group(); pivot.position.set(side * 2.4, 1.4, 1); g.add(pivot);
+    box(9, .5, 7, color, side * 4.5, 0, 0, pivot); box(7, .4, 5, belly, side * 10.5, 0, -1, pivot); return pivot; };
+  g.userData.wings = [wing(-1), wing(1)];
+  return g;
+}
+
+export class Life {
+  constructor(scene, plan) {
+    this.scene = scene; this.plan = plan; const r0 = plan.rings.r0, step = plan.rings.step;
+    // dragons: each flies its own loop round the kingdom at its own height and speed
+    this.dragons = [[0xc2412d, 0xf2b632, 260, 120, .06, 0], [0x2f7a4a, 0xd8e8a0, 420, 160, -.045, 2], [0x3b4fa6, 0xb6c8f2, 180, 95, .08, 4]].map(([c, b, R, H, w, ph]) => {
+      const d = dragon(c, b); d.scale.setScalar(1.3); scene.add(d); return { d, R, H, w, ph }; });
+    // birds: little flocks of V shapes
+    const bird = new THREE.BoxGeometry(1.8, .2, .6); this.birds = new THREE.InstancedMesh(bird, mat(0x2b2f36), 60); this.birds.frustumCulled = false; scene.add(this.birds);
+    // clouds: clusters of white balls high up, drifting with the wind
+    this.clouds = []; const cg = new THREE.IcosahedronGeometry(1, 1), cm = new THREE.MeshLambertMaterial({ color: 0xffffff });
+    for (let i = 0; i < 18; i++) { const c = new THREE.Group(); for (let k = 0; k < 5; k++) { const m = new THREE.Mesh(cg, cm); m.scale.setScalar(18 + hash(i, k) * 16); m.position.set((k - 2) * 20, hash(k, i) * 10, hash(i * 3, k) * 16); c.add(m); }
+      scene.add(c); this.clouds.push({ c, x0: (hash(i, 1) - .5) * 4000, z: (hash(i, 2) - .5) * 3000, y: 220 + hash(i, 3) * 120 }); }
+    // carts and people walking the ring roads
+    const cart = new THREE.Group(), cbox = (w, h, d, c, x, y, z) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat(c)); m.position.set(x, y, z); m.castShadow = true; cart.add(m); };
+    cbox(2.4, 1.6, 4.4, 0x8a6240, 0, 1.4, 0); cbox(2.6, .3, 4.6, 0x6b4a33, 0, 2.3, 0); cbox(1.4, 2, 2.4, 0xe9e0cc, 0, 2.4, -.6); cbox(1.2, 2.2, 2.6, 0x7a5a3a, 0, 1.1, 4); cbox(.8, .8, 1.2, 0x7a5a3a, 0, 2.2, 5.6);
+    this.carts = Array.from({ length: 10 }, (_, i) => { const c = cart.clone(); scene.add(c); return { c, ring: 1 + (i % 4), speed: (i % 2 ? 1 : -1) * (5 + hash(i, 5) * 3), a0: hash(i, 6) * Math.PI * 2 }; });
+    const body = new THREE.BoxGeometry(.9, 1.6, .6), head = new THREE.BoxGeometry(.7, .7, .7);
+    this.people = { n: 120, body: new THREE.InstancedMesh(body, new THREE.MeshLambertMaterial(), 120), head: new THREE.InstancedMesh(head, mat(0xe2b48f), 120) };
+    const col = new THREE.Color(), shirts = [0xc2412d, 0x0f8b8d, 0x3b6fb6, 0xe8b323, 0x7a4f9a, 0x4f9a43];
+    for (let i = 0; i < 120; i++) this.people.body.setColorAt(i, col.setHex(shirts[i % 6]));
+    scene.add(this.people.body, this.people.head); this.people.body.frustumCulled = this.people.head.frustumCulled = false;
+    this.r0 = r0; this.step = step; this.m = new THREE.Matrix4(); this.q = new THREE.Quaternion(); this.v = new THREE.Vector3(); this.s = new THREE.Vector3(1, 1, 1);
+  }
+  /** shows the walkers and carts only on rings that are built (the view tells it the outermost one) */
+  setExtent(ring) { this.extent = ring; }
+  update(t) {
+    const up = new THREE.Vector3(0, 1, 0);
+    for (const { d, R, H, w, ph } of this.dragons) {
+      const a = t * w + ph, wob = Math.sin(t * .7 + ph) * 18;
+      d.position.set(Math.cos(a) * (R + wob), H + Math.sin(t * .9 + ph) * 12, Math.sin(a) * (R + wob));
+      d.rotation.set(Math.sin(t * .9 + ph) * .12, Math.atan2(-Math.sin(a) * Math.sign(w), Math.cos(a) * Math.sign(w)), -Math.sign(w) * .35);
+      const f = Math.sin(t * 4.2 + ph) * .55; d.userData.wings[0].rotation.z = f; d.userData.wings[1].rotation.z = -f;
+    }
+    for (let i = 0; i < 60; i++) {
+      const flock = Math.floor(i / 12), k = i % 12, a = t * (.09 + flock * .01) + flock * 1.3, R = 300 + flock * 140, side = k % 2 ? 1 : -1, row = Math.ceil(k / 2);
+      const cx = Math.cos(a) * R, cz = Math.sin(a) * R, dir = a + Math.PI / 2, flap = Math.sin(t * 9 + i) * .4;
+      this.v.set(cx - Math.cos(dir) * row * 3 + Math.cos(dir + Math.PI / 2) * side * row * 3, 70 + flock * 12 + Math.sin(t * 2 + i) * 1.5, cz - Math.sin(dir) * row * 3 + Math.sin(dir + Math.PI / 2) * side * row * 3);
+      this.q.setFromEuler(new THREE.Euler(0, -dir, flap)); this.m.compose(this.v, this.q, this.s); this.birds.setMatrixAt(i, this.m);
+    }
+    this.birds.instanceMatrix.needsUpdate = true;
+    for (const { c, x0, z, y } of this.clouds) { const x = ((x0 + t * 6 + 2000) % 4000 + 4000) % 4000 - 2000; c.position.set(x, y, z); }
+    const maxRing = Math.max(1, this.extent ?? 1);
+    for (const k of this.carts) { const ring = Math.min(k.ring, maxRing), R = this.r0 + this.step * ring + 2, a = k.a0 + t * k.speed / R;
+      k.c.visible = ring <= maxRing; k.c.position.set(Math.cos(a) * R, .15, Math.sin(a) * R); k.c.rotation.y = Math.atan2(-Math.sin(a) * Math.sign(k.speed), Math.cos(a) * Math.sign(k.speed)); }
+    for (let i = 0; i < this.people.n; i++) {
+      const ring = 1 + (i % Math.max(1, maxRing)), R = this.r0 + this.step * ring + (i % 2 ? 6.5 : -6.5), dir = i % 3 ? 1 : -1, sp = 1.1 + hash(i, 9) * .6;
+      const a = hash(i, 8) * Math.PI * 2 + dir * t * sp / R, bob = Math.abs(Math.sin(t * 6 + i)) * .25, x = Math.cos(a) * R, z = Math.sin(a) * R;
+      this.q.setFromAxisAngle(up, Math.atan2(-Math.sin(a) * dir, Math.cos(a) * dir));
+      this.m.compose(this.v.set(x, .95 + bob, z), this.q, this.s); this.people.body.setMatrixAt(i, this.m);
+      this.m.compose(this.v.set(x, 2.1 + bob, z), this.q, this.s); this.people.head.setMatrixAt(i, this.m);
+    }
+    this.people.body.instanceMatrix.needsUpdate = this.people.head.instanceMatrix.needsUpdate = true;
+  }
+}

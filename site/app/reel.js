@@ -78,7 +78,7 @@ export async function startReel({ renderer, data, day }) {
   function seek(t) {
     if (houses) world.showHouses(houses.from + (houses.to - houses.from) * smooth((t - houses.t0) / houses.dur)); else world.showHouses(residents.length);
     for (const r of rises) world.rise(r.key, backOut((t - r.t0) / r.dur));
-    poseCamera(t);
+    world.animate((ep.clock ?? 900) + t); poseCamera(t);
     renderer.render(world.scene, cam);
     k.t = t; g.drawImage(renderer.domElement, 0, 0, W, H); drawOverlay(g, k, cards, chunks);
   }

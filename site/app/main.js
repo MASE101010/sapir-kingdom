@@ -3,7 +3,7 @@
 //   ?invite=name   someone was invited to live with name: getting a house moves them into name's house
 //   ?reel=N        the reel of day N, posed frame by frame (reel.js); the page shows nothing else
 import * as THREE from 'three';
-import { OrbitControls } from '../vendor/addons/OrbitControls.js';
+import { MapControls } from '../vendor/addons/MapControls.js';
 import { loadKingdom, loadDelta } from './kingdom.js';
 import { World } from './view.js';
 import { addresses, KINGDOM } from './names.js';
@@ -19,7 +19,7 @@ const store = { get: k => { try { return localStorage.getItem(k); } catch { retu
 
 const data = await loadKingdom('.');
 const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: q.has('reel') || q.has('catalog') });
-renderer.setPixelRatio(q.has('reel') ? 1 : Math.min(devicePixelRatio, 2)); renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.setPixelRatio(q.has('reel') ? 1 : Math.min(devicePixelRatio, matchMedia('(pointer: coarse)').matches ? 1.5 : 2)); renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 $('scene').appendChild(renderer.domElement);
 
 if (q.has('reel')) { const { startReel } = await import('./reel.js'); await startReel({ renderer, data, day: +q.get('reel') }); }
@@ -29,9 +29,13 @@ else { data.residents.push(...await loadDelta(data.residents.length)); site(data
 function site({ plan, residents, kingdom, honours }) {
   document.body.classList.add('site');
   const world = new World(renderer, plan, residents, kingdom), addr = addresses(plan.plots);
-  const cam = world.camera, controls = new OrbitControls(cam, renderer.domElement);
-  cam.position.set(260, 300, 420); controls.target.set(0, 10, 0);
-  Object.assign(controls, { enableDamping: true, maxPolarAngle: 1.28, minDistance: 30, maxDistance: 2400, screenSpacePanning: false });
+  // free movement: drag to move, two fingers or the right button to turn and tilt, pinch or the wheel to zoom, arrow keys too
+  const cam = world.camera, controls = new MapControls(cam, renderer.domElement);
+  cam.position.set(230, 260, 380); controls.target.set(0, 10, 40);
+  Object.assign(controls, { enableDamping: true, dampingFactor: .08, maxPolarAngle: 1.42, minDistance: 18, maxDistance: 3200, screenSpacePanning: false, zoomToCursor: true, keyPanSpeed: 30 });
+  controls.listenToKeyEvents(window);
+  const W = plan.wall + 400;
+  controls.addEventListener('change', () => { const t = controls.target; const r = Math.hypot(t.x, t.z); if (r > W) { t.x *= W / r; t.z *= W / r; } });
   const resize = () => { cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); };
   addEventListener('resize', resize); resize();
   const hour = () => +new Intl.DateTimeFormat('en-GB', { hour: 'numeric', hour12: false, timeZone: 'Asia/Jerusalem' }).format(new Date());
@@ -57,9 +61,19 @@ function site({ plan, residents, kingdom, honours }) {
       el.classList.toggle('mine', n.people.some(k => residents[k].u === mine)); place(el, new THREE.Vector3(pl[0], n.people.length >= 4 ? 22 : 13, pl[1])); });
   }
   (function frame() {
+    world.animate(performance.timeOrigin / 1000 + performance.now() / 1000);
     controls.update(); world.aim(controls.target); renderer.render(world.scene, cam);
     place(kTag, new THREE.Vector3(STATUE[0], 38, STATUE[1])); drawLabels(); requestAnimationFrame(frame);
   })();
+  const nudge = (fn) => { fn(); controls.update(); };
+  const rotateBy = a => { const off = cam.position.clone().sub(controls.target); off.applyAxisAngle(new THREE.Vector3(0, 1, 0), a); cam.position.copy(controls.target).add(off); };
+  const zoomBy = f => { const off = cam.position.clone().sub(controls.target).multiplyScalar(f); if (off.length() > 18 && off.length() < 3200) cam.position.copy(controls.target).add(off); };
+  const tiltBy = d => { const off = cam.position.clone().sub(controls.target), r = off.length(); let ph = Math.acos(off.y / r) + d; ph = Math.max(.15, Math.min(1.42, ph));
+    const th = Math.atan2(off.x, off.z); cam.position.set(controls.target.x + r * Math.sin(ph) * Math.sin(th), controls.target.y + r * Math.cos(ph), controls.target.z + r * Math.sin(ph) * Math.cos(th)); };
+  const pad = $('pad'); pad.hidden = false;
+  pad.querySelectorAll('button').forEach(b => { let timer; const act = { in: () => zoomBy(.9), out: () => zoomBy(1.11), left: () => rotateBy(.08), right: () => rotateBy(-.08), up: () => tiltBy(-.05), down: () => tiltBy(.05), home: () => flyTo(0, 40, 480) }[b.dataset.a];
+    const go = () => nudge(act); b.addEventListener('pointerdown', e => { e.preventDefault(); go(); if (b.dataset.a !== 'home') timer = setInterval(go, 60); });
+    ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => b.addEventListener(ev, () => clearInterval(timer))); });
   function flyTo(x, z, dist = 90) {
     const t0 = performance.now(), from = controls.target.clone(), to = new THREE.Vector3(x, 4, z), off0 = cam.position.clone().sub(from), off1 = off0.clone().setLength(dist);
     (function step(now) { const f = Math.min(1, (now - t0) / 1100), e = f < .5 ? 4 * f * f * f : 1 - Math.pow(-2 * f + 2, 3) / 2;

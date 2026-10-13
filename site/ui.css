@@ -109,3 +109,12 @@ body.reel .r-out { position: absolute; inset: 0; width: 1080px; height: 1920px; 
 .invite { margin: 0; background: var(--gold); border: 2px solid var(--navy); border-radius: 12px; padding: 8px 10px; font-weight: 700; }
 .mates { margin: 0; padding: 0 14px 8px; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
 @media (max-width: 480px) { .office { padding: 6px 9px; font-size: 13px; } }
+
+/* ---- free movement ---- */
+#overlay { pointer-events: none; }
+body.site #scene canvas { cursor: grab; } body.site #scene canvas:active { cursor: grabbing; }
+.pad { position: fixed; left: 12px; bottom: calc(env(safe-area-inset-bottom, 0px) + 200px); display: grid; grid-template-columns: repeat(2, 44px); gap: 6px; z-index: 3; }
+.pad button { width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--navy); background: var(--cream); color: var(--navy); font: 800 20px var(--body); cursor: pointer; box-shadow: 0 3px 0 var(--navy); touch-action: none; user-select: none; }
+.pad button[data-a="home"] { grid-column: span 2; width: auto; background: var(--gold); font-size: 18px; }
+.pad button:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--navy); }
+@media (min-width: 860px) { .pad { bottom: 24px; } }
