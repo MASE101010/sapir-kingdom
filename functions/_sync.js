@@ -40,12 +40,13 @@ export async function sync(env, { force = false, replies = 12 } = {}) {
     let media = JSON.parse(await getState(env, 'sync_media') ?? '{"at":0,"ids":[]}');
     if (force || now - media.at > 5 * 60e3) { media = { at: now, ids: (await get(`${G}/${user}/media?fields=id&limit=3&access_token=${token}`)).data.map(m => m.id) }; await setState(env, 'sync_media', JSON.stringify(media)); }
     const comments = [];
-    const read = (m, d) => comments.push(...(d.data ?? []).filter(c => c.username).map(c => ({ id: c.id, u: c.username, text: c.text, media: m })));
+    const read = (m, d) => comments.push(...(d.data ?? []).map(c => ({ id: c.id, u: c.username ?? c.from?.username, text: c.text, media: m })).filter(c => c.u));
     for (const [i, m] of media.ids.entries()) {
       if (i > 0 && !force) break;                               // a quick sync looks at the newest post only
-      const base = `${G}/${m}/comments?fields=id,text,username&limit=50&access_token=${token}`;
+      const base = `${G}/${m}/comments?fields=id,text,username,from&limit=50&access_token=${token}`;
       // the first page, and from the last page we reached before onwards (whichever end Instagram puts new comments at)
-      const first = await get(base); read(m, first);
+      let first; try { first = await get(base); } catch (e) { if (e.code === 4 || e.code === 17 || e.code === 32 || e.code === 613) throw e; continue; }   // a deleted post: skip it
+      read(m, first);
       let after = await getState(env, `sync_after:${m}`), next = after ? `${base}&after=${after}` : first.paging?.next, pages = 0;
       if (!after && first.paging?.cursors?.after) after = first.paging.cursors.after;
       while (next && pages++ < (force ? 8 : 3)) { const d = await get(next); read(m, d); if (d.paging?.cursors?.after) after = d.paging.cursors.after; next = d.paging?.next; }
