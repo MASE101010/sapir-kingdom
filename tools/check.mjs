@@ -12,7 +12,7 @@ for (const [key, l] of Object.entries(LANDMARKS)) { mock.n = 0; try { l.draw(moc
 const lots = new Set();
 for (const l of kingdom.landmarks) { if (!LANDMARKS[l.key]) fail.push(`kingdom.json: unknown landmark ${l.key}`);
   if (l.key !== 'castle') { if (!plan.lots[l.lot]) fail.push(`kingdom.json: ${l.key} on missing lot ${l.lot}`); if (lots.has(l.lot)) fail.push(`kingdom.json: lot ${l.lot} used twice`); lots.add(l.lot); } }
-residents.forEach((r, k) => { if (r.plot !== k) fail.push(`resident ${r.u}: plot ${r.plot}, expected ${k}`); });
+residents.forEach((r, k) => { if (!plan.plots[r.plot]) fail.push(`resident ${r.u}: no plot ${r.plot}`); if (r.host && !residents.slice(0, k).some(x => x.u === r.host && x.plot === r.plot)) fail.push(`resident ${r.u}: host ${r.host} not on plot ${r.plot}`); });
 try { const before = JSON.parse(execSync('git show HEAD:site/data/residents.json', { stdio: ['ignore', 'pipe', 'ignore'] }).toString()).residents;
   before.forEach((r, k) => { if (residents[k]?.u !== r.u) fail.push(`resident ${k + 1} changed or removed: ${r.u}`); }); } catch { }
 const TYPES = new Set(['title', 'counter', 'comment', 'idcard', 'label', 'cta']);

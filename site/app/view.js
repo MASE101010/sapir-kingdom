@@ -2,7 +2,7 @@
 // The site shows the kingdom as it stands; a reel poses every frame with pose(), so houses and landmarks rise when it says.
 import * as THREE from 'three';
 import { Pen } from './pen.js';
-import { drawHome } from './homes.js';
+import { drawHome, drawShared } from './homes.js';
 import { LANDMARKS } from './landmarks/index.js';
 import { HILL } from './landmarks/castle.js';
 import { makeMichael, makeRoute, poseMichael } from './michael.js';
@@ -89,13 +89,21 @@ export class World {
   houses() {
     if (this.homeGroup) this.scene.remove(this.homeGroup);
     const p = new Pen(), up = this.kingdom.upgraded ?? {};
+    // who lives on each plot: the first is the owner, friends who moved in make the house grow
+    this.byPlot = new Map(); this.residents.forEach((r, k) => (this.byPlot.get(r.plot) ?? this.byPlot.set(r.plot, []).get(r.plot)).push(k));
     this.homeMarks = [p.mark()];
-    for (const r of this.residents) { const pl = this.plan.plots[r.plot]; if (!pl) { this.homeMarks.push(p.mark()); continue; }
-      p.at(pl[0], pl[1], pl[2]); drawHome(p, r, 1 + (up[r.u] ?? 0)); this.homeMarks.push(p.mark()); }
+    this.residents.forEach((r, k) => {
+      const people = this.byPlot.get(r.plot), pl = this.plan.plots[r.plot];
+      if (pl && people[0] === k) { p.at(pl[0], pl[1], pl[2]); const n = people.length;
+        n > 1 ? drawShared(p, r, n) : drawHome(p, r, 1 + (up[r.u] ?? 0)); }
+      this.homeMarks.push(p.mark());
+    });
     this.homes = p; this.homeGroup = p.build(); this.scene.add(this.homeGroup);
     this.outerRing = this.residents.reduce((m, r) => Math.max(m, this.plan.plots[r.plot]?.[3] ?? 0), 0);
     this.setExtent(this.outerRing + 1);
   }
+  /** everyone who lives in the house on this plot (indexes into residents, owner first) */
+  housemates(plot) { return this.byPlot.get(plot) ?? []; }
   showHouses(n) { n = Math.max(0, Math.min(Math.round(n), this.homeMarks.length - 1)); this.homes.showUpTo(this.homeMarks[n]);
     const last = this.residents[n - 1]; this.setExtent((last ? this.plan.plots[last.plot]?.[3] ?? 0 : 0) + 1); }
   landmarks() {

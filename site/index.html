@@ -21,10 +21,13 @@
   <div class="brand">הממלכה של משפחת ספיר</div>
   <div class="stat"><small>יום</small><b id="h-day">1</b></div>
   <div class="stat"><small>תושבים</small><b id="h-res">0</b></div>
+  <button class="office" id="open-menu" type="button">לשכת המידע</button>
 </header>
+<div id="news" class="news ui" hidden></div>
 
 <aside class="dock ui">
   <p class="status" id="status"></p>
+  <p class="invite" id="invite-banner" hidden></p>
   <form id="find" class="row">
     <label class="sr" for="who">שם המשתמש באינסטגרם</label>
     <input id="who" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="@instagram">
@@ -36,6 +39,7 @@
   <div class="places" id="places" aria-label="מקומות בממלכה"></div>
 </aside>
 <section id="card" class="card ui" hidden></section>
+<section id="menu" class="menu ui" hidden><button class="menu-x" id="menu-close" type="button" aria-label="סגירה">✕</button><div id="panel"></div></section>
 <script type="module" src="app/main.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@ export async function onRequestPost({ request, env }) {
   const recent = await env.DB.prepare('SELECT COUNT(*) AS c FROM codes WHERE device = ? AND at > ?').bind(device, Date.now() - 3600e3).first('c');
   if (recent > 8) return json({ error: 'too_many' }, 429, headers);
   const code = `SAPIR-${String(crypto.getRandomValues(new Uint32Array(1))[0] % 1e6).padStart(6, '0')}`;
-  await env.DB.prepare('INSERT INTO codes (code, device, at) VALUES (?, ?, ?)').bind(code, device, Date.now()).run();
+  const invite = String((await request.json().catch(() => ({}))).invite ?? '').toLowerCase().replace(/[^a-z0-9._]/g, '').slice(0, 30) || null;   // ?invite=friend: move in with them
+  await env.DB.prepare('INSERT INTO codes (code, device, at, host) VALUES (?, ?, ?, ?)').bind(code, device, Date.now(), invite).run();
   return json({ code }, 200, headers);
 }

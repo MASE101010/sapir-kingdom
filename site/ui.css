@@ -85,3 +85,27 @@ body.reel #overlay { width: 1080px; height: 1920px; pointer-events: none; font-f
 .r-handle { position: absolute; bottom: 40px; left: 50px; font: 700 30px var(--body); color: #fff; -webkit-text-stroke: 8px rgba(19,33,59,.6); paint-order: stroke fill; direction: ltr; }
 body.reel .r-out { position: absolute; inset: 0; width: 1080px; height: 1920px; }
 @media (max-width: 480px) { .hud { flex-wrap: nowrap; } .brand { font-size: 16px; padding: 10px; white-space: nowrap; } .stat { padding: 4px 9px; } .card { top: calc(env(safe-area-inset-top, 0px) + 76px); } }
+
+/* ---- the info office, news and invites ---- */
+.office { pointer-events: auto; margin-inline-start: auto; white-space: nowrap; font: 700 14px var(--body); background: var(--gold); color: var(--navy); border: 2px solid var(--navy); border-radius: 14px; padding: 6px 12px; cursor: pointer; box-shadow: 0 3px 0 var(--navy); }
+.menu { position: fixed; inset-inline: 12px; top: calc(env(safe-area-inset-top, 0px) + 70px); bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); max-width: 520px; margin-inline: auto;
+  background: var(--cream); border: 2px solid var(--navy); border-radius: 18px; box-shadow: 0 4px 0 var(--navy); overflow: auto; padding: 14px 16px 18px; z-index: 5; }
+.menu h2 { font: 400 22px/1.2 var(--display); margin: 4px 0 10px; color: var(--navy); }
+.menu p { margin: 0 0 10px; } .menu-x { position: sticky; top: 0; float: left; border: 2px solid var(--navy); background: #fff; border-radius: 10px; width: 34px; height: 34px; cursor: pointer; font-size: 16px; }
+.items { display: grid; gap: 8px; } .item { text-align: right; display: grid; gap: 2px; padding: 10px 14px; border: 2px solid var(--navy); border-radius: 14px; background: #fff; cursor: pointer; font: inherit; color: var(--ink); }
+.item:first-child { background: var(--gold); } .item b { font: 700 16px var(--body); } .item span { font-size: 13px; color: var(--muted); }
+.link { background: none; border: 0; padding: 0; color: var(--teal); font: 700 14px var(--body); cursor: pointer; text-decoration: underline; }
+.back { margin-bottom: 6px; }
+.tiers { margin: 0 0 12px; padding-inline-start: 20px; display: grid; gap: 4px; }
+.catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.home { border: 2px solid var(--navy); border-radius: 14px; background: #fff; padding: 8px; display: grid; gap: 4px; justify-items: center; text-align: center; min-width: 0; }
+.home img { width: 100%; height: auto; aspect-ratio: 1; border-radius: 10px; background: #cfe8f3; } .home b { font-size: 14px; } .home span { font-size: 12px; color: var(--muted); }
+.home.rare { background: #fff6d9; border-color: #b8860b; }
+.tabs { display: flex; gap: 6px; margin-bottom: 8px; } .tab { flex: 1; border: 2px solid var(--navy); border-radius: 10px; background: #fff; padding: 6px; font: 700 14px var(--body); cursor: pointer; } .tab.on { background: var(--navy); color: var(--gold); }
+.people { list-style: none; margin: 0; padding: 0; display: grid; } .people li { display: flex; justify-content: space-between; padding: 7px 2px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.places-grid { display: grid; gap: 8px; } .place { text-align: right; display: grid; gap: 2px; border: 2px solid var(--navy); border-radius: 14px; background: #fff; padding: 10px 14px; cursor: pointer; font: inherit; color: var(--ink); } .place span { font-size: 13px; color: var(--muted); }
+.news { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 72px); inset-inline: 12px; max-width: 420px; margin-inline: auto; background: var(--cream); border: 2px solid var(--navy); border-radius: 16px; padding: 12px 14px; box-shadow: 0 4px 0 var(--navy); z-index: 4; }
+.news b { font: 400 18px var(--display); } .news p { margin: 4px 0 8px; }
+.invite { margin: 0; background: var(--gold); border: 2px solid var(--navy); border-radius: 12px; padding: 8px 10px; font-weight: 700; }
+.mates { margin: 0; padding: 0 14px 8px; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+@media (max-width: 480px) { .office { padding: 6px 9px; font-size: 13px; } }

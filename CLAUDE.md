@@ -42,6 +42,8 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
    - `kingdom.json`: `day` = N+1; push `{ key, lot, day: N+1, by: [winner] }` to `landmarks`; push the residents count
      at the end of day N to `history`; `visit` = the winner if they are a resident, else null; `status` = one line
      about what Michael is doing today.
+   - `kingdom.json` `news`: `{ day: N+1, line: "<one sentence about what was built>", landmark: key }`. The site offers it
+     once to every visitor ("חדש ביום N+1") and flies to it.
    - `honours.json`: `built[key] = { by: [winner], day: N+1 }`. The gold key (מפתח זהב): one resident who joined on
      day N, picked with the day number as the seed (`residents.filter(r => r.day === N)[(N * 7919) % count]`),
      pushed to `given.key`.
@@ -66,6 +68,15 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
    `gh workflow run publish.yml -f day=N+1`. If it fails twice, stop and tell Michael what failed.
 8. **Report** to Michael in Hebrew, three lines: the winner and what was built, residents now, the reel link
    (`https://www.instagram.com/reel/...` from the media id, or the Actions artifact).
+
+## Residents' own choices
+
+- Friends: a resident who verified by DM can invite friends (`?invite=`); they move into the same plot and the house
+  grows (catalog.js `TIERS`: a heart from 2, a block from 4, a tower from 11). Never move them by hand.
+- House styles: verified residents pick from the catalogue (`api/home`); the rare styles need the gold key. The choice
+  shows after the next count. When you add a style to `homes.js` and `catalog.js`, run `node tools/catalog.mjs`.
+- `kingdom.json` `dm` stays false until Meta approves the app (Advanced Access for messages and comments). Until then the
+  site sends people to comment, and `poll.yml` gives commenters their houses every 20 minutes.
 
 ## Stop and ask Michael instead of publishing when
 

@@ -32,12 +32,12 @@ export async function onRequestPost({ request, env, waitUntil }) {
         waitUntil(say(env, from, `היי! כאן מיכאל מהממלכה של משפחת ספיר 👑\nרוצים בית בממלכה? נכנסים ל-${site}, לוחצים "קבלו בית עכשיו" ושולחים לי את הקוד כאן.\nויש לכם רעיון מה לבנות מחר? תגיבו על הריל האחרון. התגובה עם הכי הרבה לייקים נבנית.`));
         continue;
       }
-      const row = await env.DB.prepare('SELECT device, at, u FROM codes WHERE code = ?').bind(code).first();
+      const row = await env.DB.prepare('SELECT device, at, u, host FROM codes WHERE code = ?').bind(code).first();
       if (!row || Date.now() - row.at > 20 * 60e3) { waitUntil(say(env, from, 'הקוד הזה לא מוכר או שפג תוקפו. בקשו קוד חדש באתר.')); continue; }
       const who = await fetch(`${GRAPH}/${from}?fields=username,is_user_follow_business&access_token=${await igToken(env)}`).then(r => r.json());
       if (!who.username) continue;
       if (!who.is_user_follow_business) { waitUntil(say(env, from, 'כמעט! בית מקבלים רק עוקבים. עקבו אחרי הממלכה ושלחו את הקוד שוב.')); continue; }
-      const r = await addResident(env, who.username, 'dm');
+      const r = await addResident(env, who.username, 'dm', row.host);
       await env.DB.batch([env.DB.prepare('UPDATE codes SET u = ? WHERE code = ?').bind(r.u, code), env.DB.prepare('INSERT INTO devices (device, u, at) VALUES (?, ?, ?) ON CONFLICT(device) DO UPDATE SET u = excluded.u, at = excluded.at').bind(row.device, r.u, Date.now())]);
       waitUntil(say(env, from, `ברוכים הבאים לממלכה של משפחת ספיר! הבית שלכם, מספר ${r.n.toLocaleString('he-IL')}, כבר עומד: ${site}/?u=${r.u}`));
     }
