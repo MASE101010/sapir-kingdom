@@ -93,11 +93,12 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
     }
     // 2. the private chats: whoever wrote since the last look (each message once)
     const conv = await get(`${G}/${user}/conversations?platform=instagram&fields=messages.limit(4){id,from,created_time}&limit=25&access_token=${token}`).catch(() => ({ data: [] }));
-    const since = +(await getState(env, 'dm_since') ?? 0); let newest = since;
+    const since = +(await getState(env, 'dm_since') ?? (now - 36e5)); let newest = since, handled = 0;
     for (const cv of conv.data ?? []) for (const m of cv.messages?.data ?? []) {
       const at = Date.parse(m.created_time); if (!m.from?.id || m.from.id === user || m.from.username?.toLowerCase() === SELF(env) || at <= since - 120e3) continue;
+      if (handled >= replies) break;                               // a few people each round; the rest next time
       if (!(await env.DB.prepare("INSERT OR IGNORE INTO state (k, v) VALUES (?, ?)").bind(`msg:${m.id}`, String(at)).run()).meta.changes) continue;
-      newest = Math.max(newest, at); const r = await fromDM(env, m.from.id); if (r?.n) citizens.push(r.u);
+      newest = Math.max(newest, at); handled++; const r = await fromDM(env, m.from.id); if (r?.n) citizens.push(r.u);
     }
     if (newest > since) await setState(env, 'dm_since', newest);
     // 3. a welcome under the comments of new citizens, a few each round
