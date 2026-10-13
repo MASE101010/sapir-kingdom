@@ -23,7 +23,7 @@ export async function onRequest({ request, env }) {
       day: await fetch(`${G}/${env.IG_USER_ID}/insights?metric=reach,follower_count,profile_views,accounts_engaged,total_interactions,website_clicks&period=day&metric_type=total_value&access_token=${t}`).then(r => r.json()),
       reels: await Promise.all((media.data ?? []).map(async m => ({ id: m.id, at: m.timestamp, comments: m.comments_count, ins: await fetch(`${G}/${m.id}/insights?metric=reach,views,likes,comments,shares,saved,total_interactions,ig_reels_avg_watch_time,ig_reels_video_view_total_time&access_token=${t}`).then(r => r.json()) }))),
     } : null;
-    const state = (await env.DB.prepare("SELECT k, v FROM state WHERE k LIKE 'sync%' OR k = 'clock_at' OR k = 'dm_since'").all()).results;
+    const state = (await env.DB.prepare("SELECT k, v FROM state WHERE k LIKE 'sync%' OR k LIKE 'story%' OR k = 'clock_at' OR k = 'dm_since'").all()).results;
     return json({ user: env.IG_USER_ID ?? null, insights, likes: likes.slice(0, 60), follow, conv, dmr, media, comments, state });
   }
   if (new URL(request.url).searchParams.has('tick')) { await env.DB.prepare("INSERT INTO state (k, v) VALUES ('clock_at', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v").bind(String(Date.now())).run();   // the clock was here
