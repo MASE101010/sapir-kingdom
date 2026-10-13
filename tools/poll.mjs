@@ -1,3 +1,5 @@
+process.on('uncaughtException', e => { console.log(`::warning title=poll crash::${e.stack?.slice(0, 600).replace(/\n/g, ' ')}`); process.exit(1); });
+process.on('unhandledRejection', e => { console.log(`::warning title=poll crash::${String(e?.stack ?? e).slice(0, 600).replace(/\n/g, ' ')}`); process.exit(1); });
 // Every 5 minutes (poll.yml): asks the site to read the newest comments on the kingdom's posts (functions/_sync.js),
 // so commenters who never open the site still get their house and an answer. The site does the same on every search.
 // env: SITE_URL, EXPORT_TOKEN
