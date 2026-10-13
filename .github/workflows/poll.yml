@@ -12,4 +12,4 @@ jobs:
         env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
       - if: env.READY == '1'
         run: node tools/poll.mjs
-        env: { DEBUG: '${{ github.event_name == 'workflow_dispatch' run: node tools/poll.mjsrun: node tools/poll.mjs '1' || '' }}' }
+        env: { DEBUG: "${{ github.event_name == 'workflow_dispatch' && '1' || '' }}" }
