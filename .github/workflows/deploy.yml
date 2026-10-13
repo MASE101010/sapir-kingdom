@@ -22,4 +22,6 @@ jobs:
       - if: env.READY == '1'
         name: the kingdom's clock (a Worker woken every minute)
         continue-on-error: true
-        run: npx wrangler@3 deploy --config cron/wrangler.toml > clock.log 2>&1 || { grep -iE 'error|permission|auth|code' clock.log | head -4 | sed 's/^/::warning title=clock::/'; exit 1; }
+        run: |
+          curl -s -X PUT "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/subdomain" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H 'content-type: application/json' -d '{"subdomain":"sapirkingdom"}' | head -c 300 | sed 's/^/::notice title=subdomain::/'; echo
+          npx wrangler@3 deploy --config cron/wrangler.toml > clock.log 2>&1 || { grep -iE 'error|permission|auth|code' clock.log | head -4 | sed 's/^/::warning title=clock::/'; exit 1; }
