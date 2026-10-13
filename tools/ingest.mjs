@@ -8,8 +8,8 @@ const kingdom = JSON.parse(readFileSync('site/data/kingdom.json', 'utf8')), day 
 
 const live = await fetch(`${SITE_URL}/api/export`, { headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(r => { if (!r.ok) throw new Error(`export ${r.status}`); return r.json(); });
 const old = JSON.parse(readFileSync('site/data/residents.json', 'utf8'));
-// only ever appended to: check the snapshot still agrees with what was published before
-old.residents.forEach((r, k) => { if (live.residents[k]?.u !== r.u || live.residents[k]?.plot !== r.plot) throw new Error(`resident ${k + 1} changed: ${r.u} -> ${live.residents[k]?.u}`); });
+// only ever appended to: the same people in the same order (a plot may change: a resident moved in with a friend)
+old.residents.forEach((r, k) => { if (live.residents[k]?.u !== r.u) throw new Error(`resident ${k + 1} changed: ${r.u} -> ${live.residents[k]?.u}`); });
 writeFileSync('site/data/residents.json', JSON.stringify({ note: old.note, residents: live.residents }));
 kingdom.updated = new Date().toISOString(); writeFileSync('site/data/kingdom.json', JSON.stringify(kingdom, null, 2) + '\n');
 console.log(`residents ${old.residents.length} -> ${live.residents.length}`);
