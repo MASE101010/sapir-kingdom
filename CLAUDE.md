@@ -84,9 +84,10 @@ Keep reels about 30 seconds. Captions: at most three words, cut at the voice's p
   grows (catalog.js `TIERS`: a heart from 2, a block from 4, a tower from 11). Never move them by hand.
 - House styles: verified residents pick from the catalogue (`api/home`); the rare styles need the gold key. The choice
   shows after the next count. When you add a style to `homes.js` and `catalog.js`, run `node tools/catalog.mjs`.
-- Citizenship is for followers only (`functions/_sync.js`): a new commenter gets a private message asking them to follow and
-  write "בית"; their answer lets Instagram show whether they follow, and only then is the house built (`fromDM`). The three
-  first residents (michaelsapir, yuvalgaba, aribiran1) got theirs before this rule.
+- Every commenter gets a house at once (`functions/_sync.js`). Citizenship (`residents.citizen`: the mark on the ID card,
+  the gold key draw, `בית N` and `גר עם @x` by private message) is for followers: Instagram shows whether someone follows only
+  after they wrote to us, so non-citizens get a private message asking them to follow and write "בית". Pick the gold key
+  among citizens. Michael chose this to get people taking part; if the kingdom grows a lot he may want houses for followers only.
 - `kingdom.json` `dm` stays false until Meta approves the app (Advanced Access for messages and comments). Until then the
   site sends people to comment, and `poll.yml` reads comments every 5 minutes, and the site reads them on the spot whenever someone searches a name that has no house yet (`functions/_sync.js`, `/api/sync`).
 

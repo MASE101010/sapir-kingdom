@@ -119,3 +119,5 @@ body.site #scene canvas { cursor: grab; } body.site #scene canvas:active { curso
 .pad button:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--navy); }
 @media (min-width: 860px) { .pad { bottom: 24px; } }
 .catalog .home .num { font-style: normal; font-size: 12px; font-weight: 700; color: var(--teal, #0f6f73); }
+.chips .citizen { background: #0f6f73; color: #fff; }
+.chips .tourist { background: #fff6dc; color: #6b4e00; font-weight: 500; }

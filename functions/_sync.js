@@ -1,7 +1,7 @@
-// Reading the kingdom's own Instagram comments and messages, from the site itself. Citizenship is for followers only:
-// a new commenter gets a private message ("follow, then write 'בית'"); when they write back, Instagram lets us see whether
-// they follow, and then the house is built, they get its number in the chat and a welcome under their comment.
-// Instagram only shows whether someone follows after they have written to us, which is why the message comes first.
+// Reading the kingdom's own Instagram comments and messages, from the site itself. Every commenter gets a house at once,
+// and a word under their comment. Citizenship (a mark on the ID card, the gold key draw, choosing a house, living with
+// friends) is for followers: Instagram only shows whether someone follows after they wrote to us in private, so a
+// commenter we cannot see following gets a private message ("follow, then write 'בית'").
 // Called by /api/sync: when someone searches their name on the site and is not found yet (so a comment turns into a
 // house within seconds), and every few minutes by GitHub (poll.yml) for the people who never open the site.
 // Instagram allows only so many calls an hour, so a sync runs at most once every GAP ms, and backs off after a limit error.
@@ -11,10 +11,10 @@ const G = 'https://graph.instagram.com/v21.0', GAP = 8000, BACKOFF = 10 * 60e3;
 const say = [n => `ברוכים הבאים לממלכה! הבית שלך, מספר ${n}, כבר עומד 🏠 חפשו את השם שלכם באתר שבביו`,
   n => `נבנה לך בית! מספר ${n}. כנסו לאתר שבביו ותמצאו אותו 👑`, n => `תושב חדש! בית מספר ${n} בממלכה הוא שלך. הקישור בביו 🏰`,
   n => `המלך מיכאל מברך את התושב החדש! בית מספר ${n} מחכה לך, הקישור בביו 🏡`];
-// under the comment of someone we cannot yet see following: what to do, said in public (and again in private)
-const invited = [u => `@${u} כדי לקבל אזרחות ובית בממלכה צריך לעקוב אחרי @sapirkingdom 👑 עוקבים? שלחתי לך הודעה בפרטי (בדקו גם בבקשות ההודעות), כתבו לי שם "בית" והבית נבנה מיד 🏰`,
-  u => `@${u} הבית שלך כמעט מוכן! 🏡 רק עוקבים אחרי @sapirkingdom, וכותבים לי "בית" בהודעה הפרטית ששלחתי לך 📩`,
-  u => `@${u} בממלכה גרים רק עוקבים 👑 עקבו אחרי @sapirkingdom וענו לי "בית" בהודעה בפרטי 📩 ומיד תקבלו בית עם השם שלכם`];
+// under the comment of someone we cannot yet see following: the house is theirs, and how to become a citizen
+const invited = [(u, n) => `@${u} נבנה לך בית! מספר ${n} 🏠 רוצים גם אזרחות? 👑 עקבו אחרי @sapirkingdom וכתבו לי "בית" בפרטי (שלחתי לך הודעה, בדקו גם בבקשות ההודעות)`,
+  (u, n) => `@${u} ברוכים הבאים לממלכה! הבית שלך, מספר ${n}, כבר עומד 🏡 לאזרחות מלאה: עוקבים אחרי @sapirkingdom וכותבים לי "בית" בהודעה הפרטית 📩`,
+  (u, n) => `@${u} תושב חדש בבית מספר ${n}! 🏰 הקישור בביו. רוצים להיות אזרחים? עקבו וענו לי "בית" בפרטי 👑`];
 const SELF = env => (env.IG_USERNAME ?? 'sapirkingdom').toLowerCase();
 const post = async (env, path, body) => fetch(`${G}/${path}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${await igToken(env)}` }, body: JSON.stringify(body) }).then(r => r.json()).catch(() => ({ error: {} }));
 export const dmTo = (env, recipient, text) => post(env, `${env.IG_USER_ID}/messages`, { recipient, message: { text } });
@@ -47,13 +47,17 @@ export async function fromDM(env, sender, text = '', site = env.SITE_URL ?? 'htt
   const tell = t => dmTo(env, { id: sender }, t), link = `${site}/?u=${u}`;
   const HELP = `\nרוצים בית אחר מהקטלוג? כתבו לי "בית 1" עד "בית ${COMMON.length}" (הקטלוג בלשכת המידע באתר).\nרוצים לגור עם חבר? כתבו "גר עם @השם_שלו", והבית שלכם גדל 🏡`;
   const style = String(text).match(/בית\s*(?:מספר\s*)?(\d{1,2})(?!\d)/), mate = String(text).match(/(?:גר|גרה|לגור|גרים)\s+(?:יחד\s+)?עם\s+@?([A-Za-z0-9._]{1,30})/);
-  let me = await env.DB.prepare('SELECT n, u, plot, host, home FROM residents WHERE u = ?').bind(u).first(), fresh = false;
-  if (!me) {
-    if (!who.is_user_follow_business) { if (await once(`dmnofollow:${u}`, 5 * 60e3)) await tell(`כמעט! 🙂 עוד לא רואה שאתם עוקבים אחרי @${SELF(env)}.\nעקבו, וכתבו לי כאן שוב "בית", והבית שלכם נבנה מיד 🏰`); return { u, follows: false }; }
-    me = await addResident(env, who.username, 'follow'); fresh = true;
+  let me = await env.DB.prepare('SELECT n, u, plot, host, home, citizen FROM residents WHERE u = ?').bind(u).first(), fresh = false, made = false;
+  const follows = !!who.is_user_follow_business;
+  if (!me) { me = await addResident(env, who.username, follows ? 'follow' : 'dm'); fresh = true;
     // a welcome under one comment of theirs (the first); their other comments are simply kept
     await env.DB.batch([env.DB.prepare('UPDATE comments SET house = 1 WHERE id = (SELECT id FROM comments WHERE u = ? AND house = 0 ORDER BY at LIMIT 1)').bind(u),
-      env.DB.prepare('UPDATE comments SET house = 2 WHERE u = ? AND house = 0').bind(u)]);
+      env.DB.prepare('UPDATE comments SET house = 2 WHERE u = ? AND house = 0').bind(u)]); }
+  if (follows && !me.citizen) { await env.DB.prepare('UPDATE residents SET citizen = 1, changed = ? WHERE u = ?').bind(Date.now(), u).run(); me.citizen = 1; made = true; }
+  if (!follows) {                                                   // a house, but not yet a citizen
+    if (fresh || style || mate || await once(`dmnofollow:${u}`, 5 * 60e3))
+      await tell(`${fresh ? `בניתי לך בית בממלכה, מספר ${me.n.toLocaleString('he-IL')} 🏠 ${link}\n` : ''}כדי לקבל אזרחות${style || mate ? ' (ואיתה לבחור בית ולגור עם חברים)' : ''} צריך לעקוב אחרי @${SELF(env)} 🙂\nעקבו, וכתבו לי כאן שוב "בית" 👑`);
+    return fresh ? { u, n: me.n } : { u, follows: false };
   }
   const n = me.n.toLocaleString('he-IL'), notes = [];
   if (mate) {                                                       // moving in with a friend: the friend's house grows
@@ -72,10 +76,10 @@ export async function fromDM(env, sender, text = '', site = env.SITE_URL ?? 'htt
     else if (h.rare && !((await fetch(`${site}/data/honours.json`).then(r => r.json()).catch(() => ({}))).given?.key ?? []).includes(u)) notes.push(`"${h.name}" הוא בית נדיר 🔑 הוא פתוח רק למי שזכה במפתח הזהב בהגרלה היומית.`);
     else { await env.DB.prepare('UPDATE residents SET home = ?, changed = ? WHERE u = ?').bind(kind, Date.now(), u).run(); notes.push(`מעולה! הבית שלכם עכשיו "${h.name}" 🏡 ${link}`); }
   }
-  if (fresh) await tell(`ברוכים הבאים לממלכה של משפחת ספיר! 🎉\nקיבלתם אזרחות, והבית שלכם, מספר ${n}, כבר עומד:\n${link}${notes.length ? '\n\n' + notes.join('\n') : HELP}\nמה בונים מחר? תגיבו על הריל האחרון, התגובה עם הכי הרבה לייקים נבנית 👑`);
+  if (fresh || made) await tell(`${fresh ? 'ברוכים הבאים לממלכה של משפחת ספיר! 🎉\n' : ''}קיבלתם אזרחות 👑 ${fresh ? 'והבית שלכם' : 'הבית שלכם'}, מספר ${n}, ${fresh ? 'כבר עומד' : 'מחכה לכם'}:\n${link}${notes.length ? '\n\n' + notes.join('\n') : HELP}\nמה בונים מחר? תגיבו על הריל האחרון, התגובה עם הכי הרבה לייקים נבנית`);
   else if (notes.length) await tell(notes.join('\n'));
   else if (await once(`dmhome:${u}`, 864e5)) await tell(`אתם כבר תושבים בממלכה 👑 בית מספר ${n}: ${link}${HELP}`);
-  return fresh ? { u, n: me.n } : { u, home: me.n };
+  return fresh || made ? { u, n: me.n } : { u, home: me.n };
 }
 
 /** one round: returns { ran, added, replied } or { ran: false, wait } when it is too soon */
@@ -105,32 +109,21 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
     }
     const waiting = await takeComments(env, comments);
     let invites = 0, replied = 0; const citizens = [];
-    // 1. a private message to each new commenter without a house (once a person), and a word under their comment
-    const { results: toInvite } = await env.DB.prepare(`SELECT c.id, c.u, c.uid, c.replied FROM comments c WHERE c.house = 0 AND (c.dm IS NULL OR c.dm BETWEEN -2 AND -1)
-      AND NOT EXISTS (SELECT 1 FROM comments o WHERE o.u = c.u AND o.dm IN (0, 1)) ORDER BY c.at LIMIT ?`).bind(replies).all();
-    const name = u => u.replace(/[._\d]+$/, '').replace(/[._]/g, ' ');
-    const once = new Set();
-    for (const c of toInvite) {
-      if (once.has(c.u)) { await env.DB.prepare('UPDATE comments SET dm = 0 WHERE id = ?').bind(c.id).run(); continue; }   // one message a person
-      once.add(c.u);
-      // someone who already follows, and Instagram lets us see it (they wrote to us before): the house at once
+    // 1. every new commenter gets a house at once (one a person); a follower we can already see becomes a citizen, the
+    //    others get a private message about citizenship. The word under the comment goes out in step 3.
+    const { results: fresh } = await env.DB.prepare('SELECT c.id, c.u, c.uid, c.dm FROM comments c WHERE c.house = 0 ORDER BY c.at LIMIT ?').bind(replies * 3).all();
+    const name = u => u.replace(/[._\d]+$/, '').replace(/[._]/g, ' ') || u, once = new Set();
+    for (const c of fresh) {
+      if (once.has(c.u)) { await env.DB.prepare('UPDATE comments SET house = 2 WHERE id = ?').bind(c.id).run(); continue; }
+      once.add(c.u); if (once.size > replies) break;
+      const h = await addResident(env, c.u, 'comment'); if (!h) { await env.DB.prepare('UPDATE comments SET house = 2 WHERE id = ?').bind(c.id).run(); continue; }
+      await env.DB.batch([env.DB.prepare('UPDATE comments SET house = 1 WHERE id = ?').bind(c.id), env.DB.prepare('UPDATE comments SET house = 2 WHERE u = ? AND house = 0').bind(c.u)]);
       const who = c.uid ? await fetch(`${G}/${c.uid}?fields=username,is_user_follow_business&access_token=${token}`).then(r => r.json()).catch(() => ({})) : {};
-      if (who.username && who.is_user_follow_business) {
-        const h = await addResident(env, who.username, 'follow');
-        await env.DB.batch([env.DB.prepare('UPDATE comments SET house = 1, dm = 0 WHERE id = ?').bind(c.id), env.DB.prepare('UPDATE comments SET house = 2, dm = 0 WHERE u = ? AND house = 0').bind(c.u)]);
-        citizens.push(h.u); continue;                                  // the welcome under the comment goes out below
-      }
-      // everyone else: in public first, then the private message
-      const p = c.replied === 2 ? {} : await post(env, `${c.id}/replies`, { message: invited[(invites + c.u.length) % invited.length](c.u) });
-      if (!p.error) await env.DB.prepare('UPDATE comments SET replied = 2 WHERE id = ?').bind(c.id).run();
-      const r = await dmTo(env, { comment_id: c.id }, `היי ${name(c.u)}! 👑 כאן המלך מיכאל מהממלכה של משפחת ספיר.\nכדי לקבל אזרחות ובית עם השם שלך, צריך לעקוב אחרי @${SELF(env)}.\nעוקבים? כתבו לי כאן "בית", והבית שלכם נבנה מיד 🏰`);
-      await env.DB.prepare('UPDATE comments SET dm = CASE WHEN ? THEN COALESCE(dm, 0) - 1 ELSE 1 END WHERE id = ?').bind(r.error ? 1 : 0, c.id).run();
-      invites++;
+      if (who.username && who.is_user_follow_business) { await env.DB.prepare('UPDATE residents SET citizen = 1, changed = ? WHERE u = ?').bind(Date.now(), h.u).run(); citizens.push(h.u); continue; }
+      if (c.dm === 1) continue;                                      // told about citizenship before (an earlier rule)
+      const r = await dmTo(env, { comment_id: c.id }, `היי ${name(c.u)}! 👑 כאן המלך מיכאל מהממלכה של משפחת ספיר.\nבניתי לך בית בממלכה, מספר ${h.n.toLocaleString('he-IL')}: ${env.SITE_URL ?? 'https://sapir-kingdom.pages.dev'}/?u=${h.u}\nרוצים גם אזרחות? (סימן אזרח בתעודה, השתתפות בהגרלת מפתח הזהב, ובחירת בית מהקטלוג)\nעקבו אחרי @${SELF(env)} וכתבו לי כאן "בית" 🏰`);
+      await env.DB.prepare('UPDATE comments SET dm = ? WHERE id = ?').bind(r.error ? -1 : 1, c.id).run(); if (!r.error) invites++;
     }
-    // people messaged earlier whose public word under the comment is missing: say it now (once a person)
-    const { results: unsaid } = await env.DB.prepare(`SELECT c.id, c.u FROM comments c WHERE c.house = 0 AND c.dm = 1 AND c.replied IS NULL
-      AND NOT EXISTS (SELECT 1 FROM comments o WHERE o.u = c.u AND o.replied = 2) LIMIT ?`).bind(replies).all();
-    for (const c of unsaid) { const p = await post(env, `${c.id}/replies`, { message: invited[c.u.length % invited.length](c.u) }); await env.DB.prepare('UPDATE comments SET replied = ? WHERE id = ?').bind(p.error ? -1 : 2, c.id).run(); }
     // 2. the private chats: whoever wrote since the last look (each message once)
     const conv = await get(`${G}/${user}/conversations?platform=instagram&fields=messages.limit(4){id,from,created_time,message}&limit=25&access_token=${token}`).catch(() => ({ data: [] }));
     const since = +(await getState(env, 'dm_since') ?? (now - 36e5)); let newest = since, handled = 0;
@@ -142,9 +135,9 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
     }
     if (newest > since) await setState(env, 'dm_since', newest);
     // 3. a welcome under the comments of new citizens, a few each round
-    const { results: queue } = await env.DB.prepare('SELECT c.id, r.n FROM comments c JOIN residents r ON r.u = c.u WHERE (c.replied IS NULL OR c.replied = 2 OR c.replied BETWEEN -2 AND -1) AND c.house = 1 ORDER BY c.at LIMIT ?').bind(replies).all();
+    const { results: queue } = await env.DB.prepare('SELECT c.id, c.u, r.n, r.citizen FROM comments c JOIN residents r ON r.u = c.u WHERE (c.replied IS NULL OR c.replied = 2 OR c.replied BETWEEN -2 AND -1) AND c.house = 1 ORDER BY c.at LIMIT ?').bind(replies).all();
     for (const a of queue) {
-      const r = await post(env, `${a.id}/replies`, { message: say[a.n % say.length](a.n.toLocaleString('he-IL')) });
+      const num = a.n.toLocaleString('he-IL'), r = await post(env, `${a.id}/replies`, { message: a.citizen ? `${say[a.n % say.length](num)} ואתם כבר אזרחים 👑` : invited[a.n % invited.length](a.u, num) });
       await env.DB.prepare('UPDATE comments SET replied = CASE WHEN ? THEN (CASE WHEN replied > 0 THEN 0 ELSE COALESCE(replied, 0) END) - 1 ELSE 1 END WHERE id = ?').bind(r.error ? 1 : 0, a.id).run(); if (!r.error) replied++;   // a failed answer is tried again
     }
     return { ran: true, read: comments.length, waiting: waiting.map(w => w.u), invites, citizens, replied };
