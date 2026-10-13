@@ -1,6 +1,6 @@
-# Every 20 minutes: new commenters get a house and an answer (tools/poll.mjs). Works before any Meta app review.
+# Every 5 minutes: new commenters get a house and an answer (tools/poll.mjs → the site's /api/sync). Works before any Meta app review.
 name: poll
-on: { schedule: [{ cron: '*/20 * * * *' }], workflow_dispatch: }
+on: { schedule: [{ cron: '*/5 * * * *' }], workflow_dispatch: }
 concurrency: { group: poll, cancel-in-progress: true }
 jobs:
   poll:

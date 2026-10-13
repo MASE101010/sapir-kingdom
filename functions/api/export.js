@@ -1,6 +1,7 @@
 // GET /api/export: everything, for the daily run (GitHub Actions, tools/ingest.mjs). Needs the EXPORT_TOKEN secret.
 // POST /api/export {day}: the daily run moves the kingdom to a new day. {ig_token}: the weekly refresh keeps the new token.
-import { json, row, addResident, COLS } from '../_lib.js';
+import { json, row, COLS } from '../_lib.js';
+import { takeComments } from '../_sync.js';
 const allowed = (request, env) => env.EXPORT_TOKEN && request.headers.get('authorization') === `Bearer ${env.EXPORT_TOKEN}`;
 export async function onRequestGet({ request, env }) {
   if (!allowed(request, env)) return json({ error: 'unauthorized' }, 401);
@@ -12,17 +13,8 @@ export async function onRequestGet({ request, env }) {
 export async function onRequestPost({ request, env }) {
   if (!allowed(request, env)) return json({ error: 'unauthorized' }, 401);
   const { day, ig_token, comments } = await request.json();
-  // comments read by the poller (tools/poll.mjs): keep each once, build the commenter's house, say which are new
-  if (Array.isArray(comments)) {
-    const out = [];
-    for (const c of comments.slice(0, 500)) {
-      const fresh = await env.DB.prepare('INSERT OR IGNORE INTO comments (id, media, u, text, at) VALUES (?, ?, ?, ?, ?)').bind(c.id, c.media ?? null, String(c.u).toLowerCase(), c.text ?? '', Date.now()).run();
-      if (!fresh.meta.changes) continue;
-      const before = await env.DB.prepare('SELECT n FROM residents WHERE u = ?').bind(String(c.u).toLowerCase()).first('n');
-      const r = await addResident(env, c.u, 'comment'); if (r) out.push({ id: c.id, u: r.u, n: r.n, newHouse: !before });
-    }
-    return json({ added: out });
-  }
+  // comments read by the poller: keep each once, build the commenter's house, say which are new
+  if (Array.isArray(comments)) return json({ added: await takeComments(env, comments) });
   if (ig_token) { await env.DB.prepare("INSERT INTO state (k, v) VALUES ('ig_token', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v").bind(ig_token).run(); return json({ ok: true }); }
   if (!Number.isInteger(day)) return json({ error: 'day' }, 400);
   await env.DB.prepare("INSERT INTO state (k, v) VALUES ('day', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v").bind(String(day)).run();

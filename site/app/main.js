@@ -107,9 +107,19 @@ function site({ plan, residents, kingdom, honours }) {
   $('find').addEventListener('submit', e => { e.preventDefault(); const name = normalize($('who').value), err = $('find-err');
     err.hidden = true; if (!valid(name)) { err.textContent = 'זה לא נראה כמו שם משתמש באינסטגרם: אותיות באנגלית, מספרים, נקודה וקו תחתון.'; err.hidden = false; return; }
     const k = find(residents, name); if (k >= 0) { mine = residents[k].u; store.set('kingdom-me', mine); openHouse(k); return; }
-    err.innerHTML = `עוד אין בית על השם <b dir="ltr">@${esc(name)}</b>. מגיבים על הריל האחרון של <b dir="ltr">@${esc(ACCOUNT)}</b>, והבית נבנה תוך 20 דקות.
-      ${updated(kingdom.updated) ? `<br><span class="note">עדכון אחרון: ${updated(kingdom.updated)}</span>` : ''} <button class="link" id="how">איך מקבלים בית?</button>`;
-    err.hidden = false; $('how').onclick = () => openMenu('how'); });
+    lookFor(name); });
+  // not here yet: the site reads the newest Instagram comments right now (api/sync), so a fresh comment is a house in seconds
+  async function lookFor(name, tries = 0) {
+    const err = $('find-err'); err.hidden = false;
+    err.innerHTML = `<span class="note">מחפשים את התגובה של <b dir="ltr">@${esc(name)}</b> באינסטגרם...</span>`;
+    const d = await fetch(`api/sync?u=${encodeURIComponent(name)}`, { cache: 'no-store' }).then(r => r.json()).catch(() => ({}));
+    if (d.resident) { residents.push(...await loadDelta(residents.length)); world.residents = residents; world.houses(); count();
+      const k = find(residents, name); if (k >= 0) { err.hidden = true; mine = residents[k].u; store.set('kingdom-me', mine); openHouse(k); return; } }
+    if (!d.ran && d.wait && tries < 3) { setTimeout(() => lookFor(name, tries + 1), Math.min(9000, d.wait + 500)); return; }
+    err.innerHTML = `עוד אין בית על השם <b dir="ltr">@${esc(name)}</b>. מגיבים על הריל האחרון של <b dir="ltr">@${esc(ACCOUNT)}</b>, חוזרים לכאן ומחפשים שוב: הבית נבנה מיד.
+      <a class="btn gold" target="_blank" rel="noopener" href="https://www.instagram.com/${esc(ACCOUNT)}/">להגיב באינסטגרם</a> <button class="link" id="how">איך מקבלים בית?</button>`;
+    $('how').onclick = () => openMenu('how');
+  }
 
   // ---- getting a house by DM code (after Meta's review; until then the button explains commenting) ----
   const invite = normalize(q.get('invite') ?? ''), host = invite && find(residents, invite) >= 0 ? invite : null;
@@ -129,7 +139,7 @@ function site({ plan, residents, kingdom, honours }) {
           mine = me.u; store.set('kingdom-me', mine); store.set('kingdom-verified', mine); box.hidden = true; const k = find(residents, me.u); if (k >= 0) openHouse(k); return; }
         setTimeout(poll, 3000); };
       poll();
-    } catch { box.innerHTML = `<p>הכי פשוט: מגיבים על הריל האחרון של <b dir="ltr">@${esc(ACCOUNT)}</b>. תוך 20 דקות הבית שלכם עומד, ומיכאל עונה לכם בתגובה.</p>
+    } catch { box.innerHTML = `<p>הכי פשוט: מגיבים על הריל האחרון של <b dir="ltr">@${esc(ACCOUNT)}</b>. הבית שלכם נבנה מיד, ומיכאל עונה לכם בתגובה.</p>
       <a class="btn gold" target="_blank" rel="noopener" href="https://www.instagram.com/${esc(ACCOUNT)}/">לאינסטגרם של הממלכה</a>`; }
   }
 
@@ -158,8 +168,8 @@ function site({ plan, residents, kingdom, honours }) {
         ${keys.length ? `<p>הזוכה האחרון: <b dir="ltr">@${esc(keys.at(-1))}</b></p><ul class="people">${keys.slice().reverse().map(u => `<li><button class="link" data-u="${esc(u)}" dir="ltr">@${esc(u)}</button></li>`).join('')}</ul>` : '<p class="note">ההגרלה הראשונה מחר. כל מי שמצטרף היום משתתף.</p>'}`; },
       people: () => `<h2>התושבים</h2><div class="tabs"><button class="tab on" data-t="new">חדשים</button><button class="tab" data-t="old">הראשונים</button></div><ul class="people" id="plist"></ul>`,
       how: () => `<h2>איך מקבלים בית?</h2><ol class="steps"><li>עוקבים אחרי <b dir="ltr">@${esc(ACCOUNT)}</b> באינסטגרם.</li><li>מגיבים על הריל האחרון. מה שתכתבו יכול גם לקבוע מה נבנה מחר.</li>
-        <li>תוך 20 דקות הבית שלכם עומד, ומיכאל עונה לכם בתגובה עם מספר הבית.</li><li>מחפשים את השם שלכם ב"איפה הבית שלי?" ומקבלים רחוב ומספר.</li></ol>
-        <p class="note">לא מוצאים? הממלכה מתעדכנת כל 20 דקות${updated(kingdom.updated) ? `, העדכון האחרון היה ב-${updated(kingdom.updated)}` : ''}. בדקו שהשם כתוב בדיוק כמו באינסטגרם.</p>`,
+        <li>הבית שלכם נבנה מיד, ותוך כמה דקות מיכאל עונה לכם בתגובה עם מספר הבית.</li><li>מחפשים את השם שלכם ב"איפה הבית שלי?" ומקבלים רחוב ומספר.</li></ol>
+        <p class="note">לא מוצאים? בדקו שהשם כתוב בדיוק כמו באינסטגרם, ושהתגובה היא על פוסט של הממלכה.</p>`,
       places: () => `<h2>מקומות בממלכה</h2><div class="places-grid">${Object.entries(world.lm).map(([k, l]) => { const b = (kingdom.landmarks ?? []).find(x => x.key === k);
         return `<button class="place" data-k="${k}"><b>${esc(l.mod.name)}</b><span>${k === 'castle' ? 'כאן הכל התחיל, ביום 1' : `נבנה ביום ${b?.day ?? '?'}${b?.by?.length ? ` לבקשת <span dir="ltr">@${esc(b.by[0])}</span>` : ''}`}</span></button>`; }).join('')}</div>`,
     };

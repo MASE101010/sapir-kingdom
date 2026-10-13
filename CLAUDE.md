@@ -76,7 +76,7 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
 - House styles: verified residents pick from the catalogue (`api/home`); the rare styles need the gold key. The choice
   shows after the next count. When you add a style to `homes.js` and `catalog.js`, run `node tools/catalog.mjs`.
 - `kingdom.json` `dm` stays false until Meta approves the app (Advanced Access for messages and comments). Until then the
-  site sends people to comment, and `poll.yml` gives commenters their houses every 20 minutes.
+  site sends people to comment, and `poll.yml` reads comments every 5 minutes, and the site reads them on the spot whenever someone searches a name that has no house yet (`functions/_sync.js`, `/api/sync`).
 
 ## Stop and ask Michael instead of publishing when
 

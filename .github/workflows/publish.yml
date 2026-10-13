@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with: { name: 'day${{ steps.day.outputs.n }}', path: 'site/reels/day${{ steps.day.outputs.n }}.mp4' }
       - if: env.READY == '1'
-        run: npx wrangler@3 pages deploy site --project-name sapir-kingdom --branch main --commit-dirty=true
+        run: git pull -q --rebase --autostash origin main && npx wrangler@3 pages deploy site --project-name sapir-kingdom --branch main --commit-dirty=true
       - if: ${{ env.READY == '1' && (github.event_name == 'push' || inputs.post) }}
         run: |
           node reel/publish.mjs --day ${{ steps.day.outputs.n }}
