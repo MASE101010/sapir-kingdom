@@ -6,6 +6,7 @@ import { drawHome, drawShared } from './homes.js';
 import { LANDMARKS } from './landmarks/index.js';
 import { HILL } from './landmarks/castle.js';
 import { Life } from './life.js';
+import { riverDist, riverBend } from './river.js';
 
 const GRASS = 0x86c766, FIELD = 0x9fd27a, ROAD = 0x6f737b, ROAD_LINE = 0xf4f1e8, WATER = 0x3fa9d6, SAND = 0xe8dcb5, STONE = 0xd2c8b2, ROOF = 0x2f5fa6;
 const hash = (a, b) => { let h = Math.imul(a * 73856093 ^ b * 19349663, 2654435761); h ^= h >>> 15; return (h >>> 0) / 4294967296; };
@@ -28,18 +29,20 @@ export class World {
   land() {
     const s = this.scene, W = this.plan.wall;
     const ground = new THREE.Mesh(new THREE.CircleGeometry(4200, 96), new THREE.MeshLambertMaterial({ color: FIELD })); ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; s.add(ground);
-    const inside = new THREE.Mesh(new THREE.CircleGeometry(W, 160), new THREE.MeshLambertMaterial({ color: GRASS })); inside.rotation.x = -Math.PI / 2; inside.position.y = .02; inside.receiveShadow = true; s.add(inside);
+    const inside = new THREE.Mesh(new THREE.CircleGeometry(W, 160), new THREE.MeshLambertMaterial({ color: GRASS, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -2 })); inside.rotation.x = -Math.PI / 2; inside.position.y = .02; inside.receiveShadow = true; s.add(inside);
     const hill = new THREE.Mesh(new THREE.CylinderGeometry(74, 86, HILL, 64), new THREE.MeshLambertMaterial({ color: 0x79b85a })); hill.position.y = HILL / 2; hill.receiveShadow = true; s.add(hill);
-    // the river: a ribbon following plan.river across the whole land
-    const R = this.plan.river, pts = [], banks = [];
-    for (let x = -4000; x <= 4000; x += 20) { const z = R.z0 + R.amp * Math.sin(x / R.wave); pts.push(x, z); }
+    // the river: a lake near the castle, and a ribbon from it out past the wall, with sandy banks
+    const R = this.plan.river, ux = Math.cos(R.a), uz = Math.sin(R.a);
     const strip = (half, y, color) => {
       const v = [], idx = [];
-      for (let i = 0; i < pts.length; i += 2) { v.push(pts[i], y, pts[i + 1] - half, pts[i], y, pts[i + 1] + half); if (i) { const k = i - 2; idx.push(k, k + 1, k + 2, k + 1, k + 3, k + 2); } }
+      for (let t = R.lake, i = 0; t <= 4300; t += 15, i++) { const o = riverBend(R, t), cx = ux * t - uz * o, cz = uz * t + ux * o;
+        v.push(cx + uz * half, y, cz - ux * half, cx - uz * half, y, cz + ux * half); if (i) { const k = (i - 1) * 2; idx.push(k, k + 1, k + 2, k + 1, k + 3, k + 2); } }
       const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(v, 3)); g.setIndex(idx); g.computeVertexNormals();
-      const m = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color, side: THREE.DoubleSide })); m.receiveShadow = true; s.add(m);
+      // pulled towards the camera in the depth test, so far away the water never flickers through the sand and grass
+      const m = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2 * y * 20, polygonOffsetUnits: -4 * y * 20 })); m.receiveShadow = true; s.add(m);
+      const lake = new THREE.Mesh(new THREE.CircleGeometry(R.lakeR + half - R.half, 48), m.material); lake.rotation.x = -Math.PI / 2; lake.position.set(ux * R.lake, y, uz * R.lake); lake.receiveShadow = true; s.add(lake);
     };
-    strip(R.half + 5, .04, SAND); strip(R.half, .07, WATER);
+    strip(R.half + 5, .05, SAND); strip(R.half, .1, WATER);
     // mountains beyond the wall
     const p = new Pen();
     for (let i = 0; i < 70; i++) { const a = i / 70 * Math.PI * 2 + hash(i, 1) * .05, r = W + 380 + hash(i, 2) * 900, h = 120 + hash(i, 3) * 300;
@@ -49,10 +52,9 @@ export class World {
   /** roads and garden strips, one group per ring: the kingdom only shows the rings people live on, and grows */
   roads() {
     const { rings, radials, river, lots } = this.plan, mat = new THREE.MeshLambertMaterial({ color: ROAD }), line = new THREE.MeshLambertMaterial({ color: ROAD_LINE });
-    const rz = x => river.z0 + river.amp * Math.sin(x / river.wave);
     this.bands = [];
     // a bridge wherever a road crosses the river: found by walking the road, as long as the water is wide there
-    const wet = (x, z) => Math.abs(z - rz(x)) < river.half + 5;
+    const wet = (x, z) => riverDist(river, x, z) < 5;
     const bridge = (p, x, z, dx, dz) => {
       let a = 0, b = 0; while (a < 200 && wet(x - dx * a, z - dz * a)) a++; while (b < 200 && wet(x + dx * b, z + dz * b)) b++;
       const L = a + b + 6, cx = x + dx * (b - a) / 2, cz = z + dz * (b - a) / 2;
@@ -64,8 +66,9 @@ export class World {
       p.at(0, 0);
     };
     const crossings = (fx, n, t0, t1) => { const out = []; let prev = null;
-      for (let i = 0; i <= n; i++) { const t = t0 + (t1 - t0) * i / n, [x, z] = fx(t), f = z - rz(x);
-        if (prev && Math.sign(f) !== Math.sign(prev.f)) { let lo = prev.t, hi = t; for (let j = 0; j < 20; j++) { const m = (lo + hi) / 2, [mx, mz] = fx(m); (Math.sign(mz - rz(mx)) === Math.sign(prev.f) ? lo = m : hi = m); } out.push((lo + hi) / 2); }
+      for (let i = 0; i <= n; i++) { const t = t0 + (t1 - t0) * i / n, [x, z] = fx(t), f = riverDist(river, x, z) < 5 ? -1 : 1;
+        if (prev && prev.f > 0 && f < 0) {                    // walking into the water: the bridge starts here
+           let lo = prev.t, hi = t; for (let j = 0; j < 20; j++) { const m = (lo + hi) / 2, [mx, mz] = fx(m); ((riverDist(river, mx, mz) < 5 ? -1 : 1) === Math.sign(prev.f) ? lo = m : hi = m); } out.push((lo + hi) / 2); }
         prev = { t, f }; }
       return out; };
     for (let k = 0; k < rings.count; k++) {
@@ -85,7 +88,7 @@ export class World {
         p.build(g); }
       if (k) { const p = new Pen(), rm = r - rings.step / 2, n = Math.floor(2 * Math.PI * rm / 26);
         for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2 + hash(k, i) * .03, x = Math.cos(a) * rm, z = Math.sin(a) * rm;
-          if (Math.abs(z - rz(x)) < 30 || lots.some(l => Math.hypot(l.x - x, l.z - z) < l.r + 4) || hash(i, k) < .35) continue;
+          if (riverDist(river, x, z) < 10 || lots.some(l => Math.hypot(l.x - x, l.z - z) < l.r + 4) || hash(i, k) < .35) continue;
           p.tree(x, z, .8 + hash(k, i * 7) * .5, hash(i, k * 3) > .5 ? 0x4f9a43 : 0x63a94a); }
         p.build(g); }
       this.scene.add(g); this.bands.push(g);

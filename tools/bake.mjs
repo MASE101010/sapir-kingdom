@@ -1,14 +1,16 @@
 // Lays out the kingdom once and freezes it in site/data/plan.json.
 // Plot k is plot k for good: never re-sort or remove, only append (bump RINGS and re-run with --append).
 // The castle stands on a hill at (0,0). Ring roads circle it, radial roads run out from the gates,
-// a river crosses the south of the land. Houses sit on both sides of every ring road, facing it.
+// a river flows out from a lake near the castle, straight between the radial roads to beyond the wall, so every ring
+// crosses it at a right angle on a short bridge. Houses sit on both sides of every ring road, facing it.
 // Lots for future landmarks (the daily winning comment) are kept free between the rings.
 import { writeFileSync, readFileSync, existsSync } from 'node:fs';
+import { riverDist } from '../site/app/river.js';
 
 const OUT = new URL('../site/data/plan.json', import.meta.url);
 const RINGS = 30, R0 = 90, STEP = 70, ROAD = 4, SETBACK = 11, SPACING = 11.5;
-const RIVER = { z0: 420, amp: 150, wave: 280, half: 16 };
-export const riverZ = x => RIVER.z0 + RIVER.amp * Math.sin(x / RIVER.wave);
+const RIVER = { a: +(Math.PI / 2 + 3 * Math.PI / 32).toFixed(5), lake: 195, lakeR: 24, half: 14, wiggle: 10, wave: 110 };
+const wet = (x, z, m) => riverDist(RIVER, x, z) < m;
 
 const ringR = k => R0 + STEP * k;
 // radial roads: 8 from the castle gates, 16 from ring 6, 32 from ring 14
@@ -24,7 +26,7 @@ for (const k of [0, 1, 2, 3, 5, 7]) {
   for (let i = 0; i < n; i += (k % 2 ? 2 : 1)) {
     const a = off + i * 2 * Math.PI / n + (k % 2 ? Math.PI / n : 0);
     const x = Math.cos(a) * mid, z = Math.sin(a) * mid;
-    if (Math.abs(z - riverZ(x)) < 60) continue;
+    if (wet(x, z, 26 + 12)) continue;
     lots.push({ id: lots.length, x: +x.toFixed(1), z: +z.toFixed(1), rot: +Math.atan2(-Math.cos(a), -Math.sin(a)).toFixed(4), r: k < 2 ? 26 : 30, ring: k });
   }
 }
@@ -39,7 +41,7 @@ for (let k = 0; k < RINGS; k++) {
       const a = Math.PI / 2 + i * 2 * Math.PI / n;                       // start at the south gate, go round
       if (live.some(d => angDist(d.a, a) * r < 9)) continue;            // keep the radial crossing clear
       const x = Math.cos(a) * r, z = Math.sin(a) * r;
-      if (Math.abs(z - riverZ(x)) < RIVER.half + 9) continue;           // not in the river
+      if (wet(x, z, 12)) continue;                                      // not in the river or on its bank
       if (lots.some(l => Math.hypot(l.x - x, l.z - z) < l.r + 8)) continue; // not on a landmark lot
       const dx = side > 0 ? -Math.cos(a) : Math.cos(a), dz = side > 0 ? -Math.sin(a) : Math.sin(a);
       plots.push([+x.toFixed(1), +z.toFixed(1), +Math.atan2(dx, dz).toFixed(3), k]);      // rot turns the front (+z) to the road
