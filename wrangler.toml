@@ -6,4 +6,4 @@ compatibility_date = "2026-09-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "sapir-kingdom"
-database_id = "FILL-ME"
+database_id = "15beb160-8a38-4b74-b855-4742e1336aa4"
