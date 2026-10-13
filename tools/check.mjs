@@ -20,7 +20,7 @@ const days = process.argv.includes('--day') ? [+process.argv[process.argv.indexO
 for (const d of days) { const f = `site/episodes/day${d}.json`; if (!existsSync(f)) continue; const ep = read(f), n = ep.lines?.length ?? 0;
   if (!n) fail.push(`${f}: no lines`); if (!ep.caption && d > 1) fail.push(`${f}: no caption`);
   for (const s of ep.shots ?? []) { if (s.line >= n) fail.push(`${f}: shot on line ${s.line}`); if (typeof s.target === 'string' && s.target.startsWith('landmark:') && !LANDMARKS[s.target.slice(9)]) fail.push(`${f}: shot at unknown ${s.target}`);
-    if (typeof s.target === 'string' && s.target.startsWith('house:') && !residents.some(r => r.u === s.target.slice(6))) fail.push(`${f}: shot at ${s.target}, not a resident`); }
+    if (typeof s.target === 'string' && s.target.startsWith('house:') && !residents.some(r => r.u === s.target.slice(6)) && !(ep.demo ?? []).some(d => d.u === s.target.slice(6))) fail.push(`${f}: shot at ${s.target}, not a resident`); }
   for (const c of ep.cards ?? []) { if (!TYPES.has(c.type)) fail.push(`${f}: card type ${c.type}`); if (c.line >= n) fail.push(`${f}: card on line ${c.line}`); }
   for (const r of [ep.rise].flat().filter(Boolean)) if (!LANDMARKS[r.key]) fail.push(`${f}: rise of unknown ${r.key}`);
   if (JSON.stringify(ep).includes('—')) fail.push(`${f}: has an em dash`); }

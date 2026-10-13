@@ -7,6 +7,7 @@ import { World } from './view.js';
 import { STATUE } from './landmarks/castle.js';
 import { addresses, KINGDOM } from './names.js';
 import { face } from './face.js';
+import { fingerprint } from './residents.js';
 import { drawOverlay, FONTS } from './overlay.js';
 
 const W = 1080, H = 1920;
@@ -31,7 +32,9 @@ export async function startReel({ renderer, data, day }) {
   const time = timing(ep, voice), lineAt = (n, dt = 0) => (time.lines[clamp(n ?? 0, 0, time.lines.length - 1)]?.start ?? 0) + dt;
   const duration = (ep.duration ?? (time.lines.at(-1).end + 1.8));
   // the residents as they were at the end of this day: a reel of an old day never shows newer houses
-  const upTo = ep.houses?.to ?? data.residents.length, residents = data.residents.slice(0, upTo);
+  // ep.demo: example residents only in this reel ("your.name"), to show what a new house and its ID card look like
+  const demo = ep.demo ?? [], upTo = ep.houses?.to ?? data.residents.length + demo.length, last = Math.max(-1, ...data.residents.map(r => r.plot));
+  const residents = [...data.residents.slice(0, upTo - demo.length), ...demo.map((d, i) => ({ u: d.u, h: fingerprint(d.u), plot: last + 1 + i, day: ep.day, src: 'demo' }))];
   // a preview (?dev) may stand landmarks that are not built yet, to try them out
   const preview = new URLSearchParams(location.search).has('dev') ? ep.preview?.landmarks ?? [] : [];
   const world = new World(renderer, data.plan, residents, { ...data.kingdom, landmarks: [...(data.kingdom.landmarks ?? []), ...preview], visit: ep.visit ?? null });
@@ -69,7 +72,9 @@ export async function startReel({ renderer, data, day }) {
       const a = addr[r.plot]; c.house ??= `בית מספר ${(residents.indexOf(r) + 1).toLocaleString('he-IL')}`; c.address ??= `${a.street} ${a.num}`; }
     if (c.type === 'counter') c.to ??= upTo;
   }
-  const chunks = []; { let cur = null; time.words.forEach(w => { if (!cur || cur.line !== w.line || cur.words.length >= 3) { cur = { line: w.line, words: [] }; chunks.push(cur); } cur.words.push(w); }); }
+  // captions: at most three words, never across a pause in the voice (a phrase), each gone before the next one starts
+  const chunks = []; { let cur = null; time.words.forEach(w => { if (!cur || cur.line !== w.line || cur.p !== w.p || cur.words.length >= 3) { cur = { line: w.line, p: w.p, words: [] }; chunks.push(cur); } cur.words.push(w); }); }
+  chunks.forEach((c, i) => { c.t0 = c.words[0].start - .05; c.t1 = Math.min(c.words.at(-1).end + .25, chunks[i + 1] ? chunks[i + 1].words[0].start - .05 : Infinity); });
   const out = document.createElement('canvas'); out.width = W; out.height = H; out.className = 'r-out';
   document.getElementById('overlay').append(out); const g = out.getContext('2d');
   const k = { t: 0, day: ep.day, kingdom: KINGDOM, history: (data.kingdom.history ?? []).slice(0, Math.max(0, ep.day - 1)), handle: document.documentElement.dataset.account };

@@ -26,7 +26,8 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
    - asks for a place or a thing that can stand in the kingdom (a café, a zoo, a rocket, a giant ice cream), or an
      event in it (a festival, snow, a parade), or something the king announces (a holiday, a parade);
    - is safe for children: no violence, weapons, sex, drugs, insults, politics, religion fights, real people, real brands;
-   - is not already built (`kingdom.landmarks`) and not posted by the kingdom itself.
+   - is not already built (`kingdom.landmarks`) and not posted by the kingdom itself;
+   - has nothing to do with "תל בטטה" (Tel Batata) or any other city page: ignore those comments entirely.
    Ties go to the earlier comment. Write the top three you skipped and why into the episode's `notes`.
    If nothing qualifies, Michael picks: build something small and charming and say so in the reel.
 3. **Build it.** A new file `site/app/landmarks/<key>.js` (key: short latin, kebab case) exporting
@@ -68,6 +69,14 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
    `gh workflow run publish.yml -f day=N+1`. If it fails twice, stop and tell Michael what failed.
 8. **Report** to Michael in Hebrew, three lines: the winner and what was built, residents now, the reel link
    (`https://www.instagram.com/reel/...` from the media id, or the Actions artifact).
+
+## The voice (for now: Michael's own)
+
+Michael approves the script first and makes the voice himself in ElevenLabs (voice MICHA, Eleven v4, every line starts
+with `[excited]` and no other tags). So: write `site/episodes/dayN.json`, send him the lines to approve, and stop. When
+his mp3 comes back, `node reel/own-voice.mjs --day N --mp3 <file>` lines it up (pauses → phrases → words) and writes
+`dayN.mp3` and `dayN.voice.json` with `own: true`; commit the mp3 with `git add -f`. `reel/voice.mjs` then keeps it.
+Keep reels about 30 seconds. Captions: at most three words, cut at the voice's pauses.
 
 ## Residents' own choices
 

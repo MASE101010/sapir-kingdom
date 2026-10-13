@@ -32,7 +32,7 @@ export class Life {
     // clouds: clusters of white balls high up, drifting with the wind
     this.clouds = []; const cg = new THREE.IcosahedronGeometry(1, 1), cm = new THREE.MeshLambertMaterial({ color: 0xffffff });
     for (let i = 0; i < 18; i++) { const c = new THREE.Group(); for (let k = 0; k < 5; k++) { const m = new THREE.Mesh(cg, cm); m.scale.setScalar(18 + hash(i, k) * 16); m.position.set((k - 2) * 20, hash(k, i) * 10, hash(i * 3, k) * 16); c.add(m); }
-      scene.add(c); this.clouds.push({ c, x0: (hash(i, 1) - .5) * 4000, z: (hash(i, 2) - .5) * 3000, y: 220 + hash(i, 3) * 120 }); }
+      scene.add(c); this.clouds.push({ c, x0: (hash(i, 1) - .5) * 4000, z: (i % 2 ? 1 : -1) * (520 + hash(i, 2) * 1100), y: 220 + hash(i, 3) * 120 }); }
     // carts and people walking the ring roads
     const cart = new THREE.Group(), cbox = (w, h, d, c, x, y, z) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat(c)); m.position.set(x, y, z); m.castShadow = true; cart.add(m); };
     cbox(2.4, 1.6, 4.4, 0x8a6240, 0, 1.4, 0); cbox(2.6, .3, 4.6, 0x6b4a33, 0, 2.3, 0); cbox(1.4, 2, 2.4, 0xe9e0cc, 0, 2.4, -.6); cbox(1.2, 2.2, 2.6, 0x7a5a3a, 0, 1.1, 4); cbox(.8, .8, 1.2, 0x7a5a3a, 0, 2.2, 5.6);

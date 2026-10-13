@@ -93,7 +93,7 @@ export function drawOverlay(g, k, cards, chunks) {
     const h = card(g, c, k, 540, y); g.restore(); y += h * Math.max(s, .9) + 26;
   }
   // the caption: the chunk being said, the word being said in gold
-  const ch = chunks.find(c => k.t >= c.words[0].start - .05 && k.t < c.words.at(-1).end + .25);
+  const ch = chunks.find(c => k.t >= (c.t0 ?? c.words[0].start - .05) && k.t < (c.t1 ?? c.words.at(-1).end + .25));
   if (ch) {
     const font = `800 76px ${BODY}`; g.font = font; g.direction = 'rtl'; const sp = g.measureText(' ').width, ws = ch.words.map(w => g.measureText(w.w).width);
     const lines = [[]]; let width = 0; ch.words.forEach((w, i) => { if (width + ws[i] > 940 && lines.at(-1).length) { lines.push([]); width = 0; } lines.at(-1).push(i); width += ws[i] + sp; });

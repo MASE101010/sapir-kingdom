@@ -2,10 +2,12 @@
 // writes site/episodes/dayN.mp3 and site/episodes/dayN.voice.json ({ lines: [{start, end}], words: [{w, start, end, line}] }),
 // which reel.js uses so the camera, the cards and the captions follow the voice.
 // env: ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID   node reel/voice.mjs --day 3
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 const day = +process.argv[process.argv.indexOf('--day') + 1], GAP = .35;
 const ep = JSON.parse(readFileSync(`site/episodes/day${day}.json`, 'utf8'));
+// Michael made this day's voice himself (reel/own-voice.mjs): keep it
+try { if (JSON.parse(readFileSync(`site/episodes/day${day}.voice.json`, 'utf8')).own && existsSync(`site/episodes/day${day}.mp3`)) { console.log(`day ${day}: Michael's own voice, kept`); process.exit(0); } } catch { }
 const { ELEVENLABS_API_KEY: key, ELEVENLABS_VOICE_ID: voice, ELEVENLABS_MODEL: model = 'eleven_v3' } = process.env;
 mkdirSync('out/voice', { recursive: true });
 const lines = [], words = []; let t = .4; const parts = [];
