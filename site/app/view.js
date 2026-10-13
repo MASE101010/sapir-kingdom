@@ -51,6 +51,23 @@ export class World {
     const { rings, radials, river, lots } = this.plan, mat = new THREE.MeshLambertMaterial({ color: ROAD }), line = new THREE.MeshLambertMaterial({ color: ROAD_LINE });
     const rz = x => river.z0 + river.amp * Math.sin(x / river.wave);
     this.bands = [];
+    // a bridge wherever a road crosses the river: found by walking the road, as long as the water is wide there
+    const wet = (x, z) => Math.abs(z - rz(x)) < river.half + 5;
+    const bridge = (p, x, z, dx, dz) => {
+      let a = 0, b = 0; while (a < 200 && wet(x - dx * a, z - dz * a)) a++; while (b < 200 && wet(x + dx * b, z + dz * b)) b++;
+      const L = a + b + 6, cx = x + dx * (b - a) / 2, cz = z + dz * (b - a) / 2;
+      p.at(cx, cz, Math.atan2(dx, dz));
+      p.box(0, .1, 0, rings.road * 2 + 2, .6, L, 0xb9a88f); p.box(0, .7, 0, rings.road * 2 - .6, .05, L, ROAD);
+      for (const sd of [-1, 1]) { p.box(sd * (rings.road + .7), .7, 0, .5, 1, L, 0xe9e0cc);
+        for (let t = -L / 2; t <= L / 2; t += 4) p.box(sd * (rings.road + .7), .7, t, .8, 1.5, .8, 0xd8ccb4);
+        p.box(sd * (rings.road + .7), 0, -L / 2, 1.4, 2.6, 1.4, 0xc9b99c); p.box(sd * (rings.road + .7), 0, L / 2, 1.4, 2.6, 1.4, 0xc9b99c); }
+      p.at(0, 0);
+    };
+    const crossings = (fx, n, t0, t1) => { const out = []; let prev = null;
+      for (let i = 0; i <= n; i++) { const t = t0 + (t1 - t0) * i / n, [x, z] = fx(t), f = z - rz(x);
+        if (prev && Math.sign(f) !== Math.sign(prev.f)) { let lo = prev.t, hi = t; for (let j = 0; j < 20; j++) { const m = (lo + hi) / 2, [mx, mz] = fx(m); (Math.sign(mz - rz(mx)) === Math.sign(prev.f) ? lo = m : hi = m); } out.push((lo + hi) / 2); }
+        prev = { t, f }; }
+      return out; };
     for (let k = 0; k < rings.count; k++) {
       const g = new THREE.Group(), r = rings.r0 + rings.step * k, segs = Math.min(360, 64 + k * 12);
       const m = new THREE.Mesh(new THREE.RingGeometry(r - rings.road, r + rings.road, segs), mat); m.rotation.x = -Math.PI / 2; m.position.y = .12; m.receiveShadow = true;
@@ -61,6 +78,11 @@ export class World {
         const seg = new THREE.Mesh(new THREE.BoxGeometry(rings.road * 2, .1, len), mat), mid = a0 + len / 2;
         seg.position.set(Math.cos(d.a) * mid, .13, Math.sin(d.a) * mid); seg.rotation.y = Math.atan2(Math.cos(d.a), Math.sin(d.a)); seg.receiveShadow = true; g.add(seg);
       }
+      { const p = new Pen();
+        for (const a of crossings(a => [Math.cos(a) * r, Math.sin(a) * r], 1440, 0, Math.PI * 2)) bridge(p, Math.cos(a) * r, Math.sin(a) * r, -Math.sin(a), Math.cos(a));
+        for (const d of radials.filter(d => d.from <= k)) { const a0 = Math.max(r0, d.from ? rings.r0 + rings.step * d.from : 0);
+          if (r > a0) for (const t of crossings(t => [Math.cos(d.a) * t, Math.sin(d.a) * t], 200, a0, r)) bridge(p, Math.cos(d.a) * t, Math.sin(d.a) * t, Math.cos(d.a), Math.sin(d.a)); }
+        p.build(g); }
       if (k) { const p = new Pen(), rm = r - rings.step / 2, n = Math.floor(2 * Math.PI * rm / 26);
         for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2 + hash(k, i) * .03, x = Math.cos(a) * rm, z = Math.sin(a) * rm;
           if (Math.abs(z - rz(x)) < 30 || lots.some(l => Math.hypot(l.x - x, l.z - z) < l.r + 4) || hash(i, k) < .35) continue;
