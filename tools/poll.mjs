@@ -4,4 +4,5 @@
 const { SITE_URL, EXPORT_TOKEN } = process.env;
 const d = await fetch(`${SITE_URL}/api/sync`, { method: 'POST', headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(r => r.json());
 console.log(JSON.stringify(d));
+console.log(`::notice title=sync::read ${d.read ?? 0} comments, new houses: ${(d.added ?? []).join(" ") || "none"}, replies ${d.replied ?? 0}${d.error ? ", error: " + d.error : ""}`);
 if (d.error) process.exitCode = 1;
