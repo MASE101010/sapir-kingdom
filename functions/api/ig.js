@@ -41,7 +41,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
     }
     for (const ch of entry.changes ?? []) {          // a comment: kept, and the commenter waits for the follow (the sync writes to them)
       if (ch.field !== 'comments' || !ch.value?.from?.username || ch.value.from.id === env.IG_USER_ID || ch.value.parent_id) continue;
-      await takeComments(env, [{ id: ch.value.id, u: ch.value.from.username, text: ch.value.text, media: ch.value.media?.id }]);
+      await takeComments(env, [{ id: ch.value.id, u: ch.value.from.username, uid: ch.value.from.id, text: ch.value.text, media: ch.value.media?.id }]);
     }
   }
   return new Response('ok');

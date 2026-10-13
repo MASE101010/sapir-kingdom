@@ -10,8 +10,10 @@ const G = 'https://graph.instagram.com/v21.0', GAP = 8000, BACKOFF = 10 * 60e3;
 const say = [n => `ברוכים הבאים לממלכה! הבית שלך, מספר ${n}, כבר עומד 🏠 חפשו את השם שלכם באתר שבביו`,
   n => `נבנה לך בית! מספר ${n}. כנסו לאתר שבביו ותמצאו אותו 👑`, n => `תושב חדש! בית מספר ${n} בממלכה הוא שלך. הקישור בביו 🏰`,
   n => `המלך מיכאל מברך את התושב החדש! בית מספר ${n} מחכה לך, הקישור בביו 🏡`];
-const invited = ['שלחתי לך הודעה פרטית 📩 (אם לא רואים, בדקו בבקשות ההודעות) עוקבים, עונים לי שם, ומקבלים אזרחות 👑',
-  'יש לך הודעה ממני בפרטי 📩 כדי לקבל בית בממלכה צריך לעקוב ולענות לי שם 🏰', 'הבית שלך כמעט מוכן! תסתכלו בהודעות הפרטיות 📩'];
+// under the comment of someone we cannot yet see following: what to do, said in public (and again in private)
+const invited = [u => `@${u} כדי לקבל אזרחות ובית בממלכה צריך לעקוב אחרי @sapirkingdom 👑 עוקבים? שלחתי לך הודעה בפרטי (בדקו גם בבקשות ההודעות), כתבו לי שם "בית" והבית נבנה מיד 🏰`,
+  u => `@${u} הבית שלך כמעט מוכן! 🏡 רק עוקבים אחרי @sapirkingdom, וכותבים לי "בית" בהודעה הפרטית ששלחתי לך 📩`,
+  u => `@${u} בממלכה גרים רק עוקבים 👑 עקבו אחרי @sapirkingdom וענו לי "בית" בהודעה בפרטי 📩 ומיד תקבלו בית עם השם שלכם`];
 const SELF = env => (env.IG_USERNAME ?? 'sapirkingdom').toLowerCase();
 const post = async (env, path, body) => fetch(`${G}/${path}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${await igToken(env)}` }, body: JSON.stringify(body) }).then(r => r.json()).catch(() => ({ error: {} }));
 export const dmTo = (env, recipient, text) => post(env, `${env.IG_USER_ID}/messages`, { recipient, message: { text } });
@@ -26,7 +28,7 @@ export async function takeComments(env, comments) {
   const out = [], self = SELF(env);
   for (const c of comments.slice(0, 500)) {
     const u = String(c.u).toLowerCase(); if (u === self) continue;     // the kingdom's own comments
-    const fresh = await env.DB.prepare('INSERT OR IGNORE INTO comments (id, media, u, text, at) VALUES (?, ?, ?, ?, ?)').bind(c.id, c.media ?? null, u, c.text ?? '', Date.now()).run();
+    const fresh = await env.DB.prepare('INSERT OR IGNORE INTO comments (id, media, u, text, at, uid) VALUES (?, ?, ?, ?, ?, ?)').bind(c.id, c.media ?? null, u, c.text ?? '', Date.now(), c.uid ?? null).run();
     if (!fresh.meta.changes) continue;
     if (await env.DB.prepare('SELECT n FROM residents WHERE u = ?').bind(u).first('n')) continue;
     await env.DB.prepare('UPDATE comments SET house = 0 WHERE id = ?').bind(c.id).run(); out.push({ id: c.id, u });
@@ -65,7 +67,7 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
     let media = JSON.parse(await getState(env, 'sync_media') ?? '{"at":0,"ids":[]}');
     if (force || now - media.at > 5 * 60e3) { media = { at: now, ids: (await get(`${G}/${user}/media?fields=id&limit=3&access_token=${token}`)).data.map(m => m.id) }; await setState(env, 'sync_media', JSON.stringify(media)); }
     const comments = [];
-    const read = (m, d) => comments.push(...(d.data ?? []).map(c => ({ id: c.id, u: c.username ?? c.from?.username, text: c.text, media: m })).filter(c => c.u));
+    const read = (m, d) => comments.push(...(d.data ?? []).map(c => ({ id: c.id, u: c.username ?? c.from?.username, uid: c.from?.id, text: c.text, media: m })).filter(c => c.u));
     for (const [i, m] of media.ids.entries()) {
       if (i > 0 && !force) break;                               // a quick sync looks at the newest post only
       const base = `${G}/${m}/comments?fields=id,text,username,from&limit=50&access_token=${token}`;
@@ -78,19 +80,33 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
       if (after) await setState(env, `sync_after:${m}`, after);
     }
     const waiting = await takeComments(env, comments);
-    let invites = 0, replied = 0, citizens = [];
+    let invites = 0, replied = 0; const citizens = [];
     // 1. a private message to each new commenter without a house (once a person), and a word under their comment
-    const { results: toInvite } = await env.DB.prepare(`SELECT c.id, c.u FROM comments c WHERE c.house = 0 AND (c.dm IS NULL OR c.dm BETWEEN -2 AND -1)
+    const { results: toInvite } = await env.DB.prepare(`SELECT c.id, c.u, c.uid, c.replied FROM comments c WHERE c.house = 0 AND (c.dm IS NULL OR c.dm BETWEEN -2 AND -1)
       AND NOT EXISTS (SELECT 1 FROM comments o WHERE o.u = c.u AND o.dm IN (0, 1)) ORDER BY c.at LIMIT ?`).bind(replies).all();
     const name = u => u.replace(/[._\d]+$/, '').replace(/[._]/g, ' ');
     const once = new Set();
     for (const c of toInvite) {
       if (once.has(c.u)) { await env.DB.prepare('UPDATE comments SET dm = 0 WHERE id = ?').bind(c.id).run(); continue; }   // one message a person
       once.add(c.u);
+      // someone who already follows, and Instagram lets us see it (they wrote to us before): the house at once
+      const who = c.uid ? await fetch(`${G}/${c.uid}?fields=username,is_user_follow_business&access_token=${token}`).then(r => r.json()).catch(() => ({})) : {};
+      if (who.username && who.is_user_follow_business) {
+        const h = await addResident(env, who.username, 'follow');
+        await env.DB.batch([env.DB.prepare('UPDATE comments SET house = 1, dm = 0 WHERE id = ?').bind(c.id), env.DB.prepare('UPDATE comments SET house = 2, dm = 0 WHERE u = ? AND house = 0').bind(c.u)]);
+        citizens.push(h.u); continue;                                  // the welcome under the comment goes out below
+      }
+      // everyone else: in public first, then the private message
+      const p = c.replied === 2 ? {} : await post(env, `${c.id}/replies`, { message: invited[(invites + c.u.length) % invited.length](c.u) });
+      if (!p.error) await env.DB.prepare('UPDATE comments SET replied = 2 WHERE id = ?').bind(c.id).run();
       const r = await dmTo(env, { comment_id: c.id }, `היי ${name(c.u)}! 👑 כאן המלך מיכאל מהממלכה של משפחת ספיר.\nכדי לקבל אזרחות ובית עם השם שלך, צריך לעקוב אחרי @${SELF(env)}.\nעוקבים? כתבו לי כאן "בית", והבית שלכם נבנה מיד 🏰`);
       await env.DB.prepare('UPDATE comments SET dm = CASE WHEN ? THEN COALESCE(dm, 0) - 1 ELSE 1 END WHERE id = ?').bind(r.error ? 1 : 0, c.id).run();
-      if (!r.error) { invites++; const p = await post(env, `${c.id}/replies`, { message: invited[invites % invited.length] }); if (!p.error) await env.DB.prepare('UPDATE comments SET replied = 2 WHERE id = ?').bind(c.id).run(); }
+      invites++;
     }
+    // people messaged earlier whose public word under the comment is missing: say it now (once a person)
+    const { results: unsaid } = await env.DB.prepare(`SELECT c.id, c.u FROM comments c WHERE c.house = 0 AND c.dm = 1 AND c.replied IS NULL
+      AND NOT EXISTS (SELECT 1 FROM comments o WHERE o.u = c.u AND o.replied = 2) LIMIT ?`).bind(replies).all();
+    for (const c of unsaid) { const p = await post(env, `${c.id}/replies`, { message: invited[c.u.length % invited.length](c.u) }); await env.DB.prepare('UPDATE comments SET replied = ? WHERE id = ?').bind(p.error ? -1 : 2, c.id).run(); }
     // 2. the private chats: whoever wrote since the last look (each message once)
     const conv = await get(`${G}/${user}/conversations?platform=instagram&fields=messages.limit(4){id,from,created_time}&limit=25&access_token=${token}`).catch(() => ({ data: [] }));
     const since = +(await getState(env, 'dm_since') ?? (now - 36e5)); let newest = since, handled = 0;
