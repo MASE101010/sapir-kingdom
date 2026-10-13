@@ -26,7 +26,7 @@ jobs:
       - if: env.READY == '1'
         run: node reel/voice.mjs --day ${{ steps.day.outputs.n }}
       - if: env.READY == '1'
-        run: node reel/render.mjs --day ${{ steps.day.outputs.n }}
+        run: '[ -f site/reels/day${{ steps.day.outputs.n }}.mp4 ] && echo "reel already rendered and checked" || node reel/render.mjs --day ${{ steps.day.outputs.n }}'
       - if: env.READY == '1'
         uses: actions/upload-artifact@v4
         with: { name: 'day${{ steps.day.outputs.n }}', path: 'site/reels/day${{ steps.day.outputs.n }}.mp4' }

@@ -5,9 +5,15 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 const day = +process.argv[process.argv.indexOf('--day') + 1], { IG_TOKEN, IG_USER_ID, SITE_URL } = process.env, G = 'https://graph.instagram.com/v21.0';
 const ep = JSON.parse(readFileSync(`site/episodes/day${day}.json`, 'utf8')), wait = s => new Promise(r => setTimeout(r, s * 1000));
-const post = async (path, params) => { const r = await fetch(`${G}/${path}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${IG_TOKEN}` }, body: JSON.stringify(params) }).then(r => r.json()); if (r.error) throw new Error(`${path}: ${r.error.message}`); return r; };
+const post = async (path, params, v) => { const r = await fetch(`${v ? G.replace('v21.0', v) : G}/${path}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${IG_TOKEN}` }, body: JSON.stringify(params) }).then(r => r.json()); if (r.error) throw new Error(`${path}: ${r.error.message}`); return r; };
 const video_url = `${SITE_URL}/reels/day${day}.mp4?v=${Date.now()}`;
-const { id: container } = await post(`${IG_USER_ID}/media`, { media_type: 'REELS', video_url, caption: ep.caption, share_to_feed: true, ...(ep.collaborators?.length ? { collaborators: ep.collaborators } : {}) });
+const base = { media_type: 'REELS', video_url, caption: ep.caption, share_to_feed: true, ...(ep.collaborators?.length ? { collaborators: ep.collaborators } : {}) };
+// a trial reel (ep.trial): shown first to people who do not follow the kingdom, and shared to the followers by itself
+// when it does well. Newer API only; if Instagram refuses it, the reel goes up the ordinary way.
+let container;
+if (ep.trial) try { ({ id: container } = await post(`${IG_USER_ID}/media`, { ...base, trial_params: { graduation_strategy: 'SS_PERFORMANCE' } }, 'v23.0')); console.log('trial reel'); }
+  catch (e) { console.log(`trial reel refused (${e.message}), posting the ordinary way`); }
+if (!container) ({ id: container } = await post(`${IG_USER_ID}/media`, base));
 for (let i = 0; ; i++) {
   const s = await fetch(`${G}/${container}?fields=status_code,status&access_token=${IG_TOKEN}`).then(r => r.json());
   if (s.status_code === 'FINISHED') break; if (s.status_code === 'ERROR' || i > 40) throw new Error(`container: ${JSON.stringify(s)}`); await wait(15);

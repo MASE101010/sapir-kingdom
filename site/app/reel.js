@@ -82,7 +82,7 @@ export async function startReel({ renderer, data, day }) {
   chunks.forEach((c, i) => { c.t0 = c.words[0].start - .05; c.t1 = Math.min(c.words.at(-1).end + .25, chunks[i + 1] ? chunks[i + 1].words[0].start - .05 : Infinity); });
   const out = document.createElement('canvas'); out.width = W; out.height = H; out.className = 'r-out';
   document.getElementById('overlay').append(out); const g = out.getContext('2d');
-  const k = { t: 0, day: ep.day, kingdom: KINGDOM, history: (data.kingdom.history ?? []).slice(0, Math.max(0, ep.day - 1)), handle: document.documentElement.dataset.account };
+  const k = { top: ep.top, t: 0, day: ep.day, kingdom: KINGDOM, history: (data.kingdom.history ?? []).slice(0, Math.max(0, ep.day - 1)), handle: document.documentElement.dataset.account };
   const houses = ep.houses ? { ...ep.houses, t0: lineAt(ep.houses.line, ep.houses.dt), dur: ep.houses.dur ?? 5 } : null;
   const rises = [ep.rise].flat().filter(Boolean).map(r => ({ ...r, t0: lineAt(r.line, r.dt), dur: r.dur ?? 4.5 }));
   // effects: drawn over the frame (overlay.js), or moving the camera (shake, punch); flashes and vignettes go under the cards

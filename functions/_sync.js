@@ -146,3 +146,21 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
     return { ran: true, error: e.message };
   }
 }
+
+/** the day's stories (site/stories/plan.json: [{ id, at, image, after? }]): each goes up once, when its time comes;
+ *  "after": "reel:N" waits until day N's reel is posted. Called by the clock every minute. */
+export async function stories(env, site) {
+  const now = Date.now(), plan = await fetch(`${site}/stories/plan.json`, { cf: { cacheTtl: 60 } }).then(r => r.ok ? r.json() : []).catch(() => []);
+  for (const st of plan) {
+    const at = Date.parse(st.at); if (!(at <= now) || now - at > 6 * 36e5) continue;          // due, and not stale
+    if (await getState(env, `story:${st.id}`)) continue;
+    if (st.after?.startsWith('reel:')) { const k = await fetch(`${site}/data/kingdom.json`).then(r => r.json()).catch(() => ({})); if (!k.reels?.[st.after.slice(5)]) continue; }
+    if (!(await env.DB.prepare("INSERT OR IGNORE INTO state (k, v) VALUES (?, 'posting')").bind(`story:${st.id}`).run()).meta.changes) continue;
+    const c = await post(env, `${env.IG_USER_ID}/media`, { media_type: 'STORIES', image_url: `${site}/${st.image}` });
+    let ok = false;
+    if (c.id) for (let i = 0; i < 6 && !ok; i++) { const p = await post(env, `${env.IG_USER_ID}/media_publish`, { creation_id: c.id }); if (p.id) { ok = true; await setState(env, `story:${st.id}`, p.id); } else await new Promise(r => setTimeout(r, 3000)); }
+    if (!ok) { const tries = +(await getState(env, `storytry:${st.id}`) ?? 0) + 1; await setState(env, `storytry:${st.id}`, tries);
+      if (tries < 5) await env.DB.prepare('DELETE FROM state WHERE k = ?').bind(`story:${st.id}`).run(); else await setState(env, `story:${st.id}`, `failed: ${JSON.stringify(c.error ?? {}).slice(0, 200)}`); }   // try again next minute, five times
+    return;                                                                                       // one a minute
+  }
+}

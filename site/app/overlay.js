@@ -39,6 +39,14 @@ function card(g, c, k, cx, y) {
       return h1 + 190;
     }
     case 'label': return pill(g, c.text, cx, y);
+    case 'note': {                                   // a story's text: a title in gold, and a few lines
+      const lines = (c.text ?? '').split('\n').flatMap(l => wrap(g, l, `700 54px ${BODY}`, W - 110)), H = 150 + lines.length * 74 + (c.foot ? 70 : 0);
+      box(g, x, y, W, H, R);
+      text(g, c.title ?? '', cx, y + 104, { font: `400 78px ${DISPLAY}`, color: GOLD, stroke: 14, strokeColor: NAVY });
+      lines.forEach((l, i) => text(g, l, cx, y + 190 + i * 74, { font: `700 54px ${BODY}` }));
+      if (c.foot) text(g, c.foot, cx, y + H - 40, { font: `800 40px ${BODY}`, color: TEAL });
+      return H + 14;
+    }
     case 'cta': {
       text(g, c.text ?? 'מה בונים מחר?', cx, y + 120, { font: `400 120px ${DISPLAY}`, color: GOLD, stroke: 24, drop: 10 });
       return 160 + pill(g, c.sub ?? 'תגיבו בתגובות', cx, y + 160, { fill: GOLD });
@@ -113,7 +121,7 @@ function effect(g, f, t) {
 /** the whole overlay for time t. k: { t, day, kingdom, history, handle }, cards (with t0, t1), chunks (caption words) */
 export function drawOverlay(g, k, cards, chunks, fx = []) {
   for (const f of fx) if (k.t >= f.t0 && k.t < f.t1 + .25 && f.under) effect(g, f, k.t);
-  let y = 170;
+  let y = k.top ?? 170;
   for (const c of cards) {
     if (k.t < c.t0 || k.t >= c.t1 + .25) continue;
     const fin = Math.min(backOut((k.t - c.t0) / .45), 1.2), fout = 1 - clamp((k.t - c.t1) / .25), s = (.6 + .4 * fin) * fout + (1 - fout) * .9;

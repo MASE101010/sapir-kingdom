@@ -1,7 +1,7 @@
 // /api/sync?u=name: looks at the newest comments on Instagram right now, and says whether name has a house.
 // The site calls it when a search finds nobody yet; GitHub (poll.yml) calls it with the export token every few minutes.
 import { json, COLS, row } from '../_lib.js';
-import { sync } from '../_sync.js';
+import { sync, stories } from '../_sync.js';
 import { normalize } from '../../site/app/residents.js';
 export async function onRequest({ request, env }) {
   const auth = env.EXPORT_TOKEN && request.headers.get('authorization') === `Bearer ${env.EXPORT_TOKEN}`;
@@ -26,7 +26,8 @@ export async function onRequest({ request, env }) {
     const state = (await env.DB.prepare("SELECT k, v FROM state WHERE k LIKE 'sync%' OR k = 'clock_at' OR k = 'dm_since'").all()).results;
     return json({ user: env.IG_USER_ID ?? null, insights, likes: likes.slice(0, 60), follow, conv, dmr, media, comments, state });
   }
-  if (new URL(request.url).searchParams.has('tick')) await env.DB.prepare("INSERT INTO state (k, v) VALUES ('clock_at', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v").bind(String(Date.now())).run();   // the clock was here
+  if (new URL(request.url).searchParams.has('tick')) { await env.DB.prepare("INSERT INTO state (k, v) VALUES ('clock_at', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v").bind(String(Date.now())).run();   // the clock was here
+    await stories(env, new URL(request.url).origin).catch(() => {}); }
   let r = await find();
   const out = r ? { ran: false } : await sync(env, { force: auth, replies: auth ? 15 : 6 });
   if (!r) r = await find();

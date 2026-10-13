@@ -78,6 +78,20 @@ his mp3 comes back, `node reel/own-voice.mjs --day N --mp3 <file>` lines it up (
 `dayN.mp3` and `dayN.voice.json` with `own: true`; commit the mp3 with `git add -f`. `reel/voice.mjs` then keeps it.
 Keep reels about 30 seconds. Captions: at most three words, cut at the voice's pauses.
 
+## Sound, effects, stories, posting
+
+- A reel's sound is `dayN.mix.mp3` (`python3 reel/sound.py --day N`): music and effects made in code from the episode's
+  `music` (sections happy / tense / stop) and `sfx` (whoosh, pop, ding, roar, sting, boom, scratch, boing, cricket,
+  kaching, sparkle, snore, tada), ducked under the voice; set `"mix": "dayN.mix.mp3"`. Effects on screen: `fx`
+  (sticker, banner, flash, vignette, confetti, shake, punch). Show on screen everything the king talks about.
+- Render the reel yourself, send it to Michael, and when he approves commit it (`git add -f site/reels/dayN.mp4`):
+  publish.yml then posts that file instead of rendering again. `"trial": true` posts it as a trial reel (to non-followers
+  first). Post around 17:00 Israel time.
+- Stories, 2 to 3 a day: render 1080×1920 stills (an episode with one shot, `top: 330`, `note` cards, stickers) into
+  `site/stories/`, and list them in `site/stories/plan.json` with their time (UTC); the clock posts each once.
+  Ideas: good morning with a dragon teaser, a riddle about what is built today, the reveal after the reel, the resident
+  of the day, the gold key winner. Never reveal the day's landmark before its reel.
+
 ## Residents' own choices
 
 - Friends: a resident who verified by DM can invite friends (`?invite=`); they move into the same plot and the house
