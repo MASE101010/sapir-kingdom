@@ -4,6 +4,7 @@
 // without it the times are estimated, for a preview. reel/render.mjs calls window.__reel.seek(t) for every frame.
 import * as THREE from 'three';
 import { World } from './view.js';
+import { STATUE } from './landmarks/castle.js';
 import { addresses, KINGDOM } from './names.js';
 import { face } from './face.js';
 import { drawOverlay, FONTS } from './overlay.js';
@@ -41,7 +42,7 @@ export async function startReel({ renderer, data, day }) {
   const resident = u => residents.find(r => r.u === u);
   function focus(spec, t) {
     if (Array.isArray(spec)) return new THREE.Vector3(...spec);
-    if (spec === 'michael') { const m = world.poseMichael((ep.clock ?? 0) + t); return new THREE.Vector3(m.x, 5, m.z); }
+    if (spec === 'statue' || spec === 'michael') return new THREE.Vector3(STATUE[0], 18, STATUE[1]);      // the king
     if (spec?.startsWith('house:')) { const r = resident(spec.slice(6)), pl = r && data.plan.plots[r.plot]; if (pl) return new THREE.Vector3(pl[0], 5, pl[1]); }
     if (spec?.startsWith('landmark:')) { const l = world.lm[spec.slice(9)]; if (l) return new THREE.Vector3(l.at[0], (l.mod.top ?? 20) * .35, l.at[1]); }
     return new THREE.Vector3(0, 18, 0);
@@ -77,7 +78,7 @@ export async function startReel({ renderer, data, day }) {
   function seek(t) {
     if (houses) world.showHouses(houses.from + (houses.to - houses.from) * smooth((t - houses.t0) / houses.dur)); else world.showHouses(residents.length);
     for (const r of rises) world.rise(r.key, backOut((t - r.t0) / r.dur));
-    world.poseMichael((ep.clock ?? 0) + t); poseCamera(t);
+    poseCamera(t);
     renderer.render(world.scene, cam);
     k.t = t; g.drawImage(renderer.domElement, 0, 0, W, H); drawOverlay(g, k, cards, chunks);
   }

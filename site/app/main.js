@@ -9,7 +9,8 @@ import { World } from './view.js';
 import { addresses, KINGDOM } from './names.js';
 import { find, normalize, valid } from './residents.js';
 import { face } from './face.js';
-import { HOMES, COMMON, tierOf, TIERS } from './catalog.js';
+import { HOMES, tierOf, TIERS } from './catalog.js';
+import { STATUE } from './landmarks/castle.js';
 
 const q = new URLSearchParams(location.search), $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -39,11 +40,10 @@ function site({ plan, residents, kingdom, honours }) {
   $('h-day').textContent = kingdom.day; count(); $('status').textContent = kingdom.status ?? '';
   let mine = store.get('kingdom-me');
 
-  // ---- labels: the nearest houses to where the camera looks, and Michael ----
-  const labels = $('labels'), pool = [], mTag = document.createElement('button');
-  mTag.className = 'tag michael'; mTag.textContent = 'מיכאל'; labels.append(mTag);
-  let follow = false; mTag.onclick = () => { follow = true; };
-  controls.addEventListener('start', () => follow = false);
+  // ---- labels: the nearest houses to where the camera looks, and the king's statue ----
+  const labels = $('labels'), pool = [], kTag = document.createElement('button');
+  kTag.className = 'tag michael'; kTag.textContent = 'המלך מיכאל'; labels.append(kTag);
+  kTag.onclick = () => flyTo(STATUE[0], STATUE[1], 70);
   const place = (el, v) => { const p = v.clone().project(cam), vis = p.z < 1 && Math.abs(p.x) < 1.05 && Math.abs(p.y) < 1.05; el.hidden = !vis;
     if (vis) { el.style.left = `${(p.x + 1) / 2 * innerWidth}px`; el.style.top = `${(1 - p.y) / 2 * innerHeight}px`; } };
   function drawLabels() {
@@ -57,13 +57,11 @@ function site({ plan, residents, kingdom, honours }) {
       el.classList.toggle('mine', n.people.some(k => residents[k].u === mine)); place(el, new THREE.Vector3(pl[0], n.people.length >= 4 ? 22 : 13, pl[1])); });
   }
   (function frame() {
-    const m = world.poseMichael(Date.now() / 1000);
-    if (follow) controls.target.lerp(new THREE.Vector3(m.x, 4, m.z), .08);
     controls.update(); world.aim(controls.target); renderer.render(world.scene, cam);
-    place(mTag, new THREE.Vector3(m.x, 12, m.z)); drawLabels(); requestAnimationFrame(frame);
+    place(kTag, new THREE.Vector3(STATUE[0], 38, STATUE[1])); drawLabels(); requestAnimationFrame(frame);
   })();
   function flyTo(x, z, dist = 90) {
-    follow = false; const t0 = performance.now(), from = controls.target.clone(), to = new THREE.Vector3(x, 4, z), off0 = cam.position.clone().sub(from), off1 = off0.clone().setLength(dist);
+    const t0 = performance.now(), from = controls.target.clone(), to = new THREE.Vector3(x, 4, z), off0 = cam.position.clone().sub(from), off1 = off0.clone().setLength(dist);
     (function step(now) { const f = Math.min(1, (now - t0) / 1100), e = f < .5 ? 4 * f * f * f : 1 - Math.pow(-2 * f + 2, 3) / 2;
       controls.target.lerpVectors(from, to, e); cam.position.copy(controls.target).add(off0.clone().lerp(off1, e)); if (f < 1) requestAnimationFrame(step); })(t0);
   }

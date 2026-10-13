@@ -5,7 +5,6 @@ import { Pen } from './pen.js';
 import { drawHome, drawShared } from './homes.js';
 import { LANDMARKS } from './landmarks/index.js';
 import { HILL } from './landmarks/castle.js';
-import { makeMichael, makeRoute, poseMichael } from './michael.js';
 
 const GRASS = 0x86c766, FIELD = 0x9fd27a, ROAD = 0x6f737b, ROAD_LINE = 0xf4f1e8, WATER = 0x3fa9d6, SAND = 0xe8dcb5, STONE = 0xd2c8b2, ROOF = 0x2f5fa6;
 const hash = (a, b) => { let h = Math.imul(a * 73856093 ^ b * 19349663, 2654435761); h ^= h >>> 15; return (h >>> 0) / 4294967296; };
@@ -22,14 +21,13 @@ export class World {
     this.sun = sun; this.scene.add(hemi, sun, sun.target);
     this.land(); this.roads(); this.trees(); this.wall();
     this.houses(); this.landmarks();
-    this.michael = makeMichael(); this.scene.add(this.michael); this.setVisit(kingdom.visit);
   }
   /** the ground, the castle hill, the river with its sandy banks, and mountains round the edge */
   land() {
     const s = this.scene, W = this.plan.wall;
     const ground = new THREE.Mesh(new THREE.CircleGeometry(4200, 96), new THREE.MeshLambertMaterial({ color: FIELD })); ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; s.add(ground);
     const inside = new THREE.Mesh(new THREE.CircleGeometry(W, 160), new THREE.MeshLambertMaterial({ color: GRASS })); inside.rotation.x = -Math.PI / 2; inside.position.y = .02; inside.receiveShadow = true; s.add(inside);
-    const hill = new THREE.Mesh(new THREE.CylinderGeometry(52, 70, HILL, 48), new THREE.MeshLambertMaterial({ color: 0x79b85a })); hill.position.y = HILL / 2; hill.receiveShadow = true; s.add(hill);
+    const hill = new THREE.Mesh(new THREE.CylinderGeometry(74, 86, HILL, 64), new THREE.MeshLambertMaterial({ color: 0x79b85a })); hill.position.y = HILL / 2; hill.receiveShadow = true; s.add(hill);
     // the river: a ribbon following plan.river across the whole land
     const R = this.plan.river, pts = [], banks = [];
     for (let x = -4000; x <= 4000; x += 20) { const z = R.z0 + R.amp * Math.sin(x / R.wave); pts.push(x, z); }
@@ -116,8 +114,6 @@ export class World {
   }
   /** a landmark rising out of the ground (0 hidden, 1 standing) */
   rise(key, f) { const l = this.lm[key]; if (!l) return; l.group.visible = f > 0; l.group.scale.set(1, Math.max(.001, f), 1); }
-  setVisit(u) { const r = u && this.residents.find(x => x.u === u); this.route = makeRoute(this.plan, r ? this.plan.plots[r.plot] : null); }
-  poseMichael(seconds) { return poseMichael(this.michael, this.route, seconds); }
   /** the sun follows the time of day in Israel; night lights the windows less */
   daylight(hour) {
     const night = hour < 6 || hour >= 19, dusk = !night && (hour < 7.5 || hour >= 17.5);

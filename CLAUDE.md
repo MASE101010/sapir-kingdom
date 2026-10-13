@@ -2,8 +2,8 @@
 
 You run this kingdom on your own, every day. Michael Sapir owns it; the Instagram account is @sapir.kingdom.
 Every follower gets a house. Every day the comment with the most likes on yesterday's reel decides what is built next,
-and you build it in code, film it in code, and post it. Michael (an avatar of the owner) lives in the kingdom and visits
-the winner's house.
+and you build it in code, film it in code, and post it. Michael is the king: his statue stands in front of the palace of
+the Sapir family (ארמון משפחת ספיר) in the middle, and he narrates the reels as the king. No avatar walks the streets.
 
 All Hebrew you write (narration, captions, signs, names) is warm, funny, family friendly, first person as Michael where
 he speaks. Never use em dashes (—) anywhere: use a comma. Never put real people, politicians, celebrities or brand logos
@@ -40,8 +40,8 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
    - Colours: soft and saturated, never neon. Navy `0x13213b`, teal `0x0f6f73`, gold `0xe8b323`, cream walls, red roofs.
 4. **Update the kingdom.**
    - `kingdom.json`: `day` = N+1; push `{ key, lot, day: N+1, by: [winner] }` to `landmarks`; push the residents count
-     at the end of day N to `history`; `visit` = the winner if they are a resident, else null; `status` = one line
-     about what Michael is doing today.
+     at the end of day N to `history`; `status` = one line
+     about what is new in the kingdom today.
    - `kingdom.json` `news`: `{ day: N+1, line: "<one sentence about what was built>", landmark: key }`. The site offers it
      once to every visitor ("חדש ביום N+1") and flies to it.
    - `honours.json`: `built[key] = { by: [winner], day: N+1 }`. The gold key (מפתח זהב): one resident who joined on
@@ -50,8 +50,8 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
 5. **Write the episode** `site/episodes/day{N+1}.json` (schema below). 40 to 58 seconds. The beats, in order:
    title (יום N+1) → how many live here now (counter, from yesterday's count to today's) → the winning comment card →
    building it (the landmark rises, a label with its name) → the reveal (an orbit round it) → the winner's ID card with
-   the honour "אדריכל · <name>" → the gold key winner → Michael at the winner's door → "מה בונים מחר? תגיבו בתגובות".
-   Lines are short (under 12 words), spoken by Michael, with ElevenLabs tags where they help: `[excited]`,
+   the honour "אדריכל · <name>" → the gold key winner → the winner's house → back to the palace and the king's statue → "מה בונים מחר? תגיבו בתגובות".
+   Lines are short (under 12 words), spoken by King Michael, with ElevenLabs tags where they help: `[excited]`,
    `[laughs]`, `[pause]`, `[whispers]`, `[gasps]`. Read handles out naturally ("שרון", not "sharon_123"): say the
    name in the line, show the exact handle on the card.
    Also `caption` (the Instagram caption: two lines, the CTA, 3 to 5 hashtags) and `firstComment`.
@@ -94,13 +94,13 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
 
 ```json
 {
-  "day": 2, "clock": 2000, "visit": "winner_handle",
+  "day": 2,
   "lines": ["[excited] יום 2 בממלכה!", "..."],
   "houses": { "from": 120, "to": 340, "line": 1, "dur": 5 },
   "rise": { "key": "bakery", "line": 4, "dur": 4.5 },
   "shots": [ { "line": 0, "target": "castle", "dist": 600, "yaw": -40, "pitch": 38, "orbit": 3 },
              { "line": 4, "target": "landmark:bakery", "dist": 140, "yaw": 20, "pitch": 24, "orbit": 6 },
-             { "line": 8, "target": "michael", "dist": 55, "pitch": 30 } ],
+             { "line": 8, "target": "statue", "dist": 64, "pitch": 30 } ],
   "cards": [ { "type": "title", "line": 0, "dur": 3, "text": "יום 2" },
              { "type": "counter", "line": 1, "dur": 5, "from": 120, "to": 340 },
              { "type": "comment", "line": 2, "dur": 4, "u": "handle", "text": "the comment", "likes": 2317 },
@@ -112,10 +112,9 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
 ```
 
 Times hang on lines: `line` is the index of the line it starts with, `dt` shifts it in seconds, `dur` is how long.
-Shot targets: `castle`, `michael`, `house:<handle>`, `landmark:<key>`, or `[x, y, z]`. A shot holds until the next one;
+Shot targets: `castle`, `statue` (the king), `house:<handle>`, `landmark:<key>`, or `[x, y, z]`. A shot holds until the next one;
 the camera eases into it over `ease` seconds (1.6) and turns `orbit` degrees a second. `dist` in metres, `yaw` and
 `pitch` in degrees; on a `landmark:` target yaw 0 looks straight at its front (its signs). Cards stack at the top third; captions sit at 1290 to 1500 px; keep the subject between them.
-`clock` sets where Michael is on his walk at the first frame (seconds on the shared clock).
 
 ## Files
 

@@ -1,7 +1,5 @@
 {
  "day": 2,
- "clock": 20,
- "visit": "test_0042",
  "notes": "PREVIEW ONLY: test residents and an invented comment, to show how a day looks. Never posted.",
  "preview": {
   "landmarks": [
@@ -92,9 +90,9 @@
   },
   {
    "line": 7,
-   "target": "michael",
-   "dist": 55,
-   "yaw": -20,
+   "target": "statue",
+   "dist": 64,
+   "yaw": -14,
    "pitch": 30
   },
   {
