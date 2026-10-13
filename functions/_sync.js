@@ -28,12 +28,12 @@ export async function takeComments(env, comments) {
 }
 
 /** one round: returns { ran, added, replied } or { ran: false, wait } when it is too soon */
-export async function sync(env, { force = false, replies = 12 } = {}) {
+export async function sync(env, { force = false, replies = 12, gap = GAP } = {}) {
   const now = Date.now(), until = +(await getState(env, 'sync_backoff') ?? 0);
   if (now < until) return { ran: false, wait: until - now };
   // only one sync at a time, at most one every GAP: the update succeeds for one caller only
-  const claim = await env.DB.prepare("INSERT INTO state (k, v) VALUES ('sync_at', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v WHERE CAST(state.v AS INTEGER) <= ?").bind(String(now), force ? now : now - GAP).run();
-  if (!claim.meta.changes) return { ran: false, wait: GAP };
+  const claim = await env.DB.prepare("INSERT INTO state (k, v) VALUES ('sync_at', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v WHERE CAST(state.v AS INTEGER) <= ?").bind(String(now), force ? now : now - gap).run();
+  if (!claim.meta.changes) return { ran: false, wait: gap };
   const token = await igToken(env), user = env.IG_USER_ID ?? 'me';
   try {
     // the newest posts (asked again every 5 minutes, or when forced)
