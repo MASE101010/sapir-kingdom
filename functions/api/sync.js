@@ -7,6 +7,13 @@ export async function onRequest({ request, env }) {
   const auth = env.EXPORT_TOKEN && request.headers.get('authorization') === `Bearer ${env.EXPORT_TOKEN}`;
   const u = normalize(new URL(request.url).searchParams.get('u') ?? '');
   const find = () => u ? env.DB.prepare(`SELECT ${COLS} FROM residents WHERE u = ?`).bind(u).first() : null;
+  if (auth && new URL(request.url).searchParams.has('debug')) {     // what Instagram itself answers (no token in it)
+    const { igToken } = await import('../_lib.js'), t = await igToken(env), G = 'https://graph.instagram.com/v21.0';
+    const media = await fetch(`${G}/${env.IG_USER_ID ?? 'me'}/media?fields=id,timestamp,comments_count,media_type&limit=3&access_token=${t}`).then(r => r.json());
+    const first = media.data?.[0]?.id, comments = first ? await fetch(`${G}/${first}/comments?fields=id,text,username,from,timestamp&limit=10&access_token=${t}`).then(r => r.json()) : null;
+    const state = (await env.DB.prepare("SELECT k, v FROM state WHERE k LIKE 'sync%'").all()).results;
+    return json({ user: env.IG_USER_ID ?? null, media, comments, state });
+  }
   let r = await find();
   const out = r ? { ran: false } : await sync(env, { force: auth, replies: auth ? 15 : 6 });
   if (!r) r = await find();
