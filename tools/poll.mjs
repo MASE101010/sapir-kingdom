@@ -4,7 +4,8 @@ process.on('unhandledRejection', e => { console.log(`::warning title=poll crash:
 // so commenters who never open the site still get their house and an answer. The site does the same on every search.
 // env: SITE_URL, EXPORT_TOKEN
 const { SITE_URL, EXPORT_TOKEN } = process.env;
-if (process.env.DEBUG) { const x = await fetch(`${SITE_URL}/api/sync?debug=1${process.env.DMTEST ? `&dmtest=${process.env.DMTEST}` : ''}`, { headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(r => r.text()); try { const j = JSON.parse(x); console.log(`::notice title=state::${JSON.stringify(j.state.filter(s => !s.k.startsWith('sync_after'))).slice(0, 800)} now ${Date.now()}`);
+if (process.env.DEBUG) { const x = await fetch(`${SITE_URL}/api/sync?debug=1&likes=1${process.env.DMTEST ? `&dmtest=${process.env.DMTEST}` : ''}`, { headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(r => r.text()); try { const j = JSON.parse(x); console.log(`::notice title=state::${JSON.stringify(j.state.filter(s => !s.k.startsWith('sync_after'))).slice(0, 800)} now ${Date.now()}`);
+    console.log(`::notice title=likes::${(j.likes ?? []).filter(l => l[1] !== 'sapirkingdom').map(l => `${l[0]}♥ ${l[1]}: ${String(l[2]).slice(0, 70)}`).join(' || ').slice(0, 3500)}`);
     console.log(`::notice title=chats::${(j.conv?.data ?? []).map(c => (c.messages?.data ?? []).map(m => `${m.from?.username}: ${(m.message ?? '').slice(0, 40)} @${m.created_time}`).join(' / ')).join(' || ').slice(0, 2500) || JSON.stringify(j.conv).slice(0, 400)}`); } catch { console.log(`::notice title=debug::${x.slice(0, 1500)}`); } }
 const raw = await fetch(`${SITE_URL}/api/sync`, { method: 'POST', headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(async r => `${r.status} ${await r.text()}`);
 let d; try { d = JSON.parse(raw.slice(4)); } catch { d = { error: raw.slice(0, 400).replace(/\s+/g, ' ') }; }
