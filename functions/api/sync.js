@@ -15,9 +15,10 @@ export async function onRequest({ request, env }) {
     const follow = fid ? await fetch(`${G}/${fid}?fields=username,is_user_follow_business,is_business_follow_user,follower_count&access_token=${t}`).then(r => r.json()) : null;
     const conv = await fetch(`${G}/${env.IG_USER_ID}/conversations?platform=instagram&fields=participants,messages.limit(3){message,from,created_time}&limit=5&access_token=${t}`).then(r => r.json());
     const dm = new URL(request.url).searchParams.get('dmtest'), dmr = dm ? await fetch(`${G}/${env.IG_USER_ID}/messages`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${t}` }, body: JSON.stringify({ recipient: { comment_id: dm }, message: { text: 'היי! 👑 כאן הממלכה של משפחת ספיר. זו בדיקה של ההודעה שתקבלו אחרי תגובה. ענו לי כאן "בית" כדי לבדוק את ההמשך 🏰' } }) }).then(r => r.json()) : null;
-    const state = (await env.DB.prepare("SELECT k, v FROM state WHERE k LIKE 'sync%'").all()).results;
+    const state = (await env.DB.prepare("SELECT k, v FROM state WHERE k LIKE 'sync%' OR k = 'clock_at' OR k = 'dm_since'").all()).results;
     return json({ user: env.IG_USER_ID ?? null, follow, conv, dmr, media, comments, state });
   }
+  if (new URL(request.url).searchParams.has('tick')) await env.DB.prepare("INSERT INTO state (k, v) VALUES ('clock_at', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v").bind(String(Date.now())).run();   // the clock was here
   let r = await find();
   const out = r ? { ran: false } : await sync(env, { force: auth, replies: auth ? 15 : 6 });
   if (!r) r = await find();
