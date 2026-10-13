@@ -4,7 +4,7 @@
 //   ?reel=N        the reel of day N, posed frame by frame (reel.js); the page shows nothing else
 import * as THREE from 'three';
 import { MapControls } from '../vendor/addons/MapControls.js';
-import { loadKingdom, loadDelta } from './kingdom.js';
+import { loadKingdom, loadDelta, loadLive } from './kingdom.js';
 import { World } from './view.js';
 import { addresses, KINGDOM } from './names.js';
 import { find, normalize, valid } from './residents.js';
@@ -24,7 +24,9 @@ $('scene').appendChild(renderer.domElement);
 
 if (q.has('reel')) { const { startReel } = await import('./reel.js'); await startReel({ renderer, data, day: +q.get('reel') }); }
 else if (q.has('catalog')) { const { startCatalog } = await import('./catalog-shots.js'); await startCatalog(renderer); }
-else { data.residents.push(...await loadDelta(data.residents.length)); site(data); }
+else { const live = await loadLive(data.residents.length); data.residents.push(...(live.residents ?? [])); applyChanges(data.residents, live.changed); site(data); }
+/** a resident's own changes (style, friend) over the snapshot */
+function applyChanges(list, changed = []) { let any = false; for (const c of changed ?? []) { const r = list[c.n - 1]; if (r && r.u === c.u && (r.plot !== c.plot || r.host !== c.host || r.home !== c.home)) { list[c.n - 1] = { ...r, plot: c.plot, host: c.host, home: c.home }; any = true; } } return any; }
 
 function site({ plan, residents, kingdom, honours }) {
   document.body.classList.add('site');
@@ -163,9 +165,10 @@ function site({ plan, residents, kingdom, honours }) {
       find: () => { closeMenu(); $('who').focus(); return null; },
       friends: () => `<h2>לגור עם חברים</h2><p>כל חבר שמקבל בית דרך הקישור שלך עובר לגור איתך, והבית גדל לעיני כל הממלכה:</p>
         <ul class="tiers">${TIERS.map(t => `<li><b>${t.from === 1 ? 'לבד' : `${t.from} ומעלה`}</b> ${esc(t.name)}</li>`).join('')}</ul>
-        ${store.get('kingdom-verified') ? `<div class="row"><button class="btn gold" id="copy-invite">העתקת הקישור שלי</button><a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(`בוא לגור איתי בממלכה של משפחת ספיר 👑 ${location.origin}${location.pathname}?invite=${store.get('kingdom-verified')}`)}">שליחה בוואטסאפ</a></div>`
-          : `<p class="note">כדי שהקישור יהיה שלך, צריך פעם אחת לאמת את הבית בקוד בהודעה פרטית.</p><button class="btn" id="go-verify">לאמת את הבית שלי</button>`}`,
-      pick: () => `<h2>לבחור בית אחר</h2><p class="note">הבית החדש נבנה בעדכון הבא של הממלכה. הבתים הנדירים פתוחים רק למי שזכה במפתח הזהב.</p>${grid(true)}`,
+        <ol class="steps"><li>החבר מקבל בית משלו (עוקב ומגיב על הריל).</li><li>החבר שולח ל-<b dir="ltr">@${esc(ACCOUNT)}</b> הודעה פרטית: <b>"גר עם @${esc(mine ?? 'השם_שלך')}"</b>.</li><li>תוך דקה הוא עובר לגור אצלך, והבית גדל.</li></ol>
+        <a class="btn gold" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(`בוא לגור איתי בממלכה של משפחת ספיר 👑 עוקבים אחרי @${ACCOUNT} באינסטגרם, מגיבים על הריל, ושולחים להם בפרטי: גר עם @${mine ?? ''} ${location.origin}${location.pathname}${mine ? `?u=${mine}` : ''}`)}">להזמין חבר בוואטסאפ</a>`,
+      pick: () => `<h2>לבחור בית אחר</h2><p>שולחים ל-<b dir="ltr">@${esc(ACCOUNT)}</b> הודעה פרטית עם המספר של הבית, למשל <b>"בית 3"</b>, והבית שלכם מתחלף תוך דקה.</p>
+        <p class="note">הבתים הנדירים פתוחים רק למי שזכה במפתח הזהב. בבית משותף, מי שגר בו ראשון בוחר.</p>${grid(true)}`,
       catalog: () => `<h2>קטלוג הבתים</h2>${grid(false)}`,
       lottery: () => { const keys = honours.given?.key ?? []; return `<h2>ההגרלה היומית</h2><p>כל יום, אחד התושבים החדשים זוכה במפתח הזהב: עיטור על תעודת התושב, וזכות לבחור בית נדיר מהקטלוג.</p>
         ${keys.length ? `<p>הזוכה האחרון: <b dir="ltr">@${esc(keys.at(-1))}</b></p><ul class="people">${keys.slice().reverse().map(u => `<li><button class="link" data-u="${esc(u)}" dir="ltr">@${esc(u)}</button></li>`).join('')}</ul>` : '<p class="note">ההגרלה הראשונה מחר. כל מי שמצטרף היום משתתף.</p>'}`; },
@@ -182,7 +185,7 @@ function site({ plan, residents, kingdom, honours }) {
     panel.querySelectorAll('.place').forEach(b => b.onclick = () => { const l = world.lm[b.dataset.k]; closeMenu(); flyTo(l.at[0], l.at[1], 160); });
     if ($('copy-invite')) $('copy-invite').onclick = () => copy(`${location.origin}${location.pathname}?invite=${store.get('kingdom-verified')}`, $('copy-invite'));
     if ($('go-verify')) $('go-verify').onclick = () => { closeMenu(); verify(); };
-    panel.querySelectorAll('.choose').forEach(b => b.onclick = () => choose(+b.dataset.k, b));
+    panel.querySelectorAll('.choose').forEach(b => b.onclick = () => copy(`בית ${+b.dataset.k + 1}`, b));
     if (page === 'people') { const list = t => { const idx = residents.map((_, k) => k), pick = t === 'new' ? idx.slice(-100).reverse() : idx.slice(0, 100);
         $('plist').innerHTML = pick.length ? pick.map(k => `<li><button class="link" data-u="${esc(residents[k].u)}" dir="ltr">@${esc(residents[k].u)}</button><span>${(k + 1).toLocaleString('he-IL')}</span></li>`).join('') : '<li class="note">עוד אין תושבים. הראשון יכול להיות אתה.</li>';
         $('plist').querySelectorAll('[data-u]').forEach(b => b.onclick = () => openHouse(find(residents, b.dataset.u))); };
@@ -190,7 +193,8 @@ function site({ plan, residents, kingdom, honours }) {
   }
   function grid(choosing) {
     return `<div class="catalog">${HOMES.map((h, k) => `<div class="home${h.rare ? ' rare' : ''}"><img src="catalog/${k}.png" alt="" loading="lazy" width="160" height="160"><b>${esc(h.name)}</b><span>${esc(h.line)}</span>
-      ${choosing ? `<button class="btn ghost choose" data-k="${k}">זה הבית שלי</button>` : ''}</div>`).join('')}</div><p class="err" id="pick-err" hidden></p>`;
+      <i class="num">בית ${k + 1}</i>${choosing ? `<button class="btn ghost choose" data-k="${k}">להעתיק "בית ${k + 1}"</button>` : ''}</div>`).join('')}</div>
+      ${choosing ? `<a class="btn gold" target="_blank" rel="noopener" href="https://ig.me/m/${esc(ACCOUNT)}">לשלוח הודעה לממלכה</a>` : ''}<p class="err" id="pick-err" hidden></p>`;
   }
   async function choose(kind, btn) {
     const err = $('pick-err'); err.hidden = true;
@@ -210,5 +214,5 @@ function site({ plan, residents, kingdom, honours }) {
     $('see').onclick = () => { done(); const l = world.lm[news.landmark]; if (l) flyTo(l.at[0], l.at[1], 150); }; $('later').onclick = done;
   }
   const u = q.get('u'); if (u) { const k = find(residents, u); if (k >= 0) setTimeout(() => openHouse(k), 400); }
-  setInterval(async () => { const fresh = await loadDelta(residents.length); if (fresh.length) { residents.push(...fresh); world.residents = residents; world.houses(); count(); } }, 60000);
+  setInterval(async () => { const live = await loadLive(residents.length), fresh = live.residents ?? [], moved = applyChanges(residents, live.changed); if (fresh.length) residents.push(...fresh); if (fresh.length || moved) { world.residents = residents; world.houses(); count(); } }, 60000);
 }

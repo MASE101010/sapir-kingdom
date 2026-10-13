@@ -6,5 +6,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
   waitUntil(sync(env, { replies: 6, gap: 30000 }).catch(() => {}));
   const since = Math.max(0, +new URL(request.url).searchParams.get('since') || 0);
   const { results } = await env.DB.prepare(`SELECT ${COLS} FROM residents WHERE n > ? ORDER BY n LIMIT 5000`).bind(since).all();
-  return json({ residents: results.map(row) }, 200, { 'cache-control': 'public, max-age=20' });
+  // houses changed by their residents (a style, a friend): the site redraws them
+  const changed = (await env.DB.prepare(`SELECT ${COLS} FROM residents WHERE changed IS NOT NULL AND n <= ? LIMIT 3000`).bind(since).all()).results.map(r => ({ ...row(r), n: r.n }));
+  return json({ residents: results.map(row), changed }, 200, { 'cache-control': 'public, max-age=20' });
 }

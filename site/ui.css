@@ -118,3 +118,4 @@ body.site #scene canvas { cursor: grab; } body.site #scene canvas:active { curso
 .pad button[data-a="home"] { grid-column: span 2; width: auto; background: var(--gold); font-size: 18px; }
 .pad button:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--navy); }
 @media (min-width: 860px) { .pad { bottom: 24px; } }
+.catalog .home .num { font-style: normal; font-size: 12px; font-weight: 700; color: var(--teal, #0f6f73); }

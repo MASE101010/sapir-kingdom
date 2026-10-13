@@ -12,3 +12,5 @@ export async function loadKingdom(base = '.') {
 }
 /** residents who arrived after the snapshot was baked (the live API, when there is one) */
 export async function loadDelta(since) { try { const r = await fetch(`api/delta?since=${since}`, { cache: 'no-store' }); return r.ok ? (await r.json()).residents ?? [] : []; } catch { return []; } }
+/** the new residents and the houses their residents changed since the snapshot */
+export async function loadLive(since) { try { const r = await fetch(`api/delta?since=${since}`, { cache: 'no-store' }); return r.ok ? await r.json() : {}; } catch { return {}; } }
