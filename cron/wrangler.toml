@@ -2,5 +2,6 @@
 name = "sapir-kingdom-clock"
 main = "worker.js"
 compatibility_date = "2026-09-01"
+workers_dev = false
 [triggers]
 crons = ["* * * * *"]
