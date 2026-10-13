@@ -86,7 +86,7 @@ Keep reels about 30 seconds. Captions: at most three words, cut at the voice's p
   (sticker, banner, flash, vignette, confetti, shake, punch). Show on screen everything the king talks about.
 - Render the reel yourself, send it to Michael, and when he approves commit it (`git add -f site/reels/dayN.mp4`):
   publish.yml then posts that file instead of rendering again. `"trial": true` posts it as a trial reel (to non-followers
-  first). Post around 17:00 Israel time.
+  first). Post around 12:00 Israel time: Michael wants the reel up early and as much content as possible.
 - Stories, 2 to 3 a day: render 1080×1920 stills (an episode with one shot, `top: 330`, `note` cards, stickers) into
   `site/stories/`, and list them in `site/stories/plan.json` with their time (UTC); the clock posts each once.
   Ideas: good morning with a dragon teaser, a riddle about what is built today, the reveal after the reel, the resident
