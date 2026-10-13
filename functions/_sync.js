@@ -16,8 +16,9 @@ async function get(url) { const d = await fetch(url).then(r => r.json()); if (d.
 /** takes comments (from here, the webhook, or the poller): keeps each once, builds the commenter's house, says who is new */
 export async function takeComments(env, comments) {
   const out = [];
+  const self = (env.IG_USERNAME ?? 'sapirkingdom').toLowerCase();
   for (const c of comments.slice(0, 500)) {
-    const u = String(c.u).toLowerCase();
+    const u = String(c.u).toLowerCase(); if (u === self) continue;     // the kingdom's own comments are not a resident
     const fresh = await env.DB.prepare('INSERT OR IGNORE INTO comments (id, media, u, text, at) VALUES (?, ?, ?, ?, ?)').bind(c.id, c.media ?? null, u, c.text ?? '', Date.now()).run();
     if (!fresh.meta.changes) continue;
     const before = await env.DB.prepare('SELECT n FROM residents WHERE u = ?').bind(u).first('n');
