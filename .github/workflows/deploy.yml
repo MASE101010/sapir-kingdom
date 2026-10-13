@@ -13,6 +13,9 @@ jobs:
         with: { node-version: 22, cache: npm }
       - run: npm ci && node tools/env.mjs
         env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
-      - run: node tools/check.mjs
-      - run: npx wrangler@3 d1 migrations apply sapir-kingdom --remote
-      - run: npx wrangler@3 pages deploy site --project-name sapir-kingdom --branch main --commit-dirty=true
+      - if: env.READY == '1'
+        run: node tools/check.mjs
+      - if: env.READY == '1'
+        run: npx wrangler@3 d1 migrations apply sapir-kingdom --remote
+      - if: env.READY == '1'
+        run: npx wrangler@3 pages deploy site --project-name sapir-kingdom --branch main --commit-dirty=true

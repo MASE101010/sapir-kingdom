@@ -18,19 +18,26 @@ jobs:
       - run: npm ci && npx playwright-core install --with-deps chromium-headless-shell && sudo apt-get install -y ffmpeg
       - run: node tools/env.mjs
         env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
-      - id: day
+      - if: env.READY == '1'
+        id: day
         run: echo "n=${{ inputs.day }}$(echo '${{ github.event.head_commit.message }}' | grep -oP '\[publish day \K\d+' || true)" >> $GITHUB_OUTPUT
-      - run: node tools/check.mjs --day ${{ steps.day.outputs.n }}
-      - run: node reel/voice.mjs --day ${{ steps.day.outputs.n }}
-      - run: node reel/render.mjs --day ${{ steps.day.outputs.n }}
-      - uses: actions/upload-artifact@v4
+      - if: env.READY == '1'
+        run: node tools/check.mjs --day ${{ steps.day.outputs.n }}
+      - if: env.READY == '1'
+        run: node reel/voice.mjs --day ${{ steps.day.outputs.n }}
+      - if: env.READY == '1'
+        run: node reel/render.mjs --day ${{ steps.day.outputs.n }}
+      - if: env.READY == '1'
+        uses: actions/upload-artifact@v4
         with: { name: 'day${{ steps.day.outputs.n }}', path: 'site/reels/day${{ steps.day.outputs.n }}.mp4' }
-      - run: npx wrangler@3 pages deploy site --project-name sapir-kingdom --branch main --commit-dirty=true
-      - if: ${{ github.event_name == 'push' || inputs.post }}
+      - if: env.READY == '1'
+        run: npx wrangler@3 pages deploy site --project-name sapir-kingdom --branch main --commit-dirty=true
+      - if: ${{ env.READY == '1' && (github.event_name == 'push' || inputs.post) }}
         run: |
           node reel/publish.mjs --day ${{ steps.day.outputs.n }}
           node reel/replies.mjs --day ${{ steps.day.outputs.n }}
           curl -fsS -X POST "$SITE_URL/api/export" -H "authorization: Bearer $EXPORT_TOKEN" -H 'content-type: application/json' -d "{\"day\": $(node -p "require('./site/data/kingdom.json').day")}"
-      - run: |
+      - if: env.READY == '1'
+        run: |
           git config user.name "kingdom-bot"; git config user.email "kingdom-bot@users.noreply.github.com"
           git add site/data/kingdom.json site/episodes/*.voice.json && git commit -m "posted: day ${{ steps.day.outputs.n }}" && git push || echo "nothing to commit"

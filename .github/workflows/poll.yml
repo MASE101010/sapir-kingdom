@@ -10,4 +10,5 @@ jobs:
       - uses: actions/checkout@v4
       - run: node tools/env.mjs
         env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
-      - run: node tools/poll.mjs
+      - if: env.READY == '1'
+        run: node tools/poll.mjs

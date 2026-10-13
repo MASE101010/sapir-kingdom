@@ -8,7 +8,8 @@ jobs:
       - uses: actions/checkout@v4
       - run: node tools/env.mjs
         env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
-      - run: |
+      - if: env.READY == '1'
+        run: |
           NEW=$(curl -fsS "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$IG_TOKEN" | jq -r .access_token)
           [ -n "$NEW" ] && [ "$NEW" != null ] || exit 1
           echo "::add-mask::$NEW"
