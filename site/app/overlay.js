@@ -62,7 +62,7 @@ function card(g, c, k, cx, y) {
       if (c.img) g.drawImage(c.img, x + W - 44 - 130, y + 104, 130, 130);
       text(g, `@${c.u}`, x + W - 200, y + 146, { font: `800 42px ${BODY}`, align: 'right', dir: 'ltr' });
       lines.forEach((l, i) => text(g, l, x + W - 200, y + 210 + i * 60, { font: `700 50px ${BODY}`, align: 'right' }));
-      text(g, `♥ ${Number(c.likes ?? 0).toLocaleString('he-IL')}`, x + 44, y + 160, { font: `800 46px ${BODY}`, color: RED, align: 'left', dir: 'ltr' });
+      if (c.likes !== null) text(g, `♥ ${Number(c.likes ?? 0).toLocaleString('he-IL')}`, x + 44, y + 160, { font: `800 46px ${BODY}`, color: RED, align: 'left', dir: 'ltr' });
       return H + 14;
     }
     case 'idcard': {
@@ -83,8 +83,36 @@ function card(g, c, k, cx, y) {
   return 0;
 }
 
+/** effects over the whole frame (episode "fx"): stickers that pop, banners that slam in, flashes, a red vignette,
+ *  confetti. Camera effects (shake, punch) are in reel.js. Each has t0, t1. */
+const EMOJI = '"Noto Color Emoji", "Apple Color Emoji", sans-serif';
+const rnd = i => { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); };
+function effect(g, f, t) {
+  const age = t - f.t0, life = f.t1 - f.t0, out = clamp((f.t1 - t) / .25), a = clamp(Math.min(age / .12, out));
+  if (a <= 0) return;
+  g.save(); g.globalAlpha = a;
+  switch (f.type) {
+    case 'flash': g.globalAlpha = clamp(1 - age / life) * (f.alpha ?? .8); g.fillStyle = f.color ?? '#fff'; g.fillRect(0, 0, 1080, 1920); break;
+    case 'vignette': { const p = .55 + .45 * Math.sin(age * (f.speed ?? 7)); const gr = g.createRadialGradient(540, 960, 380, 540, 960, 1150);
+      gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, f.color ?? `rgba(200,20,20,${.55 * p + .2})`); g.fillStyle = gr; g.fillRect(0, 0, 1080, 1920); break; }
+    case 'sticker': { const s = backOut(age / .35) * (1 + .05 * Math.sin(age * 9)), r = ((f.rot ?? 0) + 6 * Math.sin(age * 5 + (f.x ?? 0))) * Math.PI / 180;
+      g.translate(f.x ?? 540, f.y ?? 700); g.rotate(r); g.scale(s, s);
+      const emoji = /\p{Extended_Pictographic}/u.test(f.text);
+      text(g, f.text, 0, 0, { font: emoji ? `${f.size ?? 140}px ${EMOJI}` : `400 ${f.size ?? 110}px ${DISPLAY}`, color: f.color ?? GOLD, stroke: emoji ? 0 : 20, drop: emoji ? 0 : 8, dir: 'rtl' }); break; }
+    case 'banner': { const s = 1 + .7 * (1 - backOut(age / .3)), sh = age < .4 ? (rnd(Math.floor(t * 60)) - .5) * 24 : 0;
+      g.translate(540 + sh, f.y ?? 760); g.rotate((f.rot ?? -4) * Math.PI / 180); g.scale(s, s);
+      if (f.band) { g.fillStyle = f.band; g.fillRect(-620, -(f.size ?? 120) * .95, 1240, (f.size ?? 120) * 1.3); }
+      text(g, f.text, 0, 0, { font: `400 ${f.size ?? 120}px ${DISPLAY}`, color: f.color ?? '#fff', stroke: 24, strokeColor: f.stroke ?? NAVY, drop: 10 }); break; }
+    case 'confetti': { const cols = [GOLD, RED, TEAL, '#ffffff', '#3b6fb6', '#7a4f9a'];
+      for (let i = 0; i < (f.n ?? 140); i++) { const x = rnd(i) * 1080 + Math.sin(age * 3 + i) * 40, y = -60 + (age * (380 + rnd(i + 7) * 520)) + rnd(i + 3) * -700, w = 14 + rnd(i + 5) * 16;
+        if (y < -40 || y > 1960) continue; g.save(); g.translate(x, y); g.rotate(age * 6 + i); g.fillStyle = cols[i % cols.length]; g.fillRect(-w / 2, -w / 4, w, w / 2); g.restore(); } break; }
+  }
+  g.restore();
+}
+
 /** the whole overlay for time t. k: { t, day, kingdom, history, handle }, cards (with t0, t1), chunks (caption words) */
-export function drawOverlay(g, k, cards, chunks) {
+export function drawOverlay(g, k, cards, chunks, fx = []) {
+  for (const f of fx) if (k.t >= f.t0 && k.t < f.t1 + .25 && f.under) effect(g, f, k.t);
   let y = 170;
   for (const c of cards) {
     if (k.t < c.t0 || k.t >= c.t1 + .25) continue;
@@ -92,6 +120,7 @@ export function drawOverlay(g, k, cards, chunks) {
     g.save(); g.globalAlpha = clamp(Math.min((k.t - c.t0) / .2, fout)); g.translate(540, y); g.scale(s, s); g.translate(-540, -y);
     const h = card(g, c, k, 540, y); g.restore(); y += h * Math.max(s, .9) + 26;
   }
+  for (const f of fx) if (k.t >= f.t0 && k.t < f.t1 + .25 && !f.under) effect(g, f, k.t);
   // the caption: the chunk being said, the word being said in gold
   const ch = chunks.find(c => k.t >= (c.t0 ?? c.words[0].start - .05) && k.t < (c.t1 ?? c.words.at(-1).end + .25));
   if (ch) {

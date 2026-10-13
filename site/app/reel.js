@@ -62,6 +62,10 @@ export async function startReel({ renderer, data, day }) {
     const target = a.target.clone().lerp(b.target, f), dist = Math.exp(lerp(Math.log(a.dist), Math.log(b.dist))), yaw = lerp(a.yaw, b.yaw) * Math.PI / 180, pitch = lerp(a.pitch, b.pitch) * Math.PI / 180;
     cam.fov = lerp(a.fov, b.fov); cam.updateProjectionMatrix();
     cam.position.set(target.x + Math.sin(yaw) * Math.cos(pitch) * dist, target.y + Math.sin(pitch) * dist, target.z + Math.cos(yaw) * Math.cos(pitch) * dist);
+    // camera effects: a shake, and a punch (a quick zoom in that settles)
+    for (const f of fx) { if (t < f.t0 || t > f.t1) continue; const age = t - f.t0, life = f.t1 - f.t0;
+      if (f.type === 'shake') { const amp = (f.amp ?? 1.2) * (1 - age / life) * dist / 60; cam.position.x += Math.sin(t * 61) * amp; cam.position.y += Math.sin(t * 47 + 1) * amp; cam.position.z += Math.sin(t * 53 + 2) * amp; }
+      if (f.type === 'punch') { cam.fov *= 1 - (f.zoom ?? .3) * Math.exp(-age * 5) * clamp(age / .06); cam.updateProjectionMatrix(); } }
     cam.lookAt(target); world.aim(target);
   }
 
@@ -81,17 +85,19 @@ export async function startReel({ renderer, data, day }) {
   const k = { t: 0, day: ep.day, kingdom: KINGDOM, history: (data.kingdom.history ?? []).slice(0, Math.max(0, ep.day - 1)), handle: document.documentElement.dataset.account };
   const houses = ep.houses ? { ...ep.houses, t0: lineAt(ep.houses.line, ep.houses.dt), dur: ep.houses.dur ?? 5 } : null;
   const rises = [ep.rise].flat().filter(Boolean).map(r => ({ ...r, t0: lineAt(r.line, r.dt), dur: r.dur ?? 4.5 }));
+  // effects: drawn over the frame (overlay.js), or moving the camera (shake, punch); flashes and vignettes go under the cards
+  const fx = (ep.fx ?? []).map(f => ({ ...f, t0: lineAt(f.line, f.dt), t1: lineAt(f.line, f.dt) + (f.dur ?? 1.2), under: f.under ?? ['flash', 'vignette'].includes(f.type) }));
   function seek(t) {
     if (houses) world.showHouses(houses.from + (houses.to - houses.from) * smooth((t - houses.t0) / houses.dur)); else world.showHouses(residents.length);
     for (const r of rises) world.rise(r.key, backOut((t - r.t0) / r.dur));
     world.animate((ep.clock ?? 900) + t); poseCamera(t);
     renderer.render(world.scene, cam);
-    k.t = t; g.drawImage(renderer.domElement, 0, 0, W, H); drawOverlay(g, k, cards, chunks);
+    k.t = t; g.drawImage(renderer.domElement, 0, 0, W, H); drawOverlay(g, k, cards, chunks, fx);
   }
   /** one finished frame, as a JPEG data URL */
   const frame = (t, q = .92) => { seek(t); return out.toDataURL('image/jpeg', q); };
   await Promise.all(FONTS.map(f => document.fonts.load(f))); await document.fonts.ready;
-  window.__reel = { duration, fps: 30, seek, frame, day, audio: voice ? `episodes/day${day}.mp3` : null, lines: time.lines };
+  window.__reel = { duration, fps: 30, seek, frame, day, audio: ep.mix ? `episodes/${ep.mix}` : voice ? `episodes/day${day}.mp3` : null, lines: time.lines };
   seek(0);
   document.body.dataset.ready = '1';
 }

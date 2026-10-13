@@ -1,155 +1,604 @@
 {
  "day": 2,
- "notes": "PREVIEW ONLY: test residents and an invented comment, to show how a day looks. Never posted.",
- "preview": {
-  "landmarks": [
-   {
-    "key": "bakery",
-    "lot": 0,
-    "day": 2,
-    "by": [
-     "test_0042"
-    ]
-   }
-  ]
- },
  "lines": [
-  "[excited] יום 2 בממלכה של משפחת ספיר!",
-  "תראו כמה אתם! אתמול הייתי פה לבד, והיום כבר שלושת אלפים תושבים.",
-  "והתגובה עם הכי הרבה לייקים ביקשה...",
-  "[laughs] מאפייה. עם לחמניות ענקיות.",
-  "אז קדימה, בונים!",
-  "[gasps] תראו את זה. מאפיית הממלכה! עם כיכר לחם ענקית על הגג.",
-  "ומי שביקש את זה, מקבל תואר רשמי: אדריכל הממלכה.",
-  "ואני? [pause] אני הולך עכשיו להביא לו לחמניה חמה.",
-  "אז מה בונים מחר?",
-  "תגיבו בתגובות. התגובה עם הכי הרבה לייקים, נבנית."
+  "[excited] צהריים טובים לכל תושבי הממלכה!",
+  "כאן המלך מיכאל, אני מקווה שכולכם נהנים ומרוצים מהממלכה החדשה שלנו.",
+  "[happy] אתמול היה יום פשוט מדהים, הצטרפו לממלכה שלנו 40 תושבים חדשים!",
+  "ואנחנו בקרוב מאוד נצטרך את עזרתכם!",
+  "[surprised] שמתם לב לדרקונים המעופפים בשמיים? הם עומדים לתקוף...",
+  "אבל על זה נרחיב מאוחר יותר.",
+  "החלטתי להקשיב לתושבי הממלכה ולהעניק לנוגה את סופר ספיר, שהיא הציעה לבנות.",
+  "דאגתי לעובדים, לתחזוקה שוטפת ואפילו ל...",
+  "[annoyed] פינת עישון? מה זה?! מי אישר את זה?!",
+  "אהמ.. לא משנה..",
+  "[thoughtful] תגיבו לי מה תרצו שאבנה מחר בממלכה שלנו, ואל תשכחו!",
+  "הדרקונים עוד מעט תוקפים ואני חייב את עזרתכם, אז תעקבו והצטרפו לממלכה המאושרת בתבל!"
  ],
- "houses": {
-  "from": 0,
-  "to": 3000,
-  "line": 1,
-  "dur": 5.5
- },
- "rise": {
-  "key": "bakery",
-  "line": 4,
-  "dur": 4
- },
  "shots": [
   {
    "line": 0,
-   "target": "castle",
-   "dist": 700,
-   "yaw": -40,
-   "pitch": 40,
-   "orbit": 3,
+   "target": "dragon:1",
+   "dist": 34,
+   "yaw": 120,
+   "pitch": 6,
+   "orbit": 14,
    "ease": 0.01
   },
   {
+   "line": 0,
+   "dt": 1.3,
+   "target": "castle",
+   "dist": 300,
+   "yaw": -30,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 1.0
+  },
+  {
    "line": 1,
-   "target": [
-    0,
-    0,
-    0
-   ],
-   "dist": 1500,
-   "yaw": -20,
-   "pitch": 62,
+   "target": "statue",
+   "dist": 62,
+   "yaw": -8,
+   "pitch": 40,
    "orbit": 2
   },
   {
    "line": 2,
-   "target": "landmark:bakery",
-   "dist": 260,
-   "yaw": 25,
-   "pitch": 40
+   "target": [
+    0,
+    0,
+    150
+   ],
+   "dist": 720,
+   "yaw": -10,
+   "pitch": 58,
+   "orbit": 3
+  },
+  {
+   "line": 3,
+   "target": "castle",
+   "dist": 150,
+   "yaw": 15,
+   "pitch": 10,
+   "orbit": -4,
+   "ease": 0.8
   },
   {
    "line": 4,
-   "target": "landmark:bakery",
-   "dist": 130,
-   "yaw": 15,
-   "pitch": 26,
-   "orbit": 4
+   "target": "dragon:0",
+   "dist": 40,
+   "yaw": 90,
+   "pitch": 6,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "dt": 2.6,
+   "target": "dragon:2",
+   "dist": 28,
+   "yaw": 200,
+   "pitch": 10,
+   "orbit": 6,
+   "ease": 0.25
   },
   {
    "line": 5,
-   "target": "landmark:bakery",
-   "dist": 95,
-   "yaw": 0,
-   "pitch": 16,
-   "orbit": 9
+   "target": "statue",
+   "dist": 70,
+   "yaw": 20,
+   "pitch": 30,
+   "ease": 0.5
   },
   {
    "line": 6,
-   "target": "house:test_0042",
-   "dist": 70,
-   "yaw": 30,
-   "pitch": 34
+   "target": "landmark:super",
+   "dist": 95,
+   "yaw": 25,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 1.0
   },
   {
    "line": 7,
-   "target": "statue",
-   "dist": 64,
-   "yaw": -14,
-   "pitch": 30
+   "target": "landmark:super",
+   "dist": 28,
+   "yaw": -15,
+   "pitch": 10,
+   "orbit": 2,
+   "ease": 0.8
   },
   {
    "line": 8,
+   "target": [
+    127.8,
+    2.5,
+    66.4
+   ],
+   "dist": 22,
+   "yaw": 80,
+   "pitch": 14,
+   "ease": 0.22
+  },
+  {
+   "line": 9,
+   "target": "statue",
+   "dist": 55,
+   "yaw": -5,
+   "pitch": 28,
+   "ease": 0.3
+  },
+  {
+   "line": 10,
    "target": "castle",
-   "dist": 650,
-   "yaw": 50,
-   "pitch": 36,
-   "orbit": 3
+   "dist": 420,
+   "yaw": 60,
+   "pitch": 32,
+   "orbit": 4,
+   "ease": 1.0
+  },
+  {
+   "line": 11,
+   "target": "dragon:1",
+   "dist": 46,
+   "yaw": 60,
+   "pitch": 8,
+   "orbit": 6,
+   "ease": 0.7
+  },
+  {
+   "line": 11,
+   "dt": 3.1,
+   "target": "castle",
+   "dist": 620,
+   "yaw": -40,
+   "pitch": 38,
+   "orbit": 4,
+   "ease": 1.0
   }
  ],
  "cards": [
   {
    "type": "title",
    "line": 0,
-   "dur": 3,
+   "dt": 1.3,
+   "dur": 2.6,
    "text": "יום 2"
   },
   {
-   "type": "counter",
+   "type": "label",
    "line": 1,
-   "dur": 5.5,
-   "from": 1,
-   "to": 3000
+   "dt": 0.2,
+   "dur": 2.6,
+   "text": "המלך מיכאל 👑"
   },
   {
-   "type": "comment",
+   "type": "counter",
    "line": 2,
    "dt": 0.2,
-   "dur": 4.5,
-   "u": "test_0042",
-   "text": "שתהיה מאפייה עם לחמניות ענקיות!",
-   "likes": 2317
+   "dur": 5.2,
+   "from": 0,
+   "to": 39
   },
   {
    "type": "label",
-   "line": 4,
-   "dur": 3.6,
-   "text": "בבנייה · מאפיית הממלכה"
+   "line": 3,
+   "dur": 2.4,
+   "text": "הממלכה צריכה אתכם!"
+  },
+  {
+   "type": "comment",
+   "line": 6,
+   "dt": 0.3,
+   "dur": 3.5,
+   "u": "noga_buhnik",
+   "head": "ההצעה של נוגה",
+   "text": "אני רוצה סופר בשם סופר ספיר",
+   "likes": null
   },
   {
    "type": "idcard",
    "line": 6,
-   "dur": 4.2,
-   "u": "test_0042",
+   "dt": 3.9,
+   "dur": 2.4,
+   "u": "noga_buhnik",
    "honours": [
-    "אדריכל · מאפיית הממלכה"
+    "אדריכלית · סופר ספיר"
    ]
   },
   {
    "type": "cta",
-   "line": 8,
-   "dur": 6.5,
-   "text": "מה בונים מחר?",
-   "sub": "תגיבו בתגובות"
+   "line": 10,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "מה לבנות מחר?",
+   "sub": "תגיבו בתגובות 👇"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 3.1,
+   "dur": 3.5,
+   "text": "עקבו!",
+   "sub": "ועזרו להציל את הממלכה"
   }
  ],
- "caption": "יום 2: ביקשתם מאפייה, קיבלתם מאפייה.\nמה בונים מחר? התגובה עם הכי הרבה לייקים נבנית.",
- "firstComment": "מה בונים מחר? 👇"
+ "duration": 48,
+ "mix": "day2.mix.mp3",
+ "houses": {
+  "from": 0,
+  "to": 39,
+  "line": 2,
+  "dt": 0.3,
+  "dur": 4.2
+ },
+ "rise": {
+  "key": "super",
+  "line": 6,
+  "dt": 0.2,
+  "dur": 3.4
+ },
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.35
+  },
+  {
+   "type": "sticker",
+   "line": 1,
+   "dt": 0.3,
+   "dur": 2.2,
+   "text": "👑",
+   "x": 840,
+   "y": 640,
+   "size": 150
+  },
+  {
+   "type": "confetti",
+   "line": 2,
+   "dt": 2.4,
+   "dur": 3.0
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 2.4,
+   "dur": 2.6,
+   "text": "+40",
+   "x": 830,
+   "y": 1120,
+   "size": 130,
+   "rot": 8
+  },
+  {
+   "type": "punch",
+   "line": 3,
+   "dur": 0.8,
+   "zoom": 0.25
+  },
+  {
+   "type": "vignette",
+   "line": 3,
+   "dur": 2.4,
+   "color": "rgba(10,10,30,.55)"
+  },
+  {
+   "type": "vignette",
+   "line": 4,
+   "dur": 4.0
+  },
+  {
+   "type": "banner",
+   "line": 4,
+   "dt": 0.3,
+   "dur": 2.2,
+   "text": "⚠ דרקונים! ⚠",
+   "y": 760,
+   "band": "#c2412d",
+   "size": 120
+  },
+  {
+   "type": "flash",
+   "line": 4,
+   "dt": 2.6,
+   "dur": 0.35,
+   "color": "#c2412d",
+   "alpha": 0.5
+  },
+  {
+   "type": "shake",
+   "line": 4,
+   "dt": 2.6,
+   "dur": 1.2,
+   "amp": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.2,
+   "dur": 1.6,
+   "text": "🤫",
+   "x": 820,
+   "y": 620,
+   "size": 150
+  },
+  {
+   "type": "confetti",
+   "line": 6,
+   "dt": 3.6,
+   "dur": 2.8
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 3.6,
+   "dur": 2.4,
+   "text": "🛒",
+   "x": 200,
+   "y": 1130,
+   "size": 140,
+   "rot": -10
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.3,
+   "dur": 2.8,
+   "text": "😴",
+   "x": 860,
+   "y": 1080,
+   "size": 130
+  },
+  {
+   "type": "punch",
+   "line": 8,
+   "dur": 0.9,
+   "zoom": 0.35
+  },
+  {
+   "type": "shake",
+   "line": 8,
+   "dur": 0.7,
+   "amp": 1.1
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 0.1,
+   "dur": 2.2,
+   "text": "😳",
+   "x": 840,
+   "y": 560,
+   "size": 160
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 1.2,
+   "dur": 1.6,
+   "text": "?!",
+   "x": 210,
+   "y": 1060,
+   "size": 150,
+   "color": "#ffd23f",
+   "rot": -12
+  },
+  {
+   "type": "banner",
+   "line": 8,
+   "dt": 1.95,
+   "dur": 1.2,
+   "text": "מי אישר את זה?!",
+   "y": 880,
+   "size": 125,
+   "color": "#ffd23f"
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 0.1,
+   "dur": 1.5,
+   "text": "😅",
+   "x": 830,
+   "y": 640,
+   "size": 150
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 1.2,
+   "dur": 2.4,
+   "text": "👇",
+   "x": 540,
+   "y": 1180,
+   "size": 130
+  },
+  {
+   "type": "vignette",
+   "line": 11,
+   "dur": 3.0
+  },
+  {
+   "type": "shake",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 0.8,
+   "amp": 1.2
+  },
+  {
+   "type": "flash",
+   "line": 11,
+   "dt": 3.1,
+   "dur": 0.3
+  }
+ ],
+ "music": {
+  "bpm": 112,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 4,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 5,
+     "dt": 0.3
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 8,
+     "dt": -0.05
+    },
+    "stop"
+   ],
+   [
+    {
+     "line": 10,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 11,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 11,
+     "dt": 3.0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "roar",
+   "line": 0,
+   "dt": 0.0,
+   "gain": 0.9
+  },
+  {
+   "name": "whoosh",
+   "line": 0,
+   "dt": 1.1
+  },
+  {
+   "name": "ding",
+   "line": 1,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 0.3,
+   "repeat": 20,
+   "every": 0.2,
+   "gain": 0.7
+  },
+  {
+   "name": "sparkle",
+   "line": 2,
+   "dt": 2.4
+  },
+  {
+   "name": "boom",
+   "line": 3,
+   "dt": 0.0
+  },
+  {
+   "name": "sting",
+   "line": 4,
+   "dt": 0.25
+  },
+  {
+   "name": "roar",
+   "line": 4,
+   "dt": 2.55
+  },
+  {
+   "name": "whoosh",
+   "line": 5,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 6,
+   "dt": -0.2
+  },
+  {
+   "name": "tada",
+   "line": 6,
+   "dt": 3.5
+  },
+  {
+   "name": "kaching",
+   "line": 6,
+   "dt": 3.9
+  },
+  {
+   "name": "snore",
+   "line": 7,
+   "dt": 0.3,
+   "gain": 0.8
+  },
+  {
+   "name": "scratch",
+   "line": 8,
+   "dt": -0.15
+  },
+  {
+   "name": "boing",
+   "line": 8,
+   "dt": 1.95
+  },
+  {
+   "name": "cricket",
+   "line": 9,
+   "dt": 0.0
+  },
+  {
+   "name": "whoosh",
+   "line": 10,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 10,
+   "dt": 1.2
+  },
+  {
+   "name": "roar",
+   "line": 11,
+   "dt": 0.05
+  },
+  {
+   "name": "sting",
+   "line": 11,
+   "dt": 2.0,
+   "gain": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 11,
+   "dt": 3.1
+  }
+ ],
+ "caption": "יום 2 בממלכה של משפחת ספיר 👑 סופר ספיר נפתח! (ומישהו בנה שם פינת עישון 😳)\nכל מי שמגיב מקבל בית, ועוקבים מקבלים אזרחות. והדרקונים... הם מתקרבים 🐉\nמה לבנות מחר? כתבו בתגובות 👇 ותייגו חבר שיגור לידכם\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #סופר_ספיר #כל_תגובה_בית",
+ "firstComment": "מה בונים מחר? 👇 התגובה עם הכי הרבה לייקים נבנית, וכל מגיב מקבל בית בממלכה 🏠",
+ "notes": "Winner: סופר ספיר (8 likes, also proposed by noga_buhnik; Michael asked to credit Noga). Skipped: statue and palace of Shiran Sapir (4, a real person; maybe later with Michael's OK), Eiffel tower (2, next in line), Bennett statue (politics), Bibi and Trump (politics), twin towers with a plane (violence), SpongeBob and Avengers (brands), Tel Batata mentions (ignored by rule)."
 }
