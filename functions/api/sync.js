@@ -11,8 +11,10 @@ export async function onRequest({ request, env }) {
     const { igToken } = await import('../_lib.js'), t = await igToken(env), G = 'https://graph.instagram.com/v21.0';
     const media = await fetch(`${G}/${env.IG_USER_ID ?? 'me'}/media?fields=id,timestamp,comments_count,media_type&limit=3&access_token=${t}`).then(r => r.json());
     const first = media.data?.[0]?.id, comments = first ? await fetch(`${G}/${first}/comments?fields=id,text,username,from,timestamp&limit=10&access_token=${t}`).then(r => r.json()) : null;
+    const fid = comments?.data?.find(c => c.from?.username && c.from.username !== 'sapirkingdom')?.from?.id;
+    const follow = fid ? await fetch(`${G}/${fid}?fields=username,is_user_follow_business,is_business_follow_user,follower_count&access_token=${t}`).then(r => r.json()) : null;
     const state = (await env.DB.prepare("SELECT k, v FROM state WHERE k LIKE 'sync%'").all()).results;
-    return json({ user: env.IG_USER_ID ?? null, media, comments, state });
+    return json({ user: env.IG_USER_ID ?? null, follow, media, comments, state });
   }
   let r = await find();
   const out = r ? { ran: false } : await sync(env, { force: auth, replies: auth ? 15 : 6 });
