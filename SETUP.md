@@ -6,14 +6,14 @@
 פותחים Gmail חדש, למשל `sapir.kingdom@gmail.com`. כל השלבים הבאים נרשמים איתו.
 
 ## 2. אינסטגרם (5 דקות)
-1. נרשמים לאינסטגרם עם המייל החדש. שם משתמש: `sapir.kingdom` (אם תפוס, תגיד לי ואעדכן בקוד).
+1. נרשמים לאינסטגרם עם המייל החדש. שם משתמש: `sapirkingdom` (אם תפוס, תגיד לי ואעדכן בקוד).
 2. הגדרות ← סוג חשבון ← מעבר לחשבון מקצועי ← Creator.
 3. **לא** מוסיפים אותו ל-Accounts Center של החשבון שלך. ככה הם לא מקושרים.
 
 ## 3. אפליקציית Meta (10 דקות, אפשר יחד איתי בדפדפן)
 1. developers.facebook.com ← Create app ← Business ← מוסיפים את **Instagram** ← "API setup with Instagram login".
    (Meta דורשת להיכנס עם פייסבוק כדי להיות מפתח. זה לא נראה לאף אחד ולא מקשר את החשבונות.)
-2. "Generate access tokens" ← Add account ← מתחברים עם `sapir.kingdom` ← מעתיקים את הטוקן.
+2. "Generate access tokens" ← Add account ← מתחברים עם `sapirkingdom` ← מעתיקים את הטוקן.
 3. App settings ← Basic ← מעתיקים את ה-App secret.
 
 ## 4. Cloudflare (5 דקות)
