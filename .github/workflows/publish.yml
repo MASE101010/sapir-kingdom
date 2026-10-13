@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm }
-      - run: npm ci && npx playwright-core install --with-deps chromium-headless-shell && sudo apt-get install -y ffmpeg
+      - run: npm ci && npx playwright-core install --with-deps chromium && sudo apt-get install -y ffmpeg
       - run: node tools/env.mjs
         env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
       - if: env.READY == '1'
