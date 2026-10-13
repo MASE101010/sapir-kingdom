@@ -59,7 +59,7 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
     let replied = 0;
     for (const a of queue) {
       const r = await fetch(`${G}/${a.id}/replies`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${token}` }, body: JSON.stringify({ message: say[a.n % say.length](a.n.toLocaleString('he-IL')) }) }).then(r => r.json()).catch(() => ({ error: {} }));
-      await env.DB.prepare('UPDATE comments SET replied = CASE WHEN ? THEN COALESCE(replied, 0) - 1 ELSE 1 END WHERE id = ?').bind(r.error ? 1 : 0, a.id).run();   // a failed answer is tried again, three times if (!r.error) replied++;
+      await env.DB.prepare('UPDATE comments SET replied = CASE WHEN ? THEN COALESCE(replied, 0) - 1 ELSE 1 END WHERE id = ?').bind(r.error ? 1 : 0, a.id).run(); if (!r.error) replied++;   // a failed answer is tried again, three times
     }
     return { ran: true, read: comments.length, added: added.filter(a => a.newHouse).map(a => a.u), replied };
   } catch (e) {
