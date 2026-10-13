@@ -24,7 +24,7 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
    older than 6 hours, run the ingest workflow (`gh workflow run ingest.yml`, then `gh run watch`), pull, and continue.
 2. **Pick the winner.** Go down `comments` (already sorted by likes). Take the first that:
    - asks for a place or a thing that can stand in the kingdom (a café, a zoo, a rocket, a giant ice cream), or an
-     event in it (a festival, snow, a parade), or something Michael does (Michael opens a bakery);
+     event in it (a festival, snow, a parade), or something the king announces (a holiday, a parade);
    - is safe for children: no violence, weapons, sex, drugs, insults, politics, religion fights, real people, real brands;
    - is not already built (`kingdom.landmarks`) and not posted by the kingdom itself.
    Ties go to the earlier comment. Write the top three you skipped and why into the episode's `notes`.
@@ -33,7 +33,7 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
    `{ key, name, draw(p), top, live? }`, and one line in `site/app/landmarks/index.js`.
    - Take the lowest free lot in `plan.lots` (not used by any `kingdom.landmarks[].lot`); its radius `r` is how far from
      its centre you may draw (26 or 30). Draw around (0,0), front toward +z (the lot turns it to face the castle).
-   - Scale: a house is 10 m wide and 3 m a storey; Michael is 8 m tall. Landmarks are 30 to 55 m across.
+   - Scale: a house is 10 m wide and 3 m a storey; the king's statue is 24 m tall. Landmarks are 30 to 55 m across.
    - Quality bar: at least 150 shapes, a silhouette you recognise from far away, details that reward a close shot
      (windows, doors, signs, people-sized props, a tree or two). Look at `castle.js` for the style.
    - Signs with Hebrew letters: `live(group, THREE)` and `sign()` from `../sign.js`.
@@ -59,7 +59,7 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
    the winner, the funniest, the runners up ("אולי מחר!"), people who asked a question. Short, personal, in character,
    never the same sentence twice, no links. Skip anything rude rather than answering it.
 6. **Check and look.** `node tools/check.mjs --day N+1` must pass. Then
-   `node reel/render.mjs --day N+1 --frames 1,<rise>,<reveal>,<idcard>,<michael>` with `--dev` only if you need test
+   `node reel/render.mjs --day N+1 --frames 1,<rise>,<reveal>,<idcard>,<statue>` with `--dev` only if you need test
    houses, and look at every still with the Read tool. Fix: the subject hidden behind a house, a card covering the
    landmark or Michael, the landmark clipping its lot or floating, the camera inside a building, unreadable signs.
    At most three rounds.
