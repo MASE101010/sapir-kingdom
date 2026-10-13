@@ -21,5 +21,6 @@ export async function onRequest({ request, env }) {
   let r = await find();
   const out = r ? { ran: false } : await sync(env, { force: auth, replies: auth ? 15 : 6 });
   if (!r) r = await find();
-  return json({ ...(auth ? out : { ran: out.ran, wait: out.wait }), resident: r ? { ...row(r), n: r.n } : null });
+  const waiting = !r && u ? !!(await env.DB.prepare('SELECT 1 FROM comments WHERE u = ? AND house = 0').bind(u).first()) : false;
+  return json({ ...(auth ? out : { ran: out.ran, wait: out.wait }), resident: r ? { ...row(r), n: r.n } : null, waiting });
 }

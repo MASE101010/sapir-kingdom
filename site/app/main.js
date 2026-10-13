@@ -115,8 +115,11 @@ function site({ plan, residents, kingdom, honours }) {
     const d = await fetch(`api/sync?u=${encodeURIComponent(name)}`, { cache: 'no-store' }).then(r => r.json()).catch(() => ({}));
     if (d.resident) { residents.push(...await loadDelta(residents.length)); world.residents = residents; world.houses(); count();
       const k = find(residents, name); if (k >= 0) { err.hidden = true; mine = residents[k].u; store.set('kingdom-me', mine); openHouse(k); return; } }
+    if (d.waiting) { err.innerHTML = `ראינו את התגובה של <b dir="ltr">@${esc(name)}</b> 👋 שלחנו לך הודעה פרטית באינסטגרם (אם לא רואים, בדקו ב"בקשות הודעות").
+      עוקבים אחרי <b dir="ltr">@${esc(ACCOUNT)}</b>, כותבים לנו שם "בית", והבית נבנה מיד. <a class="btn gold" target="_blank" rel="noopener" href="https://ig.me/m/${esc(ACCOUNT)}">לכתוב "בית" עכשיו</a>`;
+      if (tries < 8) setTimeout(() => lookFor(name, tries + 1), 8000); return; }
     if (!d.ran && d.wait && tries < 3) { setTimeout(() => lookFor(name, tries + 1), Math.min(9000, d.wait + 500)); return; }
-    err.innerHTML = `עוד אין בית על השם <b dir="ltr">@${esc(name)}</b>. מגיבים על הריל האחרון של <b dir="ltr">@${esc(ACCOUNT)}</b>, חוזרים לכאן ומחפשים שוב: הבית נבנה מיד.
+    err.innerHTML = `עוד אין בית על השם <b dir="ltr">@${esc(name)}</b>. עוקבים אחרי <b dir="ltr">@${esc(ACCOUNT)}</b> ומגיבים על הריל האחרון, ותקבלו הודעה פרטית שתהפוך אתכם לאזרחים.
       <a class="btn gold" target="_blank" rel="noopener" href="https://www.instagram.com/${esc(ACCOUNT)}/">להגיב באינסטגרם</a> <button class="link" id="how">איך מקבלים בית?</button>`;
     $('how').onclick = () => openMenu('how');
   }
@@ -139,7 +142,7 @@ function site({ plan, residents, kingdom, honours }) {
           mine = me.u; store.set('kingdom-me', mine); store.set('kingdom-verified', mine); box.hidden = true; const k = find(residents, me.u); if (k >= 0) openHouse(k); return; }
         setTimeout(poll, 3000); };
       poll();
-    } catch { box.innerHTML = `<p>הכי פשוט: מגיבים על הריל האחרון של <b dir="ltr">@${esc(ACCOUNT)}</b>. הבית שלכם נבנה מיד, ומיכאל עונה לכם בתגובה.</p>
+    } catch { box.innerHTML = `<p>הכי פשוט: מגיבים על הריל האחרון של <b dir="ltr">@${esc(ACCOUNT)}</b>. מיכאל שולח לכם הודעה פרטית, עונים לו "בית", ואם אתם עוקבים הבית נבנה מיד.</p>
       <a class="btn gold" target="_blank" rel="noopener" href="https://www.instagram.com/${esc(ACCOUNT)}/">לאינסטגרם של הממלכה</a>`; }
   }
 
@@ -168,7 +171,7 @@ function site({ plan, residents, kingdom, honours }) {
         ${keys.length ? `<p>הזוכה האחרון: <b dir="ltr">@${esc(keys.at(-1))}</b></p><ul class="people">${keys.slice().reverse().map(u => `<li><button class="link" data-u="${esc(u)}" dir="ltr">@${esc(u)}</button></li>`).join('')}</ul>` : '<p class="note">ההגרלה הראשונה מחר. כל מי שמצטרף היום משתתף.</p>'}`; },
       people: () => `<h2>התושבים</h2><div class="tabs"><button class="tab on" data-t="new">חדשים</button><button class="tab" data-t="old">הראשונים</button></div><ul class="people" id="plist"></ul>`,
       how: () => `<h2>איך מקבלים בית?</h2><ol class="steps"><li>עוקבים אחרי <b dir="ltr">@${esc(ACCOUNT)}</b> באינסטגרם.</li><li>מגיבים על הריל האחרון. מה שתכתבו יכול גם לקבוע מה נבנה מחר.</li>
-        <li>הבית שלכם נבנה מיד, ותוך כמה דקות מיכאל עונה לכם בתגובה עם מספר הבית.</li><li>מחפשים את השם שלכם ב"איפה הבית שלי?" ומקבלים רחוב ומספר.</li></ol>
+        <li>עוקבים אחרי הממלכה. תוך דקה מגיעה הודעה פרטית ממיכאל (בדקו גם ב"בקשות הודעות"), עונים לו "בית", ומקבלים אזרחות ובית עם מספר.</li><li>מחפשים את השם שלכם ב"איפה הבית שלי?" ומקבלים רחוב ומספר.</li></ol>
         <p class="note">לא מוצאים? בדקו שהשם כתוב בדיוק כמו באינסטגרם, ושהתגובה היא על פוסט של הממלכה.</p>`,
       places: () => `<h2>מקומות בממלכה</h2><div class="places-grid">${Object.entries(world.lm).map(([k, l]) => { const b = (kingdom.landmarks ?? []).find(x => x.key === k);
         return `<button class="place" data-k="${k}"><b>${esc(l.mod.name)}</b><span>${k === 'castle' ? 'כאן הכל התחיל, ביום 1' : `נבנה ביום ${b?.day ?? '?'}${b?.by?.length ? ` לבקשת <span dir="ltr">@${esc(b.by[0])}</span>` : ''}`}</span></button>`; }).join('')}</div>`,
