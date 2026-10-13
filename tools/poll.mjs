@@ -7,3 +7,5 @@ const d = await fetch(`${SITE_URL}/api/sync`, { method: 'POST', headers: { autho
 console.log(JSON.stringify(d));
 console.log(`::notice title=sync::read ${d.read ?? 0} comments, new houses: ${(d.added ?? []).join(" ") || "none"}, replies ${d.replied ?? 0}${d.error ? ", error: " + d.error : ""}`);
 if (d.error) process.exitCode = 1;
+if (process.env.DEBUG) { const x = await fetch(`${SITE_URL}/api/export`, { headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(r => r.json());
+  console.log(`::notice title=kingdom::residents ${x.residents.length}: ${x.residents.slice(-15).map(r => r.u).join(' ')} | comments ${x.comments.length}: ${x.comments.slice(-12).map(c => `${c.u}: ${c.text}`).join(' || ').slice(0, 2500)}`); }
