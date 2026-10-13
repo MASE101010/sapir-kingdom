@@ -14,5 +14,5 @@ console.log(`::notice title=sync::read ${d.read ?? 0} comments, waiting: ${(d.wa
 if (d.error) process.exitCode = 1;
 if (process.env.DEBUG) { const x = await fetch(`${SITE_URL}/api/export`, { headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(r => r.json());
   const res = new Set(x.residents.map(r => r.u)), who = [...new Set(x.comments.map(c => c.u))].filter(u => u !== 'sapirkingdom');
-  console.log(`::notice title=count::commenters ${who.length}, with a house ${who.filter(u => res.has(u)).length}, waiting: ${who.filter(u => !res.has(u)).join(' ')}`);
+  console.log(`::notice title=count::citizens ${x.residents.filter(r => r.citizen).length}, commenters ${who.length}, with a house ${who.filter(u => res.has(u)).length}, waiting: ${who.filter(u => !res.has(u)).join(' ')}`);
   console.log(`::notice title=kingdom::residents ${x.residents.length}: ${x.residents.slice(-15).map(r => r.u).join(' ')} | comments ${x.comments.length}: ${x.comments.slice(-12).map(c => `${c.u}: ${c.text}`).join(' || ').slice(0, 2500)}`); }
