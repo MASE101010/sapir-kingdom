@@ -22,4 +22,4 @@ jobs:
       - if: env.READY == '1'
         name: the kingdom's clock (a Worker woken every minute)
         continue-on-error: true
-        run: npx wrangler@3 deploy --config cron/wrangler.toml
+        run: npx wrangler@3 deploy --config cron/wrangler.toml > clock.log 2>&1 || { grep -iE 'error|permission|auth|code' clock.log | head -4 | sed 's/^/::warning title=clock::/'; exit 1; }
