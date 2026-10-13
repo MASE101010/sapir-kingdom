@@ -42,7 +42,7 @@ if (stills) {                                   // a few stills to look at, no v
   const audio = info.audio && existsSync(join(root, info.audio)) ? join(root, info.audio) : null;
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-',
     ...(audio ? ['-ss', String(from), '-i', audio] : []),
-    '-vf', 'scale=1080:1920', '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-pix_fmt', 'yuv420p', '-r', String(fps),
+    '-vf', 'scale=1080:1920', '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-maxrate', '3.8M', '-bufsize', '7.6M', '-pix_fmt', 'yuv420p', '-r', String(fps),
     ...(audio ? ['-c:a', 'aac', '-b:a', '192k', '-shortest'] : []), '-movflags', '+faststart', out], { stdio: ['pipe', 'inherit', 'inherit'] });
   const t0 = Date.now();
   for (let i = 0; i < n; i++) {
