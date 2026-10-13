@@ -115,7 +115,7 @@ function site({ plan, residents, kingdom, honours }) {
     const d = await fetch(`api/sync?u=${encodeURIComponent(name)}`, { cache: 'no-store' }).then(r => r.json()).catch(() => ({}));
     if (d.resident) { residents.push(...await loadDelta(residents.length)); world.residents = residents; world.houses(); count();
       const k = find(residents, name); if (k >= 0) { err.hidden = true; mine = residents[k].u; store.set('kingdom-me', mine); openHouse(k); return; } }
-    if (d.waiting) { err.innerHTML = `ראינו את התגובה של <b dir="ltr">@${esc(name)}</b> 👋 שלחנו לך הודעה פרטית באינסטגרם (אם לא רואים, בדקו ב"בקשות הודעות").
+    if (d.pending) { err.innerHTML = `ראינו את התגובה של <b dir="ltr">@${esc(name)}</b> 👋 שלחנו לך הודעה פרטית באינסטגרם (אם לא רואים, בדקו ב"בקשות הודעות").
       עוקבים אחרי <b dir="ltr">@${esc(ACCOUNT)}</b>, כותבים לנו שם "בית", והבית נבנה מיד. <a class="btn gold" target="_blank" rel="noopener" href="https://ig.me/m/${esc(ACCOUNT)}">לכתוב "בית" עכשיו</a>`;
       if (tries < 8) setTimeout(() => lookFor(name, tries + 1), 8000); return; }
     if (!d.ran && d.wait && tries < 3) { setTimeout(() => lookFor(name, tries + 1), Math.min(9000, d.wait + 500)); return; }
