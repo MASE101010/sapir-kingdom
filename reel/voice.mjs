@@ -4,7 +4,7 @@
 // env: ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID   node reel/voice.mjs --day 3
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-const day = +process.argv[process.argv.indexOf('--day') + 1], GAP = +(process.env.VOICE_GAP ?? .2), TEMPO = +(process.env.VOICE_TEMPO ?? 1.1);
+const day = +process.argv[process.argv.indexOf('--day') + 1], GAP = +(process.env.VOICE_GAP ?? .2), TEMPO = +(process.env.VOICE_TEMPO ?? 1.2);
 const ep = JSON.parse(readFileSync(`site/episodes/day${day}.json`, 'utf8'));
 // Michael made this day's voice himself (reel/own-voice.mjs): keep it
 try { if ((v => v.own || v.keep)(JSON.parse(readFileSync(`site/episodes/day${day}.voice.json`, 'utf8'))) && existsSync(`site/episodes/day${day}.mp3`)) { console.log(`day ${day}: Michael's own voice, kept`); process.exit(0); } } catch { }
