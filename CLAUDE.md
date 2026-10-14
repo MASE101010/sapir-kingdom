@@ -102,6 +102,8 @@ Keep reels about 30 seconds. Captions: at most three words, cut at the voice's p
   the gold key draw, `בית N` and `גר עם @x` by private message) is for followers: Instagram shows whether someone follows only
   after they wrote to us, so non-citizens get a private message asking them to follow and write "בית". Pick the gold key
   among citizens. Michael chose this to get people taking part; if the kingdom grows a lot he may want houses for followers only.
+- A golden house (`residents.gold`): whoever shares a reel to their story and tags @sapirkingdom. Instagram sends the
+  mention to our chats; the sync (or the webhook) gilds the house and thanks them. Remind people in reels and stories.
 - The king answers every comment (`functions/_replies.js`): he reads what was written (an idea, a house request, an
   emoji, a question, something rude, another city page) and answers it in character; to someone new it also says their
   house is built. Add lines and topics there when the comments bring new kinds of ideas. Never comment on other pages.

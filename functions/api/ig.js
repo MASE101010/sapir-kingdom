@@ -28,7 +28,8 @@ export async function onRequestPost({ request, env, waitUntil }) {
       if (!from || m.message?.is_echo || from === env.IG_USER_ID) continue;
       if (!code) {                                   // any other message: a follower becomes a citizen, others are asked to follow
         if (m.message?.mid && !(await env.DB.prepare('INSERT OR IGNORE INTO state (k, v) VALUES (?, ?)').bind(`msg:${m.message.mid}`, String(Date.now())).run()).meta.changes) continue;
-        waitUntil(fromDM(env, from, text)); continue;
+        const shared = (m.message?.attachments ?? []).some(a => /story/i.test(a.type ?? ''));
+        waitUntil(fromDM(env, from, text, { shared })); continue;
       }
       const row = await env.DB.prepare('SELECT device, at, u, host FROM codes WHERE code = ?').bind(code).first();
       if (!row || Date.now() - row.at > 20 * 60e3) { waitUntil(say(env, from, 'הקוד הזה לא מוכר או שפג תוקפו. בקשו קוד חדש באתר.')); continue; }

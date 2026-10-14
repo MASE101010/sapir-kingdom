@@ -11,6 +11,13 @@ import { riverDist, riverBend } from './river.js';
 const GRASS = 0x86c766, FIELD = 0x9fd27a, ROAD = 0x6f737b, ROAD_LINE = 0xf4f1e8, WATER = 0x3fa9d6, SAND = 0xe8dcb5, STONE = 0xd2c8b2, ROOF = 0x2f5fa6;
 const hash = (a, b) => { let h = Math.imul(a * 73856093 ^ b * 19349663, 2654435761); h ^= h >>> 15; return (h >>> 0) / 4294967296; };
 
+/** turns what was drawn since a mark into gold: light colours to gold, the middle ones to a deeper gold, dark ones stay */
+function gild(p, from) {
+  for (const [kind, a] of Object.entries(p.parts)) for (let i = (from[kind] ?? 0) * 8; i < a.length; i += 8) {
+    const c = a[i + 7], l = (((c >> 16) & 255) * .3 + ((c >> 8) & 255) * .59 + (c & 255) * .11) / 255;
+    a[i + 7] = l > .72 ? 0xf6d365 : l > .38 ? 0xe8b323 : l > .2 ? 0xb8860b : c;
+  }
+}
 export class World {
   constructor(renderer, plan, residents, kingdom) {
     Object.assign(this, { renderer, plan, residents, kingdom });
@@ -120,8 +127,9 @@ export class World {
     this.homeMarks = [p.mark()];
     this.residents.forEach((r, k) => {
       const people = this.byPlot.get(r.plot), pl = this.plan.plots[r.plot];
-      if (pl && people[0] === k) { p.at(pl[0], pl[1], pl[2]); const n = people.length;
-        n > 1 ? drawShared(p, r, n) : drawHome(p, r, 1 + (up[r.u] ?? 0)); }
+      if (pl && people[0] === k) { p.at(pl[0], pl[1], pl[2]); const n = people.length, before = p.mark();
+        n > 1 ? drawShared(p, r, n) : drawHome(p, r, 1 + (up[r.u] ?? 0));
+        if (people.some(j => this.residents[j].gold)) gild(p, before); }
       this.homeMarks.push(p.mark());
     });
     this.homes = p; this.homeGroup = p.build(); this.scene.add(this.homeGroup);
