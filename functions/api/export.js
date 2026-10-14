@@ -12,7 +12,9 @@ export async function onRequestGet({ request, env }) {
 }
 export async function onRequestPost({ request, env }) {
   if (!allowed(request, env)) return json({ error: 'unauthorized' }, 401);
-  const { day, ig_token, comments } = await request.json();
+  const { day, ig_token, comments, home } = await request.json();
+  // the daily run gives a house style (the gold key winner's villa): { home: { u, kind } }
+  if (home?.u && Number.isInteger(home.kind)) { await env.DB.prepare('UPDATE residents SET home = ?, changed = ? WHERE u = ?').bind(home.kind, Date.now(), String(home.u).toLowerCase()).run(); return json({ ok: true, home }); }
   // comments read by the poller: keep each once, build the commenter's house, say which are new
   if (Array.isArray(comments)) return json({ added: await takeComments(env, comments) });
   if (ig_token) { await env.DB.prepare("INSERT INTO state (k, v) VALUES ('ig_token', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v").bind(ig_token).run(); return json({ ok: true }); }

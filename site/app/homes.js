@@ -72,7 +72,32 @@ function palace(p, h) {
   p.cone(-3.4, 7.75, 1.2, 2.8, 2.6, 0x2f5fa6); p.cone(3.4, 7.75, 1.2, 2.8, 2.6, 0x2f5fa6);
   p.ball(0, 5.35, -.8, 4.4, 4, 0xe8b323); p.box(0, .15, 2.02, 1.4, 2.4, .1, DOORS[pickFrom(h, 2, DOORS.length)]); windows(p, 1.6, 7, 4.6, 2);
 }
-export const HOMES = [cottage, block, turret, cabin, windmill, treehouse, lighthouse, palace];
+// the golden villa: the gold key winner's house. A two-storey modern villa in gold and white, a pool with loungers and
+// an umbrella, palm trees, a golden gate, and a little gold crown on the roof
+function villa(p, h) {
+  const GOLD = 0xe8b323, PALE = 0xf6d365, WHITE = 0xfffaf0, GLASS = 0x7fc3dd, WATER = 0x3fb6e8;
+  p.box(0, 0, 0, 10.6, .15, 10.6, 0x8fd16f); p.box(1.6, 0, 3.9, 1.8, .2, 2.8, 0xf3ead8);
+  // the pool, its rim, and the water
+  p.box(-2.4, .15, 2.2, 4.8, .35, 3.8, WHITE); p.box(-2.4, .2, 2.2, 4.2, .35, 3.2, WATER);
+  for (const z of [1.2, 3.2]) { p.box(-5.3 + 1, .15, z, .9, .4, 1.8, WHITE); p.box(-5.3 + 1, .55, z - .7, .9, .4, .4, WHITE); }   // loungers
+  p.cyl(-.4, .15, 4.3, .15, 2.6, 0x9aa3ab); p.cone(-.4, 2.75, 4.3, 3, .9, GOLD); p.cone(-.4, 2.7, 4.3, 2.4, .7, WHITE);           // the umbrella
+  // the villa: a gold ground floor with big windows, a white upper floor with a balcony, flat roofs with gold trim
+  p.box(1.4, .15, -1.8, 6.8, 3.1, 5.4, PALE); p.box(1.4, 3.25, -1.8, 7, .3, 5.6, GOLD);
+  p.box(1.4, .5, .92, 5.6, 2.2, .1, GLASS); for (const x of [-.4, 1.4, 3.2]) p.box(x, .5, .98, .15, 2.2, .1, GOLD);
+  p.box(.8, 3.55, -2.6, 5, 2.6, 3.8, WHITE); p.box(.8, 6.15, -2.6, 5.2, .3, 4, GOLD);
+  p.box(.8, 4, -.68, 4.2, 1.6, .1, GLASS); p.box(.8, 3.55, -.3, 5, .9, .08, 0xbfe4f2); p.box(.8, 4.45, -.3, 5, .12, .12, GOLD);   // the balcony
+  p.box(4.4, .15, .95, 1.4, 2.6, .1, 0x7a5a3a); p.box(4.4, 2.75, 1, 1.8, .25, .2, GOLD);                                          // the door
+  p.ball(.8, 6.45, -2.6, 1.2, .8, GOLD); for (const dx of [-.45, 0, .45]) p.cone(.8 + dx, 7.05, -2.6, .3, .6, GOLD);                 // a crown on the roof
+  // palm trees
+  for (const [x, z, s] of [[4.6, 3.6, 1], [-4.4, -3.8, 1.15], [4.5, -4.2, .9]]) {
+    p.cyl(x, 0, z, .45 * s, 5.2 * s, 0x9b6b3f);
+    for (let k = 0; k < 5; k++) { const a = k / 5 * Math.PI * 2; p.box(x + Math.cos(a) * 1.1 * s, 5 * s, z + Math.sin(a) * 1.1 * s, 2.4 * s, .25, .8 * s, 0x3f9a4a, -a); }
+    p.ball(x, 4.9 * s, z, .9 * s, .7 * s, 0x6b4a2a); }
+  // the golden gate
+  for (const x of [-5.1, -3.9, 3.0, 5.1]) p.box(x, 0, 5.1, .3, 1.4, .3, GOLD);
+  p.box(-4.5, 1.1, 5.1, 1.4, .15, .15, GOLD); p.box(4.05, 1.1, 5.1, 2.2, .15, .15, GOLD);
+}
+export const HOMES = [cottage, block, turret, cabin, windmill, treehouse, lighthouse, palace, villa];
 /** a house shared by friends: two or three get a heart on the roof, four or more a block of flats, eleven or more a tower */
 export function drawShared(p, r, count) {
   const H = pickFrom(r.h, 3, 3) ? 0xfbf8f1 : 0xf1e4cf;

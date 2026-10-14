@@ -34,7 +34,7 @@ export async function startReel({ renderer, data, day }) {
   // the residents as they were at the end of this day: a reel of an old day never shows newer houses
   // ep.demo: example residents only in this reel ("your.name"), to show what a new house and its ID card look like
   const demo = ep.demo ?? [], upTo = ep.houses?.to ?? data.residents.length + demo.length, last = Math.max(-1, ...data.residents.map(r => r.plot));
-  const residents = [...data.residents.slice(0, upTo - demo.length), ...demo.map((d, i) => ({ u: d.u, h: fingerprint(d.u), plot: last + 1 + i, day: ep.day, src: 'demo', gold: d.gold ? 1 : undefined }))];
+  const residents = [...data.residents.slice(0, upTo - demo.length), ...demo.map((d, i) => ({ u: d.u, h: fingerprint(d.u), plot: last + 1 + i, day: ep.day, src: 'demo', gold: d.gold ? 1 : undefined, home: d.home }))];
   // a preview (?dev) may stand landmarks that are not built yet, to try them out
   const preview = new URLSearchParams(location.search).has('dev') ? ep.preview?.landmarks ?? [] : [];
   const world = new World(renderer, data.plan, residents, { ...data.kingdom, landmarks: [...(data.kingdom.landmarks ?? []), ...preview], visit: ep.visit ?? null });
