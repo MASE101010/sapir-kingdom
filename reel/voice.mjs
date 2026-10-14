@@ -7,14 +7,14 @@ import { execFileSync } from 'node:child_process';
 const day = +process.argv[process.argv.indexOf('--day') + 1], GAP = .35;
 const ep = JSON.parse(readFileSync(`site/episodes/day${day}.json`, 'utf8'));
 // Michael made this day's voice himself (reel/own-voice.mjs): keep it
-try { if (JSON.parse(readFileSync(`site/episodes/day${day}.voice.json`, 'utf8')).own && existsSync(`site/episodes/day${day}.mp3`)) { console.log(`day ${day}: Michael's own voice, kept`); process.exit(0); } } catch { }
+try { if ((v => v.own || v.keep)(JSON.parse(readFileSync(`site/episodes/day${day}.voice.json`, 'utf8'))) && existsSync(`site/episodes/day${day}.mp3`)) { console.log(`day ${day}: Michael's own voice, kept`); process.exit(0); } } catch { }
 const { ELEVENLABS_API_KEY: key, ELEVENLABS_VOICE_ID: voice, ELEVENLABS_MODEL: model = 'eleven_v3' } = process.env;
 mkdirSync('out/voice', { recursive: true });
 const lines = [], words = []; let t = .4; const parts = [];
 for (const [i, text] of ep.lines.entries()) {
   const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}/with-timestamps?output_format=mp3_44100_128`, {
     method: 'POST', headers: { 'xi-api-key': key, 'content-type': 'application/json' },
-    body: JSON.stringify({ text, model_id: model, language_code: 'he', voice_settings: { stability: .45, similarity_boost: .8, style: .35 } }) });
+    body: JSON.stringify({ text, model_id: model, language_code: 'he', seed: 1000 + day, voice_settings: { stability: +(process.env.ELEVENLABS_STABILITY ?? .5), similarity_boost: .8, style: .35 } }) });
   if (!r.ok) throw new Error(`line ${i}: ${r.status} ${await r.text()}`);
   const d = await r.json(), file = `out/voice/day${day}-${i}.mp3`; writeFileSync(file, Buffer.from(d.audio_base64, 'base64'));
   const a = d.alignment, chars = a.characters, st = a.character_start_times_seconds, en = a.character_end_times_seconds;

@@ -1,0 +1,44 @@
+# Michael's voice for a day's script, for him to hear before anything is rendered: finds the voice by name (MICHA) in
+# the ElevenLabs account, makes dayN.mp3 + dayN.voice.json (keep: true, so publish.yml uses this one) and pushes them
+# to the branch voice/dayN. Nothing is posted.
+name: voice
+on: { workflow_dispatch: { inputs: { day: { required: true }, name: { default: 'MICHA' }, model: { default: '' } } } }
+permissions: { contents: write }
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: sudo apt-get install -y ffmpeg
+      - run: node tools/env.mjs
+        env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
+      - name: find the voice and the model
+        run: |
+          node -e '
+          const h = { "xi-api-key": process.env.ELEVENLABS_API_KEY }, want = process.argv[1].toLowerCase(), m0 = process.argv[2];
+          (async () => {
+            const v = await fetch("https://api.elevenlabs.io/v1/voices", { headers: h }).then(r => r.json());
+            const all = (v.voices ?? []).map(x => ({ id: x.voice_id, name: x.name }));
+            console.log("::notice title=voices::" + all.map(x => x.name).join(", ") + " | secret " + (process.env.ELEVENLABS_VOICE_ID ?? "-"));
+            const hit = all.find(x => x.name.toLowerCase() === want) ?? all.find(x => x.name.toLowerCase().includes(want));
+            const ms = await fetch("https://api.elevenlabs.io/v1/models", { headers: h }).then(r => r.json()).catch(() => []);
+            const ids = (Array.isArray(ms) ? ms : []).map(x => x.model_id);
+            const model = m0 || ids.find(x => /v4/.test(x)) || "eleven_v3";
+            console.log("::notice title=pick::voice " + (hit ? hit.name + " " + hit.id : "NOT FOUND") + " | model " + model + " | models " + ids.join(", "));
+            const fs = require("fs");
+            if (hit) fs.appendFileSync(process.env.GITHUB_ENV, "ELEVENLABS_VOICE_ID=" + hit.id + "\n");
+            fs.appendFileSync(process.env.GITHUB_ENV, "ELEVENLABS_MODEL=" + model + "\n");
+          })();' "${{ inputs.name }}" "${{ inputs.model }}"
+      - run: |
+          rm -f site/episodes/day${{ inputs.day }}.voice.json
+          node reel/voice.mjs --day ${{ inputs.day }} | tee out/voice.log
+          node -e 'const f=process.argv[1],v=JSON.parse(require("fs").readFileSync(f));v.keep=true;v.voice=process.env.ELEVENLABS_VOICE_ID;v.model=process.env.ELEVENLABS_MODEL;require("fs").writeFileSync(f,JSON.stringify(v))' site/episodes/day${{ inputs.day }}.voice.json
+          echo "::notice title=voice::$(tail -1 out/voice.log)"
+      - run: |
+          git config user.name "kingdom-bot"; git config user.email "kingdom-bot@users.noreply.github.com"
+          git checkout -b voice/day${{ inputs.day }}
+          git add -f site/episodes/day${{ inputs.day }}.mp3 site/episodes/day${{ inputs.day }}.voice.json
+          git commit -m "voice for day ${{ inputs.day }} (to hear)" && git push -f origin voice/day${{ inputs.day }}
