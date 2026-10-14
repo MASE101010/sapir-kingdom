@@ -7,6 +7,7 @@
 // Instagram allows only so many calls an hour, so a sync runs at most once every GAP ms, and backs off after a limit error.
 import { addResident, igToken } from './_lib.js';
 import { HOMES, COMMON } from '../site/app/catalog.js';
+import { reply } from './_replies.js';
 const G = 'https://graph.instagram.com/v21.0', GAP = 8000, BACKOFF = 10 * 60e3;
 const say = [n => `ברוכים הבאים לממלכה! הבית שלך, מספר ${n}, כבר עומד 🏠 חפשו את השם שלכם באתר שבביו`,
   n => `נבנה לך בית! מספר ${n}. כנסו לאתר שבביו ותמצאו אותו 👑`, n => `תושב חדש! בית מספר ${n} בממלכה הוא שלך. הקישור בביו 🏰`,
@@ -31,7 +32,7 @@ export async function takeComments(env, comments) {
     const u = String(c.u).toLowerCase(); if (u === self) continue;     // the kingdom's own comments
     const fresh = await env.DB.prepare('INSERT OR IGNORE INTO comments (id, media, u, text, at, uid) VALUES (?, ?, ?, ?, ?, ?)').bind(c.id, c.media ?? null, u, c.text ?? '', Date.now(), c.uid ?? null).run();
     if (!fresh.meta.changes) continue;
-    if (await env.DB.prepare('SELECT n FROM residents WHERE u = ?').bind(u).first('n')) continue;
+    if (await env.DB.prepare('SELECT n FROM residents WHERE u = ?').bind(u).first('n')) { await env.DB.prepare('UPDATE comments SET house = 3 WHERE id = ?').bind(c.id).run(); continue; }   // a resident: an answer to what they wrote
     await env.DB.prepare('UPDATE comments SET house = 0 WHERE id = ?').bind(c.id).run(); out.push({ id: c.id, u });
   }
   return out;
@@ -52,7 +53,7 @@ export async function fromDM(env, sender, text = '', site = env.SITE_URL ?? 'htt
   if (!me) { me = await addResident(env, who.username, follows ? 'follow' : 'dm'); fresh = true;
     // a welcome under one comment of theirs (the first); their other comments are simply kept
     await env.DB.batch([env.DB.prepare('UPDATE comments SET house = 1 WHERE id = (SELECT id FROM comments WHERE u = ? AND house = 0 ORDER BY at LIMIT 1)').bind(u),
-      env.DB.prepare('UPDATE comments SET house = 2 WHERE u = ? AND house = 0').bind(u)]); }
+      env.DB.prepare('UPDATE comments SET house = 3 WHERE u = ? AND house = 0').bind(u)]); }
   if (follows && !me.citizen) { await env.DB.prepare('UPDATE residents SET citizen = 1, changed = ? WHERE u = ?').bind(Date.now(), u).run(); me.citizen = 1; made = true; }
   if (!follows) {                                                   // a house, but not yet a citizen
     if (fresh || style || mate || await once(`dmnofollow:${u}`, 5 * 60e3))
@@ -114,10 +115,10 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
     const { results: fresh } = await env.DB.prepare('SELECT c.id, c.u, c.uid, c.dm FROM comments c WHERE c.house = 0 ORDER BY c.at LIMIT ?').bind(replies * 3).all();
     const name = u => u.replace(/[._\d]+$/, '').replace(/[._]/g, ' ') || u, once = new Set();
     for (const c of fresh) {
-      if (once.has(c.u)) { await env.DB.prepare('UPDATE comments SET house = 2 WHERE id = ?').bind(c.id).run(); continue; }
+      if (once.has(c.u)) { await env.DB.prepare('UPDATE comments SET house = 3 WHERE id = ?').bind(c.id).run(); continue; }
       once.add(c.u); if (once.size > replies) break;
       const h = await addResident(env, c.u, 'comment'); if (!h) { await env.DB.prepare('UPDATE comments SET house = 2 WHERE id = ?').bind(c.id).run(); continue; }
-      await env.DB.batch([env.DB.prepare('UPDATE comments SET house = 1 WHERE id = ?').bind(c.id), env.DB.prepare('UPDATE comments SET house = 2 WHERE u = ? AND house = 0').bind(c.u)]);
+      await env.DB.batch([env.DB.prepare('UPDATE comments SET house = 1 WHERE id = ?').bind(c.id), env.DB.prepare('UPDATE comments SET house = 3 WHERE u = ? AND house = 0').bind(c.u)]);
       const who = c.uid ? await fetch(`${G}/${c.uid}?fields=username,is_user_follow_business&access_token=${token}`).then(r => r.json()).catch(() => ({})) : {};
       if (who.username && who.is_user_follow_business) { await env.DB.prepare('UPDATE residents SET citizen = 1, changed = ? WHERE u = ?').bind(Date.now(), h.u).run(); citizens.push(h.u); continue; }
       if (c.dm === 1) continue;                                      // told about citizenship before (an earlier rule)
@@ -135,9 +136,9 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
     }
     if (newest > since) await setState(env, 'dm_since', newest);
     // 3. a welcome under the comments of new citizens, a few each round
-    const { results: queue } = await env.DB.prepare('SELECT c.id, c.u, r.n, r.citizen FROM comments c JOIN residents r ON r.u = c.u WHERE (c.replied IS NULL OR c.replied = 2 OR c.replied BETWEEN -2 AND -1) AND c.house = 1 ORDER BY c.at LIMIT ?').bind(replies).all();
+    const { results: queue } = await env.DB.prepare('SELECT c.id, c.u, c.text, c.house, r.n, r.citizen FROM comments c JOIN residents r ON r.u = c.u WHERE (c.replied IS NULL OR c.replied = 2 OR c.replied BETWEEN -2 AND -1) AND c.house IN (1, 3) ORDER BY c.at LIMIT ?').bind(replies).all();
     for (const a of queue) {
-      const num = a.n.toLocaleString('he-IL'), r = await post(env, `${a.id}/replies`, { message: a.citizen ? `${say[a.n % say.length](num)} ואתם כבר אזרחים 👑` : invited[a.n % invited.length](a.u, num) });
+      const r = await post(env, `${a.id}/replies`, { message: reply(a, { fresh: a.house === 1, n: a.n, citizen: !!a.citizen }) });   // the king answers what they wrote
       await env.DB.prepare('UPDATE comments SET replied = CASE WHEN ? THEN (CASE WHEN replied > 0 THEN 0 ELSE COALESCE(replied, 0) END) - 1 ELSE 1 END WHERE id = ?').bind(r.error ? 1 : 0, a.id).run(); if (!r.error) replied++;   // a failed answer is tried again
     }
     return { ran: true, read: comments.length, waiting: waiting.map(w => w.u), invites, citizens, replied };
