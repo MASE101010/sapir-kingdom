@@ -20,7 +20,7 @@ jobs:
           node -e '
           const h = { "xi-api-key": process.env.ELEVENLABS_API_KEY }, want = process.argv[1].toLowerCase(), m0 = process.argv[2];
           (async () => {
-            const v = await fetch("https://api.elevenlabs.io/v1/voices", { headers: h }).then(r => r.json());
+            const v = await fetch("https://api.elevenlabs.io/v1/voices", { headers: h }).then(r => r.json()); if (!v.voices) console.log("::notice title=voices-error::" + JSON.stringify(v).slice(0, 300));
             const all = (v.voices ?? []).map(x => ({ id: x.voice_id, name: x.name }));
             console.log("::notice title=voices::" + all.map(x => x.name).join(", ") + " | secret " + (process.env.ELEVENLABS_VOICE_ID ?? "-"));
             const hit = all.find(x => x.name.toLowerCase() === want) ?? all.find(x => x.name.toLowerCase().includes(want));
@@ -34,7 +34,7 @@ jobs:
           })();' "${{ inputs.name }}" "${{ inputs.model }}"
       - run: |
           rm -f site/episodes/day${{ inputs.day }}.voice.json
-          node reel/voice.mjs --day ${{ inputs.day }} | tee out/voice.log
+          mkdir -p out; node reel/voice.mjs --day ${{ inputs.day }} > out/voice.log 2> out/voice.err || { echo "::notice title=voice-error::$(tail -c 600 out/voice.err | tr '\n' ' ')"; exit 1; }
           node -e 'const f=process.argv[1],v=JSON.parse(require("fs").readFileSync(f));v.keep=true;v.voice=process.env.ELEVENLABS_VOICE_ID;v.model=process.env.ELEVENLABS_MODEL;require("fs").writeFileSync(f,JSON.stringify(v))' site/episodes/day${{ inputs.day }}.voice.json
           echo "::notice title=voice::$(tail -1 out/voice.log)"
       - run: |
