@@ -47,7 +47,9 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
      once to every visitor ("חדש ביום N+1") and flies to it.
    - `honours.json`: `built[key] = { by: [winner], day: N+1 }`. The gold key (מפתח זהב): one resident who joined on
      day N, picked with the day number as the seed (`residents.filter(r => r.day === N)[(N * 7919) % count]`),
-     pushed to `given.key`.
+     pushed to `given.key`. The winner moves into the golden villa with a pool (`homes.js` style 8, "וילה מוזהבת"):
+     a new migration `UPDATE residents SET home = 8, changed = <now ms> WHERE u = '<winner>'`, and a story
+     "הזוכה גר בווילה" that evening (see `site/episodes/day906.json`).
 5. **Write the episode** `site/episodes/day{N+1}.json` (schema below). 40 to 58 seconds. The beats, in order:
    title (יום N+1) → how many live here now (counter, from yesterday's count to today's) → the winning comment card →
    building it (the landmark rises, a label with its name) → the reveal (an orbit round it) → the winner's ID card with
