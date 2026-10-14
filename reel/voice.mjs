@@ -4,7 +4,7 @@
 // env: ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID   node reel/voice.mjs --day 3
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-const day = +process.argv[process.argv.indexOf('--day') + 1], GAP = .35;
+const day = +process.argv[process.argv.indexOf('--day') + 1], GAP = +(process.env.VOICE_GAP ?? .2), TEMPO = +(process.env.VOICE_TEMPO ?? 1.1);
 const ep = JSON.parse(readFileSync(`site/episodes/day${day}.json`, 'utf8'));
 // Michael made this day's voice himself (reel/own-voice.mjs): keep it
 try { if ((v => v.own || v.keep)(JSON.parse(readFileSync(`site/episodes/day${day}.voice.json`, 'utf8'))) && existsSync(`site/episodes/day${day}.mp3`)) { console.log(`day ${day}: Michael's own voice, kept`); process.exit(0); } } catch { }
@@ -16,8 +16,13 @@ for (const [i, text] of ep.lines.entries()) {
     method: 'POST', headers: { 'xi-api-key': key, 'content-type': 'application/json' },
     body: JSON.stringify({ text, model_id: model, language_code: 'he', seed: 1000 + day, voice_settings: { stability: +(process.env.ELEVENLABS_STABILITY ?? .5), similarity_boost: .8, style: .35 } }) });
   if (!r.ok) throw new Error(`line ${i}: ${r.status} ${await r.text()}`);
-  const d = await r.json(), file = `out/voice/day${day}-${i}.mp3`; writeFileSync(file, Buffer.from(d.audio_base64, 'base64'));
-  const a = d.alignment, chars = a.characters, st = a.character_start_times_seconds, en = a.character_end_times_seconds;
+  const d = await r.json(), raw = `out/voice/day${day}-${i}.raw.mp3`, file = `out/voice/day${day}-${i}.mp3`; writeFileSync(raw, Buffer.from(d.audio_base64, 'base64'));
+  const a = d.alignment, chars = a.characters;
+  // cut the silence before the first letter and after the last, and speed up a little (TEMPO): timings follow
+  const spoken = chars.map((c, k) => /[\p{L}\p{N}]/u.test(c) ? k : -1).filter(k => k >= 0);
+  const from = Math.max(0, a.character_start_times_seconds[spoken[0]] - .06), to = a.character_end_times_seconds[spoken.at(-1)] + .12;
+  execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', raw, '-af', `atrim=${from}:${to},asetpts=PTS-STARTPTS,atempo=${TEMPO}`, '-c:a', 'libmp3lame', '-b:a', '192k', file]);
+  const st = a.character_start_times_seconds.map(x => Math.max(0, x - from) / TEMPO), en = a.character_end_times_seconds.map(x => Math.max(0, x - from) / TEMPO);
   // words: runs of letters outside [tags]
   let inTag = false, cur = null;
   chars.forEach((c, k) => { if (c === '[') inTag = true; if (inTag) { if (c === ']') inTag = false; cur = null; return; }
