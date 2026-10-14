@@ -41,3 +41,6 @@ jobs:
         run: |
           git config user.name "kingdom-bot"; git config user.email "kingdom-bot@users.noreply.github.com"
           git add site/data/kingdom.json site/episodes/*.voice.json && git commit -m "posted: day ${{ steps.day.outputs.n }}" && git push || echo "nothing to commit"
+      - if: env.READY == '1'
+        name: the site learns the reel is up (the bot's own commit does not start a deploy)
+        run: npx wrangler@3 pages deploy site --project-name sapir-kingdom --branch main --commit-dirty=true
