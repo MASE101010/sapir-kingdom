@@ -78,7 +78,9 @@ Michael approves the script first and makes the voice himself in ElevenLabs (voi
 with `[excited]` and no other tags). So: write `site/episodes/dayN.json`, send him the lines to approve, and stop. When
 his mp3 comes back, `node reel/own-voice.mjs --day N --mp3 <file>` lines it up (pauses → phrases → words) and writes
 `dayN.mp3` and `dayN.voice.json` with `own: true`; commit the mp3 with `git add -f`. `reel/voice.mjs` then keeps it.
-Keep reels about 30 seconds. Captions: at most three words, cut at the voice's pauses.
+Reels run about a minute (50 to 65 s, like the pages Michael measures us against), opening on action in the first second.
+Captions: at most three words, cut at the voice's pauses. Never make the voice yourself: the API key in KINGDOM_ENV
+cannot read voices and the API's v3 does not sound like his MICHA on Eleven v4 (`voice.yml` exists only as a fallback).
 
 ## Sound, effects, stories, posting
 
@@ -106,6 +108,8 @@ Keep reels about 30 seconds. Captions: at most three words, cut at the voice's p
   among citizens. Michael chose this to get people taking part; if the kingdom grows a lot he may want houses for followers only.
 - A golden house (`residents.gold`): whoever shares a reel to their story and tags @sapirkingdom. Instagram sends the
   mention to our chats; the sync (or the webhook) gilds the house and thanks them. Remind people in reels and stories.
+- Soldiers: a comment with "חייל" (or מתגייס) enlists: the king answers it and the house becomes the מגורים צבאיים
+  (homes.js style 9), except a gold key villa (8). Remind people in reels while the dragon story runs.
 - The king answers every comment (`functions/_replies.js`): he reads what was written (an idea, a house request, an
   emoji, a question, something rude, another city page) and answers it in character; to someone new it also says their
   house is built. Add lines and topics there when the comments bring new kinds of ideas. Never comment on other pages.
@@ -145,8 +149,9 @@ Keep reels about 30 seconds. Captions: at most three words, cut at the voice's p
 }
 ```
 
+Dragons: `"swarm": { "target", "line", "until", "R", "H" }` gathers them round a place, `"fire": [{ "line", "dt", "dur" }]` has dragon 0 breathe fire.
 Times hang on lines: `line` is the index of the line it starts with, `dt` shifts it in seconds, `dur` is how long.
-Shot targets: `castle`, `statue` (the king), `dragon:0` to `dragon:2` (follows a dragon),  `house:<handle>`, `landmark:<key>`, or `[x, y, z]`. A shot holds until the next one;
+Shot targets: `castle`, `statue` (the king), `dragon:0` to `dragon:2` (follows a dragon; with `"follow": true` yaw 0 is in front of its face),  `house:<handle>`, `landmark:<key>`, or `[x, y, z]`. A shot holds until the next one;
 the camera eases into it over `ease` seconds (1.6) and turns `orbit` degrees a second. `dist` in metres, `yaw` and
 `pitch` in degrees; on a `landmark:` target yaw 0 looks straight at its front (its signs). Cards stack at the top third; captions sit at 1290 to 1500 px; keep the subject between them.
 

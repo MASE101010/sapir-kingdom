@@ -3,6 +3,7 @@
 // with its front toward +z; the view moves it onto its lot. The daily run adds one file here and one line below.
 import { CASTLE } from './castle.js';
 import { BAKERY } from './bakery.js';
-import { SUPER } from './super.js';        // day 2: סופר ספיר      // the example: shown only in previews until a winning comment asks for a bakery
+import { SUPER } from './super.js';        // day 2: סופר ספיר
+import { BASE } from './base.js';          // day 3: צבא ההגנה לספירלנד
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE].map(l => [l.key, l]));
