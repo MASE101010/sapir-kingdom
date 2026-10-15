@@ -62,5 +62,31 @@
     "image": "stories/day3-4.jpg",
     "after": "reel:3",
     "about": "19:00 אורן עבר לווילה"
+  },
+  {
+    "id": "day4-1",
+    "at": "2026-10-16T05:30:00Z",
+    "image": "stories/day4-1.jpg",
+    "about": "08:30 מבזק בוקר: שני דרקונים חדשים"
+  },
+  {
+    "id": "day4-2",
+    "at": "2026-10-16T08:30:00Z",
+    "image": "stories/day4-2.jpg",
+    "about": "11:30 חידה: מה נבנה היום"
+  },
+  {
+    "id": "day4-3",
+    "at": "2026-10-16T13:00:00Z",
+    "image": "stories/day4-3.jpg",
+    "after": "reel:4",
+    "about": "16:00 ספירלנד נפתח"
+  },
+  {
+    "id": "day4-4",
+    "at": "2026-10-16T16:30:00Z",
+    "image": "stories/day4-4.jpg",
+    "after": "reel:4",
+    "about": "19:30 שחר עבר לווילה"
   }
 ]
