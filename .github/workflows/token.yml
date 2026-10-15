@@ -9,7 +9,7 @@ jobs:
       - run: node tools/env.mjs
         env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
       - if: ${{ inputs.fresh }}
-        name: a new token from Michael (the old one was invalidated): check it and keep it
+        name: a new token from Michael, checked and kept
         env: { NEW: '${{ secrets.IG_NEW_TOKEN }}' }
         run: |
           [ -n "$NEW" ] || { echo "::notice title=token::IG_NEW_TOKEN is empty"; exit 1; }
