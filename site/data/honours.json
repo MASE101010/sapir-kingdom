@@ -3,7 +3,8 @@
   "given": {
     "key": [
       "eiladhaim10_",
-      "oren_bakshi"
+      "oren_bakshi",
+      "shahar._.yosef"
     ]
   },
   "built": {
@@ -18,6 +19,12 @@
         "liroyrokach"
       ],
       "day": 3
+    },
+    "spirland": {
+      "by": [
+        "ofek_bell"
+      ],
+      "day": 4
     }
   }
 }

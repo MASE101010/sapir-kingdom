@@ -5,5 +5,6 @@ import { CASTLE } from './castle.js';
 import { BAKERY } from './bakery.js';
 import { SUPER } from './super.js';        // day 2: סופר ספיר
 import { BASE } from './base.js';          // day 3: צבא ההגנה לספירלנד
+import { SPIRLAND } from './spirland.js';  // day 4: ספירלנד
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND].map(l => [l.key, l]));

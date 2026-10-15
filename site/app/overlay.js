@@ -111,6 +111,24 @@ function effect(g, f, t) {
       g.translate(540 + sh, f.y ?? 760); g.rotate((f.rot ?? -4) * Math.PI / 180); g.scale(s, s);
       if (f.band) { g.fillStyle = f.band; g.fillRect(-620, -(f.size ?? 120) * .95, 1240, (f.size ?? 120) * 1.3); }
       text(g, f.text, 0, 0, { font: `400 ${f.size ?? 120}px ${DISPLAY}`, color: f.color ?? '#fff', stroke: 24, strokeColor: f.stroke ?? NAVY, drop: 10 }); break; }
+    case 'news': {                                   // a TV news flash: a red header with LIVE, the channel, the clock, and a ticker below
+      const sl = backOut(age / .4), y0 = f.y ?? 250;
+      g.translate((1 - sl) * 1100, 0);
+      g.fillStyle = RED; g.fillRect(0, y0, 1080, 132); g.fillStyle = '#8e2a1d'; g.fillRect(0, y0 + 126, 1080, 6);
+      text(g, f.text ?? 'מבזק חדשות מיוחד', 600, y0 + 96, { font: `400 86px ${DISPLAY}`, color: '#fff', stroke: 10, strokeColor: '#7a1f14' });
+      const blink = Math.sin(t * 6) > -.2; rr(g, 26, y0 + 34, 150, 64, 14); g.fillStyle = '#fff'; g.fill();
+      if (blink) { g.beginPath(); g.arc(56, y0 + 66, 12, 0, Math.PI * 2); g.fillStyle = RED; g.fill(); }
+      text(g, 'LIVE', 120, y0 + 81, { font: `800 38px ${BODY}`, color: RED, dir: 'ltr' });
+      g.fillStyle = NAVY; g.fillRect(0, y0 + 132, 1080, 64);
+      text(g, f.sub ?? 'חדשות הממלכה', 1050, y0 + 177, { font: `800 38px ${BODY}`, color: GOLD, align: 'right' });
+      text(g, f.clock ?? '15:00', 40, y0 + 177, { font: `800 38px ${BODY}`, color: '#fff', align: 'left', dir: 'ltr' });
+      if (f.ticker) { const ty = f.ty ?? 1560; g.fillStyle = NAVY; g.fillRect(0, ty, 1080, 74); g.fillStyle = GOLD; g.fillRect(0, ty, 190, 74);
+        text(g, 'עכשיו', 95, ty + 52, { font: `800 40px ${BODY}`, color: NAVY });
+        g.save(); g.beginPath(); g.rect(190, ty, 890, 74); g.clip(); g.font = `700 42px ${BODY}`; g.direction = 'rtl';
+        const w = g.measureText(f.ticker).width + 120, x = 190 + ((age * 170) % w) - w + 890;
+        for (const dx of [0, w]) text(g, f.ticker, x + dx, ty + 52, { font: `700 42px ${BODY}`, color: '#fff', align: 'right' });
+        g.restore(); }
+      break; }
     case 'confetti': { const cols = [GOLD, RED, TEAL, '#ffffff', '#3b6fb6', '#7a4f9a'];
       for (let i = 0; i < (f.n ?? 140); i++) { const x = rnd(i) * 1080 + Math.sin(age * 3 + i) * 40, y = -60 + (age * (380 + rnd(i + 7) * 520)) + rnd(i + 3) * -700, w = 14 + rnd(i + 5) * 16;
         if (y < -40 || y > 1960) continue; g.save(); g.translate(x, y); g.rotate(age * 6 + i); g.fillStyle = cols[i % cols.length]; g.fillRect(-w / 2, -w / 4, w, w / 2); g.restore(); } break; }

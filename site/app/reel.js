@@ -35,6 +35,8 @@ export async function startReel({ renderer, data, day }) {
   // ep.demo: example residents only in this reel ("your.name"), to show what a new house and its ID card look like
   const demo = ep.demo ?? [], upTo = ep.houses?.to ?? data.residents.length + demo.length, last = Math.max(-1, ...data.residents.map(r => r.plot));
   const residents = [...data.residents.slice(0, upTo - demo.length), ...demo.map((d, i) => ({ u: d.u, h: fingerprint(d.u), plot: last + 1 + i, day: ep.day, src: 'demo', gold: d.gold ? 1 : undefined, home: d.home }))];
+  // ep.homes: a house style shown in this reel before the count catches up (a gold key winner's villa)
+  for (const [u, h] of Object.entries(ep.homes ?? {})) { const r = residents.find(r => r.u === u); if (r) residents[residents.indexOf(r)] = { ...r, home: h }; }
   // a preview (?dev) may stand landmarks that are not built yet, to try them out
   const preview = new URLSearchParams(location.search).has('dev') ? ep.preview?.landmarks ?? [] : [];
   const world = new World(renderer, data.plan, residents, { ...data.kingdom, landmarks: [...(data.kingdom.landmarks ?? []), ...preview], visit: ep.visit ?? null });
@@ -91,10 +93,13 @@ export async function startReel({ renderer, data, day }) {
   // the dragons: gathered round a place for a while (swarm), one of them breathing fire (fire)
   const swarms = [ep.swarm].flat().filter(Boolean).map(w => ({ ...w, t0: lineAt(w.line, w.dt), t1: w.until != null ? lineAt(w.until, w.udt) : lineAt(w.line, w.dt) + (w.dur ?? 8) }));
   const fires = [ep.fire].flat().filter(Boolean).map(f => ({ ...f, t0: lineAt(f.line, f.dt), t1: lineAt(f.line, f.dt) + (f.dur ?? 2.5) }));
+  const arrivals = [ep.arrive].flat().filter(Boolean).map(a => ({ ...a, t0: lineAt(a.line, a.dt), dur: a.dur ?? 5 }));
   function dragons(t) {
     const w = swarms.find(w => t > w.t0 - 3 && t < w.t1 + 3), e = w?.ease ?? 2.5;
     if (w) { const at = focus(w.target, t); world.life.swarm = { x: at.x, z: at.z, R: w.R ?? 70, H: w.H ?? 60, k: clamp(Math.min((t - w.t0 + e) / e, (w.t1 + e - t) / e)) }; } else world.life.swarm = null;
     world.life.fire = Math.max(0, ...fires.map(f => clamp(Math.min((t - f.t0) / .35, (f.t1 - t) / .5))));
+    // new dragons flying in from far away: before t0 they are not there, over dur they come home
+    world.life.arrive = arrivals.length ? Object.fromEntries(arrivals.map(a => [a.dragon, clamp((t - a.t0) / a.dur)])) : null;
   }
   function seek(t) {
     dragons(t);
