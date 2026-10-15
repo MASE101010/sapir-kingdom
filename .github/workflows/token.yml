@@ -13,6 +13,7 @@ jobs:
         env: { NEW: '${{ secrets.IG_NEW_TOKEN }}' }
         run: |
           [ -n "$NEW" ] || { echo "::notice title=token::IG_NEW_TOKEN is empty"; exit 1; }
+          echo "::add-mask::$NEW"
           ME=$(curl -sS "https://graph.instagram.com/v21.0/me?fields=username&access_token=$NEW" | jq -r '.username // .error.message')
           echo "::notice title=token::new token belongs to: $ME"
           [ "$ME" = sapirkingdom ] || exit 1
