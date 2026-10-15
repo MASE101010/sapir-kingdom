@@ -1,6 +1,6 @@
 # Instagram tokens last 60 days. Every week this swaps the token for a fresh one and the site keeps it (the database).
 name: token
-on: { schedule: [{ cron: '0 6 * * 1' }], workflow_dispatch: }
+on: { schedule: [{ cron: '0 6 * * 1' }], workflow_dispatch: { inputs: { fresh: { description: 'use the new token Michael put in the IG_NEW_TOKEN secret', type: boolean, default: false } } } }
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -8,7 +8,16 @@ jobs:
       - uses: actions/checkout@v4
       - run: node tools/env.mjs
         env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
-      - if: env.READY == '1'
+      - if: ${{ inputs.fresh }}
+        name: a new token from Michael (the old one was invalidated): check it and keep it
+        env: { NEW: '${{ secrets.IG_NEW_TOKEN }}' }
+        run: |
+          [ -n "$NEW" ] || { echo "::notice title=token::IG_NEW_TOKEN is empty"; exit 1; }
+          ME=$(curl -sS "https://graph.instagram.com/v21.0/me?fields=username&access_token=$NEW" | jq -r '.username // .error.message')
+          echo "::notice title=token::new token belongs to: $ME"
+          [ "$ME" = sapirkingdom ] || exit 1
+          curl -fsS -X POST "$SITE_URL/api/export" -H "authorization: Bearer $EXPORT_TOKEN" -H 'content-type: application/json' -d "{\"ig_token\": \"$NEW\"}"
+      - if: ${{ env.READY == '1' && !inputs.fresh }}
         run: |
           NEW=$(curl -fsS "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$IG_TOKEN" | jq -r .access_token)
           [ -n "$NEW" ] && [ "$NEW" != null ] || exit 1
