@@ -10,6 +10,7 @@ export const HOMES = [
   { name: 'מגדלור', line: 'נדיר · אור שמסתובב בלילה', rare: true },
   { name: 'ארמון קטן', line: 'נדיר · כמעט כמו הטירה', rare: true },
   { name: 'וילה מוזהבת', line: 'נדיר · לזוכי מפתח הזהב, עם בריכה', rare: true },
+  { name: 'מגורים צבאיים', line: 'לחיילי צבא ההגנה לספירלנד: תגיבו "חייל"' },
 ];
 export const COMMON = HOMES.map((h, k) => h.rare ? -1 : k).filter(k => k >= 0);
 /** a house shared with friends grows with the number who live in it */

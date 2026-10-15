@@ -1,1 +1,23 @@
-{"note": "Honours given by hand (key: gold key from the daily lottery) and who asked for each landmark.", "given": {"key": ["eiladhaim10_"]}, "built": {"super": {"by": ["noga_buhnik"], "day": 2}}}
+{
+  "note": "Honours given by hand (key: gold key from the daily lottery) and who asked for each landmark.",
+  "given": {
+    "key": [
+      "eiladhaim10_",
+      "oren_bakshi"
+    ]
+  },
+  "built": {
+    "super": {
+      "by": [
+        "noga_buhnik"
+      ],
+      "day": 2
+    },
+    "base": {
+      "by": [
+        "liroyrokach"
+      ],
+      "day": 3
+    }
+  }
+}

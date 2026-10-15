@@ -2,25 +2,945 @@
  "day": 3,
  "lines": [
   "[excited] צהריים טובים לכל תושבי הממלכה!",
-  "[laughs] אתמול פתחנו את סופר ספיר, והעובדים עדיין בפינת העישון.",
+  "[excited] אתמול פתחנו את סופר ספיר, והעובדים עדיין בפינת העישון.",
   "[excited] הממלכה גדלה, כבר שישים תושבים גרים פה!",
   "[excited] אילעד זכה במפתח הזהב, ועבר לווילה עם בריכה!",
   "[excited] ומפתח הזהב החדש הולך ל... אורן!",
-  "[laughs] אורן ביקש קפה כל בוקר. אורן, הקפה בדרך!",
+  "[excited] אורן ביקש קפה כל בוקר. אורן, הקפה בדרך!",
   "[excited] רוצים גם בית מוזהב? שתפו את הסרטון לסטורי ותייגו אותנו!",
   "[excited] ועכשיו, התגובה שזכתה היום...",
   "[excited] לירוי ביקש בסיס צבאי גדול נגד הדרקונים.",
   "[excited] אז הנה הוא! צבא ההגנה לספירלנד!",
   "[excited] מגדלי תצפית, אזעקת דרקונים ותותחי מים ענקיים!",
-  "[surprised] אבל רגע... שמתם לב לשמיים?",
-  "[gasps] הדרקונים מקיפים את הבסיס! ואחד מהם יורק אש!",
-  "[whispers] הם מתכוננים לתקיפה... ואני מקווה שהבסיס יגן עלינו.",
+  "[excited] אבל רגע... שמתם לב לשמיים?",
+  "[excited] הדרקונים מקיפים את הבסיס! ואחד מהם יורק אש!",
+  "[excited] הם מתכוננים לתקיפה... ואני מקווה שהבסיס יגן עלינו.",
   "[excited] ולכן אני מגייס חיילים לצבא הממלכה!",
   "[excited] רוצים לגור במגורים הצבאיים? תגיבו \"חייל\"!",
-  "[laughs] ושירן ביקשה פסל ענק שלה, ליד הפסל שלי.",
-  "[annoyed] שירן, יש פה רק מלך אחד...",
-  "[laughs] טוב נו, אני אחשוב על זה. אולי.",
+  "[excited] ושירן ביקשה פסל ענק שלה, ליד הפסל שלי.",
+  "[excited] שירן, יש פה רק מלך אחד...",
+  "[excited] טוב נו, אני אחשוב על זה. אולי.",
   "[excited] ומה בונים מחר? תגיבו לי בתגובות!"
  ],
- "notes": "Michael chose liroyrokach's military base (2 likes) over annaonlygurlssss's villa (7, a villa style exists already) and shiransapir1's statue (4, family, teased in the reel). gold key: Michael asked for a good comment, oren_bakshi (coffee every morning)."
+ "notes": "Michael chose liroyrokach's military base (2 likes) over annaonlygurlssss's villa (7, a villa style exists already) and shiransapir1's statue (4, family, teased in the reel). gold key: Michael asked for a good comment, oren_bakshi (coffee every morning).",
+ "duration": 63.6,
+ "mix": "day3.mix.mp3",
+ "trial": true,
+ "top": 330,
+ "demo": [
+  {
+   "u": "your.name",
+   "gold": true
+  }
+ ],
+ "houses": {
+  "from": 39,
+  "to": 61,
+  "line": 2,
+  "dt": 0.2,
+  "dur": 2.8
+ },
+ "rise": {
+  "key": "base",
+  "line": 9,
+  "dt": 0,
+  "dur": 2.4
+ },
+ "swarm": {
+  "target": "landmark:base",
+  "line": 11,
+  "dt": 0.6,
+  "until": 14,
+  "R": 50,
+  "H": 40,
+  "ease": 2.2
+ },
+ "fire": [
+  {
+   "line": 0,
+   "dt": 0.05,
+   "dur": 1.3
+  },
+  {
+   "line": 12,
+   "dt": 1.7,
+   "dur": 2.6
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "dragon:0",
+   "dist": 95,
+   "yaw": 35,
+   "pitch": 6,
+   "orbit": 4,
+   "ease": 0.01,
+   "follow": true
+  },
+  {
+   "line": 0,
+   "dt": 1.3,
+   "target": "castle",
+   "dist": 320,
+   "yaw": -30,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.9
+  },
+  {
+   "line": 1,
+   "target": "landmark:super",
+   "dist": 70,
+   "yaw": 25,
+   "pitch": 24,
+   "orbit": 5,
+   "ease": 0.8
+  },
+  {
+   "line": 1,
+   "dt": 2.0,
+   "target": [
+    128.3,
+    3,
+    66.6
+   ],
+   "dist": 30,
+   "yaw": 92.5,
+   "pitch": 24,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 2,
+   "target": [
+    0,
+    0,
+    120
+   ],
+   "dist": 640,
+   "yaw": -15,
+   "pitch": 55,
+   "orbit": 3,
+   "ease": 1.0
+  },
+  {
+   "line": 3,
+   "target": "house:eiladhaim10_",
+   "dist": 38,
+   "yaw": 205,
+   "pitch": 26,
+   "orbit": 6,
+   "ease": 0.8
+  },
+  {
+   "line": 4,
+   "target": "statue",
+   "dist": 60,
+   "yaw": 10,
+   "pitch": 26,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "dt": 1.8,
+   "target": "house:oren_bakshi",
+   "dist": 34,
+   "yaw": 200,
+   "pitch": 26,
+   "orbit": 6,
+   "ease": 0.4
+  },
+  {
+   "line": 6,
+   "target": "house:your.name",
+   "dist": 30,
+   "yaw": 200,
+   "pitch": 24,
+   "orbit": 8,
+   "ease": 0.8
+  },
+  {
+   "line": 7,
+   "target": "landmark:base",
+   "dist": 220,
+   "yaw": -10,
+   "pitch": 48,
+   "orbit": 3,
+   "ease": 1.0
+  },
+  {
+   "line": 9,
+   "target": "landmark:base",
+   "dist": 135,
+   "yaw": 15,
+   "pitch": 30,
+   "orbit": 9,
+   "ease": 0.5
+  },
+  {
+   "line": 10,
+   "target": [
+    22.1,
+    9,
+    111.0
+   ],
+   "dist": 50,
+   "yaw": -132.5,
+   "pitch": 22,
+   "orbit": 4,
+   "ease": 0.5
+  },
+  {
+   "line": 10,
+   "dt": 1.2,
+   "target": [
+    25.0,
+    9,
+    117.9
+   ],
+   "dist": 38,
+   "yaw": -147.5,
+   "pitch": 16,
+   "orbit": 3,
+   "ease": 0.35
+  },
+  {
+   "line": 10,
+   "dt": 2.3,
+   "target": [
+    31.6,
+    8,
+    126.0
+   ],
+   "dist": 52,
+   "yaw": -127.5,
+   "pitch": 24,
+   "orbit": 4,
+   "ease": 0.4
+  },
+  {
+   "line": 11,
+   "target": [
+    47.8,
+    30,
+    115.5
+   ],
+   "dist": 110,
+   "yaw": -137.5,
+   "pitch": 4,
+   "orbit": 3,
+   "ease": 1.2
+  },
+  {
+   "line": 12,
+   "target": "dragon:0",
+   "dist": 95,
+   "yaw": 35,
+   "pitch": 12,
+   "orbit": 4,
+   "ease": 0.8,
+   "follow": true
+  },
+  {
+   "line": 13,
+   "target": "landmark:base",
+   "dist": 175,
+   "yaw": 30,
+   "pitch": 36,
+   "orbit": 7,
+   "ease": 1.0
+  },
+  {
+   "line": 14,
+   "target": [
+    46.6,
+    3,
+    107.3
+   ],
+   "dist": 46,
+   "yaw": -142.5,
+   "pitch": 42,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 15,
+   "target": [
+    63.3,
+    4,
+    102.0
+   ],
+   "dist": 34,
+   "yaw": -97.5,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 16,
+   "target": "statue",
+   "dist": 64,
+   "yaw": -20,
+   "pitch": 28,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 17,
+   "target": "statue",
+   "dist": 40,
+   "yaw": 15,
+   "pitch": 24,
+   "ease": 0.3
+  },
+  {
+   "line": 18,
+   "target": "statue",
+   "dist": 48,
+   "yaw": 25,
+   "pitch": 22,
+   "orbit": -3,
+   "ease": 0.5
+  },
+  {
+   "line": 19,
+   "target": "castle",
+   "dist": 520,
+   "yaw": -40,
+   "pitch": 38,
+   "orbit": 4,
+   "ease": 1.0
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 1.3,
+   "dur": 1.2,
+   "text": "יום 3"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.2,
+   "dur": 2.0,
+   "text": "אתמול: סופר ספיר 🛒"
+  },
+  {
+   "type": "counter",
+   "line": 2,
+   "dt": 0.2,
+   "dur": 2.9,
+   "from": 39,
+   "to": 61
+  },
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 0.3,
+   "dur": 2.9,
+   "u": "eiladhaim10_",
+   "honours": [
+    "מפתח זהב · יום 1",
+    "וילה מוזהבת 🏊"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dt": 0.1,
+   "dur": 1.7,
+   "text": "מפתח הזהב החדש 🔑"
+  },
+  {
+   "type": "idcard",
+   "line": 4,
+   "dt": 1.9,
+   "dur": 2.6,
+   "u": "oren_bakshi",
+   "honours": [
+    "מפתח זהב · יום 2"
+   ]
+  },
+  {
+   "type": "comment",
+   "line": 5,
+   "dt": 0.2,
+   "dur": 3.2,
+   "u": "oren_bakshi",
+   "head": "מה שאורן ביקש",
+   "text": "תבנו לי חדר אצלכם שכל יום אוכל לקום בבוקר ולראות אתכם מכינים לי קפה 😍",
+   "likes": null
+  },
+  {
+   "type": "label",
+   "line": 6,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "בית מוזהב ✨ למי שמשתף לסטורי"
+  },
+  {
+   "type": "comment",
+   "line": 8,
+   "dt": 0.1,
+   "dur": 2.9,
+   "u": "liroyrokach",
+   "head": "ההצעה של לירוי",
+   "text": "תבנה בסיס צבאי גדול שנוכל להילחם בדרקונים",
+   "likes": null
+  },
+  {
+   "type": "idcard",
+   "line": 9,
+   "dt": 1.0,
+   "dur": 2.0,
+   "u": "liroyrokach",
+   "honours": [
+    "אדריכל · צבא ההגנה לספירלנד"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 13,
+   "dt": 0.2,
+   "dur": 3.0,
+   "text": "הם מתכוננים לתקיפה..."
+  },
+  {
+   "type": "cta",
+   "line": 19,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "מה בונים מחר?",
+   "sub": "תגיבו בתגובות 👇"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3,
+   "color": "#ff8a1f",
+   "alpha": 0.5
+  },
+  {
+   "type": "shake",
+   "line": 0,
+   "dur": 0.9,
+   "amp": 1.4
+  },
+  {
+   "type": "sticker",
+   "line": 1,
+   "dt": 2.1,
+   "dur": 1.8,
+   "text": "😴",
+   "x": 840,
+   "y": 1080,
+   "size": 130
+  },
+  {
+   "type": "confetti",
+   "line": 2,
+   "dt": 2.2,
+   "dur": 2.4
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 2.2,
+   "dur": 2.0,
+   "text": "+22",
+   "x": 830,
+   "y": 1120,
+   "size": 130,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 1.5,
+   "dur": 1.7,
+   "text": "🏊",
+   "x": 210,
+   "y": 1120,
+   "size": 140,
+   "rot": -8
+  },
+  {
+   "type": "vignette",
+   "line": 4,
+   "dur": 1.8,
+   "color": "rgba(10,10,30,.5)"
+  },
+  {
+   "type": "punch",
+   "line": 4,
+   "dt": 1.8,
+   "dur": 0.8,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 4,
+   "dt": 1.8,
+   "dur": 2.6
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 1.9,
+   "dur": 2.2,
+   "text": "🔑",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 10
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 2.1,
+   "dur": 1.6,
+   "text": "☕",
+   "x": 220,
+   "y": 1100,
+   "size": 150,
+   "rot": -6
+  },
+  {
+   "type": "banner",
+   "line": 6,
+   "dt": 1.6,
+   "dur": 1.9,
+   "text": "שתפו ⭐ תייגו ⭐ זהב",
+   "y": 1150,
+   "size": 100,
+   "band": "#e8b323"
+  },
+  {
+   "type": "vignette",
+   "line": 7,
+   "dur": 2.0,
+   "color": "rgba(10,10,30,.45)"
+  },
+  {
+   "type": "punch",
+   "line": 9,
+   "dt": 2.3,
+   "dur": 0.8,
+   "zoom": 0.25
+  },
+  {
+   "type": "shake",
+   "line": 9,
+   "dt": 2.3,
+   "dur": 0.8,
+   "amp": 1.2
+  },
+  {
+   "type": "confetti",
+   "line": 9,
+   "dt": 2.3,
+   "dur": 2.4
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 1.2,
+   "dur": 1.0,
+   "text": "🚨",
+   "x": 840,
+   "y": 1100,
+   "size": 150
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 2.4,
+   "dur": 1.2,
+   "text": "💦",
+   "x": 220,
+   "y": 1100,
+   "size": 150
+  },
+  {
+   "type": "vignette",
+   "line": 11,
+   "dur": 8.9,
+   "color": "rgba(40,6,0,.42)"
+  },
+  {
+   "type": "sticker",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 1.6,
+   "text": "😳",
+   "x": 840,
+   "y": 620,
+   "size": 150
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 1.6,
+   "text": "⚠ דרקונים! ⚠",
+   "y": 760,
+   "band": "#c2412d",
+   "size": 120
+  },
+  {
+   "type": "flash",
+   "line": 12,
+   "dt": 1.7,
+   "dur": 0.4,
+   "color": "#ff8a1f",
+   "alpha": 0.55
+  },
+  {
+   "type": "shake",
+   "line": 12,
+   "dt": 1.7,
+   "dur": 1.6,
+   "amp": 1.8
+  },
+  {
+   "type": "sticker",
+   "line": 12,
+   "dt": 1.8,
+   "dur": 1.5,
+   "text": "🔥",
+   "x": 220,
+   "y": 1120,
+   "size": 160,
+   "rot": -10
+  },
+  {
+   "type": "banner",
+   "line": 14,
+   "dt": 0.3,
+   "dur": 2.0,
+   "text": "מגייסים חיילים! 🪖",
+   "y": 1150,
+   "size": 110,
+   "band": "#0f6f73"
+  },
+  {
+   "type": "punch",
+   "line": 15,
+   "dt": 1.8,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 15,
+   "dt": 1.8,
+   "dur": 1.7,
+   "text": "תגיבו: חייל 🪖",
+   "y": 1150,
+   "size": 130,
+   "band": "#e8b323"
+  },
+  {
+   "type": "sticker",
+   "line": 16,
+   "dt": 0.4,
+   "dur": 2.6,
+   "text": "🗿",
+   "x": 840,
+   "y": 1100,
+   "size": 150,
+   "rot": 8
+  },
+  {
+   "type": "punch",
+   "line": 17,
+   "dur": 0.7,
+   "zoom": 0.3
+  },
+  {
+   "type": "sticker",
+   "line": 17,
+   "dt": 0.2,
+   "dur": 1.8,
+   "text": "👑",
+   "x": 210,
+   "y": 640,
+   "size": 150,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 18,
+   "dt": 1.7,
+   "dur": 1.0,
+   "text": "😅",
+   "x": 830,
+   "y": 640,
+   "size": 150
+  },
+  {
+   "type": "sticker",
+   "line": 19,
+   "dt": 1.0,
+   "dur": 1.6,
+   "text": "👇",
+   "x": 540,
+   "y": 1180,
+   "size": 150
+  }
+ ],
+ "music": {
+  "bpm": 116,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 7,
+     "dt": 0
+    },
+    "stop"
+   ],
+   [
+    {
+     "line": 8,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 11,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 14,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 17,
+     "dt": 0
+    },
+    "stop"
+   ],
+   [
+    {
+     "line": 18,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "roar",
+   "line": 0,
+   "dt": 0,
+   "gain": 0.9
+  },
+  {
+   "name": "whoosh",
+   "line": 0,
+   "dt": 1.2
+  },
+  {
+   "name": "ding",
+   "line": 0,
+   "dt": 1.4
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": -0.1
+  },
+  {
+   "name": "snore",
+   "line": 1,
+   "dt": 2.1,
+   "gain": 0.7
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 0.3,
+   "repeat": 12,
+   "every": 0.18,
+   "gain": 0.7
+  },
+  {
+   "name": "sparkle",
+   "line": 2,
+   "dt": 2.2
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": -0.1
+  },
+  {
+   "name": "sparkle",
+   "line": 3,
+   "dt": 1.2
+  },
+  {
+   "name": "sting",
+   "line": 4,
+   "dt": 0,
+   "gain": 0.6
+  },
+  {
+   "name": "tada",
+   "line": 4,
+   "dt": 1.8
+  },
+  {
+   "name": "kaching",
+   "line": 4,
+   "dt": 2.1
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 2.1
+  },
+  {
+   "name": "whoosh",
+   "line": 6,
+   "dt": -0.1
+  },
+  {
+   "name": "sparkle",
+   "line": 6,
+   "dt": 1.6
+  },
+  {
+   "name": "whoosh",
+   "line": 7,
+   "dt": -0.1
+  },
+  {
+   "name": "cricket",
+   "line": 7,
+   "dt": 0.5,
+   "gain": 0.5
+  },
+  {
+   "name": "ding",
+   "line": 8,
+   "dt": 0.1
+  },
+  {
+   "name": "boom",
+   "line": 9,
+   "dt": 0
+  },
+  {
+   "name": "tada",
+   "line": 9,
+   "dt": 2.3
+  },
+  {
+   "name": "whoosh",
+   "line": 10,
+   "dt": -0.1
+  },
+  {
+   "name": "sting",
+   "line": 10,
+   "dt": 1.2,
+   "gain": 0.5
+  },
+  {
+   "name": "whoosh",
+   "line": 10,
+   "dt": 2.3
+  },
+  {
+   "name": "sting",
+   "line": 11,
+   "dt": 0.1
+  },
+  {
+   "name": "roar",
+   "line": 12,
+   "dt": 0
+  },
+  {
+   "name": "roar",
+   "line": 12,
+   "dt": 1.7,
+   "gain": 1.0
+  },
+  {
+   "name": "boom",
+   "line": 12,
+   "dt": 1.8,
+   "gain": 0.6
+  },
+  {
+   "name": "roar",
+   "line": 13,
+   "dt": 1.5,
+   "gain": 0.5
+  },
+  {
+   "name": "ding",
+   "line": 14,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 15,
+   "dt": 1.8
+  },
+  {
+   "name": "kaching",
+   "line": 15,
+   "dt": 1.9,
+   "gain": 0.6
+  },
+  {
+   "name": "whoosh",
+   "line": 16,
+   "dt": -0.1
+  },
+  {
+   "name": "scratch",
+   "line": 17,
+   "dt": -0.1
+  },
+  {
+   "name": "boing",
+   "line": 18,
+   "dt": 1.7
+  },
+  {
+   "name": "whoosh",
+   "line": 19,
+   "dt": -0.1
+  },
+  {
+   "name": "ding",
+   "line": 19,
+   "dt": 0.2
+  }
+ ],
+ "caption": "יום 3 בממלכה של משפחת ספיר 👑 צבא ההגנה לספירלנד נבנה! והדרקונים כבר מקיפים אותו 🐉🔥\nמחפשים חיילים: תגיבו \"חייל\" ותעברו לגור במגורים הצבאיים 🪖 ושתפו לסטורי עם תיוג וקבלו בית מוזהב ✨\nמה בונים מחר? כתבו בתגובות 👇\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #ספירלנד #כל_תגובה_בית",
+ "firstComment": "רוצים להתגייס? תגיבו כאן \"חייל\" 🪖 ומה בונים מחר? התגובה עם הכי הרבה לייקים נבנית 🏗️"
 }

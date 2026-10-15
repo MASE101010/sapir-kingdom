@@ -33,6 +33,13 @@ function dragon(color, belly, skin) {
     return { shoulder, elbow };
   };
   g.userData.wings = [wing(-1), wing(1)];
+  // fire from the mouth: a cone of flames and puffs, hidden until a reel lights it (Life.fire)
+  const fire = new THREE.Group(); fire.position.set(0, -.4, 4.4); head.add(fire); fire.visible = false;
+  const flame = c => new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: .92, depthWrite: false });
+  [[0xfff1a8, 1.2, 3], [0xffc23d, 2, 7], [0xff8a1f, 3.2, 12], [0xe8461e, 4.2, 17]].forEach(([c, r, z]) => {
+    const m = new THREE.Mesh(new THREE.ConeGeometry(r, 9, 9, 1, true).rotateX(-Math.PI / 2), flame(c)); m.position.z = z - 2; fire.add(m); });
+  fire.userData.puffs = Array.from({ length: 14 }, (_, i) => { const m = new THREE.Mesh(new THREE.IcosahedronGeometry(1, 0), flame([0xffc23d, 0xff8a1f, 0xe8461e][i % 3])); fire.add(m); return m; });
+  g.userData.fire = fire; g.userData.head = head; g.rotation.order = 'YXZ';
   return g;
 }
 
@@ -63,13 +70,22 @@ export class Life {
   setExtent(ring) { this.extent = ring; }
   update(t) {
     const up = new THREE.Vector3(0, 1, 0);
-    for (const { d, R, H, w, ph } of this.dragons) {
-      const a = t * w + ph, wob = Math.sin(t * .7 + ph) * 18;
-      d.position.set(Math.cos(a) * (R + wob), H + Math.sin(t * .9 + ph) * 12, Math.sin(a) * (R + wob));
-      d.rotation.set(Math.sin(t * .9 + ph) * .12, Math.atan2(-Math.sin(a) * Math.sign(w), Math.cos(a) * Math.sign(w)), -Math.sign(w) * .35);
+    // a reel can gather them round a place (swarm: { x, z, R, H, k 0..1 }) and light one's fire (fire: 0..1)
+    const sw = this.swarm, P = new THREE.Vector3(), Q = new THREE.Vector3();
+    this.dragons.forEach(({ d, R, H, w, ph }, i) => {
+      const pos = (tt, out) => { const a = tt * w + ph, wob = Math.sin(tt * .7 + ph) * 18; out.set(Math.cos(a) * (R + wob), H + Math.sin(tt * .9 + ph) * 12, Math.sin(a) * (R + wob));
+        if (sw?.k > 0) { const b = tt * (.42 + i * .07) * (i % 2 ? -1 : 1) + i * 2.1, r = sw.R * (1 + i * .22), k = sw.k * sw.k * (3 - 2 * sw.k);
+          out.lerp(new THREE.Vector3(sw.x + Math.cos(b) * r, sw.H + i * 9 + Math.sin(tt * 1.3 + i) * 4, sw.z + Math.sin(b) * r), k); }
+        return out; };
+      pos(t, P); pos(t + .05, Q); d.position.copy(P);
+      const v = Q.sub(P), turn = sw?.k > 0 ? (i % 2 ? 1 : -1) * .45 * sw.k : 0;
+      d.rotation.set(-Math.atan2(v.y, Math.hypot(v.x, v.z)) * .6 + Math.sin(t * .9 + ph) * .08, Math.atan2(v.x, v.z), sw?.k > 0 ? turn : -Math.sign(w) * .35);
+      const fire = d.userData.fire, f0 = i === 0 ? this.fire ?? 0 : 0; fire.visible = f0 > .01; d.userData.head.rotation.x = .45 * f0;
+      if (fire.visible) { fire.scale.setScalar(1.8 * f0 * (1 + Math.sin(t * 31) * .08)); fire.children.forEach((m, k) => { if (m.material) m.material.opacity = .9 * f0; });
+        fire.userData.puffs.forEach((m, k) => { const u = ((t * 2.2 + k / 14) % 1); m.position.set(Math.sin(k * 7.3 + t * 9) * u * 3.4, Math.cos(k * 5.1 + t * 7) * u * 3, 4 + u * 20); m.scale.setScalar(1 + u * 3.2); }); }
       const f = Math.sin(t * 3.4 + ph), [L, Rw] = d.userData.wings;           // the wing beats down, and folds a little on the way up
       L.shoulder.rotation.z = f * .6; Rw.shoulder.rotation.z = -f * .6; L.elbow.rotation.z = Math.max(0, f) * .5; Rw.elbow.rotation.z = -Math.max(0, f) * .5;
-    }
+    });
     for (let i = 0; i < 60; i++) {
       const flock = Math.floor(i / 12), k = i % 12, a = t * (.09 + flock * .01) + flock * 1.3, R = 300 + flock * 140, side = k % 2 ? 1 : -1, row = Math.ceil(k / 2);
       const cx = Math.cos(a) * R, cz = Math.sin(a) * R, dir = a + Math.PI / 2, flap = Math.sin(t * 9 + i) * .4;

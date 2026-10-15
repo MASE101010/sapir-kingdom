@@ -56,7 +56,8 @@ export async function startReel({ renderer, data, day }) {
     let i = shots.findLastIndex(s => s.t <= t); if (i < 0) i = 0;
     const s = shots[i], p = shots[i - 1] ?? s, f = smooth((t - s.t) / (s.ease ?? 1.6));
     // on a landmark, yaw 0 looks at its front (its lot is turned to face the castle)
-    const front = sh => typeof sh.target === 'string' && sh.target.startsWith('landmark:') ? (world.lm[sh.target.slice(9)]?.group.rotation.y ?? 0) * 180 / Math.PI : 0;
+    const front = sh => typeof sh.target !== 'string' ? 0 : sh.target.startsWith('landmark:') ? (world.lm[sh.target.slice(9)]?.group.rotation.y ?? 0) * 180 / Math.PI
+      : sh.follow && sh.target.startsWith('dragon:') ? (world.life.dragons[+sh.target.slice(7)]?.d.rotation.y ?? 0) * 180 / Math.PI : 0;   // follow: yaw 0 is in front of the dragon's face
     const params = sh => ({ target: focus(sh.target, t), dist: sh.dist ?? 300, yaw: front(sh) + (sh.yaw ?? -30) + (sh.orbit ?? 0) * (t - sh.t), pitch: sh.pitch ?? 32, fov: sh.fov ?? 38 });
     const a = params(p), b = params(s), lerp = (x, y) => x + (y - x) * f;
     const target = a.target.clone().lerp(b.target, f), dist = Math.exp(lerp(Math.log(a.dist), Math.log(b.dist))), yaw = lerp(a.yaw, b.yaw) * Math.PI / 180, pitch = lerp(a.pitch, b.pitch) * Math.PI / 180;
@@ -87,7 +88,16 @@ export async function startReel({ renderer, data, day }) {
   const rises = [ep.rise].flat().filter(Boolean).map(r => ({ ...r, t0: lineAt(r.line, r.dt), dur: r.dur ?? 4.5 }));
   // effects: drawn over the frame (overlay.js), or moving the camera (shake, punch); flashes and vignettes go under the cards
   const fx = (ep.fx ?? []).map(f => ({ ...f, t0: lineAt(f.line, f.dt), t1: lineAt(f.line, f.dt) + (f.dur ?? 1.2), under: f.under ?? ['flash', 'vignette'].includes(f.type) }));
+  // the dragons: gathered round a place for a while (swarm), one of them breathing fire (fire)
+  const swarms = [ep.swarm].flat().filter(Boolean).map(w => ({ ...w, t0: lineAt(w.line, w.dt), t1: w.until != null ? lineAt(w.until, w.udt) : lineAt(w.line, w.dt) + (w.dur ?? 8) }));
+  const fires = [ep.fire].flat().filter(Boolean).map(f => ({ ...f, t0: lineAt(f.line, f.dt), t1: lineAt(f.line, f.dt) + (f.dur ?? 2.5) }));
+  function dragons(t) {
+    const w = swarms.find(w => t > w.t0 - 3 && t < w.t1 + 3), e = w?.ease ?? 2.5;
+    if (w) { const at = focus(w.target, t); world.life.swarm = { x: at.x, z: at.z, R: w.R ?? 70, H: w.H ?? 60, k: clamp(Math.min((t - w.t0 + e) / e, (w.t1 + e - t) / e)) }; } else world.life.swarm = null;
+    world.life.fire = Math.max(0, ...fires.map(f => clamp(Math.min((t - f.t0) / .35, (f.t1 - t) / .5))));
+  }
   function seek(t) {
+    dragons(t);
     if (houses) world.showHouses(houses.from + (houses.to - houses.from) * smooth((t - houses.t0) / houses.dur)); else world.showHouses(residents.length);
     for (const r of rises) world.rise(r.key, backOut((t - r.t0) / r.dur));
     world.animate((ep.clock ?? 900) + t); poseCamera(t);

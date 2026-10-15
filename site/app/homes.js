@@ -97,7 +97,20 @@ function villa(p, h) {
   for (const x of [-5.1, -3.9, 3.0, 5.1]) p.box(x, 0, 5.1, .3, 1.4, .3, GOLD);
   p.box(-4.5, 1.1, 5.1, 1.4, .15, .15, GOLD); p.box(4.05, 1.1, 5.1, 2.2, .15, .15, GOLD);
 }
-export const HOMES = [cottage, block, turret, cabin, windmill, treehouse, lighthouse, palace, villa];
+/** the מגורים צבאיים: for residents who joined the kingdom's army (commented "חייל"). A khaki hut with an olive roof,
+ *  a flag of the kingdom, sandbags, a little watchtower, and a soldier's helmet on the roof */
+function soldier(p, h) {
+  const KHAKI = 0xd8c79a, OLIVE = 0x6f7f4a, DOLIVE = 0x56643a, SAND = 0xb9a76f, TEAL = 0x0f6f73, GOLD = 0xe8b323;
+  p.box(0, 0, 0, 10.4, .15, 10.4, 0xc9b98b); p.box(0, 0, 3.8, 1.6, .2, 2.8, 0xe2d7bf);
+  p.box(-.6, .15, -1.2, 7, 3, 5.6, KHAKI); p.gable(-.6, 3.15, -1.2, 7.6, 2.2, 6.2, OLIVE);
+  p.box(-.6, .15, 1.62, 1.3, 2.2, .1, 0x6b4a33); for (const x of [-3, 1.8]) p.box(x, 1.4, 1.62, 1.2, 1, .1, WIN);
+  p.box(-.6, 5.1, -1.2, 1.6, .6, 1.6, DOLIVE); p.box(-.6, 5, -1.2, 1.9, .15, 1.9, DOLIVE);                                     // the helmet on the roof
+  for (let k = 0; k < 4; k++) for (let r = 0; r < 2 - (k > 2 ? 1 : 0); r++) p.box(-4.2 + k * 1.3, .15 + r * .6, 3.9, 1.2, .6, .9, SAND);   // sandbags
+  for (const [dx, dz] of [[3.4, -3.4], [4.6, -3.4], [3.4, -2.2], [4.6, -2.2]]) p.box(dx, .15, dz, .25, 4.2, .25, WOOD);          // a little watchtower
+  p.box(4, 4.35, -2.8, 1.8, .2, 1.8, WOOD); p.box(4, 4.55, -2.8, 1.5, 1, 1.5, KHAKI); p.pyramid(4, 5.55, -2.8, 2, .9, OLIVE);
+  p.box(3.7, .15, 2.6, .15, 5, .15, 0x9aa3ab); p.box(4.5, 4.2, 2.6, 1.6, 1, .08, 0xffffff); p.box(4.5, 4.95, 2.6, 1.6, .18, .1, TEAL); p.box(4.5, 4.25, 2.6, 1.6, .18, .1, TEAL); p.box(4.5, 4.6, 2.6, .4, .4, .12, GOLD);
+}
+export const HOMES = [cottage, block, turret, cabin, windmill, treehouse, lighthouse, palace, villa, soldier];
 /** a house shared by friends: two or three get a heart on the roof, four or more a block of flats, eleven or more a tower */
 export function drawShared(p, r, count) {
   const H = pickFrom(r.h, 3, 3) ? 0xfbf8f1 : 0xf1e4cf;
