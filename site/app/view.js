@@ -29,7 +29,7 @@ export class World {
     Object.assign(sun.shadow.camera, { left: -420, right: 420, top: 420, bottom: -420, near: 10, far: 1400 });
     this.sun = sun; this.scene.add(hemi, sun, sun.target);
     this.land(); this.roads(); this.trees(); this.wall();
-    this.life = new Life(this.scene, plan);
+    this.life = new Life(this.scene, plan, kingdom?.dragons ?? 3);
     this.houses(); this.landmarks();
   }
   /** the ground, the castle hill, the river with its sandy banks, and mountains round the edge */
@@ -103,7 +103,7 @@ export class World {
   /** shows the rings up to n (the outermost ring anyone lives on, and one more) */
   setExtent(n) { this.bands.forEach((g, k) => g.visible = k <= n); this.life?.setExtent(n); }
   /** everything that moves, at time t (seconds) */
-  animate(t) { this.life.update(t); }
+  animate(t) { this.life.update(t); for (const l of Object.values(this.lm ?? {})) l.mod.tick?.(l.group, t); }
   /** forests outside the wall */
   trees() {
     const p = new Pen(), W = this.plan.wall;

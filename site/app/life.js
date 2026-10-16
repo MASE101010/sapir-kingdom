@@ -44,10 +44,12 @@ function dragon(color, belly, skin) {
 }
 
 export class Life {
-  constructor(scene, plan) {
+  constructor(scene, plan, count = 3) {
     this.scene = scene; this.plan = plan; const r0 = plan.rings.r0, step = plan.rings.step;
     // dragons: each flies its own loop round the kingdom at its own height and speed
-    this.dragons = [[0xb83a2a, 0xf2b632, 0xe3793f, 300, 130, .055, 0], [0x2f7a4a, 0xd8e8a0, 0x7fb069, 460, 170, -.04, 2], [0x3b4fa6, 0xb6c8f2, 0x6d86d6, 220, 105, .07, 4]].map(([c, b, sk, R, H, w, ph]) => {
+    // day 4: a purple one and a gold one arrived (kingdom.json dragons: 5)
+    this.dragons = [[0xb83a2a, 0xf2b632, 0xe3793f, 300, 130, .055, 0], [0x2f7a4a, 0xd8e8a0, 0x7fb069, 460, 170, -.04, 2], [0x3b4fa6, 0xb6c8f2, 0x6d86d6, 220, 105, .07, 4],
+      [0x7a3fa6, 0xe6d2f5, 0xa877d6, 380, 150, .05, 1], [0xd9a21b, 0xfff0b0, 0xf2c94c, 260, 120, -.06, 3]].slice(0, count).map(([c, b, sk, R, H, w, ph]) => {
       const d = dragon(c, b, sk); d.scale.setScalar(1.1); scene.add(d); return { d, R, H, w, ph }; });
     // birds: little flocks of V shapes
     const bird = new THREE.BoxGeometry(1.8, .2, .6); this.birds = new THREE.InstancedMesh(bird, mat(0x2b2f36), 60); this.birds.frustumCulled = false; scene.add(this.birds);
@@ -77,7 +79,12 @@ export class Life {
         if (sw?.k > 0) { const b = tt * (.42 + i * .07) * (i % 2 ? -1 : 1) + i * 2.1, r = sw.R * (1 + i * .22), k = sw.k * sw.k * (3 - 2 * sw.k);
           out.lerp(new THREE.Vector3(sw.x + Math.cos(b) * r, sw.H + i * 9 + Math.sin(tt * 1.3 + i) * 4, sw.z + Math.sin(b) * r), k); }
         return out; };
-      pos(t, P); pos(t + .05, Q); d.position.copy(P);
+      const ar = this.arrive?.[i]; d.visible = ar == null || ar > 0;
+      if (ar != null && ar < 1) { const e = ar * ar * (3 - 2 * ar), far = (tt, out) => { pos(tt, out); const a = Math.atan2(out.z, out.x) + 1.2 * (i % 2 ? 1 : -1); return out.set(Math.cos(a) * 1900, 420, Math.sin(a) * 1900); };
+        const at = (tt, out) => { const A = far(tt, new THREE.Vector3()), B = pos(tt, new THREE.Vector3()); return out.copy(A).lerp(B, e); };
+        at(t, P); Q.copy(P).add(pos(t, new THREE.Vector3()).sub(far(t, new THREE.Vector3())).multiplyScalar(.02)); }
+      else { pos(t, P); pos(t + .05, Q); }
+      d.position.copy(P);
       const v = Q.sub(P), turn = sw?.k > 0 ? (i % 2 ? 1 : -1) * .45 * sw.k : 0;
       d.rotation.set(-Math.atan2(v.y, Math.hypot(v.x, v.z)) * .6 + Math.sin(t * .9 + ph) * .08, Math.atan2(v.x, v.z), sw?.k > 0 ? turn : -Math.sign(w) * .35);
       const fire = d.userData.fire, f0 = i === 0 ? this.fire ?? 0 : 0; fire.visible = f0 > .01; d.userData.head.rotation.x = .45 * f0;

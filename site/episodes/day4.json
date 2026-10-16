@@ -1,0 +1,1026 @@
+{
+ "day": 4,
+ "lines": [
+  "[excited] מבזק חדשות מיוחד מהממלכה של משפחת ספיר!",
+  "[excited] בשמיים נצפו שני דרקונים חדשים שהגיעו הבוקר!",
+  "[excited] דרקון סגול ודרקון זהב... מאיפה הם באים?",
+  "[excited] ומה הם מתכננים?!",
+  "[excited] צהריים טובים לכל תושבי הממלכה, כאן המלך מיכאל.",
+  "[excited] אתמול בנינו את צבא ההגנה לספירלנד...",
+  "[excited] והממלכה גדלה! כבר שמונים ושמונה תושבים!",
+  "[excited] מפתח הזהב של היום הולך ל... שחר!",
+  "[excited] שחר, הווילה המוזהבת עם הבריכה מחכה לך!",
+  "[excited] ועכשיו, התגובה שזכתה היום...",
+  "[excited] אופק ביקש לונה פארק ענק בשם ספירלנד!",
+  "[excited] אז הנה הוא! פארק השעשועים ספירלנד!",
+  "[excited] רכבת הרים ענקית, גלגל ענק וקרוסלה!",
+  "[excited] אפילו ספינת פיראטים מתנדנדת ומגלשות מים!",
+  "[excited] אבל רגע... תסתכלו לשמיים.",
+  "[excited] הדרקונים לא מגיעים לבד. הם מגיעים בכמויות!",
+  "[excited] ואנחנו צריכים כמה שיותר תושבים שיגנו עלינו!",
+  "[excited] אז תעקבו אחרי העמוד, ותביאו את החברים שלכם!",
+  "[excited] כל עוקב חדש הוא עוד מגן לממלכה!",
+  "[excited] רוצים להתגייס לצבא? תגיבו \"חייל\"!",
+  "[excited] רוצים בית מוזהב? שתפו לסטורי ותייגו אותנו!",
+  "[excited] ומה בונים מחר? תגיבו לי בתגובות!"
+ ],
+ "duration": 70.6,
+ "mix": "day4.mix.mp3",
+ "trial": true,
+ "top": 330,
+ "demo": [
+  {
+   "u": "your.name",
+   "gold": true
+  }
+ ],
+ "homes": {
+  "shahar._.yosef": 8
+ },
+ "houses": {
+  "from": 61,
+  "to": 88,
+  "line": 6,
+  "dt": 0.2,
+  "dur": 2.6
+ },
+ "rise": {
+  "key": "spirland",
+  "line": 11,
+  "dt": 0,
+  "dur": 2.4
+ },
+ "arrive": [
+  {
+   "dragon": 3,
+   "line": 1,
+   "dt": -0.6,
+   "dur": 5.5
+  },
+  {
+   "dragon": 4,
+   "line": 2,
+   "dt": -0.4,
+   "dur": 5.0
+  }
+ ],
+ "swarm": {
+  "target": "landmark:spirland",
+  "line": 14,
+  "dt": 0.6,
+  "until": 17,
+  "R": 55,
+  "H": 48,
+  "ease": 2.2
+ },
+ "fire": [
+  {
+   "line": 15,
+   "dt": 1.0,
+   "dur": 2.4
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "castle",
+   "dist": 520,
+   "yaw": -30,
+   "pitch": 18,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "dragon:3",
+   "dist": 60,
+   "yaw": 40,
+   "pitch": 6,
+   "orbit": 6,
+   "follow": true,
+   "ease": 0.6
+  },
+  {
+   "line": 2,
+   "target": "dragon:4",
+   "dist": 55,
+   "yaw": -40,
+   "pitch": 6,
+   "orbit": -6,
+   "follow": true,
+   "ease": 0.5
+  },
+  {
+   "line": 3,
+   "target": "dragon:3",
+   "dist": 26,
+   "yaw": 15,
+   "pitch": 4,
+   "follow": true,
+   "ease": 0.25
+  },
+  {
+   "line": 4,
+   "target": "statue",
+   "dist": 64,
+   "yaw": -12,
+   "pitch": 36,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 5,
+   "target": "landmark:base",
+   "dist": 120,
+   "yaw": 15,
+   "pitch": 34,
+   "orbit": 6,
+   "ease": 0.8
+  },
+  {
+   "line": 6,
+   "target": [
+    0,
+    0,
+    110
+   ],
+   "dist": 640,
+   "yaw": -15,
+   "pitch": 55,
+   "orbit": 3,
+   "ease": 0.9
+  },
+  {
+   "line": 7,
+   "target": "statue",
+   "dist": 66,
+   "yaw": 15,
+   "pitch": 36,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": "house:shahar._.yosef",
+   "dist": 36,
+   "yaw": 205,
+   "pitch": 26,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": "landmark:spirland",
+   "dist": 230,
+   "yaw": -10,
+   "pitch": 50,
+   "orbit": 3,
+   "ease": 0.9
+  },
+  {
+   "line": 11,
+   "target": "landmark:spirland",
+   "dist": 120,
+   "yaw": 20,
+   "pitch": 30,
+   "orbit": 9,
+   "ease": 0.5
+  },
+  {
+   "line": 12,
+   "target": [
+    -68.0,
+    12,
+    130.4
+   ],
+   "dist": 46,
+   "yaw": 197.5,
+   "pitch": 14,
+   "orbit": 6,
+   "ease": 0.4
+  },
+  {
+   "line": 12,
+   "dt": 1.1,
+   "target": [
+    -38.5,
+    16,
+    126.9
+   ],
+   "dist": 62,
+   "yaw": 157.5,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.35
+  },
+  {
+   "line": 12,
+   "dt": 2.2,
+   "target": [
+    -29.9,
+    4,
+    108.8
+   ],
+   "dist": 26,
+   "yaw": 127.5,
+   "pitch": 22,
+   "orbit": 5,
+   "ease": 0.35
+  },
+  {
+   "line": 13,
+   "target": [
+    -61.0,
+    7,
+    113.3
+   ],
+   "dist": 52,
+   "yaw": 237.5,
+   "pitch": 20,
+   "orbit": 3,
+   "ease": 0.4
+  },
+  {
+   "line": 13,
+   "dt": 1.5,
+   "target": [
+    -51.2,
+    7,
+    131.4
+   ],
+   "dist": 48,
+   "yaw": 167.5,
+   "pitch": 22,
+   "orbit": 4,
+   "ease": 0.4
+  },
+  {
+   "line": 14,
+   "target": [
+    -47.8,
+    34,
+    115.5
+   ],
+   "dist": 110,
+   "yaw": 337.5,
+   "pitch": 4,
+   "orbit": 3,
+   "ease": 1.0
+  },
+  {
+   "line": 15,
+   "target": "landmark:spirland",
+   "dist": 190,
+   "yaw": 30,
+   "pitch": 30,
+   "orbit": 7,
+   "ease": 0.8
+  },
+  {
+   "line": 15,
+   "dt": 1.0,
+   "target": "dragon:0",
+   "dist": 90,
+   "yaw": 35,
+   "pitch": 10,
+   "orbit": 4,
+   "follow": true,
+   "ease": 0.5
+  },
+  {
+   "line": 16,
+   "target": [
+    46.6,
+    3,
+    107.3
+   ],
+   "dist": 46,
+   "yaw": -142.5,
+   "pitch": 42,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 17,
+   "target": [
+    0,
+    0,
+    60
+   ],
+   "dist": 700,
+   "yaw": 10,
+   "pitch": 58,
+   "orbit": 3,
+   "ease": 0.9
+  },
+  {
+   "line": 18,
+   "target": "statue",
+   "dist": 64,
+   "yaw": -20,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 19,
+   "target": [
+    63.3,
+    4,
+    102.0
+   ],
+   "dist": 34,
+   "yaw": -97.5,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 20,
+   "target": "house:your.name",
+   "dist": 30,
+   "yaw": 200,
+   "pitch": 24,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 21,
+   "target": "castle",
+   "dist": 520,
+   "yaw": -40,
+   "pitch": 38,
+   "orbit": 4,
+   "ease": 0.9
+  }
+ ],
+ "cards": [
+  {
+   "type": "counter",
+   "line": 6,
+   "dt": 0.1,
+   "dur": 3.0,
+   "from": 61,
+   "to": 88
+  },
+  {
+   "type": "idcard",
+   "line": 7,
+   "dt": 1.3,
+   "dur": 2.4,
+   "u": "shahar._.yosef",
+   "honours": [
+    "מפתח זהב · יום 3"
+   ]
+  },
+  {
+   "type": "comment",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 2.9,
+   "u": "ofek_bell",
+   "head": "ההצעה של אופק",
+   "text": "תבנה לנו את הספירלנד, הלונה פארק הכי שווה שיש ויש בו כל מיני מתקנים שווים",
+   "likes": null
+  },
+  {
+   "type": "idcard",
+   "line": 11,
+   "dt": 1.0,
+   "dur": 1.9,
+   "u": "ofek_bell",
+   "honours": [
+    "אדריכל · ספירלנד"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 18,
+   "dt": 0.1,
+   "dur": 2.3,
+   "text": "כל עוקב = עוד מגן 🛡️"
+  },
+  {
+   "type": "cta",
+   "line": 21,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "מה בונים מחר?",
+   "sub": "תגיבו בתגובות 👇"
+  }
+ ],
+ "fx": [
+  {
+   "type": "news",
+   "line": 0,
+   "dur": 12.2,
+   "text": "מבזק חדשות מיוחד",
+   "sub": "חדשות הממלכה",
+   "clock": "15:00",
+   "ticker": "שני דרקונים חדשים נצפו מעל הממלכה · דרקון סגול ודרקון זהב · מאיפה הם באים? · המלך: יש לנו צבא! · היום: ספירלנד"
+  },
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "vignette",
+   "line": 0,
+   "dur": 12.1,
+   "color": "rgba(30,0,40,.55)"
+  },
+  {
+   "type": "punch",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 0.8,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 0.4,
+   "dur": 1.6,
+   "text": "💜",
+   "x": 220,
+   "y": 1150,
+   "size": 140
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 1.6,
+   "dur": 1.6,
+   "text": "💛",
+   "x": 860,
+   "y": 1150,
+   "size": 140
+  },
+  {
+   "type": "punch",
+   "line": 3,
+   "dur": 0.8,
+   "zoom": 0.35
+  },
+  {
+   "type": "shake",
+   "line": 3,
+   "dur": 0.9,
+   "amp": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.1,
+   "dur": 1.4,
+   "text": "😱",
+   "x": 840,
+   "y": 1120,
+   "size": 160
+  },
+  {
+   "type": "flash",
+   "line": 4,
+   "dur": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.3,
+   "dur": 2.0,
+   "text": "👑",
+   "x": 840,
+   "y": 640,
+   "size": 150
+  },
+  {
+   "type": "confetti",
+   "line": 6,
+   "dt": 2.1,
+   "dur": 2.0
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 2.1,
+   "dur": 1.6,
+   "text": "+27",
+   "x": 830,
+   "y": 1120,
+   "size": 130,
+   "rot": 8
+  },
+  {
+   "type": "vignette",
+   "line": 7,
+   "dur": 1.3,
+   "color": "rgba(10,10,30,.5)"
+  },
+  {
+   "type": "punch",
+   "line": 7,
+   "dt": 1.2,
+   "dur": 0.8,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 7,
+   "dt": 1.2,
+   "dur": 2.2
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 1.3,
+   "dur": 2.0,
+   "text": "🔑",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 10
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 1.5,
+   "dur": 1.6,
+   "text": "🏊",
+   "x": 210,
+   "y": 1120,
+   "size": 140,
+   "rot": -8
+  },
+  {
+   "type": "vignette",
+   "line": 9,
+   "dur": 2.0,
+   "color": "rgba(10,10,30,.45)"
+  },
+  {
+   "type": "punch",
+   "line": 11,
+   "dt": 2.3,
+   "dur": 0.8,
+   "zoom": 0.25
+  },
+  {
+   "type": "shake",
+   "line": 11,
+   "dt": 2.3,
+   "dur": 0.8,
+   "amp": 1.2
+  },
+  {
+   "type": "confetti",
+   "line": 11,
+   "dt": 2.3,
+   "dur": 2.6
+  },
+  {
+   "type": "sticker",
+   "line": 12,
+   "dt": 0.2,
+   "dur": 1.0,
+   "text": "🎢",
+   "x": 840,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "sticker",
+   "line": 12,
+   "dt": 1.2,
+   "dur": 1.0,
+   "text": "🎡",
+   "x": 220,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "sticker",
+   "line": 12,
+   "dt": 2.3,
+   "dur": 0.9,
+   "text": "🎠",
+   "x": 840,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "sticker",
+   "line": 13,
+   "dt": 0.2,
+   "dur": 1.3,
+   "text": "🏴‍☠️",
+   "x": 220,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "sticker",
+   "line": 13,
+   "dt": 1.6,
+   "dur": 1.3,
+   "text": "💦",
+   "x": 840,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "vignette",
+   "line": 14,
+   "dur": 9.1,
+   "color": "rgba(40,6,20,.48)"
+  },
+  {
+   "type": "sticker",
+   "line": 14,
+   "dt": 0.2,
+   "dur": 1.6,
+   "text": "😳",
+   "x": 840,
+   "y": 620,
+   "size": 150
+  },
+  {
+   "type": "banner",
+   "line": 15,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "⚠ הם מגיעים בכמויות! ⚠",
+   "y": 760,
+   "band": "#c2412d",
+   "size": 100
+  },
+  {
+   "type": "flash",
+   "line": 15,
+   "dt": 1.0,
+   "dur": 0.4,
+   "color": "#ff8a1f",
+   "alpha": 0.55
+  },
+  {
+   "type": "shake",
+   "line": 15,
+   "dt": 1.0,
+   "dur": 1.6,
+   "amp": 1.8
+  },
+  {
+   "type": "sticker",
+   "line": 15,
+   "dt": 1.1,
+   "dur": 1.6,
+   "text": "🔥",
+   "x": 220,
+   "y": 1120,
+   "size": 160,
+   "rot": -10
+  },
+  {
+   "type": "sticker",
+   "line": 16,
+   "dt": 0.3,
+   "dur": 2.2,
+   "text": "🛡️",
+   "x": 840,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "punch",
+   "line": 17,
+   "dur": 0.8,
+   "zoom": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 17,
+   "dt": 0.1,
+   "dur": 2.9,
+   "text": "עקבו אחרי העמוד! ➕",
+   "y": 1150,
+   "size": 110,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 17,
+   "dt": 0.6,
+   "dur": 2.4,
+   "text": "👇",
+   "x": 200,
+   "y": 1600,
+   "size": 150
+  },
+  {
+   "type": "sticker",
+   "line": 18,
+   "dt": 0.3,
+   "dur": 2.0,
+   "text": "+1 🛡️",
+   "x": 830,
+   "y": 1120,
+   "size": 120,
+   "rot": 8
+  },
+  {
+   "type": "banner",
+   "line": 19,
+   "dt": 1.0,
+   "dur": 1.6,
+   "text": "תגיבו: חייל 🪖",
+   "y": 1150,
+   "size": 130,
+   "band": "#0f6f73"
+  },
+  {
+   "type": "banner",
+   "line": 20,
+   "dt": 1.0,
+   "dur": 1.9,
+   "text": "שתפו ⭐ תייגו ⭐ זהב",
+   "y": 1150,
+   "size": 100,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 21,
+   "dt": 1.0,
+   "dur": 1.6,
+   "text": "👇",
+   "x": 540,
+   "y": 1180,
+   "size": 150
+  }
+ ],
+ "music": {
+  "bpm": 120,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 4,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 9,
+     "dt": 0
+    },
+    "stop"
+   ],
+   [
+    {
+     "line": 10,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 14,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 17,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0,
+   "gain": 0.8
+  },
+  {
+   "name": "ding",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "roar",
+   "line": 1,
+   "dt": 0.2,
+   "gain": 0.7
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 2,
+   "dt": -0.1
+  },
+  {
+   "name": "roar",
+   "line": 2,
+   "dt": 1.4,
+   "gain": 0.7
+  },
+  {
+   "name": "boom",
+   "line": 3,
+   "dt": 0,
+   "gain": 0.6
+  },
+  {
+   "name": "scratch",
+   "line": 4,
+   "dt": -0.15
+  },
+  {
+   "name": "ding",
+   "line": 4,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 5,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 6,
+   "dt": 0.3,
+   "repeat": 12,
+   "every": 0.18,
+   "gain": 0.7
+  },
+  {
+   "name": "sparkle",
+   "line": 6,
+   "dt": 2.1
+  },
+  {
+   "name": "sting",
+   "line": 7,
+   "dt": 0,
+   "gain": 0.5
+  },
+  {
+   "name": "tada",
+   "line": 7,
+   "dt": 1.2
+  },
+  {
+   "name": "kaching",
+   "line": 7,
+   "dt": 1.5
+  },
+  {
+   "name": "whoosh",
+   "line": 8,
+   "dt": -0.1
+  },
+  {
+   "name": "sparkle",
+   "line": 8,
+   "dt": 1.4
+  },
+  {
+   "name": "whoosh",
+   "line": 9,
+   "dt": -0.1
+  },
+  {
+   "name": "cricket",
+   "line": 9,
+   "dt": 0.4,
+   "gain": 0.5
+  },
+  {
+   "name": "ding",
+   "line": 10,
+   "dt": 0.1
+  },
+  {
+   "name": "boom",
+   "line": 11,
+   "dt": 0
+  },
+  {
+   "name": "tada",
+   "line": 11,
+   "dt": 2.3
+  },
+  {
+   "name": "whoosh",
+   "line": 12,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 12,
+   "dt": 1.0
+  },
+  {
+   "name": "whoosh",
+   "line": 12,
+   "dt": 2.1
+  },
+  {
+   "name": "whoosh",
+   "line": 13,
+   "dt": -0.1
+  },
+  {
+   "name": "boing",
+   "line": 13,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 13,
+   "dt": 1.4
+  },
+  {
+   "name": "sting",
+   "line": 14,
+   "dt": 0.1
+  },
+  {
+   "name": "roar",
+   "line": 15,
+   "dt": 0.2
+  },
+  {
+   "name": "roar",
+   "line": 15,
+   "dt": 1.0
+  },
+  {
+   "name": "boom",
+   "line": 15,
+   "dt": 1.1,
+   "gain": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 16,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 17,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 17,
+   "dt": 0.6
+  },
+  {
+   "name": "sparkle",
+   "line": 18,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 19,
+   "dt": 1.0
+  },
+  {
+   "name": "kaching",
+   "line": 20,
+   "dt": 1.0,
+   "gain": 0.6
+  },
+  {
+   "name": "whoosh",
+   "line": 21,
+   "dt": -0.1
+  },
+  {
+   "name": "ding",
+   "line": 21,
+   "dt": 0.2
+  }
+ ],
+ "caption": "מבזק חדשות מהממלכה 📺 שני דרקונים חדשים נצפו מעל הממלכה, סגול וזהב 🐉 והיום נפתח פארק השעשועים ספירלנד 🎢🎡\nהדרקונים מגיעים בכמויות: עקבו אחרי העמוד, תגיבו \"חייל\" והצטרפו לצבא הממלכה 🪖 שתפו לסטורי עם תיוג וקבלו בית מוזהב ✨\nמה בונים מחר? כתבו בתגובות 👇\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #ספירלנד #כל_תגובה_בית",
+ "firstComment": "תגיבו כאן \"חייל\" 🪖 ומה בונים מחר? התגובה עם הכי הרבה לייקים נבנית 🏗️",
+ "notes": "Michael chose ofek_bell's luna park (1 like) over annaonlygurlssss's dragon-proof villa (12), shiransapir1's statue (5, family) and a real person's grave (2, real person, politics). Two new dragons, purple and gold, arrive (kingdom.json dragons: 5). Gold key: shahar._.yosef, drawn by the rule among day 3's citizens."
+}
