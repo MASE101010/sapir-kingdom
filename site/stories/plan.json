@@ -114,5 +114,26 @@
     "image": "stories/day5-4.jpg",
     "after": "reel:5",
     "about": "20:30 מפתח הזהב, mpt9399"
+  },
+  {
+    "id": "day5-5",
+    "at": "2026-10-17T18:00:00Z",
+    "image": "stories/day5-5.jpg",
+    "after": "reel:5",
+    "about": "21:00 איזו קבוצה אתם"
+  },
+  {
+    "id": "day5-6",
+    "at": "2026-10-17T19:00:00Z",
+    "image": "stories/day5-6.jpg",
+    "after": "reel:5",
+    "about": "22:00 מי יתמלא ראשון"
+  },
+  {
+    "id": "day5-7",
+    "at": "2026-10-17T20:00:00Z",
+    "image": "stories/day5-7.jpg",
+    "after": "reel:5",
+    "about": "23:00 מלחמת האוהדים"
   }
 ]
