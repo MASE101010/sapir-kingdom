@@ -13,8 +13,8 @@ export async function addResident(env, name, src, hostName = null) {
     await env.DB.prepare('INSERT OR IGNORE INTO residents (u, h, day, src, at, plot) SELECT ?, ?, ?, ?, ?, COALESCE(MAX(plot), -1) + 1 FROM residents').bind(u, fingerprint(u), day, src, Date.now()).run();
   return env.DB.prepare('SELECT n, u, h, day, src, plot, host, home FROM residents WHERE u = ?').bind(u).first();
 }
-export const row = r => Object.fromEntries(Object.entries({ u: r.u, h: r.h, plot: r.plot ?? r.n - 1, day: r.day, src: r.src, host: r.host ?? undefined, home: r.home ?? undefined, citizen: r.citizen ? 1 : undefined, gold: r.gold ? 1 : undefined }).filter(([, v]) => v !== undefined && v !== null));
-export const COLS = 'n, u, h, day, src, plot, host, home, citizen, gold';
+export const row = r => Object.fromEntries(Object.entries({ u: r.u, h: r.h, plot: r.plot ?? r.n - 1, day: r.day, src: r.src, host: r.host ?? undefined, home: r.home ?? undefined, citizen: r.citizen ? 1 : undefined, gold: r.gold ? 1 : undefined, team: r.team ?? undefined, shirt: r.shirt ?? undefined }).filter(([, v]) => v !== undefined && v !== null));
+export const COLS = 'n, u, h, day, src, plot, host, home, citizen, gold, team, shirt';
 /** the Instagram token: the fresh one kept in the database (token.yml), or the one set at the start */
 export async function igToken(env) { return (await env.DB.prepare("SELECT v FROM state WHERE k = 'ig_token'").first('v')) ?? env.IG_TOKEN; }
 /** who this device is (after a DM code came back) */

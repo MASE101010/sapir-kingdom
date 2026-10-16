@@ -7,7 +7,7 @@
 // Instagram allows only so many calls an hour, so a sync runs at most once every GAP ms, and backs off after a limit error.
 import { addResident, igToken } from './_lib.js';
 import { HOMES, COMMON } from '../site/app/catalog.js';
-import { reply, SOLDIER, SOLDIER_HOME, BAD } from './_replies.js';
+import { reply, SOLDIER, SOLDIER_HOME, BAD, teamOf, SQUAD } from './_replies.js';
 const G = 'https://graph.instagram.com/v21.0', GAP = 8000, BACKOFF = 10 * 60e3;
 const say = [n => `ברוכים הבאים לממלכה! הבית שלך, מספר ${n}, כבר עומד 🏠 חפשו את השם שלכם באתר שבביו`,
   n => `נבנה לך בית! מספר ${n}. כנסו לאתר שבביו ותמצאו אותו 👑`, n => `תושב חדש! בית מספר ${n} בממלכה הוא שלך. הקישור בביו 🏰`,
@@ -145,7 +145,12 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
     const { results: queue } = await env.DB.prepare('SELECT c.id, c.u, c.text, c.house, r.n, r.citizen FROM comments c JOIN residents r ON r.u = c.u WHERE (c.replied IS NULL OR c.replied = 2 OR c.replied BETWEEN -2 AND -1) AND c.house IN (1, 3) ORDER BY c.at LIMIT ?').bind(replies).all();
     for (const a of queue) {
       if (SOLDIER.test(a.text ?? '') && !BAD.test(a.text ?? '')) await env.DB.prepare('UPDATE residents SET home = ?, changed = ? WHERE u = ? AND COALESCE(home, -1) NOT IN (8, ?)').bind(SOLDIER_HOME, Date.now(), a.u, SOLDIER_HOME).run();   // "חייל": moves into the מגורים צבאיים (the villa stays)
-      const r = await post(env, `${a.id}/replies`, { message: reply(a, { fresh: a.house === 1, n: a.n, citizen: !!a.citizen }) });   // the king answers what they wrote
+      let team = null; const key = !BAD.test(a.text ?? '') && teamOf(a.text);   // "מכבי ספיר" / "הפועל ספיר": into the squad while there is room
+      if (key) { const me = await env.DB.prepare('SELECT team, shirt FROM residents WHERE u = ?').bind(a.u).first();
+        if (me?.team) team = { key: me.team, shirt: me.shirt };
+        else { const c = await env.DB.prepare('SELECT COUNT(*) AS c FROM residents WHERE team = ?').bind(key).first('c');
+          if (c < SQUAD) { await env.DB.prepare('UPDATE residents SET team = ?, shirt = ?, changed = ? WHERE u = ? AND team IS NULL').bind(key, c + 1, Date.now(), a.u).run(); team = { key, shirt: c + 1 }; } else team = { key, full: true }; } }
+      const r = await post(env, `${a.id}/replies`, { message: reply(a, { fresh: a.house === 1, n: a.n, citizen: !!a.citizen, team }) });   // the king answers what they wrote
       await env.DB.prepare('UPDATE comments SET replied = CASE WHEN ? THEN (CASE WHEN replied > 0 THEN 0 ELSE COALESCE(replied, 0) END) - 1 ELSE 1 END WHERE id = ?').bind(r.error ? 1 : 0, a.id).run(); if (!r.error) replied++;   // a failed answer is tried again
     }
     return { ran: true, read: comments.length, waiting: waiting.map(w => w.u), invites, citizens, replied };

@@ -35,18 +35,25 @@ const OTHER_CITY = [() => 'פה זו הממלכה של משפחת ספיר 👑 
 /** "חייל": joining the kingdom's army, their house becomes מגורים צבאיים (homes.js style 9) */
 export const SOLDIER = /(?<!\p{L})(אני\s+)?(חייל|חיילת|חיילים|מתגייס|מתגייסת|להתגייס)(?!\p{L})/u;
 export const SOLDIER_HOME = 9;
+/** the football clubs (day 5): "מכבי ספיר" or "הפועל ספיר" in a comment asks to play; the first 20 of each make the squad */
+export const TEAMS = { maccabi: { re: /מכבי\s*(ספיר|sapir)/iu, name: 'מכבי ספיר' }, hapoel: { re: /הפועל\s*(ספיר|sapir)/iu, name: 'הפועל ספיר' } };
+export const SQUAD = 20;
+export const teamOf = text => Object.entries(TEAMS).find(([, t]) => t.re.test(String(text ?? '')))?.[0];
+const SIGNED = [(n, s) => `ברוך הבא ל${n}! ⚽ קיבלת חולצה מספר ${s}`, (n, s) => `חתמת ב${n}! 🖊️⚽ מספר ${s} שלך, תתחיל להתאמן`, (n, s) => `${n} מחתימה שחקן חדש! 🔥 חולצה מספר ${s}`, (n, s) => `הסגל של ${n} גדל! ⚽ אתה מספר ${s}, מחר בוחרים צבע מדים`];
+const FULL = [n => `הסגל של ${n} מלא 😅 אבל אתה האוהד מספר 1 ביציע! 📣`, n => `20 השחקנים של ${n} כבר נבחרו, אבל ביציע תמיד יש מקום 🏟️`];
 const ARMY = [() => 'גויסת לצבא ההגנה לספירלנד! 🪖 הבית שלך עבר למגורים הצבאיים', () => 'ברוך הבא לצבא, חייל! 🫡 המגורים הצבאיים שלך מוכנים', () => 'הדרקונים כבר רועדים 🐉 גויסת! הבית שלך עכשיו במגורים הצבאיים', () => 'קיבלת מדים וקסדה 🪖 ברוכים הבאים לצבא ההגנה לספירלנד'];
 export const BAD = /זונה|זנות|סקס|ציצי|תחת|חרא|קקי|פיפי|משתין|משתינ|מחרבן|זין|כוס|שרמוט|מטומטם|אידיוט|טיפש|סתום|למות|להרוג|רצח|פיגוע|מחבל|טרור|נאצי|היטלר|סמים|ג'וינט|אלכוהול|וודקה|נשק|אקדח|רובה|פצצה|מגדלי\s*התאומים|ביבי|נתניהו|בנט|טראמפ|לפיד|גנץ|בן\s*גביר|סמוטריץ|ליכוד|בחירות|מטוס\s*שמתקרב/u;
 const CITY = /תל\s*בטטה|telbatata|tel\s*batata|מעתיק|העתק|חיקוי|קריית\s*בצל/iu;
 const HOUSE_ASK = /^(אפשר|אני\s+רוצה|תבנו\s+לי|תבנה\s+לי|רוצה|אשמח\s+ל)?\s*(גם\s+)?(בית|ביית|ביתת|בית\s+משלי|בית\s+בבקשה)[\s?!.]*$/u;
 
 /** the answer to one comment. fresh: their house was built just now (n); citizen: they follow */
-export function reply({ id, u, text }, { fresh = false, n, citizen = false } = {}) {
+export function reply({ id, u, text }, { fresh = false, n, citizen = false, team = null } = {}) {
   const seed = hash(id), t = String(text ?? '').trim(), w = wish(t), num = n?.toLocaleString?.('he-IL') ?? n;
   const tail = fresh ? (citizen ? ` · נבנה לך בית מספר ${num}, ואתם כבר אזרחים 👑` : ` · נבנה לך בית מספר ${num} 🏠 לאזרחות: עקבו וכתבו לי "בית" בפרטי`) : '';
   let head;
   if (BAD.test(t)) head = pick(RUDE, seed)();
   else if (CITY.test(t)) head = pick(OTHER_CITY, seed)();
+  else if (team) head = team.full ? pick(FULL, seed)(TEAMS[team.key].name) : pick(SIGNED, seed)(TEAMS[team.key].name, team.shirt);
   else if (SOLDIER.test(t)) head = pick(ARMY, seed)();
   else if (!/[\p{L}\p{N}]/u.test(t)) head = pick(EMOJI, seed)();
   else if (HOUSE_ASK.test(t)) head = fresh ? 'ביקשת, קיבלת! 🏡' : pick(HOUSE, seed)();

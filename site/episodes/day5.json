@@ -1,0 +1,956 @@
+{
+ "day": 5,
+ "lines": [
+  "[excited] מבזק ספורט מיוחד מהממלכה של משפחת Sapir!",
+  "[excited] בממלכה נולדה הלילה יריבות ענקית!",
+  "[excited] מכבי Sapir נגד הפועל Sapir!",
+  "[excited] צהריים טובים לכל תושבי הממלכה, כאן המלך מיכאל.",
+  "[excited] אתמול פתחנו את ספירלנד, והתורים לרכבת ההרים לא נגמרים!",
+  "[excited] והממלכה ממשיכה לגדול, כבר מאה ושתים עשרה תושבים!",
+  "[excited] מפתח הזהב של היום הולך ל...",
+  "[excited] MPT!",
+  "[excited] הווילה המוזהבת עם הבריכה מחכה לך!",
+  "[excited] ועכשיו, התגובה שזכתה היום...",
+  "[excited] יובל ביקש אצטדיון כדורגל לקבוצה של הממלכה.",
+  "[excited] אז בניתי שניים! לשתי קבוצות יריבות!",
+  "[excited] האצטדיון הענק של מכבי Sapir!",
+  "[excited] והמגרש של הפועל Sapir, ממש לידו!",
+  "[excited] לכל קבוצה יש מגורי שחקנים, עם מקום לעשרים שחקנים.",
+  "[excited] רוצים להיות שחקנים? תגיבו מכבי Sapir או הפועל Sapir!",
+  "[excited] רק עשרים הראשונים בכל קבוצה נכנסים לסגל!",
+  "[excited] ומחר אתם בוחרים את צבע המדים!",
+  "[excited] ואנחנו מחפשים גם ספונסרים לקבוצות...",
+  "[excited] אז תגיבו לי מי יהיו הספונסרים!",
+  "[excited] והדרקונים? הם כבר קנו כרטיסים למשחק הראשון...",
+  "[excited] אז תעקבו אחרי העמוד, ותגיבו לאיזו קבוצה אתם שייכים!"
+ ],
+ "duration": 68.2,
+ "mix": "day5.mix.mp3",
+ "trial": true,
+ "top": 330,
+ "say": {
+  "Sapir": "ספיר"
+ },
+ "homes": {
+  "mpt9399": 8
+ },
+ "houses": {
+  "from": 88,
+  "to": 112,
+  "line": 5,
+  "dt": 0.2,
+  "dur": 2.8
+ },
+ "rise": [
+  {
+   "key": "maccabi",
+   "line": 2,
+   "dt": 0,
+   "dur": 1.3
+  },
+  {
+   "key": "hapoel",
+   "line": 2,
+   "dt": 1.4,
+   "dur": 1.2
+  }
+ ],
+ "swarm": {
+  "target": "landmark:maccabi",
+  "line": 20,
+  "dt": -0.6,
+  "until": 21,
+  "udt": 1.5,
+  "R": 45,
+  "H": 40,
+  "ease": 1.6
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "castle",
+   "dist": 300,
+   "yaw": -60,
+   "pitch": 24,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "landmark:maccabi",
+   "dist": 260,
+   "yaw": 25,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.7
+  },
+  {
+   "line": 2,
+   "target": [
+    -115.5,
+    3,
+    47.8
+   ],
+   "dist": 60,
+   "yaw": 127.5,
+   "pitch": 24,
+   "orbit": 4,
+   "ease": 0.4
+  },
+  {
+   "line": 2,
+   "dt": 1.4,
+   "target": [
+    -115.5,
+    3,
+    -47.8
+   ],
+   "dist": 55,
+   "yaw": 52.5,
+   "pitch": 24,
+   "orbit": -4,
+   "ease": 0.3
+  },
+  {
+   "line": 3,
+   "target": "statue",
+   "dist": 70,
+   "yaw": 0,
+   "pitch": 40,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 4,
+   "target": "landmark:spirland",
+   "dist": 110,
+   "yaw": 20,
+   "pitch": 30,
+   "orbit": 7,
+   "ease": 0.8
+  },
+  {
+   "line": 5,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 680,
+   "yaw": -15,
+   "pitch": 55,
+   "orbit": 3,
+   "ease": 0.9
+  },
+  {
+   "line": 6,
+   "target": "statue",
+   "dist": 72,
+   "yaw": 20,
+   "pitch": 40,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": "house:mpt9399",
+   "dist": 36,
+   "yaw": 205,
+   "pitch": 26,
+   "orbit": 6,
+   "ease": 0.5
+  },
+  {
+   "line": 9,
+   "target": [
+    -115.5,
+    0,
+    0
+   ],
+   "dist": 260,
+   "yaw": 80,
+   "pitch": 48,
+   "orbit": 3,
+   "ease": 0.9
+  },
+  {
+   "line": 11,
+   "target": [
+    -112,
+    4,
+    0
+   ],
+   "dist": 240,
+   "yaw": 90,
+   "pitch": 50,
+   "orbit": 6,
+   "ease": 0.5
+  },
+  {
+   "line": 12,
+   "target": "landmark:maccabi",
+   "dist": 100,
+   "yaw": 15,
+   "pitch": 30,
+   "orbit": 9,
+   "ease": 0.5
+  },
+  {
+   "line": 13,
+   "target": "landmark:hapoel",
+   "dist": 80,
+   "yaw": -15,
+   "pitch": 30,
+   "orbit": -8,
+   "ease": 0.5
+  },
+  {
+   "line": 14,
+   "target": [
+    -136.3,
+    5,
+    56.4
+   ],
+   "dist": 36,
+   "yaw": 292.5,
+   "pitch": 20,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 15,
+   "target": [
+    -114.0,
+    2,
+    51.5
+   ],
+   "dist": 34,
+   "yaw": 142.5,
+   "pitch": 36,
+   "orbit": 5,
+   "ease": 0.5
+  },
+  {
+   "line": 16,
+   "target": [
+    -115.5,
+    2,
+    -47.8
+   ],
+   "dist": 40,
+   "yaw": 47.5,
+   "pitch": 26,
+   "orbit": -4,
+   "ease": 0.5
+  },
+  {
+   "line": 17,
+   "target": [
+    -117.0,
+    2,
+    44.1
+   ],
+   "dist": 36,
+   "yaw": 112.5,
+   "pitch": 42,
+   "orbit": 4,
+   "ease": 0.5
+  },
+  {
+   "line": 18,
+   "target": [
+    -102.6,
+    2,
+    -42.4
+   ],
+   "dist": 22,
+   "yaw": 67.5,
+   "pitch": 10,
+   "orbit": 2,
+   "ease": 0.5
+  },
+  {
+   "line": 19,
+   "target": "landmark:hapoel",
+   "dist": 70,
+   "yaw": 10,
+   "pitch": 34,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 20,
+   "target": "landmark:maccabi",
+   "dist": 170,
+   "yaw": 30,
+   "pitch": 26,
+   "orbit": 7,
+   "ease": 0.8
+  },
+  {
+   "line": 21,
+   "target": "castle",
+   "dist": 540,
+   "yaw": -40,
+   "pitch": 38,
+   "orbit": 4,
+   "ease": 0.9
+  }
+ ],
+ "cards": [
+  {
+   "type": "counter",
+   "line": 5,
+   "dt": 0.1,
+   "dur": 3.4,
+   "from": 88,
+   "to": 112
+  },
+  {
+   "type": "idcard",
+   "line": 7,
+   "dt": 0.1,
+   "dur": 2.8,
+   "u": "mpt9399",
+   "honours": [
+    "מפתח זהב · יום 4"
+   ]
+  },
+  {
+   "type": "comment",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 3.0,
+   "u": "yuvalgaba",
+   "head": "ההצעה של יובל",
+   "text": "תבנה אצטדיון של קבוצת הכדורגל ספיר FC",
+   "likes": null
+  },
+  {
+   "type": "label",
+   "line": 12,
+   "dt": 0.2,
+   "dur": 2.5,
+   "text": "אצטדיון מכבי ספיר ⚽"
+  },
+  {
+   "type": "idcard",
+   "line": 12,
+   "dt": 0.8,
+   "dur": 1.9,
+   "u": "yuvalgaba",
+   "honours": [
+    "אדריכל · שני האצטדיונים"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 13,
+   "dt": 0.2,
+   "dur": 2.6,
+   "text": "מגרש הפועל ספיר ⚽"
+  },
+  {
+   "type": "label",
+   "line": 14,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "מגורי השחקנים · 20 מקומות לכל קבוצה"
+  },
+  {
+   "type": "label",
+   "line": 17,
+   "dt": 0.1,
+   "dur": 2.3,
+   "text": "מחר: אתם בוחרים צבע מדים 🎨"
+  },
+  {
+   "type": "label",
+   "line": 19,
+   "dt": 0.1,
+   "dur": 2.0,
+   "text": "מי יהיו הספונסרים? 📣"
+  },
+  {
+   "type": "cta",
+   "line": 21,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "לאיזו קבוצה אתם?",
+   "sub": "תגיבו מכבי ספיר או הפועל ספיר 👇"
+  }
+ ],
+ "fx": [
+  {
+   "type": "news",
+   "line": 0,
+   "dur": 9.3,
+   "text": "מבזק ספורט מיוחד",
+   "sub": "ספורט הממלכה",
+   "clock": "18:00",
+   "ticker": "יריבות חדשה בממלכה · מכבי ספיר נגד הפועל ספיר · 20 מקומות בכל סגל · מחפשים ספונסרים · מחר: צבע המדים"
+  },
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "punch",
+   "line": 2,
+   "dt": 0.1,
+   "dur": 0.7,
+   "zoom": 0.3
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 0.1,
+   "dur": 1.3,
+   "text": "⚽",
+   "x": 840,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "punch",
+   "line": 2,
+   "dt": 1.4,
+   "dur": 0.7,
+   "zoom": 0.3
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 1.4,
+   "dur": 1.3,
+   "text": "🔥",
+   "x": 220,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "banner",
+   "line": 2,
+   "dt": 0.2,
+   "dur": 2.6,
+   "text": "מכבי נגד הפועל!",
+   "y": 760,
+   "band": "#13213b",
+   "size": 110,
+   "color": "#e8b323"
+  },
+  {
+   "type": "flash",
+   "line": 3,
+   "dur": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.3,
+   "dur": 2.0,
+   "text": "👑",
+   "x": 840,
+   "y": 640,
+   "size": 150
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.3,
+   "dur": 2.5,
+   "text": "🎢",
+   "x": 840,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "confetti",
+   "line": 5,
+   "dt": 2.2,
+   "dur": 2.0
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 2.2,
+   "dur": 1.8,
+   "text": "+24",
+   "x": 830,
+   "y": 1120,
+   "size": 130,
+   "rot": 8
+  },
+  {
+   "type": "vignette",
+   "line": 6,
+   "dur": 2.3,
+   "color": "rgba(10,10,30,.5)"
+  },
+  {
+   "type": "punch",
+   "line": 7,
+   "dur": 0.8,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 7,
+   "dur": 2.4
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "🔑",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 10
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 1.0,
+   "dur": 1.6,
+   "text": "🏊",
+   "x": 210,
+   "y": 1120,
+   "size": 140,
+   "rot": -8
+  },
+  {
+   "type": "vignette",
+   "line": 9,
+   "dur": 2.4,
+   "color": "rgba(10,10,30,.45)"
+  },
+  {
+   "type": "punch",
+   "line": 11,
+   "dt": 2.0,
+   "dur": 0.8,
+   "zoom": 0.25
+  },
+  {
+   "type": "shake",
+   "line": 11,
+   "dt": 2.0,
+   "dur": 0.8,
+   "amp": 1.2
+  },
+  {
+   "type": "confetti",
+   "line": 11,
+   "dt": 2.0,
+   "dur": 2.6
+  },
+  {
+   "type": "sticker",
+   "line": 11,
+   "dt": 1.0,
+   "dur": 1.6,
+   "text": "x2",
+   "x": 830,
+   "y": 1120,
+   "size": 140,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 12,
+   "dt": 0.5,
+   "dur": 2.0,
+   "text": "🏟️",
+   "x": 210,
+   "y": 1120,
+   "size": 150
+  },
+  {
+   "type": "sticker",
+   "line": 13,
+   "dt": 0.5,
+   "dur": 2.0,
+   "text": "⚽",
+   "x": 840,
+   "y": 1120,
+   "size": 150
+  },
+  {
+   "type": "banner",
+   "line": 15,
+   "dt": 0.6,
+   "dur": 3.2,
+   "text": "תגיבו: מכבי ספיר / הפועל ספיר",
+   "y": 1150,
+   "size": 82,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "punch",
+   "line": 16,
+   "dur": 0.7,
+   "zoom": 0.3
+  },
+  {
+   "type": "sticker",
+   "line": 16,
+   "dt": 0.2,
+   "dur": 2.6,
+   "text": "20",
+   "x": 840,
+   "y": 1110,
+   "size": 170,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 17,
+   "dt": 0.5,
+   "dur": 0.8,
+   "text": "🟡",
+   "x": 200,
+   "y": 1120,
+   "size": 110
+  },
+  {
+   "type": "sticker",
+   "line": 17,
+   "dt": 0.9,
+   "dur": 0.8,
+   "text": "🔴",
+   "x": 400,
+   "y": 1120,
+   "size": 110
+  },
+  {
+   "type": "sticker",
+   "line": 17,
+   "dt": 1.3,
+   "dur": 0.8,
+   "text": "🔵",
+   "x": 640,
+   "y": 1120,
+   "size": 110
+  },
+  {
+   "type": "sticker",
+   "line": 17,
+   "dt": 1.7,
+   "dur": 0.8,
+   "text": "🟢",
+   "x": 860,
+   "y": 1120,
+   "size": 110
+  },
+  {
+   "type": "sticker",
+   "line": 18,
+   "dt": 0.3,
+   "dur": 2.0,
+   "text": "💰",
+   "x": 840,
+   "y": 640,
+   "size": 150
+  },
+  {
+   "type": "banner",
+   "line": 19,
+   "dt": 0.6,
+   "dur": 1.6,
+   "text": "תגיבו מי הספונסר! 📣",
+   "y": 1150,
+   "size": 100,
+   "band": "#c2412d"
+  },
+  {
+   "type": "vignette",
+   "line": 20,
+   "dur": 3.0,
+   "color": "rgba(40,6,20,.42)"
+  },
+  {
+   "type": "sticker",
+   "line": 20,
+   "dt": 0.4,
+   "dur": 2.4,
+   "text": "🎟️",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 10
+  },
+  {
+   "type": "sticker",
+   "line": 20,
+   "dt": 0.6,
+   "dur": 2.2,
+   "text": "🐉",
+   "x": 220,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "banner",
+   "line": 21,
+   "dt": 0.4,
+   "dur": 3.0,
+   "text": "עקבו אחרי העמוד! ➕",
+   "y": 1150,
+   "size": 100,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "shake",
+   "line": 2,
+   "dt": 0.1,
+   "dur": 0.6,
+   "amp": 1.2
+  },
+  {
+   "type": "shake",
+   "line": 2,
+   "dt": 1.5,
+   "dur": 0.6,
+   "amp": 1.2
+  },
+  {
+   "type": "confetti",
+   "line": 2,
+   "dt": 1.4,
+   "dur": 1.6
+  }
+ ],
+ "music": {
+  "bpm": 124,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 3,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 9,
+     "dt": 0
+    },
+    "stop"
+   ],
+   [
+    {
+     "line": 10,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 20,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 21,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0,
+   "gain": 0.8
+  },
+  {
+   "name": "ding",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": -0.1
+  },
+  {
+   "name": "boom",
+   "line": 2,
+   "dt": 0.1,
+   "gain": 0.6
+  },
+  {
+   "name": "boom",
+   "line": 2,
+   "dt": 1.4,
+   "gain": 0.6
+  },
+  {
+   "name": "scratch",
+   "line": 3,
+   "dt": -0.15
+  },
+  {
+   "name": "ding",
+   "line": 3,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 4,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 5,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 0.3,
+   "repeat": 12,
+   "every": 0.18,
+   "gain": 0.7
+  },
+  {
+   "name": "sparkle",
+   "line": 5,
+   "dt": 2.2
+  },
+  {
+   "name": "sting",
+   "line": 6,
+   "dt": 0,
+   "gain": 0.5
+  },
+  {
+   "name": "tada",
+   "line": 7,
+   "dt": 0
+  },
+  {
+   "name": "kaching",
+   "line": 7,
+   "dt": 0.3
+  },
+  {
+   "name": "sparkle",
+   "line": 8,
+   "dt": 1.0
+  },
+  {
+   "name": "whoosh",
+   "line": 9,
+   "dt": -0.1
+  },
+  {
+   "name": "cricket",
+   "line": 9,
+   "dt": 0.4,
+   "gain": 0.5
+  },
+  {
+   "name": "ding",
+   "line": 10,
+   "dt": 0.1
+  },
+  {
+   "name": "boom",
+   "line": 11,
+   "dt": 0
+  },
+  {
+   "name": "boom",
+   "line": 11,
+   "dt": 0.8,
+   "gain": 0.6
+  },
+  {
+   "name": "tada",
+   "line": 11,
+   "dt": 2.0
+  },
+  {
+   "name": "whoosh",
+   "line": 12,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 13,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 14,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 15,
+   "dt": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 16,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 17,
+   "dt": 0.5,
+   "repeat": 4,
+   "every": 0.4
+  },
+  {
+   "name": "kaching",
+   "line": 18,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 19,
+   "dt": 0.6
+  },
+  {
+   "name": "roar",
+   "line": 20,
+   "dt": 0.2
+  },
+  {
+   "name": "boing",
+   "line": 20,
+   "dt": 1.6
+  },
+  {
+   "name": "whoosh",
+   "line": 21,
+   "dt": -0.1
+  },
+  {
+   "name": "ding",
+   "line": 21,
+   "dt": 0.3
+  }
+ ],
+ "caption": "מבזק ספורט מהממלכה ⚽ נולדה יריבות: מכבי ספיר נגד הפועל ספיר! שני אצטדיונים חדשים בממלכה 🏟️\nרוצים להיות שחקנים? תגיבו \"מכבי ספיר\" או \"הפועל ספיר\", רק 20 הראשונים בכל קבוצה נכנסים לסגל 🔥 ותגיבו מי יהיו הספונסרים 📣\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #מכבי_ספיר #הפועל_ספיר",
+ "firstComment": "לאיזו קבוצה אתם? תגיבו מכבי ספיר או הפועל ספיר ⚽ רק 20 מקומות בכל סגל!",
+ "notes": "Michael chose yuvalgaba's stadium (1 like) and made it two rival clubs, מכבי ספיר (lot 3) and הפועל ספיר (lot 4). Skipped: annaonlygurlssss's dragon-proof villa (12), alin_vasan's burger place named after a real brand (4), a real person's grave (3, politics). Gold key: mpt9399, by the rule among day 4's citizens. Signups: comments with מכבי ספיר / הפועל ספיר, first 20 each (residents.team, shirt)."
+}
