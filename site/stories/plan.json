@@ -88,5 +88,31 @@
     "image": "stories/day4-4.jpg",
     "after": "reel:4",
     "about": "19:30 שחר עבר לווילה"
+  },
+  {
+    "id": "day5-1",
+    "at": "2026-10-17T05:30:00Z",
+    "image": "stories/day5-1.jpg",
+    "about": "08:30 שבת שלום, משהו גדול קורה"
+  },
+  {
+    "id": "day5-2",
+    "at": "2026-10-17T09:00:00Z",
+    "image": "stories/day5-2.jpg",
+    "about": "12:00 חידה: שתיים שלא מסתדרות"
+  },
+  {
+    "id": "day5-3",
+    "at": "2026-10-17T16:00:00Z",
+    "image": "stories/day5-3.jpg",
+    "after": "reel:5",
+    "about": "19:00 מכבי או הפועל"
+  },
+  {
+    "id": "day5-4",
+    "at": "2026-10-17T17:30:00Z",
+    "image": "stories/day5-4.jpg",
+    "after": "reel:5",
+    "about": "20:30 מפתח הזהב, mpt9399"
   }
 ]
