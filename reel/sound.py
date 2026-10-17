@@ -138,7 +138,7 @@ music = norm(music, .9)
 # ducking: the music dips under the voice, following its loudness
 v = np.zeros(N); v[:len(voice)] = voice[:N]
 win = int(.05 * SR); loud = np.sqrt(np.convolve(v ** 2, np.ones(win) / win, mode='same'))
-talk = np.clip(loud / (np.percentile(loud[loud > 0], 60) + 1e-9), 0, 1)
+talk = np.clip(loud / (np.percentile(loud[loud > 0], 60) + 1e-9), 0, 1) if (loud > 0).any() else np.zeros_like(loud)   # a reel with no voice: no ducking
 talk = np.convolve(talk, np.ones(int(.25 * SR)) / int(.25 * SR), mode='same')
 music_gain = ep.get('music', {}).get('gain', .32) * (1 - .55 * np.clip(talk, 0, 1))
 
