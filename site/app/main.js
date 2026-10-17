@@ -26,7 +26,7 @@ if (q.has('reel')) { const { startReel } = await import('./reel.js'); await star
 else if (q.has('catalog')) { const { startCatalog } = await import('./catalog-shots.js'); await startCatalog(renderer); }
 else { const live = await loadLive(data.residents.length); data.residents.push(...(live.residents ?? [])); applyChanges(data.residents, live.changed); site(data); }
 /** a resident's own changes (style, friend) over the snapshot */
-function applyChanges(list, changed = []) { let any = false; for (const c of changed ?? []) { const r = list[c.n - 1]; if (r && r.u === c.u && (r.plot !== c.plot || r.host !== c.host || r.home !== c.home || r.citizen !== c.citizen || r.gold !== c.gold)) { list[c.n - 1] = { ...r, plot: c.plot, host: c.host, home: c.home, citizen: c.citizen, gold: c.gold }; any = true; } } return any; }
+function applyChanges(list, changed = []) { let any = false; for (const c of changed ?? []) { const r = list[c.n - 1]; if (r && r.u === c.u && (r.plot !== c.plot || r.host !== c.host || r.home !== c.home || r.citizen !== c.citizen || r.gold !== c.gold || r.team !== c.team)) { list[c.n - 1] = { ...r, plot: c.plot, host: c.host, home: c.home, citizen: c.citizen, gold: c.gold, team: c.team, shirt: c.shirt }; any = true; } } return any; }
 
 function site({ plan, residents, kingdom, honours }) {
   document.body.classList.add('site');
@@ -96,7 +96,7 @@ function site({ plan, residents, kingdom, honours }) {
       <span>תושב מספר ${(k + 1).toLocaleString('he-IL')}</span><span>${esc(a.street)} ${a.num}</span>
       <span class="since">${mates.length > 1 ? `${esc(tier.name)} · גרים כאן ${mates.length}` : esc(HOMES[owner.home ?? -1]?.name ?? tier.name)} · מיום ${r.day ?? 1}</span></div></div>
       ${others.length ? `<p class="mates" dir="rtl">גרים איתו: <span dir="ltr">${others.map(esc).join(' ')}</span>${mates.length > 9 ? ' ועוד' : ''}</p>` : ''}
-      <div class="chips">${r.gold ? '<span class="gold">בית מוזהב ✨</span>' : ''}${r.citizen ? '<span class="citizen">אזרח הממלכה ✓</span>' : `<span class="tourist">עוד לא אזרח · עוקבים אחרי @${esc(ACCOUNT)} וכותבים "בית" בפרטי</span>`}${honoursOf(r.u).map(h => `<span>${esc(h)}</span>`).join('')}</div>
+      <div class="chips">${r.team ? `<span class="gold">⚽ ${r.team === 'maccabi' ? 'מכבי ספיר' : 'הפועל ספיר'} · מספר ${r.shirt}</span>` : ''}${r.gold ? '<span class="gold">בית מוזהב ✨</span>' : ''}${r.citizen ? '<span class="citizen">אזרח הממלכה ✓</span>' : `<span class="tourist">עוד לא אזרח · עוקבים אחרי @${esc(ACCOUNT)} וכותבים "בית" בפרטי</span>`}${honoursOf(r.u).map(h => `<span>${esc(h)}</span>`).join('')}</div>
       <div class="row"><button class="btn ghost" id="share">העתקת קישור לבית</button>${r.u === mine ? '<button class="btn ghost" id="invite-me">להזמין חברים</button>' : ''}<button class="btn ghost" id="close">סגירה</button></div></div>`;
     card.hidden = false; $('close').onclick = () => card.hidden = true;
     $('share').onclick = () => copy(`${location.origin}${location.pathname}?u=${r.u}`, $('share'));

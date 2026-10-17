@@ -80,6 +80,8 @@ export async function startReel({ renderer, data, day }) {
       const a = addr[r.plot]; c.house ??= `בית מספר ${(residents.indexOf(r) + 1).toLocaleString('he-IL')}`; c.address ??= `${a.street} ${a.num}`; }
     if (c.type === 'counter') c.to ??= upTo;
   }
+  // ep.say: how a word the voice needed in English letters is shown in the captions ("Sapir" → "ספיר")
+  for (const w of time.words) { const k = w.w.replace(/[^\p{L}\p{N}]/gu, ''); if (ep.say?.[k]) w.w = w.w.replace(k, ep.say[k]); }
   // captions: at most three words, never across a pause in the voice (a phrase), each gone before the next one starts
   const chunks = []; { let cur = null; time.words.forEach(w => { if (!cur || cur.line !== w.line || cur.p !== w.p || cur.words.length >= 3) { cur = { line: w.line, p: w.p, words: [] }; chunks.push(cur); } cur.words.push(w); }); }
   chunks.forEach((c, i) => { c.t0 = c.words[0].start - .05; c.t1 = Math.min(c.words.at(-1).end + .25, chunks[i + 1] ? chunks[i + 1].words[0].start - .05 : Infinity); });
