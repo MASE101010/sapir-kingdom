@@ -135,5 +135,31 @@
     "image": "stories/day5-7.jpg",
     "after": "reel:5",
     "about": "23:00 מלחמת האוהדים"
+  },
+  {
+    "id": "day6-1",
+    "at": "2026-10-18T05:30:00Z",
+    "image": "stories/day6-1.jpg",
+    "about": "08:30 בוקר טוב, צבעי המדים היום"
+  },
+  {
+    "id": "day6-2",
+    "at": "2026-10-18T08:30:00Z",
+    "image": "stories/day6-2.jpg",
+    "about": "11:30 טיפ: תייגו חבר"
+  },
+  {
+    "id": "day6-3",
+    "at": "2026-10-18T12:00:00Z",
+    "image": "stories/day6-3.jpg",
+    "after": "reel:6",
+    "about": "15:00 ספירדונלדס נפתח"
+  },
+  {
+    "id": "day6-4",
+    "at": "2026-10-18T18:00:00Z",
+    "image": "stories/day6-4.jpg",
+    "after": "reel:6",
+    "about": "21:00 ירוק או אדום"
   }
 ]
