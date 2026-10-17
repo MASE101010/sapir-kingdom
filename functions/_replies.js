@@ -36,7 +36,7 @@ const OTHER_CITY = [() => 'פה זו הממלכה של משפחת ספיר 👑 
 export const SOLDIER = /(?<!\p{L})(אני\s+)?(חייל|חיילת|חיילים|מתגייס|מתגייסת|להתגייס)(?!\p{L})/u;
 export const SOLDIER_HOME = 9;
 /** the football clubs (day 5): "מכבי ספיר" or "הפועל ספיר" in a comment asks to play; the first 20 of each make the squad */
-export const TEAMS = { maccabi: { re: /מכבי\s*(ספיר|sapir)/iu, name: 'מכבי ספיר' }, hapoel: { re: /הפועל\s*(ספיר|sapir)/iu, name: 'הפועל ספיר' } };
+export const TEAMS = { maccabi: { re: /(?<!\p{L})[בל]?מכבי(?!\p{L})/u, name: 'מכבי ספיר' }, hapoel: { re: /(?<!\p{L})[בל]?ה?פועל(?!\p{L})/u, name: 'הפועל ספיר' } };   // "מכבי" alone counts too
 export const SQUAD = 20;
 export const teamOf = text => Object.entries(TEAMS).find(([, t]) => t.re.test(String(text ?? '')))?.[0];
 const SIGNED = [(n, s) => `ברוך הבא ל${n}! ⚽ קיבלת חולצה מספר ${s}`, (n, s) => `חתמת ב${n}! 🖊️⚽ מספר ${s} שלך, תתחיל להתאמן`, (n, s) => `${n} מחתימה שחקן חדש! 🔥 חולצה מספר ${s}`, (n, s) => `הסגל של ${n} גדל! ⚽ אתה מספר ${s}, מחר בוחרים צבע מדים`];
