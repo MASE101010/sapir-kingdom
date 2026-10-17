@@ -150,7 +150,7 @@ function site({ plan, residents, kingdom, honours }) {
 
   // ---- the info office (לשכת המידע) ----
   const menu = $('menu'), panel = $('panel');
-  const ITEMS = [['find', 'איפה הבית שלי?', 'מחפשים לפי שם המשתמש באינסטגרם'], ['friends', 'לגור עם חברים', 'בית משותף, בניין לחבורה, ואפילו מגדל'],
+  const ITEMS = [['squads', 'הסגלים ⚽', 'מי משחק במכבי ספיר ומי בהפועל ספיר'], ['find', 'איפה הבית שלי?', 'מחפשים לפי שם המשתמש באינסטגרם'], ['friends', 'לגור עם חברים', 'בית משותף, בניין לחבורה, ואפילו מגדל'],
     ['pick', 'לבחור בית אחר', 'מתוך הקטלוג של הממלכה'], ['lottery', 'ההגרלה היומית', 'כל יום מישהו זוכה במפתח הזהב'],
     ['catalog', 'קטלוג הבתים', 'כל הבתים שאפשר לגור בהם'], ['people', 'התושבים', 'החדשים בממלכה, והוותיקים'],
     ['how', 'איך מקבלים בית?', 'ולמה הבית שלי עוד לא מופיע'], ['places', 'מקומות בממלכה', 'כל מה שהתושבים ביקשו ונבנה']];
@@ -172,6 +172,11 @@ function site({ plan, residents, kingdom, honours }) {
       catalog: () => `<h2>קטלוג הבתים</h2>${grid(false)}`,
       lottery: () => { const keys = honours.given?.key ?? []; return `<h2>ההגרלה היומית</h2><p>כל יום, אחד התושבים החדשים זוכה במפתח הזהב: עיטור על תעודת התושב, וזכות לבחור בית נדיר מהקטלוג.</p>
         ${keys.length ? `<p>הזוכה האחרון: <b dir="ltr">@${esc(keys.at(-1))}</b></p><ul class="people">${keys.slice().reverse().map(u => `<li><button class="link" data-u="${esc(u)}" dir="ltr">@${esc(u)}</button></li>`).join('')}</ul>` : '<p class="note">ההגרלה הראשונה מחר. כל מי שמצטרף היום משתתף.</p>'}`; },
+      squads: () => { const SQ = 20, team = (key, name, cls, colours) => { const players = residents.filter(r => r.team === key).sort((a, b) => (a.shirt ?? 99) - (b.shirt ?? 99));
+          return `<div class="squad ${cls}"><h3>${name}</h3><p class="note">${colours} · ${players.length}/${SQ} שחקנים</p><ol class="roster">${Array.from({ length: SQ }, (_, i) => { const r = players[i];
+            return r ? `<li><span class="shirt">${r.shirt ?? i + 1}</span><button class="link" data-u="${esc(r.u)}" dir="ltr">@${esc(r.u)}</button></li>` : `<li class="free"><span class="shirt">·</span>מקום פנוי</li>`; }).join('')}</ol></div>`; };
+        return `<h2>הסגלים ⚽</h2><p>רוצים לשחק? מגיבים על הריל <b>"מכבי"</b> או <b>"הפועל"</b>, ו-20 הראשונים בכל קבוצה נכנסים לסגל עם מספר חולצה.</p>
+          <div class="squads">${team('maccabi', 'מכבי ספיר', 'm', kingdom.teams?.maccabi ?? 'צבעי המדים: בקרוב')}${team('hapoel', 'הפועל ספיר', 'h', kingdom.teams?.hapoel ?? 'צבעי המדים: בקרוב')}</div>`; },
       people: () => `<h2>התושבים</h2><div class="tabs"><button class="tab on" data-t="new">חדשים</button><button class="tab" data-t="old">הראשונים</button></div><ul class="people" id="plist"></ul>`,
       how: () => `<h2>איך מקבלים בית?</h2><ol class="steps"><li>עוקבים אחרי <b dir="ltr">@${esc(ACCOUNT)}</b> באינסטגרם.</li><li>מגיבים על הריל האחרון, ותוך דקה יש לכם בית עם מספר. מה שתכתבו יכול גם לקבוע מה נבנה מחר.</li>
         <li>בית מוזהב ✨: משתפים את הריל לסטורי ומתייגים את <b dir="ltr">@${esc(ACCOUNT)}</b>, והבית מוזהב תוך דקה.</li>
