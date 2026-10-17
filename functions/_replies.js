@@ -47,7 +47,7 @@ const CITY = /תל\s*בטטה|telbatata|tel\s*batata|מעתיק|העתק|חיק�
 const HOUSE_ASK = /^(אפשר|אני\s+רוצה|תבנו\s+לי|תבנה\s+לי|רוצה|אשמח\s+ל)?\s*(גם\s+)?(בית|ביית|ביתת|בית\s+משלי|בית\s+בבקשה)[\s?!.]*$/u;
 
 /** the answer to one comment. fresh: their house was built just now (n); citizen: they follow */
-export function reply({ id, u, text }, { fresh = false, n, citizen = false, team = null } = {}) {
+export function reply({ id, u, text }, { fresh = false, n, citizen = false, team = null, tagged = [] } = {}) {
   const seed = hash(id), t = String(text ?? '').trim(), w = wish(t), num = n?.toLocaleString?.('he-IL') ?? n;
   const tail = fresh ? (citizen ? ` · נבנה לך בית מספר ${num}, ואתם כבר אזרחים 👑` : ` · נבנה לך בית מספר ${num} 🏠 לאזרחות: עקבו וכתבו לי "בית" בפרטי`) : '';
   let head;
@@ -60,5 +60,6 @@ export function reply({ id, u, text }, { fresh = false, n, citizen = false, team
   else if (QWORD.test(t)) head = pick(QUESTION, seed)();
   else { const topic = TOPICS.find(([re]) => re.test(t));
     head = topic ? pick(topic[1], seed)(w || 'הרעיון שלך') : ASK.test(t) && w ? pick(IDEA, seed)(w) : pick(HELLO, seed)(); }
-  return `@${u} ${head}${tail}`.slice(0, 300);
+  const friends = tagged.length ? ` · ${tagged.map(t => '@' + t).join(' ')} ${pick(['יש לכם בית חדש בממלכה, בזכות', 'עכשיו גרים בממלכה, בזכות', 'ברוכים הבאים לממלכה! הבית מחכה, בזכות'], seed + 1)} @${u} 🏠` : '';
+  return `@${u} ${head}${tail}${friends}`.slice(0, 300);
 }

@@ -1,6 +1,6 @@
 {
   "note": "The kingdom's state. Written by the daily run (CLAUDE.md). day: today's day number; landmarks: what stands, on which lot, built on which day, at whose asking; history: how many residents stood at the end of each day; upgraded: Instagram name -> extra storeys; visit: whose door Michael walks to today; status: one line about what Michael is doing.",
-  "day": 5,
+  "day": 6,
   "landmarks": [
     {
       "key": "castle",
@@ -46,22 +46,31 @@
       "by": [
         "yuvalgaba"
       ]
+    },
+    {
+      "key": "spirdonalds",
+      "lot": 5,
+      "day": 6,
+      "by": [
+        "alin_vasan"
+      ]
     }
   ],
   "history": [
     39,
     61,
     88,
-    112
+    112,
+    133
   ],
   "upgraded": {},
-  "status": "שתי קבוצות כדורגל נולדו: מכבי ספיר והפועל ספיר! מחפשים 20 שחקנים לכל קבוצה ⚽",
+  "status": "מכבי ספיר בירוק לבן, הפועל ספיר באדום שחור, וספירדונלדס נפתח, הספונסר של הפועל 🍔⚽",
   "dm": false,
   "updated": "2026-10-17T17:59:45.050Z",
   "news": {
-    "day": 5,
-    "line": "אצטדיון מכבי ספיר ומגרש הפועל ספיר נבנו, לבקשת יובל ⚽",
-    "landmark": "maccabi"
+    "day": 6,
+    "line": "ספירדונלדס נפתח, הספונסר הרשמי של הפועל ספיר 🍔",
+    "landmark": "spirdonalds"
   },
   "reels": {
     "1": "18129295480834389",
