@@ -1,0 +1,22 @@
+# The day's extra posts, started by the scheduled run: a short reel (site/reels/dayN.mp4, posted like the main one) or
+# a picture of the new residents with them tagged (site/posts/dayN.jpg). The files must already be deployed.
+name: extra
+on: { workflow_dispatch: { inputs: { day: { required: true }, kind: { description: 'reel or image', default: 'reel' } } } }
+concurrency: { group: kingdom, cancel-in-progress: false }
+permissions: { contents: write }
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node tools/env.mjs
+        env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
+      - if: ${{ env.READY == '1' && inputs.kind == 'image' }}
+        run: node reel/post-image.mjs --day ${{ inputs.day }}
+      - if: ${{ env.READY == '1' && inputs.kind == 'reel' }}
+        run: |
+          node reel/publish.mjs --day ${{ inputs.day }}
+          git config user.name "kingdom-bot"; git config user.email "kingdom-bot@users.noreply.github.com"
+          git pull -q --rebase origin main; git add site/data/kingdom.json && git commit -m "posted: extra reel ${{ inputs.day }}" && git push || true

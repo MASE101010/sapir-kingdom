@@ -1,0 +1,47 @@
+{
+ "day": 602,
+ "lines": [
+  "[pause]"
+ ],
+ "top": 260,
+ "duration": 2,
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    0,
+    0,
+    40
+   ],
+   "dist": 420,
+   "yaw": -20,
+   "pitch": 58,
+   "ease": 0.01
+  }
+ ],
+ "cards": [
+  {
+   "type": "note",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "title": "ברוכים הבאים לממלכה! 🏠",
+   "text": "‎@shaked140212‎\n‎@danielazran2020‎\n‎@eyal124676‎\n‎@lyrvyatyas‎\n‎@nevo_gur‎\n‎@shakedavrahami7‎\n‎@itay1105110‎\n‎@ylqvblsqy‎\n‎@yagelshukrun2‎\n‎@daniel.carmal‎",
+   "foot": "תייגו חבר בתגובות, והוא מקבל בית לידכם 👫"
+  }
+ ],
+ "fx": [],
+ "caption": "ברוכים הבאים לתושבים החדשים של הממלכה של משפחת ספיר! 🏠👑\nכל מי שמגיב על הריל מקבל בית, ומי שמתייג חבר בונה לו בית לידו 👫\nמצאתם את עצמכם? תייגו חבר שיצטרף!\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר",
+ "tags": [
+  "shaked140212",
+  "danielazran2020",
+  "eyal124676",
+  "lyrvyatyas",
+  "nevo_gur",
+  "shakedavrahami7",
+  "itay1105110",
+  "ylqvblsqy",
+  "yagelshukrun2",
+  "daniel.carmal"
+ ]
+}

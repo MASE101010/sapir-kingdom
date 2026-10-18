@@ -48,6 +48,7 @@ export async function startReel({ renderer, data, day }) {
   function focus(spec, t) {
     if (Array.isArray(spec)) return new THREE.Vector3(...spec);
     if (spec === 'statue' || spec === 'michael') return new THREE.Vector3(STATUE[0], 18, STATUE[1]);      // the king
+    if (spec?.startsWith('ride:')) { const [, key, i] = spec.split(':'), car = world.lm[key]?.group.userData.rides?.train?.[+i || 0]; if (car) { car.updateWorldMatrix(true, false); return car.getWorldPosition(new THREE.Vector3()).add(new THREE.Vector3(0, 1.5, 0)); } }   // rides along
     if (spec?.startsWith('dragon:')) { const d = world.life.dragons[+spec.slice(7)]?.d; if (d) return d.position.clone(); }   // follows it
     if (spec?.startsWith('house:')) { const r = resident(spec.slice(6)), pl = r && data.plan.plots[r.plot]; if (pl) return new THREE.Vector3(pl[0], 5, pl[1]); }
     if (spec?.startsWith('landmark:')) { const l = world.lm[spec.slice(9)]; if (l) return new THREE.Vector3(l.at[0], (l.mod.top ?? 20) * .35, l.at[1]); }
@@ -59,6 +60,7 @@ export async function startReel({ renderer, data, day }) {
     const s = shots[i], p = shots[i - 1] ?? s, f = smooth((t - s.t) / (s.ease ?? 1.6));
     // on a landmark, yaw 0 looks at its front (its lot is turned to face the castle)
     const front = sh => typeof sh.target !== 'string' ? 0 : sh.target.startsWith('landmark:') ? (world.lm[sh.target.slice(9)]?.group.rotation.y ?? 0) * 180 / Math.PI
+      : sh.follow && sh.target.startsWith('ride:') ? (() => { const [, key, i] = sh.target.split(':'), l = world.lm[key], car = l?.group.userData.rides?.train?.[+i || 0]; return car ? (l.group.rotation.y + car.rotation.y) * 180 / Math.PI : 0; })()
       : sh.follow && sh.target.startsWith('dragon:') ? (world.life.dragons[+sh.target.slice(7)]?.d.rotation.y ?? 0) * 180 / Math.PI : 0;   // follow: yaw 0 is in front of the dragon's face
     const params = sh => ({ target: focus(sh.target, t), dist: sh.dist ?? 300, yaw: front(sh) + (sh.yaw ?? -30) + (sh.orbit ?? 0) * (t - sh.t), pitch: sh.pitch ?? 32, fov: sh.fov ?? 38 });
     const a = params(p), b = params(s), lerp = (x, y) => x + (y - x) * f;

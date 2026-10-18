@@ -1,0 +1,120 @@
+{
+ "day": 601,
+ "lines": [
+  "[pause]",
+  "[pause]",
+  "[pause]"
+ ],
+ "duration": 13.5,
+ "top": 330,
+ "mix": "day601.mix.mp3",
+ "shots": [
+  {
+   "line": 0,
+   "target": "ride:spirland:0",
+   "dist": 20,
+   "yaw": 160,
+   "pitch": 22,
+   "follow": true,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "ride:spirland:0",
+   "dist": 26,
+   "yaw": 100,
+   "pitch": 26,
+   "follow": true,
+   "ease": 0.4
+  },
+  {
+   "line": 2,
+   "target": "landmark:spirland",
+   "dist": 110,
+   "yaw": 15,
+   "pitch": 32,
+   "orbit": 8,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "cta",
+   "line": 2,
+   "dt": 0.6,
+   "dur": 4.5,
+   "text": "רוצים בית בממלכה?",
+   "sub": "תגיבו כאן 👇 ומקבלים בית"
+  }
+ ],
+ "fx": [
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.1,
+   "dur": 4.2,
+   "text": "POV: רכבת ההרים בממלכה 🎢",
+   "y": 420,
+   "size": 92,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "sticker",
+   "line": 1,
+   "dt": 0.4,
+   "dur": 1.6,
+   "text": "😱",
+   "x": 840,
+   "y": 640,
+   "size": 160
+  },
+  {
+   "type": "shake",
+   "line": 1,
+   "dt": 0.2,
+   "dur": 2.5,
+   "amp": 0.6
+  },
+  {
+   "type": "confetti",
+   "line": 2,
+   "dt": 0.6,
+   "dur": 2.6
+  }
+ ],
+ "music": {
+  "bpm": 140,
+  "gain": 0.45,
+  "sections": [
+   [
+    0,
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "whoosh",
+   "line": 0,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": 0
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": 2
+  },
+  {
+   "name": "tada",
+   "line": 2,
+   "dt": 0.6
+  }
+ ],
+ "caption": "POV: נוסעים ברכבת ההרים של ספירלנד 🎢😱\nבממלכה של משפחת ספיר כל מי שמגיב מקבל בית 🏠 תגיבו ותייגו חבר שיקבל בית לידכם!\n#הממלכה_של_משפחת_ספיר #ספירלנד #משפחת_ספיר",
+ "firstComment": "תגיבו כאן ומקבלים בית בממלכה 🏠 ותייגו חבר!"
+}
