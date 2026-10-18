@@ -12,7 +12,10 @@ const image_url = `${SITE_URL}/posts/day${day}.jpg?v=${Date.now()}`, tags = (ep.
 const user_tags = tags.map((username, i) => ({ username, x: +(.2 + (i % 3) * .3).toFixed(2), y: +(.15 + Math.floor(i / 3) * .1).toFixed(2) }));
 let container;
 try { ({ id: container } = await post(`${IG_USER_ID}/media`, { image_url, caption: ep.caption, ...(user_tags.length ? { user_tags } : {}) })); console.log(`::notice title=post::tagged ${user_tags.length}`); }
-catch (e) { console.log(`::warning title=tags::tags refused (${e.message.slice(0, 300)}), posting without them`); ({ id: container } = await post(`${IG_USER_ID}/media`, { image_url, caption: ep.caption })); }
+catch (e) {   // one bad handle refuses them all: try each alone (an unpublished container costs nothing), keep the good ones
+  console.log(`::warning title=tags::tags refused (${e.message.slice(0, 200)}), checking them one by one`);
+  const good = []; for (const t of user_tags) { try { await post(`${IG_USER_ID}/media`, { image_url, user_tags: [t] }); good.push(t); } catch { console.log(`::notice title=tags::@${t.username} cannot be tagged`); } }
+  ({ id: container } = await post(`${IG_USER_ID}/media`, { image_url, caption: ep.caption, ...(good.length ? { user_tags: good } : {}) })); console.log(`::notice title=post::tagged ${good.length} of ${user_tags.length}`); }
 for (let i = 0; ; i++) { const s = await fetch(`${G}/${container}?fields=status_code&access_token=${IG_TOKEN}`).then(r => r.json()); if (s.status_code === 'FINISHED') break; if (s.status_code === 'ERROR' || i > 20) throw new Error(`container: ${JSON.stringify(s)}`); await wait(5); }
 const { id } = await post(`${IG_USER_ID}/media_publish`, { creation_id: container });
 if (ep.firstComment) await post(`${id}/comments`, { message: ep.firstComment }).catch(() => {});
