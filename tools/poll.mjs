@@ -5,7 +5,9 @@ process.on('unhandledRejection', e => { console.log(`::warning title=poll crash:
 // env: SITE_URL, EXPORT_TOKEN
 const { SITE_URL, EXPORT_TOKEN } = process.env;
 if (process.env.DEBUG) { const x = await fetch(`${SITE_URL}/api/sync?debug=1&likes=1&insights=1${process.env.DMTEST ? `&dmtest=${process.env.DMTEST}` : ''}`, { headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(r => r.text()); try { const j = JSON.parse(x); console.log(`::notice title=state::${JSON.stringify(j.state.filter(s => !s.k.startsWith('sync_after') && !/^story:day[1-3]/.test(s.k))).slice(0, 1500)} now ${Date.now()}`);
-    console.log(`::notice title=insights::${JSON.stringify(j.insights).slice(0, 3800)}`);
+    const v = (x, n) => x.ins?.data?.find(d => d.name === n)?.values?.[0]?.value;
+    console.log(`::notice title=insights::followers ${j.insights?.me?.followers_count} | day ${(j.insights?.day?.data ?? []).map(d => `${d.name} ${d.total_value?.value}`).join(', ')}`);
+    console.log(`::notice title=reels::${(j.insights?.reels ?? []).map(x => `${x.id} @${x.at}: views ${v(x, 'views')}, reach ${v(x, 'reach')}, likes ${v(x, 'likes')}, comments ${v(x, 'comments')}, shares ${v(x, 'shares')}, saves ${v(x, 'saved')}, watch ${Math.round((v(x, 'ig_reels_avg_watch_time') ?? 0) / 100) / 10}s`).join(' || ')}`);
     console.log(`::notice title=likes::${(j.likes ?? []).filter(l => l[1] !== 'sapirkingdom').map(l => `${l[0]}♥ ${l[1]}: ${String(l[2]).slice(0, 70)}`).join(' || ').slice(0, 3500)}`);
     console.log(`::notice title=chats::${(j.conv?.data ?? []).map(c => (c.messages?.data ?? []).map(m => `${m.from?.username}: ${(m.message ?? '').slice(0, 40)} @${m.created_time}`).join(' / ')).join(' || ').slice(0, 2500) || JSON.stringify(j.conv).slice(0, 400)}`); } catch { console.log(`::notice title=debug::${x.slice(0, 1500)}`); } }
 const raw = await fetch(`${SITE_URL}/api/sync`, { method: 'POST', headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(async r => `${r.status} ${await r.text()}`);
