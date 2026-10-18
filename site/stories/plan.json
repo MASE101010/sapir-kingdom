@@ -161,5 +161,31 @@
     "image": "stories/day6-4.jpg",
     "after": "reel:6",
     "about": "21:00 ירוק או אדום"
+  },
+  {
+    "id": "day7-1",
+    "at": "2026-10-19T05:30:00Z",
+    "image": "stories/day7-1.jpg",
+    "about": "08:30 בוקר טוב, חידה"
+  },
+  {
+    "id": "day7-2",
+    "at": "2026-10-19T08:00:00Z",
+    "image": "stories/day7-2.jpg",
+    "about": "11:00 הפועל צריכה שחקנים"
+  },
+  {
+    "id": "day7-3",
+    "at": "2026-10-19T11:30:00Z",
+    "image": "stories/day7-3.jpg",
+    "after": "reel:7",
+    "about": "14:30 ספירמול נפתח"
+  },
+  {
+    "id": "day7-4",
+    "at": "2026-10-19T18:00:00Z",
+    "image": "stories/day7-4.jpg",
+    "after": "reel:7",
+    "about": "21:00 מפתח הזהב, לירון"
   }
 ]
