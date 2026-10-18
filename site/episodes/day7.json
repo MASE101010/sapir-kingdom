@@ -1,0 +1,724 @@
+{
+ "day": 7,
+ "lines": [
+  "[excited] מכבי Sapir קיבלה ספונסר ענק!",
+  "[excited] ברוכים הבאים ל-Sapir Mall, הקניון של הממלכה!",
+  "[excited] אלין כתב: תבנה קניון בשם Sapir Mall, והתגובה שלו זכתה!",
+  "[excited] וזו כבר הפעם השנייה ברצף שאלין זוכה!",
+  "[excited] ומאיה ביקשה קניון גדול כמו באילת, אז הנה הוא!",
+  "[excited] חנויות, קולנוע, גלידה, ומזרקה ענקית באמצע!",
+  "[excited] והקניון הוא הספונסר הרשמי של מכבי Sapir!",
+  "[excited] והסגל של מכבי? מלא! עשרים שחקנים!",
+  "[excited] אבל בהפועל Sapir יש רק חמישה שחקנים...",
+  "[excited] רוצים לשחק בהפועל? תגיבו הפועל, ותקבלו חולצה!",
+  "[excited] מפתח הזהב של היום הולך ללירון!",
+  "[excited] כבר מאה שישים ושלושה תושבים בממלכה!",
+  "[excited] רוצים שגם השם שלכם יופיע פה? תגיבו מה בונים מחר!",
+  "[excited] ותייגו חבר, והוא יקבל בית לידכם!"
+ ],
+ "duration": 46.4,
+ "mix": "day7.mix.mp3",
+ "trial": true,
+ "top": 330,
+ "say": {
+  "Sapir": "ספיר",
+  "לSapir": "לספיר",
+  "Mall": "מול"
+ },
+ "homes": {
+  "liron7111": 8
+ },
+ "rise": {
+  "key": "spirmall",
+  "line": 1,
+  "dt": 0,
+  "dur": 1.6
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:maccabi",
+   "dist": 115,
+   "yaw": 25,
+   "pitch": 30,
+   "orbit": 9,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "landmark:spirmall",
+   "dist": 105,
+   "yaw": 0,
+   "pitch": 26,
+   "orbit": 8,
+   "ease": 0.5
+  },
+  {
+   "line": 2,
+   "target": [
+    47.8,
+    6,
+    -115.5
+   ],
+   "dist": 78,
+   "yaw": -52.5,
+   "pitch": 14,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": "house:alin_vasan",
+   "dist": 38,
+   "yaw": 200,
+   "pitch": 26,
+   "orbit": 10,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "house:maya2006888",
+   "dist": 38,
+   "yaw": 160,
+   "pitch": 28,
+   "orbit": -8,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": [
+    33.2,
+    3,
+    -119.4
+   ],
+   "dist": 24,
+   "yaw": -22.5,
+   "pitch": 26,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 5,
+   "dt": 0.92,
+   "target": [
+    30.1,
+    7,
+    -122.3
+   ],
+   "dist": 30,
+   "yaw": -34.5,
+   "pitch": 14,
+   "orbit": 4,
+   "ease": 0.45
+  },
+  {
+   "line": 5,
+   "dt": 1.77,
+   "target": [
+    57.1,
+    7,
+    -98.7
+   ],
+   "dist": 32,
+   "yaw": -14.5,
+   "pitch": 24,
+   "orbit": 5,
+   "ease": 0.45
+  },
+  {
+   "line": 5,
+   "dt": 2.55,
+   "target": [
+    42.8,
+    4,
+    -103.5
+   ],
+   "dist": 30,
+   "yaw": -22.5,
+   "pitch": 24,
+   "orbit": 14,
+   "ease": 0.45
+  },
+  {
+   "line": 6,
+   "target": [
+    47,
+    8,
+    -113.7
+   ],
+   "dist": 36,
+   "yaw": -22.5,
+   "pitch": 14,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": "landmark:maccabi",
+   "dist": 95,
+   "yaw": 30,
+   "pitch": 30,
+   "orbit": 8,
+   "ease": 0.7
+  },
+  {
+   "line": 8,
+   "target": "landmark:hapoel",
+   "dist": 95,
+   "yaw": -10,
+   "pitch": 30,
+   "orbit": -7,
+   "ease": 0.7
+  },
+  {
+   "line": 9,
+   "target": "landmark:hapoel",
+   "dist": 58,
+   "yaw": 20,
+   "pitch": 22,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "target": "house:liron7111",
+   "dist": 40,
+   "yaw": 160,
+   "pitch": 38,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 11,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 680,
+   "yaw": -15,
+   "pitch": 55,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 12,
+   "target": "castle",
+   "dist": 480,
+   "yaw": -40,
+   "pitch": 38,
+   "orbit": 4,
+   "ease": 0.9
+  },
+  {
+   "line": 13,
+   "target": "statue",
+   "dist": 95,
+   "yaw": -20,
+   "pitch": 22,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 1.4,
+   "dur": 2.6,
+   "text": "ספירמול · הקניון של הממלכה 🛍️"
+  },
+  {
+   "type": "comment",
+   "line": 2,
+   "dt": 0.1,
+   "dur": 3.9,
+   "u": "alin_vasan",
+   "text": "תבנה קניון בשם ספירמול",
+   "likes": 1
+  },
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 0.1,
+   "dur": 2.5,
+   "u": "alin_vasan",
+   "honours": [
+    "אדריכל · ספירמול",
+    "אדריכל · ספירדונלדס"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 4,
+   "dt": 0.1,
+   "dur": 2.3,
+   "u": "maya2006888",
+   "honours": [
+    "אדריכלית · ספירמול"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 2.3,
+   "u": "liron7111",
+   "honours": [
+    "מפתח זהב · יום 6"
+   ]
+  },
+  {
+   "type": "counter",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 2.6,
+   "from": 133,
+   "to": 163
+  },
+  {
+   "type": "cta",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 6.2,
+   "text": "מה בונים מחר?",
+   "sub": "תגיבו בתגובות 👇"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3,
+   "color": "#1f8a4c",
+   "alpha": 0.5
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.15,
+   "dur": 2.5,
+   "text": "ספונסר חדש למכבי! 💚",
+   "y": 760,
+   "size": 110,
+   "band": "#1f8a4c",
+   "color": "#ffffff",
+   "stroke": "#13213b"
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.5,
+   "dur": 1.9,
+   "text": "🤝",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 8
+  },
+  {
+   "type": "punch",
+   "line": 1,
+   "dt": 1.6,
+   "dur": 0.8,
+   "zoom": 0.25
+  },
+  {
+   "type": "shake",
+   "line": 1,
+   "dt": 1.6,
+   "dur": 0.7,
+   "amp": 1.2
+  },
+  {
+   "type": "confetti",
+   "line": 1,
+   "dt": 1.6,
+   "dur": 2.4
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 3,
+   "dur": 1,
+   "text": "🏆",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.4,
+   "dur": 2.2,
+   "text": "x2",
+   "x": 830,
+   "y": 1110,
+   "size": 160,
+   "rot": 10,
+   "color": "#e8b323"
+  },
+  {
+   "type": "confetti",
+   "line": 3,
+   "dt": 0.2,
+   "dur": 2
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.3,
+   "dur": 2,
+   "text": "🌴",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.1,
+   "dur": 0.8,
+   "text": "🛍️",
+   "x": 840,
+   "y": 1110,
+   "size": 140
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.95,
+   "dur": 0.8,
+   "text": "🍿",
+   "x": 840,
+   "y": 1110,
+   "size": 140
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 1.8,
+   "dur": 0.75,
+   "text": "🍦",
+   "x": 840,
+   "y": 1110,
+   "size": 140
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 2.6,
+   "dur": 2,
+   "text": "⛲",
+   "x": 840,
+   "y": 1110,
+   "size": 140
+  },
+  {
+   "type": "banner",
+   "line": 7,
+   "dt": 1.1,
+   "dur": 1.9,
+   "text": "הסגל מלא! 20/20 ✅",
+   "y": 760,
+   "size": 110,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "vignette",
+   "line": 8,
+   "dur": 3,
+   "color": "rgba(10,10,30,.45)"
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 1.2,
+   "dur": 1.8,
+   "text": "5/20",
+   "x": 820,
+   "y": 1110,
+   "size": 150,
+   "rot": -6,
+   "color": "#c8102e"
+  },
+  {
+   "type": "punch",
+   "line": 9,
+   "dt": 1.4,
+   "dur": 0.6,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 1.3,
+   "dur": 2.2,
+   "text": "תגיבו: הפועל ⚽",
+   "y": 760,
+   "size": 120,
+   "band": "#c8102e",
+   "color": "#ffffff",
+   "stroke": "#1b1d21"
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 2.3,
+   "dur": 1.2,
+   "text": "👕",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 8
+  },
+  {
+   "type": "punch",
+   "line": 10,
+   "dur": 0.8,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 10,
+   "dur": 2.2
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "🔑",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 10
+  },
+  {
+   "type": "confetti",
+   "line": 11,
+   "dt": 1.8,
+   "dur": 1.4
+  },
+  {
+   "type": "sticker",
+   "line": 11,
+   "dt": 1.8,
+   "dur": 1,
+   "text": "+30",
+   "x": 830,
+   "y": 1120,
+   "size": 130,
+   "rot": 8
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.6,
+   "dur": 3,
+   "text": "השם שלך יכול להיות פה ✨",
+   "y": 1150,
+   "size": 95,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "תייגו חבר = בית לידכם 👫",
+   "y": 1150,
+   "size": 95,
+   "band": "#0f6f73"
+  }
+ ],
+ "music": {
+  "bpm": 126,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 8,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 9,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": -0.1
+  },
+  {
+   "name": "boom",
+   "line": 1,
+   "dt": 1.6
+  },
+  {
+   "name": "tada",
+   "line": 1,
+   "dt": 1.7
+  },
+  {
+   "name": "whoosh",
+   "line": 2,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 0.2
+  },
+  {
+   "name": "ding",
+   "line": 2,
+   "dt": 3
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": -0.1
+  },
+  {
+   "name": "kaching",
+   "line": 3,
+   "dt": 0.4
+  },
+  {
+   "name": "whoosh",
+   "line": 4,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 0.1
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 0.95
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 1.8
+  },
+  {
+   "name": "sparkle",
+   "line": 5,
+   "dt": 2.6
+  },
+  {
+   "name": "whoosh",
+   "line": 6,
+   "dt": -0.1
+  },
+  {
+   "name": "ding",
+   "line": 6,
+   "dt": 0.4
+  },
+  {
+   "name": "whoosh",
+   "line": 7,
+   "dt": -0.1
+  },
+  {
+   "name": "tada",
+   "line": 7,
+   "dt": 1.1
+  },
+  {
+   "name": "whoosh",
+   "line": 8,
+   "dt": -0.1
+  },
+  {
+   "name": "cricket",
+   "line": 8,
+   "dt": 1.4,
+   "gain": 0.5
+  },
+  {
+   "name": "scratch",
+   "line": 9,
+   "dt": 0
+  },
+  {
+   "name": "boom",
+   "line": 9,
+   "dt": 1.4,
+   "gain": 0.6
+  },
+  {
+   "name": "tada",
+   "line": 10,
+   "dt": 0
+  },
+  {
+   "name": "kaching",
+   "line": 10,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 11,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 11,
+   "dt": 0.3,
+   "repeat": 10,
+   "every": 0.18,
+   "gain": 0.6
+  },
+  {
+   "name": "whoosh",
+   "line": 12,
+   "dt": -0.1
+  },
+  {
+   "name": "sparkle",
+   "line": 12,
+   "dt": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 13,
+   "dt": 0.2
+  }
+ ],
+ "caption": "ספירמול נפתח! 🛍️ הקניון של הממלכה, בזכות התגובה של אלין והבקשה של מאיה, והוא הספונסר הרשמי של מכבי ספיר 💚\nרוצים שגם השם שלכם יופיע בריל? תגיבו מה בונים מחר! ומי שרוצה לשחק בהפועל ספיר, תגיבו הפועל ⚽\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #ספירמול #מכבי_ספיר #הפועל_ספיר",
+ "firstComment": "מה בונים מחר? התגובה עם הכי הרבה לייקים זוכה, והשם שלה מופיע בריל 👑 ותייגו חבר, הוא מקבל בית לידכם 🏠",
+ "notes": "Michael chose ספירמול as מכבי ספיר's sponsor (planned on day 6). The name is alin_vasan's comment (day 5, 'תבנה קניון בשם ספירמול', asked twice), and maya2006888 asked three times for a big mall like Eilat's, so both are its architects. Day 6's top comments were team sign-ups (a player request with a shirt number, 2 likes), a shared house for two friends (1), a car company 'למבוספיר' and 'ספירטרק' as sponsors (skipped: named after real car brands), 'איפה ביתר' (a real club, skipped). Gold key: liron7111, by the rule among day 6's citizens. Michael asked to show the winner's name and comment so more people want to be named."
+}

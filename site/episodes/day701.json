@@ -1,0 +1,163 @@
+{
+ "day": 701,
+ "lines": [
+  "[excited] רוצים לשחק בהפועל? תגיבו הפועל, ותקבלו חולצה!",
+  "[excited] ותייגו חבר, והוא יקבל בית לידכם!"
+ ],
+ "duration": 9.6,
+ "top": 330,
+ "mix": "day701.mix.mp3",
+ "say": {
+  "Sapir": "ספיר"
+ },
+ "shots": [
+  {
+   "line": 0,
+   "dt": -0.3,
+   "target": "landmark:hapoel",
+   "dist": 46,
+   "yaw": 25,
+   "pitch": 20,
+   "orbit": 10,
+   "ease": 0.01
+  },
+  {
+   "line": 0,
+   "dt": 1.4,
+   "target": "landmark:hapoel",
+   "dist": 34,
+   "yaw": -20,
+   "pitch": 16,
+   "orbit": -8,
+   "ease": 0.3
+  },
+  {
+   "line": 1,
+   "target": "landmark:hapoel",
+   "dist": 110,
+   "yaw": 10,
+   "pitch": 34,
+   "orbit": 7,
+   "ease": 0.6
+  }
+ ],
+ "cards": [
+  {
+   "type": "cta",
+   "line": 1,
+   "dt": 0.2,
+   "dur": 5,
+   "text": "תגיבו: הפועל ⚽",
+   "sub": "מקומות אחרונים בסגל 👇"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dt": -0.3,
+   "dur": 0.3,
+   "color": "#c8102e",
+   "alpha": 0.5
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": -0.3,
+   "dur": 3.6,
+   "text": "הפועל ספיר מחפשת שחקנים! ❤️🖤",
+   "y": 420,
+   "size": 88,
+   "band": "#c8102e",
+   "color": "#ffffff",
+   "stroke": "#1b1d21"
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 1.4,
+   "text": "5/20",
+   "x": 820,
+   "y": 1110,
+   "size": 150,
+   "rot": -6,
+   "color": "#c8102e"
+  },
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 1.4,
+   "dur": 0.6,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 2.4,
+   "dur": 1.4,
+   "text": "👕",
+   "x": 840,
+   "y": 1110,
+   "size": 160,
+   "rot": 8
+  },
+  {
+   "type": "confetti",
+   "line": 0,
+   "dt": 2.4,
+   "dur": 1.6
+  },
+  {
+   "type": "banner",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "תייגו חבר = בית לידכם 👫",
+   "y": 1150,
+   "size": 95,
+   "band": "#0f6f73"
+  }
+ ],
+ "music": {
+  "bpm": 132,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "boom",
+   "line": 0,
+   "dt": -0.3,
+   "gain": 0.6
+  },
+  {
+   "name": "scratch",
+   "line": 0,
+   "dt": 1.4
+  },
+  {
+   "name": "tada",
+   "line": 0,
+   "dt": 2.4
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": -0.1
+  },
+  {
+   "name": "ding",
+   "line": 1,
+   "dt": 0.3
+  }
+ ],
+ "caption": "הפועל ספיר מחפשת שחקנים! ❤️🖤 תגיבו \"הפועל\" ותקבלו חולצה בסגל ⚽\nכל מי שמגיב מקבל בית בממלכה 🏠 ומי שמתייג חבר, בונה לו בית לידו!\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #הפועל_ספיר",
+ "firstComment": "תגיבו כאן \"הפועל\" ⚽ הראשונים נכנסים לסגל!",
+ "notes": "Day 7's second reel: הפועל ספיר has 5 of its 20 places. The voice is cut from day 7's approved narration (lines 9 and 13), so nothing new in Michael's voice."
+}
