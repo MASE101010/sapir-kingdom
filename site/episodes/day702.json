@@ -1,0 +1,55 @@
+{
+ "day": 702,
+ "lines": [
+  "[pause]"
+ ],
+ "top": 260,
+ "duration": 2,
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    0,
+    0,
+    40
+   ],
+   "dist": 420,
+   "yaw": -20,
+   "pitch": 58,
+   "ease": 0.01
+  }
+ ],
+ "cards": [
+  {
+   "type": "note",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "title": "ברוכים הבאים לממלכה! 🏠",
+   "text": "‎@itamar_maymon1‎\n‎@shahar.horesh111‎\n‎@eliya.marko1‎\n‎@yahav.tikvatam‎\n‎@oz__pinkas‎\n‎@itayot1‎\n‎@tomer_brachel1‎\n‎@liron7111‎\n‎@luna_luzon1234‎\n‎@adamkesseladam‎\n‎@jonathanlevin5‎\n‎@gutman161616‎\n‎@ilaylerman‎\n‎@yly31891‎\n‎@bozko99‎\n‎@david499043‎\n‎@_mor_aomrdakr‎",
+   "foot": "תייגו חבר בתגובות, והוא מקבל בית לידכם 👫"
+  }
+ ],
+ "fx": [],
+ "caption": "ברוכים הבאים לתושבים החדשים של הממלכה של משפחת ספיר! 🏠👑\nכל מי שמגיב על הריל מקבל בית, ומי שמתייג חבר בונה לו בית לידו 👫\nמצאתם את עצמכם? תייגו חבר שיצטרף!\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר",
+ "tags": [
+  "itamar_maymon1",
+  "shahar.horesh111",
+  "eliya.marko1",
+  "yahav.tikvatam",
+  "oz__pinkas",
+  "itayot1",
+  "tomer_brachel1",
+  "liron7111",
+  "luna_luzon1234",
+  "adamkesseladam",
+  "jonathanlevin5",
+  "gutman161616",
+  "ilaylerman",
+  "yly31891",
+  "bozko99",
+  "david499043",
+  "_mor_aomrdakr"
+ ],
+ "notes": "Day 6 newcomers. Left out: cristiano, a famous footballer's handle that a resident tagged."
+}
