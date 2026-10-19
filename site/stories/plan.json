@@ -187,5 +187,38 @@
     "image": "stories/day7-4.jpg",
     "after": "reel:7",
     "about": "21:00 מפתח הזהב, לירון"
+  },
+  {
+    "id": "day8-1",
+    "at": "2026-10-20T05:30:00Z",
+    "image": "stories/day8-1.jpg",
+    "about": "08:30 בוקר טוב, משהו גבוה"
+  },
+  {
+    "id": "day8-2",
+    "at": "2026-10-20T08:00:00Z",
+    "image": "stories/day8-2.jpg",
+    "about": "11:00 הערב הדרבי"
+  },
+  {
+    "id": "day8-3",
+    "at": "2026-10-20T11:30:00Z",
+    "image": "stories/day8-3.jpg",
+    "after": "reel:8",
+    "about": "14:30 בורג' ספיר"
+  },
+  {
+    "id": "day8-4",
+    "at": "2026-10-20T17:00:00Z",
+    "image": "stories/day8-4.jpg",
+    "after": "reel:801",
+    "about": "20:00 תוצאת הדרבי"
+  },
+  {
+    "id": "day8-5",
+    "at": "2026-10-20T18:30:00Z",
+    "image": "stories/day8-5.jpg",
+    "after": "reel:801",
+    "about": "21:30 מי ינצח במשחק החוזר"
   }
 ]
