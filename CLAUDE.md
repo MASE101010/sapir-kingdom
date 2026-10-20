@@ -77,7 +77,8 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
 Michael approves the script first and makes the voice himself in ElevenLabs (voice MICHA, Eleven v4, every line starts
 with `[excited]` and no other tags). In the text sent to ElevenLabs every name is written in English letters (Sapir, Itay,
 Ido, Elad, Nevo, MPT...), never in Hebrew: the model reads Hebrew names wrong ("ואיתי" came out "veiti"). Captions show
-them in Hebrew through the episode's `say` map ({ "Itay": "איתי" }). So: write `site/episodes/dayN.json`, send him the lines to approve, and stop. When
+them in Hebrew through the episode's `say` map ({ "Itay": "איתי" }). A Hebrew word the model can read two ways gets nikud
+(מסלול הַמְרָאָה, not המראה, which came out "hamare"); captions drop the nikud. So: write `site/episodes/dayN.json`, send him the lines to approve, and stop. When
 his mp3 comes back, `node reel/own-voice.mjs --day N --mp3 <file>` lines it up (pauses → phrases → words) and writes
 `dayN.mp3` and `dayN.voice.json` with `own: true`; commit the mp3 with `git add -f`. `reel/voice.mjs` then keeps it.
 Reels run about a minute (50 to 65 s, like the pages Michael measures us against), opening on action in the first second.
@@ -91,7 +92,8 @@ cannot read voices and the API's v3 does not sound like his MICHA on Eleven v4 (
   kaching, sparkle, snore, tada), ducked under the voice; set `"mix": "dayN.mix.mp3"`. Effects on screen: `fx`
   (sticker, banner, flash, vignette, confetti, shake, punch). Show on screen everything the king talks about.
 - Render the reel yourself, send it to Michael, and when he approves commit it (`git add -f site/reels/dayN.mp4`):
-  publish.yml then posts that file instead of rendering again. Never set `"trial"`: since day 8 Instagram accepts trial reels, and a trial reel is shown only to
+  publish.yml then posts that file instead of rendering again. Michael wants each main reel posted twice: once as a trial reel (non-followers only: new eyes) and once
+  ordinary, so publish the episode without `"trial"` and post the trial copy separately. Never leave `"trial"` on the only copy: since day 8 Instagram accepts trial reels, and a trial reel is shown only to
   non-followers and is missing from the profile (Michael saw no reel). Post around 12:00 Israel time: Michael wants the reel up early and as much content as possible.
 - Stories, 2 to 3 a day: render 1080×1920 stills (an episode with one shot, `top: 330`, `note` cards, stickers) into
   `site/stories/`, and list them in `site/stories/plan.json` with their time (UTC); the clock posts each once.
@@ -110,6 +112,9 @@ cannot read voices and the API's v3 does not sound like his MICHA on Eleven v4 (
   among citizens. Michael chose this to get people taking part; if the kingdom grows a lot he may want houses for followers only.
 - A golden house (`residents.gold`): whoever shares a reel to their story and tags @sapirkingdom. Instagram sends the
   mention to our chats; the sync (or the webhook) gilds the house and thanks them. Remind people in reels and stories.
+- Clubs and jobs: a comment with "מכבי", "הפועל" (20 places each) or "ביתר" (30) joins that club's squad with a shirt
+  number (`residents.team`, `TEAMS` in `_replies.js`); "טייס" makes you a pilot of נתס"ר (`residents.job`). The site's
+  הסגלים page lists them.
 - Soldiers: a comment with "חייל" (or מתגייס) enlists: the king answers it and the house becomes the מגורים צבאיים
   (homes.js style 9), except a gold key villa (8). Remind people in reels while the dragon story runs.
 - The king answers every comment (`functions/_replies.js`): he reads what was written (an idea, a house request, an
