@@ -18,8 +18,12 @@ if (process.argv.includes('--record')) {
   const k = JSON.parse(readFileSync('site/data/kingdom.json', 'utf8')); k.reels = { ...(k.reels ?? {}), [day]: m.id };
   writeFileSync('site/data/kingdom.json', JSON.stringify(k, null, 2) + '\n'); console.log(`::notice title=post::recorded day ${day}: ${m.id} (${m.timestamp})`); process.exit(0);
 }
+// --trial: the same reel again as a trial reel (shown to non-followers first), kept as reels["<day>t"]; never falls back to an
+// ordinary post (that would be a duplicate on the profile)
+const asTrial = process.argv.includes('--trial'), key = asTrial ? `${day}t` : String(day);
 let container;
-if (ep.trial) try { ({ id: container } = await post(`${IG_USER_ID}/media`, { ...base, trial_params: { graduation_strategy: 'SS_PERFORMANCE' } }, 'v23.0')); console.log('trial reel'); }
+if (asTrial) ({ id: container } = await post(`${IG_USER_ID}/media`, { ...base, trial_params: { graduation_strategy: 'SS_PERFORMANCE' } }, 'v23.0'));
+else if (ep.trial) try { ({ id: container } = await post(`${IG_USER_ID}/media`, { ...base, trial_params: { graduation_strategy: 'SS_PERFORMANCE' } }, 'v23.0')); console.log('trial reel'); }
   catch (e) { console.log(`::warning title=trial::trial reel refused (${e.message.slice(0, 300)}), posting the ordinary way`); }
 if (!container) ({ id: container } = await post(`${IG_USER_ID}/media`, base));
 for (let i = 0; ; i++) {
@@ -28,6 +32,6 @@ for (let i = 0; ; i++) {
 }
 const { id } = await post(`${IG_USER_ID}/media_publish`, { creation_id: container });
 if (ep.firstComment) await post(`${id}/comments`, { message: ep.firstComment });
-const k = JSON.parse(readFileSync('site/data/kingdom.json', 'utf8')); k.reels = { ...(k.reels ?? {}), [day]: id };
+const k = JSON.parse(readFileSync('site/data/kingdom.json', 'utf8')); k.reels = { ...(k.reels ?? {}), [key]: id };
 writeFileSync('site/data/kingdom.json', JSON.stringify(k, null, 2) + '\n');
-console.log(`::notice title=post::published day ${day}: ${id}`);
+console.log(`::notice title=post::published day ${key}${asTrial ? ' (trial)' : ''}: ${id}`);
