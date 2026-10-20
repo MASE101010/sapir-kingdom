@@ -20,7 +20,8 @@ jobs:
         env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
       - if: env.READY == '1'
         id: day
-        run: echo "n=${{ inputs.day }}$(echo '${{ github.event.head_commit.message }}' | grep -oP '\[publish day \K\d+' || true)" >> $GITHUB_OUTPUT
+        env: { MSG: '${{ github.event.head_commit.message }}' }     # through the environment: a quote in the message (בורג') broke the shell
+        run: echo "n=${{ inputs.day }}$(printf '%s' "$MSG" | grep -oP '\[publish day \K\d+' || true)" >> $GITHUB_OUTPUT
       - if: env.READY == '1'
         run: node tools/check.mjs --day ${{ steps.day.outputs.n }}
       - if: env.READY == '1'
