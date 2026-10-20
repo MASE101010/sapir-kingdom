@@ -30,6 +30,7 @@ export class World {
     this.sun = sun; this.scene.add(hemi, sun, sun.target);
     this.land(); this.roads(); this.trees(); this.wall();
     this.life = new Life(this.scene, plan, kingdom?.dragons ?? 3);
+    this.life.perch = kingdom?.perch ?? null;            // a dragon that sat down somewhere and stays there (kingdom.json perch)
     this.houses(); this.landmarks();
   }
   /** the ground, the castle hill, the river with its sandy banks, and mountains round the edge */

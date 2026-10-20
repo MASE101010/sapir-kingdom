@@ -181,3 +181,42 @@ export function hapoelLive(group) {
 }
 export const MACCABI = { key: 'maccabi', name: 'אצטדיון מכבי ספיר', draw: drawMaccabi, live: maccabiLive, tick: maccabiTick, top: 20 };
 export const HAPOEL = { key: 'hapoel', name: 'מגרש הפועל ספיר', draw: drawHapoel, live: hapoelLive, top: 12 };
+
+// מגרש ביתר ספיר (day 9, lot 9): the third club, opened after the derby, in yellow and black. A new ground: one big covered
+// stand with yellow and black seats, a low stand opposite, floodlights, the players' residence (30 rooms), a gate with a
+// ribbon still waiting to be cut, balloons, and the first players training. Front toward +z.
+const BYEL = 0xf2c418, BBLK = 0x1b1d21;
+export function drawBeitar(p) {
+  p.at(0, 0, 0);
+  p.box(0, 0, -2, 50, .08, 46, 0xbfd8a4);
+  const PW = 28, PD = 17; pitch(p, PW, PD, .08);
+  // the big covered stand on the north side: six tiers, yellow and black rows, fans, a roof on columns
+  for (let t = 0; t < 6; t++) { const z = -(PD / 2 + 2 + t * 1.3), y = .08 + t * 1;
+    p.box(0, 0, z, 30, y + 1, 1.3, CONCRETE); p.box(0, y + 1, z, 30, .25, 1.2, t % 2 ? BYEL : BBLK);
+    for (let k = 0; k < 30; k++) if (rnd(k + 300, t) < .5) { const x = -14.5 + k; p.box(x, y + 1.25, z, .6, .8, .5, k % 3 ? BYEL : FANS[(k + t) % FANS.length]); p.box(x, y + 2.05, z, .45, .45, .45, SKIN); } }
+  for (const x of [-14, -7, 0, 7, 14]) p.box(x, 0, -(PD / 2 + 9.6), .5, 9.4, .5, BBLK);
+  p.box(0, 9.4, -(PD / 2 + 6.2), 31, .4, 8.2, BYEL); p.box(0, 9.8, -(PD / 2 + 2.3), 31, .8, .4, BBLK);
+  // the low stand on the south side
+  for (let t = 0; t < 2; t++) { const z = PD / 2 + 2 + t * 1.3, y = .08 + t * .9;
+    p.box(-7, 0, z, 12, y + .9, 1.3, CONCRETE); p.box(-7, y + .9, z, 12, .25, 1.2, t % 2 ? BBLK : BYEL);
+    p.box(9, 0, z, 8, y + .9, 1.3, CONCRETE); p.box(9, y + .9, z, 8, .25, 1.2, t % 2 ? BBLK : BYEL); }
+  // floodlights, dugouts, the residence with 30 rooms behind the big stand
+  for (const [x, z] of [[-19.5, -13], [19.5, -13], [-19.5, 14.5], [19.5, 14.5]]) floodlight(p, x, z, 14, Math.atan2(-x, -z));
+  for (const x of [-3, 3]) { p.box(x, .08, PD / 2 + .9, 3.4, 1.8, 1.2, 0xd9e2e8); p.box(x, 1.9, PD / 2 + .9, 3.6, .2, 1.6, BYEL); }
+  residence(p, 0, -23, 34, BYEL, Math.PI);
+  // the gate toward the castle: yellow and black pillars, an arch, the ribbon, balloons on strings
+  for (const x of [-4.5, 4.5]) { p.box(x, 0, 19, 1.4, 6, 1.4, BBLK); p.box(x, 6, 19, 1.8, .5, 1.8, BYEL); }
+  p.box(0, 4.8, 19, 10.4, 1.6, 1, BYEL); p.box(0, 1.2, 19.4, 7.6, .35, .08, 0xc8102e); p.box(0, 1.2, 19.42, .9, .9, .08, 0xc8102e);
+  for (let k = 0; k < 10; k++) { const x = (k < 5 ? -5.6 : 5.6) + ((k % 5) - 2) * .5, y = 7 + (k % 3) * .9; p.box(x, 6.4, 19.2, .05, y - 6.4, .05, 0xdddddd); p.ball(x, y, 19.2, 1, 1.2, k % 2 ? BYEL : BBLK); }
+  // the first players training in yellow and black, cones, a coach, the ball
+  for (let k = 0; k < 8; k++) p.cone(-9 + k * 2.4, .08, 4 + (k % 2) * 1.6, .7, .9, 0xf28c28);
+  [[-8, -3], [-4, 2], [0, -4], [4, 1], [8, -2], [-2, 6], [6, 5]].forEach(([x, z], k) => player(p, x, z, k * 1.1, BYEL, .08, BBLK));
+  player(p, -11, 6, Math.PI / 3, 0x3b6fb6, .08); p.ball(1, .08, 0, .6, .6, LINE);
+  for (const [x, z] of [[-23, 10], [23, 10], [-23, -4], [23, -4]]) p.tree(x, z, .8, 0x4f9a43);
+}
+export function beitarLive(group) {
+  group.add(sign('מגרש ביתר ספיר', { w: 9.6, h: 1.4, bg: '#1b1d21', fg: '#f2c418', border: '#f2c418', font: '900 {px}px "Secular One", Rubik' }).at(0, 5.6, 19.55));
+  group.add(sign('חדש! · 30 מקומות בסגל ⚽', { w: 10, h: 1.4, bg: '#f2c418', fg: '#1b1d21', border: '#1b1d21' }).at(0, 10.6, -(17 / 2 + 2.05)));
+  group.add(sign('מגורי השחקנים · 30 מקומות', { w: 12, h: 1.3, bg: '#fffaf0' }).at(0, 7.2, -23 - 2.25, Math.PI));
+}
+export const BEITAR = { key: 'beitar', name: 'מגרש ביתר ספיר', draw: drawBeitar, live: beitarLive, top: 12 };

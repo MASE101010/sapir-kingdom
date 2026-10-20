@@ -7,7 +7,7 @@
 // Instagram allows only so many calls an hour, so a sync runs at most once every GAP ms, and backs off after a limit error.
 import { addResident, igToken } from './_lib.js';
 import { HOMES, COMMON } from '../site/app/catalog.js';
-import { reply, SOLDIER, SOLDIER_HOME, BAD, teamOf, SQUAD } from './_replies.js';
+import { reply, SOLDIER, SOLDIER_HOME, BAD, teamOf, squadOf, PILOT } from './_replies.js';
 const G = 'https://graph.instagram.com/v21.0', GAP = 8000, BACKOFF = 10 * 60e3;
 const say = [n => `ברוכים הבאים לממלכה! הבית שלך, מספר ${n}, כבר עומד 🏠 חפשו את השם שלכם באתר שבביו`,
   n => `נבנה לך בית! מספר ${n}. כנסו לאתר שבביו ותמצאו אותו 👑`, n => `תושב חדש! בית מספר ${n} בממלכה הוא שלך. הקישור בביו 🏰`,
@@ -149,13 +149,15 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
       if (key) { const me = await env.DB.prepare('SELECT team, shirt FROM residents WHERE u = ?').bind(a.u).first();
         if (me?.team) team = { key: me.team, shirt: me.shirt };
         else { const c = await env.DB.prepare('SELECT COUNT(*) AS c FROM residents WHERE team = ?').bind(key).first('c');
-          if (c < SQUAD) { await env.DB.prepare('UPDATE residents SET team = ?, shirt = ?, changed = ? WHERE u = ? AND team IS NULL').bind(key, c + 1, Date.now(), a.u).run(); team = { key, shirt: c + 1 }; } else team = { key, full: true }; } }
+          if (c < squadOf(key)) { await env.DB.prepare('UPDATE residents SET team = ?, shirt = ?, changed = ? WHERE u = ? AND team IS NULL').bind(key, c + 1, Date.now(), a.u).run(); team = { key, shirt: c + 1 }; } else team = { key, full: true }; } }
       // tagging a friend builds them a house, shared with whoever tagged them (up to 3 new friends a comment)
       const tagged = []; if (!BAD.test(a.text ?? '')) for (const m of [...String(a.text ?? '').matchAll(/@([A-Za-z0-9._]{2,30})/g)].slice(0, 6)) {
         const t = m[1].toLowerCase().replace(/\.+$/, ''); if (t === SELF(env) || t === a.u || tagged.includes(t) || tagged.length >= 3) continue;
         if (await env.DB.prepare('SELECT n FROM residents WHERE u = ?').bind(t).first('n')) continue;
         const h = await addResident(env, t, 'tag', a.u); if (h) tagged.push(h.u); }
-      const r = await post(env, `${a.id}/replies`, { message: reply(a, { fresh: a.house === 1, n: a.n, citizen: !!a.citizen, team, tagged }) });   // the king answers what they wrote
+      const pilot = !team && PILOT.test(a.text ?? '') && !BAD.test(a.text ?? '');   // "טייס": a pilot of נתס"ר
+      if (pilot) await env.DB.prepare("UPDATE residents SET job = 'pilot', changed = ? WHERE u = ? AND job IS NULL").bind(Date.now(), a.u).run();
+      const r = await post(env, `${a.id}/replies`, { message: reply(a, { fresh: a.house === 1, n: a.n, citizen: !!a.citizen, team, pilot, tagged }) });   // the king answers what they wrote
       await env.DB.prepare('UPDATE comments SET replied = CASE WHEN ? THEN (CASE WHEN replied > 0 THEN 0 ELSE COALESCE(replied, 0) END) - 1 ELSE 1 END WHERE id = ?').bind(r.error ? 1 : 0, a.id).run(); if (!r.error) replied++;   // a failed answer is tried again
     }
     return { ran: true, read: comments.length, waiting: waiting.map(w => w.u), invites, citizens, replied };

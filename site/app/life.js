@@ -90,7 +90,13 @@ export class Life {
       const fire = d.userData.fire, f0 = i === 0 ? this.fire ?? 0 : 0; fire.visible = f0 > .01; d.userData.head.rotation.x = .45 * f0;
       if (fire.visible) { fire.scale.setScalar(1.8 * f0 * (1 + Math.sin(t * 31) * .08)); fire.children.forEach((m, k) => { if (m.material) m.material.opacity = .9 * f0; });
         fire.userData.puffs.forEach((m, k) => { const u = ((t * 2.2 + k / 14) % 1); m.position.set(Math.sin(k * 7.3 + t * 9) * u * 3.4, Math.cos(k * 5.1 + t * 7) * u * 3, 4 + u * 20); m.scale.setScalar(1 + u * 3.2); }); }
-      const f = Math.sin(t * 3.4 + ph), [L, Rw] = d.userData.wings;           // the wing beats down, and folds a little on the way up
+      let f = Math.sin(t * 3.4 + ph); const [L, Rw] = d.userData.wings;           // the wing beats down, and folds a little on the way up
+      // perched (day 9: one sat down on the top of בורג' ספיר and won't move): perch = { dragon, at: [x, y, z], ry, k 0..1 }
+      const pc = this.perch?.dragon === i ? this.perch : null;
+      if (pc && (pc.k ?? 1) > 0) { const k = Math.min(1, pc.k ?? 1), e = k * k * (3 - 2 * k), at = new THREE.Vector3(...pc.at);
+        d.position.copy(P.lerp(at, e));
+        if (k < 1) d.rotation.set(-.15, Math.atan2(at.x - P.x, at.z - P.z) || d.rotation.y, 0);
+        else { d.rotation.set(-.05 + Math.sin(t * 1.3) * .03, pc.ry ?? 0, 0); f = -.9 + Math.sin(t * .8) * .12; } }
       L.shoulder.rotation.z = f * .6; Rw.shoulder.rotation.z = -f * .6; L.elbow.rotation.z = Math.max(0, f) * .5; Rw.elbow.rotation.z = -Math.max(0, f) * .5;
     });
     for (let i = 0; i < 60; i++) {

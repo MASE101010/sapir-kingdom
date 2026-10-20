@@ -1,1 +1,278 @@
-{"day": 901, "lines": ["[pause]"], "shots": [{"line": 0, "target": "dragon:0", "dist": 36, "yaw": 100, "pitch": 4, "ease": 0.01}], "cards": [{"type": "note", "line": 0, "dt": -5, "dur": 20, "title": "בוקר טוב ממלכה ☀️", "text": "הלילה ראו דרקונים מעל הארמון!\nהמלך מיכאל כבר מכין תוכנית...", "foot": "39 תושבים כבר כאן · תגיבו וקבלו בית"}], "fx": [{"type": "sticker", "line": 0, "dt": -5, "dur": 20, "text": "👀", "x": 860, "y": 1500, "size": 170}], "duration": 2, "top": 330}
+{
+ "day": 901,
+ "lines": [
+  "[excited] בעקבות ההצלחה הַמְּסַחְרֶרֶת של הדרבי...",
+  "[excited] נפתחה בממלכה קבוצה חדשה! Beitar Sapir!",
+  "[excited] מדים בצהוב ושחור, ומגרש חדש לגמרי!",
+  "[excited] ויש מקום לשלושים שחקנים!",
+  "[excited] רוצים לשחק ב-Beitar? תעקבו, ותגיבו Beitar!",
+  "[excited] כל עוקב שמגיב מקבל בית, וגם חולצה בקבוצה!",
+  "[excited] ותייגו חבר, שישחק איתכם בקבוצה!"
+ ],
+ "duration": 23.8,
+ "mix": "day901.mix.mp3",
+ "top": 330,
+ "say": {
+  "Sapir": "ספיר",
+  "Natsar": "נתס\"ר",
+  "Avia": "אביה",
+  "Imry": "עמרי",
+  "Beitar": "ביתר"
+ },
+ "rise": {
+  "key": "beitar",
+  "line": 1,
+  "dt": 2.3,
+  "dur": 1.4
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:maccabi",
+   "dist": 110,
+   "yaw": 20,
+   "pitch": 40,
+   "orbit": 10,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "landmark:beitar",
+   "dist": 95,
+   "yaw": 0,
+   "pitch": 32,
+   "orbit": 8,
+   "ease": 0.7
+  },
+  {
+   "line": 2,
+   "target": [
+    -137.9,
+    2,
+    137.9
+   ],
+   "dist": 32,
+   "yaw": 155,
+   "pitch": 34,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": [
+    -145,
+    6,
+    145
+   ],
+   "dist": 40,
+   "yaw": 135,
+   "pitch": 18,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "landmark:beitar",
+   "dist": 70,
+   "yaw": -25,
+   "pitch": 34,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": [
+    -124.5,
+    4,
+    124.5
+   ],
+   "dist": 30,
+   "yaw": 145,
+   "pitch": 14,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": "landmark:beitar",
+   "dist": 120,
+   "yaw": 30,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.6
+  }
+ ],
+ "cards": [
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 3.4,
+   "dur": 2.4,
+   "text": "חדש! מגרש ביתר ספיר ⚽"
+  },
+  {
+   "type": "cta",
+   "line": 4,
+   "dt": 0.1,
+   "dur": 3.6,
+   "text": "תגיבו: ביתר ⚽",
+   "sub": "30 מקומות בסגל"
+  },
+  {
+   "type": "cta",
+   "line": 6,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "תייגו חבר 👫",
+   "sub": "שישחק איתכם בקבוצה"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.1,
+   "dur": 2.8,
+   "text": "הדרבי היה להיט! 🔥",
+   "y": 760,
+   "size": 115,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "punch",
+   "line": 1,
+   "dt": 2.3,
+   "dur": 0.8,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 1,
+   "dt": 2.3,
+   "dur": 2.4
+  },
+  {
+   "type": "shake",
+   "line": 1,
+   "dt": 2.3,
+   "dur": 0.6,
+   "amp": 1
+  },
+  {
+   "type": "banner",
+   "line": 2,
+   "dt": 0.2,
+   "dur": 3,
+   "text": "צהוב שחור 💛🖤",
+   "y": 760,
+   "size": 120,
+   "band": "#f2c418",
+   "color": "#1b1d21",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.4,
+   "dur": 2,
+   "text": "0/30",
+   "x": 820,
+   "y": 1110,
+   "size": 160,
+   "rot": -6,
+   "color": "#f2c418"
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.3,
+   "dur": 1.4,
+   "text": "🏠",
+   "x": 840,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 1.8,
+   "dur": 1.4,
+   "text": "👕",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 8
+  }
+ ],
+ "music": {
+  "bpm": 132,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": -0.1
+  },
+  {
+   "name": "boom",
+   "line": 1,
+   "dt": 2.3
+  },
+  {
+   "name": "tada",
+   "line": 1,
+   "dt": 2.4
+  },
+  {
+   "name": "whoosh",
+   "line": 2,
+   "dt": -0.1
+  },
+  {
+   "name": "kaching",
+   "line": 3,
+   "dt": 0.4
+  },
+  {
+   "name": "ding",
+   "line": 4,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 1.8
+  },
+  {
+   "name": "ding",
+   "line": 6,
+   "dt": 0.2
+  }
+ ],
+ "caption": "בעקבות הדרבי, נפתחה קבוצה חדשה בממלכה: ביתר ספיר! 💛🖤 מדים בצהוב ושחור ומגרש חדש לגמרי\nיש 30 מקומות בסגל: תעקבו ותגיבו \"ביתר\" ⚽ כל עוקב שמגיב מקבל בית וגם חולצה!\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #ביתר_ספיר",
+ "firstComment": "תגיבו כאן \"ביתר\" ⚽ 30 הראשונים נכנסים לסגל עם מספר חולצה!",
+ "notes": "Day 9's second reel, Michael's idea: a third club, ביתר ספיר, yellow and black, 30 places (comment 'ביתר')."
+}
