@@ -75,7 +75,9 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
 ## The voice (for now: Michael's own)
 
 Michael approves the script first and makes the voice himself in ElevenLabs (voice MICHA, Eleven v4, every line starts
-with `[excited]` and no other tags). So: write `site/episodes/dayN.json`, send him the lines to approve, and stop. When
+with `[excited]` and no other tags). In the text sent to ElevenLabs every name is written in English letters (Sapir, Itay,
+Ido, Elad, Nevo, MPT...), never in Hebrew: the model reads Hebrew names wrong ("ואיתי" came out "veiti"). Captions show
+them in Hebrew through the episode's `say` map ({ "Itay": "איתי" }). So: write `site/episodes/dayN.json`, send him the lines to approve, and stop. When
 his mp3 comes back, `node reel/own-voice.mjs --day N --mp3 <file>` lines it up (pauses → phrases → words) and writes
 `dayN.mp3` and `dayN.voice.json` with `own: true`; commit the mp3 with `git add -f`. `reel/voice.mjs` then keeps it.
 Reels run about a minute (50 to 65 s, like the pages Michael measures us against), opening on action in the first second.
