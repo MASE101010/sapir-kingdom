@@ -220,5 +220,38 @@
     "image": "stories/day8-5.jpg",
     "after": "reel:801",
     "about": "21:30 מי ינצח במשחק החוזר"
+  },
+  {
+    "id": "day9-1",
+    "at": "2026-10-21T05:30:00Z",
+    "image": "stories/day9-1.jpg",
+    "about": "08:30 בוקר טוב, משהו ממריא"
+  },
+  {
+    "id": "day9-2",
+    "at": "2026-10-21T08:00:00Z",
+    "image": "stories/day9-2.jpg",
+    "about": "11:00 דרושים טייסים"
+  },
+  {
+    "id": "day9-3",
+    "at": "2026-10-21T11:30:00Z",
+    "image": "stories/day9-3.jpg",
+    "after": "reel:9",
+    "about": "14:30 נתס\"ר נפתח"
+  },
+  {
+    "id": "day9-4",
+    "at": "2026-10-21T17:00:00Z",
+    "image": "stories/day9-4.jpg",
+    "after": "reel:901",
+    "about": "20:00 ביתר ספיר"
+  },
+  {
+    "id": "day9-5",
+    "at": "2026-10-21T18:30:00Z",
+    "image": "stories/day9-5.jpg",
+    "after": "reel:9",
+    "about": "21:30 הדרקון לא זז"
   }
 ]
