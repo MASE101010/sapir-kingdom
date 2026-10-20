@@ -49,6 +49,7 @@ export async function startReel({ renderer, data, day }) {
     if (Array.isArray(spec)) return new THREE.Vector3(...spec);
     if (spec === 'statue' || spec === 'michael') return new THREE.Vector3(STATUE[0], 18, STATUE[1]);      // the king
     if (spec?.startsWith('ride:')) { const [, key, i] = spec.split(':'), car = world.lm[key]?.group.userData.rides?.train?.[+i || 0]; if (car) { car.updateWorldMatrix(true, false); return car.getWorldPosition(new THREE.Vector3()).add(new THREE.Vector3(0, 1.5, 0)); } }   // rides along
+    if (spec?.startsWith('ball:')) { const b = world.lm[spec.slice(5)]?.group.userData.live?.ball; if (b) { b.updateWorldMatrix(true, false); return b.getWorldPosition(new THREE.Vector3()).add(new THREE.Vector3(0, 1, 0)); } }   // follows a match's ball
     if (spec?.startsWith('dragon:')) { const d = world.life.dragons[+spec.slice(7)]?.d; if (d) return d.position.clone(); }   // follows it
     if (spec?.startsWith('house:')) { const r = resident(spec.slice(6)), pl = r && data.plan.plots[r.plot]; if (pl) return new THREE.Vector3(pl[0], 5, pl[1]); }
     if (spec?.startsWith('landmark:')) { const l = world.lm[spec.slice(9)]; if (l) return new THREE.Vector3(l.at[0], (l.mod.top ?? 20) * .35, l.at[1]); }
@@ -97,6 +98,8 @@ export async function startReel({ renderer, data, day }) {
   // the dragons: gathered round a place for a while (swarm), one of them breathing fire (fire)
   const swarms = [ep.swarm].flat().filter(Boolean).map(w => ({ ...w, t0: lineAt(w.line, w.dt), t1: w.until != null ? lineAt(w.until, w.udt) : lineAt(w.line, w.dt) + (w.dur ?? 8) }));
   const fires = [ep.fire].flat().filter(Boolean).map(f => ({ ...f, t0: lineAt(f.line, f.dt), t1: lineAt(f.line, f.dt) + (f.dur ?? 2.5) }));
+  // a football match in a stadium (football.js): kick-off at a line, and the goals, each at its line (who: the scorer's place, 0 to 10)
+  if (ep.match) { const l = world.lm?.[ep.match.key ?? 'maccabi'], c = ep.clock ?? 900; if (l) l.group.userData.match = { t0: c + lineAt(ep.match.line, ep.match.dt), goals: ep.match.goals.map(g => ({ ...g, t: c + lineAt(g.line, g.dt) })).sort((a, b) => a.t - b.t) }; }
   const arrivals = [ep.arrive].flat().filter(Boolean).map(a => ({ ...a, t0: lineAt(a.line, a.dt), dur: a.dur ?? 5 }));
   function dragons(t) {
     const w = swarms.find(w => t > w.t0 - 3 && t < w.t1 + 3), e = w?.ease ?? 2.5;

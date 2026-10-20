@@ -66,22 +66,83 @@ export function drawMaccabi(p) {
   for (const x of [-5.2, 5.2]) p.box(x, 0, oz - .2, 1.6, 11, 1.6, MGREEN);
   p.box(0, 9, oz - .2, 12, 2, 1.4, MGREEN); p.box(0, 11, oz - .2, 12.4, .4, 1.6, GOLD);
   // the scoreboard at the west end and the floodlights
-  p.box(-ox + .5, 8.4, 0, .6, 6, 1, DARK); p.box(-ox + .9, 9.2, 0, .4, 4.4, 9.6, NAVY);
+  p.box(-ox + .5, 8.4, 0, .6, 8.8, 1, DARK); p.box(-ox + .9, 12, 0, .4, 4.4, 9.6, NAVY);       // raised above the roof's rim, so it reads from the pitch
   for (const [x, z] of [[-24, -20], [24, -20], [-22, 15], [22, 15]]) floodlight(p, x, z, 18, Math.atan2(-x, -z));
-  // the players on the pitch: eleven in white, eleven in black, the ball, a referee
-  const pos = [[-13, 0], [-9, -5], [-9, 5], [-10, 0], [-5, -7], [-5, 7], [-4, -2], [-4, 2], [-1, -5], [-1, 5], [-2, 0]];
-  pos.forEach(([x, z], k) => { player(p, x, z, Math.PI / 2, MGREEN, .08, LINE); player(p, -x + (k === 10 ? 1.5 : 0), -z, -Math.PI / 2, HRED, .08, HBLACK); });
-  player(p, 1, 3, Math.PI, 0xf2b632, .08); p.ball(0, .08, 0, .6, .6, LINE);
+  // the players, the referee and the ball are live (maccabiLive): they stand in their places, and play when a reel has a match
   // benches on the touchline
   for (const x of [-6, 6]) { p.box(x, .08, PD / 2 + 1.6, 5, 1, 1, TEAL); p.box(x, 1.1, PD / 2 + 1.9, 5.4, 1.6, .2, 0xcde8f5); }
   // the players' residence behind the stadium
   residence(p, 0, -22.5, 34, MGREEN, Math.PI);
   for (const [x, z] of [[-24, 22], [24, 22], [-25, -10], [25, -10]]) p.tree(x, z, .8, 0x4f9a43);
 }
+const HOME = [[-13, 0], [-9, -5], [-9, 5], [-10, 0], [-5, -7], [-5, 7], [-4, -2], [-4, 2], [-1, -5], [-1, 5], [-2, 0]];
+const ease = x => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); }, lerp = (a, b, f) => a + (b - a) * f;
+/** where the ball wanders while nobody is scoring (deterministic in t, so every frame of a reel can be drawn on its own) */
+const wander = s => [8 * Math.sin(.55 * s) + 3 * Math.sin(1.37 * s), 5 * Math.sin(.83 * s + 1) + 1.5 * Math.sin(2.1 * s)];
+/** the match: group.userData.match = { t0, goals: [{ t, team: 'm' | 'h', who }] } in the same clock as tick's t (reel.js sets it
+ * from the episode's "match"). Before t0, and without a match, the players stand in their places with the ball on the spot.
+ * Around a goal: the scorer carries the ball 2.4 s into the net, it stays there 2.2 s while he runs to the corner and his team
+ * follows, then the ball goes back to the centre and play goes on. */
+const CARRY = 1.8, NET = 1.0, BACK = 1.0, BLEND = 1.2;
+function ballAt(m, t) {
+  if (!m || t < m.t0) return { B: [0, 0] };
+  const g = [...m.goals].reverse().find(g => t >= g.t - CARRY);
+  if (!g) { const w = wander(t), k = ease((t - m.t0) / 1.5); return { B: [lerp(0, w[0], k), lerp(0, w[1], k)] }; }
+  const dir = g.team === 'm' ? 1 : -1, gz = .8 * Math.sin(g.t * 3.1), party = t >= g.t && t < g.t + 2.4 ? { party: g, f: (t - g.t) / 2.4 } : {};
+  if (t < g.t) { const s0 = ballAt(m, g.t - CARRY - 1e-3).B, f = ease((t - g.t + CARRY) / CARRY); return { B: [lerp(s0[0], dir * 15.4, f), lerp(s0[1], gz, f)], carry: g, dir }; }
+  if (t < g.t + NET) return { B: [dir * 16.3, gz], dir, ...party };
+  if (t < g.t + NET + BACK) { const f = ease((t - g.t - NET) / BACK); return { B: [lerp(dir * 16.3, 0, f), lerp(gz, 0, f)], dir, ...party }; }
+  const w = wander(t), f = ease((t - g.t - NET - BACK) / BLEND); return { B: [lerp(0, w[0], f), lerp(0, w[1], f)], dir, ...party };
+}
+function placeAt(m, P, i, t) {
+  const st = ballAt(m, t), [bx, bz] = st.B, me = P.team === 'm' ? 1 : -1, [hx, hz] = P.home;
+  if (!m || t < m.t0) return { x: hx, z: hz, run: 0 };
+  const scorer = g => g.team === P.team && (g.who ?? 10) === P.k;
+  if (st.carry && scorer(st.carry)) return { x: bx - st.dir * 1.1, z: bz + .3, run: 1 };
+  // where he would be in open play
+  const pull = P.k < 4 ? .35 : .6, j = Math.sin(t * .9 + i) * 1.2;
+  const open = P.k === 0 ? { x: hx * 1.12, z: Math.max(-2.6, Math.min(2.6, bz * .45)), run: .3 }          // the keepers stay in goal
+    : { x: hx + bx * pull + me * (P.k > 7 ? 1.5 : 0), z: hz * .8 + (bz - hz * .3) * .35 + j * .4, run: 1 };
+  // after a goal the scorer runs to the corner and jumps, his teammates join him, then they all go back (3.6 s in all)
+  const g = [...m.goals].reverse().find(g => t >= g.t && t < g.t + 3.6);
+  if (!g || g.team !== P.team || (P.k <= 3 && !scorer(g))) return open;
+  const d = g.team === 'm' ? 1 : -1, corner = [d * 13, (g.t * 7 % 2 < 1 ? 1 : -1) * 7.5], f = (t - g.t) / 2.4;
+  const party = scorer(g) ? { x: lerp(d * 15, corner[0], ease(f * 2)), z: lerp(0, corner[1], ease(f * 2)), run: 1, jump: f > .5 && f < 1 }
+    : { x: lerp(open.x, corner[0] - d * (1.5 + P.k % 3), ease(f * 1.4)), z: lerp(open.z, corner[1] - Math.sign(corner[1]) * (P.k % 4), ease(f * 1.4)), run: 1 };
+  const w = t < g.t + 2.4 ? 1 : 1 - ease((t - g.t - 2.4) / 1.2);
+  return { x: lerp(open.x, party.x, w), z: lerp(open.z, party.z, w), run: 1, jump: party.jump };
+}
+export function maccabiTick(group, t) {
+  const L = group.userData.live; if (!L) return; const m = group.userData.match;
+  L.players.forEach((P, i) => {
+    const a = placeAt(m, P, i, t), b = placeAt(m, P, i, t - .12), dx = a.x - b.x, dz = a.z - b.z;
+    P.g.position.set(a.x, a.jump ? Math.abs(Math.sin(t * 9)) * 1.2 : a.run ? Math.abs(Math.sin(t * 11 + i)) * .18 : 0, a.z);
+    P.g.rotation.y = Math.hypot(dx, dz) > .02 ? Math.atan2(dx, dz) : (P.team === 'm' ? Math.PI / 2 : -Math.PI / 2);
+  });
+  const { B } = ballAt(m, t); L.ball.position.set(B[0], .45 + (m && t >= m.t0 ? Math.abs(Math.sin(t * 5)) * .3 : 0), B[1]);
+  L.ref.position.set(B[0] * .5 + 1, 0, B[1] * .5 + 3.5); L.ref.rotation.y = Math.atan2(B[0] * .5 - 1, -3.5);
+  // the score so far
+  let sm = 0, sh = 0; for (const g of m?.goals ?? []) if (t >= g.t) g.team === 'm' ? sm++ : sh++;
+  for (const [k, b] of Object.entries(group.userData.boards ?? {})) b.visible = k === `${Math.min(sm, 3)}:${Math.min(sh, 3)}`;
+}
 export function maccabiLive(group) {
   const ox = 17.5 + 5 * 1.5 + .6, oz = 11.5 + 5 * 1.4 + .6;
   group.add(sign('אצטדיון מכבי ספיר', { w: 11.6, h: 2, bg: '#1f8a4c', fg: '#ffffff', border: '#ffffff', font: '900 {px}px "Secular One", Rubik' }).at(0, 10, oz + .55));
-  const board = sign('מכבי ספיר 0 : 0 הפועל ספיר', { w: 9.4, h: 2.4, bg: '#13213b', fg: '#ffffff', border: '#e8b323' }); board.rotation.y = Math.PI / 2; board.position.set(-ox + 1.15, 11.4, 0); group.add(board);
+  // the scoreboard: one board for each score the match can reach (tick shows the right one)
+  const boards = group.userData.boards = {};
+  for (let m = 0; m <= 3; m++) for (let h = 0; h <= 3; h++) {
+    const b = sign(`מכבי ${m} · הפועל ${h}`, { w: 9.4, h: 2.4, bg: '#13213b', fg: '#ffffff', border: '#e8b323' }); b.rotation.y = Math.PI / 2; b.position.set(-ox + 1.15, 14.2, 0);
+    b.visible = m === 0 && h === 0; boards[`${m}:${h}`] = b; group.add(b); }
+  // the players: eleven of מכבי (green, attacking +x) and eleven of הפועל (red, attacking -x), a referee, the ball
+  const sub = fn => { const p = new Pen(); fn(p); const g = p.build(new THREE.Group()); group.add(g); return g; };
+  const L = group.userData.live = { players: [] };
+  HOME.forEach(([x, z], k) => {
+    L.players.push({ team: 'm', k, home: [x, z], g: sub(p => player(p, 0, 0, 0, MGREEN, .08, LINE)) });
+    L.players.push({ team: 'h', k, home: [-x + (k === 10 ? 1.5 : 0), -z], g: sub(p => player(p, 0, 0, 0, HRED, .08, HBLACK)) });
+  });
+  L.ref = sub(p => player(p, 0, 0, 0, 0xf2b632, .08));
+  L.ball = sub(p => p.ball(0, 0, 0, .7, .7, LINE));
+  maccabiTick(group, 0);
   group.add(sign('מגורי השחקנים · 20 מקומות', { w: 12, h: 1.4, bg: '#fffaf0' }).at(0, 7.2, -22.5 - 2.25, Math.PI));
   group.add(sign('מכבי ספיר · ירוק לבן 💚🤍', { w: 10, h: 1.5, bg: '#1f8a4c', fg: '#ffffff', border: '#ffffff' }).at(0, 2.2, 9 + 2.45));
 }
@@ -118,5 +179,5 @@ export function hapoelLive(group) {
   group.add(sign('מגורי השחקנים · 20 מקומות', { w: 11, h: 1.3, bg: '#fffaf0' }).at(0, 7.2, -20.5 - 2.25, Math.PI));
   group.add(sign('ספונסר רשמי: ספירדונלדס 🍔', { w: 9, h: 1.4, bg: '#e8b323', fg: '#c8102e', border: '#c8102e' }).at(0, 1.2, 14.15));
 }
-export const MACCABI = { key: 'maccabi', name: 'אצטדיון מכבי ספיר', draw: drawMaccabi, live: maccabiLive, top: 20 };
+export const MACCABI = { key: 'maccabi', name: 'אצטדיון מכבי ספיר', draw: drawMaccabi, live: maccabiLive, tick: maccabiTick, top: 20 };
 export const HAPOEL = { key: 'hapoel', name: 'מגרש הפועל ספיר', draw: drawHapoel, live: hapoelLive, top: 12 };

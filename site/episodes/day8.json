@@ -1,0 +1,519 @@
+{
+ "day": 8,
+ "lines": [
+  "[excited] כל מי שעוקב ומגיב כאן, מקבל בית בממלכה של משפחת Sapir!",
+  "[excited] כבר מאה תשעים ותשעה תושבים בממלכה!",
+  "[excited] שלושים ושישה תושבים חדשים מאתמול!",
+  "[excited] ועכשיו... הבניין הכי גבוה שהממלכה ראתה!",
+  "[excited] בורג׳ Sapir! המגדל הכי גבוה בממלכה!",
+  "[excited] אופק ביקש אותו, וזה כבר הבניין השני שאופק בונה לנו!",
+  "[excited] מאה מטרים של זכוכית וזהב, ובראש שלו... כתר!",
+  "[excited] מפתח הזהב של היום הולך ליואב!",
+  "[excited] והערב... הדרבי הראשון! מכבי נגד הפועל!",
+  "[excited] רוצים שגם השם שלכם יופיע פה? תגיבו מה בונים מחר!",
+  "[excited] ותייגו חבר, והוא יקבל בית לידכם!"
+ ],
+ "duration": 39.4,
+ "mix": "day8.mix.mp3",
+ "trial": true,
+ "top": 330,
+ "say": {
+  "Sapir": "ספיר"
+ },
+ "homes": {
+  "yoav_levi676767": 8
+ },
+ "rise": {
+  "key": "burj",
+  "line": 3,
+  "dt": 0.4,
+  "dur": 2.8
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "house:ido_schwaitzer",
+   "dist": 34,
+   "yaw": 200,
+   "pitch": 30,
+   "orbit": 14,
+   "ease": 0.01
+  },
+  {
+   "line": 0,
+   "dt": 1.8,
+   "target": [
+    0,
+    0,
+    20
+   ],
+   "dist": 330,
+   "yaw": -20,
+   "pitch": 52,
+   "orbit": 5,
+   "ease": 0.9
+  },
+  {
+   "line": 1,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 560,
+   "yaw": -10,
+   "pitch": 58,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 2,
+   "target": "house:afek_rtu",
+   "dist": 70,
+   "yaw": 150,
+   "pitch": 40,
+   "orbit": 8,
+   "ease": 0.7
+  },
+  {
+   "line": 3,
+   "target": [
+    115.5,
+    30,
+    -47.8
+   ],
+   "dist": 230,
+   "yaw": -67.50015784436228,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 4,
+   "target": [
+    115.5,
+    55,
+    -47.8
+   ],
+   "dist": 170,
+   "yaw": -47.50015784436228,
+   "pitch": 6,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": "house:ofek_bell",
+   "dist": 36,
+   "yaw": 180,
+   "pitch": 44,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": [
+    115.5,
+    40,
+    -47.8
+   ],
+   "dist": 75,
+   "yaw": -92.50015784436228,
+   "pitch": 14,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "dt": 2,
+   "target": [
+    115.5,
+    108,
+    -47.8
+   ],
+   "dist": 48,
+   "yaw": -77.50015784436228,
+   "pitch": 12,
+   "orbit": 14,
+   "ease": 1
+  },
+  {
+   "line": 7,
+   "target": "house:yoav_levi676767",
+   "dist": 40,
+   "yaw": 160,
+   "pitch": 38,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": "landmark:maccabi",
+   "dist": 110,
+   "yaw": 20,
+   "pitch": 32,
+   "orbit": 8,
+   "ease": 0.7
+  },
+  {
+   "line": 9,
+   "target": [
+    115.5,
+    40,
+    -47.8
+   ],
+   "dist": 330,
+   "yaw": -32.50015784436228,
+   "pitch": 18,
+   "orbit": 5,
+   "ease": 0.8
+  },
+  {
+   "line": 10,
+   "target": "statue",
+   "dist": 95,
+   "yaw": -20,
+   "pitch": 22,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "counter",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 5.2,
+   "from": 163,
+   "to": 199
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "בורג׳ ספיר · המגדל הכי גבוה 🏙️"
+  },
+  {
+   "type": "idcard",
+   "line": 5,
+   "dt": 0.1,
+   "dur": 3.3,
+   "u": "ofek_bell",
+   "honours": [
+    "אדריכל · בורג׳ ספיר",
+    "אדריכל · ספירלנד"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 7,
+   "dt": 0.1,
+   "dur": 2.3,
+   "u": "yoav_levi676767",
+   "honours": [
+    "מפתח זהב · יום 7"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 9,
+   "dt": 0.1,
+   "dur": 6.4,
+   "text": "מה בונים מחר?",
+   "sub": "תגיבו בתגובות 👇"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.1,
+   "dur": 4.2,
+   "text": "עקבו + הגיבו = בית 🏠",
+   "y": 760,
+   "size": 100,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 3
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "+36",
+   "x": 830,
+   "y": 1110,
+   "size": 170,
+   "rot": 8,
+   "color": "#1f8a4c"
+  },
+  {
+   "type": "confetti",
+   "line": 2,
+   "dt": 0.2,
+   "dur": 2
+  },
+  {
+   "type": "vignette",
+   "line": 3,
+   "dur": 3.2,
+   "color": "rgba(10,10,30,.35)"
+  },
+  {
+   "type": "shake",
+   "line": 3,
+   "dt": 0.6,
+   "dur": 2.4,
+   "amp": 0.8
+  },
+  {
+   "type": "punch",
+   "line": 4,
+   "dur": 0.8,
+   "zoom": 0.25
+  },
+  {
+   "type": "confetti",
+   "line": 4,
+   "dt": 0.1,
+   "dur": 2.6
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 1.2,
+   "dur": 2,
+   "text": "x2",
+   "x": 830,
+   "y": 1110,
+   "size": 160,
+   "rot": 10,
+   "color": "#e8b323"
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 3.1,
+   "dur": 1.6,
+   "text": "👑",
+   "x": 840,
+   "y": 1110,
+   "size": 170
+  },
+  {
+   "type": "punch",
+   "line": 7,
+   "dur": 0.8,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 7,
+   "dur": 2
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "🔑",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 10
+  },
+  {
+   "type": "banner",
+   "line": 8,
+   "dt": 0.6,
+   "dur": 3.2,
+   "text": "הערב: הדרבי! ⚽",
+   "y": 760,
+   "size": 115,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 1.2,
+   "dur": 2.4,
+   "text": "💚❤️",
+   "x": 820,
+   "y": 1110,
+   "size": 140
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 0.6,
+   "dur": 3,
+   "text": "השם שלך יכול להיות פה ✨",
+   "y": 1150,
+   "size": 95,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "תייגו חבר = בית לידכם 👫",
+   "y": 1150,
+   "size": 95,
+   "band": "#0f6f73"
+  }
+ ],
+ "music": {
+  "bpm": 126,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 3,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 4,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "pop",
+   "line": 0,
+   "dt": 0.4,
+   "repeat": 6,
+   "every": 0.2,
+   "gain": 0.6
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 1,
+   "dt": 0.3,
+   "repeat": 12,
+   "every": 0.18,
+   "gain": 0.5
+  },
+  {
+   "name": "kaching",
+   "line": 2,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": -0.1
+  },
+  {
+   "name": "roar",
+   "line": 3,
+   "dt": 0.5,
+   "gain": 0.35
+  },
+  {
+   "name": "boom",
+   "line": 4,
+   "dt": 0
+  },
+  {
+   "name": "tada",
+   "line": 4,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 5,
+   "dt": -0.1
+  },
+  {
+   "name": "ding",
+   "line": 5,
+   "dt": 1.2
+  },
+  {
+   "name": "whoosh",
+   "line": 6,
+   "dt": 1.9
+  },
+  {
+   "name": "sparkle",
+   "line": 6,
+   "dt": 3.1
+  },
+  {
+   "name": "tada",
+   "line": 7,
+   "dt": 0
+  },
+  {
+   "name": "kaching",
+   "line": 7,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 8,
+   "dt": -0.1
+  },
+  {
+   "name": "sting",
+   "line": 8,
+   "dt": 0.6,
+   "gain": 0.6
+  },
+  {
+   "name": "whoosh",
+   "line": 9,
+   "dt": -0.1
+  },
+  {
+   "name": "sparkle",
+   "line": 9,
+   "dt": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 10,
+   "dt": 0.2
+  }
+ ],
+ "caption": "בורג׳ ספיר נבנה! 🏙️ המגדל הכי גבוה בממלכה, עם כתר זהב בראש, לבקשת אופק (הבניין השני שלו!) 👑\nכל מי שעוקב ומגיב מקבל בית בממלכה 🏠 והערב: תקציר הדרבי הראשון, מכבי נגד הפועל ⚽\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #בורג_ספיר #מכבי_ספיר #הפועל_ספיר",
+ "firstComment": "מה בונים מחר? התגובה עם הכי הרבה לייקים זוכה, והשם שלה מופיע בריל 👑 ותייגו חבר, הוא מקבל בית לידכם 🏠",
+ "notes": "Michael chose ofek_bell's tower (6 likes, third) for the main reel and mpt9399's top comment (24 likes, 'let our players move around the map') as the evening's derby highlights (day 801). Skipped: afek_rtu's statue of 'מלך הדגדגנים' (14 likes, could read as crude). Others: a Western Wall and Jerusalem (religion and real places), a statue of a real singer (real person), hotels named Sapir (maybe later). Gold key: yoav_levi676767, by the rule among day 7's citizens. Michael asked the reel to open on 'every follower gets a house', with the count and the growth; the line says follow and comment, since the comment is what builds the house."
+}

@@ -1,0 +1,630 @@
+{
+ "day": 801,
+ "lines": [
+  "[excited] תקציר הדרבי הראשון בממלכה!",
+  "[excited] MPT ביקש שהשחקנים יזוזו, אז יצאנו למגרש!",
+  "[excited] מכבי Sapir נגד הפועל Sapir, והאצטדיון מלא!",
+  "[excited] שריקת פתיחה... ואלעד בורח לכולם...",
+  "[excited] גול! אחת אפס למכבי!",
+  "[excited] אבל עידו מהפועל לא מוותר... גול! אחת אחת!",
+  "[excited] ואיתי עם בעיטה מרחוק... שתיים אחת להפועל!",
+  "[excited] דקה אחרונה... ונבו ממכבי... גול! שתיים שתיים!",
+  "[excited] איזה משחק! תיקו מטורף!",
+  "[excited] מי ינצח במשחק החוזר? תגיבו מכבי או הפועל!",
+  "[excited] ותייגו חבר, והוא יקבל בית לידכם!"
+ ],
+ "duration": 36.2,
+ "mix": "day801.mix.mp3",
+ "top": 330,
+ "say": {
+  "Sapir": "ספיר"
+ },
+ "match": {
+  "key": "maccabi",
+  "line": 3,
+  "dt": 0,
+  "goals": [
+   {
+    "line": 4,
+    "dt": 0,
+    "team": "m",
+    "who": 10
+   },
+   {
+    "line": 5,
+    "dt": 1.79,
+    "team": "h",
+    "who": 10
+   },
+   {
+    "line": 6,
+    "dt": 1.63,
+    "team": "h",
+    "who": 8
+   },
+   {
+    "line": 7,
+    "dt": 2.33,
+    "team": "m",
+    "who": 9
+   }
+  ]
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:maccabi",
+   "dist": 120,
+   "yaw": 15,
+   "pitch": 40,
+   "orbit": 9,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    -115.5,
+    0,
+    47.8
+   ],
+   "dist": 56,
+   "yaw": 122.50026307393715,
+   "pitch": 58,
+   "orbit": 7,
+   "ease": 0.6
+  },
+  {
+   "line": 2,
+   "target": [
+    -128.4,
+    6,
+    53.2
+   ],
+   "dist": 15,
+   "yaw": 122.50026307393715,
+   "pitch": 16,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": "ball:maccabi",
+   "dist": 26,
+   "yaw": 122.50026307393715,
+   "pitch": 56,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 4,
+   "dt": -1.2,
+   "target": [
+    -120.5,
+    1,
+    35.8
+   ],
+   "dist": 22,
+   "yaw": 37.50026307393715,
+   "pitch": 46,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": "ball:maccabi",
+   "dist": 26,
+   "yaw": 102.50026307393715,
+   "pitch": 56,
+   "orbit": -3,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "dt": 0.8,
+   "target": [
+    -110.5,
+    1,
+    59.8
+   ],
+   "dist": 22,
+   "yaw": 187.50026307393716,
+   "pitch": 46,
+   "orbit": -3,
+   "ease": 0.5
+  },
+  {
+   "line": 6,
+   "target": "ball:maccabi",
+   "dist": 26,
+   "yaw": 122.50026307393715,
+   "pitch": 56,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 6,
+   "dt": 0.7,
+   "target": [
+    -110.5,
+    1,
+    59.8
+   ],
+   "dist": 24,
+   "yaw": 217.50026307393716,
+   "pitch": 46,
+   "orbit": -3,
+   "ease": 0.45
+  },
+  {
+   "line": 7,
+   "target": "ball:maccabi",
+   "dist": 26,
+   "yaw": 102.50026307393715,
+   "pitch": 56,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 7,
+   "dt": 1.2,
+   "target": [
+    -120.5,
+    1,
+    35.8
+   ],
+   "dist": 22,
+   "yaw": 7.500263073937148,
+   "pitch": 46,
+   "orbit": 3,
+   "ease": 0.45
+  },
+  {
+   "line": 8,
+   "target": [
+    -106.4,
+    13.4,
+    69.9
+   ],
+   "dist": 32,
+   "yaw": 202.50026307393716,
+   "pitch": 10,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 9,
+   "target": "landmark:maccabi",
+   "dist": 115,
+   "yaw": 0,
+   "pitch": 40,
+   "orbit": 8,
+   "ease": 0.8
+  },
+  {
+   "line": 10,
+   "target": "landmark:maccabi",
+   "dist": 150,
+   "yaw": 40,
+   "pitch": 44,
+   "orbit": 6,
+   "ease": 0.6
+  }
+ ],
+ "cards": [
+  {
+   "type": "comment",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 3.6,
+   "u": "mpt9399",
+   "text": "תעשו ככה שהשחקנים שלנו יוכלו לזוז ולטייל במפה",
+   "likes": 24
+  },
+  {
+   "type": "idcard",
+   "line": 4,
+   "dt": 0.6,
+   "dur": 1.6,
+   "u": "eladdadon1",
+   "honours": [
+    "כובש · דרבי 1",
+    "מכבי ספיר · 19"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 5,
+   "dt": 2.1,
+   "dur": 1.4,
+   "u": "ido_schwaitzer",
+   "honours": [
+    "כובש · דרבי 1",
+    "הפועל ספיר · 11"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 6,
+   "dt": 1.9,
+   "dur": 1.4,
+   "u": "itay_1812",
+   "honours": [
+    "כובש · דרבי 1",
+    "הפועל ספיר · 9"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 7,
+   "dt": 2.5,
+   "dur": 1.5,
+   "u": "nevo_gur",
+   "honours": [
+    "כובש · דרבי 1",
+    "מכבי ספיר · 4"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 9,
+   "dt": 0.1,
+   "dur": 6.2,
+   "text": "מכבי או הפועל?",
+   "sub": "תגיבו מי ינצח במשחק החוזר 👇"
+  }
+ ],
+ "fx": [
+  {
+   "type": "news",
+   "line": 0,
+   "dur": 5.6,
+   "text": "תקציר הדרבי ⚽",
+   "sub": "ספורט הממלכה",
+   "clock": "19:00",
+   "y": 250
+  },
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3,
+   "color": "#1f8a4c",
+   "alpha": 0.4
+  },
+  {
+   "type": "banner",
+   "line": 2,
+   "dt": 0.2,
+   "dur": 3.2,
+   "text": "מכבי 💚 נגד ❤️ הפועל",
+   "y": 760,
+   "size": 110,
+   "band": "#13213b",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.1,
+   "dur": 1.4,
+   "text": "📣",
+   "x": 840,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "flash",
+   "line": 4,
+   "dur": 0.35,
+   "color": "#1f8a4c",
+   "alpha": 0.5
+  },
+  {
+   "type": "punch",
+   "line": 4,
+   "dur": 0.7,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 4,
+   "dur": 2
+  },
+  {
+   "type": "banner",
+   "line": 4,
+   "dt": 0.1,
+   "dur": 1.9,
+   "text": "גול! 1 : 0 מכבי",
+   "y": 1150,
+   "size": 130,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "flash",
+   "line": 5,
+   "dt": 1.79,
+   "dur": 0.35,
+   "color": "#c8102e",
+   "alpha": 0.5
+  },
+  {
+   "type": "punch",
+   "line": 5,
+   "dt": 1.79,
+   "dur": 0.7,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 5,
+   "dt": 1.8,
+   "dur": 1.6
+  },
+  {
+   "type": "banner",
+   "line": 5,
+   "dt": 1.85,
+   "dur": 1.5,
+   "text": "גול! 1 : 1",
+   "y": 1150,
+   "size": 130,
+   "band": "#c8102e",
+   "color": "#ffffff",
+   "stroke": "#1b1d21"
+  },
+  {
+   "type": "flash",
+   "line": 6,
+   "dt": 1.63,
+   "dur": 0.35,
+   "color": "#c8102e",
+   "alpha": 0.5
+  },
+  {
+   "type": "punch",
+   "line": 6,
+   "dt": 1.63,
+   "dur": 0.7,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 6,
+   "dt": 1.7,
+   "dur": 1.4
+  },
+  {
+   "type": "banner",
+   "line": 6,
+   "dt": 1.7,
+   "dur": 1.4,
+   "text": "גול! 2 : 1 הפועל",
+   "y": 1150,
+   "size": 120,
+   "band": "#c8102e",
+   "color": "#ffffff",
+   "stroke": "#1b1d21"
+  },
+  {
+   "type": "vignette",
+   "line": 7,
+   "dur": 2.3,
+   "color": "rgba(10,10,30,.45)"
+  },
+  {
+   "type": "flash",
+   "line": 7,
+   "dt": 2.33,
+   "dur": 0.35,
+   "color": "#1f8a4c",
+   "alpha": 0.5
+  },
+  {
+   "type": "punch",
+   "line": 7,
+   "dt": 2.33,
+   "dur": 0.8,
+   "zoom": 0.35
+  },
+  {
+   "type": "shake",
+   "line": 7,
+   "dt": 2.33,
+   "dur": 0.8,
+   "amp": 1.2
+  },
+  {
+   "type": "confetti",
+   "line": 7,
+   "dt": 2.4,
+   "dur": 2.2
+  },
+  {
+   "type": "banner",
+   "line": 7,
+   "dt": 2.4,
+   "dur": 1.5,
+   "text": "גול! 2 : 2",
+   "y": 1150,
+   "size": 130,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 8,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "תיקו מטורף! 2 : 2 🤯",
+   "y": 1150,
+   "size": 115,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 3,
+   "text": "תייגו חבר = בית לידכם 👫",
+   "y": 1150,
+   "size": 95,
+   "band": "#0f6f73"
+  }
+ ],
+ "music": {
+  "bpm": 132,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 3,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 4,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 7,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 7,
+     "dt": 2.33
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0,
+   "gain": 0.6
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 1,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 2,
+   "dt": -0.1
+  },
+  {
+   "name": "roar",
+   "line": 2,
+   "dt": 0.3,
+   "gain": 0.3
+  },
+  {
+   "name": "ding",
+   "line": 3,
+   "dt": 0,
+   "gain": 0.7
+  },
+  {
+   "name": "boom",
+   "line": 4,
+   "dt": 0
+  },
+  {
+   "name": "tada",
+   "line": 4,
+   "dt": 0.1
+  },
+  {
+   "name": "roar",
+   "line": 4,
+   "dt": 0.2,
+   "gain": 0.3
+  },
+  {
+   "name": "boom",
+   "line": 5,
+   "dt": 1.79
+  },
+  {
+   "name": "tada",
+   "line": 5,
+   "dt": 1.85
+  },
+  {
+   "name": "whoosh",
+   "line": 6,
+   "dt": 0.9
+  },
+  {
+   "name": "boom",
+   "line": 6,
+   "dt": 1.63
+  },
+  {
+   "name": "tada",
+   "line": 6,
+   "dt": 1.7
+  },
+  {
+   "name": "boom",
+   "line": 7,
+   "dt": 2.33
+  },
+  {
+   "name": "tada",
+   "line": 7,
+   "dt": 2.4
+  },
+  {
+   "name": "roar",
+   "line": 7,
+   "dt": 2.4,
+   "gain": 0.35
+  },
+  {
+   "name": "boing",
+   "line": 8,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 9,
+   "dt": -0.1
+  },
+  {
+   "name": "ding",
+   "line": 9,
+   "dt": 0.3
+  },
+  {
+   "name": "ding",
+   "line": 10,
+   "dt": 0.2
+  }
+ ],
+ "caption": "תקציר הדרבי הראשון בממלכה! ⚽ מכבי ספיר 2 : 2 הפועל ספיר\nאלעד ונבו כבשו למכבי, עידו ואיתי להפועל 🔥 ובזכות הרעיון של MPT, השחקנים יצאו למגרש!\nמי ינצח במשחק החוזר? תגיבו מכבי או הפועל 👇\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #מכבי_ספיר #הפועל_ספיר #דרבי",
+ "firstComment": "מי ינצח במשחק החוזר? 💚 מכבי או ❤️ הפועל? ותייגו חבר לקבוצה שלכם, הוא מקבל בית לידכם 🏠",
+ "notes": "Day 8's second reel: the derby highlights, for mpt9399's comment (24 likes). Michael asked me to decide the scorers: מכבי's eladdadon1 (19) and nevo_gur (4), הפועל's ido_schwaitzer (11) and itay_1812 (9); 2:2, the rematch up to the comments."
+}

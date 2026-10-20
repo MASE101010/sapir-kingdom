@@ -9,5 +9,6 @@ import { SPIRLAND } from './spirland.js';  // day 4: ספירלנד
 import { MACCABI, HAPOEL } from './football.js';   // day 5: מכבי ספיר and הפועל ספיר
 import { SPIRDONALDS } from './spirdonalds.js';  // day 6: ספירדונלדס
 import { SPIRMALL } from './spirmall.js';        // day 7: ספירמול
+import { BURJ } from './burj.js';                // day 8: בורג' ספיר
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ].map(l => [l.key, l]));
