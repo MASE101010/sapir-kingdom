@@ -1,0 +1,629 @@
+{
+ "day": 9,
+ "lines": [
+  "[excited] כל מי שעוקב ומגיב כאן, מקבל בית בממלכה של משפחת Sapir!",
+  "[excited] ותראו את זה... שמונה עשר עוקבים חדשים מאתמול!",
+  "[excited] ובנינו לכם... נמל התעופה Sapir! בקיצור, Natsar!",
+  "[excited] Avia ביקשה שדה תעופה, והנה הוא!",
+  "[excited] מסלול הַמְרָאָה ענק, מגדל פיקוח, ומלא מטוסים!",
+  "[excited] אבל יש בעיה... אין לנו טייסים!",
+  "[excited] רוצים להיות טייסים? תעקבו, ותגיבו טייס!",
+  "[excited] וזוכרים? כל עוקב שמגיב, מקבל בית!",
+  "[excited] מפתח הזהב של היום הולך ל-Imry!",
+  "[excited] ורגע... משהו קרה בבורג׳ Sapir...",
+  "[excited] דרקון התיישב על הקצה של המגדל, והוא לא מוכן לזוז!",
+  "[excited] יש למישהו רעיון איך להזיז אותו? תגיבו לי!",
+  "[excited] ותייגו חבר, והוא יקבל בית לידכם!"
+ ],
+ "duration": 45.2,
+ "mix": "day9.mix.mp3",
+ "top": 330,
+ "say": {
+  "Sapir": "ספיר",
+  "Natsar": "נתס\"ר",
+  "Avia": "אביה",
+  "Imry": "עמרי",
+  "Beitar": "ביתר"
+ },
+ "homes": {
+  "imry.life": 8
+ },
+ "rise": {
+  "key": "natsar",
+  "line": 2,
+  "dt": 1,
+  "dur": 1.6
+ },
+ "cue": {
+  "key": "natsar",
+  "line": 6,
+  "dt": 0
+ },
+ "perch": {
+  "dragon": 4,
+  "at": [
+   113.2,
+   117,
+   -46.8
+  ],
+  "ry": -1.178,
+  "line": 9,
+  "dt": 0.2,
+  "dur": 4.6
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    0,
+    0,
+    20
+   ],
+   "dist": 280,
+   "yaw": -20,
+   "pitch": 52,
+   "orbit": 7,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 620,
+   "yaw": 20,
+   "pitch": 60,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 2,
+   "target": "landmark:natsar",
+   "dist": 115,
+   "yaw": 0,
+   "pitch": 28,
+   "orbit": 8,
+   "ease": 0.7
+  },
+  {
+   "line": 3,
+   "target": "house:avia_ben._.shabat",
+   "dist": 38,
+   "yaw": 160,
+   "pitch": 32,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": [
+    149.9,
+    2,
+    149.9
+   ],
+   "dist": 42,
+   "yaw": 70,
+   "pitch": 18,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "dt": 1.7,
+   "target": [
+    118.8,
+    20,
+    148.5
+   ],
+   "dist": 36,
+   "yaw": 25,
+   "pitch": 6,
+   "orbit": 6,
+   "ease": 0.5
+  },
+  {
+   "line": 4,
+   "dt": 2.7,
+   "target": [
+    142.8,
+    3,
+    140
+   ],
+   "dist": 34,
+   "yaw": 20,
+   "pitch": 24,
+   "orbit": 6,
+   "ease": 0.5
+  },
+  {
+   "line": 5,
+   "target": [
+    164.8,
+    2.5,
+    135.1
+   ],
+   "dist": 18,
+   "yaw": 85,
+   "pitch": 12,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": [
+    147.1,
+    8,
+    152.7
+   ],
+   "dist": 80,
+   "yaw": 55,
+   "pitch": 12,
+   "orbit": 1,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 420,
+   "yaw": -30,
+   "pitch": 50,
+   "orbit": 5,
+   "ease": 0.8
+  },
+  {
+   "line": 8,
+   "target": "house:imry.life",
+   "dist": 40,
+   "yaw": 160,
+   "pitch": 38,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": [
+    115.5,
+    70,
+    -47.8
+   ],
+   "dist": 260,
+   "yaw": -47.50015784436228,
+   "pitch": 10,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 10,
+   "target": [
+    113.2,
+    117,
+    -46.8
+   ],
+   "dist": 32,
+   "yaw": -52.50015784436228,
+   "pitch": 8,
+   "orbit": 6,
+   "ease": 0.8
+  },
+  {
+   "line": 11,
+   "target": [
+    113.2,
+    117,
+    -46.8
+   ],
+   "dist": 60,
+   "yaw": -87.50015784436228,
+   "pitch": 6,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 12,
+   "target": [
+    115.5,
+    80,
+    -47.8
+   ],
+   "dist": 200,
+   "yaw": -37.50015784436228,
+   "pitch": 8,
+   "orbit": 4,
+   "ease": 0.6
+  }
+ ],
+ "cards": [
+  {
+   "type": "label",
+   "line": 2,
+   "dt": 2.2,
+   "dur": 2.6,
+   "text": "נמל התעופה ספיר · נתס\"ר ✈️"
+  },
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 0.1,
+   "dur": 2.3,
+   "u": "avia_ben._.shabat",
+   "honours": [
+    "אדריכלית · נתס\"ר"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 8,
+   "dt": 0.1,
+   "dur": 2.5,
+   "u": "imry.life",
+   "honours": [
+    "מפתח זהב · יום 8"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 5.4,
+   "text": "איך מזיזים את הדרקון? 🐉",
+   "sub": "תגיבו רעיונות 👇"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.1,
+   "dur": 4.2,
+   "text": "עקבו + הגיבו = בית 🏠",
+   "y": 760,
+   "size": 100,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 3
+  },
+  {
+   "type": "banner",
+   "line": 1,
+   "dt": 1.1,
+   "dur": 2.6,
+   "text": "+18 עוקבים חדשים 🎉",
+   "y": 760,
+   "size": 110,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 1,
+   "dt": 1.1,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 2,
+   "dt": 1,
+   "dur": 0.8,
+   "zoom": 0.25
+  },
+  {
+   "type": "confetti",
+   "line": 2,
+   "dt": 2.6,
+   "dur": 2
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.3,
+   "dur": 2,
+   "text": "✈️",
+   "x": 840,
+   "y": 1110,
+   "size": 160,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.1,
+   "dur": 1.6,
+   "text": "🛫",
+   "x": 840,
+   "y": 1110,
+   "size": 140
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 1.75,
+   "dur": 1,
+   "text": "🗼",
+   "x": 840,
+   "y": 1110,
+   "size": 140
+  },
+  {
+   "type": "vignette",
+   "line": 5,
+   "dur": 2.7,
+   "color": "rgba(10,10,30,.45)"
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 1.4,
+   "dur": 1.4,
+   "text": "🤷",
+   "x": 840,
+   "y": 1110,
+   "size": 160
+  },
+  {
+   "type": "banner",
+   "line": 6,
+   "dt": 1.3,
+   "dur": 2.6,
+   "text": "תגיבו: טייס ✈️",
+   "y": 760,
+   "size": 125,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "banner",
+   "line": 7,
+   "dt": 0.4,
+   "dur": 2.6,
+   "text": "עוקב שמגיב = בית 🏠",
+   "y": 760,
+   "size": 110,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "punch",
+   "line": 8,
+   "dur": 0.8,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 8,
+   "dur": 2
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "🔑",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 10
+  },
+  {
+   "type": "vignette",
+   "line": 9,
+   "dur": 3,
+   "color": "rgba(10,10,30,.5)"
+  },
+  {
+   "type": "shake",
+   "line": 10,
+   "dt": 1.4,
+   "dur": 0.6,
+   "amp": 1
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 1.6,
+   "dur": 1.8,
+   "text": "🐉",
+   "x": 840,
+   "y": 1110,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.7,
+   "text": "תייגו חבר = בית לידכם 👫",
+   "y": 1150,
+   "size": 95,
+   "band": "#0f6f73"
+  }
+ ],
+ "music": {
+  "bpm": 126,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 5,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 6,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 9,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 12,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "pop",
+   "line": 0,
+   "dt": 0.4,
+   "repeat": 6,
+   "every": 0.2,
+   "gain": 0.6
+  },
+  {
+   "name": "kaching",
+   "line": 1,
+   "dt": 1.1
+  },
+  {
+   "name": "whoosh",
+   "line": 2,
+   "dt": -0.1
+  },
+  {
+   "name": "boom",
+   "line": 2,
+   "dt": 1
+  },
+  {
+   "name": "tada",
+   "line": 2,
+   "dt": 1.1
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 3,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 4,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 1.75
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 2.7
+  },
+  {
+   "name": "scratch",
+   "line": 5,
+   "dt": 0
+  },
+  {
+   "name": "cricket",
+   "line": 5,
+   "dt": 1.4,
+   "gain": 0.5
+  },
+  {
+   "name": "whoosh",
+   "line": 6,
+   "dt": 0.4
+  },
+  {
+   "name": "roar",
+   "line": 6,
+   "dt": 1.5,
+   "gain": 0.35
+  },
+  {
+   "name": "ding",
+   "line": 6,
+   "dt": 1.3
+  },
+  {
+   "name": "whoosh",
+   "line": 7,
+   "dt": -0.1
+  },
+  {
+   "name": "tada",
+   "line": 8,
+   "dt": 0
+  },
+  {
+   "name": "kaching",
+   "line": 8,
+   "dt": 0.3
+  },
+  {
+   "name": "sting",
+   "line": 9,
+   "dt": 0.2,
+   "gain": 0.6
+  },
+  {
+   "name": "roar",
+   "line": 10,
+   "dt": 1.3,
+   "gain": 0.5
+  },
+  {
+   "name": "boing",
+   "line": 11,
+   "dt": 1
+  },
+  {
+   "name": "whoosh",
+   "line": 12,
+   "dt": -0.1
+  },
+  {
+   "name": "ding",
+   "line": 12,
+   "dt": 0.2
+  }
+ ],
+ "caption": "נמל התעופה ספיר, נתס\"ר, נפתח! ✈️ מסלול, מגדל פיקוח ומלא מטוסים, בזכות אביה. ועכשיו מחפשים טייסים: תגיבו \"טייס\" ✈️\nורגע... דרקון התיישב על בורג׳ ספיר ולא זז 🐉 איך מזיזים אותו? תגיבו רעיונות! כל עוקב שמגיב מקבל בית 🏠\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #נתסר #טייס",
+ "firstComment": "מי רוצה להיות טייס? ✈️ תגיבו \"טייס\" ותקבלו כנפיים בתעודת התושב. ותייגו חבר, הוא מקבל בית לידכם 🏠",
+ "notes": "Michael chose the airport (avia_ben._.shabat, 'נתב״ג ספיר', 1 like) and named it נתס\"ר; pilots sign up with 'טייס'; and a dragon sits on בורג' ספיר (kingdom.json perch) as tomorrow's hook. Skipped: mpt9399's dragon prison (11 likes, Michael picked the airport; the perched dragon may lead there), liroyrokach's castle renovation (3), the safari (1). Gold key: imry.life, by the rule among day 8's citizens. Posted twice: as a trial reel (non-followers) and as an ordinary one."
+}

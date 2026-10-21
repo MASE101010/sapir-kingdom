@@ -84,7 +84,8 @@ export async function startReel({ renderer, data, day }) {
     if (c.type === 'counter') c.to ??= upTo;
   }
   // ep.say: how a word the voice needed in English letters is shown in the captions ("Sapir" → "ספיר")
-  for (const w of time.words) { const k = w.w.replace(/[^\p{L}\p{N}]/gu, ''); if (ep.say?.[k]) w.w = w.w.replace(k, ep.say[k]); }
+  for (const w of time.words) { w.w = w.w.replace(/[\u0591-\u05C7]/g, '');          // nikud is for the voice only
+    for (const [a, b] of Object.entries(ep.say ?? {})) if (w.w.includes(a)) { w.w = w.w.replace(a, b); break; } }   // also inside "ל-Imry!"
   // captions: at most three words, never across a pause in the voice (a phrase), each gone before the next one starts
   const chunks = []; { let cur = null; time.words.forEach(w => { if (!cur || cur.line !== w.line || cur.p !== w.p || cur.words.length >= 3) { cur = { line: w.line, p: w.p, words: [] }; chunks.push(cur); } cur.words.push(w); }); }
   chunks.forEach((c, i) => { c.t0 = c.words[0].start - .05; c.t1 = Math.min(c.words.at(-1).end + .25, chunks[i + 1] ? chunks[i + 1].words[0].start - .05 : Infinity); });
@@ -98,6 +99,8 @@ export async function startReel({ renderer, data, day }) {
   // the dragons: gathered round a place for a while (swarm), one of them breathing fire (fire)
   const swarms = [ep.swarm].flat().filter(Boolean).map(w => ({ ...w, t0: lineAt(w.line, w.dt), t1: w.until != null ? lineAt(w.until, w.udt) : lineAt(w.line, w.dt) + (w.dur ?? 8) }));
   const fires = [ep.fire].flat().filter(Boolean).map(f => ({ ...f, t0: lineAt(f.line, f.dt), t1: lineAt(f.line, f.dt) + (f.dur ?? 2.5) }));
+  // cues: a landmark's own animation starting at a line (e.g. נתס"ר's plane taking off): ep.cue = [{ key, line, dt }]
+  for (const c of [ep.cue].flat().filter(Boolean)) { const l = world.lm?.[c.key]; if (l) l.group.userData.cue = (ep.clock ?? 900) + lineAt(c.line, c.dt); }
   // a football match in a stadium (football.js): kick-off at a line, and the goals, each at its line (who: the scorer's place, 0 to 10)
   if (ep.match) { const l = world.lm?.[ep.match.key ?? 'maccabi'], c = ep.clock ?? 900; if (l) l.group.userData.match = { t0: c + lineAt(ep.match.line, ep.match.dt), goals: ep.match.goals.map(g => ({ ...g, t: c + lineAt(g.line, g.dt) })).sort((a, b) => a.t - b.t) }; }
   const arrivals = [ep.arrive].flat().filter(Boolean).map(a => ({ ...a, t0: lineAt(a.line, a.dt), dur: a.dur ?? 5 }));
@@ -106,6 +109,8 @@ export async function startReel({ renderer, data, day }) {
     if (w) { const at = focus(w.target, t); world.life.swarm = { x: at.x, z: at.z, R: w.R ?? 70, H: w.H ?? 60, k: clamp(Math.min((t - w.t0 + e) / e, (w.t1 + e - t) / e)) }; } else world.life.swarm = null;
     world.life.fire = Math.max(0, ...fires.map(f => clamp(Math.min((t - f.t0) / .35, (f.t1 - t) / .5))));
     // new dragons flying in from far away: before t0 they are not there, over dur they come home
+    // a dragon landing on its perch during the reel (ep.perch: { dragon, at, ry, line, dt, dur }); before it lands it flies as usual
+    if (ep.perch) world.life.perch = { ...ep.perch, k: clamp((t - lineAt(ep.perch.line, ep.perch.dt)) / (ep.perch.dur ?? 3)) };
     world.life.arrive = arrivals.length ? Object.fromEntries(arrivals.map(a => [a.dragon, clamp((t - a.t0) / a.dur)])) : null;
   }
   function seek(t) {

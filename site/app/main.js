@@ -26,7 +26,7 @@ if (q.has('reel')) { const { startReel } = await import('./reel.js'); await star
 else if (q.has('catalog')) { const { startCatalog } = await import('./catalog-shots.js'); await startCatalog(renderer); }
 else { const live = await loadLive(data.residents.length); data.residents.push(...(live.residents ?? [])); applyChanges(data.residents, live.changed); site(data); }
 /** a resident's own changes (style, friend) over the snapshot */
-function applyChanges(list, changed = []) { let any = false; for (const c of changed ?? []) { const r = list[c.n - 1]; if (r && r.u === c.u && (r.plot !== c.plot || r.host !== c.host || r.home !== c.home || r.citizen !== c.citizen || r.gold !== c.gold || r.team !== c.team)) { list[c.n - 1] = { ...r, plot: c.plot, host: c.host, home: c.home, citizen: c.citizen, gold: c.gold, team: c.team, shirt: c.shirt }; any = true; } } return any; }
+function applyChanges(list, changed = []) { let any = false; for (const c of changed ?? []) { const r = list[c.n - 1]; if (r && r.u === c.u && (r.plot !== c.plot || r.host !== c.host || r.home !== c.home || r.citizen !== c.citizen || r.gold !== c.gold || r.team !== c.team || r.job !== c.job)) { list[c.n - 1] = { ...r, plot: c.plot, host: c.host, home: c.home, citizen: c.citizen, gold: c.gold, team: c.team, shirt: c.shirt, job: c.job }; any = true; } } return any; }
 
 function site({ plan, residents, kingdom, honours }) {
   document.body.classList.add('site');
@@ -96,7 +96,7 @@ function site({ plan, residents, kingdom, honours }) {
       <span>תושב מספר ${(k + 1).toLocaleString('he-IL')}</span><span>${esc(a.street)} ${a.num}</span>
       <span class="since">${mates.length > 1 ? `${esc(tier.name)} · גרים כאן ${mates.length}` : esc(HOMES[owner.home ?? -1]?.name ?? tier.name)} · מיום ${r.day ?? 1}</span></div></div>
       ${others.length ? `<p class="mates" dir="rtl">גרים איתו: <span dir="ltr">${others.map(esc).join(' ')}</span>${mates.length > 9 ? ' ועוד' : ''}</p>` : ''}
-      <div class="chips">${r.team ? `<span class="gold">⚽ ${r.team === 'maccabi' ? 'מכבי ספיר' : 'הפועל ספיר'} · מספר ${r.shirt}</span>` : ''}${r.gold ? '<span class="gold">בית מוזהב ✨</span>' : ''}${r.citizen ? '<span class="citizen">אזרח הממלכה ✓</span>' : `<span class="tourist">עוד לא אזרח · עוקבים אחרי @${esc(ACCOUNT)} וכותבים "בית" בפרטי</span>`}${honoursOf(r.u).map(h => `<span>${esc(h)}</span>`).join('')}</div>
+      <div class="chips">${r.team ? `<span class="gold">⚽ ${({ maccabi: 'מכבי ספיר', hapoel: 'הפועל ספיר', beitar: 'ביתר ספיר' })[r.team] ?? ''} · מספר ${r.shirt}</span>` : ''}${r.job === 'pilot' ? '<span class="gold">✈️ טייס בנתס"ר</span>' : ''}${r.gold ? '<span class="gold">בית מוזהב ✨</span>' : ''}${r.citizen ? '<span class="citizen">אזרח הממלכה ✓</span>' : `<span class="tourist">עוד לא אזרח · עוקבים אחרי @${esc(ACCOUNT)} וכותבים "בית" בפרטי</span>`}${honoursOf(r.u).map(h => `<span>${esc(h)}</span>`).join('')}</div>
       <div class="row"><button class="btn ghost" id="share">העתקת קישור לבית</button>${r.u === mine ? '<button class="btn ghost" id="invite-me">להזמין חברים</button>' : ''}<button class="btn ghost" id="close">סגירה</button></div></div>`;
     card.hidden = false; $('close').onclick = () => card.hidden = true;
     $('share').onclick = () => copy(`${location.origin}${location.pathname}?u=${r.u}`, $('share'));
@@ -172,11 +172,13 @@ function site({ plan, residents, kingdom, honours }) {
       catalog: () => `<h2>קטלוג הבתים</h2>${grid(false)}`,
       lottery: () => { const keys = honours.given?.key ?? []; return `<h2>ההגרלה היומית</h2><p>כל יום, אחד התושבים החדשים זוכה במפתח הזהב: עיטור על תעודת התושב, וזכות לבחור בית נדיר מהקטלוג.</p>
         ${keys.length ? `<p>הזוכה האחרון: <b dir="ltr">@${esc(keys.at(-1))}</b></p><ul class="people">${keys.slice().reverse().map(u => `<li><button class="link" data-u="${esc(u)}" dir="ltr">@${esc(u)}</button></li>`).join('')}</ul>` : '<p class="note">ההגרלה הראשונה מחר. כל מי שמצטרף היום משתתף.</p>'}`; },
-      squads: () => { const SQ = 20, team = (key, name, cls, colours) => { const players = residents.filter(r => r.team === key).sort((a, b) => (a.shirt ?? 99) - (b.shirt ?? 99));
+      squads: () => { const team = (key, name, cls, colours, SQ = 20) => { const players = residents.filter(r => r.team === key).sort((a, b) => (a.shirt ?? 99) - (b.shirt ?? 99));
           return `<div class="squad ${cls}"><h3>${name}</h3><p class="note">${colours} · ${players.length}/${SQ} שחקנים</p><ol class="roster">${Array.from({ length: SQ }, (_, i) => { const r = players[i];
             return r ? `<li><span class="shirt">${r.shirt ?? i + 1}</span><button class="link" data-u="${esc(r.u)}" dir="ltr">@${esc(r.u)}</button></li>` : `<li class="free"><span class="shirt">·</span>מקום פנוי</li>`; }).join('')}</ol></div>`; };
-        return `<h2>הסגלים ⚽</h2><p>רוצים לשחק? מגיבים על הריל <b>"מכבי"</b> או <b>"הפועל"</b>, ו-20 הראשונים בכל קבוצה נכנסים לסגל עם מספר חולצה.</p>
-          <div class="squads">${team('maccabi', 'מכבי ספיר', 'm', kingdom.teams?.maccabi ?? 'צבעי המדים: בקרוב')}${team('hapoel', 'הפועל ספיר', 'h', kingdom.teams?.hapoel ?? 'צבעי המדים: בקרוב')}</div>`; },
+        const pilots = residents.filter(r => r.job === 'pilot');
+        return `<h2>הסגלים ⚽</h2><p>רוצים לשחק? מגיבים על הריל <b>"מכבי"</b>, <b>"הפועל"</b> או <b>"ביתר"</b>, והראשונים בכל קבוצה נכנסים לסגל עם מספר חולצה.</p>
+          <div class="squads">${team('maccabi', 'מכבי ספיר', 'm', kingdom.teams?.maccabi ?? 'צבעי המדים: בקרוב')}${team('hapoel', 'הפועל ספיר', 'h', kingdom.teams?.hapoel ?? 'צבעי המדים: בקרוב')}${team('beitar', 'ביתר ספיר', 'b', kingdom.teams?.beitar ?? 'צהוב שחור', 30)}</div>
+          <h2>טייסי נתס"ר ✈️</h2><p>מגיבים על הריל <b>"טייס"</b> ומקבלים כנפיים.</p>${pilots.length ? `<ul class="people">${pilots.map(r => `<li><button class="link" data-u="${esc(r.u)}" dir="ltr">@${esc(r.u)}</button></li>`).join('')}</ul>` : '<p class="note">עוד אין טייסים. מי יהיה הראשון?</p>'}`; },
       people: () => `<h2>התושבים</h2><div class="tabs"><button class="tab on" data-t="new">חדשים</button><button class="tab" data-t="old">הראשונים</button></div><ul class="people" id="plist"></ul>`,
       how: () => `<h2>איך מקבלים בית?</h2><ol class="steps"><li>עוקבים אחרי <b dir="ltr">@${esc(ACCOUNT)}</b> באינסטגרם.</li><li>מגיבים על הריל האחרון, ותוך דקה יש לכם בית עם מספר. מה שתכתבו יכול גם לקבוע מה נבנה מחר.</li>
         <li>בית מוזהב ✨: משתפים את הריל לסטורי ומתייגים את <b dir="ltr">@${esc(ACCOUNT)}</b>, והבית מוזהב תוך דקה.</li>

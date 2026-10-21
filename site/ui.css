@@ -122,9 +122,11 @@ body.site #scene canvas { cursor: grab; } body.site #scene canvas:active { curso
 .chips .citizen { background: #0f6f73; color: #fff; }
 .chips .tourist { background: #fff6dc; color: #6b4e00; font-weight: 500; }
 .chips .gold { background: linear-gradient(135deg,#f6d365,#e8b323); color: #13213b; }
-.squads { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } @media (max-width: 520px) { .squads { grid-template-columns: 1fr; } }
+.squads { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; } @media (max-width: 520px) { .squads { grid-template-columns: 1fr; } }
 .squad { border: 2px solid var(--navy); border-radius: 14px; background: #fff; padding: 10px 12px; } .squad h3 { margin: 0 0 2px; font-size: 18px; }
 .squad.m { border-color: #1f8a4c; } .squad.m h3 { color: #1f8a4c; } .squad.h { border-color: #c8102e; } .squad.h h3 { color: #c8102e; }
 .roster { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 2px; } .roster li { display: flex; align-items: center; gap: 8px; padding: 3px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
 .roster .shirt { min-width: 26px; height: 22px; border-radius: 6px; display: inline-grid; place-items: center; font-weight: 800; font-size: 12px; color: #fff; background: #13213b; }
 .squad.m .shirt { background: #1f8a4c; } .squad.h .shirt { background: #c8102e; } .roster .free { color: var(--muted); } .roster .free .shirt { background: #d9d4c8; }
+
+.squad.b { border-color: #1b1d21; } .squad.b h3 { color: #1b1d21; } .squad.b .shirt { background: #f2c418; color: #1b1d21; }

@@ -1,7 +1,7 @@
 # The day's extra posts, started by the scheduled run: a short reel (site/reels/dayN.mp4, posted like the main one) or
 # a picture of the new residents with them tagged (site/posts/dayN.jpg). The files must already be deployed.
 name: extra
-on: { workflow_dispatch: { inputs: { day: { required: true }, kind: { description: 'reel, image, or record (write down the id of a reel already posted)', default: 'reel' } } } }
+on: { workflow_dispatch: { inputs: { day: { required: true }, kind: { description: 'reel, trial (the same reel as a trial reel), image, or record (write down the id of a reel already posted)', default: 'reel' } } } }
 concurrency: { group: kingdom, cancel-in-progress: false }
 permissions: { contents: write }
 jobs:
@@ -15,9 +15,9 @@ jobs:
         env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
       - if: ${{ env.READY == '1' && inputs.kind == 'image' }}
         run: node reel/post-image.mjs --day ${{ inputs.day }}
-      - if: ${{ env.READY == '1' && (inputs.kind == 'reel' || inputs.kind == 'record') }}
+      - if: ${{ env.READY == '1' && (inputs.kind == 'reel' || inputs.kind == 'record' || inputs.kind == 'trial') }}
         run: |
-          node reel/publish.mjs --day ${{ inputs.day }} ${{ inputs.kind == 'record' && '--record' || '' }}
+          node reel/publish.mjs --day ${{ inputs.day }} ${{ inputs.kind == 'record' && '--record' || '' }} ${{ inputs.kind == 'trial' && '--trial' || '' }}
           git config user.name "kingdom-bot"; git config user.email "kingdom-bot@users.noreply.github.com"
           git add site/data/kingdom.json && git commit -m "posted: extra reel ${{ inputs.day }}"
           for i in 1 2 3; do git pull -q --rebase origin main && git push && break; sleep 5; done
