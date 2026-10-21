@@ -60,6 +60,7 @@ export class World {
   roads() {
     const { rings, radials, river, lots } = this.plan, mat = new THREE.MeshLambertMaterial({ color: ROAD }), line = new THREE.MeshLambertMaterial({ color: ROAD_LINE });
     this.bands = [];
+    const busy = lots.filter(l => (this.kingdom?.landmarks ?? []).some(m => m.lot === l.id));   // lots with a landmark on them
     // a bridge wherever a road crosses the river: found by walking the road, as long as the water is wide there
     const wet = (x, z) => riverDist(river, x, z) < 5;
     const bridge = (p, x, z, dx, dz) => {
@@ -84,9 +85,15 @@ export class World {
       const l = new THREE.Mesh(new THREE.RingGeometry(r - .18, r + .18, segs), line); l.rotation.x = -Math.PI / 2; l.position.y = .14; g.add(m, l);
       const r0 = k ? r - rings.step : 0;                       // the radial stretches that lead to this ring
       for (const d of radials.filter(d => d.from <= k)) {
-        const a0 = Math.max(r0, d.from ? rings.r0 + rings.step * d.from : 0), len = r - a0; if (len <= 0) continue;
-        const seg = new THREE.Mesh(new THREE.BoxGeometry(rings.road * 2, .1, len), mat), mid = a0 + len / 2;
-        seg.position.set(Math.cos(d.a) * mid, .13, Math.sin(d.a) * mid); seg.rotation.y = Math.atan2(Math.cos(d.a), Math.sin(d.a)); seg.receiveShadow = true; g.add(seg);
+        const a0 = Math.max(r0, d.from ? rings.r0 + rings.step * d.from : 0); if (r - a0 <= 0) continue;
+        // the road stops at a landmark standing on it (the outer lots sit on radials: נתס"ר, ביתר), so they never flicker
+        let parts = [[a0, r]];
+        for (const l of busy) { const ux = Math.cos(d.a), uz = Math.sin(d.a), along = l.x * ux + l.z * uz, off = Math.abs(l.x * uz - l.z * ux), R = l.r + rings.road + 1;
+          if (off >= R) continue; const h = Math.sqrt(R * R - off * off), c0 = along - h, c1 = along + h;
+          parts = parts.flatMap(([u, v]) => c1 <= u || c0 >= v ? [[u, v]] : [[u, Math.max(u, c0)], [Math.min(v, c1), v]].filter(([x, y]) => y - x > .5)); }
+        for (const [u, v] of parts) { const len = v - u, mid = u + len / 2;
+          const seg = new THREE.Mesh(new THREE.BoxGeometry(rings.road * 2, .1, len), mat);
+          seg.position.set(Math.cos(d.a) * mid, .13, Math.sin(d.a) * mid); seg.rotation.y = Math.atan2(Math.cos(d.a), Math.sin(d.a)); seg.receiveShadow = true; g.add(seg); }
       }
       { const p = new Pen();
         for (const a of crossings(a => [Math.cos(a) * r, Math.sin(a) * r], 1440, 0, Math.PI * 2)) bridge(p, Math.cos(a) * r, Math.sin(a) * r, -Math.sin(a), Math.cos(a));
