@@ -110,7 +110,9 @@ export async function startReel({ renderer, data, day }) {
     world.life.fire = Math.max(0, ...fires.map(f => clamp(Math.min((t - f.t0) / .35, (f.t1 - t) / .5))));
     // new dragons flying in from far away: before t0 they are not there, over dur they come home
     // a dragon landing on its perch during the reel (ep.perch: { dragon, at, ry, line, dt, dur }); before it lands it flies as usual
-    if (ep.perch) world.life.perch = { ...ep.perch, k: clamp((t - lineAt(ep.perch.line, ep.perch.dt)) / (ep.perch.dur ?? 3)) };
+    // day 10: from: [x, y, z] (and fromRy) moves it from one perch to another; net: { line, dt, dur } drops the net on it
+    if (ep.perch) world.life.perch = { ...ep.perch, k: clamp((t - lineAt(ep.perch.line, ep.perch.dt)) / (ep.perch.dur ?? 3)),
+      net: ep.perch.net ? clamp((t - lineAt(ep.perch.net.line, ep.perch.net.dt)) / (ep.perch.net.dur ?? 1.2)) : ep.perch.netOn ? 1 : undefined };
     world.life.arrive = arrivals.length ? Object.fromEntries(arrivals.map(a => [a.dragon, clamp((t - a.t0) / a.dur)])) : null;
   }
   function seek(t) {

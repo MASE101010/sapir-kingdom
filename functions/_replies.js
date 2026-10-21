@@ -35,10 +35,10 @@ const OTHER_CITY = [() => 'פה זו הממלכה של משפחת ספיר 👑 
 /** "חייל": joining the kingdom's army, their house becomes מגורים צבאיים (homes.js style 9) */
 export const SOLDIER = /(?<!\p{L})(אני\s+)?(חייל|חיילת|חיילים|מתגייס|מתגייסת|להתגייס)(?!\p{L})/u;
 export const SOLDIER_HOME = 9;
-/** the football clubs (day 5): "מכבי ספיר" or "הפועל ספיר" in a comment asks to play; the first 20 of each make the squad */
+/** the football clubs (day 5): "מכבי ספיר" or "הפועל ספיר" in a comment asks to play; the first 30 of each make the squad (20 until day 10) */
 export const TEAMS = { maccabi: { re: /(?<!\p{L})[בל]?מכבי(?!\p{L})/u, name: 'מכבי ספיר' }, hapoel: { re: /(?<!\p{L})[בל]?ה?פועל(?!\p{L})/u, name: 'הפועל ספיר' },
   beitar: { re: /(?<!\p{L})[בל]?(ביתר|בית["״]ר|בייתר)(?!\p{L})/u, name: 'ביתר ספיר', squad: 30 } };   // day 9: ביתר ספיר, 30 places   // "מכבי" alone counts too
-export const SQUAD = 20;
+export const SQUAD = 30;   // day 10: מכבי and הפועל opened 10 more places each (20 to 30)
 export const squadOf = key => TEAMS[key]?.squad ?? SQUAD;
 // day 9: נתס"ר is looking for pilots; a comment with "טייס" makes you one (residents.job = 'pilot')
 export const PILOT = /(?<!\p{L})(אני\s+)?[ל]?(טייס|טייסת|טייסים|טייסות)(?!\p{L})/u;
