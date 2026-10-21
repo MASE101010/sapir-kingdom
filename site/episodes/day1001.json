@@ -1,0 +1,539 @@
+{
+ "day": 1001,
+ "lines": [
+  "[excited] המשחק החוזר! מכבי Sapir נגד הפועל Sapir!",
+  "[excited] אחרי התיקו המטורף, כולם חיכו לרגע הזה...",
+  "[excited] שריקת פתיחה... והפועל עולה להתקפה!",
+  "[excited] Yoav בורח לכולם... גול! אחת אפס להפועל!",
+  "[excited] מכבי מנסים... אבל Ofek, השוער של הפועל, עוצר הכל!",
+  "[excited] ושריקת הסיום! הפועל Sapir מנצחת!",
+  "[excited] ושחקני מכבי? זועמים!",
+  "[excited] אז שתי הקבוצות פותחות עוד עשרה מקומות לחיזוקים!",
+  "[excited] רוצים לשחק? תעקבו, ותגיבו מכבי או הפועל!",
+  "[excited] ותייגו חבר, שיצטרף לקבוצה שלכם!"
+ ],
+ "top": 330,
+ "mix": "day1001.mix.mp3",
+ "say": {
+  "Sapir": "ספיר",
+  "Yoav": "יואב",
+  "Ofek": "אופק"
+ },
+ "match": {
+  "key": "maccabi",
+  "line": 2,
+  "dt": 0,
+  "goals": [
+   {
+    "line": 3,
+    "dt": 1.59,
+    "team": "h",
+    "who": 10
+   },
+   {
+    "line": 4,
+    "dt": 0.85,
+    "team": "m",
+    "who": 10,
+    "save": true
+   },
+   {
+    "line": 4,
+    "dt": 2.85,
+    "team": "m",
+    "who": 9,
+    "save": true
+   }
+  ]
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:maccabi",
+   "dist": 120,
+   "yaw": 15,
+   "pitch": 40,
+   "orbit": 9,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    -128.4,
+    6,
+    53.2
+   ],
+   "dist": 15,
+   "yaw": 122.5,
+   "pitch": 16,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 2,
+   "target": "ball:maccabi",
+   "dist": 26,
+   "yaw": 122.5,
+   "pitch": 56,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 3,
+   "dt": 0.9,
+   "target": [
+    -109.4,
+    1,
+    62.6
+   ],
+   "dist": 26,
+   "yaw": 217.5,
+   "pitch": 72,
+   "orbit": -3,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "ball:maccabi",
+   "dist": 26,
+   "yaw": 102.5,
+   "pitch": 56,
+   "orbit": -3,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "dt": 0.2,
+   "target": [
+    -120.5,
+    1,
+    35.8
+   ],
+   "dist": 30,
+   "yaw": 37.5,
+   "pitch": 60,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 5,
+   "target": [
+    -106.1,
+    14.2,
+    70.4
+   ],
+   "dist": 24,
+   "yaw": 202.5,
+   "pitch": 6,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "dt": 1.5,
+   "target": "landmark:maccabi",
+   "dist": 70,
+   "yaw": 200,
+   "pitch": 48,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": "ball:maccabi",
+   "dist": 36,
+   "yaw": 122.5,
+   "pitch": 60,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": [
+    -115.5,
+    0,
+    0
+   ],
+   "dist": 210,
+   "yaw": 90,
+   "pitch": 45,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 8,
+   "target": "landmark:hapoel",
+   "dist": 110,
+   "yaw": 0,
+   "pitch": 34,
+   "orbit": 8,
+   "ease": 0.7
+  }
+ ],
+ "cards": [
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 2.6,
+   "dur": 1.3,
+   "u": "yoav_levi676767",
+   "honours": [
+    "כובש · המשחק החוזר",
+    "הפועל ספיר · 17"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 4,
+   "dt": 1.2,
+   "dur": 2.4,
+   "u": "ofek_bell",
+   "honours": [
+    "השוער · אפס ספיגות 🧤",
+    "הפועל ספיר · 1"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 8,
+   "dt": 0.1,
+   "dur": 6.0,
+   "text": "רוצים לשחק? ⚽",
+   "sub": "עקבו והגיבו: מכבי או הפועל 👇"
+  }
+ ],
+ "fx": [
+  {
+   "type": "news",
+   "line": 0,
+   "dur": 3.9,
+   "text": "המשחק החוזר ⚽",
+   "sub": "ספורט הממלכה",
+   "clock": "19:00",
+   "y": 250
+  },
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3,
+   "color": "#c8102e",
+   "alpha": 0.4
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 1.6,
+   "dur": 2.2,
+   "text": "מכבי 💚 נגד ❤️ הפועל",
+   "y": 760,
+   "size": 110,
+   "band": "#13213b",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 1,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "בפעם הקודמת: 2 : 2 🤯",
+   "y": 760,
+   "size": 105,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 0.1,
+   "dur": 1.4,
+   "text": "📣",
+   "x": 840,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "flash",
+   "line": 3,
+   "dt": 1.59,
+   "dur": 0.35,
+   "color": "#c8102e",
+   "alpha": 0.5
+  },
+  {
+   "type": "punch",
+   "line": 3,
+   "dt": 1.59,
+   "dur": 0.7,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 3,
+   "dt": 1.59,
+   "dur": 2
+  },
+  {
+   "type": "banner",
+   "line": 3,
+   "dt": 1.65,
+   "dur": 1.6,
+   "text": "גול! הפועל 1 : 0",
+   "y": 1650,
+   "size": 125,
+   "band": "#c8102e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.85,
+   "dur": 1,
+   "text": "🧤",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": -10
+  },
+  {
+   "type": "shake",
+   "line": 4,
+   "dt": 0.85,
+   "dur": 0.3,
+   "amp": 0.6
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 2.85,
+   "dur": 1.1,
+   "text": "🧤",
+   "x": 840,
+   "y": 1110,
+   "size": 170,
+   "rot": 10
+  },
+  {
+   "type": "shake",
+   "line": 4,
+   "dt": 2.85,
+   "dur": 0.3,
+   "amp": 0.7
+  },
+  {
+   "type": "banner",
+   "line": 5,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "הפועל ספיר מנצחת! 1 : 0 ❤️",
+   "y": 760,
+   "size": 100,
+   "band": "#c8102e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 5,
+   "dt": 0.2,
+   "dur": 2.5
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 0.9,
+   "dur": 1.6,
+   "text": "😡",
+   "x": 840,
+   "y": 1110,
+   "size": 180,
+   "rot": -6
+  },
+  {
+   "type": "shake",
+   "line": 6,
+   "dt": 1.1,
+   "dur": 0.5,
+   "amp": 1
+  },
+  {
+   "type": "banner",
+   "line": 7,
+   "dt": 0.3,
+   "dur": 2.8,
+   "text": "+10 מקומות לכל קבוצה ⚽",
+   "y": 760,
+   "size": 105,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "עוקב שמגיב = בית 🏠",
+   "y": 1150,
+   "size": 100,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  }
+ ],
+ "music": {
+  "bpm": 132,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 2,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 3,
+     "dt": 1.59
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 4,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 5,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 6,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 7,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0,
+   "gain": 0.6
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": -0.1
+  },
+  {
+   "name": "roar",
+   "line": 1,
+   "dt": 0.3,
+   "gain": 0.3
+  },
+  {
+   "name": "ding",
+   "line": 2,
+   "dt": 0,
+   "gain": 0.7
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": 0.9
+  },
+  {
+   "name": "boom",
+   "line": 3,
+   "dt": 1.59
+  },
+  {
+   "name": "tada",
+   "line": 3,
+   "dt": 1.65
+  },
+  {
+   "name": "roar",
+   "line": 3,
+   "dt": 1.7,
+   "gain": 0.35
+  },
+  {
+   "name": "boing",
+   "line": 4,
+   "dt": 0.9
+  },
+  {
+   "name": "boing",
+   "line": 4,
+   "dt": 2.9
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 1.2
+  },
+  {
+   "name": "ding",
+   "line": 5,
+   "dt": 0,
+   "gain": 0.7
+  },
+  {
+   "name": "tada",
+   "line": 5,
+   "dt": 0.2
+  },
+  {
+   "name": "scratch",
+   "line": 6,
+   "dt": 0
+  },
+  {
+   "name": "boom",
+   "line": 6,
+   "dt": 1.1
+  },
+  {
+   "name": "kaching",
+   "line": 7,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 8,
+   "dt": -0.1
+  },
+  {
+   "name": "ding",
+   "line": 8,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 9,
+   "dt": 0.1
+  }
+ ],
+ "caption": "המשחק החוזר! ⚽ הפועל ספיר 1 : 0 מכבי ספיר\nיואב כבש, ואופק השוער עצר הכל 🧤 ומכבי זועמים, אז שתי הקבוצות פותחות עוד 10 מקומות!\nרוצים לשחק? עקבו והגיבו מכבי או הפועל 👇\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #מכבי_ספיר #הפועל_ספיר #דרבי",
+ "firstComment": "מי מצטרף? 💚 מכבי או ❤️ הפועל? רק 10 מקומות חדשים בכל קבוצה, ותייגו חבר שיצטרף אליכם 🏠",
+ "notes": "Day 10's second reel (19:00): the derby rematch Michael wrote. הפועל wins 1:0, yoav_levi676767 (17) scores, ofek_bell (1, the keeper) saves everything; both clubs grow from 20 to 30 places (SQUAD in _replies.js, main.js SQ)."
+}
