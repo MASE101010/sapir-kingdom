@@ -1,257 +1,290 @@
 [
-  {
-    "id": "day2-1",
-    "at": "2026-10-14T06:00:00Z",
-    "image": "stories/day2-1.jpg",
-    "about": "09:00 בוקר טוב, דרקונים מעל הארמון"
-  },
-  {
-    "id": "day2-2",
-    "at": "2026-10-14T07:30:00Z",
-    "image": "stories/day2-2.jpg",
-    "about": "10:30 חידה: מה נבנה היום"
-  },
-  {
-    "id": "day2-3",
-    "at": "2026-10-14T09:15:00Z",
-    "image": "stories/day2-3.jpg",
-    "after": "reel:2",
-    "about": "12:15 סופר ספיר נפתח"
-  },
-  {
-    "id": "day2-4",
-    "at": "2026-10-14T14:00:00Z",
-    "image": "stories/day2-4.jpg",
-    "after": "reel:2",
-    "about": "17:00 מפתח הזהב הראשון"
-  },
-  {
-    "id": "day2-5",
-    "at": "2026-10-14T16:00:00Z",
-    "image": "stories/day2-5.jpg",
-    "about": "19:00 רוצים בית מוזהב"
-  },
-  {
-    "id": "day2-6",
-    "at": "2026-10-14T16:30:00Z",
-    "image": "stories/day2-6.jpg",
-    "about": "19:30 הזוכה גר בווילה"
-  },
-  {
-    "id": "day3-1",
-    "at": "2026-10-15T05:30:00Z",
-    "image": "stories/day3-1.jpg",
-    "about": "08:30 בוקר טוב, הדרקונים עפו נמוך"
-  },
-  {
-    "id": "day3-2",
-    "at": "2026-10-15T08:00:00Z",
-    "image": "stories/day3-2.jpg",
-    "about": "11:00 חידה: מה נבנה היום"
-  },
-  {
-    "id": "day3-3",
-    "at": "2026-10-15T11:00:00Z",
-    "image": "stories/day3-3.jpg",
-    "after": "reel:3",
-    "about": "14:00 צבא ההגנה נבנה, תגיבו חייל"
-  },
-  {
-    "id": "day3-4",
-    "at": "2026-10-15T16:00:00Z",
-    "image": "stories/day3-4.jpg",
-    "after": "reel:3",
-    "about": "19:00 אורן עבר לווילה"
-  },
-  {
-    "id": "day4-1",
-    "at": "2026-10-16T05:30:00Z",
-    "image": "stories/day4-1.jpg",
-    "about": "08:30 מבזק בוקר: שני דרקונים חדשים"
-  },
-  {
-    "id": "day4-2",
-    "at": "2026-10-16T08:30:00Z",
-    "image": "stories/day4-2.jpg",
-    "about": "11:30 חידה: מה נבנה היום"
-  },
-  {
-    "id": "day4-3",
-    "at": "2026-10-16T13:00:00Z",
-    "image": "stories/day4-3.jpg",
-    "after": "reel:4",
-    "about": "16:00 ספירלנד נפתח"
-  },
-  {
-    "id": "day4-4",
-    "at": "2026-10-16T16:30:00Z",
-    "image": "stories/day4-4.jpg",
-    "after": "reel:4",
-    "about": "19:30 שחר עבר לווילה"
-  },
-  {
-    "id": "day5-1",
-    "at": "2026-10-17T05:30:00Z",
-    "image": "stories/day5-1.jpg",
-    "about": "08:30 שבת שלום, משהו גדול קורה"
-  },
-  {
-    "id": "day5-2",
-    "at": "2026-10-17T09:00:00Z",
-    "image": "stories/day5-2.jpg",
-    "about": "12:00 חידה: שתיים שלא מסתדרות"
-  },
-  {
-    "id": "day5-3",
-    "at": "2026-10-17T16:00:00Z",
-    "image": "stories/day5-3.jpg",
-    "after": "reel:5",
-    "about": "19:00 מכבי או הפועל"
-  },
-  {
-    "id": "day5-4",
-    "at": "2026-10-17T17:30:00Z",
-    "image": "stories/day5-4.jpg",
-    "after": "reel:5",
-    "about": "20:30 מפתח הזהב, mpt9399"
-  },
-  {
-    "id": "day5-5",
-    "at": "2026-10-17T18:00:00Z",
-    "image": "stories/day5-5.jpg",
-    "after": "reel:5",
-    "about": "21:00 איזו קבוצה אתם"
-  },
-  {
-    "id": "day5-6",
-    "at": "2026-10-17T19:00:00Z",
-    "image": "stories/day5-6.jpg",
-    "after": "reel:5",
-    "about": "22:00 מי יתמלא ראשון"
-  },
-  {
-    "id": "day5-7",
-    "at": "2026-10-17T20:00:00Z",
-    "image": "stories/day5-7.jpg",
-    "after": "reel:5",
-    "about": "23:00 מלחמת האוהדים"
-  },
-  {
-    "id": "day6-1",
-    "at": "2026-10-18T05:30:00Z",
-    "image": "stories/day6-1.jpg",
-    "about": "08:30 בוקר טוב, צבעי המדים היום"
-  },
-  {
-    "id": "day6-2",
-    "at": "2026-10-18T08:30:00Z",
-    "image": "stories/day6-2.jpg",
-    "about": "11:30 טיפ: תייגו חבר"
-  },
-  {
-    "id": "day6-3",
-    "at": "2026-10-18T12:00:00Z",
-    "image": "stories/day6-3.jpg",
-    "after": "reel:6",
-    "about": "15:00 ספירדונלדס נפתח"
-  },
-  {
-    "id": "day6-4",
-    "at": "2026-10-18T18:00:00Z",
-    "image": "stories/day6-4.jpg",
-    "after": "reel:6",
-    "about": "21:00 ירוק או אדום"
-  },
-  {
-    "id": "day7-1",
-    "at": "2026-10-19T05:30:00Z",
-    "image": "stories/day7-1.jpg",
-    "about": "08:30 בוקר טוב, חידה"
-  },
-  {
-    "id": "day7-2",
-    "at": "2026-10-19T08:00:00Z",
-    "image": "stories/day7-2.jpg",
-    "about": "11:00 הפועל צריכה שחקנים"
-  },
-  {
-    "id": "day7-3",
-    "at": "2026-10-19T11:30:00Z",
-    "image": "stories/day7-3.jpg",
-    "after": "reel:7",
-    "about": "14:30 ספירמול נפתח"
-  },
-  {
-    "id": "day7-4",
-    "at": "2026-10-19T18:00:00Z",
-    "image": "stories/day7-4.jpg",
-    "after": "reel:7",
-    "about": "21:00 מפתח הזהב, לירון"
-  },
-  {
-    "id": "day8-1",
-    "at": "2026-10-20T05:30:00Z",
-    "image": "stories/day8-1.jpg",
-    "about": "08:30 בוקר טוב, משהו גבוה"
-  },
-  {
-    "id": "day8-2",
-    "at": "2026-10-20T08:00:00Z",
-    "image": "stories/day8-2.jpg",
-    "about": "11:00 הערב הדרבי"
-  },
-  {
-    "id": "day8-3",
-    "at": "2026-10-20T11:30:00Z",
-    "image": "stories/day8-3.jpg",
-    "after": "reel:8",
-    "about": "14:30 בורג' ספיר"
-  },
-  {
-    "id": "day8-4",
-    "at": "2026-10-20T17:00:00Z",
-    "image": "stories/day8-4.jpg",
-    "after": "reel:801",
-    "about": "20:00 תוצאת הדרבי"
-  },
-  {
-    "id": "day8-5",
-    "at": "2026-10-20T18:30:00Z",
-    "image": "stories/day8-5.jpg",
-    "after": "reel:801",
-    "about": "21:30 מי ינצח במשחק החוזר"
-  },
-  {
-    "id": "day9-1",
-    "at": "2026-10-21T05:30:00Z",
-    "image": "stories/day9-1.jpg",
-    "about": "08:30 בוקר טוב, משהו ממריא"
-  },
-  {
-    "id": "day9-2",
-    "at": "2026-10-21T08:00:00Z",
-    "image": "stories/day9-2.jpg",
-    "about": "11:00 דרושים טייסים"
-  },
-  {
-    "id": "day9-3",
-    "at": "2026-10-21T11:30:00Z",
-    "image": "stories/day9-3.jpg",
-    "after": "reel:9",
-    "about": "14:30 נתס\"ר נפתח"
-  },
-  {
-    "id": "day9-4",
-    "at": "2026-10-21T17:00:00Z",
-    "image": "stories/day9-4.jpg",
-    "after": "reel:901",
-    "about": "20:00 ביתר ספיר"
-  },
-  {
-    "id": "day9-5",
-    "at": "2026-10-21T18:30:00Z",
-    "image": "stories/day9-5.jpg",
-    "after": "reel:9",
-    "about": "21:30 הדרקון לא זז"
-  }
+ {
+  "id": "day2-1",
+  "at": "2026-10-14T06:00:00Z",
+  "image": "stories/day2-1.jpg",
+  "about": "09:00 בוקר טוב, דרקונים מעל הארמון"
+ },
+ {
+  "id": "day2-2",
+  "at": "2026-10-14T07:30:00Z",
+  "image": "stories/day2-2.jpg",
+  "about": "10:30 חידה: מה נבנה היום"
+ },
+ {
+  "id": "day2-3",
+  "at": "2026-10-14T09:15:00Z",
+  "image": "stories/day2-3.jpg",
+  "after": "reel:2",
+  "about": "12:15 סופר ספיר נפתח"
+ },
+ {
+  "id": "day2-4",
+  "at": "2026-10-14T14:00:00Z",
+  "image": "stories/day2-4.jpg",
+  "after": "reel:2",
+  "about": "17:00 מפתח הזהב הראשון"
+ },
+ {
+  "id": "day2-5",
+  "at": "2026-10-14T16:00:00Z",
+  "image": "stories/day2-5.jpg",
+  "about": "19:00 רוצים בית מוזהב"
+ },
+ {
+  "id": "day2-6",
+  "at": "2026-10-14T16:30:00Z",
+  "image": "stories/day2-6.jpg",
+  "about": "19:30 הזוכה גר בווילה"
+ },
+ {
+  "id": "day3-1",
+  "at": "2026-10-15T05:30:00Z",
+  "image": "stories/day3-1.jpg",
+  "about": "08:30 בוקר טוב, הדרקונים עפו נמוך"
+ },
+ {
+  "id": "day3-2",
+  "at": "2026-10-15T08:00:00Z",
+  "image": "stories/day3-2.jpg",
+  "about": "11:00 חידה: מה נבנה היום"
+ },
+ {
+  "id": "day3-3",
+  "at": "2026-10-15T11:00:00Z",
+  "image": "stories/day3-3.jpg",
+  "after": "reel:3",
+  "about": "14:00 צבא ההגנה נבנה, תגיבו חייל"
+ },
+ {
+  "id": "day3-4",
+  "at": "2026-10-15T16:00:00Z",
+  "image": "stories/day3-4.jpg",
+  "after": "reel:3",
+  "about": "19:00 אורן עבר לווילה"
+ },
+ {
+  "id": "day4-1",
+  "at": "2026-10-16T05:30:00Z",
+  "image": "stories/day4-1.jpg",
+  "about": "08:30 מבזק בוקר: שני דרקונים חדשים"
+ },
+ {
+  "id": "day4-2",
+  "at": "2026-10-16T08:30:00Z",
+  "image": "stories/day4-2.jpg",
+  "about": "11:30 חידה: מה נבנה היום"
+ },
+ {
+  "id": "day4-3",
+  "at": "2026-10-16T13:00:00Z",
+  "image": "stories/day4-3.jpg",
+  "after": "reel:4",
+  "about": "16:00 ספירלנד נפתח"
+ },
+ {
+  "id": "day4-4",
+  "at": "2026-10-16T16:30:00Z",
+  "image": "stories/day4-4.jpg",
+  "after": "reel:4",
+  "about": "19:30 שחר עבר לווילה"
+ },
+ {
+  "id": "day5-1",
+  "at": "2026-10-17T05:30:00Z",
+  "image": "stories/day5-1.jpg",
+  "about": "08:30 שבת שלום, משהו גדול קורה"
+ },
+ {
+  "id": "day5-2",
+  "at": "2026-10-17T09:00:00Z",
+  "image": "stories/day5-2.jpg",
+  "about": "12:00 חידה: שתיים שלא מסתדרות"
+ },
+ {
+  "id": "day5-3",
+  "at": "2026-10-17T16:00:00Z",
+  "image": "stories/day5-3.jpg",
+  "after": "reel:5",
+  "about": "19:00 מכבי או הפועל"
+ },
+ {
+  "id": "day5-4",
+  "at": "2026-10-17T17:30:00Z",
+  "image": "stories/day5-4.jpg",
+  "after": "reel:5",
+  "about": "20:30 מפתח הזהב, mpt9399"
+ },
+ {
+  "id": "day5-5",
+  "at": "2026-10-17T18:00:00Z",
+  "image": "stories/day5-5.jpg",
+  "after": "reel:5",
+  "about": "21:00 איזו קבוצה אתם"
+ },
+ {
+  "id": "day5-6",
+  "at": "2026-10-17T19:00:00Z",
+  "image": "stories/day5-6.jpg",
+  "after": "reel:5",
+  "about": "22:00 מי יתמלא ראשון"
+ },
+ {
+  "id": "day5-7",
+  "at": "2026-10-17T20:00:00Z",
+  "image": "stories/day5-7.jpg",
+  "after": "reel:5",
+  "about": "23:00 מלחמת האוהדים"
+ },
+ {
+  "id": "day6-1",
+  "at": "2026-10-18T05:30:00Z",
+  "image": "stories/day6-1.jpg",
+  "about": "08:30 בוקר טוב, צבעי המדים היום"
+ },
+ {
+  "id": "day6-2",
+  "at": "2026-10-18T08:30:00Z",
+  "image": "stories/day6-2.jpg",
+  "about": "11:30 טיפ: תייגו חבר"
+ },
+ {
+  "id": "day6-3",
+  "at": "2026-10-18T12:00:00Z",
+  "image": "stories/day6-3.jpg",
+  "after": "reel:6",
+  "about": "15:00 ספירדונלדס נפתח"
+ },
+ {
+  "id": "day6-4",
+  "at": "2026-10-18T18:00:00Z",
+  "image": "stories/day6-4.jpg",
+  "after": "reel:6",
+  "about": "21:00 ירוק או אדום"
+ },
+ {
+  "id": "day7-1",
+  "at": "2026-10-19T05:30:00Z",
+  "image": "stories/day7-1.jpg",
+  "about": "08:30 בוקר טוב, חידה"
+ },
+ {
+  "id": "day7-2",
+  "at": "2026-10-19T08:00:00Z",
+  "image": "stories/day7-2.jpg",
+  "about": "11:00 הפועל צריכה שחקנים"
+ },
+ {
+  "id": "day7-3",
+  "at": "2026-10-19T11:30:00Z",
+  "image": "stories/day7-3.jpg",
+  "after": "reel:7",
+  "about": "14:30 ספירמול נפתח"
+ },
+ {
+  "id": "day7-4",
+  "at": "2026-10-19T18:00:00Z",
+  "image": "stories/day7-4.jpg",
+  "after": "reel:7",
+  "about": "21:00 מפתח הזהב, לירון"
+ },
+ {
+  "id": "day8-1",
+  "at": "2026-10-20T05:30:00Z",
+  "image": "stories/day8-1.jpg",
+  "about": "08:30 בוקר טוב, משהו גבוה"
+ },
+ {
+  "id": "day8-2",
+  "at": "2026-10-20T08:00:00Z",
+  "image": "stories/day8-2.jpg",
+  "about": "11:00 הערב הדרבי"
+ },
+ {
+  "id": "day8-3",
+  "at": "2026-10-20T11:30:00Z",
+  "image": "stories/day8-3.jpg",
+  "after": "reel:8",
+  "about": "14:30 בורג' ספיר"
+ },
+ {
+  "id": "day8-4",
+  "at": "2026-10-20T17:00:00Z",
+  "image": "stories/day8-4.jpg",
+  "after": "reel:801",
+  "about": "20:00 תוצאת הדרבי"
+ },
+ {
+  "id": "day8-5",
+  "at": "2026-10-20T18:30:00Z",
+  "image": "stories/day8-5.jpg",
+  "after": "reel:801",
+  "about": "21:30 מי ינצח במשחק החוזר"
+ },
+ {
+  "id": "day9-1",
+  "at": "2026-10-21T05:30:00Z",
+  "image": "stories/day9-1.jpg",
+  "about": "08:30 בוקר טוב, משהו ממריא"
+ },
+ {
+  "id": "day9-2",
+  "at": "2026-10-21T08:00:00Z",
+  "image": "stories/day9-2.jpg",
+  "about": "11:00 דרושים טייסים"
+ },
+ {
+  "id": "day9-3",
+  "at": "2026-10-21T11:30:00Z",
+  "image": "stories/day9-3.jpg",
+  "after": "reel:9",
+  "about": "14:30 נתס\"ר נפתח"
+ },
+ {
+  "id": "day9-4",
+  "at": "2026-10-21T17:00:00Z",
+  "image": "stories/day9-4.jpg",
+  "after": "reel:901",
+  "about": "20:00 ביתר ספיר"
+ },
+ {
+  "id": "day9-5",
+  "at": "2026-10-21T18:30:00Z",
+  "image": "stories/day9-5.jpg",
+  "after": "reel:9",
+  "about": "21:30 הדרקון לא זז"
+ },
+ {
+  "id": "day10-1",
+  "at": "2026-10-22T05:30:00Z",
+  "image": "stories/day10-1.jpg",
+  "about": "08:30 בוקר טוב, הדרקון עדיין על הבורג׳"
+ },
+ {
+  "id": "day10-2",
+  "at": "2026-10-22T08:00:00Z",
+  "image": "stories/day10-2.jpg",
+  "about": "11:00 חידה: יש בו סורגים"
+ },
+ {
+  "id": "day10-3",
+  "at": "2026-10-22T11:30:00Z",
+  "image": "stories/day10-3.jpg",
+  "after": "reel:10",
+  "about": "14:30 הדרקון בכלא"
+ },
+ {
+  "id": "day10-4",
+  "at": "2026-10-22T17:00:00Z",
+  "image": "stories/day10-4.jpg",
+  "after": "reel:1001",
+  "about": "20:00 הפועל 1:0 מכבי"
+ },
+ {
+  "id": "day10-5",
+  "at": "2026-10-22T18:30:00Z",
+  "image": "stories/day10-5.jpg",
+  "after": "reel:10",
+  "about": "21:30 מפתח הזהב, הזוכה גר בווילה"
+ }
 ]
