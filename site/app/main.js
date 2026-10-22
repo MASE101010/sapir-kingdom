@@ -24,13 +24,14 @@ $('scene').appendChild(renderer.domElement);
 
 if (q.has('reel')) { const { startReel } = await import('./reel.js'); await startReel({ renderer, data, day: +q.get('reel') }); }
 else if (q.has('catalog')) { const { startCatalog } = await import('./catalog-shots.js'); await startCatalog(renderer); }
-else { const live = await loadLive(data.residents.length); data.residents.push(...(live.residents ?? [])); applyChanges(data.residents, live.changed); site(data); }
+else { const live = await loadLive(data.residents.length); data.residents.push(...(live.residents ?? [])); applyChanges(data.residents, live.changed); data.wishes = live.wishes ?? []; site(data); }
 /** a resident's own changes (style, friend) over the snapshot */
 function applyChanges(list, changed = []) { let any = false; for (const c of changed ?? []) { const r = list[c.n - 1]; if (r && r.u === c.u && (r.plot !== c.plot || r.host !== c.host || r.home !== c.home || r.citizen !== c.citizen || r.gold !== c.gold || r.team !== c.team || r.job !== c.job)) { list[c.n - 1] = { ...r, plot: c.plot, host: c.host, home: c.home, citizen: c.citizen, gold: c.gold, team: c.team, shirt: c.shirt, job: c.job }; any = true; } } return any; }
 
 function site({ plan, residents, kingdom, honours }) {
   document.body.classList.add('site');
   const world = new World(renderer, plan, residents, kingdom), addr = addresses(plan.plots);
+  world.setWishes(data.wishes ?? []);   // the royal wall's notes (day 11), from api/delta
   // free movement: drag to move, two fingers or the right button to turn and tilt, pinch or the wheel to zoom, arrow keys too
   const cam = world.camera, controls = new MapControls(cam, renderer.domElement);
   cam.position.set(230, 260, 380); controls.target.set(0, 10, 40);

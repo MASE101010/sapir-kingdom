@@ -13,6 +13,11 @@ old.residents.forEach((r, k) => { if (live.residents[k]?.u !== r.u) throw new Er
 writeFileSync('site/data/residents.json', JSON.stringify({ note: old.note, residents: live.residents }));
 kingdom.updated = new Date().toISOString(); writeFileSync('site/data/kingdom.json', JSON.stringify(kingdom, null, 2) + '\n');
 console.log(`residents ${old.residents.length} -> ${live.residents.length}`);
+// the royal wall's notes (day 11): the citizens' wishes that passed, for the reels; the waiting ones for the daily run to look at
+const wishes = live.wishes ?? [];
+writeFileSync('site/data/wishes.json', JSON.stringify({ note: 'הכותל המלכותי: the notes on the wall (citizens, passed), newest first. Written by tools/ingest.mjs.', wishes: wishes.filter(w => w.ok === 1 && w.citizen).map(w => ({ u: w.u, text: w.text, at: w.at })).reverse() }, null, 1));
+const waitingWishes = wishes.filter(w => w.ok === 0);
+console.log(`wishes: ${wishes.filter(w => w.ok === 1 && w.citizen).length} on the wall, ${waitingWishes.length} waiting`);
 
 // the comments on the latest reel, with their likes
 const media = kingdom.reels?.[day] ?? kingdom.reels?.[day - 1];
@@ -23,5 +28,5 @@ if (media && IG_TOKEN) {
 }
 comments = comments.map(c => ({ id: c.id, u: c.username, text: c.text, likes: c.like_count ?? 0, at: c.timestamp })).sort((a, b) => b.likes - a.likes);
 mkdirSync('inbox', { recursive: true });
-writeFileSync(`inbox/day${day}.json`, JSON.stringify({ day, media, counted: new Date().toISOString(), residents: live.residents.length, newResidents: live.residents.length - old.residents.length, comments }, null, 1));
+writeFileSync(`inbox/day${day}.json`, JSON.stringify({ day, media, counted: new Date().toISOString(), residents: live.residents.length, newResidents: live.residents.length - old.residents.length, waitingWishes, comments }, null, 1));
 console.log(`inbox/day${day}.json: ${comments.length} comments, top ${comments[0]?.likes ?? 0} likes`);

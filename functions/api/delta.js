@@ -8,5 +8,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
   const { results } = await env.DB.prepare(`SELECT ${COLS} FROM residents WHERE n > ? ORDER BY n LIMIT 5000`).bind(since).all();
   // houses changed by their residents (a style, a friend): the site redraws them
   const changed = (await env.DB.prepare(`SELECT ${COLS} FROM residents WHERE changed IS NOT NULL AND n <= ? LIMIT 3000`).bind(since).all()).results.map(r => ({ ...row(r), n: r.n }));
-  return json({ residents: results.map(row), changed }, 200, { 'cache-control': 'public, max-age=20' });
+  // the notes on the royal wall (day 11): citizens' wishes that passed, newest first
+  const wishes = (await env.DB.prepare('SELECT w.u, w.text, w.at FROM wishes w JOIN residents r ON r.u = w.u WHERE w.ok = 1 AND r.citizen = 1 ORDER BY w.at DESC LIMIT 600').all().catch(() => ({ results: [] }))).results;
+  return json({ residents: results.map(row), changed, wishes }, 200, { 'cache-control': 'public, max-age=20' });
 }

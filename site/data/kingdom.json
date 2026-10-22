@@ -148,5 +148,22 @@
     ],
     "ry": 2.356,
     "on": "prison"
+  },
+  "kotel": {
+    "note": "day 11: הכותל המלכותי round the kingdom (site/app/kotel.js); the king's own notes come first, the residents' wishes after (data/wishes.json, api/delta)",
+    "notes": [
+      {
+        "u": "sapirkingdom",
+        "text": "שנגיע ל־1000 עוקבים! 🙏"
+      },
+      {
+        "u": "sapirkingdom",
+        "text": "שלכל עוקב יהיה בית 🏠"
+      },
+      {
+        "u": "sapirkingdom",
+        "text": "שהדרקון יתנהג יפה בכלא 🐉"
+      }
+    ]
   }
 }

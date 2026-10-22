@@ -4,6 +4,7 @@
 // without it the times are estimated, for a preview. reel/render.mjs calls window.__reel.seek(t) for every frame.
 import * as THREE from 'three';
 import { World } from './view.js';
+import { place as placeModel, ready as modelsReady } from './models.js';
 import { STATUE } from './landmarks/castle.js';
 import { addresses, KINGDOM } from './names.js';
 import { face } from './face.js';
@@ -40,6 +41,11 @@ export async function startReel({ renderer, data, day }) {
   // a preview (?dev) may stand landmarks that are not built yet, to try them out
   const preview = new URLSearchParams(location.search).has('dev') ? ep.preview?.landmarks ?? [] : [];
   const world = new World(renderer, data.plan, residents, { ...data.kingdom, landmarks: [...(data.kingdom.landmarks ?? []), ...preview], visit: ep.visit ?? null });
+  // the royal wall's notes as they were (data/wishes.json), and any this reel adds (ep.wishes); 3D models only this reel shows (ep.models)
+  const snap = await fetch('data/wishes.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  world.setWishes([...(ep.wishes ?? []), ...(snap.wishes ?? []).slice().reverse()]);
+  const epModels = {}; for (const m of ep.models ?? []) epModels[m.key ?? m.url] = placeModel(world.scene, m.url, m);
+  world.models = { ...(world.models ?? {}), ...epModels }; await modelsReady();
   world.daylight(12); renderer.setSize(W, H); world.camera.aspect = W / H; world.camera.updateProjectionMatrix();
   const addr = addresses(data.plan.plots), cam = world.camera;
 
@@ -52,6 +58,7 @@ export async function startReel({ renderer, data, day }) {
     if (spec?.startsWith('ball:')) { const b = world.lm[spec.slice(5)]?.group.userData.live?.ball; if (b) { b.updateWorldMatrix(true, false); return b.getWorldPosition(new THREE.Vector3()).add(new THREE.Vector3(0, 1, 0)); } }   // follows a match's ball
     if (spec?.startsWith('dragon:')) { const d = world.life.dragons[+spec.slice(7)]?.d; if (d) return d.position.clone(); }   // follows it
     if (spec?.startsWith('house:')) { const r = resident(spec.slice(6)), pl = r && data.plan.plots[r.plot]; if (pl) return new THREE.Vector3(pl[0], 5, pl[1]); }
+    if (spec?.startsWith('model:')) { const m = world.models?.[spec.slice(6)]; if (m) { const sz = m.userData.size?.y ?? 10; return m.position.clone().add(new THREE.Vector3(0, sz * .55, 0)); } }   // a 3D model (models.js)
     if (spec?.startsWith('landmark:')) { const l = world.lm[spec.slice(9)]; if (l) return new THREE.Vector3(l.at[0], (l.mod.top ?? 20) * .35, l.at[1]); }
     return new THREE.Vector3(0, 18, 0);
   }
