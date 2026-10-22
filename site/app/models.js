@@ -25,3 +25,5 @@ export function place(parent, url, { at = [0, 0, 0], h = null, ry = 0, key = nul
 }
 /** resolves when every model asked for so far has loaded (or failed) */
 export const ready = () => Promise.all(pending);
+/** anything else a frame must wait for (a picture on a landmark): the reel's first frame waits for it too */
+export const track = job => { pending.push(job.catch(() => null)); return job; };

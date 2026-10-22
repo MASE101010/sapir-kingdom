@@ -7,14 +7,15 @@
 import * as THREE from 'three';
 import { Pen } from '../pen.js';
 import { sign } from '../sign.js';
-import { place } from '../models.js';
+import { place, track } from '../models.js';
 const NAVY = 0x13213b, TEAL = 0x0f6f73, GOLD = 0xe8b323, CREAM = 0xfbf3e2, RED = 0xc8102e, WHITE = 0xf7f7f2, STONE = 0xe3d9c6,
   GRASS = 0x86c766, DARK = 0x3a3f45, SKIN = 0xe2b48f, WOOD = 0x8a6240, PURPLE = 0x6b3fa0, GREEN = 0x1f8a4c;
 export const CANDIDATES = [
-  { key: 'bibkovich', name: "ביבקוביץ'", promise: 'אביס את הדרקונים ואביא שלום לממלכה', color: NAVY, fg: '#e8b323', bg: '#13213b' },
-  { key: 'yairdo', name: 'יאירדו', promise: 'נחליף את השלטון העתיק, וכולם יהיו מלכים', color: TEAL, fg: '#ffffff', bg: '#0f6f73' },
-  { key: 'lebet', name: 'לבט', promise: 'אבנה ממלכה חדשה', color: GREEN, fg: '#ffffff', bg: '#1f8a4c' },
-  { key: 'mascentape', name: 'מסקנטייפ', promise: 'חופש מהעבודה לכולם, כל הזמן', color: PURPLE, fg: '#ffffff', bg: '#6b3fa0' },
+  // their colours are their posters' (site/img/candidates/<key>.jpg)
+  { key: 'bibkovich', name: "ביבקוביץ'", letters: 'בבק', promise: 'אביס את הדרקונים ואביא שלום לממלכה', color: 0xf2b632, fg: '#13213b', bg: '#f2b632' },
+  { key: 'yairdo', name: 'יאירדו', letters: 'יא', promise: 'נחליף את השלטון העתיק, וכולם יהיו מלכים', color: 0xe8742a, fg: '#ffffff', bg: '#e8742a' },
+  { key: 'lebet', name: 'לבט', letters: 'לב', promise: 'אבנה ממלכה חדשה', color: PURPLE, fg: '#ffffff', bg: '#6b3fa0' },
+  { key: 'mascentape', name: 'מסקנטייפ', letters: 'מס', promise: 'חופש מהעבודה לכולם, כל הזמן', color: GREEN, fg: '#ffffff', bg: '#1f8a4c' },
 ];
 export const XS = [-15.6, -5.2, 5.2, 15.6], STAGE_Z = -8, STAGE_H = 2.6, PED_H = 2.2, FIG_H = 7.5;
 
@@ -33,7 +34,7 @@ export function drawElections(p) {
   p.box(0, .22, 6, 4, .04, 14, RED); p.box(0, STAGE_H + .45, STAGE_Z + 2.5, 4, .04, 6, RED);
   p.box(0, STAGE_H + .4, STAGE_Z - 5.2, 44, 16, 1, NAVY); p.box(0, STAGE_H + 16.4, STAGE_Z - 5.2, 44.6, .8, 1.4, GOLD);
   for (const x of [-22, 22]) p.box(x, STAGE_H + .4, STAGE_Z - 5.2, 1.2, 16.8, 1.4, GOLD);
-  p.cone(0, STAGE_H + 17.2, STAGE_Z - 5.2, 5, 4, GOLD);
+  p.box(0, STAGE_H + 17.2, STAGE_Z - 5.2, 24, 4.4, .8, NAVY); p.box(0, STAGE_H + 21.6, STAGE_Z - 5.2, 24.6, .5, 1.2, GOLD);   // the title board above
   for (const [i, x] of XS.entries()) { const c = CANDIDATES[i];
     p.cyl(x, STAGE_H + .4, STAGE_Z + .5, 3.4, PED_H, WHITE); p.cyl(x, STAGE_H + .4 + PED_H, STAGE_Z + .5, 3.8, .35, GOLD); p.cyl(x, STAGE_H + .4, STAGE_Z + .5, 3.9, .35, GOLD);
     p.box(x, STAGE_H + .5, STAGE_Z - 4.6, 9, .3, .2, c.color); }
@@ -59,25 +60,28 @@ export function drawElections(p) {
 function veil(x, y, z) { const p = new Pen(); p.at(x, z, 0, y); p.cone(0, 0, 0, 3.2, 6.5, 0xd9d2c4); p.ball(0, 6.2, 0, 1.4, 1.2, 0xd9d2c4); p.box(0, 0, 0, 3.4, .25, 3.4, GOLD); return p.build(new THREE.Group()); }
 
 export function electionsLive(group) {
-  group.add(sign('כיכר הבחירות 🗳️', { w: 14, h: 2.6, bg: '#13213b', fg: '#e8b323', border: '#e8b323', font: '900 {px}px "Secular One", Rubik' }).at(0, STAGE_H + 14.6, STAGE_Z - 4.6));
-  group.add(sign('הבחירות לנשיאות המלכותית של ספירלנד', { w: 20, h: 1.4, bg: '#fffaf0', fg: '#13213b', border: '#e8b323' }).at(0, STAGE_H + 12.6, STAGE_Z - 4.6));
+  group.add(sign('כיכר הבחירות 🗳️', { w: 14, h: 2.6, bg: '#13213b', fg: '#e8b323', border: '#e8b323', font: '900 {px}px "Secular One", Rubik' }).at(0, STAGE_H + 20, STAGE_Z - 4.75));
+  group.add(sign('הבחירות לנשיאות המלכותית של ספירלנד', { w: 20, h: 1.3, bg: '#fffaf0', fg: '#13213b', border: '#e8b323' }).at(0, STAGE_H + 18, STAGE_Z - 4.75));
+  const tl = new THREE.TextureLoader();
   group.add(sign('קלפי 👑', { w: 6, h: 1.8, bg: '#13213b', fg: '#e8b323', border: '#e8b323', font: '900 {px}px "Secular One", Rubik' }).at(0, 4.6, 13.1));
   group.add(sign('תגיבו את שם המועמד שלכם', { w: 7, h: .9, bg: '#fffaf0', fg: '#13213b', border: '#13213b' }).at(0, 2.2, 13.1));
   const bars = [], figures = [];
   CANDIDATES.forEach((c, i) => { const x = XS[i], top = STAGE_H + .4 + PED_H + .35;
-    group.add(sign(c.name, { w: 8.6, h: 1.9, bg: c.bg, fg: c.fg, border: '#e8b323', font: '900 {px}px "Secular One", Rubik' }).at(x, STAGE_H + 9.6, STAGE_Z - 4.6));
-    group.add(sign(c.promise, { w: 9.2, h: 1.1, bg: '#fffaf0', fg: '#13213b', border: c.bg }).at(x, STAGE_H + 8.1, STAGE_Z - 4.6));
+    // his campaign poster on the backdrop (the same picture as in the reels), his name and promise under it
+    const pm = new THREE.MeshBasicMaterial({ color: c.color }); track(tl.loadAsync(`img/candidates/${c.key}.jpg`).then(t => { t.colorSpace = THREE.SRGBColorSpace; pm.map = t; pm.color.set(0xffffff); pm.needsUpdate = true; }));
+    const poster = new THREE.Mesh(new THREE.PlaneGeometry(8, 10), pm); poster.position.set(x, STAGE_H + 10.8, STAGE_Z - 4.65); group.add(poster);
+    group.add(sign(c.name, { w: 8, h: 1.6, bg: c.bg, fg: c.fg, border: '#ffffff', font: '900 {px}px "Secular One", Rubik' }).at(x, STAGE_H + 6.5, STAGE_Z - 4.6));
     group.add(sign(c.name, { w: 3.6, h: .8, bg: c.bg, fg: c.fg, border: '#e8b323' }).at(x, STAGE_H + 1.5, STAGE_Z + 2.45));
     // his vote bar on the backdrop: grows with the votes
-    const bar = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1, .3), new THREE.MeshLambertMaterial({ color: 0xe8b323, emissive: 0x3a2a00 })); bar.position.set(x + 3.8, STAGE_H + 1, STAGE_Z - 4.5); bar.scale.y = .01; group.add(bar);
-    const count = sign('0', { w: 2.4, h: 1, bg: '#13213b', fg: '#ffffff', border: '#e8b323' }); count.position.set(x + 3.8, STAGE_H + 1.6, STAGE_Z - 4.3); group.add(count); bars.push({ bar, count, c });
+    const bar = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1, .3), new THREE.MeshLambertMaterial({ color: 0xe8b323, emissive: 0x3a2a00 })); bar.position.set(x + 4.6, STAGE_H + 1, STAGE_Z - 4.5); bar.scale.y = .01; group.add(bar);
+    const count = sign('0', { w: 2.4, h: 1, bg: '#13213b', fg: '#ffffff', border: '#e8b323' }); count.position.set(x + 4.6, STAGE_H + 1.6, STAGE_Z - 4.3); group.add(count); bars.push({ bar, count, c });
     const v = veil(x, top, STAGE_Z + .5); group.add(v);
     const fig = place(group, `models/${c.key}.glb`, { at: [x, top, STAGE_Z + .5], h: FIG_H, key: c.key }); figures.push(fig);
     fig.userData.job.then(() => { v.visible = !fig.userData.ok; }); });
   group.userData.figures = figures;
   /** votes: { key: n }; the bars grow to 6 m for the leader */
   group.userData.setVotes = votes => { const max = Math.max(1, ...Object.values(votes ?? {}));
-    for (const b of bars) { const n = votes?.[b.c.key] ?? 0; b.bar.scale.y = Math.max(.01, n / max * 5.6); b.bar.position.y = STAGE_H + 1 + b.bar.scale.y / 2;
+    for (const b of bars) { const n = votes?.[b.c.key] ?? 0; b.bar.scale.y = Math.max(.01, n / max * 4.6); b.bar.position.y = STAGE_H + 1 + b.bar.scale.y / 2;
       b.count.position.y = STAGE_H + 1.4 + b.bar.scale.y + .6; const g = b.count.material.map.image.getContext('2d'); const W = g.canvas.width, H = g.canvas.height;
       g.fillStyle = '#e8b323'; g.fillRect(0, 0, W, H); g.fillStyle = '#13213b'; g.fillRect(4, 4, W - 8, H - 8); g.fillStyle = '#ffffff'; g.font = `800 ${H * .6}px Rubik`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(String(n), W / 2, H * .54); b.count.material.map.needsUpdate = true; } };
 }

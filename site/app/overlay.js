@@ -73,7 +73,15 @@ function card(g, c, k, cx, y) {
       if (c.likes !== null) text(g, `♥ ${Number(c.likes ?? 0).toLocaleString('he-IL')}`, x + 44, y + 160, { font: `800 46px ${BODY}`, color: RED, align: 'left', dir: 'ltr' });
       return H + 14;
     }
-    case 'poster': {                                 // day 11: a candidate's campaign poster: his colour, his portrait, his ballot note, name and promise
+    case 'poster': if (c.full) {                     // the whole poster is one picture (candidate, ballot note, colour); name and promise in its empty bottom
+      const PW = 860, PH = Math.round(PW * c.full.height / c.full.width), px = cx - PW / 2, slide = (1 - smooth(k.age / .35)) * 1100;
+      g.save(); g.translate(slide, 0); g.save(); rr(g, px, y, PW, PH, 40); g.clip(); g.drawImage(c.full, px, y, PW, PH); g.restore();
+      rr(g, px, y, PW, PH, 40); g.lineWidth = 8; g.strokeStyle = '#ffffff'; g.stroke();
+      text(g, c.head ?? 'לנשיאות ספירלנד המלכותית', cx, y + 64, { font: `800 40px ${BODY}`, color: c.fg ?? '#ffffff', stroke: 0 });
+      text(g, c.name ?? '', cx, y + PH - 120, { font: `900 104px ${BODY}`, color: c.fg ?? '#ffffff' });
+      wrap(g, c.promise ?? '', `800 44px ${BODY}`, PW - 80).slice(0, 2).forEach((l, i) => text(g, l, cx, y + PH - 58 + i * 50, { font: `800 44px ${BODY}`, color: c.accent ?? '#ffffff' }));
+      g.restore(); return PH + 14;
+    } else {                                 // day 11: a candidate's campaign poster: his colour, his portrait, his ballot note, name and promise
       const PW = 1000, PH = 1000, px = cx - PW / 2, bg = c.bg ?? NAVY, fg = c.fg ?? '#ffffff', slide = (1 - smooth(k.age / .35)) * 1100;
       g.save(); g.translate(slide, 0);
       rr(g, px, y, PW, PH, 46); g.fillStyle = bg; g.fill(); g.lineWidth = 8; g.strokeStyle = GOLD; g.stroke();
@@ -100,7 +108,8 @@ function card(g, c, k, cx, y) {
       (c.photos ?? []).forEach((ph, i) => { const tx = px + 40 + (i % 2) * 420, ty = y + 210 + Math.floor(i / 2) * 420, pop = backOut((k.age - i * .25) / .35);
         if (pop <= 0) return; g.save(); g.translate(tx + 200, ty + 200); g.scale(pop, pop); g.scale(400 / 440, 400 / 440);
         box(g, -220, -220, 440, 440, 26, (c.colors ?? [])[i] ?? '#eeeeee', 6, 0);
-        if (ph) { g.save(); rr(g, -210, -210, 420, 420, 20); g.clip(); const s = Math.max(420 / ph.width, 420 / ph.height); g.drawImage(ph, -ph.width * s / 2, -210, ph.width * s, ph.height * s); g.restore(); }
+        if (ph) { g.save(); rr(g, -210, -210, 420, 420, 20); g.clip(); const cut = c.crop ?? [0, 0, 1, 1], sx = cut[0] * ph.width, sy = cut[1] * ph.height, sw = (cut[2] - cut[0]) * ph.width, sh = (cut[3] - cut[1]) * ph.height;
+          g.drawImage(ph, sx, sy, sw, sh, -210, -210, 420, 420); g.restore(); }   // crop: the part of the picture to show [x0, y0, x1, y1]
         if (c.names?.[i]) { g.font = `900 46px ${BODY}`; const w = g.measureText(c.names[i]).width + 50; box(g, -w / 2, 150, w, 70, 35, GOLD, 5, 0); text(g, c.names[i], 0, 200, { font: `900 46px ${BODY}` }); }
         if (c.stamp === i && k.age > (c.stampAt ?? 99)) { g.save(); g.rotate(-.25); g.globalAlpha = .9; g.lineWidth = 10; g.strokeStyle = RED; g.beginPath(); g.arc(0, -20, 120, 0, 7); g.stroke(); text(g, c.stampText ?? 'מוביל!', 0, 0, { font: `900 64px ${BODY}`, color: RED }); g.restore(); }
         g.restore(); });

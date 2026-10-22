@@ -95,6 +95,7 @@ export async function startReel({ renderer, data, day }) {
     // day 11: pictures on the cards (a candidate's portrait): c.image, or c.images for the grid
     const pic = async src => { if (!src) return null; const im = new Image(); im.src = src; await im.decode().catch(() => {}); return im.naturalWidth ? im : null; };
     if (c.image) c.photo = await pic(c.image);
+    if (c.poster) c.full = await pic(c.poster);
     if (c.images) c.photos = await Promise.all(c.images.map(pic));
   }
   // ep.say: how a word the voice needed in English letters is shown in the captions ("Sapir" → "ספיר")
