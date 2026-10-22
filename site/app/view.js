@@ -170,6 +170,8 @@ export class World {
     this.models = {}; for (const m of this.kingdom.models ?? []) this.models[m.key ?? m.url] = placeModel(this.scene, m.url, m);
   }
   /** the wishes on the royal wall (the site's live ones, or a reel's snapshot) */
+  /** the royal elections' count on the stage (day 11) */
+  setVotes(votes) { this.votes = votes; this.lm?.elections?.group.userData.setVotes?.(votes ?? {}); }
   setWishes(list) { this.wishes = list; this.kotel?.notes([...(this.kingdom.kotel?.notes ?? []), ...(list ?? [])]); }
   /** a landmark rising out of the ground (0 hidden, 1 standing) */
   rise(key, f) { const l = this.lm[key]; if (!l) return; l.group.visible = f > 0; l.group.scale.set(1, Math.max(.001, f), 1); }

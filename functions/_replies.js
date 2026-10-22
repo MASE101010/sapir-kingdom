@@ -59,16 +59,26 @@ export function wishOk(text, raw) { if (BAD.test(raw) || CITY.test(raw)) return 
 const WISHES = [() => 'המשאלה שלך נתלתה על הכותל המלכותי 🙏✨', () => 'פתק חדש בכותל המלכותי! שהמשאלה תתגשם 🙏', () => 'המלך שם את הפתק שלך בכותל בעצמו 👑🙏', () => 'נרשם בכותל המלכותי. שיתגשם בקרוב! ✨'];
 const WISH_WAIT = [() => 'המשאלה שלך נשמרה 🙏 כדי שתופיע על הכותל המלכותי, עקבו וכתבו לי "בית" בפרטי', () => 'קיבלתי את המשאלה! ✨ היא תעלה לכותל ברגע שתעקבו ותכתבו לי "בית" בפרטי'];
 const WISH_CHECK = [() => 'המשאלה הגיעה למלך 🙏 הוא קורא אותה ותולה אותה בכותל בקרוב', () => 'קיבלתי! המלך עובר על הפתקים ותולה אותם בכותל ✨'];
+// day 11: the royal elections. Four candidates for the royal presidency of Sapirland; a comment with a name is a vote
+export const CANDIDATES = {
+  bibkovich: { re: /(?<!\p{L})(ביבקוביץ['׳]?|ביבקוביץ'|bibkovich)(?!\p{L})/iu, name: "ביבקוביץ'" },
+  yairdo: { re: /(?<!\p{L})(יאירדו|יארדו|yairdo)(?!\p{L})/iu, name: 'יאירדו' },
+  lebet: { re: /(?<!\p{L})(לבט|לה\s*בט|lebet)(?!\p{L})/iu, name: 'לבט' },
+  mascentape: { re: /(?<!\p{L})(מסקנטייפ|מסקנטיפ|מסקנטיים|מסקנטים|mascentape)(?!\p{L})/iu, name: 'מסקנטייפ' } };
+export const voteOf = text => { const hits = Object.entries(CANDIDATES).filter(([, c]) => c.re.test(String(text ?? ''))); return hits.length === 1 ? hits[0][0] : null; };
+const VOTED = [n => `הקול שלך ל${n} נספר! 🗳️`, n => `נרשם בקלפי המלכותית: קול ל${n} 🗳️👑`, n => `${n} מודה לך על הקול! 🗳️ הספירה ממשיכה`, n => `קיבלנו! עוד קול ל${n} 🗳️ מי ינצח?`];
+const VOTE_WAIT = [n => `הקול ל${n} נשמר 🗳️ כדי שייספר, עקבו וכתבו לי "בית" בפרטי`];
 const CITY = /תל\s*בטטה|telbatata|tel\s*batata|מעתיק|העתק|חיקוי|קריית\s*בצל/iu;
 const HOUSE_ASK = /^(אפשר|אני\s+רוצה|תבנו\s+לי|תבנה\s+לי|רוצה|אשמח\s+ל)?\s*(גם\s+)?(בית|ביית|ביתת|בית\s+משלי|בית\s+בבקשה)[\s?!.]*$/u;
 
 /** the answer to one comment. fresh: their house was built just now (n); citizen: they follow */
-export function reply({ id, u, text }, { fresh = false, n, citizen = false, team = null, pilot = false, tagged = [], wish: wishState = null } = {}) {
+export function reply({ id, u, text }, { fresh = false, n, citizen = false, team = null, pilot = false, tagged = [], wish: wishState = null, vote = null } = {}) {
   const seed = hash(id), t = String(text ?? '').trim(), w = wish(t), num = n?.toLocaleString?.('he-IL') ?? n;
   const tail = fresh ? (citizen ? ` · נבנה לך בית מספר ${num}, ואתם כבר אזרחים 👑` : ` · נבנה לך בית מספר ${num} 🏠 לאזרחות: עקבו וכתבו לי "בית" בפרטי`) : '';
   let head;
   if (BAD.test(t)) head = pick(RUDE, seed)();
   else if (CITY.test(t)) head = pick(OTHER_CITY, seed)();
+  else if (vote) head = pick(citizen ? VOTED : VOTE_WAIT, seed)(CANDIDATES[vote].name);
   else if (wishState != null) head = wishState === 1 ? pick(citizen ? WISHES : WISH_WAIT, seed)() : pick(WISH_CHECK, seed)();
   else if (team) head = team.full ? pick(FULL, seed)(TEAMS[team.key].name) : pick(SIGNED, seed)(TEAMS[team.key].name, team.shirt);
   else if (pilot) head = pick(PILOTS, seed)();

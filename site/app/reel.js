@@ -44,6 +44,9 @@ export async function startReel({ renderer, data, day }) {
   // the royal wall's notes as they were (data/wishes.json), and any this reel adds (ep.wishes); 3D models only this reel shows (ep.models)
   const snap = await fetch('data/wishes.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : {}).catch(() => ({}));
   world.setWishes([...(ep.wishes ?? []), ...(snap.wishes ?? []).slice().reverse()]);
+  // the elections' count: the snapshot (data/votes.json) or what the reel says (ep.votes)
+  const vsnap = await fetch('data/votes.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  world.setVotes(ep.votes ?? vsnap.votes ?? {});
   const epModels = {}; for (const m of ep.models ?? []) epModels[m.key ?? m.url] = placeModel(world.scene, m.url, m);
   world.models = { ...(world.models ?? {}), ...epModels }; await modelsReady();
   world.daylight(12); renderer.setSize(W, H); world.camera.aspect = W / H; world.camera.updateProjectionMatrix();

@@ -19,9 +19,9 @@ export function place(parent, url, { at = [0, 0, 0], h = null, ry = 0, key = nul
       const old = o.material; if (old && !Array.isArray(old) && old.isMeshStandardMaterial) { o.material = new THREE.MeshLambertMaterial({ map: old.map ?? null, color: old.map ? 0xffffff : old.color, vertexColors: !!o.geometry.attributes.color, transparent: old.transparent, alphaTest: old.alphaTest }); old.dispose(); } });
     const box = new THREE.Box3().setFromObject(m), size = box.getSize(new THREE.Vector3()), k = h ? h / Math.max(size.y, 1e-6) : 1;
     m.scale.setScalar(k); box.setFromObject(m); const c = box.getCenter(new THREE.Vector3());
-    m.position.set(-c.x, -box.min.y, -c.z); holder.add(m); holder.userData.size = box.getSize(new THREE.Vector3()); return holder;
+    m.position.set(-c.x, -box.min.y, -c.z); holder.add(m); holder.userData.ok = true; holder.userData.size = box.getSize(new THREE.Vector3()); return holder;
   }).catch(e => { console.warn('model', url, e.message); return holder; });
-  pending.push(job); return holder;
+  holder.userData.job = job; pending.push(job); return holder;
 }
 /** resolves when every model asked for so far has loaded (or failed) */
 export const ready = () => Promise.all(pending);

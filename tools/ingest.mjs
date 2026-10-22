@@ -16,6 +16,7 @@ console.log(`residents ${old.residents.length} -> ${live.residents.length}`);
 // the royal wall's notes (day 11): the citizens' wishes that passed, for the reels; the waiting ones for the daily run to look at
 const wishes = live.wishes ?? [];
 writeFileSync('site/data/wishes.json', JSON.stringify({ note: 'הכותל המלכותי: the notes on the wall (citizens, passed), newest first. Written by tools/ingest.mjs.', wishes: wishes.filter(w => w.ok === 1 && w.citizen).map(w => ({ u: w.u, text: w.text, at: w.at })).reverse() }, null, 1));
+if (live.votes) { writeFileSync('site/data/votes.json', JSON.stringify({ note: 'The royal elections (day 11): citizens\' votes by candidate, at the daily count. Written by tools/ingest.mjs.', at: new Date().toISOString(), votes: live.votes }, null, 1)); console.log(`votes: ${JSON.stringify(live.votes)}`); }
 const waitingWishes = wishes.filter(w => w.ok === 0);
 console.log(`wishes: ${wishes.filter(w => w.ok === 1 && w.citizen).length} on the wall, ${waitingWishes.length} waiting`);
 
