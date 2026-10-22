@@ -93,10 +93,23 @@ export class Life {
       let f = Math.sin(t * 3.4 + ph); const [L, Rw] = d.userData.wings;           // the wing beats down, and folds a little on the way up
       // perched (day 9: one sat down on the top of בורג' ספיר and won't move): perch = { dragon, at: [x, y, z], ry, k 0..1 }
       const pc = this.perch?.dragon === i ? this.perch : null;
-      if (pc && (pc.k ?? 1) > 0) { const k = Math.min(1, pc.k ?? 1), e = k * k * (3 - 2 * k), at = new THREE.Vector3(...pc.at);
-        d.position.copy(P.lerp(at, e));
+      // a move from one perch to another (from: [x, y, z], fromRy): it sits at from until k > 0, flies over in an arc, sits at at
+      if (pc?.from && !((pc.k ?? 1) > 0)) { d.position.set(...pc.from); d.rotation.set(-.05 + Math.sin(t * 1.3) * .03, pc.fromRy ?? 0, 0); f = -.9 + Math.sin(t * .8) * .12; }
+      else if (pc && (pc.k ?? 1) > 0) { const k = Math.min(1, pc.k ?? 1), e = k * k * (3 - 2 * k), at = new THREE.Vector3(...pc.at);
+        if (pc.from) { const A = new THREE.Vector3(...pc.from); P.copy(A).lerp(at, e); P.y += Math.sin(Math.PI * e) * (pc.arc ?? 60); }
+        else P.lerp(at, e);
+        d.position.copy(P);
         if (k < 1) d.rotation.set(-.15, Math.atan2(at.x - P.x, at.z - P.z) || d.rotation.y, 0);
         else { d.rotation.set(-.05 + Math.sin(t * 1.3) * .03, pc.ry ?? 0, 0); f = -.9 + Math.sin(t * .8) * .12; } }
+      // the net (day 10: the army and the pilots caught it): drops onto the perched dragon at netAt (0..1), then stays on it
+      const net = pc?.from && (pc.k ?? 1) >= 1 ? null : pc?.net ?? (pc?.netOn ? 1 : null);   // the net comes off once it is behind bars
+      if (pc && net == null && this.netMesh) this.netMesh.visible = false;
+      if (net != null) { const n = this.netMesh ??= (() => { const g = new THREE.Group(), m = mat(0xf3ead8);
+          for (let i = -5; i <= 5; i++) for (const [w, d2] of [[.4, 36], [36, .4]]) { const b = new THREE.Mesh(new THREE.BoxGeometry(w, .35, d2), m); b.position.set(w > 1 ? 0 : i * 3.4, -Math.abs(i) * .5, w > 1 ? i * 3.4 : 0); g.add(b); }
+          for (const [x, z] of [[-17, -17], [17, -17], [-17, 17], [17, 17]]) { const b = new THREE.Mesh(new THREE.SphereGeometry(1.3, 8, 6), mat(0x8a6240)); b.position.set(x, -3, z); g.add(b); }
+          this.scene.add(g); return g; })();
+        const nk = Math.max(0, Math.min(1, net)); n.visible = nk > 0; n.position.copy(d.position).add(new THREE.Vector3(0, 7.2 + (1 - nk) * 70, 0)); n.rotation.set(.18 * Math.sin(t * 2) * (1 - nk), d.rotation.y, 0);
+        n.scale.set(1, 1, 1); }
       L.shoulder.rotation.z = f * .6; Rw.shoulder.rotation.z = -f * .6; L.elbow.rotation.z = Math.max(0, f) * .5; Rw.elbow.rotation.z = -Math.max(0, f) * .5;
     });
     for (let i = 0; i < 60; i++) {

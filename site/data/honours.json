@@ -9,7 +9,8 @@
       "danielazran2020",
       "liron7111",
       "yoav_levi676767",
-      "imry.life"
+      "imry.life",
+      "yonatan.reuveni1"
     ]
   },
   "built": {
@@ -71,6 +72,12 @@
     "beitar": {
       "by": [],
       "day": 9
+    },
+    "prison": {
+      "by": [
+        "mpt9399"
+      ],
+      "day": 10
     }
   }
 }

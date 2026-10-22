@@ -75,10 +75,10 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
 ## The voice (for now: Michael's own)
 
 Michael approves the script first and makes the voice himself in ElevenLabs (voice MICHA, Eleven v4, every line starts
-with `[excited]` and no other tags). In the text sent to ElevenLabs every name is written in English letters (Sapir, Itay,
+with `[excited]` and no other tags). In the text sent to ElevenLabs every name is written in English letters (Sapir, Sapirland, Burj, Itay,
 Ido, Elad, Nevo, MPT...), never in Hebrew: the model reads Hebrew names wrong ("ואיתי" came out "veiti"). Captions show
 them in Hebrew through the episode's `say` map ({ "Itay": "איתי" }). A Hebrew word the model can read two ways gets nikud
-(מסלול הַמְרָאָה, not המראה, which came out "hamare"); captions drop the nikud. So: write `site/episodes/dayN.json`, send him the lines to approve, and stop. When
+(מסלול הַמְרָאָה, not המראה, which came out "hamare"; also כֶּלֶא, מַפְתֵּחַ); captions drop the nikud. So: write `site/episodes/dayN.json`, send him the lines to approve, and stop. When
 his mp3 comes back, `node reel/own-voice.mjs --day N --mp3 <file>` lines it up (pauses → phrases → words) and writes
 `dayN.mp3` and `dayN.voice.json` with `own: true`; commit the mp3 with `git add -f`. `reel/voice.mjs` then keeps it.
 Reels run about a minute (50 to 65 s, like the pages Michael measures us against), opening on action in the first second.
@@ -112,7 +112,7 @@ cannot read voices and the API's v3 does not sound like his MICHA on Eleven v4 (
   among citizens. Michael chose this to get people taking part; if the kingdom grows a lot he may want houses for followers only.
 - A golden house (`residents.gold`): whoever shares a reel to their story and tags @sapirkingdom. Instagram sends the
   mention to our chats; the sync (or the webhook) gilds the house and thanks them. Remind people in reels and stories.
-- Clubs and jobs: a comment with "מכבי", "הפועל" (20 places each) or "ביתר" (30) joins that club's squad with a shirt
+- Clubs and jobs: a comment with "מכבי", "הפועל" or "ביתר" (30 places each; מכבי and הפועל grew from 20 on day 10) joins that club's squad with a shirt
   number (`residents.team`, `TEAMS` in `_replies.js`); "טייס" makes you a pilot of נתס"ר (`residents.job`). The site's
   הסגלים page lists them.
 - Soldiers: a comment with "חייל" (or מתגייס) enlists: the king answers it and the house becomes the מגורים צבאיים

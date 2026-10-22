@@ -1,0 +1,686 @@
+{
+ "day": 10,
+ "lines": [
+  "[excited] יום עשר בממלכה של משפחת Sapir!",
+  "[excited] ואתמול הצטרפו חמישים וחמישה עוקבים חדשים!",
+  "[excited] ב-Natsar כבר עשרים ושלושה טייסים!",
+  "[excited] וב-Beitar Sapir כבר ארבעה עשר שחקנים!",
+  "[excited] והיום... MPT ביקש כֶּלֶא לדרקונים, והנה הוא!",
+  "[excited] אבל קודם... צריך לתפוס את הדרקון מה-Burj!",
+  "[excited] צבא ההגנה ל-Sapirland יוצא לפעולה!",
+  "[excited] והטייסים שלנו ממריאים לעזור!",
+  "[excited] רשת ענקית... ו... תפסנו אותו!",
+  "[excited] הדרקון בַּכֶּלֶא!",
+  "[excited] אבל יש בעיה... אם לא נגיע לאלף עוקבים עד מחר...",
+  "[excited] הוא משתחרר!",
+  "[excited] וּמַפְתֵּחַ הזהב של היום הולך ל-Yonatan!",
+  "[excited] תעזרו לנו? תעקבו, ותגלו בסרטון הבא!"
+ ],
+ "top": 330,
+ "mix": "day10.mix.mp3",
+ "say": {
+  "Sapirland": "ספירלנד",
+  "Sapir": "ספיר",
+  "Natsar": "נתס\"ר",
+  "Beitar": "ביתר",
+  "MPT": "MPT",
+  "Burj": "בורג'",
+  "Yonatan": "יונתן"
+ },
+ "homes": {
+  "yonatan.reuveni1": 8
+ },
+ "rise": {
+  "key": "prison",
+  "line": 4,
+  "dt": 3.0,
+  "dur": 1.6
+ },
+ "cue": {
+  "key": "natsar",
+  "line": 7,
+  "dt": -1.5
+ },
+ "perch": {
+  "dragon": 4,
+  "from": [
+   113.2,
+   117,
+   -46.8
+  ],
+  "fromRy": -1.178,
+  "at": [
+   -137.5,
+   6.2,
+   -145.3
+  ],
+  "ry": 2.356,
+  "arc": 70,
+  "line": 8,
+  "dt": 2.5,
+  "dur": 1.9,
+  "net": {
+   "line": 8,
+   "dt": 0.0,
+   "dur": 1.3
+  }
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    0,
+    0,
+    20
+   ],
+   "dist": 280,
+   "yaw": -20,
+   "pitch": 52,
+   "orbit": 7,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 600,
+   "yaw": 20,
+   "pitch": 60,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 2,
+   "target": "landmark:natsar",
+   "dist": 110,
+   "yaw": 0,
+   "pitch": 26,
+   "orbit": 8,
+   "ease": 0.7
+  },
+  {
+   "line": 3,
+   "target": "landmark:beitar",
+   "dist": 105,
+   "yaw": 0,
+   "pitch": 28,
+   "orbit": 8,
+   "ease": 0.7
+  },
+  {
+   "line": 4,
+   "target": "landmark:prison",
+   "dist": 125,
+   "yaw": 0,
+   "pitch": 26,
+   "orbit": 7,
+   "ease": 0.7
+  },
+  {
+   "line": 5,
+   "target": [
+    113.2,
+    117,
+    -46.8
+   ],
+   "dist": 48,
+   "yaw": -52.5,
+   "pitch": 8,
+   "orbit": 6,
+   "ease": 0.8
+  },
+  {
+   "line": 6,
+   "target": "landmark:base",
+   "dist": 95,
+   "yaw": 15,
+   "pitch": 22,
+   "orbit": 8,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "target": [
+    147.1,
+    8,
+    152.7
+   ],
+   "dist": 80,
+   "yaw": 55,
+   "pitch": 12,
+   "orbit": 1,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": [
+    113.2,
+    117,
+    -46.8
+   ],
+   "dist": 72,
+   "yaw": -87.5,
+   "pitch": 14,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": [
+    -141.4,
+    10,
+    -141.4
+   ],
+   "dist": 110,
+   "yaw": 65,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "target": [
+    -141.4,
+    8,
+    -141.4
+   ],
+   "dist": 70,
+   "yaw": 45,
+   "pitch": 42,
+   "orbit": 5,
+   "ease": 0.8
+  },
+  {
+   "line": 11,
+   "target": [
+    -130,
+    12,
+    -152
+   ],
+   "dist": 36,
+   "yaw": 95,
+   "pitch": 38,
+   "orbit": 8,
+   "ease": 0.4
+  },
+  {
+   "line": 12,
+   "target": "house:yonatan.reuveni1",
+   "dist": 40,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 13,
+   "target": "landmark:prison",
+   "dist": 140,
+   "yaw": 10,
+   "pitch": 30,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dur": 2.2,
+   "text": "יום 10"
+  },
+  {
+   "type": "label",
+   "line": 2,
+   "dt": 0.3,
+   "dur": 2.3,
+   "text": "נתס\"ר · 23 טייסים ✈️"
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 0.3,
+   "dur": 2.3,
+   "text": "ביתר ספיר · 14 שחקנים 💛🖤"
+  },
+  {
+   "type": "idcard",
+   "line": 4,
+   "dt": 0.8,
+   "dur": 2.1,
+   "u": "mpt9399",
+   "honours": [
+    "אדריכל · כלא הדרקונים"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dt": 3.2,
+   "dur": 2.6,
+   "text": "כלא הדרקונים 🐉"
+  },
+  {
+   "type": "idcard",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.6,
+   "u": "yonatan.reuveni1",
+   "honours": [
+    "מפתח זהב · יום 10"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 4.5,
+   "text": "תעזרו לנו? 🐉",
+   "sub": "עקבו ותגלו בסרטון הבא 👇"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "עקבו + הגיבו = בית 🏠",
+   "y": 760,
+   "size": 100,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 2.5
+  },
+  {
+   "type": "banner",
+   "line": 1,
+   "dt": 0.8,
+   "dur": 2.6,
+   "text": "+55 עוקבים חדשים 🎉",
+   "y": 760,
+   "size": 110,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 1,
+   "dt": 0.8,
+   "dur": 2
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 0.5,
+   "dur": 2,
+   "text": "✈️",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.5,
+   "dur": 2,
+   "text": "⚽",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 8
+  },
+  {
+   "type": "punch",
+   "line": 4,
+   "dt": 3.0,
+   "dur": 0.8,
+   "zoom": 0.25
+  },
+  {
+   "type": "confetti",
+   "line": 4,
+   "dt": 3.1,
+   "dur": 1.8
+  },
+  {
+   "type": "vignette",
+   "line": 5,
+   "dur": 3,
+   "color": "rgba(10,10,30,.45)"
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 1.2,
+   "dur": 1.8,
+   "text": "🐉",
+   "x": 840,
+   "y": 1110,
+   "size": 160,
+   "rot": -6
+  },
+  {
+   "type": "banner",
+   "line": 6,
+   "dt": 0.2,
+   "dur": 2.3,
+   "text": "צבא ההגנה לספירלנד 🪖",
+   "y": 760,
+   "size": 95,
+   "band": "#5b6b3a",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.2,
+   "dur": 2,
+   "text": "🛫",
+   "x": 840,
+   "y": 1110,
+   "size": 150
+  },
+  {
+   "type": "shake",
+   "line": 8,
+   "dt": 1.8,
+   "dur": 0.5,
+   "amp": 1
+  },
+  {
+   "type": "flash",
+   "line": 8,
+   "dt": 1.9,
+   "dur": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 8,
+   "dt": 1.95,
+   "dur": 1.6,
+   "text": "תפסנו אותו! 🥅",
+   "y": 760,
+   "size": 120,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 9,
+   "dt": 0.8,
+   "dur": 2
+  },
+  {
+   "type": "vignette",
+   "line": 10,
+   "dur": 3.6,
+   "color": "rgba(10,10,30,.5)"
+  },
+  {
+   "type": "banner",
+   "line": 10,
+   "dt": 1.4,
+   "dur": 2.2,
+   "text": "1000 עוקבים עד מחר ⏳",
+   "y": 760,
+   "size": 105,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "shake",
+   "line": 11,
+   "dur": 0.7,
+   "amp": 1.3
+  },
+  {
+   "type": "banner",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 1.1,
+   "text": "הוא משתחרר! 😱",
+   "y": 760,
+   "size": 120,
+   "band": "#c8102e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "punch",
+   "line": 12,
+   "dur": 0.8,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 12,
+   "dur": 2
+  },
+  {
+   "type": "sticker",
+   "line": 12,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "🔑",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 10
+  }
+ ],
+ "music": {
+  "bpm": 126,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 5,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 8,
+     "dt": 1.9
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 10,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 12,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 13,
+     "dt": 0
+    },
+    "tense"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "pop",
+   "line": 0,
+   "dt": 0.4,
+   "repeat": 5,
+   "every": 0.2,
+   "gain": 0.6
+  },
+  {
+   "name": "kaching",
+   "line": 1,
+   "dt": 0.8
+  },
+  {
+   "name": "whoosh",
+   "line": 2,
+   "dt": -0.1
+  },
+  {
+   "name": "ding",
+   "line": 2,
+   "dt": 0.4
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": -0.1
+  },
+  {
+   "name": "ding",
+   "line": 3,
+   "dt": 0.4
+  },
+  {
+   "name": "whoosh",
+   "line": 4,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 0.8
+  },
+  {
+   "name": "boom",
+   "line": 4,
+   "dt": 3.0
+  },
+  {
+   "name": "tada",
+   "line": 4,
+   "dt": 3.1
+  },
+  {
+   "name": "scratch",
+   "line": 5,
+   "dt": 0
+  },
+  {
+   "name": "roar",
+   "line": 5,
+   "dt": 1.3
+  },
+  {
+   "name": "whoosh",
+   "line": 6,
+   "dt": -0.1
+  },
+  {
+   "name": "sting",
+   "line": 6,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 7,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 8,
+   "dt": 0.4
+  },
+  {
+   "name": "boom",
+   "line": 8,
+   "dt": 1.8
+  },
+  {
+   "name": "roar",
+   "line": 8,
+   "dt": 2.0
+  },
+  {
+   "name": "tada",
+   "line": 8,
+   "dt": 2.1
+  },
+  {
+   "name": "whoosh",
+   "line": 8,
+   "dt": 2.3
+  },
+  {
+   "name": "boom",
+   "line": 9,
+   "dt": 1.1
+  },
+  {
+   "name": "sting",
+   "line": 10,
+   "dt": 0
+  },
+  {
+   "name": "cricket",
+   "line": 10,
+   "dt": 1.4,
+   "gain": 0.5
+  },
+  {
+   "name": "roar",
+   "line": 11,
+   "dt": 0
+  },
+  {
+   "name": "boom",
+   "line": 11,
+   "dt": 0.1
+  },
+  {
+   "name": "kaching",
+   "line": 12,
+   "dt": 0
+  },
+  {
+   "name": "sparkle",
+   "line": 12,
+   "dt": 0.3
+  },
+  {
+   "name": "ding",
+   "line": 13,
+   "dt": 0.1
+  }
+ ],
+ "caption": "הדרקון מבורג׳ ספיר נתפס! 🐉 צבא ההגנה לספירלנד והטייסים של נתס\"ר הפילו עליו רשת ענקית, והוא עכשיו בכלא הדרקונים, בזכות MPT.\nאבל אם לא נגיע ל־1000 עוקבים עד מחר, הוא משתחרר 😱 תעזרו לנו? תעקבו, ותגיבו, וכל מי שעוקב ומגיב מקבל בית 🏠\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #דרקון #כלא_הדרקונים",
+ "firstComment": "מה יקרה אם הדרקון ישתחרר? 🐉 תגיבו ניחושים, ותייגו חבר שיעזור לנו להגיע ל־1000 🏠",
+ "notes": "Michael chose the dragon prison (mpt9399, the top request since day 9; also ydydbrwyr) and wrote the story: the army and the pilots catch the dragon on the Burj with a net and lock it up, and it gets out unless we reach 1000 followers by tomorrow. Other requests waiting: school (noga_buhnik), hotel Sapir (myvlog6161, ido_schwaitzer), safari (ofek_bell), castle renovation (liroyrokach), gym/cinema (eladshwar), factory (aribiran1), archers (etay_34), knights (bnjmnx2025). Gold key: yonatan.reuveni1, by the rule among day 9's citizens. Posted twice: ordinary and trial."
+}

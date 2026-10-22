@@ -89,6 +89,12 @@ function ballAt(m, t) {
   const g = [...m.goals].reverse().find(g => t >= g.t - CARRY);
   if (!g) { const w = wander(t), k = ease((t - m.t0) / 1.5); return { B: [lerp(0, w[0], k), lerp(0, w[1], k)] }; }
   const dir = g.team === 'm' ? 1 : -1, gz = .8 * Math.sin(g.t * 3.1), party = t >= g.t && t < g.t + 2.4 ? { party: g, f: (t - g.t) / 2.4 } : {};
+  // a save (day 10, { save: true }): the shooter carries it to the box and shoots, the keeper dives and it bounces back out
+  if (g.save) { const gs = 2.2 * Math.sign(Math.sin(g.t * 5.3) || 1), R = [dir * 7, -gs * 2.5];
+    if (t < g.t) { const s0 = ballAt(m, g.t - CARRY - 1e-3).B, f = ease((t - g.t + CARRY) / CARRY); return { B: [lerp(s0[0], dir * 11, f), lerp(s0[1], gs * .3, f)], carry: g, dir }; }
+    if (t < g.t + .45) { const f = (t - g.t) / .45; return { B: [lerp(dir * 11, dir * 15.2, f), lerp(gs * .3, gs, f)], dir, save: g, air: Math.sin(Math.PI * f) * 1.2 }; }
+    if (t < g.t + 1.6) { const f = ease((t - g.t - .45) / 1.15); return { B: [lerp(dir * 15.2, R[0], f), lerp(gs, R[1], f)], dir, save: g, air: Math.sin(Math.PI * f) * 2.5 }; }
+    const w = wander(t), f = ease((t - g.t - 1.6) / BLEND); return { B: [lerp(R[0], w[0], f), lerp(R[1], w[1], f)], dir }; }
   if (t < g.t) { const s0 = ballAt(m, g.t - CARRY - 1e-3).B, f = ease((t - g.t + CARRY) / CARRY); return { B: [lerp(s0[0], dir * 15.4, f), lerp(s0[1], gz, f)], carry: g, dir }; }
   if (t < g.t + NET) return { B: [dir * 16.3, gz], dir, ...party };
   if (t < g.t + NET + BACK) { const f = ease((t - g.t - NET) / BACK); return { B: [lerp(dir * 16.3, 0, f), lerp(gz, 0, f)], dir, ...party }; }
@@ -99,12 +105,14 @@ function placeAt(m, P, i, t) {
   if (!m || t < m.t0) return { x: hx, z: hz, run: 0 };
   const scorer = g => g.team === P.team && (g.who ?? 10) === P.k;
   if (st.carry && scorer(st.carry)) return { x: bx - st.dir * 1.1, z: bz + .3, run: 1 };
+  if (st.save && P.k === 0 && P.team !== st.save.team) { const d = Math.max(0, Math.min(1, (t - st.save.t + .25) / .45));
+    return { x: hx * 1.12, z: lerp(0, bz, ease(d)), run: 1, jump: t > st.save.t - .2 && t < st.save.t + .6 }; }   // the keeper dives
   // where he would be in open play
   const pull = P.k < 4 ? .35 : .6, j = Math.sin(t * .9 + i) * 1.2;
   const open = P.k === 0 ? { x: hx * 1.12, z: Math.max(-2.6, Math.min(2.6, bz * .45)), run: .3 }          // the keepers stay in goal
     : { x: hx + bx * pull + me * (P.k > 7 ? 1.5 : 0), z: hz * .8 + (bz - hz * .3) * .35 + j * .4, run: 1 };
   // after a goal the scorer runs to the corner and jumps, his teammates join him, then they all go back (3.6 s in all)
-  const g = [...m.goals].reverse().find(g => t >= g.t && t < g.t + 3.6);
+  const g = [...m.goals].reverse().find(g => !g.save && t >= g.t && t < g.t + 3.6);
   if (!g || g.team !== P.team || (P.k <= 3 && !scorer(g))) return open;
   const d = g.team === 'm' ? 1 : -1, corner = [d * 13, (g.t * 7 % 2 < 1 ? 1 : -1) * 7.5], f = (t - g.t) / 2.4;
   const party = scorer(g) ? { x: lerp(d * 15, corner[0], ease(f * 2)), z: lerp(0, corner[1], ease(f * 2)), run: 1, jump: f > .5 && f < 1 }
@@ -119,10 +127,10 @@ export function maccabiTick(group, t) {
     P.g.position.set(a.x, a.jump ? Math.abs(Math.sin(t * 9)) * 1.2 : a.run ? Math.abs(Math.sin(t * 11 + i)) * .18 : 0, a.z);
     P.g.rotation.y = Math.hypot(dx, dz) > .02 ? Math.atan2(dx, dz) : (P.team === 'm' ? Math.PI / 2 : -Math.PI / 2);
   });
-  const { B } = ballAt(m, t); L.ball.position.set(B[0], .45 + (m && t >= m.t0 ? Math.abs(Math.sin(t * 5)) * .3 : 0), B[1]);
+  const { B, air } = ballAt(m, t); L.ball.position.set(B[0], .45 + (air ?? (m && t >= m.t0 ? Math.abs(Math.sin(t * 5)) * .3 : 0)), B[1]);
   L.ref.position.set(B[0] * .5 + 1, 0, B[1] * .5 + 3.5); L.ref.rotation.y = Math.atan2(B[0] * .5 - 1, -3.5);
   // the score so far
-  let sm = 0, sh = 0; for (const g of m?.goals ?? []) if (t >= g.t) g.team === 'm' ? sm++ : sh++;
+  let sm = 0, sh = 0; for (const g of m?.goals ?? []) if (t >= g.t && !g.save) g.team === 'm' ? sm++ : sh++;
   for (const [k, b] of Object.entries(group.userData.boards ?? {})) b.visible = k === `${Math.min(sm, 3)}:${Math.min(sh, 3)}`;
 }
 export function maccabiLive(group) {

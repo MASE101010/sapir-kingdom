@@ -172,7 +172,7 @@ function site({ plan, residents, kingdom, honours }) {
       catalog: () => `<h2>קטלוג הבתים</h2>${grid(false)}`,
       lottery: () => { const keys = honours.given?.key ?? []; return `<h2>ההגרלה היומית</h2><p>כל יום, אחד התושבים החדשים זוכה במפתח הזהב: עיטור על תעודת התושב, וזכות לבחור בית נדיר מהקטלוג.</p>
         ${keys.length ? `<p>הזוכה האחרון: <b dir="ltr">@${esc(keys.at(-1))}</b></p><ul class="people">${keys.slice().reverse().map(u => `<li><button class="link" data-u="${esc(u)}" dir="ltr">@${esc(u)}</button></li>`).join('')}</ul>` : '<p class="note">ההגרלה הראשונה מחר. כל מי שמצטרף היום משתתף.</p>'}`; },
-      squads: () => { const team = (key, name, cls, colours, SQ = 20) => { const players = residents.filter(r => r.team === key).sort((a, b) => (a.shirt ?? 99) - (b.shirt ?? 99));
+      squads: () => { const team = (key, name, cls, colours, SQ = 30) => { const players = residents.filter(r => r.team === key).sort((a, b) => (a.shirt ?? 99) - (b.shirt ?? 99));
           return `<div class="squad ${cls}"><h3>${name}</h3><p class="note">${colours} · ${players.length}/${SQ} שחקנים</p><ol class="roster">${Array.from({ length: SQ }, (_, i) => { const r = players[i];
             return r ? `<li><span class="shirt">${r.shirt ?? i + 1}</span><button class="link" data-u="${esc(r.u)}" dir="ltr">@${esc(r.u)}</button></li>` : `<li class="free"><span class="shirt">·</span>מקום פנוי</li>`; }).join('')}</ol></div>`; };
         const pilots = residents.filter(r => r.job === 'pilot');
