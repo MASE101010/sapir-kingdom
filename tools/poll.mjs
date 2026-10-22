@@ -4,7 +4,7 @@ process.on('unhandledRejection', e => { console.log(`::warning title=poll crash:
 // so commenters who never open the site still get their house and an answer. The site does the same on every search.
 // env: SITE_URL, EXPORT_TOKEN
 const { SITE_URL, EXPORT_TOKEN } = process.env;
-if (process.env.DEBUG) { const x = await fetch(`${SITE_URL}/api/sync?debug=1&likes=1&insights=1${process.env.DMTEST ? `&dmtest=${process.env.DMTEST}` : ''}`, { headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(r => r.text()); try { const j = JSON.parse(x); console.log(`::notice title=state::${JSON.stringify(j.state.filter(s => !s.k.startsWith('sync_after') && !/^story:day[1-3]/.test(s.k))).slice(0, 1500)} now ${Date.now()}`);
+if (process.env.DEBUG) { const x = await fetch(`${SITE_URL}/api/sync?debug=1&likes=1&insights=1${process.env.DMTEST ? `&dmtest=${process.env.DMTEST}` : ''}`, { headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(r => r.text()); try { const j = JSON.parse(x); console.log(`::notice title=state::${JSON.stringify(j.state.filter(s => !s.k.startsWith('sync_after') && !/^story:day[1-8]-/.test(s.k))).slice(0, 1500)} now ${Date.now()}`);
     const v = (x, n) => x.ins?.data?.find(d => d.name === n)?.values?.[0]?.value;
     console.log(`::notice title=insights::followers ${j.insights?.me?.followers_count} | day ${(j.insights?.day?.data ?? []).map(d => `${d.name} ${d.total_value?.value}`).join(', ')}`);
     console.log(`::notice title=reels::${(j.insights?.reels ?? []).map(x => `${x.id} @${x.at}: views ${v(x, 'views')}, reach ${v(x, 'reach')}, likes ${v(x, 'likes')}, comments ${v(x, 'comments')}, shares ${v(x, 'shares')}, saves ${v(x, 'saved')}, watch ${Math.round((v(x, 'ig_reels_avg_watch_time') ?? 0) / 100) / 10}s`).join(' || ')}`);
