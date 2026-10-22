@@ -11,6 +11,7 @@ import { find, normalize, valid } from './residents.js';
 import { face } from './face.js';
 import { HOMES, tierOf, TIERS } from './catalog.js';
 import { STATUE } from './landmarks/castle.js';
+import { CANDIDATES } from './landmarks/elections.js';
 
 const q = new URLSearchParams(location.search), $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -33,6 +34,15 @@ function site({ plan, residents, kingdom, honours }) {
   const world = new World(renderer, plan, residents, kingdom), addr = addresses(plan.plots);
   world.setWishes(data.wishes ?? []);   // the royal wall's notes (day 11), from api/delta
   world.setVotes(data.votes ?? {});     // the royal elections' count
+  // the elections' live count (day 11): a small board under the header, read again every 20 s; a click flies to the stage
+  if (world.lm.elections) {
+    const bal = $('ballot'); bal.hidden = false; bal.onclick = () => { const l = world.lm.elections; flyTo(l.at[0], l.at[1], 110); };
+    const draw = votes => { const max = Math.max(1, ...CANDIDATES.map(c => votes[c.key] ?? 0)), lead = CANDIDATES.reduce((a, c) => (votes[c.key] ?? 0) > (votes[a.key] ?? 0) ? c : a, CANDIDATES[0]);
+      bal.innerHTML = `<h4>🗳️ הבחירות לנשיאות</h4>${CANDIDATES.map(c => `<div class="row" style="--c:${c.bg}"><img src="img/candidates/${c.key}-cut.png" alt=""><span>${esc(c.name)}${c === lead && votes[c.key] ? ' 👑' : ''}<i class="bar" style="--w:${Math.round((votes[c.key] ?? 0) / max * 100)}"></i></span><b>${(votes[c.key] ?? 0).toLocaleString('he-IL')}</b></div>`).join('')}<small>מצביעים בתגובה: שם המועמד</small>`;
+      world.setVotes(votes); };
+    draw(data.votes ?? {});
+    setInterval(async () => { const r = await fetch('api/votes', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).catch(() => null); if (r?.votes) draw(r.votes); }, 20000);
+  }
   // free movement: drag to move, two fingers or the right button to turn and tilt, pinch or the wheel to zoom, arrow keys too
   const cam = world.camera, controls = new MapControls(cam, renderer.domElement);
   cam.position.set(230, 260, 380); controls.target.set(0, 10, 40);

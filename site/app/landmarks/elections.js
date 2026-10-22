@@ -57,7 +57,18 @@ export function drawElections(p) {
   for (const x of [-26, 26]) { p.box(x * .9, 0, STAGE_Z + 2, .8, 9, .8, DARK); p.box(x * .9, 9, STAGE_Z + 2, 1, 6, 8, NAVY); }
 }
 /** the draped statue that waits for a candidate's model */
-function veil(x, y, z) { const p = new Pen(); p.at(x, z, 0, y); p.cone(0, 0, 0, 3.2, 6.5, 0xd9d2c4); p.ball(0, 6.2, 0, 1.4, 1.2, 0xd9d2c4); p.box(0, 0, 0, 3.4, .25, 3.4, GOLD); return p.build(new THREE.Group()); }
+/** the candidate as a life-size cardboard cutout (his poster's picture without the backdrop, img/candidates/<key>-cut.png),
+ *  with a white card edge behind and a little stand, until his 3D model (models/<key>.glb) exists */
+function cutout(key, x, y, z, h = FIG_H) {
+  const g = new THREE.Group(); g.position.set(x, y, z);
+  const front = new THREE.MeshBasicMaterial({ transparent: true, alphaTest: .5, side: THREE.DoubleSide }), edge = new THREE.MeshBasicMaterial({ color: 0xf5efe2, transparent: true, alphaTest: .5, side: THREE.DoubleSide });
+  const pic = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), front), back = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), edge);
+  back.position.z = -.06; back.scale.set(1.03, 1.02, 1); g.add(back, pic);
+  track(new THREE.TextureLoader().loadAsync(`img/candidates/${key}-cut.png`).then(t => { t.colorSpace = THREE.SRGBColorSpace; front.map = t; edge.alphaMap = t; edge.map = null;
+    const w = h * t.image.width / t.image.height; for (const m of [pic, back]) { m.scale.x *= w; m.scale.y *= h; m.position.y = h / 2; } front.needsUpdate = edge.needsUpdate = true; }));
+  const p = new Pen(); p.box(0, 0, -.6, .3, 2.4, .3, 0x8a6240); p.box(0, 0, -.2, 1.6, .2, 1.2, 0x8a6240); g.add(p.build(new THREE.Group()));
+  return g;
+}
 
 export function electionsLive(group) {
   group.add(sign('כיכר הבחירות 🗳️', { w: 14, h: 2.6, bg: '#13213b', fg: '#e8b323', border: '#e8b323', font: '900 {px}px "Secular One", Rubik' }).at(0, STAGE_H + 20, STAGE_Z - 4.75));
@@ -75,7 +86,7 @@ export function electionsLive(group) {
     // his vote bar on the backdrop: grows with the votes
     const bar = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1, .3), new THREE.MeshLambertMaterial({ color: 0xe8b323, emissive: 0x3a2a00 })); bar.position.set(x + 4.6, STAGE_H + 1, STAGE_Z - 4.5); bar.scale.y = .01; group.add(bar);
     const count = sign('0', { w: 2.4, h: 1, bg: '#13213b', fg: '#ffffff', border: '#e8b323' }); count.position.set(x + 4.6, STAGE_H + 1.6, STAGE_Z - 4.3); group.add(count); bars.push({ bar, count, c });
-    const v = veil(x, top, STAGE_Z + .5); group.add(v);
+    const v = cutout(c.key, x, top, STAGE_Z + .5); group.add(v);
     const fig = place(group, `models/${c.key}.glb`, { at: [x, top, STAGE_Z + .5], h: FIG_H, key: c.key }); figures.push(fig);
     fig.userData.job.then(() => { v.visible = !fig.userData.ok; }); });
   group.userData.figures = figures;

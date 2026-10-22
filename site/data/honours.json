@@ -78,6 +78,16 @@
         "mpt9399"
       ],
       "day": 10
+    },
+    "kotel": {
+      "by": [
+        "ofek_bell"
+      ],
+      "day": 11
+    },
+    "elections": {
+      "by": [],
+      "day": 11
     }
   }
 }
