@@ -1,6 +1,6 @@
 {
   "note": "The kingdom's state. Written by the daily run (CLAUDE.md). day: today's day number; landmarks: what stands, on which lot, built on which day, at whose asking; history: how many residents stood at the end of each day; upgraded: Instagram name -> extra storeys; visit: whose door Michael walks to today; status: one line about what Michael is doing.",
-  "day": 10,
+  "day": 11,
   "landmarks": [
     {
       "key": "castle",
@@ -110,16 +110,17 @@
     163,
     199,
     221,
-    263
+    263,
+    293
   ],
   "upgraded": {},
-  "status": "הדרקון נתפס על בורג׳ ספיר ונכלא בכלא הדרקונים 🐉 אם לא נגיע ל־1000 עוקבים עד מחר, הוא משתחרר!",
+  "status": "בחירות בממלכה! 🗳️ ארבעה מועמדים לנשיאות המלכותית, והכותל המלכותי נפתח למשאלות 🙏",
   "dm": false,
   "updated": "2026-10-22T20:01:20.358Z",
   "news": {
-    "day": 10,
-    "line": "כלא הדרקונים נבנה, והדרקון מהבורג׳ כבר בפנים! 🐉",
-    "landmark": "prison"
+    "day": 11,
+    "line": "מבזק: בחירות לנשיאות המלכותית! 🗳️ והכותל המלכותי פתוח למשאלות 🙏",
+    "landmark": "elections"
   },
   "reels": {
     "1": "18129295480834389",
@@ -172,5 +173,10 @@
         "text": "שהדרקון יתנהג יפה בכלא 🐉"
       }
     ]
+  },
+  "followers": {
+    "day9_evening": 311,
+    "day10_morning": 320,
+    "day11_eve": 344
   }
 }
