@@ -92,6 +92,10 @@ export async function startReel({ renderer, data, day }) {
     if (r) { const img = new Image(); img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(face(r.h)); await img.decode().catch(() => {}); c.img = img;
       const a = addr[r.plot]; c.house ??= `בית מספר ${(residents.indexOf(r) + 1).toLocaleString('he-IL')}`; c.address ??= `${a.street} ${a.num}`; }
     if (c.type === 'counter') c.to ??= upTo;
+    // day 11: pictures on the cards (a candidate's portrait): c.image, or c.images for the grid
+    const pic = async src => { if (!src) return null; const im = new Image(); im.src = src; await im.decode().catch(() => {}); return im.naturalWidth ? im : null; };
+    if (c.image) c.photo = await pic(c.image);
+    if (c.images) c.photos = await Promise.all(c.images.map(pic));
   }
   // ep.say: how a word the voice needed in English letters is shown in the captions ("Sapir" → "ספיר")
   for (const w of time.words) { w.w = w.w.replace(/[\u0591-\u05C7]/g, '');          // nikud is for the voice only

@@ -3,7 +3,7 @@
 // Layout: a 1080 × 1920 frame; cards stack from the top, captions sit below the middle, the subject stays in between.
 const NAVY = '#13213b', GOLD = '#f2b632', CREAM = '#fffaf0', TEAL = '#0f6f73', MUTED = '#5f6b7a', RED = '#c2412d', INK = '#13213b';
 const BODY = 'Rubik, sans-serif', DISPLAY = 'Crown, Rubik, sans-serif';
-export const FONTS = ['800 60px Rubik', '700 40px Rubik', '400 100px Crown'];
+export const FONTS = ['800 60px Rubik', '700 40px Rubik', '400 100px Crown', '900 100px "Frank Ruhl Libre"', '700 30px "Frank Ruhl Libre"'];
 
 const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), smooth = x => { x = clamp(x); return x * x * (3 - 2 * x); };
 const backOut = x => { x = clamp(x); const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
@@ -72,6 +72,39 @@ function card(g, c, k, cx, y) {
       lines.forEach((l, i) => text(g, l, x + W - 200, y + 210 + i * 60, { font: `700 50px ${BODY}`, align: 'right' }));
       if (c.likes !== null) text(g, `♥ ${Number(c.likes ?? 0).toLocaleString('he-IL')}`, x + 44, y + 160, { font: `800 46px ${BODY}`, color: RED, align: 'left', dir: 'ltr' });
       return H + 14;
+    }
+    case 'poster': {                                 // day 11: a candidate's campaign poster: his colour, his portrait, his ballot note, name and promise
+      const PW = 1000, PH = 1000, px = cx - PW / 2, bg = c.bg ?? NAVY, fg = c.fg ?? '#ffffff', slide = (1 - smooth(k.age / .35)) * 1100;
+      g.save(); g.translate(slide, 0);
+      rr(g, px, y, PW, PH, 46); g.fillStyle = bg; g.fill(); g.lineWidth = 8; g.strokeStyle = GOLD; g.stroke();
+      text(g, c.head ?? 'לנשיאות ספירלנד המלכותית', cx, y + 92, { font: `800 50px ${BODY}`, color: 'rgba(255,255,255,.85)' });
+      // the portrait in a white rounded frame, right
+      const fx = px + PW - 70 - 440, fy = y + 130; box(g, fx, fy, 440, 480, 40, '#ffffff', 0, 0);
+      if (c.photo) { g.save(); rr(g, fx + 14, fy + 14, 412, 452, 30); g.clip(); const s = Math.max(412 / c.photo.width, 452 / c.photo.height), w = c.photo.width * s, h = c.photo.height * s; g.drawImage(c.photo, fx + 14 + (412 - w) / 2, fy + 14, w, h); g.restore(); }
+      // the ballot note, left, a little turned, with the letters and a line
+      g.save(); g.translate(px + 70 + 190, y + 380); g.rotate(-.05); g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 24; g.shadowOffsetY = 10;
+      g.fillStyle = '#ffffff'; g.fillRect(-190, -230, 380, 460); g.shadowColor = 'transparent';
+      g.fillStyle = '#e9e9e9'; g.beginPath(); g.moveTo(190, 230); g.lineTo(130, 230); g.lineTo(190, 170); g.fill();
+      text(g, c.letters ?? '', 0, -40, { font: `900 150px "Frank Ruhl Libre", "David Libre", serif`, color: '#111111' });
+      wrap(g, c.note ?? '', `700 30px "Frank Ruhl Libre", serif`, 320).slice(0, 4).forEach((l, i) => text(g, l, 0, 60 + i * 40, { font: `700 30px "Frank Ruhl Libre", serif`, color: '#222' }));
+      g.restore();
+      text(g, c.name ?? '', cx, y + PH - 200, { font: `900 130px ${BODY}`, color: fg });
+      wrap(g, c.promise ?? '', `800 54px ${BODY}`, PW - 120).slice(0, 2).forEach((l, i) => text(g, l, cx, y + PH - 110 + i * 62, { font: `800 54px ${BODY}`, color: c.accent ?? GOLD }));
+      g.restore(); return PH + 14;
+    }
+    case 'candidates': {                             // day 11: the four candidates in a grid under the elections' header
+      const PW = 900, PH = 1060, px = cx - PW / 2; box(g, px, y, PW, PH, 40, '#ffffff', 8, 14);
+      g.save(); rr(g, px, y, PW, 190, [40, 40, 0, 0]); g.fillStyle = '#7a1f35'; g.fill(); g.restore();
+      text(g, c.text ?? 'הבחירות לנשיאות המלכותית', cx, y + 92, { font: `900 66px ${BODY}`, color: '#ffffff' });
+      text(g, c.sub ?? 'ספירלנד בוחרת', cx, y + 160, { font: `800 44px ${BODY}`, color: GOLD });
+      (c.photos ?? []).forEach((ph, i) => { const tx = px + 40 + (i % 2) * 420, ty = y + 210 + Math.floor(i / 2) * 420, pop = backOut((k.age - i * .25) / .35);
+        if (pop <= 0) return; g.save(); g.translate(tx + 200, ty + 200); g.scale(pop, pop); g.scale(400 / 440, 400 / 440);
+        box(g, -220, -220, 440, 440, 26, (c.colors ?? [])[i] ?? '#eeeeee', 6, 0);
+        if (ph) { g.save(); rr(g, -210, -210, 420, 420, 20); g.clip(); const s = Math.max(420 / ph.width, 420 / ph.height); g.drawImage(ph, -ph.width * s / 2, -210, ph.width * s, ph.height * s); g.restore(); }
+        if (c.names?.[i]) { g.font = `900 46px ${BODY}`; const w = g.measureText(c.names[i]).width + 50; box(g, -w / 2, 150, w, 70, 35, GOLD, 5, 0); text(g, c.names[i], 0, 200, { font: `900 46px ${BODY}` }); }
+        if (c.stamp === i && k.age > (c.stampAt ?? 99)) { g.save(); g.rotate(-.25); g.globalAlpha = .9; g.lineWidth = 10; g.strokeStyle = RED; g.beginPath(); g.arc(0, -20, 120, 0, 7); g.stroke(); text(g, c.stampText ?? 'מוביל!', 0, 0, { font: `900 64px ${BODY}`, color: RED }); g.restore(); }
+        g.restore(); });
+      return PH + 14;
     }
     case 'idcard': {
       const chips = c.honours ?? [], H = 420 + (chips.length ? 100 : 0); box(g, x, y, W, H, R);
@@ -144,7 +177,7 @@ export function drawOverlay(g, k, cards, chunks, fx = []) {
     if (k.t < c.t0 || k.t >= c.t1 + .25) continue;
     const fin = Math.min(backOut((k.t - c.t0) / .45), 1.2), fout = 1 - clamp((k.t - c.t1) / .25), s = (.6 + .4 * fin) * fout + (1 - fout) * .9;
     g.save(); g.globalAlpha = clamp(Math.min((k.t - c.t0) / .2, fout)); g.translate(540, y); g.scale(s, s); g.translate(-540, -y);
-    const h = card(g, c, k, 540, y); g.restore(); y += h * Math.max(s, .9) + 26;
+    const h = card(g, c, { ...k, age: k.t - c.t0 }, 540, y); g.restore(); y += h * Math.max(s, .9) + 26;
   }
   for (const f of fx) if (k.t >= f.t0 && k.t < f.t1 + .25 && !f.under) effect(g, f, k.t);
   // the caption: the chunk being said, the word being said in gold
