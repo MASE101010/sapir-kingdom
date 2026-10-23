@@ -9,7 +9,7 @@ export async function onRequestGet({ request, env }) {
   if (q.has('token')) return json({ ig_token: await env.DB.prepare("SELECT v FROM state WHERE k = 'ig_token'").first('v') });
   const [res, com] = await Promise.all([env.DB.prepare(`SELECT ${COLS} FROM residents ORDER BY n`).all(), env.DB.prepare('SELECT id, media, u, text, at FROM comments WHERE at > ? ORDER BY at').bind(since).all()]);
   const wishes = (await env.DB.prepare('SELECT w.id, w.u, w.text, w.at, w.ok, r.citizen FROM wishes w LEFT JOIN residents r ON r.u = w.u ORDER BY w.at').all().catch(() => ({ results: [] }))).results;
-  const votes = Object.fromEntries((await env.DB.prepare('SELECT vote, COUNT(*) AS c FROM residents WHERE vote IS NOT NULL AND citizen = 1 GROUP BY vote').all().catch(() => ({ results: [] }))).results.map(r => [r.vote, r.c]));
+  const votes = Object.fromEntries((await env.DB.prepare('SELECT vote, COUNT(*) AS c FROM residents WHERE vote IS NOT NULL GROUP BY vote').all().catch(() => ({ results: [] }))).results.map(r => [r.vote, r.c]));
   return json({ residents: res.results.map(row), comments: com.results, wishes, votes });
 }
 export async function onRequestPost({ request, env }) {
