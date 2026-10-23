@@ -56,7 +56,7 @@ export function buildKotel(scene, W) {
 /** where note i hangs: columns going out from the gate on both sides, seven rows high */
 function slot(W, i) {
   const col = Math.floor(i / ROWS), row = i % ROWS, side = col % 2 ? -1 : 1, k = Math.floor(col / 2);
-  const th = side * (KOTEL.GAP + (14 + k * 3.3) / W), y = 3 + row * 3.9 + ((k * 7 + row * 3) % 5) * .18;
+  const th = side * (KOTEL.GAP + (30 + k * 3.3) / W), y = 3 + row * 3.9 + ((k * 7 + row * 3) % 5) * .18;
   const r = W - 1.65 - .06;
   return { x: Math.sin(th) * r, y, z: Math.cos(th) * r, ry: th + Math.PI, rz: (((i * 37) % 9) - 4) * .025 };
 }

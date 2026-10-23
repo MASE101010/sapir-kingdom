@@ -64,7 +64,7 @@ export const CANDIDATES = {
   bibkovich: { re: /(?<!\p{L})(ביבקוביץ['׳]?|ביבקוביץ'|bibkovich)(?!\p{L})/iu, name: "ביבקוביץ'" },
   yairdo: { re: /(?<!\p{L})(יאירדו|יארדו|yairdo)(?!\p{L})/iu, name: 'יאירדו' },
   lebet: { re: /(?<!\p{L})(לבט|לה\s*בט|lebet)(?!\p{L})/iu, name: 'לבט' },
-  mascentape: { re: /(?<!\p{L})(מסקנטייפ|מסקנטיפ|מסקנטיים|מסקנטים|mascentape)(?!\p{L})/iu, name: 'מסקנטייפ' } };
+  mascentape: { re: /(?<!\p{L})(מאיסנקוט|מאיזנקוט|מייסנקוט|מייזנקוט|מאיסנקוטט|מסקנטייפ|maizencot|maisencot|mascentape)(?!\p{L})/iu, name: 'מאיסנקוט' } };   // day 11: renamed from מסקנטייפ (the voice could not say it)
 export const voteOf = text => { const hits = Object.entries(CANDIDATES).filter(([, c]) => c.re.test(String(text ?? ''))); return hits.length === 1 ? hits[0][0] : null; };
 const VOTED = [n => `הקול שלך ל${n} נספר! 🗳️`, n => `נרשם בקלפי המלכותית: קול ל${n} 🗳️👑`, n => `${n} מודה לך על הקול! 🗳️ הספירה ממשיכה`, n => `קיבלנו! עוד קול ל${n} 🗳️ מי ינצח?`];
 const VOTE_WAIT = [n => `הקול ל${n} נשמר 🗳️ כדי שייספר, עקבו וכתבו לי "בית" בפרטי`];

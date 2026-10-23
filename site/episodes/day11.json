@@ -1,0 +1,686 @@
+{
+ "day": 11,
+ "lines": [
+  "[excited] מבזק חירום מהממלכה של משפחת Sapir!",
+  "[excited] יום אחד עשר, ואתמול הצטרפו שלושים ושלושה עוקבים חדשים!",
+  "[excited] המלך מכריז: בחירות לנשיאות המלכותית!",
+  "[excited] ארבעה מועמדים רוצים לשלוט ב-Sapirland!",
+  "[excited] Bibkovich!",
+  "[excited] אני, Bibkovich, אָבִיס את הדרקונים, ואביא שלום לממלכה!",
+  "[excited] Yairdo!",
+  "[excited] סוף סוף נחליף את השלטון העתיק, וכולם יהיו מלכים!",
+  "[excited] Lebet!",
+  "[excited] אני... אֶבְנֶה... ממלכה חדשה!",
+  "[excited] ו-Maizencot!",
+  "[excited] חופש מהעבודה... לכולם... כל הזמן.",
+  "[excited] מי ינצח? רק אתם מחליטים!",
+  "[excited] תעקבו, ותגיבו את שם המועמד שלכם!",
+  "[excited] והדרקון בַּכֶּלֶא? גם הוא רוצה להצביע...",
+  "[excited] ועוד הכרזה... פתחנו את הכותל המלכותי!",
+  "[excited] כותל ענק, מסביב לכל הממלכה!",
+  "[excited] רעיון של Ofek, האדריכל של הכותל!",
+  "[excited] תכתבו בתגובות: המשאלה שלי היא... והיא תופיע על הכותל!",
+  "[excited] וּמַפְתֵּחַ הזהב של היום הולך ל-Or!",
+  "[excited] שלחו את הסרטון לחבר, שעוד אין לו בית!"
+ ],
+ "top": 170,
+ "mix": "day11.mix.mp3",
+ "say": {
+  "Sapirland": "ספירלנד",
+  "Sapir": "ספיר",
+  "Bibkovich": "ביבקוביץ'",
+  "Yairdo": "יאירדו",
+  "Lebet": "לבט",
+  "Maizencot": "מאיסנקוט",
+  "Ofek": "אופק",
+  "Or": "אור"
+ },
+ "homes": {
+  "ormizrachi161": 8
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "castle",
+   "dist": 300,
+   "yaw": -20,
+   "pitch": 45,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 600,
+   "yaw": 20,
+   "pitch": 58,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 2,
+   "target": "statue",
+   "dist": 70,
+   "yaw": 0,
+   "pitch": 22,
+   "orbit": 6,
+   "ease": 0.7
+  },
+  {
+   "line": 3,
+   "target": "landmark:elections",
+   "dist": 110,
+   "yaw": 0,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 0.7
+  },
+  {
+   "line": 4,
+   "target": [
+    132.2,
+    9,
+    -154.2
+   ],
+   "dist": 20,
+   "yaw": -63.0,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 6,
+   "target": [
+    139.5,
+    9,
+    -146.9
+   ],
+   "dist": 20,
+   "yaw": -51.0,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 8,
+   "target": [
+    146.9,
+    9,
+    -139.5
+   ],
+   "dist": 20,
+   "yaw": -39.0,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 10,
+   "target": [
+    154.2,
+    9,
+    -132.2
+   ],
+   "dist": 20,
+   "yaw": -27.0,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 12,
+   "target": "landmark:elections",
+   "dist": 95,
+   "yaw": 0,
+   "pitch": 24,
+   "orbit": 7,
+   "ease": 0.7
+  },
+  {
+   "line": 13,
+   "target": [
+    137.9,
+    4,
+    -137.9
+   ],
+   "dist": 60,
+   "yaw": -30,
+   "pitch": 34,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 14,
+   "target": [
+    -137.5,
+    8,
+    -145.3
+   ],
+   "dist": 55,
+   "yaw": 90,
+   "pitch": 42,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 15,
+   "target": [
+    0,
+    30,
+    2230
+   ],
+   "dist": 520,
+   "yaw": 160,
+   "pitch": 16,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 15,
+   "dt": 1.6,
+   "target": [
+    0,
+    30,
+    2205
+   ],
+   "dist": 150,
+   "yaw": 180,
+   "pitch": 12,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 16,
+   "target": [
+    0,
+    25,
+    2228
+   ],
+   "dist": 130,
+   "yaw": 125,
+   "pitch": 8,
+   "orbit": 4,
+   "ease": 0.7
+  },
+  {
+   "line": 17,
+   "target": [
+    -44,
+    11,
+    2225
+   ],
+   "dist": 24,
+   "yaw": 192,
+   "pitch": 4,
+   "orbit": 1,
+   "ease": 0.6
+  },
+  {
+   "line": 18,
+   "target": [
+    44,
+    11,
+    2225
+   ],
+   "dist": 26,
+   "yaw": 168,
+   "pitch": 4,
+   "orbit": -1,
+   "ease": 0.6
+  },
+  {
+   "line": 19,
+   "target": "house:ormizrachi161",
+   "dist": 40,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 20,
+   "target": "castle",
+   "dist": 260,
+   "yaw": 10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 2.4,
+   "text": "יום 11"
+  },
+  {
+   "type": "candidates",
+   "line": 3,
+   "dt": 0.1,
+   "dur": 2.8,
+   "images": [
+    "img/candidates/bibkovich.jpg",
+    "img/candidates/yairdo.jpg",
+    "img/candidates/lebet.jpg",
+    "img/candidates/mascentape.jpg"
+   ],
+   "crop": [
+    0.25,
+    0,
+    1,
+    0.78
+   ],
+   "names": [
+    "ביבקוביץ'",
+    "יאירדו",
+    "לבט",
+    "מאיסנקוט"
+   ],
+   "colors": [
+    "#f2b632",
+    "#e8742a",
+    "#6b3fa0",
+    "#1f8a4c"
+   ]
+  },
+  {
+   "type": "poster",
+   "line": 4,
+   "dt": 0,
+   "dur": 0,
+   "poster": "img/candidates/bibkovich.jpg",
+   "name": "ביבקוביץ'",
+   "promise": "אביס את הדרקונים ואביא שלום לממלכה",
+   "fg": "#13213b",
+   "untilLine": 6
+  },
+  {
+   "type": "poster",
+   "line": 6,
+   "dt": 0,
+   "dur": 0,
+   "poster": "img/candidates/yairdo.jpg",
+   "name": "יאירדו",
+   "promise": "נחליף את השלטון העתיק, וכולם יהיו מלכים",
+   "fg": "#ffffff",
+   "untilLine": 8
+  },
+  {
+   "type": "poster",
+   "line": 8,
+   "dt": 0,
+   "dur": 0,
+   "poster": "img/candidates/lebet.jpg",
+   "name": "לבט",
+   "promise": "אבנה ממלכה חדשה",
+   "fg": "#ffffff",
+   "untilLine": 10
+  },
+  {
+   "type": "poster",
+   "line": 10,
+   "dt": 0,
+   "dur": 0,
+   "poster": "img/candidates/mascentape.jpg",
+   "name": "מאיסנקוט",
+   "promise": "חופש מהעבודה לכולם, כל הזמן",
+   "fg": "#ffffff",
+   "untilLine": 12
+  },
+  {
+   "type": "comment",
+   "line": 17,
+   "dt": 0,
+   "dur": 2.2,
+   "u": "ofek_bell",
+   "text": "תבנה את הכותל הספירי, הכותל שבו אפשר לבקש משאלות",
+   "likes": 1
+  },
+  {
+   "type": "idcard",
+   "line": 17,
+   "dt": 1.0,
+   "dur": 1.8,
+   "u": "ofek_bell",
+   "honours": [
+    "אדריכל · הכותל המלכותי"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 19,
+   "dt": 0.1,
+   "dur": 2.4,
+   "u": "ormizrachi161",
+   "honours": [
+    "מפתח זהב · יום 11"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 20,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "שלחו לחבר 👫",
+   "sub": "שעוד אין לו בית בממלכה 🏠"
+  }
+ ],
+ "votes": {},
+ "fx": [
+  {
+   "type": "news",
+   "line": 0,
+   "dur": 2.9,
+   "text": "מבזק חירום 🚨",
+   "sub": "חדשות הממלכה",
+   "clock": "13:00",
+   "y": 250
+  },
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3,
+   "color": "#c8102e",
+   "alpha": 0.5
+  },
+  {
+   "type": "shake",
+   "line": 0,
+   "dur": 0.5,
+   "amp": 0.8
+  },
+  {
+   "type": "banner",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 1.6,
+   "text": "עקבו + הגיבו = בית 🏠",
+   "y": 760,
+   "size": 100,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 1,
+   "dt": 1.8,
+   "dur": 2.4,
+   "text": "+33 עוקבים חדשים 🎉",
+   "y": 760,
+   "size": 110,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 1,
+   "dt": 1.8,
+   "dur": 2
+  },
+  {
+   "type": "banner",
+   "line": 2,
+   "dt": 0.9,
+   "dur": 2.4,
+   "text": "בחירות בממלכה! 🗳️",
+   "y": 760,
+   "size": 120,
+   "band": "#7a1f35",
+   "color": "#ffffff"
+  },
+  {
+   "type": "punch",
+   "line": 2,
+   "dt": 0.9,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 13,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "תגיבו את שם המועמד 🗳️",
+   "y": 760,
+   "size": 100,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "sticker",
+   "line": 14,
+   "dt": 0.4,
+   "dur": 2.2,
+   "text": "🗳️",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": -8
+  },
+  {
+   "type": "punch",
+   "line": 15,
+   "dt": 0.9,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "confetti",
+   "line": 15,
+   "dt": 1,
+   "dur": 2
+  },
+  {
+   "type": "banner",
+   "line": 16,
+   "dt": 0.4,
+   "dur": 2.2,
+   "text": "הכותל המלכותי 🙏",
+   "y": 760,
+   "size": 115,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 18,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "\"המשאלה שלי היא...\" 🙏",
+   "y": 1150,
+   "size": 95,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "punch",
+   "line": 19,
+   "dur": 0.8,
+   "zoom": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 19,
+   "dur": 2
+  },
+  {
+   "type": "sticker",
+   "line": 19,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "🔑",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 10
+  }
+ ],
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 1,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 4,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 12,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 14,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 15,
+     "dt": 0.8
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0
+  },
+  {
+   "name": "boom",
+   "line": 0,
+   "dt": 0.05
+  },
+  {
+   "name": "kaching",
+   "line": 1,
+   "dt": 1.8
+  },
+  {
+   "name": "tada",
+   "line": 2,
+   "dt": 0.9
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 3,
+   "dt": 0.3,
+   "repeat": 4,
+   "every": 0.25,
+   "gain": 0.6
+  },
+  {
+   "name": "whoosh",
+   "line": 4,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 6,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 8,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 10,
+   "dt": -0.1
+  },
+  {
+   "name": "snore",
+   "line": 11,
+   "dt": 1.5,
+   "gain": 0.5
+  },
+  {
+   "name": "ding",
+   "line": 12,
+   "dt": 0
+  },
+  {
+   "name": "pop",
+   "line": 13,
+   "dt": 0.3
+  },
+  {
+   "name": "roar",
+   "line": 14,
+   "dt": 0.3,
+   "gain": 0.6
+  },
+  {
+   "name": "boom",
+   "line": 15,
+   "dt": 0.9
+  },
+  {
+   "name": "tada",
+   "line": 15,
+   "dt": 1.0
+  },
+  {
+   "name": "sparkle",
+   "line": 16,
+   "dt": 0.4
+  },
+  {
+   "name": "pop",
+   "line": 17,
+   "dt": 0
+  },
+  {
+   "name": "sparkle",
+   "line": 18,
+   "dt": 0.3
+  },
+  {
+   "name": "kaching",
+   "line": 19,
+   "dt": 0
+  },
+  {
+   "name": "ding",
+   "line": 20,
+   "dt": 0.1
+  }
+ ],
+ "caption": "מבזק חירום מהממלכה! 🚨 בחירות לנשיאות המלכותית של ספירלנד 🗳️ ביבקוביץ', יאירדו, לבט או מאיסנקוט?\nתעקבו ותגיבו את שם המועמד שלכם, וגם: הכותל המלכותי נפתח! כתבו \"המשאלה שלי היא...\" והיא תופיע על הכותל 🙏 (רעיון של אופק)\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #בחירות #הכותל_המלכותי",
+ "firstComment": "למי אתם מצביעים? 🗳️ ביבקוביץ' / יאירדו / לבט / מאיסנקוט. ושלחו לחבר שעוד אין לו בית בממלכה 🏠",
+ "notes": "Day 11, Michael's plan: royal elections with four made-up candidates (each with his own ElevenLabs voice: Nimrod, Dorian, Viktor M, Tomer; the fourth renamed from מסקנטייפ to מאיסנקוט because the voice could not say it) and הכותל המלכותי (ofek_bell's idea). Gold key: ormizrachi161, by the rule among day 10's citizens. Followers 344 (311 on day 9's evening)."
+}

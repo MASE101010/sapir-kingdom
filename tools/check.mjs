@@ -15,7 +15,7 @@ for (const l of kingdom.landmarks) { if (!LANDMARKS[l.key]) fail.push(`kingdom.j
 residents.forEach((r, k) => { if (!plan.plots[r.plot]) fail.push(`resident ${r.u}: no plot ${r.plot}`); if (r.host && !residents.some(x => x.u === r.host && x.plot === r.plot)) /* the host may be listed after the guest */ fail.push(`resident ${r.u}: host ${r.host} not on plot ${r.plot}`); });
 try { const before = JSON.parse(execSync('git show HEAD:site/data/residents.json', { stdio: ['ignore', 'pipe', 'ignore'] }).toString()).residents;
   before.forEach((r, k) => { if (residents[k]?.u !== r.u) fail.push(`resident ${k + 1} changed or removed: ${r.u}`); }); } catch { }
-const TYPES = new Set(['title', 'counter', 'comment', 'idcard', 'label', 'cta']);
+const TYPES = new Set(['title', 'counter', 'comment', 'idcard', 'label', 'cta', 'note', 'poster', 'candidates']);
 const days = process.argv.includes('--day') ? [+process.argv[process.argv.indexOf('--day') + 1]] : Array.from({ length: kingdom.day }, (_, i) => i + 1);
 for (const d of days) { const f = `site/episodes/day${d}.json`; if (!existsSync(f)) continue; const ep = read(f), n = ep.lines?.length ?? 0;
   if (!n) fail.push(`${f}: no lines`); if (!ep.caption && d > 1) fail.push(`${f}: no caption`);

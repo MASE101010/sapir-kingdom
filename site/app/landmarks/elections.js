@@ -1,5 +1,5 @@
 // כיכר הבחירות: day 11, the royal elections. King Michael called elections for the royal presidency of Sapirland, and four
-// candidates stand on the stage: ביבקוביץ', יאירדו, לבט and מסקנטייפ (made-up royal figures, no real person, no real
+// candidates stand on the stage: ביבקוביץ', יאירדו, לבט and מאיסנקוט (made-up royal figures, no real person, no real
 // politics; their promises are about the kingdom only). Each stands on a pedestal under a banner with his name and promise;
 // the figures are 3D models from site/models/<key>.glb (models.js), and until a model exists a draped statue waits in its
 // place. Above each, a bar grows with his votes (setVotes: a comment with his name is a vote, citizens count). In front, a
@@ -15,7 +15,7 @@ export const CANDIDATES = [
   { key: 'bibkovich', name: "ביבקוביץ'", letters: 'בבק', promise: 'אביס את הדרקונים ואביא שלום לממלכה', color: 0xf2b632, fg: '#13213b', bg: '#f2b632' },
   { key: 'yairdo', name: 'יאירדו', letters: 'יא', promise: 'נחליף את השלטון העתיק, וכולם יהיו מלכים', color: 0xe8742a, fg: '#ffffff', bg: '#e8742a' },
   { key: 'lebet', name: 'לבט', letters: 'לב', promise: 'אבנה ממלכה חדשה', color: PURPLE, fg: '#ffffff', bg: '#6b3fa0' },
-  { key: 'mascentape', name: 'מסקנטייפ', letters: 'מס', promise: 'חופש מהעבודה לכולם, כל הזמן', color: GREEN, fg: '#ffffff', bg: '#1f8a4c' },
+  { key: 'mascentape', name: 'מאיסנקוט', letters: 'מס', promise: 'חופש מהעבודה לכולם, כל הזמן', color: GREEN, fg: '#ffffff', bg: '#1f8a4c' },
 ];
 export const XS = [-15.6, -5.2, 5.2, 15.6], STAGE_Z = -8, STAGE_H = 2.6, PED_H = 2.2, FIG_H = 7.5;
 

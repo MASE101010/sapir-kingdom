@@ -86,7 +86,7 @@ export async function startReel({ renderer, data, day }) {
   }
 
   // the cards and captions: drawn on a 2D canvas over the 3D frame (overlay.js)
-  const cards = (ep.cards ?? []).map((c, i) => ({ ...c, i, t0: lineAt(c.line, c.dt), t1: lineAt(c.line, c.dt) + (c.dur ?? 3.5) }));
+  const cards = (ep.cards ?? []).map((c, i) => ({ ...c, i, t0: lineAt(c.line, c.dt), t1: c.untilLine != null ? lineAt(c.untilLine) - .15 : lineAt(c.line, c.dt) + (c.dur ?? 3.5) }));   // untilLine: up to the line that follows it
   for (const c of cards) {
     const r = c.u && resident(c.u);
     if (r) { const img = new Image(); img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(face(r.h)); await img.decode().catch(() => {}); c.img = img;
