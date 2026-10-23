@@ -11,6 +11,6 @@ export async function onRequestGet({ request, env, waitUntil }) {
   // the notes on the royal wall (day 11): citizens' wishes that passed, newest first
   const wishes = (await env.DB.prepare('SELECT w.u, w.text, w.at FROM wishes w JOIN residents r ON r.u = w.u WHERE w.ok = 1 AND r.citizen = 1 ORDER BY w.at DESC LIMIT 600').all().catch(() => ({ results: [] }))).results;
   // the royal elections (day 11): citizens' votes, by candidate
-  const votes = Object.fromEntries((await env.DB.prepare('SELECT vote, COUNT(*) AS c FROM residents WHERE vote IS NOT NULL GROUP BY vote').all().catch(() => ({ results: [] }))).results.map(r => [r.vote, r.c]));
+  const votes = Object.fromEntries((await env.DB.prepare('SELECT vote, COUNT(*) AS c FROM residents WHERE vote IS NOT NULL AND citizen = 1 GROUP BY vote').all().catch(() => ({ results: [] }))).results.map(r => [r.vote, r.c]));
   return json({ residents: results.map(row), changed, wishes, votes }, 200, { 'cache-control': 'public, max-age=20' });
 }
