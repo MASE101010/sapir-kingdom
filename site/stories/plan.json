@@ -286,5 +286,32 @@
   "image": "stories/day10-5.jpg",
   "after": "reel:10",
   "about": "21:30 מפתח הזהב, הזוכה גר בווילה"
+ },
+ {
+  "id": "day11-1",
+  "at": "2026-10-23T08:15:00Z",
+  "image": "stories/day11-1.jpg",
+  "about": "11:15 מבזק בקרוב"
+ },
+ {
+  "id": "day11-2",
+  "at": "2026-10-23T10:40:00Z",
+  "image": "stories/day11-2.jpg",
+  "after": "reel:11",
+  "about": "13:40 למי אתם מצביעים"
+ },
+ {
+  "id": "day11-3",
+  "at": "2026-10-23T15:00:00Z",
+  "image": "stories/day11-3.jpg",
+  "after": "reel:11",
+  "about": "18:00 הכותל המלכותי"
+ },
+ {
+  "id": "day11-4",
+  "at": "2026-10-23T17:30:00Z",
+  "image": "stories/day11-4.jpg",
+  "after": "reel:11",
+  "about": "20:30 מפתח הזהב, הזוכה גר בווילה"
  }
 ]
