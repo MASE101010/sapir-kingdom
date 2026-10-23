@@ -67,7 +67,7 @@ export const CANDIDATES = {
   mascentape: { re: /(?<!\p{L})(מאיסנקוט|מאיזנקוט|מייסנקוט|מייזנקוט|מאיסנקוטט|מסקנטייפ|maizencot|maisencot|mascentape)(?!\p{L})/iu, name: 'מאיסנקוט' } };   // day 11: renamed from מסקנטייפ (the voice could not say it)
 export const voteOf = text => { const hits = Object.entries(CANDIDATES).filter(([, c]) => c.re.test(String(text ?? ''))); return hits.length === 1 ? hits[0][0] : null; };
 const VOTED = [n => `הקול שלך ל${n} נספר! 🗳️`, n => `נרשם בקלפי המלכותית: קול ל${n} 🗳️👑`, n => `${n} מודה לך על הקול! 🗳️ הספירה ממשיכה`, n => `קיבלנו! עוד קול ל${n} 🗳️ מי ינצח?`];
-const VOTE_WAIT = [n => `הקול שלך ל${n} נספר! 🗳️ ועכשיו תעקבו אחרי הממלכה, כדי לראות מי ינצח 👑`, n => `עוד קול ל${n}! 🗳️ אל תשכחו לעקוב אחרי הממלכה 👑`, n => `נספר! 🗳️ קול ל${n}. תעקבו אחרי הממלכה, התוצאות בריל הבא 👀`];   // Michael: every vote counts; those we have not seen follow are asked to follow
+const VOTE_WAIT = [() => 'הצבעות זה רק לתושבים! 🗳️ תעקבו אחרי הממלכה 👑', () => 'תודה שהצבעת! עכשיו תעקוב, כדי שנכניס את הקול שלך לקלפי 🗳️', () => 'בחירה נהדרת! אבל כדי להצביע, צריך לעקוב 😉', () => 'הקלפי פתוחה רק לעוקבים 🗳️ לחיצה על עקוב, וזהו!', () => 'איזה טעם מעולה! 👑 עכשיו רק לעקוב, והקול בקלפי'];   // Michael: light, just ask them to follow
 const CITY = /תל\s*בטטה|telbatata|tel\s*batata|מעתיק|העתק|חיקוי|קריית\s*בצל/iu;
 const HOUSE_ASK = /^(אפשר|אני\s+רוצה|תבנו\s+לי|תבנה\s+לי|רוצה|אשמח\s+ל)?\s*(גם\s+)?(בית|ביית|ביתת|בית\s+משלי|בית\s+בבקשה)[\s?!.]*$/u;
 
