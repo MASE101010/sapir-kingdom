@@ -10,7 +10,8 @@
       "liron7111",
       "yoav_levi676767",
       "imry.life",
-      "yonatan.reuveni1"
+      "yonatan.reuveni1",
+      "ormizrachi161"
     ]
   },
   "built": {
@@ -78,6 +79,16 @@
         "mpt9399"
       ],
       "day": 10
+    },
+    "kotel": {
+      "by": [
+        "ofek_bell"
+      ],
+      "day": 11
+    },
+    "elections": {
+      "by": [],
+      "day": 11
     }
   }
 }

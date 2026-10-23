@@ -8,11 +8,15 @@ export async function onRequestGet({ request, env }) {
   const q = new URL(request.url).searchParams, since = +q.get('comments_since') || 0;
   if (q.has('token')) return json({ ig_token: await env.DB.prepare("SELECT v FROM state WHERE k = 'ig_token'").first('v') });
   const [res, com] = await Promise.all([env.DB.prepare(`SELECT ${COLS} FROM residents ORDER BY n`).all(), env.DB.prepare('SELECT id, media, u, text, at FROM comments WHERE at > ? ORDER BY at').bind(since).all()]);
-  return json({ residents: res.results.map(row), comments: com.results });
+  const wishes = (await env.DB.prepare('SELECT w.id, w.u, w.text, w.at, w.ok, r.citizen FROM wishes w LEFT JOIN residents r ON r.u = w.u ORDER BY w.at').all().catch(() => ({ results: [] }))).results;
+  const votes = Object.fromEntries((await env.DB.prepare('SELECT vote, COUNT(*) AS c FROM residents WHERE vote IS NOT NULL AND citizen = 1 GROUP BY vote').all().catch(() => ({ results: [] }))).results.map(r => [r.vote, r.c]));
+  return json({ residents: res.results.map(row), comments: com.results, wishes, votes });
 }
 export async function onRequestPost({ request, env }) {
   if (!allowed(request, env)) return json({ error: 'unauthorized' }, 401);
-  const { day, ig_token, comments, home } = await request.json();
+  const { day, ig_token, comments, home, wish } = await request.json();
+  // the daily run looks at a waiting wish: { wish: { id, ok: 1 | -1 } }
+  if (wish?.id && [1, -1].includes(wish.ok)) { await env.DB.prepare('UPDATE wishes SET ok = ? WHERE id = ?').bind(wish.ok, String(wish.id)).run(); return json({ ok: true, wish }); }
   // the daily run gives a house style (the gold key winner's villa): { home: { u, kind } }
   if (home?.u && Number.isInteger(home.kind)) { await env.DB.prepare('UPDATE residents SET home = ?, changed = ? WHERE u = ?').bind(home.kind, Date.now(), String(home.u).toLowerCase()).run(); return json({ ok: true, home }); }
   // comments read by the poller: keep each once, build the commenter's house, say which are new

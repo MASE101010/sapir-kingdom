@@ -130,3 +130,14 @@ body.site #scene canvas { cursor: grab; } body.site #scene canvas:active { curso
 .squad.m .shirt { background: #1f8a4c; } .squad.h .shirt { background: #c8102e; } .roster .free { color: var(--muted); } .roster .free .shirt { background: #d9d4c8; }
 
 .squad.b { border-color: #1b1d21; } .squad.b h3 { color: #1b1d21; } .squad.b .shirt { background: #f2c418; color: #1b1d21; }
+@font-face { font-family: "Frank Ruhl Libre"; font-weight: 700; src: url(fonts/frank-ruhl-libre-hebrew-700-normal.woff2) format('woff2'); unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+FB1D-FB4F; }
+@font-face { font-family: "Frank Ruhl Libre"; font-weight: 900; src: url(fonts/frank-ruhl-libre-hebrew-900-normal.woff2) format('woff2'); unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+FB1D-FB4F; }
+
+/* day 11: the royal elections' live count, under the header */
+.ballot { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 70px); inset-inline-start: 12px; width: 210px; background: var(--cream); border: 2px solid var(--navy); border-radius: 14px; padding: 8px 10px; box-shadow: 0 3px 0 var(--navy); z-index: 3; text-align: start; font: inherit; color: var(--navy); cursor: pointer; }
+.ballot h4 { margin: 0 0 6px; font: 400 15px var(--display); }
+.ballot .row { display: grid; grid-template-columns: 30px 1fr 30px; align-items: center; gap: 6px; margin: 3px 0; font-size: 13px; font-weight: 700; }
+.ballot .row img { width: 30px; height: 30px; object-fit: cover; object-position: top; border-radius: 50%; border: 2px solid var(--c); background: var(--c); }
+.ballot .bar { height: 8px; border-radius: 4px; background: var(--c); width: calc(var(--w) * 1%); min-width: 4px; transition: width .6s; }
+.ballot .row span { display: grid; gap: 2px; } .ballot .row b { text-align: end; }
+.ballot small { display: block; margin-top: 4px; font-size: 11px; opacity: .75; }

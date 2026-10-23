@@ -47,17 +47,39 @@ export const teamOf = text => Object.entries(TEAMS).find(([, t]) => t.re.test(St
 const SIGNED = [(n, s) => `ברוך הבא ל${n}! ⚽ קיבלת חולצה מספר ${s}`, (n, s) => `חתמת ב${n}! 🖊️⚽ מספר ${s} שלך, תתחיל להתאמן`, (n, s) => `${n} מחתימה שחקן חדש! 🔥 חולצה מספר ${s}`, (n, s) => `הסגל של ${n} גדל! ⚽ אתה מספר ${s}, מחר בוחרים צבע מדים`];
 const FULL = [n => `הסגל של ${n} מלא 😅 אבל אתה האוהד מספר 1 ביציע! 📣`, n => `כל השחקנים של ${n} כבר נבחרו, אבל ביציע תמיד יש מקום 🏟️`];
 const ARMY = [() => 'גויסת לצבא ההגנה לספירלנד! 🪖 הבית שלך עבר למגורים הצבאיים', () => 'ברוך הבא לצבא, חייל! 🫡 המגורים הצבאיים שלך מוכנים', () => 'הדרקונים כבר רועדים 🐉 גויסת! הבית שלך עכשיו במגורים הצבאיים', () => 'קיבלת מדים וקסדה 🪖 ברוכים הבאים לצבא ההגנה לספירלנד'];
-export const BAD = /זונה|זנות|סקס|ציצי|תחת|חרא|קקי|פיפי|משתין|משתינ|מחרבן|זין|כוס|שרמוט|מטומטם|אידיוט|טיפש|סתום|למות|להרוג|רצח|פיגוע|מחבל|טרור|נאצי|היטלר|סמים|ג'וינט|אלכוהול|וודקה|נשק|אקדח|רובה|פצצה|מגדלי\s*התאומים|ביבי|נתניהו|בנט|טראמפ|לפיד|גנץ|בן\s*גביר|סמוטריץ|ליכוד|בחירות|מטוס\s*שמתקרב/u;
+export const BAD = /זונה|זנות|סקס|ציצי|תחת|חרא|קקי|פיפי|משתין|משתינ|מחרבן|זין|כוס|שרמוט|מטומטם|אידיוט|טיפש|סתום|למות|להרוג|רצח|פיגוע|מחבל|טרור|נאצי|היטלר|סמים|ג'וינט|אלכוהול|וודקה|נשק|אקדח|רובה|פצצה|מגדלי\s*התאומים|ביבי|נתניהו|בנט|טראמפ|לפיד|גנץ|בן\s*גביר|סמוטריץ|ליכוד|מטוס\s*שמתקרב/u;
+// day 11: the royal wall. "המשאלה שלי היא..." (or "משאלה:") puts a note with the wish on הכותל המלכותי
+export const WISH = /(?:^|\s)(?:ה?משאלה(?:\s+שלי)?(?:\s+(?:היא|זה|זו))?|אני\s+מבקש(?:ת)?\s+ש|אני\s+משאיל)\s*[:,.\-–]*\s*([\s\S]{2,})/u;
+/** the wish itself, cleaned for the note: no mentions, no links, at most 70 letters */
+export function wishText(text) { const m = String(text ?? '').match(WISH); if (!m) return null;
+  const t = m[1].replace(/https?:\S+|www\.\S+/giu, ' ').replace(/@[\w.]+/g, ' ').replace(/\s+/g, ' ').trim().replace(/^(?:זה\s+)?ש(?=[היתאנ])/u, '').trim();   // "שהדרקון ישתחרר" → "הדרקון ישתחרר", but "שלום" stays
+  return t.length >= 2 ? (t.length > 70 ? t.slice(0, 68).replace(/\s+\S*$/u, '') + '…' : t) : null; }
+/** 1: straight onto the wall, 0: the daily run looks first (a name, a number, a link, English), -1: never */
+export function wishOk(text, raw) { if (BAD.test(raw) || CITY.test(raw)) return -1; if (/https?:|www\.|\d{5,}|[A-Za-z]{4,}/u.test(raw)) return 0; return 1; }
+const WISHES = [() => 'המשאלה שלך נתלתה על הכותל המלכותי 🙏✨', () => 'פתק חדש בכותל המלכותי! שהמשאלה תתגשם 🙏', () => 'המלך שם את הפתק שלך בכותל בעצמו 👑🙏', () => 'נרשם בכותל המלכותי. שיתגשם בקרוב! ✨'];
+const WISH_WAIT = [() => 'המשאלה שלך נשמרה 🙏 כדי שתופיע על הכותל המלכותי, עקבו וכתבו לי "בית" בפרטי', () => 'קיבלתי את המשאלה! ✨ היא תעלה לכותל ברגע שתעקבו ותכתבו לי "בית" בפרטי'];
+const WISH_CHECK = [() => 'המשאלה הגיעה למלך 🙏 הוא קורא אותה ותולה אותה בכותל בקרוב', () => 'קיבלתי! המלך עובר על הפתקים ותולה אותם בכותל ✨'];
+// day 11: the royal elections. Four candidates for the royal presidency of Sapirland; a comment with a name is a vote
+export const CANDIDATES = {
+  bibkovich: { re: /(?<!\p{L})(ביבקוביץ['׳]?|ביבקוביץ'|bibkovich)(?!\p{L})/iu, name: "ביבקוביץ'" },
+  yairdo: { re: /(?<!\p{L})(יאירדו|יארדו|yairdo)(?!\p{L})/iu, name: 'יאירדו' },
+  lebet: { re: /(?<!\p{L})(לבט|לה\s*בט|lebet)(?!\p{L})/iu, name: 'לבט' },
+  mascentape: { re: /(?<!\p{L})(מאיסנקוט|מאיזנקוט|מייסנקוט|מייזנקוט|מאיסנקוטט|מסקנטייפ|maizencot|maisencot|mascentape)(?!\p{L})/iu, name: 'מאיסנקוט' } };   // day 11: renamed from מסקנטייפ (the voice could not say it)
+export const voteOf = text => { const hits = Object.entries(CANDIDATES).filter(([, c]) => c.re.test(String(text ?? ''))); return hits.length === 1 ? hits[0][0] : null; };
+const VOTED = [n => `הקול שלך ל${n} נספר! 🗳️`, n => `נרשם בקלפי המלכותית: קול ל${n} 🗳️👑`, n => `${n} מודה לך על הקול! 🗳️ הספירה ממשיכה`, n => `קיבלנו! עוד קול ל${n} 🗳️ מי ינצח?`];
+const VOTE_WAIT = [n => `הקול ל${n} נשמר 🗳️ כדי שייספר, עקבו וכתבו לי "בית" בפרטי`];
 const CITY = /תל\s*בטטה|telbatata|tel\s*batata|מעתיק|העתק|חיקוי|קריית\s*בצל/iu;
 const HOUSE_ASK = /^(אפשר|אני\s+רוצה|תבנו\s+לי|תבנה\s+לי|רוצה|אשמח\s+ל)?\s*(גם\s+)?(בית|ביית|ביתת|בית\s+משלי|בית\s+בבקשה)[\s?!.]*$/u;
 
 /** the answer to one comment. fresh: their house was built just now (n); citizen: they follow */
-export function reply({ id, u, text }, { fresh = false, n, citizen = false, team = null, pilot = false, tagged = [] } = {}) {
+export function reply({ id, u, text }, { fresh = false, n, citizen = false, team = null, pilot = false, tagged = [], wish: wishState = null, vote = null } = {}) {
   const seed = hash(id), t = String(text ?? '').trim(), w = wish(t), num = n?.toLocaleString?.('he-IL') ?? n;
   const tail = fresh ? (citizen ? ` · נבנה לך בית מספר ${num}, ואתם כבר אזרחים 👑` : ` · נבנה לך בית מספר ${num} 🏠 לאזרחות: עקבו וכתבו לי "בית" בפרטי`) : '';
   let head;
   if (BAD.test(t)) head = pick(RUDE, seed)();
   else if (CITY.test(t)) head = pick(OTHER_CITY, seed)();
+  else if (vote) head = pick(citizen ? VOTED : VOTE_WAIT, seed)(CANDIDATES[vote].name);
+  else if (wishState != null) head = wishState === 1 ? pick(citizen ? WISHES : WISH_WAIT, seed)() : pick(WISH_CHECK, seed)();
   else if (team) head = team.full ? pick(FULL, seed)(TEAMS[team.key].name) : pick(SIGNED, seed)(TEAMS[team.key].name, team.shirt);
   else if (pilot) head = pick(PILOTS, seed)();
   else if (SOLDIER.test(t)) head = pick(ARMY, seed)();

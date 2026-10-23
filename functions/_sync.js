@@ -7,7 +7,7 @@
 // Instagram allows only so many calls an hour, so a sync runs at most once every GAP ms, and backs off after a limit error.
 import { addResident, igToken } from './_lib.js';
 import { HOMES, COMMON } from '../site/app/catalog.js';
-import { reply, SOLDIER, SOLDIER_HOME, BAD, teamOf, squadOf, PILOT } from './_replies.js';
+import { reply, SOLDIER, SOLDIER_HOME, BAD, teamOf, squadOf, PILOT, wishText, wishOk, voteOf } from './_replies.js';
 const G = 'https://graph.instagram.com/v21.0', GAP = 8000, BACKOFF = 10 * 60e3;
 const say = [n => `ברוכים הבאים לממלכה! הבית שלך, מספר ${n}, כבר עומד 🏠 חפשו את השם שלכם באתר שבביו`,
   n => `נבנה לך בית! מספר ${n}. כנסו לאתר שבביו ותמצאו אותו 👑`, n => `תושב חדש! בית מספר ${n} בממלכה הוא שלך. הקישור בביו 🏰`,
@@ -144,8 +144,14 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
     // 3. a welcome under the comments of new citizens, a few each round
     const { results: queue } = await env.DB.prepare('SELECT c.id, c.u, c.text, c.house, r.n, r.citizen FROM comments c JOIN residents r ON r.u = c.u WHERE (c.replied IS NULL OR c.replied = 2 OR c.replied BETWEEN -2 AND -1) AND c.house IN (1, 3) ORDER BY c.at LIMIT ?').bind(replies).all();
     for (const a of queue) {
-      if (SOLDIER.test(a.text ?? '') && !BAD.test(a.text ?? '')) await env.DB.prepare('UPDATE residents SET home = ?, changed = ? WHERE u = ? AND COALESCE(home, -1) NOT IN (8, ?)').bind(SOLDIER_HOME, Date.now(), a.u, SOLDIER_HOME).run();   // "חייל": moves into the מגורים צבאיים (the villa stays)
-      let team = null; const key = !BAD.test(a.text ?? '') && teamOf(a.text);   // "מכבי ספיר" / "הפועל ספיר": into the squad while there is room
+      // "המשאלה שלי היא...": a note on the royal wall (shown once they are citizens; a doubtful one waits for the daily run)
+      const wt = wishText(a.text); let wish = null;
+      if (wt) { wish = wishOk(wt, a.text ?? ''); if (wish >= 0) await env.DB.prepare('INSERT OR IGNORE INTO wishes (id, u, text, at, ok) VALUES (?, ?, ?, ?, ?)').bind(a.id, a.u, wt, Date.now(), wish).run(); else wish = null; }
+      // a candidate's name: their vote in the royal elections (the latest name they wrote counts)
+      const vote = !wt && !BAD.test(a.text ?? '') ? voteOf(a.text) : null;
+      if (vote) await env.DB.prepare('UPDATE residents SET vote = ? WHERE u = ?').bind(vote, a.u).run();
+      if (!wt && SOLDIER.test(a.text ?? '') && !BAD.test(a.text ?? '')) await env.DB.prepare('UPDATE residents SET home = ?, changed = ? WHERE u = ? AND COALESCE(home, -1) NOT IN (8, ?)').bind(SOLDIER_HOME, Date.now(), a.u, SOLDIER_HOME).run();   // "חייל": moves into the מגורים צבאיים (the villa stays)
+      let team = null; const key = !wt && !vote && !BAD.test(a.text ?? '') && teamOf(a.text);   // "מכבי ספיר" / "הפועל ספיר": into the squad while there is room
       if (key) { const me = await env.DB.prepare('SELECT team, shirt FROM residents WHERE u = ?').bind(a.u).first();
         if (me?.team) team = { key: me.team, shirt: me.shirt };
         else { const c = await env.DB.prepare('SELECT COUNT(*) AS c FROM residents WHERE team = ?').bind(key).first('c');
@@ -155,9 +161,9 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
         const t = m[1].toLowerCase().replace(/\.+$/, ''); if (t === SELF(env) || t === a.u || tagged.includes(t) || tagged.length >= 3) continue;
         if (await env.DB.prepare('SELECT n FROM residents WHERE u = ?').bind(t).first('n')) continue;
         const h = await addResident(env, t, 'tag', a.u); if (h) tagged.push(h.u); }
-      const pilot = !team && PILOT.test(a.text ?? '') && !BAD.test(a.text ?? '');   // "טייס": a pilot of נתס"ר
+      const pilot = !wt && !vote && !team && PILOT.test(a.text ?? '') && !BAD.test(a.text ?? '');   // "טייס": a pilot of נתס"ר
       if (pilot) await env.DB.prepare("UPDATE residents SET job = 'pilot', changed = ? WHERE u = ? AND job IS NULL").bind(Date.now(), a.u).run();
-      const r = await post(env, `${a.id}/replies`, { message: reply(a, { fresh: a.house === 1, n: a.n, citizen: !!a.citizen, team, pilot, tagged }) });   // the king answers what they wrote
+      const r = await post(env, `${a.id}/replies`, { message: reply(a, { fresh: a.house === 1, n: a.n, citizen: !!a.citizen, team, pilot, tagged, wish, vote }) });   // the king answers what they wrote
       await env.DB.prepare('UPDATE comments SET replied = CASE WHEN ? THEN (CASE WHEN replied > 0 THEN 0 ELSE COALESCE(replied, 0) END) - 1 ELSE 1 END WHERE id = ?').bind(r.error ? 1 : 0, a.id).run(); if (!r.error) replied++;   // a failed answer is tried again
     }
     return { ran: true, read: comments.length, waiting: waiting.map(w => w.u), invites, citizens, replied };

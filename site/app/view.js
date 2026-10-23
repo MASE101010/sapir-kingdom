@@ -1,6 +1,8 @@
 // Turns the plan into a three.js scene: the land, the river, every road, the wall, the first n houses, landmarks, trees.
 // The site shows the kingdom as it stands; a reel poses every frame with pose(), so houses and landmarks rise when it says.
 import * as THREE from 'three';
+import { buildKotel } from './kotel.js';
+import { place as placeModel } from './models.js';
 import { Pen } from './pen.js';
 import { drawHome, drawShared } from './homes.js';
 import { LANDMARKS } from './landmarks/index.js';
@@ -119,6 +121,8 @@ export class World {
     p.build(this.scene);
   }
   wall() {
+    // day 11: the wall became הכותל המלכותי (kotel.js), with the residents' wishes on it
+    if (this.kingdom.kotel) { this.kotel = buildKotel(this.scene, this.plan.wall); this.kotel.notes([...(this.kingdom.kotel.notes ?? []), ...(this.wishes ?? [])]); return; }
     const p = new Pen(), W = this.plan.wall, n = 120;
     for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2, b = (i + 1) / n * Math.PI * 2, m = (a + b) / 2, len = W * (b - a) + 1;
       if (Math.abs(Math.atan2(Math.sin(m - Math.PI / 2), Math.cos(m - Math.PI / 2))) < .02) continue;     // the south gate
@@ -162,7 +166,13 @@ export class World {
       const lot = l.lot != null ? this.plan.lots[l.lot] : null, p = new Pen(); mod.draw(p);
       const g = p.build(); if (lot) { g.position.set(lot.x, 0, lot.z); g.rotation.y = lot.rot; }
       mod.live?.(g, THREE); this.scene.add(g); this.lm[l.key] = { group: g, mod, at: lot ? [lot.x, lot.z] : mod.at ?? [0, 0] }; }
+    // 3D models made outside the code (a GLB from an image, models.js) that stand in the kingdom (kingdom.json models)
+    this.models = {}; for (const m of this.kingdom.models ?? []) this.models[m.key ?? m.url] = placeModel(this.scene, m.url, m);
   }
+  /** the wishes on the royal wall (the site's live ones, or a reel's snapshot) */
+  /** the royal elections' count on the stage (day 11) */
+  setVotes(votes) { this.votes = votes; this.lm?.elections?.group.userData.setVotes?.(votes ?? {}); }
+  setWishes(list) { this.wishes = list; this.kotel?.notes([...(this.kingdom.kotel?.notes ?? []), ...(list ?? [])]); }
   /** a landmark rising out of the ground (0 hidden, 1 standing) */
   rise(key, f) { const l = this.lm[key]; if (!l) return; l.group.visible = f > 0; l.group.scale.set(1, Math.max(.001, f), 1); }
   /** the sun follows the time of day in Israel; night lights the windows less */
