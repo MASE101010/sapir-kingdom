@@ -61,13 +61,13 @@ const WISH_WAIT = [() => 'המשאלה שלך נשמרה 🙏 כדי שתופי�
 const WISH_CHECK = [() => 'המשאלה הגיעה למלך 🙏 הוא קורא אותה ותולה אותה בכותל בקרוב', () => 'קיבלתי! המלך עובר על הפתקים ותולה אותם בכותל ✨'];
 // day 11: the royal elections. Four candidates for the royal presidency of Sapirland; a comment with a name is a vote
 export const CANDIDATES = {
-  bibkovich: { re: /(?<!\p{L})(ביבקוביץ['׳]?|ביבקוביץ'|bibkovich)(?!\p{L})/iu, name: "ביבקוביץ'" },
-  yairdo: { re: /(?<!\p{L})(יאירדו|יארדו|yairdo)(?!\p{L})/iu, name: 'יאירדו' },
+  bibkovich: { re: /(?<!\p{L})(ב[יו]?ב[יו]?ק[ו]?ב[יו]?[צץ]['׳"]?|ביבי?קוביץ|bibkovi(?:ch|tch|tz))/iu, name: "ביבקוביץ'" },   // and its misspellings (ביביקוביץ׳, ביבוקביץ)
+  yairdo: { re: /(?<!\p{L})(יאירדו|יארדו|יאירדוו|יאירידו|yairdo)/iu, name: 'יאירדו' },
   lebet: { re: /(?<!\p{L})(לבט|לה\s*בט|lebet)(?!\p{L})/iu, name: 'לבט' },
   mascentape: { re: /(?<!\p{L})(מאיסנקוט|מאיזנקוט|מייסנקוט|מייזנקוט|מאיסנקוטט|מסקנטייפ|maizencot|maisencot|mascentape)(?!\p{L})/iu, name: 'מאיסנקוט' } };   // day 11: renamed from מסקנטייפ (the voice could not say it)
 export const voteOf = text => { const hits = Object.entries(CANDIDATES).filter(([, c]) => c.re.test(String(text ?? ''))); return hits.length === 1 ? hits[0][0] : null; };
 const VOTED = [n => `הקול שלך ל${n} נספר! 🗳️`, n => `נרשם בקלפי המלכותית: קול ל${n} 🗳️👑`, n => `${n} מודה לך על הקול! 🗳️ הספירה ממשיכה`, n => `קיבלנו! עוד קול ל${n} 🗳️ מי ינצח?`];
-const VOTE_WAIT = [n => `הקול ל${n} נשמר 🗳️ כדי שייספר, עקבו וכתבו לי "בית" בפרטי`];
+const VOTE_WAIT = [n => `הקול שלך ל${n} נספר! 🗳️ רוצים גם אזרחות? עקבו וכתבו לי "בית" בפרטי 👑`, n => `עוד קול ל${n}! 🗳️ ועקבו אחרי הממלכה כדי לראות מי מנצח`];
 const CITY = /תל\s*בטטה|telbatata|tel\s*batata|מעתיק|העתק|חיקוי|קריית\s*בצל/iu;
 const HOUSE_ASK = /^(אפשר|אני\s+רוצה|תבנו\s+לי|תבנה\s+לי|רוצה|אשמח\s+ל)?\s*(גם\s+)?(בית|ביית|ביתת|בית\s+משלי|בית\s+בבקשה)[\s?!.]*$/u;
 

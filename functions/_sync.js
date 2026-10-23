@@ -104,7 +104,7 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
     const comments = [];
     const read = (m, d) => comments.push(...(d.data ?? []).map(c => ({ id: c.id, u: c.username ?? c.from?.username, uid: c.from?.id, text: c.text, media: m })).filter(c => c.u));
     for (const [i, m] of media.ids.entries()) {
-      if (i > 0 && !force) break;                               // a quick sync looks at the newest post only
+      if (i > 1 && !force) break;                               // a quick sync looks at the two newest posts (the newest may be the trial copy of the reel)
       const base = `${G}/${m}/comments?fields=id,text,username,from&limit=50&access_token=${token}`;
       // the first page, and from the last page we reached before onwards (whichever end Instagram puts new comments at)
       let first; try { first = await get(base); } catch (e) { if (e.code === 4 || e.code === 17 || e.code === 32 || e.code === 613) throw e; continue; }   // a deleted post: skip it
@@ -115,6 +115,11 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
       if (after) await setState(env, `sync_after:${m}`, after);
     }
     const waiting = await takeComments(env, comments);
+    // the royal elections (day 11): every comment of the last two days with a candidate's name is that resident's vote, the
+    // latest one counting; done for every comment, at once, not only for those the king has answered yet
+    const { results: recent } = await env.DB.prepare('SELECT u, text FROM comments WHERE at > ? ORDER BY at').bind(now - 2 * 864e5).all();
+    const votes = new Map(); for (const c of recent) { const v = !BAD.test(c.text ?? '') && voteOf(c.text); if (v) votes.set(c.u, v); }
+    for (const [u, v] of votes) await env.DB.prepare('UPDATE residents SET vote = ? WHERE u = ? AND COALESCE(vote, \'\') <> ?').bind(v, u, v).run();
     let invites = 0, replied = 0; const citizens = [];
     // 1. every new commenter gets a house at once (one a person); a follower we can already see becomes a citizen, the
     //    others get a private message about citizenship. The word under the comment goes out in step 3.
