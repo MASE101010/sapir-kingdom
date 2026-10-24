@@ -19,4 +19,4 @@ jobs:
       - if: env.READY == '1'
         run: |
           git config user.name "kingdom-bot"; git config user.email "kingdom-bot@users.noreply.github.com"
-          git add site/data/residents.json site/data/kingdom.json inbox/ && git commit -m "count: day $(node -p "require('./site/data/kingdom.json').day")" && git push || echo "nothing new"
+          git add site/data/residents.json site/data/kingdom.json site/data/wishes.json site/data/votes.json inbox/ && git commit -m "count: day $(node -p "require('./site/data/kingdom.json').day")" && git push || echo "nothing new"

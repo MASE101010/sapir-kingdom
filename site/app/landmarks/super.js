@@ -4,6 +4,7 @@
 // chair, one on the phone, one leaning on a broom, the manager with his clipboard. Round the back, the staff's smoking
 // corner: a bench, a bucket, a tin roof and a dumpster. A delivery van at the side. About 36 × 40, front toward +z.
 import { sign } from '../sign.js';
+import { burnable } from '../burn.js';
 const WALL = 0xf6f1e6, RED = 0xc2412d, GOLD = 0xe8b323, NAVY = 0x13213b, GLASS = 0x7fb3c9, FRAME = 0x9aa3ab, ASPH = 0x5d6166,
   LINE = 0xf2f2f2, WOOD = 0x8a6240, DARK = 0x3a3f45, GREEN = 0x3f7f4a, SKIN = 0xe2b48f, VEST = 0x2f8a4a, TIN = 0xb9c0c6;
 
@@ -99,5 +100,13 @@ export function superLive(group) {
   group.add(sign('פירות וירקות טריים', { w: 9, h: 1.4, bg: '#3f7f4a', fg: '#ffffff', border: '#ffffff' }).at(10.8, 3.1, 4.25));
   group.add(sign('משלוחים עד הבית', { w: 6, h: 1.4, bg: '#ffffff', fg: '#c2412d', border: '#c2412d' }).at(-11.4, 3.1, -19, Math.PI / 2));
   const z = sign('Z z z', { w: 2.4, h: 1, bg: '#ffffff', border: '#ffffff', font: '800 {px}px Rubik' }); group.add(z.at(-6, 6.9, 7.9));
+  // day 12: two of the staff by name, ניסינוב the manager and אנטוליוס on the phone (their jobs hang on the shop)
+  group.add(sign('ניסינוב', { w: 3, h: .9, bg: '#ffffff', fg: '#13213b', border: '#13213b' }).at(3.5, 6.8, 8.1));
+  group.add(sign('אנטוליוס', { w: 3.2, h: .9, bg: '#ffffff', fg: '#13213b', border: '#13213b' }).at(-9.5, 6.3, 8.6));
+  // day 12: the escaped dragon set it on fire (burn.js); kingdom.json states.super.burn keeps it burned until 500 followers
+  burnable(group, [[-10, 9.3, -8, 1.3], [0, 9.3, -4, 1.5], [10, 9.3, -9, 1.2], [-4, 9.3, -12, 1], [6, 9.3, -1, 1], [0, 16, -2, 1.1], [-8, .4, 3.4, .9], [8, .4, 3.4, .9], [-14, 4.9, -18, .8]]);
+  const f = group.userData.fireGroup;
+  f.add(sign('סגור בגלל דרקון 🔥', { w: 9, h: 1.8, bg: '#c8102e', fg: '#ffffff', border: '#ffffff', font: '900 {px}px "Secular One", Rubik' }).at(0, 4.4, 5.0));
+  f.add(sign('נפתח מחדש ב-500 עוקבים', { w: 7.4, h: 1.1, bg: '#ffffff', fg: '#c8102e', border: '#c8102e' }).at(0, 3.1, 5.0));
 }
 export const SUPER = { key: 'super', name: 'סופר ספיר', draw: drawSuper, live: superLive, top: 18 };

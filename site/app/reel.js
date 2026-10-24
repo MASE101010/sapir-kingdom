@@ -118,11 +118,16 @@ export async function startReel({ renderer, data, day }) {
   for (const c of [ep.cue].flat().filter(Boolean)) { const l = world.lm?.[c.key]; if (l) l.group.userData.cue = (ep.clock ?? 900) + lineAt(c.line, c.dt); }
   // a football match in a stadium (football.js): kick-off at a line, and the goals, each at its line (who: the scorer's place, 0 to 10)
   if (ep.match) { const l = world.lm?.[ep.match.key ?? 'maccabi'], c = ep.clock ?? 900; if (l) l.group.userData.match = { t0: c + lineAt(ep.match.line, ep.match.dt), goals: ep.match.goals.map(g => ({ ...g, t: c + lineAt(g.line, g.dt) })).sort((a, b) => a.t - b.t) }; }
+  // day 12: what happens to a landmark during the reel (ep.states: [{ key, kind: 'burn' | 'open', line, dt, dur, from }]); after the
+  // reel's states, the kingdom's own (kingdom.json states) hold, so the escaped dragon's prison stays open in later reels
+  const states = [ep.states].flat().filter(Boolean).map(s => ({ ...s, t0: lineAt(s.line, s.dt), dur: s.dur ?? 2 }));
   const arrivals = [ep.arrive].flat().filter(Boolean).map(a => ({ ...a, t0: lineAt(a.line, a.dt), dur: a.dur ?? 5 }));
   function dragons(t) {
     const w = swarms.find(w => t > w.t0 - 3 && t < w.t1 + 3), e = w?.ease ?? 2.5;
     if (w) { const at = focus(w.target, t); world.life.swarm = { x: at.x, z: at.z, R: w.R ?? 70, H: w.H ?? 60, k: clamp(Math.min((t - w.t0 + e) / e, (w.t1 + e - t) / e)) }; } else world.life.swarm = null;
     world.life.fire = Math.max(0, ...fires.map(f => clamp(Math.min((t - f.t0) / .35, (f.t1 - t) / .5))));
+    world.life.fireDragon = ep.fireDragon ?? 0;
+    for (const s of states) world.setState(s.key, s.kind, (s.from ?? 0) + (1 - (s.from ?? 0)) * clamp((t - s.t0) / s.dur));
     // new dragons flying in from far away: before t0 they are not there, over dur they come home
     // a dragon landing on its perch during the reel (ep.perch: { dragon, at, ry, line, dt, dur }); before it lands it flies as usual
     // day 10: from: [x, y, z] (and fromRy) moves it from one perch to another; net: { line, dt, dur } drops the net on it
