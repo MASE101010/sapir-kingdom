@@ -45,11 +45,8 @@ export function drawPrison(p) {
   for (const [y, c] of [[1.5, GOLD], [10, NAVY], [H + 1, GOLD]]) { p.box(cx, y, cz - D / 2, L + .8, .8, .8, c); p.box(cx, y, cz + D / 2, L + .8, .8, .8, c); p.box(cx - L / 2, y, cz, .8, .8, D + .8, c); p.box(cx + L / 2, y, cz, .8, .8, D + .8, c); }
   for (let x = -L / 2 + 8; x < L / 2; x += 8) p.box(cx + x, H + 1.2, cz, .6, .6, D, IRON);
   for (const x of [-L / 2, L / 2]) for (const z of [-D / 2, D / 2]) p.ball(cx + x, H + 1.6, cz + z, 1.6, 1.6, GOLD);
-  // the door: thicker bars in a navy frame, a giant padlock and chain
-  p.box(cx, 1.3, cz + D / 2, 7.4, .9, .9, NAVY); p.box(cx, 15, cz + D / 2, 7.4, .9, .9, NAVY);
-  for (let x = -3; x <= 3; x += 1.2) p.box(cx + x, 1.3, cz + D / 2 + .2, .55, 13.8, .55, IRON);
-  p.box(cx, 6.5, cz + D / 2 + .9, 2.6, 2.4, .8, GOLD); p.cyl(cx, 7.9, cz + D / 2 + .9, 1.6, .6, METAL); p.ball(cx, 7, cz + D / 2 + 1.35, .5, .5, NAVY);
-  for (let k = 0; k < 6; k++) p.box(cx - 3 + k * 1.2, 7.4 + (k % 2) * .25, cz + D / 2 + .7, 1, .3, .3, METAL);
+  // the door is in prisonLive (it can swing open: day 12, the dragon broke out); here only the frame's posts
+  for (const x of [-3.9, 3.9]) p.box(cx + x, 1.3, cz + D / 2, .9, 14.6, .9, NAVY);
   // a bowl of water and a pile of giant drumsticks for the prisoner, a hay bed
   p.cyl(cx + 15, 1.5, cz + 5, 3, 1, METAL); p.cyl(cx + 15, 1.6, cz + 5, 2.6, .95, 0x58b0d4);
   for (let k = 0; k < 5; k++) { p.box(cx - 15 + k * .8, 1.5 + (k % 2) * .9, cz + 5 - k * .4, 3.4, .8, .8, 0xf3e7cf, k * .5); p.ball(cx - 13.3 + k * .8, 1.5 + (k % 2) * .9, cz + 5 - k * .4, 1.6, 1.4, 0xb8743a); }
@@ -70,6 +67,18 @@ export function prisonLive(group) {
   group.add(sign('רעיון של @mpt9399 · אדריכל', { w: 8, h: 1.1, bg: '#e8b323', fg: '#13213b', border: '#13213b' }).at(0, 8.5, 23.4));
   group.add(sign('אסור להאכיל את הדרקון!', { w: 7, h: 1.3, bg: '#fffaf0', fg: '#c8102e', border: '#c8102e' }).at(-11, 3.4, 5.7 + .05));
   group.add(sign('משתחרר ב-1000 עוקבים ⏳', { w: 7.6, h: 1.4, bg: '#c8102e', fg: '#ffffff', border: '#ffffff' }).at(11, 3.4, 5.7 + .05));
+  // the door: thicker bars in a navy frame on a hinge at its left, and the giant padlock and chain on it. open(k): day 12, the
+  // dragon broke out; the padlock drops, the door swings wide (kingdom.json states.prison.open keeps it open)
+  const { x: cx, z: cz, D } = CAGE, hinge = new THREE.Group(), lock = new THREE.Group(); hinge.position.set(cx - 3.45, 0, cz + D / 2);
+  const d = new Pen(); d.box(3.45, 1.3, 0, 6.9, .9, .9, NAVY); d.box(3.45, 14.1, 0, 6.9, .9, .9, NAVY);
+  for (let x = -3; x <= 3; x += 1.2) d.box(3.45 + x, 1.3, .2, .55, 13.8, .55, IRON);
+  hinge.add(d.build(new THREE.Group())); group.add(hinge);
+  const l = new Pen(); l.box(0, -1.2, 0, 2.6, 2.4, .8, GOLD); l.cyl(0, .2, 0, 1.6, .6, METAL); l.ball(0, -.7, .45, .5, .5, NAVY);
+  for (let k = 0; k < 6; k++) l.box(-3 + k * 1.2, -.3 + (k % 2) * .25, -.2, 1, .3, .3, METAL);
+  lock.add(l.build(new THREE.Group())); lock.position.set(cx, 7.7, cz + D / 2 + .9); group.add(lock);
+  group.userData.open = k => { k = Math.max(0, Math.min(1, k)); const a = Math.min(1, k * 2.2), b = Math.max(0, (k - .25) / .75);
+    lock.position.set(cx + a * 1.5, 7.7 - (6.1 * a * a), cz + D / 2 + .9 + a * 1.5); lock.rotation.set(a * 1.4, 0, a * .9);
+    hinge.rotation.y = -(b * b * (3 - 2 * b)) * 1.9; };
   group.add(sign('שמירה', { w: 3.6, h: 1, bg: '#0f6f73', fg: '#ffffff', border: '#ffffff' }).at(14, 3.8, 17.55));
 }
 export const PRISON = { key: 'prison', name: 'כלא הדרקונים', draw: drawPrison, live: prisonLive, top: 22 };

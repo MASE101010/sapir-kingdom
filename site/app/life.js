@@ -87,7 +87,7 @@ export class Life {
       d.position.copy(P);
       const v = Q.sub(P), turn = sw?.k > 0 ? (i % 2 ? 1 : -1) * .45 * sw.k : 0;
       d.rotation.set(-Math.atan2(v.y, Math.hypot(v.x, v.z)) * .6 + Math.sin(t * .9 + ph) * .08, Math.atan2(v.x, v.z), sw?.k > 0 ? turn : -Math.sign(w) * .35);
-      const fire = d.userData.fire, f0 = i === 0 ? this.fire ?? 0 : 0; fire.visible = f0 > .01; d.userData.head.rotation.x = .45 * f0;
+      const fire = d.userData.fire, f0 = i === (this.fireDragon ?? 0) ? this.fire ?? 0 : 0; fire.visible = f0 > .01; d.userData.head.rotation.x = .45 * f0;
       if (fire.visible) { fire.scale.setScalar(1.8 * f0 * (1 + Math.sin(t * 31) * .08)); fire.children.forEach((m, k) => { if (m.material) m.material.opacity = .9 * f0; });
         fire.userData.puffs.forEach((m, k) => { const u = ((t * 2.2 + k / 14) % 1); m.position.set(Math.sin(k * 7.3 + t * 9) * u * 3.4, Math.cos(k * 5.1 + t * 7) * u * 3, 4 + u * 20); m.scale.setScalar(1 + u * 3.2); }); }
       let f = Math.sin(t * 3.4 + ph); const [L, Rw] = d.userData.wings;           // the wing beats down, and folds a little on the way up

@@ -1,0 +1,938 @@
+{
+ "day": 12,
+ "lines": [
+  "[excited] יום שְׁנֵים עָשָׂר ב-Sapirland, והממלכה בטירוף על הבחירות לנשיאות!",
+  "[excited] תצביעו Bibkovich, ואני אָגֵן עליכם מכל הדרקונים!",
+  "[excited] תצביעו Yairdo, וכל אחד מכם יהיה מלך!",
+  "[excited] תצביעו Lebet... כי מגיעה לכם ממלכה חדשה!",
+  "[excited] תצביעו Maizencot... ואחר כך... לכו לישון.",
+  "[excited] ובַּקַּלְפִּי? Bibkovich מוביל, עם שבעה קולות!",
+  "[excited] Yairdo אחריו עם ארבעה... ו-Lebet? עדיין אפס!",
+  "[excited] אבל רגע... לא הגענו לאלף עוקבים...",
+  "[excited] והדרקון... השתחרר!",
+  "[excited] ובממלכה יש חמישה דרקונים!",
+  "[excited] בכל פעם שנגיע לאלף, לאלפיים, לשלושת אלפים... נתפוס עוד דרקון!",
+  "[excited] והדרקון שהשתחרר שורף את סופר Sapir!",
+  "[excited] אם לא נגיע לחמש מאות עוקבים... Nisinov ו-Antolius יישארו בלי עבודה!",
+  "[excited] ובחדשות טובות... בנינו את הַפְּסָלִים של המועמדים!",
+  "[excited] רעיון של Nika, האדריכלית של הַפְּסָלִים!",
+  "[excited] יום הבחירות: יום שלישי!",
+  "[excited] כדי להצביע: תעקבו, ותגיבו את שם המועמד!",
+  "[excited] וזוכרים? כל עוקב מקבל בית!",
+  "[excited] והכותל המלכותי מחכה למשאלות שלכם...",
+  "[excited] תגיבו: המשאלה שלי היא... ותנו לנו את המשאלות הכי מצחיקות!"
+ ],
+ "top": 170,
+ "mix": "day12.mix.mp3",
+ "say": {
+  "Sapirland": "ספירלנד",
+  "Sapir": "ספיר",
+  "Bibkovich": "ביבקוביץ'",
+  "Yairdo": "יאירדו",
+  "Lebet": "לבט",
+  "Maizencot": "מאיסנקוט",
+  "Nisinov": "ניסינוב",
+  "Antolius": "אנטוליוס",
+  "Nika": "ניקה"
+ },
+ "homes": {
+  "daniel_nezri": 8
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:elections",
+   "dist": 120,
+   "yaw": -25,
+   "pitch": 26,
+   "orbit": 7,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    132.2,
+    9,
+    -154.2
+   ],
+   "dist": 20,
+   "yaw": -63,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 2,
+   "target": [
+    139.5,
+    9,
+    -146.9
+   ],
+   "dist": 20,
+   "yaw": -51,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 3,
+   "target": [
+    146.9,
+    9,
+    -139.5
+   ],
+   "dist": 20,
+   "yaw": -39,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 4,
+   "target": [
+    154.2,
+    9,
+    -132.2
+   ],
+   "dist": 20,
+   "yaw": -27,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 5,
+   "target": "landmark:elections",
+   "dist": 70,
+   "yaw": 0,
+   "pitch": 12,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 6,
+   "dt": 1.0,
+   "target": "landmark:elections",
+   "dist": 46,
+   "yaw": 8,
+   "pitch": 6,
+   "orbit": -2,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "target": [
+    -137.5,
+    8,
+    -145.3
+   ],
+   "dist": 85,
+   "yaw": 40,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": [
+    -137.5,
+    22,
+    -145.3
+   ],
+   "dist": 105,
+   "yaw": 50,
+   "pitch": 22,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 9,
+   "target": [
+    0,
+    110,
+    0
+   ],
+   "dist": 480,
+   "yaw": 30,
+   "pitch": 12,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 10,
+   "target": [
+    -137.9,
+    6,
+    -137.9
+   ],
+   "dist": 90,
+   "yaw": 45,
+   "pitch": 30,
+   "orbit": 5,
+   "ease": 0.7
+  },
+  {
+   "line": 11,
+   "target": "landmark:super",
+   "dist": 105,
+   "yaw": 25,
+   "pitch": 22,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 12,
+   "target": [
+    109.3,
+    6.5,
+    42
+   ],
+   "dist": 40,
+   "yaw": -102.5,
+   "pitch": 10,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 13,
+   "target": "landmark:statues",
+   "dist": 125,
+   "yaw": 0,
+   "pitch": 22,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 14,
+   "target": [
+    254.84,
+    12,
+    84.99
+   ],
+   "dist": 30,
+   "yaw": -70.5,
+   "pitch": 10,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 14,
+   "dt": 1.2,
+   "target": [
+    240.3,
+    13,
+    120.1
+   ],
+   "dist": 42,
+   "yaw": -160.5,
+   "pitch": 10,
+   "orbit": -3,
+   "ease": 0.6
+  },
+  {
+   "line": 15,
+   "target": "landmark:elections",
+   "dist": 95,
+   "yaw": 0,
+   "pitch": 24,
+   "orbit": 7,
+   "ease": 0.6
+  },
+  {
+   "line": 16,
+   "target": "landmark:statues",
+   "dist": 80,
+   "yaw": 10,
+   "pitch": 14,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 17,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 600,
+   "yaw": 20,
+   "pitch": 58,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 17,
+   "dt": 1.0,
+   "target": "house:daniel_nezri",
+   "dist": 45,
+   "yaw": 30,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 0.7
+  },
+  {
+   "line": 18,
+   "target": [
+    0,
+    30,
+    2230
+   ],
+   "dist": 520,
+   "yaw": 160,
+   "pitch": 16,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 18,
+   "dt": 1.3,
+   "target": [
+    -44,
+    6.5,
+    2225
+   ],
+   "dist": 24,
+   "yaw": 192,
+   "pitch": 4,
+   "orbit": 1,
+   "ease": 0.7
+  },
+  {
+   "line": 19,
+   "target": [
+    44,
+    11,
+    2225
+   ],
+   "dist": 26,
+   "yaw": 168,
+   "pitch": 4,
+   "orbit": -1,
+   "ease": 0.6
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "יום 12"
+  },
+  {
+   "type": "counter",
+   "line": 0,
+   "dt": 2.3,
+   "dur": 2.4,
+   "from": 293,
+   "to": 312
+  },
+  {
+   "type": "poster",
+   "line": 1,
+   "dt": 0,
+   "dur": 0,
+   "poster": "img/candidates/bibkovich.jpg",
+   "name": "ביבקוביץ'",
+   "promise": "אגן עליכם מכל הדרקונים",
+   "fg": "#13213b",
+   "untilLine": 2
+  },
+  {
+   "type": "poster",
+   "line": 2,
+   "dt": 0,
+   "dur": 0,
+   "poster": "img/candidates/yairdo.jpg",
+   "name": "יאירדו",
+   "promise": "כל אחד מכם יהיה מלך",
+   "fg": "#ffffff",
+   "untilLine": 3
+  },
+  {
+   "type": "poster",
+   "line": 3,
+   "dt": 0,
+   "dur": 0,
+   "poster": "img/candidates/lebet.jpg",
+   "name": "לבט",
+   "promise": "מגיעה לכם ממלכה חדשה",
+   "fg": "#ffffff",
+   "untilLine": 4
+  },
+  {
+   "type": "poster",
+   "line": 4,
+   "dt": 0,
+   "dur": 0,
+   "poster": "img/candidates/mascentape.jpg",
+   "name": "מאיסנקוט",
+   "promise": "ואחר כך... לכו לישון",
+   "fg": "#ffffff",
+   "untilLine": 5
+  },
+  {
+   "type": "candidates",
+   "line": 5,
+   "dt": 0,
+   "dur": 4.2,
+   "text": "תוצאות הקלפי 🗳️",
+   "sub": "נכון להבוקר",
+   "images": [
+    "img/candidates/bibkovich.jpg",
+    "img/candidates/yairdo.jpg",
+    "img/candidates/lebet.jpg",
+    "img/candidates/mascentape.jpg"
+   ],
+   "crop": [
+    0.25,
+    0,
+    1,
+    0.78
+   ],
+   "names": [
+    "ביבקוביץ' · 7",
+    "יאירדו · 4",
+    "לבט · 0",
+    "מאיסנקוט · 2"
+   ],
+   "colors": [
+    "#f2b632",
+    "#e8742a",
+    "#6b3fa0",
+    "#1f8a4c"
+   ],
+   "stamp": 0,
+   "stampAt": 1.2
+  },
+  {
+   "type": "label",
+   "line": 13,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "נבנה · שדרת הפסלים"
+  },
+  {
+   "type": "comment",
+   "line": 14,
+   "dt": 0,
+   "dur": 2.0,
+   "u": "nika_trav",
+   "text": "תעשו פסל של המועמדים",
+   "likes": 1
+  },
+  {
+   "type": "idcard",
+   "line": 14,
+   "dt": 1.0,
+   "dur": 1.4,
+   "u": "nika_trav",
+   "honours": [
+    "אדריכלית · שדרת הפסלים"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 17,
+   "dt": 1.0,
+   "dur": 1.4,
+   "u": "daniel_nezri",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 19,
+   "dt": 0.8,
+   "dur": 3.4,
+   "text": "מה המשאלה שלכם?",
+   "sub": "תגיבו: המשאלה שלי היא... 😂"
+  }
+ ],
+ "votes": {
+  "bibkovich": 7,
+  "yairdo": 4,
+  "mascentape": 2,
+  "lebet": 0
+ },
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.1,
+   "dur": 2.1,
+   "text": "עוקב = בית 🏠",
+   "y": 760,
+   "size": 105,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 2.3,
+   "dur": 2.3,
+   "text": "+39 עוקבים חדשים 🎉",
+   "y": 760,
+   "size": 110,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 0,
+   "dt": 2.3,
+   "dur": 2
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 1.9,
+   "dur": 1.4,
+   "text": "0️⃣",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": -8
+  },
+  {
+   "type": "vignette",
+   "line": 7,
+   "dur": 2.2,
+   "color": "rgba(10,10,30,.45)"
+  },
+  {
+   "type": "banner",
+   "line": 7,
+   "dt": 0.6,
+   "dur": 1.8,
+   "text": "🐉 עוד לא 1,000 עוקבים",
+   "y": 760,
+   "size": 95,
+   "band": "#13213b",
+   "color": "#ffffff"
+  },
+  {
+   "type": "shake",
+   "line": 8,
+   "dt": 0.2,
+   "dur": 0.9,
+   "amp": 1.2
+  },
+  {
+   "type": "flash",
+   "line": 8,
+   "dt": 0.2,
+   "dur": 0.3,
+   "color": "#c8102e",
+   "alpha": 0.4
+  },
+  {
+   "type": "banner",
+   "line": 8,
+   "dt": 1.0,
+   "dur": 1.6,
+   "text": "הדרקון ברח! 🐉",
+   "y": 760,
+   "size": 120,
+   "band": "#c8102e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 0.1,
+   "dur": 2.0,
+   "text": "5 דרקונים 🐉🐉🐉🐉🐉",
+   "y": 760,
+   "size": 95,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "banner",
+   "line": 10,
+   "dt": 0.0,
+   "dur": 1.3,
+   "text": "1,000 עוקבים = 🐉 נתפס",
+   "y": 760,
+   "size": 90,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 10,
+   "dt": 1.36,
+   "dur": 0.6,
+   "text": "2,000 = 🐉",
+   "y": 760,
+   "size": 110,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 10,
+   "dt": 1.97,
+   "dur": 1.4,
+   "text": "3,000 = 🐉",
+   "y": 760,
+   "size": 110,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 11,
+   "dt": 0.8,
+   "dur": 1.8,
+   "text": "🔥",
+   "x": 840,
+   "y": 1110,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "shake",
+   "line": 11,
+   "dt": 0.5,
+   "dur": 1.0,
+   "amp": 1
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.2,
+   "dur": 3.6,
+   "text": "500 עוקבים = הסופר חוזר 🛒",
+   "y": 330,
+   "size": 90,
+   "band": "#c8102e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 13,
+   "dt": 1.2,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 13,
+   "dt": 1.2,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 15,
+   "dt": 0.2,
+   "dur": 1.6,
+   "text": "הבחירות: יום שלישי 🗳️",
+   "y": 760,
+   "size": 105,
+   "band": "#7a1f35",
+   "color": "#ffffff"
+  },
+  {
+   "type": "punch",
+   "line": 15,
+   "dt": 0.9,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 16,
+   "dt": 0.1,
+   "dur": 2.7,
+   "text": "עקבו + הגיבו את שם המועמד 🗳️",
+   "y": 760,
+   "size": 85,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "banner",
+   "line": 17,
+   "dt": 0.0,
+   "dur": 1.0,
+   "text": "עוקב = בית 🏠",
+   "y": 760,
+   "size": 105,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 18,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "הכותל המלכותי 🙏",
+   "y": 330,
+   "size": 115,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 19,
+   "dt": 0.4,
+   "dur": 2.4,
+   "text": "😂",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 8
+  }
+ ],
+ "perch": {
+  "dragon": 4,
+  "from": [
+   -137.5,
+   6.2,
+   -145.3
+  ],
+  "fromRy": 2.356,
+  "at": [
+   121.0,
+   14.5,
+   50.1
+  ],
+  "ry": -1.963,
+  "arc": 110,
+  "line": 8,
+  "dt": 0.9,
+  "dur": 3.6
+ },
+ "states": [
+  {
+   "key": "prison",
+   "kind": "open",
+   "line": 8,
+   "dt": 0.2,
+   "dur": 1.2
+  },
+  {
+   "key": "super",
+   "kind": "burn",
+   "line": 11,
+   "dt": 0.6,
+   "dur": 2.2
+  }
+ ],
+ "fire": [
+  {
+   "line": 11,
+   "dt": 0.2,
+   "dur": 2.8
+  }
+ ],
+ "fireDragon": 4,
+ "rise": {
+  "key": "statues",
+  "line": 13,
+  "dt": 0,
+  "dur": 3.4
+ },
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 7,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 13,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "kaching",
+   "line": 0,
+   "dt": 2.3
+  },
+  {
+   "name": "whoosh",
+   "line": 1,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 2,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 4,
+   "dt": -0.1
+  },
+  {
+   "name": "snore",
+   "line": 4,
+   "dt": 2.4,
+   "gain": 0.5
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 0.1,
+   "repeat": 4,
+   "every": 0.25,
+   "gain": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 5,
+   "dt": 1.2
+  },
+  {
+   "name": "cricket",
+   "line": 6,
+   "dt": 1.9,
+   "gain": 0.5
+  },
+  {
+   "name": "scratch",
+   "line": 7,
+   "dt": 0
+  },
+  {
+   "name": "boom",
+   "line": 8,
+   "dt": 0.2
+  },
+  {
+   "name": "roar",
+   "line": 8,
+   "dt": 0.5
+  },
+  {
+   "name": "whoosh",
+   "line": 8,
+   "dt": 1.0
+  },
+  {
+   "name": "roar",
+   "line": 9,
+   "dt": 0.4,
+   "gain": 0.5
+  },
+  {
+   "name": "ding",
+   "line": 10,
+   "dt": 0
+  },
+  {
+   "name": "ding",
+   "line": 10,
+   "dt": 1.36
+  },
+  {
+   "name": "ding",
+   "line": 10,
+   "dt": 1.97
+  },
+  {
+   "name": "roar",
+   "line": 11,
+   "dt": 0.1
+  },
+  {
+   "name": "boom",
+   "line": 11,
+   "dt": 0.6
+  },
+  {
+   "name": "sting",
+   "line": 12,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 13,
+   "dt": -0.1
+  },
+  {
+   "name": "tada",
+   "line": 13,
+   "dt": 1.2
+  },
+  {
+   "name": "pop",
+   "line": 14,
+   "dt": 0
+  },
+  {
+   "name": "sparkle",
+   "line": 14,
+   "dt": 1.0
+  },
+  {
+   "name": "boom",
+   "line": 15,
+   "dt": 0.9
+  },
+  {
+   "name": "pop",
+   "line": 16,
+   "dt": 0.1
+  },
+  {
+   "name": "kaching",
+   "line": 17,
+   "dt": 1.0
+  },
+  {
+   "name": "sparkle",
+   "line": 18,
+   "dt": 0.3
+  },
+  {
+   "name": "boing",
+   "line": 19,
+   "dt": 0.4
+  },
+  {
+   "name": "ding",
+   "line": 19,
+   "dt": 0.8
+  }
+ ],
+ "caption": "הדרקון ברח מהכלא ושרף את סופר ספיר! 🔥🐉 ביום שלישי בוחרים נשיא לממלכה, ונבנתה שדרת הפסלים של המועמדים (רעיון של ניקה) 🗳️\nכדי להצביע: תעקבו ותגיבו את שם המועמד. 500 עוקבים = הסופר חוזר, ואת המשאלה שלכם כתבו: \"המשאלה שלי היא...\" 🙏\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #בחירות #דרקון",
+ "firstComment": "למי אתם מצביעים ביום שלישי? 🗳️ ביבקוביץ' / יאירדו / לבט / מאיסנקוט. ותכתבו לנו את המשאלה הכי מצחיקה שלכם 😂🙏",
+ "notes": "Day 12 was planned with Michael (his brief): the election campaign, the dragon escape (we did not reach 1000 followers), the burnt Super Sapir (500 followers brings it back) and the candidates' statues for @nika_trav's comment 'תעשו פסל של המועמדים'. Comments were mostly votes (counted, not builds) and house requests; 'תבנו סופר ותקראו לו ספירלונד' skipped (a super already stands, and it burns today); 'המשאלה שלי היא...' comments are wishes for the wall."
+}

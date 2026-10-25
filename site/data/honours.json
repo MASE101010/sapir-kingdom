@@ -11,7 +11,8 @@
       "yoav_levi676767",
       "imry.life",
       "yonatan.reuveni1",
-      "ormizrachi161"
+      "ormizrachi161",
+      "daniel_nezri"
     ]
   },
   "built": {
@@ -89,6 +90,12 @@
     "elections": {
       "by": [],
       "day": 11
+    },
+    "statues": {
+      "by": [
+        "nika_trav"
+      ],
+      "day": 12
     }
   }
 }

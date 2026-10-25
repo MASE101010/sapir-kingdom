@@ -113,7 +113,7 @@ export class World {
   /** shows the rings up to n (the outermost ring anyone lives on, and one more) */
   setExtent(n) { this.bands.forEach((g, k) => g.visible = k <= n); this.life?.setExtent(n); }
   /** everything that moves, at time t (seconds) */
-  animate(t) { this.life.update(t); for (const l of Object.values(this.lm ?? {})) l.mod.tick?.(l.group, t); }
+  animate(t) { this.life.update(t); for (const l of Object.values(this.lm ?? {})) { l.mod.tick?.(l.group, t); l.group.userData.tick?.(t); } }
   /** forests outside the wall */
   trees() {
     const p = new Pen(), W = this.plan.wall;
@@ -166,6 +166,8 @@ export class World {
       const lot = l.lot != null ? this.plan.lots[l.lot] : null, p = new Pen(); mod.draw(p);
       const g = p.build(); if (lot) { g.position.set(lot.x, 0, lot.z); g.rotation.y = lot.rot; }
       mod.live?.(g, THREE); this.scene.add(g); this.lm[l.key] = { group: g, mod, at: lot ? [lot.x, lot.z] : mod.at ?? [0, 0] }; }
+    // what has happened to a landmark since it was built (kingdom.json states, day 12): { prison: { open: 1 }, super: { burn: 1 } }
+    for (const [key, st] of Object.entries(this.kingdom.states ?? {})) for (const [kind, k] of Object.entries(st)) this.setState(key, kind, k);
     // 3D models made outside the code (a GLB from an image, models.js) that stand in the kingdom (kingdom.json models)
     this.models = {}; for (const m of this.kingdom.models ?? []) this.models[m.key ?? m.url] = placeModel(this.scene, m.url, m);
   }
@@ -173,6 +175,8 @@ export class World {
   /** the royal elections' count on the stage (day 11) */
   setVotes(votes) { this.votes = votes; this.lm?.elections?.group.userData.setVotes?.(votes ?? {}); }
   setWishes(list) { this.wishes = list; this.kotel?.notes([...(this.kingdom.kotel?.notes ?? []), ...(list ?? [])]); }
+  /** a landmark's state (burn.js burn, prison.js open), 0..1 */
+  setState(key, kind, k) { this.lm?.[key]?.group.userData[kind]?.(k); }
   /** a landmark rising out of the ground (0 hidden, 1 standing) */
   rise(key, f) { const l = this.lm[key]; if (!l) return; l.group.visible = f > 0; l.group.scale.set(1, Math.max(.001, f), 1); }
   /** the sun follows the time of day in Israel; night lights the windows less */

@@ -13,5 +13,6 @@ import { BURJ } from './burj.js';                // day 8: בורג' ספיר
 import { NATSAR } from './natsar.js';            // day 9: נמל התעופה ספיר
 import { PRISON } from './prison.js';            // day 10: כלא הדרקונים
 import { ELECTIONS } from './elections.js';      // day 11: כיכר הבחירות
+import { STATUES } from './statues.js';        // day 12: שדרת הפסלים
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES].map(l => [l.key, l]));
