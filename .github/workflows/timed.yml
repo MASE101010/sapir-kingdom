@@ -1,0 +1,32 @@
+# A reel Michael approved, posted at the hour he chose (site/data/timed.json), without anyone at the keyboard: every 10
+# minutes it looks whether the time has come; then it merges the day's branch into main, starts publish.yml for that day,
+# and after it the trial copy (extra.yml kind=trial), and writes down that it is done. (A scheduled message to the daily
+# run once arrived 21 hours late, so the post itself must not depend on it.)
+name: timed
+on:
+  schedule: [{ cron: '*/10 * * * *' }]
+  workflow_dispatch:
+concurrency: { group: timed, cancel-in-progress: false }
+permissions: { contents: write, actions: write }
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - id: due
+        run: |
+          node -e "
+            const fs = require('fs'); const f = 'site/data/timed.json'; if (!fs.existsSync(f)) process.exit(0);
+            const t = JSON.parse(fs.readFileSync(f, 'utf8')).filter(x => !x.done && Date.parse(x.at) <= Date.now());
+            if (t[0]) fs.appendFileSync(process.env.GITHUB_OUTPUT, 'day=' + t[0].day + '\nbranch=' + (t[0].branch ?? '') + '\ntrial=' + (t[0].trial ? 1 : 0) + '\n');"
+      - if: steps.due.outputs.day
+        env: { GH_TOKEN: '${{ github.token }}', DAY: '${{ steps.due.outputs.day }}', BRANCH: '${{ steps.due.outputs.branch }}', TRIAL: '${{ steps.due.outputs.trial }}' }
+        run: |
+          git config user.name "kingdom-bot"; git config user.email "kingdom-bot@users.noreply.github.com"
+          if [ -n "$BRANCH" ]; then git merge --no-ff -m "day $DAY: merged at the planned hour [publish day $DAY]" "origin/$BRANCH"; fi
+          node -e "const fs=require('fs'),f='site/data/timed.json',t=JSON.parse(fs.readFileSync(f,'utf8'));for(const x of t)if(String(x.day)===process.env.DAY&&!x.done)x.done=new Date().toISOString();fs.writeFileSync(f,JSON.stringify(t,null,1)+'\n')"
+          git add site/data/timed.json && git commit -m "timed: day $DAY is going up" && git push origin HEAD:main
+          gh workflow run publish.yml -f day=$DAY
+          if [ "$TRIAL" = 1 ]; then sleep 30; gh workflow run extra.yml -f day=$DAY -f kind=trial; fi
+          echo "::notice::timed: day $DAY merged, publish and trial started"
