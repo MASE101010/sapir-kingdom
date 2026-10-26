@@ -1,8 +1,8 @@
 {
  "note": "The royal elections (day 11): citizens' votes by candidate, at the daily count. Written by tools/ingest.mjs.",
- "at": "2026-10-25T16:59:56.250Z",
+ "at": "2026-10-26T18:20:11.036Z",
  "votes": {
-  "bibkovich": 9,
+  "bibkovich": 10,
   "lebet": 1,
   "mascentape": 2,
   "yairdo": 4
