@@ -104,9 +104,9 @@
   {
    "line": 9,
    "target": "landmark:cityhall",
-   "dist": 150,
-   "yaw": 10,
-   "pitch": 30,
+   "dist": 110,
+   "yaw": 0,
+   "pitch": 38,
    "orbit": 4,
    "ease": 0.8
   },
@@ -460,6 +460,28 @@
    "dt": 1.0,
    "dur": 0.7,
    "zoom": 0.2
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 0.3,
+   "dur": 2.3,
+   "text": "❓",
+   "x": 540,
+   "y": 980,
+   "size": 230,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "🏗️",
+   "x": 540,
+   "y": 980,
+   "size": 230,
+   "rot": 6
   }
  ],
  "rise": {
