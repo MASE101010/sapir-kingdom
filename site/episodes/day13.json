@@ -1,0 +1,633 @@
+{
+ "day": 13,
+ "lines": [
+  "[excited] יום שלושה עשר, והיום זה יום הבחירות ב-Sapirland!",
+  "[excited] הַקַּלְפִּי פתוחה עד חצות!",
+  "[excited] Bibkovich מוביל, עם עשרה קולות!",
+  "[excited] Yairdo עם ארבעה, Maizencot עם שניים...",
+  "[excited] ו-Lebet? סוף סוף קיבל קול ראשון!",
+  "[excited] אני... אֶבְנֶה... ממלכה חדשה!",
+  "[excited] ו-Zurovski כתב ל-Bibkovich נאום שלם!",
+  "[excited] Bibkovich הוא החיים שלי, כל היקום שלי!",
+  "[excited] אני, Bibkovich, אָבִיס את הדרקונים, ואביא שלום לממלכה!",
+  "[excited] אבל רגע... איפה הנשיא החדש יעבוד?",
+  "[excited] Ofek ביקש: תבנו את עיריית הממלכה!",
+  "[excited] אז בנינו... את עיריית Sapir!",
+  "[excited] והנשיא שינצח, יקבל את המשרד בקומה העליונה!",
+  "[excited] רוצים לעבוד בעירייה? תעקבו, ותגיבו עוֹבֵד, ותקבלו עבודה!",
+  "[excited] ובינתיים, הדרקון עדיין יושב על הגג של סופר Sapir...",
+  "[excited] עוד מאה ועשרה עוקבים, והסופר חוזר!",
+  "[excited] אז שלחו את הסרטון לחבר, שיעקוב ויצביע!",
+  "[excited] הַקַּלְפִּי נסגרת הלילה בחצות...",
+  "[excited] ומחר בבוקר, נכריז על הנשיא החדש!",
+  "[excited] כדי להצביע: תעקבו, ותגיבו את שם המועמד!"
+ ],
+ "top": 170,
+ "mix": "day13.mix.mp3",
+ "say": {
+  "Sapirland": "ספירלנד",
+  "Sapir": "ספיר",
+  "Bibkovich": "ביבקוביץ'",
+  "Yairdo": "יאירדו",
+  "Lebet": "לבט",
+  "Maizencot": "מאיסנקוט",
+  "Zurovski": "זורובסקי",
+  "Ofek": "אופק"
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:statues",
+   "dist": 115,
+   "yaw": -10,
+   "pitch": 24,
+   "orbit": 8,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "landmark:elections",
+   "dist": 72,
+   "yaw": 0,
+   "pitch": 14,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 2,
+   "target": [
+    254.84,
+    13,
+    84.99
+   ],
+   "dist": 36,
+   "yaw": -70.5,
+   "pitch": 10,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": [
+    251.44,
+    13,
+    111.51
+   ],
+   "dist": 36,
+   "yaw": -126.1,
+   "pitch": 10,
+   "orbit": -3,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": "house:zurovski2000",
+   "dist": 40,
+   "yaw": 30,
+   "pitch": 30,
+   "orbit": 6,
+   "ease": 0.7
+  },
+  {
+   "line": 8,
+   "target": [
+    254.84,
+    13,
+    84.99
+   ],
+   "dist": 48,
+   "yaw": -82.5,
+   "pitch": 12,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": "landmark:cityhall",
+   "dist": 150,
+   "yaw": 10,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 11,
+   "target": "landmark:cityhall",
+   "dist": 135,
+   "yaw": 0,
+   "pitch": 22,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 12,
+   "target": [
+    99.7,
+    9.5,
+    240.6
+   ],
+   "dist": 30,
+   "yaw": -157.5,
+   "pitch": 12,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 13,
+   "target": [
+    108.6,
+    3,
+    225.6
+   ],
+   "dist": 28,
+   "yaw": -132.5,
+   "pitch": 14,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 14,
+   "target": "landmark:super",
+   "dist": 90,
+   "yaw": 25,
+   "pitch": 20,
+   "orbit": 4,
+   "ease": 0.7
+  },
+  {
+   "line": 16,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 600,
+   "yaw": 20,
+   "pitch": 58,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 17,
+   "target": "landmark:elections",
+   "dist": 62,
+   "yaw": 0,
+   "pitch": 12,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 18,
+   "target": "landmark:statues",
+   "dist": 120,
+   "yaw": 0,
+   "pitch": 24,
+   "orbit": 7,
+   "ease": 0.7
+  },
+  {
+   "line": 19,
+   "target": "landmark:statues",
+   "dist": 80,
+   "yaw": 15,
+   "pitch": 14,
+   "orbit": 6,
+   "ease": 0.6
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "יום 13"
+  },
+  {
+   "type": "candidates",
+   "line": 2,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 4,
+   "text": "תוצאות הקלפי 🗳️",
+   "sub": "יום הבחירות",
+   "images": [
+    "img/candidates/bibkovich.jpg",
+    "img/candidates/yairdo.jpg",
+    "img/candidates/lebet.jpg",
+    "img/candidates/mascentape.jpg"
+   ],
+   "crop": [
+    0.25,
+    0,
+    1,
+    0.78
+   ],
+   "names": [
+    "ביבקוביץ' · 10",
+    "יאירדו · 4",
+    "לבט · 1",
+    "מאיסנקוט · 2"
+   ],
+   "colors": [
+    "#f2b632",
+    "#e8742a",
+    "#6b3fa0",
+    "#1f8a4c"
+   ],
+   "stamp": 0,
+   "stampAt": 1.0
+  },
+  {
+   "type": "poster",
+   "line": 5,
+   "dt": 0,
+   "dur": 0,
+   "poster": "img/candidates/lebet.jpg",
+   "name": "לבט",
+   "promise": "אבנה ממלכה חדשה",
+   "fg": "#ffffff",
+   "untilLine": 6
+  },
+  {
+   "type": "comment",
+   "line": 6,
+   "dt": 0.3,
+   "dur": 0,
+   "untilLine": 8,
+   "u": "zurovski2000",
+   "text": "ביבקוביץ' הוא החיים שלי, כל היקום שלי! והממלכה איתו תהיה יפה ונקודה 👑",
+   "likes": 0
+  },
+  {
+   "type": "poster",
+   "line": 8,
+   "dt": 0,
+   "dur": 0,
+   "poster": "img/candidates/bibkovich.jpg",
+   "name": "ביבקוביץ'",
+   "promise": "אביס את הדרקונים ואביא שלום לממלכה",
+   "fg": "#13213b",
+   "untilLine": 9
+  },
+  {
+   "type": "comment",
+   "line": 10,
+   "dt": 0,
+   "dur": 2.3,
+   "u": "ofek_bell",
+   "text": "תבנה את עיריית הממלכה של ספיר ושם תבקש מכולם לכתוב עובד",
+   "likes": 2
+  },
+  {
+   "type": "label",
+   "line": 11,
+   "dt": 0.2,
+   "dur": 3.2,
+   "text": "נבנה · עיריית ספיר"
+  },
+  {
+   "type": "idcard",
+   "line": 12,
+   "dt": 0.2,
+   "dur": 1.6,
+   "u": "ofek_bell",
+   "honours": [
+    "אדריכל · עיריית ספיר"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 19,
+   "dt": 0.3,
+   "dur": 3.2,
+   "text": "מי יהיה הנשיא?",
+   "sub": "תעקבו ותגיבו את שם המועמד 🗳️"
+  }
+ ],
+ "votes": {
+  "bibkovich": 10,
+  "yairdo": 4,
+  "mascentape": 2,
+  "lebet": 1
+ },
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.2
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 3.0,
+   "text": "יום הבחירות! 🗳️",
+   "y": 760,
+   "size": 120,
+   "band": "#7a1f35",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 1.6,
+   "text": "הקלפי פתוחה עד חצות ⏰",
+   "y": 760,
+   "size": 100,
+   "band": "#7a1f35",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 1.1,
+   "dur": 1.4,
+   "text": "🎉",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "😂",
+   "x": 840,
+   "y": 1110,
+   "size": 150,
+   "rot": 8
+  },
+  {
+   "type": "vignette",
+   "line": 9,
+   "dur": 2.2,
+   "color": "rgba(10,10,30,.35)"
+  },
+  {
+   "type": "confetti",
+   "line": 11,
+   "dt": 1.2,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 11,
+   "dt": 1.2,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 1.8,
+   "dur": 1.4,
+   "text": "לשכת הנשיא 👑",
+   "y": 330,
+   "size": 105,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 13,
+   "dt": 0.6,
+   "dur": 3.2,
+   "text": "תעקבו + תגיבו \"עובד\" 💼",
+   "y": 330,
+   "size": 95,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 15,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "390 / 500 = הסופר חוזר 🛒",
+   "y": 330,
+   "size": 90,
+   "band": "#c8102e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 16,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "שלחו לחבר 📲",
+   "y": 760,
+   "size": 110,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 17,
+   "dt": 0.1,
+   "dur": 1.7,
+   "text": "הקלפי נסגרת בחצות ⏰",
+   "y": 760,
+   "size": 100,
+   "band": "#7a1f35",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 18,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "מחר: הנשיא החדש 👑",
+   "y": 760,
+   "size": 105,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "punch",
+   "line": 18,
+   "dt": 1.0,
+   "dur": 0.7,
+   "zoom": 0.2
+  }
+ ],
+ "rise": {
+  "key": "cityhall",
+  "line": 11,
+  "dt": 0,
+  "dur": 3.4
+ },
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 9,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 11,
+     "dt": 0.2
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 14,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 16,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "ding",
+   "line": 1,
+   "dt": 0.1
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 0.1,
+   "repeat": 4,
+   "every": 0.25,
+   "gain": 0.6
+  },
+  {
+   "name": "kaching",
+   "line": 2,
+   "dt": 1.0
+  },
+  {
+   "name": "boing",
+   "line": 4,
+   "dt": 1.1
+  },
+  {
+   "name": "whoosh",
+   "line": 5,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 6,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 6,
+   "dt": 0.3
+  },
+  {
+   "name": "sparkle",
+   "line": 7,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 8,
+   "dt": -0.1
+  },
+  {
+   "name": "scratch",
+   "line": 9,
+   "dt": 0
+  },
+  {
+   "name": "whoosh",
+   "line": 10,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 10,
+   "dt": 0
+  },
+  {
+   "name": "whoosh",
+   "line": 11,
+   "dt": 0
+  },
+  {
+   "name": "tada",
+   "line": 11,
+   "dt": 1.2
+  },
+  {
+   "name": "sparkle",
+   "line": 12,
+   "dt": 0.2
+  },
+  {
+   "name": "kaching",
+   "line": 13,
+   "dt": 2.6
+  },
+  {
+   "name": "roar",
+   "line": 14,
+   "dt": 0.8,
+   "gain": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 15,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 16,
+   "dt": 0
+  },
+  {
+   "name": "ding",
+   "line": 17,
+   "dt": 0.1
+  },
+  {
+   "name": "boom",
+   "line": 18,
+   "dt": 1.0
+  },
+  {
+   "name": "ding",
+   "line": 19,
+   "dt": 0.3
+  }
+ ],
+ "caption": "היום יום הבחירות בממלכה! 🗳️ הקלפי פתוחה עד חצות, ומחר בבוקר נכריז על הנשיא החדש 👑 ונפתחה עיריית ספיר (רעיון של אופק) 🏛️\nכדי להצביע: תעקבו ותגיבו את שם המועמד. רוצים עבודה בעירייה? תעקבו ותגיבו \"עובד\" 💼\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #בחירות #עירייה",
+ "firstComment": "למי הקול שלכם? 🗳️ ביבקוביץ' / יאירדו / לבט / מאיסנקוט. ומי רוצה לעבוד בעירייה? תגיבו \"עובד\" 💼",
+ "notes": "Day 13 planned with Michael: election day. Built @ofek_bell's 'עיריית הממלכה' (2 likes, top comment) with his idea: a comment 'עובד' gets a job there (residents.job = 'clerk'). Also asked: 'תבנה בית ספר' (eladshwar, 0 likes, maybe later), 'תעשו חוף ספירלונד' (yonti_pro, 0 likes, maybe later). Votes are counted, not builds. No day-12 residents, so no gold key draw today."
+}

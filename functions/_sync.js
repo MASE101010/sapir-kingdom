@@ -7,7 +7,7 @@
 // Instagram allows only so many calls an hour, so a sync runs at most once every GAP ms, and backs off after a limit error.
 import { addResident, igToken } from './_lib.js';
 import { HOMES, COMMON } from '../site/app/catalog.js';
-import { reply, SOLDIER, SOLDIER_HOME, BAD, teamOf, squadOf, PILOT, wishText, wishOk, voteOf } from './_replies.js';
+import { reply, SOLDIER, SOLDIER_HOME, BAD, teamOf, squadOf, PILOT, CLERK, wishText, wishOk, voteOf } from './_replies.js';
 const G = 'https://graph.instagram.com/v21.0', GAP = 8000, BACKOFF = 10 * 60e3;
 const say = [n => `ברוכים הבאים לממלכה! הבית שלך, מספר ${n}, כבר עומד 🏠 חפשו את השם שלכם באתר שבביו`,
   n => `נבנה לך בית! מספר ${n}. כנסו לאתר שבביו ותמצאו אותו 👑`, n => `תושב חדש! בית מספר ${n} בממלכה הוא שלך. הקישור בביו 🏰`,
@@ -168,7 +168,9 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
         const h = await addResident(env, t, 'tag', a.u); if (h) tagged.push(h.u); }
       const pilot = !wt && !vote && !team && PILOT.test(a.text ?? '') && !BAD.test(a.text ?? '');   // "טייס": a pilot of נתס"ר
       if (pilot) await env.DB.prepare("UPDATE residents SET job = 'pilot', changed = ? WHERE u = ? AND job IS NULL").bind(Date.now(), a.u).run();
-      const r = await post(env, `${a.id}/replies`, { message: reply(a, { fresh: a.house === 1, n: a.n, citizen: !!a.citizen, team, pilot, tagged, wish, vote }) });   // the king answers what they wrote
+      const clerk = !wt && !vote && !team && !pilot && CLERK.test(a.text) && !BAD.test(a.text ?? '');   // "עובד": a job at עיריית ספיר (day 13)
+      if (clerk) await env.DB.prepare("UPDATE residents SET job = 'clerk', changed = ? WHERE u = ? AND job IS NULL").bind(Date.now(), a.u).run();
+      const r = await post(env, `${a.id}/replies`, { message: reply(a, { fresh: a.house === 1, n: a.n, citizen: !!a.citizen, team, pilot, clerk, tagged, wish, vote }) });   // the king answers what they wrote
       await env.DB.prepare('UPDATE comments SET replied = CASE WHEN ? THEN (CASE WHEN replied > 0 THEN 0 ELSE COALESCE(replied, 0) END) - 1 ELSE 1 END WHERE id = ?').bind(r.error ? 1 : 0, a.id).run(); if (!r.error) replied++;   // a failed answer is tried again
     }
     return { ran: true, read: comments.length, waiting: waiting.map(w => w.u), invites, citizens, replied };

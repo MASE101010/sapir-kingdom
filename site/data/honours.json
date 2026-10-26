@@ -96,6 +96,12 @@
         "nika_trav"
       ],
       "day": 12
+    },
+    "cityhall": {
+      "by": [
+        "ofek_bell"
+      ],
+      "day": 13
     }
   }
 }
