@@ -4,7 +4,10 @@
 // the top floor the president's office with its balcony and a gold door, waiting for the winner of the elections. In the
 // square: a hiring desk with a queue ("דרושים עובדים": a comment "עובד" gets you a job here), clerks with briefcases, a
 // fountain, benches, lamps, trees. Lot radius 30, front toward +z.
+import * as THREE from 'three';
 import { sign } from '../sign.js';
+import { track } from '../models.js';
+import { CANDIDATES } from './elections.js';
 const CREAM = 0xf3e9d2, CREAM2 = 0xe2d5b8, WHITE = 0xf7f5ee, ROOF = 0xb5462f, NAVY = 0x13213b, TEAL = 0x0f6f73, GOLD = 0xe8b323, WIN = 0x2c3e50,
   GLASS = 0x8fc3d8, RED = 0xc8102e, PAVE = 0xe9e0cc, STONE = 0xd2c6ae, GRASS = 0x86c766, WOOD = 0x8a6240, DARK = 0x3a3f45, SKIN = 0xe2b48f, WATER = 0x3fa9d6;
 const W = 42, D = 16, Z = -8, F = 3.4;                  // the hall's width, depth, centre z, storey height
@@ -73,8 +76,18 @@ export function drawCityhall(p) {
 }
 export function cityhallLive(group) {
   const [bx, by, bz] = BALCONY;
-  group.add(sign('עיריית ספיר 🏛️', { w: 13, h: 2.2, bg: '#13213b', fg: '#e8b323', border: '#e8b323', font: '900 {px}px "Secular One", Rubik' }).at(0, 3 * F + 2.8, Z + D / 2 + 3.75));
-  group.add(sign('לשכת הנשיא 👑 · מחר נדע מי', { w: 6.4, h: 1, bg: '#e8b323', fg: '#13213b', border: '#13213b' }).at(bx, by + 1.0, bz + 2.6));
+  group.add(sign('עיריית ספיר 🏛️', { w: 13, h: 2.2, bg: '#13213b', fg: '#e8b323', border: '#e8b323', font: '900 {px}px "Secular One", Rubik' }).at(0, 3 * F + 3.8, Z + D / 2 + 3.75));
+  const office = sign('לשכת הנשיא 👑 · מחר נדע מי', { w: 6.4, h: 1, bg: '#e8b323', fg: '#13213b', border: '#13213b' }).at(bx, by + 1.0, bz + 2.6); group.add(office);
+  // day 14: the president on his balcony (states.cityhall['president_<key>']): his cardboard figure steps out of the gold door,
+  // and the sign under the balcony names him
+  const tl = new THREE.TextureLoader();
+  for (const c of CANDIDATES) { const g = new THREE.Group(), h = 4.3, mat = new THREE.MeshBasicMaterial({ transparent: true, alphaTest: .5, side: THREE.DoubleSide });
+    const pic = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), mat); g.add(pic); g.visible = false;
+    track(tl.loadAsync(`img/candidates/${c.key}-cut.png`).then(t => { t.colorSpace = THREE.SRGBColorSpace; mat.map = t; mat.needsUpdate = true; pic.scale.set(h * t.image.width / t.image.height, h, 1); pic.position.y = h / 2; }));
+    g.position.set(bx, by + .7, bz - 1.4); group.add(g);
+    const title = sign(`הנשיא ${c.name} 👑`, { w: 6.4, h: 1, bg: '#e8b323', fg: '#13213b', border: '#13213b', font: '900 {px}px "Secular One", Rubik' }).at(bx, by + 1.0, bz + 2.62); title.visible = false; group.add(title);
+    group.userData['president_' + c.key] = k => { k = Math.max(0, Math.min(1, k)); g.visible = k > 0; title.visible = k > .5; office.visible = !title.visible;
+      g.position.z = bz - 1.4 + k * 2.9; g.scale.setScalar(.6 + .4 * k); }; }
   group.add(sign('רעיון של @ofek_bell · אדריכל', { w: 8, h: 1.1, bg: '#e8b323', fg: '#13213b', border: '#13213b' }).at(0, .9, Z + D / 2 + 9.8));
   group.add(sign('דרושים עובדים! 💼', { w: 6.4, h: 1.5, bg: '#c8102e', fg: '#ffffff', border: '#ffffff', font: '900 {px}px "Secular One", Rubik' }).at(-14, 3.6, 15.1));
   group.add(sign('תגיבו "עובד" ותקבלו עבודה', { w: 6.4, h: .8, bg: '#ffffff', fg: '#13213b', border: '#13213b' }).at(-14, 1, 15.05));

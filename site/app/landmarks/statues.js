@@ -4,6 +4,8 @@
 // לבט in his top hat and moustache, tipping it, with his cane; מאיסנקוט with his crown, long beard, ermine cape and sceptre,
 // and a golden beach chair beside him (holidays for everyone). Voxel figures in the style of the king's statue (castle.js).
 // Benches, lamps, flower beds, people taking photos, trees. Lot radius 30, front toward +z. Made-up figures only.
+import * as THREE from 'three';
+import { Pen } from '../pen.js';
 import { sign } from '../sign.js';
 import { CANDIDATES } from './elections.js';
 const GOLD = 0xe8b323, DEEP = 0xc9962e, LIGHT = 0xf5d36b, SHINE = 0xfbe7a1, STONE = 0xe3d9c6, STONE2 = 0xd2c6ae, CREAM = 0xfbf3e2,
@@ -127,6 +129,14 @@ export function statuesLive(group) {
   group.add(sign('יום הבחירות: יום שלישי', { w: 6.6, h: 1.1, bg: '#fffaf0', fg: '#c8102e', border: '#c8102e' }).at(0, 2.4, 29.2));
   CANDIDATES.forEach((c, i) => { const { x, z, rot } = SPOTS[i], fx = Math.sin(rot), fz = Math.cos(rot), d = 2.66;
     group.add(sign(c.name, { w: 3.4, h: .85, bg: c.bg, fg: c.fg, border: '#e8b323', font: '900 {px}px "Secular One", Rubik' }).at(x + fx * d, 2.5, z + fz * d, rot));
-    group.add(sign(c.promise, { w: 3.4, h: .55, bg: '#fffaf0', fg: '#13213b', border: '#fffaf0' }).at(x + fx * d, 1.95 - .2, z + fz * d, rot)); });
+    group.add(sign(c.promise, { w: 3.4, h: .55, bg: '#fffaf0', fg: '#13213b', border: '#fffaf0' }).at(x + fx * d, 1.95 - .2, z + fz * d, rot));
+    // day 14: the winner of the elections gets a giant gold crown over his statue and a plaque (states.statues['crown_<key>'])
+    const p = new Pen(), top = PED + 6.6 * S; p.cyl(0, 0, 0, 5.6, 1.4, GOLD); p.cyl(0, .2, 0, 5.9, .4, DEEP);
+    for (let k = 0; k < 8; k++) { const a = k / 8 * Math.PI * 2; p.cone(Math.sin(a) * 2.4, 1.4, Math.cos(a) * 2.4, 1.3, 2.4, GOLD); p.ball(Math.sin(a) * 2.4, 3.6, Math.cos(a) * 2.4, .7, .7, [0xc8102e, 0x3b6fb6, 0x1f8a4c, 0xf5d36b][k % 4]); }
+    p.ball(0, 1.4, 0, 2.2, 1.8, 0xc8102e); p.ball(0, 3.1, 0, .9, .9, GOLD);
+    const crown = p.build(new THREE.Group()); crown.position.set(x, top, z); crown.visible = false; group.add(crown);
+    const plaque = sign('הנשיא הנבחר 👑', { w: 4.6, h: 1.1, bg: '#e8b323', fg: '#13213b', border: '#13213b', font: '900 {px}px "Secular One", Rubik' }).at(x + fx * 3.9, 4.4, z + fz * 3.9, rot); plaque.visible = false; group.add(plaque);
+    group.userData['crown_' + c.key] = k => { k = Math.max(0, Math.min(1, k)); crown.visible = plaque.visible = k > 0; const e = 1 - (1 - k) ** 3;
+      crown.position.y = top + (1 - e) * 26; crown.rotation.y = (1 - e) * 6; }; });
 }
 export const STATUES = { key: 'statues', name: 'שדרת הפסלים', draw: drawStatues, live: statuesLive, top: 20 };
