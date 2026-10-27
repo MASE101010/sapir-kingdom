@@ -42,6 +42,10 @@ export const SQUAD = 30;   // day 10: מכבי and הפועל opened 10 more pla
 export const squadOf = key => TEAMS[key]?.squad ?? SQUAD;
 // day 9: נתס"ר is looking for pilots; a comment with "טייס" makes you one (residents.job = 'pilot')
 export const PILOT = /(?<!\p{L})(אני\s+)?[ל]?(טייס|טייסת|טייסים|טייסות)(?!\p{L})/u;
+// day 13: עיריית ספיר is hiring (@ofek_bell's idea); a short comment with "עובד" gets you a job there (residents.job = 'clerk')
+export const CLERK = { test: t => { t = String(t ?? '').trim(); return t.split(/\s+/).length <= 5 && /(?<!\p{L})(עו?ב[ֹ]?[ֵ]?ד|עובדת|לעבוד)(?!\p{L})/u.test(t) && !/לא\s+עובד/u.test(t); } };
+const CLERKS = [() => 'ברוך הבא לעיריית ספיר! 🏛️ קיבלת עבודה רשמית בממלכה', () => 'התקבלת לעבודה! 🏛️ השולחן שלך בעירייה כבר מחכה', () => 'עיריית ספיר מברכת את העובד החדש! 🏛️💼', () => 'יש לך משרה! 💼 מחר בבוקר בעירייה, ולא לאחר 😉'];
+const CLERK_WAIT = [() => 'המשרה שמורה לך! 🏛️ עכשיו רק לעקוב אחרי הממלכה, ומתחילים לעבוד', () => 'העירייה כבר הכינה לך שולחן 💼 תעקבו אחרי הממלכה, והעבודה שלכם', () => 'כמעט התקבלת! 🏛️ רק לעקוב, וזהו'];
 const PILOTS = [() => 'ברוך הבא לצוות של נתס"ר! ✈️ אתה טייס רשמי של הממלכה', () => 'קיבלת כנפיים! ✈️ מעכשיו אתה טייס בנמל התעופה ספיר', () => 'הקברניט מדבר: ברוך הבא לטייסת של הממלכה 🛫', () => 'המטוס שלך מחכה על המסלול ✈️ גויסת לטייסי נתס"ר!'];
 export const teamOf = text => Object.entries(TEAMS).find(([, t]) => t.re.test(String(text ?? '')))?.[0];
 const SIGNED = [(n, s) => `ברוך הבא ל${n}! ⚽ קיבלת חולצה מספר ${s}`, (n, s) => `חתמת ב${n}! 🖊️⚽ מספר ${s} שלך, תתחיל להתאמן`, (n, s) => `${n} מחתימה שחקן חדש! 🔥 חולצה מספר ${s}`, (n, s) => `הסגל של ${n} גדל! ⚽ אתה מספר ${s}, מחר בוחרים צבע מדים`];
@@ -72,7 +76,7 @@ const CITY = /תל\s*בטטה|telbatata|tel\s*batata|מעתיק|העתק|חיק�
 const HOUSE_ASK = /^(אפשר|אני\s+רוצה|תבנו\s+לי|תבנה\s+לי|רוצה|אשמח\s+ל)?\s*(גם\s+)?(בית|ביית|ביתת|בית\s+משלי|בית\s+בבקשה)[\s?!.]*$/u;
 
 /** the answer to one comment. fresh: their house was built just now (n); citizen: they follow */
-export function reply({ id, u, text }, { fresh = false, n, citizen = false, team = null, pilot = false, tagged = [], wish: wishState = null, vote = null } = {}) {
+export function reply({ id, u, text }, { fresh = false, n, citizen = false, team = null, pilot = false, clerk = false, tagged = [], wish: wishState = null, vote = null } = {}) {
   const seed = hash(id), t = String(text ?? '').trim(), w = wish(t), num = n?.toLocaleString?.('he-IL') ?? n;
   const tail = fresh ? (citizen ? ` · נבנה לך בית מספר ${num}, ואתם כבר אזרחים 👑` : ` · נבנה לך בית מספר ${num} 🏠 לאזרחות: עקבו וכתבו לי "בית" בפרטי`) : '';
   let head;
@@ -82,6 +86,7 @@ export function reply({ id, u, text }, { fresh = false, n, citizen = false, team
   else if (wishState != null) head = wishState === 1 ? pick(citizen ? WISHES : WISH_WAIT, seed)() : pick(WISH_CHECK, seed)();
   else if (team) head = team.full ? pick(FULL, seed)(TEAMS[team.key].name) : pick(SIGNED, seed)(TEAMS[team.key].name, team.shirt);
   else if (pilot) head = pick(PILOTS, seed)();
+  else if (clerk) head = pick(citizen ? CLERKS : CLERK_WAIT, seed)();
   else if (SOLDIER.test(t)) head = pick(ARMY, seed)();
   else if (!/[\p{L}\p{N}]/u.test(t)) head = pick(EMOJI, seed)();
   else if (HOUSE_ASK.test(t)) head = fresh ? 'ביקשת, קיבלת! 🏡' : pick(HOUSE, seed)();
