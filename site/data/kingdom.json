@@ -1,6 +1,6 @@
 {
   "note": "The kingdom's state. Written by the daily run (CLAUDE.md). day: today's day number; landmarks: what stands, on which lot, built on which day, at whose asking; history: how many residents stood at the end of each day; upgraded: Instagram name -> extra storeys; visit: whose door Michael walks to today; status: one line about what Michael is doing.",
-  "day": 13,
+  "day": 14,
   "landmarks": [
     {
       "key": "castle",
@@ -129,15 +129,16 @@
     263,
     293,
     312,
-    315
+    315,
+    328
   ],
   "upgraded": {},
-  "status": "יום הבחירות! 🗳️ הקלפי פתוחה עד חצות, ועיריית ספיר נפתחה ומחפשת עובדים 🏛️",
+  "status": "יש לנו נשיא! 👑 ביבקוביץ' ניצח בבחירות, והמשימה הראשונה שלו: לתפוס את הדרקון",
   "dm": false,
   "updated": "2026-10-27T19:12:00.015Z",
   "news": {
-    "day": 13,
-    "line": "עיריית ספיר נפתחה! 🏛️ תגיבו \"עובד\" ותקבלו עבודה. והיום יום הבחירות 🗳️",
+    "day": 14,
+    "line": "יש לנו נשיא! 👑 ביבקוביץ' ניצח בבחירות ויצא למרפסת של עיריית ספיר",
     "landmark": "cityhall"
   },
   "reels": {
@@ -231,6 +232,13 @@
     },
     "super": {
       "burn": 1
+    },
+    "statues": {
+      "crown_bibkovich": 1
+    },
+    "cityhall": {
+      "president_bibkovich": 1
     }
-  }
+  },
+  "president": "bibkovich"
 }

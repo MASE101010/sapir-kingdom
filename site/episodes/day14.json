@@ -1,0 +1,589 @@
+{
+ "day": 14,
+ "lines": [
+  "[excited] יום ארבעה עשר ב-Sapirland... והַקַּלְפִּי נסגרה!",
+  "[excited] ספרנו את כל הקולות...",
+  "[excited] במקום הרביעי... Lebet, עם שני קולות!",
+  "[excited] במקום השלישי... Maizencot, עם שלושה!",
+  "[excited] במקום השני... Yairdo, עם ארבעה!",
+  "[excited] והנשיא הראשון של Sapirland הוא...",
+  "[excited] Bibkovich! עם שנים עשר קולות!",
+  "[excited] תודה, ממלכה! ועכשיו... אני אָבִיס את הדרקון!",
+  "[excited] Bibkovich יצא למרפסת של עיריית Sapir!",
+  "[excited] והפסל שלו בשדרה... קיבל כתר זהב!",
+  "[excited] המשימה הראשונה של הנשיא: לתפוס את הדרקון מהגג של סופר Sapir!",
+  "[excited] אבל הוא צריך אתכם... עוד שמונים ושישה עוקבים, והסופר חוזר!",
+  "[excited] ובעירייה? כבר עשרה עובדים חדשים!",
+  "[excited] רוצים עבודה? תעקבו, ותגיבו עוֹבֵד!",
+  "[excited] והממלכה גדלה... עשרים וארבעה עוקבים חדשים ביום אחד!",
+  "[excited] אז מה בונים מחר? תגיבו בתגובות!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:elections",
+   "dist": 75,
+   "yaw": -10,
+   "pitch": 16,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "landmark:elections",
+   "dist": 48,
+   "yaw": 10,
+   "pitch": 8,
+   "orbit": -3,
+   "ease": 0.6
+  },
+  {
+   "line": 2,
+   "target": [
+    251.44,
+    13,
+    111.51
+   ],
+   "dist": 36,
+   "yaw": -126.1,
+   "pitch": 10,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 3,
+   "target": [
+    240.3,
+    13,
+    120.1
+   ],
+   "dist": 36,
+   "yaw": -154.5,
+   "pitch": 10,
+   "orbit": -3,
+   "ease": 0.5
+  },
+  {
+   "line": 4,
+   "target": [
+    256.64,
+    13,
+    98.94
+   ],
+   "dist": 36,
+   "yaw": -98.9,
+   "pitch": 10,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 5,
+   "target": "landmark:statues",
+   "dist": 125,
+   "yaw": 0,
+   "pitch": 22,
+   "orbit": 14,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": [
+    254.84,
+    16,
+    84.99
+   ],
+   "dist": 44,
+   "yaw": -70.5,
+   "pitch": 12,
+   "orbit": 4,
+   "ease": 0.4
+  },
+  {
+   "line": 8,
+   "target": [
+    99.7,
+    10.5,
+    240.6
+   ],
+   "dist": 30,
+   "yaw": -157.5,
+   "pitch": 10,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": [
+    254.84,
+    15,
+    84.99
+   ],
+   "dist": 58,
+   "yaw": -92.5,
+   "pitch": 16,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "target": "landmark:super",
+   "dist": 90,
+   "yaw": 25,
+   "pitch": 20,
+   "orbit": 4,
+   "ease": 0.7
+  },
+  {
+   "line": 12,
+   "target": [
+    108.6,
+    3,
+    225.6
+   ],
+   "dist": 28,
+   "yaw": -132.5,
+   "pitch": 14,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 14,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 600,
+   "yaw": 20,
+   "pitch": 58,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 15,
+   "target": "castle",
+   "dist": 280,
+   "yaw": 10,
+   "pitch": 38,
+   "orbit": 6,
+   "ease": 0.7
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "יום 14"
+  },
+  {
+   "type": "poster",
+   "line": 7,
+   "dt": 0,
+   "dur": 0,
+   "poster": "img/candidates/bibkovich.jpg",
+   "name": "הנשיא ביבקוביץ' 👑",
+   "promise": "אביס את הדרקון!",
+   "fg": "#13213b",
+   "untilLine": 8
+  },
+  {
+   "type": "cta",
+   "line": 15,
+   "dt": 0.2,
+   "dur": 2.6,
+   "text": "מה בונים מחר?",
+   "sub": "תגיבו בתגובות 👇"
+  },
+  {
+   "type": "idcard",
+   "line": 14,
+   "dt": 0.1,
+   "dur": 2.2,
+   "u": "grossman.alon",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  }
+ ],
+ "top": 170,
+ "mix": "day14.mix.mp3",
+ "say": {
+  "Sapirland": "ספירלנד",
+  "Sapir": "ספיר",
+  "Bibkovich": "ביבקוביץ'",
+  "Yairdo": "יאירדו",
+  "Lebet": "לבט",
+  "Maizencot": "מאיסנקוט"
+ },
+ "votes": {
+  "bibkovich": 12,
+  "yairdo": 4,
+  "mascentape": 3,
+  "lebet": 2
+ },
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 3.0,
+   "text": "הקלפי נסגרה! 🗳️",
+   "y": 760,
+   "size": 115,
+   "band": "#7a1f35",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 1.5,
+   "text": "סופרים קולות... 🧮",
+   "y": 760,
+   "size": 100,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "banner",
+   "line": 2,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "מקום 4 · לבט · 2",
+   "y": 760,
+   "size": 100,
+   "band": "#6b3fa0",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 3,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "מקום 3 · מאיסנקוט · 3",
+   "y": 760,
+   "size": 95,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 4,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "מקום 2 · יאירדו · 4",
+   "y": 760,
+   "size": 100,
+   "band": "#e8742a",
+   "color": "#ffffff"
+  },
+  {
+   "type": "vignette",
+   "line": 5,
+   "dur": 3.0,
+   "color": "rgba(10,10,30,.5)"
+  },
+  {
+   "type": "flash",
+   "line": 6,
+   "dt": 0,
+   "dur": 0.35,
+   "color": "#e8b323",
+   "alpha": 0.6
+  },
+  {
+   "type": "confetti",
+   "line": 6,
+   "dt": 0.1,
+   "dur": 3
+  },
+  {
+   "type": "punch",
+   "line": 6,
+   "dt": 0.1,
+   "dur": 0.8,
+   "zoom": 0.3
+  },
+  {
+   "type": "shake",
+   "line": 6,
+   "dt": 0.1,
+   "dur": 0.6,
+   "amp": 0.8
+  },
+  {
+   "type": "banner",
+   "line": 6,
+   "dt": 0.2,
+   "dur": 2.0,
+   "text": "הנשיא: ביבקוביץ' 👑 · 12",
+   "y": 760,
+   "size": 95,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 8,
+   "dt": 0.8,
+   "dur": 2
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 0.3,
+   "dur": 2.2,
+   "text": "👑",
+   "x": 840,
+   "y": 1110,
+   "size": 160,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 0.8,
+   "dur": 2.4,
+   "text": "🐉",
+   "x": 840,
+   "y": 1110,
+   "size": 160,
+   "rot": 8
+  },
+  {
+   "type": "banner",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 3.8,
+   "text": "414 / 500 = הסופר חוזר 🛒",
+   "y": 330,
+   "size": 90,
+   "band": "#c8102e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.2,
+   "text": "10 עובדים חדשים 💼",
+   "y": 330,
+   "size": 100,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 2.2,
+   "text": "תעקבו + תגיבו \"עובד\" 💼",
+   "y": 330,
+   "size": 90,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 14,
+   "dt": 1.0,
+   "dur": 2.4,
+   "text": "+24 עוקבים ביום אחד 🎉",
+   "y": 760,
+   "size": 100,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 14,
+   "dt": 1.0,
+   "dur": 2
+  },
+  {
+   "type": "banner",
+   "line": 16,
+   "dt": 0.0,
+   "dur": 1.8,
+   "text": "עוקב = בית 🏠",
+   "y": 760,
+   "size": 105,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  }
+ ],
+ "states": [
+  {
+   "key": "statues",
+   "kind": "crown_bibkovich",
+   "line": 6,
+   "dt": 0.0,
+   "dur": 2.0
+  },
+  {
+   "key": "cityhall",
+   "kind": "president_bibkovich",
+   "line": 8,
+   "dt": 0.0,
+   "dur": 1.6
+  }
+ ],
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 6,
+     "dt": 0
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 10,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 12,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0
+  },
+  {
+   "name": "boom",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "pop",
+   "line": 1,
+   "dt": 0.2,
+   "repeat": 6,
+   "every": 0.2,
+   "gain": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 2,
+   "dt": 0.1
+  },
+  {
+   "name": "ding",
+   "line": 3,
+   "dt": 0.1
+  },
+  {
+   "name": "ding",
+   "line": 4,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 5,
+   "dt": 0
+  },
+  {
+   "name": "boom",
+   "line": 6,
+   "dt": 0
+  },
+  {
+   "name": "tada",
+   "line": 6,
+   "dt": 0.1
+  },
+  {
+   "name": "kaching",
+   "line": 6,
+   "dt": 0.6
+  },
+  {
+   "name": "whoosh",
+   "line": 7,
+   "dt": -0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 8,
+   "dt": -0.1
+  },
+  {
+   "name": "tada",
+   "line": 8,
+   "dt": 0.8
+  },
+  {
+   "name": "sparkle",
+   "line": 9,
+   "dt": 0.3
+  },
+  {
+   "name": "roar",
+   "line": 10,
+   "dt": 0.8,
+   "gain": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 11,
+   "dt": 0.1
+  },
+  {
+   "name": "kaching",
+   "line": 12,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 13,
+   "dt": 0.2
+  },
+  {
+   "name": "tada",
+   "line": 14,
+   "dt": 1.0
+  },
+  {
+   "name": "ding",
+   "line": 15,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 16,
+   "dt": 0
+  }
+ ],
+ "caption": "יש לנו נשיא! 👑 ביבקוביץ' ניצח בבחירות הראשונות של ספירלנד עם 12 קולות 🗳️ והמשימה הראשונה שלו: לתפוס את הדרקון מהגג של סופר ספיר 🐉\nעוד 86 עוקבים והסופר חוזר! רוצים עבודה בעירייה? תעקבו ותגיבו \"עובד\" 💼\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #בחירות #נשיא",
+ "firstComment": "מה בונים מחר בממלכה? 👇 התגובה עם הכי הרבה לייקים נבנית! ושלחו לחבר, שגם לו יהיה בית 🏠",
+ "notes": "Day 14 written by Claude on Michael's instruction (27.10): the election results (counts at 21:05: bibkovich 12, yairdo 4, mascentape 3, lebet 2; the polls close at midnight). No new landmark: the inauguration (crown on the winner's statue, the president on the city hall balcony). Open suggestions: 'תעשו חוף ספירלונד' (yonti_pro), 'תבנה בית ספר' (eladshwar).",
+ "homes": {
+  "grossman.alon": 8
+ }
+}
