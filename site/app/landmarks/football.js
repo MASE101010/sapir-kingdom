@@ -14,7 +14,7 @@ const FANS = [0xe8b323, 0x0f6f73, 0xc2412d, 0xffffff, 0x3b6fb6, 0x7a4f9a, 0xf28d
 const rnd = (a, b) => { let h = Math.imul(a * 73856093 ^ b * 19349663, 2654435761); h ^= h >>> 15; return (h >>> 0) / 4294967296; };
 
 /** a pitch W × D (x × z) with mown stripes, its lines, centre circle, boxes and two goals */
-function pitch(p, W, D, y = 0) {
+export function pitch(p, W, D, y = 0) {
   const n = 10; for (let i = 0; i < n; i++) p.box(-W / 2 + (i + .5) * W / n, y, 0, W / n, .12, D, i % 2 ? GRASS : GRASS2);
   const ln = (x, z, w, d) => p.box(x, y + .12, z, w, .03, d, LINE);
   ln(0, -D / 2, W, .25); ln(0, D / 2, W, .25); ln(-W / 2, 0, .25, D); ln(W / 2, 0, .25, D); ln(0, 0, .25, D);
@@ -24,12 +24,12 @@ function pitch(p, W, D, y = 0) {
     p.box(gx + s * .8, y, 0, .08, 2.3, 4, 0xe9eef2); }                                                        // goal and its net
 }
 /** a footballer: shirt in kit, shorts and the number in trim */
-function player(p, x, z, rot, kit, y = 0, trim = kit === LINE ? NAVY : LINE) {
+export function player(p, x, z, rot, kit, y = 0, trim = kit === LINE ? NAVY : LINE) {
   p.at(x, z, rot, y); p.box(-.3, 0, 0, .45, .7, .5, trim); p.box(.3, 0, 0, .45, .7, .5, trim); p.box(-.3, .7, 0, .45, .7, .5, SKIN); p.box(.3, .7, 0, .45, .7, .5, SKIN);
   p.box(0, 1.4, 0, 1.2, .5, .7, kit); p.box(0, 1.9, 0, 1.3, 1.2, .8, kit); p.box(0, 2.3, -.42, .5, .5, .05, trim);
   p.box(-.8, 2, 0, .35, 1, .4, SKIN); p.box(.8, 2, 0, .35, 1, .4, SKIN); p.box(0, 3.1, 0, .9, .9, .9, SKIN); p.box(0, 3.85, 0, .95, .3, .95, 0x4a3020); p.at(0, 0, 0);
 }
-function floodlight(p, x, z, h, face) {
+export function floodlight(p, x, z, h, face) {
   p.box(x, 0, z, .8, h, .8, METAL); p.box(x, h, z, 5, 2.6, .6, DARK, face);
   for (let i = 0; i < 4; i++) for (let j = 0; j < 2; j++) p.box(x + Math.cos(face) * (-1.8 + i * 1.2), h + .4 + j * 1.1, z - Math.sin(face) * (-1.8 + i * 1.2) + Math.sin(face + Math.PI / 2) * .1, .9, .8, .2, 0xfff6c8, face);
 }
