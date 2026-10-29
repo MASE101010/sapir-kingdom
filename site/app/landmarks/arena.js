@@ -7,11 +7,11 @@ import { sign } from '../sign.js';
 import { pitch, player, floodlight } from './football.js';
 const HRED = 0xc8102e, HBLACK = 0x1b1d21, WHITE = 0xf7f5ee, CONCRETE = 0xd6d0c4, METAL = 0x9aa3ab, GLASS = 0x7fb3c9, DARK = 0x3a3f45, GOLD = 0xe8b323,
   SKIN = 0xe2b48f, PAVE = 0xe2d9c6, GRASS = 0x86c766;
-const FANS = [HRED, HBLACK, HRED, WHITE, HRED, 0xe8b323, HBLACK, 0xf28db2];
+const RED_FANS = [HRED, HBLACK, HRED, WHITE, HRED, 0xe8b323, HBLACK, 0xf28db2];
 const rnd = (a, b) => { let h = Math.imul(a * 73856093 ^ b * 19349663, 2654435761); h ^= h >>> 15; return (h >>> 0) / 4294967296; };
-const PW = 32, PD = 20, T = 6;          // pitch, number of tiers
+const PW = 32, PD = 20;          // pitch, number of tiers
 
-export function drawArena(p) {
+function drawArenaWith(p, HRED, HBLACK, FANS, press, T = 6) {
   p.at(0, 0, 0);
   p.box(0, 0, 0, 60, .08, 60, GRASS); p.box(0, .08, 0, 58, .1, 56, PAVE);
   pitch(p, PW, PD, .18);
@@ -47,9 +47,17 @@ export function drawArena(p) {
   // the gate and the fan shop at the front, flags along the road
   for (const x of [-6, 6]) { p.box(x, 0, 27, 1.6, 7, 1.6, HBLACK); p.cone(x, 7, 27, 2, 2, HRED); } p.box(0, 6, 27, 13.6, 1.4, 1.2, HRED);
   p.box(17, 0, 25, 8, 4, 5, WHITE); p.box(17, 4, 25, 8.6, .4, 5.6, HRED); p.box(17, .1, 27.55, 6, 2.6, .1, GLASS);
-  for (let k = 0; k < 5; k++) { const x = -26 + k * 4; p.box(x, 0, 27.5, .25, 7, .25, METAL); p.box(x + .9, 5.5, 27.5, 1.8, 1.2, .06, k % 2 ? HBLACK : HRED); }
+  if (!press) for (let k = 0; k < 5; k++) { const x = -26 + k * 4; p.box(x, 0, 27.5, .25, 7, .25, METAL); p.box(x + .9, 5.5, 27.5, 1.8, 1.2, .06, k % 2 ? HBLACK : HRED); }
   for (const [x, z] of [[-27, 10], [27, 10], [-27, -6], [27, -6]]) p.tree(x, z, .9);
+  // day 16 (בית"ר ארנה): the press room at the front left: a glass box with the club's backdrop, a long table, microphones, chairs
+  if (press) { p.at(-17, 24.5); p.box(0, 0, 0, 9, 4.4, 5.4, WHITE); p.box(0, 4.4, 0, 9.6, .4, 6, HRED); p.box(0, .1, 2.75, 7.6, 3.4, .1, GLASS);
+    p.box(0, .1, -2.4, 8, 3.6, .3, HBLACK); p.box(0, 0, 0, 6, 1, 1.2, WHITE); for (let k = 0; k < 4; k++) { p.box(-2.2 + k * 1.5, 1, .2, .12, .7, .12, DARK); p.ball(-2.2 + k * 1.5, 1.7, .2, .3, .3, DARK); p.box(-2.2 + k * 1.5, 0, -1.2, .9, 1.4, .9, HBLACK); }
+    for (let k = 0; k < 3; k++) { p.box(-3 + k * 3, 0, 4.4, .5, 1.5, .5, DARK); p.box(-3 + k * 3, 1.5, 4.4, .7, .5, .9, DARK); }    // cameras on tripods outside
+    p.at(0, 0, 0); }
 }
+export function drawArena(p) { drawArenaWith(p, HRED, HBLACK, RED_FANS, false); }
+const BYEL = 0xf2c418, BBLK = 0x1b1d21;
+export function drawBeitarArena(p) { drawArenaWith(p, BYEL, BBLK, [BYEL, BBLK, BYEL, WHITE, BYEL, BBLK, BYEL, 0xf28c28], true, 8); }
 export function arenaLive(group) {
   group.add(sign('הפועל ארנה ❤️🖤', { w: 12.6, h: 2, bg: '#c8102e', fg: '#ffffff', border: '#1b1d21', font: '900 {px}px "Secular One", Rubik' }).at(0, 4.6, 27.65));
   group.add(sign('רעיון של @eilam.lev99 · אדריכל', { w: 8.4, h: 1.1, bg: '#e8b323', fg: '#13213b', border: '#13213b' }).at(0, 2.9, 27.65));
@@ -58,3 +66,14 @@ export function arenaLive(group) {
   for (const s of [-1, 1]) group.add(sign('הפועל ספיר ❤️🖤', { w: 10, h: 4, bg: '#1d6fa5', fg: '#ffffff', border: '#1b1d21', font: '900 {px}px "Secular One", Rubik' }).at(s * (PW / 2 + 9.5 - .62 * s), 14, 0, -s * Math.PI / 2));
 }
 export const ARENA = { key: 'arena', name: 'הפועל ארנה', draw: drawArena, live: arenaLive, top: 30 };
+// בית"ר ארנה: day 16, @abuksis6767's comment (10 likes): "איצטדיון יותר גדול מהפועל לבית"ר וחדר מנהלים, חדר למסיבת עיתונאים".
+// The same bowl in yellow and black, a tier taller (it had to be bigger than הפועל ארנה), with a press room at the gate.
+export function beitarArenaLive(group) {
+  group.add(sign('בית"ר ארנה 💛🖤', { w: 12.6, h: 2, bg: '#f2c418', fg: '#1b1d21', border: '#1b1d21', font: '900 {px}px "Secular One", Rubik' }).at(0, 4.6, 27.65));
+  group.add(sign('רעיון של @abuksis6767 · אדריכל', { w: 8.4, h: 1.1, bg: '#1b1d21', fg: '#f2c418', border: '#f2c418' }).at(0, 2.9, 27.65));
+  group.add(sign('חדר המנהלים', { w: 9, h: 1.6, bg: '#1b1d21', fg: '#f2c418', border: '#f2c418', font: '900 {px}px "Secular One", Rubik' }).at(0, 23.7, -26.5 + 3.05));
+  group.add(sign('חדר מסיבות עיתונאים 🎤', { w: 8.6, h: 1.1, bg: '#f2c418', fg: '#1b1d21', border: '#1b1d21' }).at(-17, 3.6, 27.3));
+  group.add(sign('חנות האוהדים 🧣', { w: 6.4, h: 1.2, bg: '#ffffff', fg: '#1b1d21', border: '#f2c418' }).at(17, 3.3, 27.6));
+  for (const s of [-1, 1]) group.add(sign('בית"ר ספיר 💛🖤', { w: 10, h: 4, bg: '#1d6fa5', fg: '#ffffff', border: '#1b1d21', font: '900 {px}px "Secular One", Rubik' }).at(s * (PW / 2 + 9.5 - .62 * s), 14, 0, -s * Math.PI / 2));
+}
+export const BEITAR_ARENA = { key: 'beitar-arena', name: 'בית"ר ארנה', draw: drawBeitarArena, live: beitarArenaLive, top: 31 };

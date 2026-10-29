@@ -1,0 +1,551 @@
+{
+ "day": 16,
+ "lines": [
+  "[excited] יום שישה עשר ב-Sapirland... ומלחמת האיצטדיונים התחילה!",
+  "[excited] אתמול בנינו להפועל ארנה ענקית...",
+  "[excited] ואוהדי Beitar אמרו: גם אנחנו!",
+  "[excited] Abuksis כתב: איצטדיון יותר גדול מהפועל, עם חדר מנהלים, וחדר למסיבות עיתונאים!",
+  "[excited] עם עשרה לייקים!",
+  "[excited] אז בנינו... את Beitar ארנה!",
+  "[excited] צהוב ושחור, עם עוד שתי קומות של אוהדים, יותר גדול מהפועל!",
+  "[excited] ועכשיו... אוהדי מכבי ממש מקנאים!",
+  "[excited] ו-Ofek עדיין מחכה לגן החיות עם הדרקונים והדינוזאורים!",
+  "[excited] אז הנה הקרב של מחר: מכבי, נגד גן החיות!",
+  "[excited] תנו לייק לתגובה שלכם... והכי הרבה לייקים, נבנה!",
+  "[excited] ובינתיים, הממלכה גדלה... ארבע מאות ארבעים ואחד עוקבים!",
+  "[excited] עוד חמישים ותשעה, והסופר חוזר!",
+  "[excited] ובעירייה? כבר עשרים ושלושה עובדים!",
+  "[excited] רוצים עבודה? תעקבו, ותגיבו עוֹבֵד!",
+  "[excited] ותגיבו מה בונים מחר!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:arena",
+   "dist": 125,
+   "yaw": -10,
+   "pitch": 26,
+   "orbit": 7,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": "landmark:beitar",
+   "dist": 72,
+   "yaw": 0,
+   "pitch": 26,
+   "orbit": 6,
+   "ease": 0.7
+  },
+  {
+   "line": 3,
+   "target": [
+    -244.8,
+    0,
+    -101.4
+   ],
+   "dist": 140,
+   "yaw": 67.5,
+   "pitch": 36,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 5,
+   "target": "landmark:beitar-arena",
+   "dist": 150,
+   "yaw": 0,
+   "pitch": 26,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": [
+    -244.8,
+    6,
+    -101.4
+   ],
+   "dist": 72,
+   "yaw": 42.5,
+   "pitch": 42,
+   "orbit": 7,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": "landmark:maccabi",
+   "dist": 100,
+   "yaw": 10,
+   "pitch": 24,
+   "orbit": 6,
+   "ease": 0.7
+  },
+  {
+   "line": 8,
+   "target": [
+    -101.4,
+    0,
+    -244.8
+   ],
+   "dist": 120,
+   "yaw": 20,
+   "pitch": 40,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 9,
+   "target": [
+    -150,
+    0,
+    -150
+   ],
+   "dist": 420,
+   "yaw": 40,
+   "pitch": 50,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 11,
+   "target": [
+    0,
+    0,
+    0
+   ],
+   "dist": 600,
+   "yaw": 20,
+   "pitch": 58,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 12,
+   "target": "landmark:super",
+   "dist": 90,
+   "yaw": 25,
+   "pitch": 20,
+   "orbit": 4,
+   "ease": 0.7
+  },
+  {
+   "line": 13,
+   "target": [
+    108.6,
+    3,
+    225.6
+   ],
+   "dist": 28,
+   "yaw": -132.5,
+   "pitch": 14,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 15,
+   "target": "castle",
+   "dist": 280,
+   "yaw": 10,
+   "pitch": 38,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "יום 16"
+  },
+  {
+   "type": "comment",
+   "line": 3,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 5,
+   "u": "abuksis6767",
+   "text": "איצטדיון יותר גדול מהפועל לבית\"ר, וחדר מנהלים, וחדר למסיבת עיתונאים",
+   "likes": 10
+  },
+  {
+   "type": "label",
+   "line": 5,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "נבנה · בית\"ר ארנה"
+  },
+  {
+   "type": "idcard",
+   "line": 6,
+   "dt": 0.2,
+   "dur": 2.4,
+   "u": "abuksis6767",
+   "honours": [
+    "אדריכל · בית\"ר ארנה"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 11,
+   "dt": 0.3,
+   "dur": 2.4,
+   "u": "y.sagi2010",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 15,
+   "dt": 0.2,
+   "dur": 3.0,
+   "text": "מה בונים מחר?",
+   "sub": "תגיבו בתגובות 👇"
+  }
+ ],
+ "top": 170,
+ "mix": "day16.mix.mp3",
+ "say": {
+  "Sapirland": "ספירלנד",
+  "Sapir": "ספיר",
+  "Beitar": "בית\"ר",
+  "Abuksis": "אבוקסיס",
+  "Ofek": "אופק"
+ },
+ "homes": {
+  "y.sagi2010": 8
+ },
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "shake",
+   "line": 0,
+   "dt": 0.1,
+   "dur": 0.6,
+   "amp": 0.8
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 3.4,
+   "text": "מלחמת האיצטדיונים ⚔️",
+   "y": 760,
+   "size": 105,
+   "band": "#1b1d21",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 2,
+   "dt": 0.2,
+   "dur": 2.8,
+   "text": "אוהדי בית\"ר 💛🖤",
+   "y": 760,
+   "size": 110,
+   "band": "#f2c418",
+   "color": "#1b1d21",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.8,
+   "dur": 4.4,
+   "text": "🏗️",
+   "x": 540,
+   "y": 1050,
+   "size": 220,
+   "rot": 6
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.1,
+   "dur": 1.4,
+   "text": "👍",
+   "x": 840,
+   "y": 1110,
+   "size": 160,
+   "rot": -8
+  },
+  {
+   "type": "confetti",
+   "line": 5,
+   "dt": 1.0,
+   "dur": 2.2
+  },
+  {
+   "type": "punch",
+   "line": 5,
+   "dt": 1.0,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 6,
+   "dt": 1.4,
+   "dur": 2.4,
+   "text": "8 קומות 💛🖤 · הפועל: 6",
+   "y": 760,
+   "size": 95,
+   "band": "#f2c418",
+   "color": "#1b1d21",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.4,
+   "dur": 2.2,
+   "text": "😤",
+   "x": 840,
+   "y": 1110,
+   "size": 160,
+   "rot": 8
+  },
+  {
+   "type": "banner",
+   "line": 8,
+   "dt": 0.4,
+   "dur": 3.0,
+   "text": "גן חיות? 🦁🐉🦖",
+   "y": 760,
+   "size": 110,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 0.4,
+   "dur": 2.6,
+   "text": "מכבי 💚 נגד 🦁 גן החיות",
+   "y": 760,
+   "size": 95,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "banner",
+   "line": 10,
+   "dt": 0.2,
+   "dur": 2.8,
+   "text": "👍 לייק לתגובה שלכם",
+   "y": 760,
+   "size": 100,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 11,
+   "dt": 1.4,
+   "dur": 2.2,
+   "text": "441 עוקבים 🎉",
+   "y": 760,
+   "size": 110,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 11,
+   "dt": 1.4,
+   "dur": 2
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.2,
+   "text": "441 / 500 = הסופר חוזר 🛒",
+   "y": 330,
+   "size": 90,
+   "band": "#c8102e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 2.2,
+   "text": "23 עובדים בעירייה 💼",
+   "y": 330,
+   "size": 100,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 14,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "תעקבו + תגיבו \"עובד\" 💼",
+   "y": 330,
+   "size": 90,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 16,
+   "dt": 0.0,
+   "dur": 1.6,
+   "text": "עוקב = בית 🏠",
+   "y": 760,
+   "size": 105,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  }
+ ],
+ "rise": {
+  "key": "beitar-arena",
+  "line": 5,
+  "dt": 0,
+  "dur": 3.4
+ },
+ "music": {
+  "bpm": 130,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 5,
+     "dt": 0.8
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 7,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 11,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0
+  },
+  {
+   "name": "boom",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 2,
+   "dt": -0.1
+  },
+  {
+   "name": "pop",
+   "line": 3,
+   "dt": 0
+  },
+  {
+   "name": "kaching",
+   "line": 4,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 5,
+   "dt": 0
+  },
+  {
+   "name": "boom",
+   "line": 5,
+   "dt": 1.0
+  },
+  {
+   "name": "tada",
+   "line": 5,
+   "dt": 1.1
+  },
+  {
+   "name": "sparkle",
+   "line": 6,
+   "dt": 0.2
+  },
+  {
+   "name": "scratch",
+   "line": 7,
+   "dt": 0
+  },
+  {
+   "name": "roar",
+   "line": 8,
+   "dt": 0.4,
+   "gain": 0.6
+  },
+  {
+   "name": "sting",
+   "line": 9,
+   "dt": 0.3
+  },
+  {
+   "name": "ding",
+   "line": 10,
+   "dt": 0.2
+  },
+  {
+   "name": "tada",
+   "line": 11,
+   "dt": 1.4
+  },
+  {
+   "name": "ding",
+   "line": 12,
+   "dt": 0.1
+  },
+  {
+   "name": "kaching",
+   "line": 13,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 14,
+   "dt": 0.2
+  },
+  {
+   "name": "ding",
+   "line": 15,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 16,
+   "dt": 0
+  }
+ ],
+ "caption": "מלחמת האיצטדיונים! ⚔️ אחרי הפועל ארנה, אוהדי בית\"ר ביקשו גדול יותר, וקיבלו: בית\"ר ארנה 💛🖤 (רעיון של אבוקסיס, 10 לייקים)\nמחר: מכבי 💚 או גן החיות 🦁? תנו לייק לתגובה שלכם, הכי הרבה לייקים נבנה!\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #ביתר #מכבי",
+ "firstComment": "מכבי 💚 או גן החיות 🦁🐉? תנו לייק לתגובה שאתם רוצים, והכי הרבה לייקים נבנה מחר!",
+ "notes": "Day 16 by Claude on Michael's instruction (29.10, same direction). Winner: @abuksis6767 (10 likes, on the trial copy): a Beitar stadium bigger than Hapoel's with a managers' room and a press room: בית\"ר ארנה, lot 15 (not named after a real person). Runners up: @ofek_bell's zoo (7), Maccabi stadium (3, @lyrvyatyas, @omer_bachar1). Skipped: 'אוטובוס של הפועל תל אביב' and 'סמל ענק של הפועל באר שבע' (real clubs), Tesla (a real brand), 'בית כנסת' (religion), 'קבוצה אלון טים' (0). Gold key: y.sagi2010."
+}
