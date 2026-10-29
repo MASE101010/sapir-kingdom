@@ -1,0 +1,539 @@
+{
+ "day": 15,
+ "lines": [
+  "[excited] יום חמישה עשר ב-Sapirland, ואוהדי הפועל... ביקשו משהו גדול!",
+  "[excited] Eilam כתב: תבנו להפועל מגרש יותר גדול, עם בניין להנהלה!",
+  "[excited] אז בנינו... את הפועל ארנה!",
+  "[excited] אצטדיון ענק, עם אלפי מקומות, ומסכי ענק!",
+  "[excited] ומאחוריו... בניין ההנהלה, עם המשרד של המנהל בקומה העליונה!",
+  "[excited] אבל רגע... מה יגידו אוהדי מכבי?",
+  "[excited] גם Nevo ביקש איצטדיון מפואר יותר למכבי!",
+  "[excited] אז אוהדי מכבי... תביאו לייקים לתגובה שלכם, ונבנה גם לכם!",
+  "[excited] ובינתיים, הנשיא Bibkovich עדיין מחפש את הדרקון...",
+  "[excited] והוא עדיין יושב על הגג של סופר Sapir!",
+  "[excited] עוד שבעים ושישה עוקבים, והסופר חוזר!",
+  "[excited] ובעירייה? כבר חמישה עשר עובדים!",
+  "[excited] רוצים עבודה? תעקבו, ותגיבו עוֹבֵד!",
+  "[excited] ו-Ofek ביקש גן חיות ענק, עם אריה מעופף...",
+  "[excited] אולי מחר? תנו לייק לרעיון שאתם הכי רוצים!",
+  "[excited] ותגיבו מה בונים מחר!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:hapoel",
+   "dist": 72,
+   "yaw": -15,
+   "pitch": 24,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "landmark:arena",
+   "dist": 150,
+   "yaw": 0,
+   "pitch": 34,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 2,
+   "target": "landmark:arena",
+   "dist": 145,
+   "yaw": 0,
+   "pitch": 26,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": [
+    -244.8,
+    4,
+    101.4
+   ],
+   "dist": 62,
+   "yaw": 92.5,
+   "pitch": 40,
+   "orbit": 7,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": [
+    -269.3,
+    19,
+    111.5
+   ],
+   "dist": 48,
+   "yaw": 112.5,
+   "pitch": 8,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": "landmark:maccabi",
+   "dist": 110,
+   "yaw": 0,
+   "pitch": 26,
+   "orbit": 6,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "target": "landmark:maccabi",
+   "dist": 80,
+   "yaw": 25,
+   "pitch": 18,
+   "orbit": 7,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": [
+    254.84,
+    15,
+    84.99
+   ],
+   "dist": 50,
+   "yaw": -70,
+   "pitch": 12,
+   "orbit": 4,
+   "ease": 0.7
+  },
+  {
+   "line": 9,
+   "target": "landmark:super",
+   "dist": 90,
+   "yaw": 25,
+   "pitch": 20,
+   "orbit": 4,
+   "ease": 0.7
+  },
+  {
+   "line": 11,
+   "target": [
+    108.6,
+    3,
+    225.6
+   ],
+   "dist": 28,
+   "yaw": -132.5,
+   "pitch": 14,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 13,
+   "target": [
+    -244.8,
+    0,
+    -101.4
+   ],
+   "dist": 110,
+   "yaw": 60,
+   "pitch": 40,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 15,
+   "target": "castle",
+   "dist": 280,
+   "yaw": 10,
+   "pitch": 38,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "יום 15"
+  },
+  {
+   "type": "comment",
+   "line": 1,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 2,
+   "u": "eilam.lev99",
+   "text": "אפשר לבנות מגרש יותר גדול להפועל ספיר עם גם בניין למנהלים",
+   "likes": 2
+  },
+  {
+   "type": "label",
+   "line": 2,
+   "dt": 0.2,
+   "dur": 3.0,
+   "text": "נבנה · הפועל ארנה"
+  },
+  {
+   "type": "idcard",
+   "line": 4,
+   "dt": 0.3,
+   "dur": 2.2,
+   "u": "eilam.lev99",
+   "honours": [
+    "אדריכל · הפועל ארנה"
+   ]
+  },
+  {
+   "type": "comment",
+   "line": 6,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 7,
+   "u": "nevo_gur",
+   "text": "אפשר שיהיה למכבי ספיר איצטדיון מפואר יותר, ממש מטורף בבקשה",
+   "likes": 0
+  },
+  {
+   "type": "cta",
+   "line": 15,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "מה בונים מחר?",
+   "sub": "תגיבו בתגובות 👇"
+  }
+ ],
+ "top": 170,
+ "mix": "day15.mix.mp3",
+ "say": {
+  "Sapirland": "ספירלנד",
+  "Sapir": "ספיר",
+  "Bibkovich": "ביבקוביץ'",
+  "Eilam": "עילם",
+  "Nevo": "נבו",
+  "Ofek": "אופק"
+ },
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 3.0,
+   "text": "אוהדי הפועל ❤️🖤",
+   "y": 760,
+   "size": 115,
+   "band": "#c8102e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "confetti",
+   "line": 2,
+   "dt": 1.0,
+   "dur": 2.2
+  },
+  {
+   "type": "punch",
+   "line": 2,
+   "dt": 1.0,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 3,
+   "dt": 0.2,
+   "dur": 2.6,
+   "text": "אצטדיון ענק 🏟️",
+   "y": 760,
+   "size": 110,
+   "band": "#1b1d21",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.3,
+   "dur": 2.0,
+   "text": "😱",
+   "x": 840,
+   "y": 1110,
+   "size": 160,
+   "rot": -8
+  },
+  {
+   "type": "banner",
+   "line": 7,
+   "dt": 0.4,
+   "dur": 3.2,
+   "text": "מכבי: תביאו לייקים 💚",
+   "y": 760,
+   "size": 100,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 0.3,
+   "dur": 2.6,
+   "text": "🔍",
+   "x": 840,
+   "y": 1110,
+   "size": 160,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 0.4,
+   "dur": 2.0,
+   "text": "🐉",
+   "x": 840,
+   "y": 1110,
+   "size": 160,
+   "rot": -6
+  },
+  {
+   "type": "banner",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "424 / 500 = הסופר חוזר 🛒",
+   "y": 330,
+   "size": 90,
+   "band": "#c8102e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 2.0,
+   "text": "15 עובדים בעירייה 💼",
+   "y": 330,
+   "size": 100,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "תעקבו + תגיבו \"עובד\" 💼",
+   "y": 330,
+   "size": 90,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 13,
+   "dt": 0.4,
+   "dur": 3.0,
+   "text": "🦁",
+   "x": 540,
+   "y": 980,
+   "size": 260,
+   "rot": -6
+  },
+  {
+   "type": "banner",
+   "line": 13,
+   "dt": 0.6,
+   "dur": 2.6,
+   "text": "גן חיות? 🦁🪽",
+   "y": 760,
+   "size": 110,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 14,
+   "dt": 0.2,
+   "dur": 2.6,
+   "text": "לייק לרעיון שאתם רוצים 👍",
+   "y": 760,
+   "size": 95,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "banner",
+   "line": 16,
+   "dt": 0.0,
+   "dur": 1.8,
+   "text": "עוקב = בית 🏠",
+   "y": 760,
+   "size": 105,
+   "band": "#e8b323",
+   "color": "#13213b",
+   "stroke": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 1,
+   "dt": 0.6,
+   "dur": 2.6,
+   "text": "🏗️",
+   "x": 540,
+   "y": 1050,
+   "size": 220,
+   "rot": 6
+  }
+ ],
+ "rise": {
+  "key": "arena",
+  "line": 2,
+  "dt": 0,
+  "dur": 3.4
+ },
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 5,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 7,
+     "dt": 0.5
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 8,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 11,
+     "dt": 0
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0,
+   "dt": 0.1
+  },
+  {
+   "name": "pop",
+   "line": 1,
+   "dt": 0
+  },
+  {
+   "name": "whoosh",
+   "line": 2,
+   "dt": 0
+  },
+  {
+   "name": "boom",
+   "line": 2,
+   "dt": 1.0
+  },
+  {
+   "name": "tada",
+   "line": 2,
+   "dt": 1.1
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": -0.1
+  },
+  {
+   "name": "sparkle",
+   "line": 4,
+   "dt": 0.3
+  },
+  {
+   "name": "scratch",
+   "line": 5,
+   "dt": 0
+  },
+  {
+   "name": "pop",
+   "line": 6,
+   "dt": 0
+  },
+  {
+   "name": "ding",
+   "line": 7,
+   "dt": 0.4
+  },
+  {
+   "name": "cricket",
+   "line": 8,
+   "dt": 0.8,
+   "gain": 0.5
+  },
+  {
+   "name": "roar",
+   "line": 9,
+   "dt": 0.4,
+   "gain": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 10,
+   "dt": 0.1
+  },
+  {
+   "name": "kaching",
+   "line": 11,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 12,
+   "dt": 0.2
+  },
+  {
+   "name": "roar",
+   "line": 13,
+   "dt": 0.5,
+   "gain": 0.5
+  },
+  {
+   "name": "boing",
+   "line": 14,
+   "dt": 0.3
+  },
+  {
+   "name": "ding",
+   "line": 15,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 16,
+   "dt": 0
+  }
+ ],
+ "caption": "הפועל ארנה נפתח! ❤️🖤 אצטדיון ענק עם בניין הנהלה, רעיון של עילם 🏟️ ועכשיו אוהדי מכבי... תורכם! 💚\nתנו לייק לרעיון שאתם הכי רוצים (גן חיות עם אריה מעופף? 🦁) ותגיבו מה בונים מחר. רוצים עבודה בעירייה? תעקבו ותגיבו \"עובד\" 💼\n#הממלכה_של_משפחת_ספיר #משפחת_ספיר #הפועל #מכבי",
+ "firstComment": "מה בונים מחר? 👇 התגובה עם הכי הרבה לייקים נבנית! מכבי, הפועל, גן חיות... אתם מחליטים 👑",
+ "notes": "Day 15 by Claude on Michael's standing instruction (same direction). Winner: @eilam.lev99 'אפשר לבנות מגרש יותר גדול להפועל ספיר עם גם בניין למנהלים' (2 likes): הפועל ארנה, lot 14. Skipped: 'חברת הרכבים המעופפים של טסלה' (a real brand), @nevo_gur's bigger Maccabi stadium (0 likes, teased for tomorrow), @ofek_bell's giant zoo (teased), 'בית ענק עם כלב' (a house request). No day-14 citizens, so no gold key draw."
+}
