@@ -16,5 +16,6 @@ import { ELECTIONS } from './elections.js';      // day 11: כיכר הבחיר�
 import { STATUES } from './statues.js';        // day 12: שדרת הפסלים
 import { CITYHALL } from './cityhall.js';      // day 13: עיריית ספיר
 import { ARENA, BEITAR_ARENA } from './arena.js';   // day 15: הפועל ארנה, day 16: בית"ר ארנה
+import { ZOO } from './zoo.js';                // day 17: ספארי ספיר
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO].map(l => [l.key, l]));
