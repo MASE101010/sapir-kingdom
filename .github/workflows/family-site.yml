@@ -1,0 +1,44 @@
+# מפרסם את האתר של משפחת ספיר (הריפו sapir-family-site) ל-Cloudflare Pages עם מפתח ה-Cloudflare הקבוע שב-KINGDOM_ENV.
+# רץ ידנית, וגם כל 20 דקות: אם יש commit חדש ב-sapir-family-site הוא נפרס, אחרת לא קורה כלום.
+name: family-site
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/20 * * * *'
+concurrency: { group: family-site, cancel-in-progress: false }
+permissions: { contents: write }
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: what is live in sapir-family-site
+        id: src
+        run: |
+          SHA=$(git ls-remote https://github.com/MASE101010/sapir-family-site refs/heads/main | cut -f1)
+          LAST=$(cat .family-site-sha 2>/dev/null || true)
+          echo "sha=$SHA" >> $GITHUB_OUTPUT
+          if [ "$SHA" = "$LAST" ] && [ "${{ github.event_name }}" != "workflow_dispatch" ]; then echo "changed=0" >> $GITHUB_OUTPUT; echo "nothing new"; else echo "changed=1" >> $GITHUB_OUTPUT; fi
+      - if: steps.src.outputs.changed == '1'
+        uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - if: steps.src.outputs.changed == '1'
+        name: cloudflare credentials (from KINGDOM_ENV)
+        env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
+        run: |
+          echo "$KINGDOM_ENV" | grep -E '^(CLOUDFLARE_API_TOKEN|CLOUDFLARE_ACCOUNT_ID)=' | while IFS= read -r line; do
+            v="${line#*=}"; echo "::add-mask::$v"; echo "$line" >> $GITHUB_ENV; done
+      - if: steps.src.outputs.changed == '1'
+        name: deploy to Cloudflare Pages
+        run: |
+          git clone --depth 1 https://github.com/MASE101010/sapir-family-site site-src
+          cd site-src && rm -rf .git .github scripts
+          npx wrangler@3 pages project create sapir-family-site --production-branch main 2>/dev/null || echo "project exists"
+          npx wrangler@3 pages deploy . --project-name sapir-family-site --branch main --commit-dirty=true | tee ../deploy.log
+          grep -o 'https://[a-z0-9.-]*pages.dev' ../deploy.log | tail -1 | sed 's/^/::notice title=family-site::/'
+      - if: steps.src.outputs.changed == '1'
+        name: remember what was deployed
+        run: |
+          echo "${{ steps.src.outputs.sha }}" > .family-site-sha
+          git config user.name family-site-bot && git config user.email bot@users.noreply.github.com
+          git add .family-site-sha && git commit -qm "family-site: deployed ${{ steps.src.outputs.sha }}" && git push || true
