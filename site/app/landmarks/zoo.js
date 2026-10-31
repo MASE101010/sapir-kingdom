@@ -23,7 +23,7 @@ export const PENS = [
   { key: 'dragon', label: 'דרקון תינוק', x: 0, z: -24, r: 4.5, rot: 0, floor: ROCK2 },
 ];
 /** the names the followers chose: { lion: 'שמשון' }; a pen without one shows "?" */
-export const NAMES = {};
+export const NAMES = { mammoth: 'זואי', unicorn: 'יובל' };   // day 18: @abuksis6767's names (first names only)
 export const LION = [0, -2];                              // the winged lion's rock in the middle
 
 /** a body-part helper like the king's statue: parts relative to the animal's feet, s times its size, turned by rot */
