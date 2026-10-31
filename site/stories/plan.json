@@ -354,5 +354,25 @@
   "image": "stories/day16-4.jpg",
   "after": "reel:16",
   "about": "21:00 מפתח הזהב y.sagi2010"
+ },
+ {
+  "id": "day17-1",
+  "at": "2026-10-31T08:00:00Z",
+  "image": "stories/day17-1.jpg",
+  "about": "10:00 בוקר טוב: הקרב הוכרע, מכבי או גן החיות?"
+ },
+ {
+  "id": "day17-2",
+  "at": "2026-10-31T17:45:00Z",
+  "image": "stories/day17-2.jpg",
+  "after": "reel:17",
+  "about": "19:45 תנו שם לאריה המעופף"
+ },
+ {
+  "id": "day17-3",
+  "at": "2026-10-31T19:30:00Z",
+  "image": "stories/day17-3.jpg",
+  "after": "reel:17",
+  "about": "21:30 מפתח הזהב matan_manor"
  }
 ]
