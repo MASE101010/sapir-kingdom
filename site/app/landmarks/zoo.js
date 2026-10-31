@@ -140,7 +140,7 @@ export function drawZoo(p) {
     }
     p.at(0, 0, 0);
     if (pen.key === 'trex') { p.box(x - 4, 0, z - 3, 2.6, 1.8, 2.2, ROCK); p.ball(x + 3.6, 0, z - 4, 1.6, 1.2, 0xf2ead8); p.ball(x + 4.4, 0, z - 3.4, 1.4, 1.1, 0xf2ead8); }   // a rock, two big eggs
-    if (pen.key === 'longneck') { p.tree(x - 4, z - 3, 2.2); p.tree(x + 4.2, z - 2, 1.8); }
+    if (pen.key === 'longneck') { p.cyl(x + 3.6, .15, z + 2.4, 4.4, .2, WATER); for (const [dx, dz] of [[-4.6, -1.6], [-4, 2.6], [4.8, -3]]) p.ball(x + dx, 0, z + dz, 1.8, 1.4, 0x4f9a43); }   // a pond, bushes
     if (pen.key === 'mammoth') { for (const [dx, dz] of [[-2, -3], [2.4, -2.6]]) p.ball(x + dx, 0, z + dz, 2, 1.2, WHITE); }   // snow drifts
     if (pen.key === 'unicorn') { for (let i = 0; i < 6; i++) p.box(x - 3 + i * 1.2, 0, z - 3.4, 1.2, 4.4 - Math.abs(i - 2.5) * .9, .3, [0xff6b6b, 0xffb347, 0xffe066, 0x7ed957, 0x5ec8f2, 0xb28dff][i]); }   // a little rainbow arch
     // the name board on its two posts, at the front of the pen
@@ -201,8 +201,8 @@ export function zooLive(group) {
     const n = NAMES[pen.key], s = sign(n ? `קוראים לי ${n}!` : 'קוראים לי: ?', { w: 3.6, h: 1.1, bg: n ? '#e8b323' : '#fffaf0', fg: '#13213b', border: '#13213b', font: big }).at(bx, 1.2, bz + .2, face);
     group.add(s); boards[pen.key] = s; }
   const n = NAMES.lion;
-  group.add(sign('האריה המעופף', { w: 3.8, h: .8, bg: '#0f6f73', fg: '#ffffff', border: '#13213b' }).at(LION[0], 1.95, LION[1] + 6.62));
-  group.add(sign(n ? `קוראים לי ${n}!` : 'קוראים לי: ?', { w: 3.8, h: .7, bg: n ? '#e8b323' : '#fffaf0', fg: '#13213b', border: '#13213b', font: big }).at(LION[0], 1.15, LION[1] + 6.62));
+  group.add(sign('האריה המעופף', { w: 3.8, h: .8, bg: '#0f6f73', fg: '#ffffff', border: '#13213b' }).at(LION[0], 2.05, LION[1] + 6.95));
+  group.add(sign(n ? `קוראים לי ${n}!` : 'קוראים לי: ?', { w: 3.8, h: .7, bg: n ? '#e8b323' : '#fffaf0', fg: '#13213b', border: '#13213b', font: big }).at(LION[0], 1.2, LION[1] + 6.95));
   const lion = lionGroup(); lion.scale.setScalar(1.6); lion.position.set(LION[0], 7.4, LION[1]); group.add(lion);
   group.userData.zooBoards = boards; group.userData.lion = lion;
   group.userData.tick = t => { lion.position.y = 7.4 + Math.sin(t * 1.6) * .5; lion.rotation.z = Math.sin(t * 1.6 + 1) * .04;
