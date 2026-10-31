@@ -374,5 +374,25 @@
   "image": "stories/day17-3.jpg",
   "after": "reel:17",
   "about": "21:30 מפתח הזהב matan_manor"
+ },
+ {
+  "id": "day18-1",
+  "at": "2026-11-01T08:00:00Z",
+  "image": "stories/day18-1.jpg",
+  "about": "10:00 בוקר טוב: מה בונים היום? רמז 🍿🎟️"
+ },
+ {
+  "id": "day18-2",
+  "at": "2026-11-01T17:45:00Z",
+  "image": "stories/day18-2.jpg",
+  "after": "reel:18",
+  "about": "19:45 תנו שם לסרט"
+ },
+ {
+  "id": "day18-3",
+  "at": "2026-11-01T19:30:00Z",
+  "image": "stories/day18-3.jpg",
+  "after": "reel:18",
+  "about": "21:30 מפתח הזהב i_dont_want_to_leak_my_name"
  }
 ]
