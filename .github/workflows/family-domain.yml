@@ -50,11 +50,12 @@ jobs:
           done
           ZID=$(curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones?name=$D" | python3 -c "import sys,json; d=json.load(sys.stdin); r=d.get('result',[]); print(r[0]['id'] if r else '')")
           if [ -n "$ZID" ]; then
-            for rec in "$D" "www.$D"; do
-              EXIST=$(curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records?name=$rec" | python3 -c "import sys,json; d=json.load(sys.stdin); print(' '.join(x['id']+':'+x['type'] for x in d.get('result',[])))")
-              for e in $EXIST; do curl -s -X DELETE -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records/${e%%:*}" >/dev/null; done
-              curl -s -X POST -H "$H" -H 'content-type: application/json' "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records" -d "{\"type\":\"CNAME\",\"name\":\"$rec\",\"content\":\"sapir-family-site.pages.dev\",\"proxied\":true,\"ttl\":1}" | python3 -c "import sys,json; d=json.load(sys.stdin); print('DNS $rec ->', d.get('success'), d.get('errors'))" | sed 's/^/::notice::/'
-            done
+            curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records?per_page=100" | python3 -c "
+          import sys,json; d=json.load(sys.stdin)
+          for x in d.get('result',[]): print('::notice title=dns::%s %s -> %s (%s)' % (x['type'], x['name'], x['content'][:40], 'proxied' if x.get('proxied') else 'dns only'))
+          print('::notice::dns errors:', d.get('errors'))"
+            curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID" | python3 -c "import sys,json; d=json.load(sys.stdin); r=d.get('result') or {}; print('::notice title=zone-status::' + str(r.get('status')) + ' | ns: ' + ','.join(r.get('name_servers',[])) + ' | original ns: ' + ','.join(r.get('original_name_servers') or []))"
+            curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/ssl/universal/settings" | python3 -c "import sys,json; d=json.load(sys.stdin); print('::notice title=ssl::', d.get('result'), d.get('errors'))"
           else
             echo "::warning::the zone $D is not in this Cloudflare account; DNS must be set at the registrar: CNAME $D -> sapir-family-site.pages.dev and CNAME www -> sapir-family-site.pages.dev"
           fi
