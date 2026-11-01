@@ -29,14 +29,62 @@ jobs:
           echo "$KINGDOM_ENV" | grep -E '^(CLOUDFLARE_API_TOKEN|CLOUDFLARE_ACCOUNT_ID|YT_API_KEY)=' | while IFS= read -r line; do
             v="${line#*=}"; echo "::add-mask::$v"; echo "$line" >> $GITHUB_ENV; done
       - if: steps.src.outputs.changed == '1'
-        name: deploy to Cloudflare Pages
+        name: push storage (KV) for the new-video notifications
+        id: kv
         run: |
           git clone --depth 1 https://github.com/MASE101010/sapir-family-site site-src
-          cd site-src && rm -rf .git .github scripts
+          API="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/storage/kv/namespaces"
+          H="Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+          ID=$(curl -s -H "$H" "$API?per_page=100" | python3 -c "import sys,json; d=json.load(sys.stdin); print(next((n['id'] for n in d.get('result',[]) if n['title']=='sapir-push'),''))" || true)
+          if [ -z "$ID" ]; then ID=$(curl -s -X POST -H "$H" -H 'content-type: application/json' "$API" -d '{"title":"sapir-push"}' | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('result',{}).get('id','')); print(d.get('errors'), file=sys.stderr)" || true); fi
+          if [ -n "$ID" ]; then
+            echo "::add-mask::$ID"; echo "id=$ID" >> $GITHUB_OUTPUT
+            sed -i "s/__PUSH_KV_ID__/$ID/" site-src/wrangler.toml
+            # מפתחות VAPID וסוד השליחה, פעם אחת
+            if ! curl -sf -H "$H" "$API/$ID/values/vapid" >/dev/null; then
+              node -e '
+                const {generateKeyPairSync}=require("crypto"); const {privateKey}=generateKeyPairSync("ec",{namedCurve:"prime256v1"}); const j=privateKey.export({format:"jwk"});
+                const b=(s)=>Buffer.from(s,"base64url"); const pub=Buffer.concat([Buffer.from([4]),b(j.x),b(j.y)]).toString("base64url");
+                process.stdout.write(JSON.stringify({pub, jwk:{x:j.x,y:j.y,d:j.d}, created:new Date().toISOString()}));' > vapid.json
+              curl -sf -X PUT -H "$H" -H 'content-type: application/json' "$API/$ID/values/vapid" --data-binary @vapid.json >/dev/null && echo "::notice::VAPID keys created"
+              rm -f vapid.json
+            fi
+            if ! curl -sf -H "$H" "$API/$ID/values/secret" >/dev/null; then
+              SECRET=$(openssl rand -hex 32); curl -sf -X PUT -H "$H" "$API/$ID/values/secret" --data-binary "$SECRET" >/dev/null && echo "::notice::push secret created"
+            fi
+          else
+            echo "::warning::no KV permission on the Cloudflare token; notifications stay off (add 'Workers KV Storage: Edit' to the token)"
+            rm -f site-src/wrangler.toml
+          fi
+      - if: steps.src.outputs.changed == '1'
+        name: deploy to Cloudflare Pages
+        run: |
+          cp site-src/scripts/latest_video.py . && cd site-src && rm -rf .git .github scripts
           npx wrangler@3 pages project create sapir-family-site --production-branch main 2>/dev/null || echo "project exists"
           npx wrangler@3 pages deploy . --project-name sapir-family-site --branch main --commit-dirty=true | tee ../deploy.log
           grep -o 'https://[a-z0-9.-]*pages.dev' ../deploy.log | tail -1 | sed 's/^/::notice title=family-site::/'
           if [ -n "$YT_API_KEY" ]; then printf '%s' "$YT_API_KEY" | npx wrangler@3 pages secret put YT_API_KEY --project-name sapir-family-site && echo "::notice::YT_API_KEY set"; else echo "::notice::no YT_API_KEY in KINGDOM_ENV yet (library runs on RSS, latest 15 per channel)"; fi
+      - if: steps.src.outputs.changed == '1' && steps.kv.outputs.id != ''
+        name: announce a new video (push to subscribers)
+        run: |
+          API="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/storage/kv/namespaces/${{ steps.kv.outputs.id }}"
+          H="Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+          NEW=$(python3 latest_video.py site-src/data/library.json)
+          NEWID=$(echo "$NEW" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+          LAST=$(curl -s -H "$H" "$API/values/announced" || true)
+          echo "newest=$NEWID last=$LAST"
+          if [ -z "$LAST" ] || echo "$LAST" | grep -q '"success":false'; then curl -sf -X PUT -H "$H" "$API/values/announced" --data-binary "$NEWID" >/dev/null; echo "first run: remembered without sending"; exit 0; fi
+          if [ "$LAST" = "$NEWID" ]; then echo "nothing new"; exit 0; fi
+          SECRET=$(curl -sf -H "$H" "$API/values/secret"); SITE=$(grep -o 'https://[a-z0-9.-]*pages.dev' deploy.log | tail -1); SITE=${SITE:-https://sapir-family-site.pages.dev}
+          CURSOR=""; TOTAL=0
+          for i in $(seq 1 50); do
+            R=$(curl -s -X POST -H "x-push-secret: $SECRET" -H 'content-type: application/json' "$SITE/api/push/send?cursor=$CURSOR" --data-binary "{\"video\":$NEW}")
+            echo "$R"; TOTAL=$((TOTAL + $(echo "$R" | python3 -c "import sys,json; print(json.load(sys.stdin).get('sent',0))" 2>/dev/null || echo 0)))
+            CURSOR=$(echo "$R" | python3 -c "import sys,json; print(json.load(sys.stdin).get('cursor') or '')" 2>/dev/null || true)
+            [ -z "$CURSOR" ] && break
+          done
+          curl -sf -X PUT -H "$H" "$API/values/announced" --data-binary "$NEWID" >/dev/null
+          echo "::notice::announced $NEWID to $TOTAL subscribers"
       - if: steps.src.outputs.changed == '1'
         name: remember what was deployed
         run: |
