@@ -26,6 +26,15 @@ jobs:
           print('success:', d.get('success'), 'errors:', d.get('errors'))
           for z in d.get('result',[]): print('ZONE', z['name'], z['status'], z['id'])" | tee zones.txt
           grep ZONE zones.txt | sed 's/^/::notice title=zone::/' || echo "::notice::no zones visible (token may lack Zone:Read, or the domain is not on Cloudflare yet)"
+          # zone עדיין pending: מבקשים מ-Cloudflare לבדוק עכשיו את שרתי השמות, ומדפיסים מה DNS ציבורי רואה
+          for ZID in $(grep ' pending ' zones.txt | awk '{print $4}'); do
+            curl -s -X PUT -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/activation_check" | python3 -c "import sys,json; d=json.load(sys.stdin); print('activation_check:', d.get('success'), d.get('errors'))" | sed 's/^/::notice::/'
+          done
+          for Z in $(grep ZONE zones.txt | awk '{print $2}'); do
+            echo "::notice title=public NS $Z::$(dig +short NS $Z @8.8.8.8 | tr '\n' ' ')"
+            echo "::notice title=public A $Z::$(dig +short A $Z @8.8.8.8 | tr '\n' ' ')"
+            curl -s "https://dns.google/resolve?name=$Z&type=NS" | python3 -c "import sys,json; d=json.load(sys.stdin); print('dns.google NS:', [a['data'] for a in d.get('Answer',[])])" | sed 's/^/::notice::/'
+          done
           curl -s -H "$H" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/sapir-family-site/domains" | python3 -c "
           import sys,json; d=json.load(sys.stdin); print('pages domains:', [x['name']+':'+x['status'] for x in d.get('result',[])], d.get('errors'))" | sed 's/^/::notice::/'
       - name: add the zone to Cloudflare (if it is not there yet) and show its nameservers
