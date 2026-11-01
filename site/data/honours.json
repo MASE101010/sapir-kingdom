@@ -15,7 +15,8 @@
       "daniel_nezri",
       "grossman.alon",
       "y.sagi2010",
-      "matan_manor"
+      "matan_manor",
+      "i_dont_want_to_leak_my_name"
     ]
   },
   "built": {
@@ -123,6 +124,12 @@
         "ofek_bell"
       ],
       "day": 17
+    },
+    "cinema": {
+      "by": [
+        "ofek_bell"
+      ],
+      "day": 18
     }
   }
 }
