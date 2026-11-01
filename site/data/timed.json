@@ -46,5 +46,12 @@
   "trial": true,
   "about": "14:00 Israel (Sunday), Michael moved it on 1.11 07:36 (built 31.10: ספיר סינמה)",
   "done": "2026-11-01T12:00:28.658Z"
+ },
+ {
+  "day": 19,
+  "at": "2026-11-02T12:00:00Z",
+  "branch": "day19",
+  "trial": true,
+  "about": "14:00 Israel (Monday), same time as day 18 (built 1.11: חדר כושר ספיר)"
  }
 ]
