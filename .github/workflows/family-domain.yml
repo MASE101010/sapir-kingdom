@@ -22,6 +22,19 @@ jobs:
           grep ZONE zones.txt | sed 's/^/::notice title=zone::/' || echo "::notice::no zones visible (token may lack Zone:Read, or the domain is not on Cloudflare yet)"
           curl -s -H "$H" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/sapir-family-site/domains" | python3 -c "
           import sys,json; d=json.load(sys.stdin); print('pages domains:', [x['name']+':'+x['status'] for x in d.get('result',[])], d.get('errors'))" | sed 's/^/::notice::/'
+      - name: add the zone to Cloudflare (if it is not there yet) and show its nameservers
+        if: inputs.domain != ''
+        run: |
+          H="Authorization: Bearer $CLOUDFLARE_API_TOKEN"; D="${{ inputs.domain }}"
+          ZID=$(curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones?name=$D" | python3 -c "import sys,json; d=json.load(sys.stdin); r=d.get('result',[]); print(r[0]['id'] if r else '')")
+          if [ -z "$ZID" ]; then
+            curl -s -X POST -H "$H" -H 'content-type: application/json' "https://api.cloudflare.com/client/v4/zones" -d "{\"name\":\"$D\",\"account\":{\"id\":\"$CLOUDFLARE_ACCOUNT_ID\"},\"type\":\"full\"}" > zone.json
+            python3 -c "import json; d=json.load(open('zone.json')); print('create zone:', d.get('success'), d.get('errors'))" | sed 's/^/::notice::/'
+          fi
+          curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones?name=$D" | python3 -c "
+          import sys,json; d=json.load(sys.stdin); r=d.get('result',[])
+          if r: print('::notice title=NAMESERVERS::' + ' , '.join(r[0].get('name_servers',[])) + ' | status: ' + r[0]['status'])
+          else: print('::warning::zone not available:', d.get('errors'))"
       - name: attach domain to the Pages project
         if: inputs.domain != ''
         run: |
