@@ -1,0 +1,41 @@
+# חיבור דומיין לאתר משפחת ספיר ב-Cloudflare Pages. הרצה ידנית: עם domain ריק רק מציג את הדומיינים בחשבון.
+name: family-domain
+on:
+  workflow_dispatch:
+    inputs:
+      domain: { description: "הדומיין לחיבור (למשל sapirfamily.co.il), ריק = רק רשימה", required: false, default: "" }
+jobs:
+  domain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: credentials
+        env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
+        run: |
+          echo "$KINGDOM_ENV" | grep -E '^(CLOUDFLARE_API_TOKEN|CLOUDFLARE_ACCOUNT_ID)=' | while IFS= read -r line; do v="${line#*=}"; echo "::add-mask::$v"; echo "$line" >> $GITHUB_ENV; done
+      - name: zones in the account
+        run: |
+          H="Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+          curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones?per_page=50" | python3 -c "
+          import sys,json; d=json.load(sys.stdin)
+          print('success:', d.get('success'), 'errors:', d.get('errors'))
+          for z in d.get('result',[]): print('ZONE', z['name'], z['status'], z['id'])" | tee zones.txt
+          grep ZONE zones.txt | sed 's/^/::notice title=zone::/' || echo "::notice::no zones visible (token may lack Zone:Read, or the domain is not on Cloudflare yet)"
+          curl -s -H "$H" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/sapir-family-site/domains" | python3 -c "
+          import sys,json; d=json.load(sys.stdin); print('pages domains:', [x['name']+':'+x['status'] for x in d.get('result',[])], d.get('errors'))" | sed 's/^/::notice::/'
+      - name: attach domain to the Pages project
+        if: inputs.domain != ''
+        run: |
+          H="Authorization: Bearer $CLOUDFLARE_API_TOKEN"; D="${{ inputs.domain }}"; ACC="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID"
+          for name in "$D" "www.$D"; do
+            curl -s -X POST -H "$H" -H 'content-type: application/json' "$ACC/pages/projects/sapir-family-site/domains" -d "{\"name\":\"$name\"}" | python3 -c "import sys,json; d=json.load(sys.stdin); print('$name ->', d.get('success'), d.get('errors'))" | sed 's/^/::notice::/'
+          done
+          ZID=$(curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones?name=$D" | python3 -c "import sys,json; d=json.load(sys.stdin); r=d.get('result',[]); print(r[0]['id'] if r else '')")
+          if [ -n "$ZID" ]; then
+            for rec in "$D" "www.$D"; do
+              EXIST=$(curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records?name=$rec" | python3 -c "import sys,json; d=json.load(sys.stdin); print(' '.join(x['id']+':'+x['type'] for x in d.get('result',[])))")
+              for e in $EXIST; do curl -s -X DELETE -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records/${e%%:*}" >/dev/null; done
+              curl -s -X POST -H "$H" -H 'content-type: application/json' "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records" -d "{\"type\":\"CNAME\",\"name\":\"$rec\",\"content\":\"sapir-family-site.pages.dev\",\"proxied\":true,\"ttl\":1}" | python3 -c "import sys,json; d=json.load(sys.stdin); print('DNS $rec ->', d.get('success'), d.get('errors'))" | sed 's/^/::notice::/'
+            done
+          else
+            echo "::warning::the zone $D is not in this Cloudflare account; DNS must be set at the registrar: CNAME $D -> sapir-family-site.pages.dev and CNAME www -> sapir-family-site.pages.dev"
+          fi
