@@ -34,6 +34,7 @@ jobs:
             curl -s -X PUT -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/activation_check" | python3 -c "import sys,json; d=json.load(sys.stdin); print('activation_check:', d.get('success'), d.get('errors'))" | sed 's/^/::notice::/'
           done
           for Z in $(grep ZONE zones.txt | awk '{print $2}'); do
+            for U in "https://$Z/" "http://$Z/" "https://www.$Z/"; do echo "::notice title=HTTP $U::$(curl -sI -m 15 "$U" | tr -d '\r' | grep -iE '^(HTTP|location|server|cf-ray)' | tr '\n' ' ')"; done
             echo "::notice title=public NS $Z::$(dig +short NS $Z @8.8.8.8 | tr '\n' ' ')"
             echo "::notice title=public A $Z::$(dig +short A $Z @8.8.8.8 | tr '\n' ' ')"
             curl -s "https://dns.google/resolve?name=$Z&type=NS" | python3 -c "import sys,json; d=json.load(sys.stdin); print('dns.google NS:', [a['data'] for a in d.get('Answer',[])])" | sed 's/^/::notice::/'
