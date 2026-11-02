@@ -88,7 +88,7 @@ export function drawCinema(p) {
 
 /** the films the followers named (follow, comment a film's name; the most liked go on the screen and the posters).
  *  Until a name is chosen the screen asks for one. e.g. FILMS = ['הדרקון שאכל את הירח'] */
-export const FILMS = [];
+export const FILMS = ['סולטיז הסרט']; // day 19: @abuksis6767's name, the most liked
 const SLIDES = () => FILMS.length
   ? FILMS.map((t, i) => ({ t, s: i ? 'בקרוב בקולנוע 🎬' : 'עכשיו בקולנוע 🍿', bg: ['#0f6f73', '#8e5bd6', '#13213b', '#c8102e'][i % 4] }))
   : [{ t: 'הסרט הראשון: ???', s: 'אתם בוחרים את השם 🎬', bg: '#13213b' },
