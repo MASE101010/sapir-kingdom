@@ -414,5 +414,25 @@
   "image": "stories/day19-3.jpg",
   "after": "reel:19",
   "about": "18:30 מפתח הזהב asaf.2509"
+ },
+ {
+  "id": "day20-1",
+  "at": "2026-11-03T08:00:00Z",
+  "image": "stories/day20-1.jpg",
+  "about": "10:00 בוקר טוב: מה בונים היום? רמז 🩱☀️"
+ },
+ {
+  "id": "day20-2",
+  "at": "2026-11-03T12:45:00Z",
+  "image": "stories/day20-2.jpg",
+  "after": "reel:20",
+  "about": "14:45 הספירלה: מגלשה או טורבו?"
+ },
+ {
+  "id": "day20-3",
+  "at": "2026-11-03T16:30:00Z",
+  "image": "stories/day20-3.jpg",
+  "after": "reel:20",
+  "about": "18:30 מפתח הזהב shahar.horesh111"
  }
 ]
