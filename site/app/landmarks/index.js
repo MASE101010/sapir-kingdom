@@ -19,5 +19,6 @@ import { ARENA, BEITAR_ARENA } from './arena.js';   // day 15: הפועל ארנ
 import { ZOO } from './zoo.js';                // day 17: ספארי ספיר
 import { CINEMA } from './cinema.js';          // day 18: ספיר סינמה
 import { GYM } from './gym.js';                // day 19: חדר כושר ספיר
+import { WATERPARK } from './waterpark.js';    // day 20: פארק המים ספיר
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK].map(l => [l.key, l]));
