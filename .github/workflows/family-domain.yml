@@ -3,6 +3,9 @@ name: family-domain
 on:
   workflow_dispatch:
     inputs:
+      fix_dns:
+        description: "לתקן רשומות DNS (למחוק A ישנות וליצור CNAME ל-Pages)"
+        default: "false"
       domain: { description: "הדומיין לחיבור (למשל sapirfamily.co.il), ריק = רק רשימה", required: false, default: "" }
 jobs:
   domain:
@@ -61,8 +64,20 @@ jobs:
           if [ -n "$ZID" ]; then
             curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records?per_page=100" | python3 -c "
           import sys,json; d=json.load(sys.stdin)
-          for x in d.get('result',[]): print('::notice title=dns::%s %s -> %s (%s)' % (x['type'], x['name'], x['content'][:40], 'proxied' if x.get('proxied') else 'dns only'))
-          print('::notice::dns errors:', d.get('errors'))"
+          print('::notice::dns errors:', d.get('errors'))
+          for x in d.get('result') or []: print('::notice title=dns::%s %s -> %s (%s) id=%s' % (x['type'], x['name'], x['content'][:40], 'proxied' if x.get('proxied') else 'dns only', x['id']))"
+            # ניסיון תיקון: מחיקת רשומות A/AAAA של השורש ו-www, ויצירת CNAME ל-Pages (דורש הרשאת DNS:Edit)
+            if [ "${{ inputs.fix_dns }}" = "true" ]; then
+              curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records?per_page=100" | python3 -c "
+          import sys,json; d=json.load(sys.stdin)
+          for x in d.get('result') or []:
+            if x['type'] in ('A','AAAA') and x['name'] in ('$D','www.$D'): print(x['id'])" | while read rid; do
+                curl -s -X DELETE -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records/$rid" | python3 -c "import sys,json; d=json.load(sys.stdin); print('::notice::deleted $rid ->', d.get('success'), d.get('errors'))"
+              done
+              for name in "$D" "www.$D"; do
+                curl -s -X POST -H "$H" -H 'content-type: application/json' "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records" -d "{\"type\":\"CNAME\",\"name\":\"$name\",\"content\":\"sapir-family-site.pages.dev\",\"proxied\":true,\"ttl\":1}" | python3 -c "import sys,json; d=json.load(sys.stdin); print('::notice::CNAME $name ->', d.get('success'), d.get('errors'))"
+              done
+            fi
             curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID" | python3 -c "import sys,json; d=json.load(sys.stdin); r=d.get('result') or {}; print('::notice title=zone-status::' + str(r.get('status')) + ' | ns: ' + ','.join(r.get('name_servers',[])) + ' | original ns: ' + ','.join(r.get('original_name_servers') or []))"
             curl -s -H "$H" "https://api.cloudflare.com/client/v4/zones/$ZID/ssl/universal/settings" | python3 -c "import sys,json; d=json.load(sys.stdin); print('::notice title=ssl::', d.get('result'), d.get('errors'))"
           else
