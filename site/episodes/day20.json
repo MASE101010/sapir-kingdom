@@ -1,0 +1,467 @@
+{
+ "day": 20,
+ "lines": [
+  "[excited] יום עשרים ב-Sapirland... וְהַיּוֹם, כֻּלָּם לַמַּיִם!",
+  "[excited] תושב אחד כתב לנו בתגובות:",
+  "[excited] תבנו בעיר פארק מים, שלתושבים יהיה משהו כיף לעשות!",
+  "[excited] אז תביאו בגד ים... כי בנינו את פארק המים Sapir!",
+  "[excited] מגלשת ספירלה עֲנָקִית, שֶׁמִּסְתּוֹבֶבֶת עַד לְמַטָּה!",
+  "[excited] מגלשת Turbo, לְמִי שֶׁאוֹהֵב מְהִירוּת!",
+  "[excited] בריכת גלים, עִם גַּלְגַּלִּים צִבְעוֹנִיִּים!",
+  "[excited] וּדְלִי זהב עֲנָקִי, שֶׁמִּתְמַלֵּא... וְנִשְׁפָּךְ עַל כֻּלָּם!",
+  "[excited] יש גם מַצִּיל, גלידה, וּמִטּוֹת שִׁזּוּף!",
+  "[excited] וּמַפְתֵּחַ הזהב הולך ל... Shahar!",
+  "[excited] והוא, וגם הָאַדְרִיכָל שֶׁל הפארק, עוברים לַוִּילָה המוזהבת!",
+  "[excited] ארבע מאות שבעים וְתִשְׁעָה עוקבים! עוד עשרים וְאֶחָד, וְהַסּוּפֶּר חוזר!",
+  "[excited] אז מה בונים מחר? תכתבו בתגובות!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "dt": 0,
+   "target": "statue",
+   "dist": 72,
+   "yaw": -15,
+   "pitch": 20,
+   "orbit": 10,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "dt": 0,
+   "target": "landmark:gym",
+   "dist": 90,
+   "yaw": -67.5,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 3,
+   "dt": 0,
+   "target": "landmark:waterpark",
+   "dist": 125,
+   "yaw": -135,
+   "pitch": 30,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "dt": 0,
+   "target": [
+    252.46,
+    9,
+    234.07
+   ],
+   "dist": 44,
+   "yaw": 172,
+   "pitch": 16,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "dt": 0,
+   "target": [
+    236.9,
+    8,
+    253.87
+   ],
+   "dist": 52,
+   "yaw": -92,
+   "pitch": 18,
+   "orbit": -5,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "dt": 0,
+   "target": [
+    230.54,
+    0,
+    230.54
+   ],
+   "dist": 38,
+   "yaw": -135,
+   "pitch": 55,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "dt": 0,
+   "target": [
+    218.66,
+    7,
+    243.83
+   ],
+   "dist": 34,
+   "yaw": -80,
+   "pitch": 10,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "dt": 0,
+   "target": [
+    241.85,
+    3,
+    217.81
+   ],
+   "dist": 32,
+   "yaw": 168,
+   "pitch": 18,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "dt": 0,
+   "target": "house:shahar.horesh111",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 10,
+   "dt": 0.6,
+   "target": "house:mgmgmgkhs",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 11,
+   "dt": 0,
+   "target": "statue",
+   "dist": 64,
+   "yaw": 0,
+   "pitch": 30,
+   "orbit": 5,
+   "ease": 0.7
+  },
+  {
+   "line": 12,
+   "dt": 0,
+   "target": "castle",
+   "dist": 280,
+   "yaw": 10,
+   "pitch": 38,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "יום 20"
+  },
+  {
+   "type": "comment",
+   "line": 2,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 3,
+   "u": "mgmgmgkhs",
+   "text": "תבנו בעיר פארק מים שלתושבים יהיה משהו כיף לעשות",
+   "likes": 1
+  },
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 0.05,
+   "dur": 1.4,
+   "u": "mgmgmgkhs",
+   "honours": [
+    "אדריכל · פארק המים ספיר"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 1.6,
+   "dur": 2.0,
+   "text": "נבנה · פארק המים ספיר"
+  },
+  {
+   "type": "idcard",
+   "line": 9,
+   "dt": 1.7,
+   "dur": 1.4,
+   "u": "shahar.horesh111",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 12,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "מה בונים מחר? 👇",
+   "sub": "תגיבו בתגובות"
+  }
+ ],
+ "top": 330,
+ "mix": "day20.mix.mp3",
+ "say": {
+  "Sapirland": "ספירלנד",
+  "Sapir": "ספיר",
+  "Turbo": "טורבו",
+  "Shahar": "שחר",
+  "כלם": "כולם",
+  "לוילה": "לווילה"
+ },
+ "homes": {
+  "mgmgmgkhs": 8,
+  "shahar.horesh111": 8
+ },
+ "rise": {
+  "key": "waterpark",
+  "line": 3,
+  "dt": 1.4,
+  "dur": 2.0
+ },
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.4,
+   "dur": 3,
+   "text": "כולם למים! 🌊",
+   "y": 1130,
+   "size": 100,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 0.4,
+   "dur": 3,
+   "text": "🏊",
+   "x": 540,
+   "y": 1080,
+   "size": 220,
+   "rot": 6
+  },
+  {
+   "type": "confetti",
+   "line": 3,
+   "dt": 3.4,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 3,
+   "dt": 3.4,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 4,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "🌀 הספירלה",
+   "y": 330,
+   "size": 110,
+   "band": "#c8452e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 5,
+   "dt": 0.1,
+   "dur": 1.8,
+   "text": "🚀 מגלשת הטורבו",
+   "y": 330,
+   "size": 110,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 7,
+   "dt": 0.2,
+   "dur": 3,
+   "text": "🪣 דלי הענק",
+   "y": 330,
+   "size": 110,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "shake",
+   "line": 7,
+   "dt": 2.45,
+   "dur": 0.4
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 0.3,
+   "dur": 2.2,
+   "text": "🍦",
+   "x": 820,
+   "y": 1080,
+   "size": 200,
+   "rot": -8
+  },
+  {
+   "type": "confetti",
+   "line": 9,
+   "dt": 1.7,
+   "dur": 1.6
+  },
+  {
+   "type": "banner",
+   "line": 11,
+   "dt": 0.2,
+   "dur": 3,
+   "text": "479 עוקבים 🎉",
+   "y": 330,
+   "size": 110,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  }
+ ],
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 7,
+     "dt": 1.2
+    },
+    "stop"
+   ],
+   [
+    {
+     "line": 7,
+     "dt": 2.45
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0
+  },
+  {
+   "name": "boing",
+   "line": 0,
+   "dt": 0.8
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": 1.4
+  },
+  {
+   "name": "boom",
+   "line": 3,
+   "dt": 3.4
+  },
+  {
+   "name": "sparkle",
+   "line": 3,
+   "dt": 3.5
+  },
+  {
+   "name": "whoosh",
+   "line": 4,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 5,
+   "dt": 0.3
+  },
+  {
+   "name": "ding",
+   "line": 6,
+   "dt": 0.4
+  },
+  {
+   "name": "scratch",
+   "line": 7,
+   "dt": 1.2
+  },
+  {
+   "name": "boom",
+   "line": 7,
+   "dt": 2.45
+  },
+  {
+   "name": "pop",
+   "line": 8,
+   "dt": 0.3
+  },
+  {
+   "name": "kaching",
+   "line": 9,
+   "dt": 1.7
+  },
+  {
+   "name": "whoosh",
+   "line": 10
+  },
+  {
+   "name": "tada",
+   "line": 11,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 12
+  },
+  {
+   "name": "pop",
+   "line": 13
+  }
+ ],
+ "caption": "יום 20 בממלכה של משפחת ספיר: נפתח פארק המים ספיר! 🌊 ספירלה, טורבו, בריכת גלים ודלי זהב ענק\nמה בונים מחר? תגיבו בתגובות, וכל עוקב מקבל בית 👑\n#ממלכה #פארקמים #משפחתספיר #בונים #ריל",
+ "firstComment": "מה בונים מחר? 👇 התגובה עם הכי הרבה לייקים נבנית! (ומי ששם את הריל בסטורי ומתייג @sapirkingdom מקבל בית מוזהב ✨)",
+ "notes": "Day 19's reel had only two comments from residents. Winner: @mgmgmgkhs, a water park (1 like). Skipped: @abuksis6767 \"תעשו סופרלנד ספיר\" (0 likes; the name of a real amusement park, and ספירלנד already stands on lot 2). Gold key: no citizen joined on day 19, so drawn among the 151 citizens without a key, (19*7919)%151 = shahar.horesh111, the same rule as day 19's draw.",
+ "replies": [
+  {
+   "id": "18104470463648560",
+   "text": "ניסית את מזלך וזכית! 🌊 פארק המים ספיר נפתח, ואתה האדריכל, ועובר לווילה המוזהבת 👑"
+  },
+  {
+   "id": "18639554989005638",
+   "text": "רשמתי את זה! 🎢 ובינתיים, ספירלנד כבר מחכה לך בממלכה. מה עוד בונים?"
+  }
+ ]
+}
