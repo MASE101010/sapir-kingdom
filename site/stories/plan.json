@@ -434,5 +434,25 @@
   "image": "stories/day20-3.jpg",
   "after": "reel:20",
   "about": "18:30 מפתח הזהב shahar.horesh111"
+ },
+ {
+  "id": "day21-1",
+  "at": "2026-11-04T08:00:00Z",
+  "image": "stories/day21-1.jpg",
+  "about": "10:00 בוקר טוב: רמז 🧣🥁, בית\"ר או מכבי?"
+ },
+ {
+  "id": "day21-2",
+  "at": "2026-11-04T12:45:00Z",
+  "image": "stories/day21-2.jpg",
+  "after": "reel:21",
+  "about": "14:45 מועדון האוהדים: לאיזו קבוצה אתם?"
+ },
+ {
+  "id": "day21-3",
+  "at": "2026-11-04T16:30:00Z",
+  "image": "stories/day21-3.jpg",
+  "after": "reel:21",
+  "about": "18:30 מפתח הזהב shaybarak07"
  }
 ]
