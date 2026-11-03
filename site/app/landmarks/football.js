@@ -133,23 +133,31 @@ export function maccabiTick(group, t) {
   let sm = 0, sh = 0; for (const g of m?.goals ?? []) if (t >= g.t && !g.save) g.team === 'm' ? sm++ : sh++;
   for (const [k, b] of Object.entries(group.userData.boards ?? {})) b.visible = k === `${Math.min(sm, 3)}:${Math.min(sh, 3)}`;
 }
-export function maccabiLive(group) {
-  const ox = 17.5 + 5 * 1.5 + .6, oz = 11.5 + 5 * 1.4 + .6;
-  group.add(sign('אצטדיון מכבי ספיר', { w: 11.6, h: 2, bg: '#1f8a4c', fg: '#ffffff', border: '#ffffff', font: '900 {px}px "Secular One", Rubik' }).at(0, 10, oz + .55));
-  // the scoreboard: one board for each score the match can reach (tick shows the right one)
+/** the scoreboard: one board for each score a match can reach (maccabiTick shows the right one). text(m, h) writes it */
+export function scoreboards(group, text, [x, y, z], rot, { w = 9.4, h = 2.4 } = {}) {
   const boards = group.userData.boards = {};
-  for (let m = 0; m <= 3; m++) for (let h = 0; h <= 3; h++) {
-    const b = sign(`מכבי ${m} · הפועל ${h}`, { w: 9.4, h: 2.4, bg: '#13213b', fg: '#ffffff', border: '#e8b323' }); b.rotation.y = Math.PI / 2; b.position.set(-ox + 1.15, 14.2, 0);
-    b.visible = m === 0 && h === 0; boards[`${m}:${h}`] = b; group.add(b); }
-  // the players: eleven of מכבי (green, attacking +x) and eleven of הפועל (red, attacking -x), a referee, the ball
-  const sub = fn => { const p = new Pen(); fn(p); const g = p.build(new THREE.Group()); group.add(g); return g; };
+  for (let m = 0; m <= 3; m++) for (let k = 0; k <= 3; k++) {
+    const b = sign(text(m, k), { w, h, bg: '#13213b', fg: '#ffffff', border: '#e8b323' }); b.rotation.y = rot; b.position.set(x, y, z);
+    b.visible = m === 0 && k === 0; boards[`${m}:${k}`] = b; group.add(b); }
+}
+/** two elevens on the pitch, a referee and the ball, live (maccabiTick moves them): team 'm' attacks +x, team 'h' attacks -x.
+ * kits: { m: [shirt, trim], h: [shirt, trim] }; lift raises them for a pitch that sits higher than .08 */
+export function squads(group, kits, lift = 0) {
+  const box = new THREE.Group(); box.position.y = lift; group.add(box);
+  const sub = fn => { const p = new Pen(); fn(p); const g = p.build(new THREE.Group()); box.add(g); return g; };
   const L = group.userData.live = { players: [] };
   HOME.forEach(([x, z], k) => {
-    L.players.push({ team: 'm', k, home: [x, z], g: sub(p => player(p, 0, 0, 0, MGREEN, .08, LINE)) });
-    L.players.push({ team: 'h', k, home: [-x + (k === 10 ? 1.5 : 0), -z], g: sub(p => player(p, 0, 0, 0, HRED, .08, HBLACK)) });
+    L.players.push({ team: 'm', k, home: [x, z], g: sub(p => player(p, 0, 0, 0, kits.m[0], .08, kits.m[1])) });
+    L.players.push({ team: 'h', k, home: [-x + (k === 10 ? 1.5 : 0), -z], g: sub(p => player(p, 0, 0, 0, kits.h[0], .08, kits.h[1])) });
   });
   L.ref = sub(p => player(p, 0, 0, 0, 0xf2b632, .08));
   L.ball = sub(p => p.ball(0, 0, 0, .7, .7, LINE));
+}
+export function maccabiLive(group) {
+  const ox = 17.5 + 5 * 1.5 + .6, oz = 11.5 + 5 * 1.4 + .6;
+  group.add(sign('אצטדיון מכבי ספיר', { w: 11.6, h: 2, bg: '#1f8a4c', fg: '#ffffff', border: '#ffffff', font: '900 {px}px "Secular One", Rubik' }).at(0, 10, oz + .55));
+  scoreboards(group, (m, h) => `מכבי ${m} · הפועל ${h}`, [-ox + 1.15, 14.2, 0], Math.PI / 2, { w: 9.4, h: 2.4 });
+  squads(group, { m: [MGREEN, LINE], h: [HRED, HBLACK] });
   maccabiTick(group, 0);
   group.add(sign('מגורי השחקנים · 20 מקומות', { w: 12, h: 1.4, bg: '#fffaf0' }).at(0, 7.2, -22.5 - 2.25, Math.PI));
   group.add(sign('מכבי ספיר · ירוק לבן 💚🤍', { w: 10, h: 1.5, bg: '#1f8a4c', fg: '#ffffff', border: '#ffffff' }).at(0, 2.2, 9 + 2.45));
