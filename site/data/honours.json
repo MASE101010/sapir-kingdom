@@ -19,7 +19,8 @@
       "i_dont_want_to_leak_my_name",
       "asaf.2509",
       "shahar.horesh111",
-      "shaybarak07"
+      "shaybarak07",
+      "eran.buyum"
     ]
   },
   "built": {
@@ -151,6 +152,12 @@
         "eilam.lev99"
       ],
       "day": 21
+    },
+    "beitar-club": {
+      "by": [
+        "mgmgmgkhs"
+      ],
+      "day": 22
     }
   }
 }

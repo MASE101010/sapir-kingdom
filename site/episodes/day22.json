@@ -1,0 +1,482 @@
+{
+ "day": 22,
+ "lines": [
+  "[excited] יום עשרים ושניים ב-Sapirland... וְאוֹהֲדֵי Beitar? כָּתְבוּ לִי!",
+  "[excited] Itay כתב לנו בתגובות:",
+  "[excited] גם Beitar רוצים מועדון אוהדים, תִּבְנֶה לָנוּ גַּם אֶחָד?",
+  "[excited] כן, Itay, שֶׁבִּקֵּשׁ אֶת פארק המים, וְהִבְקִיעַ אֶתְמוֹל גּוֹל!",
+  "[excited] אז תוציאו צעיפים צְהֻבִּים... כי בנינו את מועדון האוהדים של Beitar!",
+  "[excited] וְהַמּוֹעֲדוֹן? כַּדּוּר עֲנָק, צהוב שחור!",
+  "[excited] עִם צָעִיף עֲנָק, שֶׁעוֹטֵף אֶת כָּל הַכַּדּוּר!",
+  "[excited] וּמֵהַשַּׁעַר עַד הַדֶּלֶת... צְעָדַת הָאוֹהֲדִים!",
+  "[excited] עִם תּוֹף עֲנָק, דְּגָלִים, וְהַמּוֹן שִׂמְחָה!",
+  "[excited] רוצים לשחק? תגיבו Beitar, מכבי, או הפועל!",
+  "[excited] וְעוֹד רעיונות מֵהַתְּגוּבוֹת: אולפן חדשות, וְהֵיכַל כַּדּוּרְסַל... אולי מחר!",
+  "[excited] וּמַפְתֵּחַ הזהב הולך ל... Eran!",
+  "[excited] Eran עובר לַוִּילָה המוזהבת, עִם בְּרֵכָה!",
+  "[excited] ארבע מאות שְׁמוֹנִים וְתִשְׁעָה עוקבים! עוד אחד עשר, וְהַסּוּפֶּר חוזר!",
+  "[excited] שתפו את הריל בסטורי, וקבלו בית מוזהב!",
+  "[excited] אז מה בונים מחר? תגיבו בתגובות!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "statue",
+   "dist": 62,
+   "yaw": -30,
+   "pitch": 24,
+   "orbit": 9,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    -236.9,
+    2,
+    -236.9
+   ],
+   "dist": 95,
+   "yaw": 45,
+   "pitch": 30,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 4,
+   "target": "landmark:beitar-club",
+   "dist": 110,
+   "yaw": -10,
+   "pitch": 24,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": "landmark:beitar-club",
+   "dist": 62,
+   "yaw": 20,
+   "pitch": 14,
+   "orbit": 4,
+   "ease": 0.7
+  },
+  {
+   "line": 6,
+   "target": [
+    -243.26,
+    12,
+    -243.26
+   ],
+   "dist": 40,
+   "yaw": 30,
+   "pitch": 8,
+   "orbit": 5,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "target": [
+    -226.3,
+    2,
+    -226.3
+   ],
+   "dist": 36,
+   "yaw": 15,
+   "pitch": 26,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 8,
+   "target": [
+    -217.52,
+    3,
+    -225.16
+   ],
+   "dist": 20,
+   "yaw": -25,
+   "pitch": 28,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 9,
+   "target": "landmark:beitar-arena",
+   "dist": 95,
+   "yaw": 10,
+   "pitch": 52,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 10,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 20,
+   "pitch": 38,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 11,
+   "dt": 1.85,
+   "target": "house:eran.buyum",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 13,
+   "target": "statue",
+   "dist": 70,
+   "yaw": 10,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 15,
+   "target": "statue",
+   "dist": 64,
+   "pitch": 30,
+   "yaw": -20,
+   "orbit": 6,
+   "ease": 0.8
+  },
+  {
+   "line": 16,
+   "target": "castle",
+   "dist": 260,
+   "yaw": 10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "יום 22"
+  },
+  {
+   "type": "comment",
+   "line": 1,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 4,
+   "u": "mgmgmgkhs",
+   "text": "גם בית״ר רוצים מועדון אוהדים אתה יכול לבנות לנו גם אחד?",
+   "likes": 6
+  },
+  {
+   "type": "idcard",
+   "line": 4,
+   "dt": 0.05,
+   "dur": 1.7,
+   "u": "mgmgmgkhs",
+   "honours": [
+    "אדריכל · מועדון האוהדים של בית\"ר"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dt": 2.0,
+   "dur": 2.4,
+   "text": "נבנה · מועדון האוהדים של בית\"ר ספיר"
+  },
+  {
+   "type": "idcard",
+   "line": 11,
+   "dt": 1.9,
+   "dur": 1.4,
+   "u": "eran.buyum",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 15,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "מה בונים מחר? 👇",
+   "sub": "תגיבו בתגובות"
+  }
+ ],
+ "top": 330,
+ "mix": "day22.mix.mp3",
+ "say": {
+  "Sapirland": "ספירלנד",
+  "Sapir": "ספיר",
+  "Beitar": "בית\"ר",
+  "Itay": "איתי",
+  "Eran": "ערן"
+ },
+ "homes": {
+  "eran.buyum": 8
+ },
+ "rise": {
+  "key": "beitar-club",
+  "line": 4,
+  "dt": 1.9,
+  "dur": 1.6
+ },
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 2.0,
+   "dur": 2.2,
+   "text": "בית\"ר ספיר 💛🖤",
+   "y": 1130,
+   "size": 100,
+   "band": "#f2c418",
+   "color": "#1b1d21"
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 2.3,
+   "dur": 2.6,
+   "text": "🌊⚽",
+   "x": 540,
+   "y": 1080,
+   "size": 200,
+   "rot": 6
+  },
+  {
+   "type": "confetti",
+   "line": 4,
+   "dt": 3.55,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 4,
+   "dt": 3.55,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 7,
+   "dt": 0.3,
+   "dur": 2.6,
+   "text": "🥁 צעדת האוהדים",
+   "y": 330,
+   "size": 110,
+   "band": "#1b1d21",
+   "color": "#f2c418"
+  },
+  {
+   "type": "shake",
+   "line": 8,
+   "dt": 0.5,
+   "dur": 0.4
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 0.2,
+   "dur": 3,
+   "text": "מכבי · הפועל · בית\"ר ⚽",
+   "y": 330,
+   "size": 96,
+   "band": "#13213b",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 1.6,
+   "dur": 2.2,
+   "text": "📺",
+   "x": 330,
+   "y": 1060,
+   "size": 200,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 2.6,
+   "dur": 1.6,
+   "text": "🏀",
+   "x": 750,
+   "y": 1060,
+   "size": 200,
+   "rot": 8
+  },
+  {
+   "type": "confetti",
+   "line": 11,
+   "dt": 1.9,
+   "dur": 1.6
+  },
+  {
+   "type": "banner",
+   "line": 13,
+   "dt": 0.2,
+   "dur": 3,
+   "text": "489 עוקבים 🙏",
+   "y": 330,
+   "size": 110,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 14,
+   "dt": 0.3,
+   "dur": 2.4,
+   "text": "✨🏠",
+   "x": 540,
+   "y": 1080,
+   "size": 200,
+   "rot": -6
+  }
+ ],
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0
+  },
+  {
+   "name": "boing",
+   "line": 0,
+   "dt": 0.8
+  },
+  {
+   "name": "pop",
+   "line": 1
+  },
+  {
+   "name": "boing",
+   "line": 3,
+   "dt": 2.3
+  },
+  {
+   "name": "whoosh",
+   "line": 4,
+   "dt": 1.9
+  },
+  {
+   "name": "boom",
+   "line": 4,
+   "dt": 3.55
+  },
+  {
+   "name": "sparkle",
+   "line": 4,
+   "dt": 3.65
+  },
+  {
+   "name": "whoosh",
+   "line": 5,
+   "dt": 0.2
+  },
+  {
+   "name": "scratch",
+   "line": 6,
+   "dt": 0.2
+  },
+  {
+   "name": "sting",
+   "line": 7
+  },
+  {
+   "name": "boom",
+   "line": 8,
+   "dt": 0.5
+  },
+  {
+   "name": "whoosh",
+   "line": 9
+  },
+  {
+   "name": "pop",
+   "line": 10,
+   "dt": 1.6
+  },
+  {
+   "name": "pop",
+   "line": 10,
+   "dt": 2.6
+  },
+  {
+   "name": "kaching",
+   "line": 11,
+   "dt": 1.9
+  },
+  {
+   "name": "whoosh",
+   "line": 12,
+   "dt": 0.6
+  },
+  {
+   "name": "sparkle",
+   "line": 13,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 14,
+   "dt": 0.3
+  },
+  {
+   "name": "tada",
+   "line": 15,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 16
+  }
+ ],
+ "caption": "יום 22 בממלכה של משפחת ספיר: בית\"ר ביקשו, וקיבלו! מועדון אוהדים בצורת כדור ענק, עם צעדת אוהדים 💛🖤🥁\nמה בונים מחר? תגיבו בתגובות, וכל עוקב מקבל בית 👑\n#ממלכה #כדורגל #משפחתספיר #בונים #ריל",
+ "firstComment": "מה בונים מחר? 👇 התגובה עם הכי הרבה לייקים נבנית! (ומי ששם את הריל בסטורי ומתייג @sapirkingdom מקבל בית מוזהב ✨)",
+ "notes": "Day 22: mgmgmgkhs (Itay, בית\"ר #12, architect of the water park on day 20) 'גם בית״ר רוצים מועדון אוהדים אתה יכול לבנות לנו גם אחד?' (6 likes, the only comment with likes), on lot 21; the march road comes from nevo93510's 'צעדות של הקבוצות'. Skipped (0 likes): eladdadon1's ultras that burn the other club's house (violence), eladdadon1's 'סמי ספיר' for his goal (unclear what to build), shaybarak07's news studio and basketball hall (runners up, named in the reel: אולי מחר). Gold key: (21*7919)%2 of the two citizens who joined on day 21 = eran.buyum. Itay already lives in the golden villa since day 20.",
+ "replies": [
+  {
+   "id": "18115716656605457",
+   "text": "איתי, ביקשת וקיבלת! מועדון האוהדים של בית\"ר עומד, כדור ענק צהוב שחור 💛🖤 אדריכל בפעם השנייה!"
+  },
+  {
+   "id": "18147585283584577",
+   "text": "נבו, הצעדה שלך נכנסה לממלכה 🥁 עכשיו יש צעדת אוהדים עם תוף ענק עד הדלת של המועדון"
+  },
+  {
+   "id": "17938623564401066",
+   "text": "בממלכה שלנו אוהדים רק שרים, לא שורפים 😄 אבל יציע ענק לאוהדים? אולי מחר!"
+  },
+  {
+   "id": "17967498938982677",
+   "text": "אולפן חדשות של הממלכה? המלך כבר רואה את עצמו מגיש 📺 אולי מחר!"
+  },
+  {
+   "id": "17967619202978979",
+   "text": "שי, היכל כדורסל נשמע אדיר 🏀 תגידו לחברים לתת לייק, והכי אהוב נבנה!"
+  }
+ ]
+}
