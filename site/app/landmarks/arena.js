@@ -4,14 +4,14 @@
 // tower with the club's crest, the chairman's office on top with a balcony. A fan shop, the gate with its sign, flags.
 // Lot radius 30, front toward +z.
 import { sign } from '../sign.js';
-import { pitch, player, floodlight } from './football.js';
+import { pitch, player, floodlight, squads, scoreboards, maccabiTick } from './football.js';
 const HRED = 0xc8102e, HBLACK = 0x1b1d21, WHITE = 0xf7f5ee, CONCRETE = 0xd6d0c4, METAL = 0x9aa3ab, GLASS = 0x7fb3c9, DARK = 0x3a3f45, GOLD = 0xe8b323,
   SKIN = 0xe2b48f, PAVE = 0xe2d9c6, GRASS = 0x86c766;
 const RED_FANS = [HRED, HBLACK, HRED, WHITE, HRED, 0xe8b323, HBLACK, 0xf28db2];
 const rnd = (a, b) => { let h = Math.imul(a * 73856093 ^ b * 19349663, 2654435761); h ^= h >>> 15; return (h >>> 0) / 4294967296; };
 const PW = 32, PD = 20;          // pitch, number of tiers
 
-function drawArenaWith(p, HRED, HBLACK, FANS, press, T = 6) {
+function drawArenaWith(p, HRED, HBLACK, FANS, press, T = 6, warm = true) {
   p.at(0, 0, 0);
   p.box(0, 0, 0, 60, .08, 60, GRASS); p.box(0, .08, 0, 58, .1, 56, PAVE);
   pitch(p, PW, PD, .18);
@@ -34,8 +34,8 @@ function drawArenaWith(p, HRED, HBLACK, FANS, press, T = 6) {
   for (const s of [-1, 1]) { p.box(s * (PW / 2 + 9.5), top + 4.6, 0, 1, 6, 12, HBLACK); p.box(s * (PW / 2 + 9.5 - .55 * s), top + 5, 0, .1, 5.2, 11.2, 0x1d6fa5); }
   for (const [x, z] of [[-27, -21], [27, -21], [-27, 21], [27, 21], [0, -24], [0, 24]]) if (z !== 24) floodlight(p, x, z, 22, Math.atan2(-x, -z));
   // the squad warming up, the coach, cones, balls
-  [[-10, -4], [-6, 3], [-2, -5], [3, 4], [7, -2], [11, 3], [-12, 6], [12, -6]].forEach(([x, z], k) => player(p, x, z, k * 1.1, HRED, .18, HBLACK));
-  player(p, 0, 8, Math.PI, 0x3b6fb6, .18); for (let k = 0; k < 6; k++) { p.cone(-5 + k * 2, .18, -1, .6, .8, 0xf28c28); p.ball(-4 + k * 2, .18, 1.5, .55, .55, WHITE); }
+  if (warm) [[-10, -4], [-6, 3], [-2, -5], [3, 4], [7, -2], [11, 3], [-12, 6], [12, -6]].forEach(([x, z], k) => player(p, x, z, k * 1.1, HRED, .18, HBLACK));
+  if (warm) { player(p, 0, 8, Math.PI, 0x3b6fb6, .18); for (let k = 0; k < 6; k++) { p.cone(-5 + k * 2, .18, -1, .6, .8, 0xf28c28); p.ball(-4 + k * 2, .18, 1.5, .55, .55, WHITE); } }
   // the management building behind the north stand: a glass tower, red bands, the chairman's office with a balcony, the crest
   p.at(0, -26.5);
   p.box(0, 0, 0, 16, 1, 6, CONCRETE); p.box(0, 1, 0, 14, 21, 5, GLASS);
@@ -57,7 +57,7 @@ function drawArenaWith(p, HRED, HBLACK, FANS, press, T = 6) {
 }
 export function drawArena(p) { drawArenaWith(p, HRED, HBLACK, RED_FANS, false); }
 const BYEL = 0xf2c418, BBLK = 0x1b1d21;
-export function drawBeitarArena(p) { drawArenaWith(p, BYEL, BBLK, [BYEL, BBLK, BYEL, WHITE, BYEL, BBLK, BYEL, 0xf28c28], true, 8); }
+export function drawBeitarArena(p) { drawArenaWith(p, BYEL, BBLK, [BYEL, BBLK, BYEL, WHITE, BYEL, BBLK, BYEL, 0xf28c28], true, 8, false); }
 export function arenaLive(group) {
   group.add(sign('הפועל ארנה ❤️🖤', { w: 12.6, h: 2, bg: '#c8102e', fg: '#ffffff', border: '#1b1d21', font: '900 {px}px "Secular One", Rubik' }).at(0, 4.6, 27.65));
   group.add(sign('רעיון של @eilam.lev99 · אדריכל', { w: 8.4, h: 1.1, bg: '#e8b323', fg: '#13213b', border: '#13213b' }).at(0, 2.9, 27.65));
@@ -74,6 +74,10 @@ export function beitarArenaLive(group) {
   group.add(sign('חדר המנהלים', { w: 9, h: 1.6, bg: '#1b1d21', fg: '#f2c418', border: '#f2c418', font: '900 {px}px "Secular One", Rubik' }).at(0, 23.7, -26.5 + 3.05));
   group.add(sign('חדר מסיבות עיתונאים 🎤', { w: 8.6, h: 1.1, bg: '#f2c418', fg: '#1b1d21', border: '#1b1d21' }).at(-17, 3.6, 27.3));
   group.add(sign('חנות האוהדים 🧣', { w: 6.4, h: 1.2, bg: '#ffffff', fg: '#1b1d21', border: '#f2c418' }).at(17, 3.3, 27.6));
+  // day 21: the squads on the pitch (day 21's reel: בית"ר against מכבי), בית"ר attacking -x, the score on the west screen
+  squads(group, { m: [0x1f8a4c, 0xffffff], h: [BYEL, BBLK] }, .1);
+  scoreboards(group, (m, h) => `בית"ר ${h} · מכבי ${m}`, [-(PW / 2 + 9.5) + .58, 18.6, 0], Math.PI / 2, { w: 10, h: 2.4 });
+  maccabiTick(group, 0);
   for (const s of [-1, 1]) group.add(sign('בית"ר ספיר 💛🖤', { w: 10, h: 4, bg: '#1d6fa5', fg: '#ffffff', border: '#1b1d21', font: '900 {px}px "Secular One", Rubik' }).at(s * (PW / 2 + 9.5 - .62 * s), 14, 0, -s * Math.PI / 2));
 }
-export const BEITAR_ARENA = { key: 'beitar-arena', name: 'בית"ר ארנה', draw: drawBeitarArena, live: beitarArenaLive, top: 31 };
+export const BEITAR_ARENA = { key: 'beitar-arena', name: 'בית"ר ארנה', draw: drawBeitarArena, live: beitarArenaLive, tick: maccabiTick, top: 31 };

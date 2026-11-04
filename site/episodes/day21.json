@@ -1,0 +1,653 @@
+{
+ "day": 21,
+ "lines": [
+  "[excited] יום עשרים ואחד ב-Sapirland... וְהָאוֹהֲדִים של הפועל קיבלו בית!",
+  "[excited] Eilam כתב לנו בתגובות:",
+  "[excited] תעשו מועדון אוהדים להפועל Sapir!",
+  "[excited] אז Eilam, תָּבִיא צָעִיף... כי בנינו את מועדון האוהדים!",
+  "[excited] צעיף עֲנָק, אדום שחור, על כל הבניין!",
+  "[excited] וְעַל הַגַּג... גביע זהב, מהניצחון בדרבי!",
+  "[excited] ועל המסך הענק? שידור חי... Beitar נֶגֶד מכבי!",
+  "[excited] שריקת פתיחה ב-Beitar ארנה!",
+  "[excited] Itay מ-Beitar בורח לכולם... גול! אחת אפס!",
+  "[excited] אבל Alon ממכבי עוֹנֶה... גול! אחת אחת!",
+  "[excited] דקה אחרונה... Elad... גול! מכבי מנצחת, שתיים אחת!",
+  "[excited] רוצים לשחק? תגיבו מכבי, הפועל או Beitar!",
+  "[excited] וב-Sapir סינמה, Soltiz עדיין על המסך... תגיבו מה הסרט הבא!",
+  "[excited] וּמַפְתֵּחַ הזהב הולך ל... Shay!",
+  "[excited] Shay, וגם Eilam, עוברים לַוִּילָה המוזהבת!",
+  "[excited] וּבַכֹּתֶל הַמַּלְכוּתִי, כל הממלכה מתפללת...",
+  "[excited] שנגיע לחמש מאות עוקבים! עוד שישה עשר, וְהַסּוּפֶּר חוזר!",
+  "[excited] שתפו את הריל בסטורי, וקבלו בית מוזהב!",
+  "[excited] אז תגיבו מה בונים מחר!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "statue",
+   "dist": 62,
+   "yaw": -30,
+   "pitch": 24,
+   "orbit": 9,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    -236.9,
+    2,
+    236.9
+   ],
+   "dist": 95,
+   "yaw": 135,
+   "pitch": 30,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 3,
+   "target": "landmark:fanclub",
+   "dist": 105,
+   "yaw": -10,
+   "pitch": 24,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": [
+    -240.79,
+    5,
+    240.79
+   ],
+   "dist": 42,
+   "yaw": 135,
+   "pitch": 18,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 5,
+   "target": [
+    -247.5,
+    13,
+    247.5
+   ],
+   "dist": 30,
+   "yaw": 150,
+   "pitch": 16,
+   "orbit": 5,
+   "ease": 0.7
+  },
+  {
+   "line": 6,
+   "target": [
+    -219.22,
+    3,
+    243.26
+   ],
+   "dist": 40,
+   "yaw": -160,
+   "pitch": 18,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 6,
+   "target": [
+    -216.57,
+    7,
+    245.91
+   ],
+   "dist": 19,
+   "yaw": -135,
+   "pitch": 4,
+   "orbit": 1,
+   "ease": 0.7,
+   "dt": 1.4
+  },
+  {
+   "line": 7,
+   "target": "landmark:beitar-arena",
+   "dist": 95,
+   "yaw": 10,
+   "pitch": 58,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 8,
+   "target": "ball:beitar-arena",
+   "dist": 30,
+   "yaw": 67.5,
+   "pitch": 60,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "dt": 3.0,
+   "target": [
+    -254.8,
+    18.6,
+    -77.27
+   ],
+   "dist": 30,
+   "yaw": 157.5,
+   "pitch": 3,
+   "orbit": 0,
+   "ease": 0.5
+  },
+  {
+   "line": 11,
+   "target": "landmark:beitar-arena",
+   "dist": 75,
+   "yaw": -20,
+   "pitch": 48,
+   "orbit": 5,
+   "ease": 0.8
+  },
+  {
+   "line": 12,
+   "target": "landmark:cinema",
+   "dist": 80,
+   "yaw": 0,
+   "pitch": 18,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 12,
+   "dt": 2.4,
+   "target": "landmark:cinema",
+   "dist": 46,
+   "yaw": 15,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 13,
+   "target": "house:shaybarak07",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01,
+   "dt": 1.85
+  },
+  {
+   "line": 14,
+   "dt": 0.6,
+   "target": "house:eilam.lev99",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 15,
+   "target": [
+    -44,
+    11,
+    2225
+   ],
+   "dist": 26,
+   "yaw": 192,
+   "pitch": 4,
+   "orbit": 1,
+   "ease": 0.01
+  },
+  {
+   "line": 16,
+   "target": [
+    44,
+    11,
+    2225
+   ],
+   "dist": 26,
+   "yaw": 168,
+   "pitch": 4,
+   "orbit": 1,
+   "ease": 0.8
+  },
+  {
+   "line": 17,
+   "target": "statue",
+   "dist": 70,
+   "yaw": 10,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 18,
+   "target": "statue",
+   "dist": 64,
+   "pitch": 30,
+   "yaw": -20,
+   "orbit": 6,
+   "ease": 0.8
+  },
+  {
+   "line": 19,
+   "target": "castle",
+   "dist": 260,
+   "yaw": 10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "יום 21"
+  },
+  {
+   "type": "comment",
+   "line": 1,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 3,
+   "u": "eilam.lev99",
+   "text": "אפשר לעשות מועדון האוהדים של הפועל ספיר",
+   "likes": 2
+  },
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 0.05,
+   "dur": 1.4,
+   "u": "eilam.lev99",
+   "honours": [
+    "אדריכל · מועדון האוהדים"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 1.6,
+   "dur": 2.0,
+   "text": "נבנה · מועדון האוהדים של הפועל ספיר"
+  },
+  {
+   "type": "idcard",
+   "line": 13,
+   "dt": 1.9,
+   "dur": 1.4,
+   "u": "shaybarak07",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 18,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "מה בונים מחר? 👇",
+   "sub": "תגיבו בתגובות"
+  }
+ ],
+ "top": 330,
+ "mix": "day21.mix.mp3",
+ "say": {
+  "Sapirland": "ספירלנד",
+  "Sapir": "ספיר",
+  "Eilam": "עילם",
+  "Beitar": "בית\"ר",
+  "Itay": "איתי",
+  "Alon": "אלון",
+  "Elad": "אלעד",
+  "Soltiz": "סולטיז",
+  "Shay": "שי"
+ },
+ "homes": {
+  "eilam.lev99": 8,
+  "shaybarak07": 8
+ },
+ "rise": {
+  "key": "fanclub",
+  "line": 3,
+  "dt": 1.4,
+  "dur": 2.0
+ },
+ "match": {
+  "key": "beitar-arena",
+  "line": 7,
+  "dt": 0.5,
+  "goals": [
+   {
+    "line": 8,
+    "dt": 2.0,
+    "team": "h",
+    "who": 10
+   },
+   {
+    "line": 9,
+    "dt": 1.73,
+    "team": "m",
+    "who": 10
+   },
+   {
+    "line": 10,
+    "dt": 1.64,
+    "team": "m",
+    "who": 9
+   }
+  ]
+ },
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.4,
+   "dur": 3,
+   "text": "הפועל ספיר ❤️🖤",
+   "y": 1130,
+   "size": 100,
+   "band": "#c8102e",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 1,
+   "dt": 0.4,
+   "dur": 3,
+   "text": "🧣",
+   "x": 540,
+   "y": 1080,
+   "size": 220,
+   "rot": 6
+  },
+  {
+   "type": "confetti",
+   "line": 3,
+   "dt": 3.4,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 3,
+   "dt": 3.4,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 5,
+   "dt": 0.3,
+   "dur": 2.4,
+   "text": "🏆 גביע הדרבי",
+   "y": 330,
+   "size": 110,
+   "band": "#1b1d21",
+   "color": "#e8b323"
+  },
+  {
+   "type": "news",
+   "line": 7,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 11,
+   "text": "מבזק ספורט ⚽",
+   "sub": "בית\"ר ספיר נגד מכבי ספיר",
+   "clock": "90:00",
+   "y": 250
+  },
+  {
+   "type": "banner",
+   "line": 8,
+   "dt": 2.0,
+   "dur": 1.6,
+   "text": "גול! ⚽",
+   "y": 1130,
+   "size": 130,
+   "band": "#f2c418",
+   "color": "#1b1d21"
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 1.73,
+   "dur": 1.6,
+   "text": "גול! ⚽",
+   "y": 1130,
+   "size": 130,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 10,
+   "dt": 1.64,
+   "dur": 1.8,
+   "text": "גול! ⚽",
+   "y": 1130,
+   "size": 130,
+   "band": "#1f8a4c",
+   "color": "#ffffff"
+  },
+  {
+   "type": "shake",
+   "line": 10,
+   "dt": 1.64,
+   "dur": 0.4
+  },
+  {
+   "type": "confetti",
+   "line": 10,
+   "dt": 1.64,
+   "dur": 2
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.2,
+   "dur": 2.6,
+   "text": "🎬 ספיר סינמה",
+   "y": 330,
+   "size": 110,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "confetti",
+   "line": 13,
+   "dt": 1.9,
+   "dur": 1.6
+  },
+  {
+   "type": "banner",
+   "line": 16,
+   "dt": 0.2,
+   "dur": 3,
+   "text": "484 עוקבים 🙏",
+   "y": 330,
+   "size": 110,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 17,
+   "dt": 0.3,
+   "dur": 2.4,
+   "text": "✨🏠",
+   "x": 540,
+   "y": 1080,
+   "size": 200,
+   "rot": -6
+  }
+ ],
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 7,
+     "dt": 0
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 10,
+     "dt": 1.64
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0
+  },
+  {
+   "name": "boing",
+   "line": 0,
+   "dt": 0.8
+  },
+  {
+   "name": "pop",
+   "line": 1
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": 1.4
+  },
+  {
+   "name": "boom",
+   "line": 3,
+   "dt": 3.4
+  },
+  {
+   "name": "sparkle",
+   "line": 3,
+   "dt": 3.5
+  },
+  {
+   "name": "whoosh",
+   "line": 4,
+   "dt": 0.2
+  },
+  {
+   "name": "ding",
+   "line": 5,
+   "dt": 0.4
+  },
+  {
+   "name": "scratch",
+   "line": 6,
+   "dt": 0.2
+  },
+  {
+   "name": "sting",
+   "line": 7
+  },
+  {
+   "name": "roar",
+   "line": 8,
+   "dt": 2.0
+  },
+  {
+   "name": "roar",
+   "line": 9,
+   "dt": 1.73
+  },
+  {
+   "name": "boom",
+   "line": 10,
+   "dt": 1.64
+  },
+  {
+   "name": "tada",
+   "line": 10,
+   "dt": 1.9
+  },
+  {
+   "name": "whoosh",
+   "line": 12
+  },
+  {
+   "name": "kaching",
+   "line": 13,
+   "dt": 1.9
+  },
+  {
+   "name": "whoosh",
+   "line": 14,
+   "dt": 1.0
+  },
+  {
+   "name": "sparkle",
+   "line": 15,
+   "dt": 0.3
+  },
+  {
+   "name": "tada",
+   "line": 16,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 17,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 18
+  },
+  {
+   "name": "pop",
+   "line": 19
+  }
+ ],
+ "caption": "יום 21 בממלכה של משפחת ספיר: נפתח מועדון האוהדים של הפועל ספיר! ❤️🖤 ובשידור חי: בית\"ר נגד מכבי ⚽\nמה בונים מחר? תגיבו בתגובות, וכל עוקב מקבל בית 👑\n#ממלכה #כדורגל #משפחתספיר #בונים #ריל",
+ "firstComment": "מה בונים מחר? 👇 התגובה עם הכי הרבה לייקים נבנית! (ומי ששם את הריל בסטורי ומתייג @sapirkingdom מקבל בית מוזהב ✨)",
+ "notes": "Day 21: eilam.lev99's 'אפשר לעשות מועדון האוהדים של הפועל ספיר' (2 likes, the only one with likes), on lot 20. Michael asked (3.11 17:38) for a sports flash of another match, בית\"ר against מכבי, with scorers and a winner, an update on the cinema, prayers at the כותל, and the things that bring comments and follows. Match in בית\"ר ארנה (now with live squads): itay = mgmgmgkhs (#12, who told us his name is איתי and asked for a בית\"ר match) 1:0, alon.solenchyk (מכבי #30) 1:1, eladdadon1 (מכבי #19) 1:2. Skipped (0 likes): mgmgmgkhs's בית\"ר vs הפועל match (Michael chose בית\"ר vs מכבי), liad.levy.54's city hall for complaints (עיריית ספיר stands since day 13), shaybarak07's stadium (four grounds stand), ofek_bell's walk the map (not a place). Gold key: shaybarak07, the one citizen who joined on day 20.",
+ "replies": [
+  {
+   "id": "18118915001081820",
+   "text": "עילם, בנינו! מועדון האוהדים של הפועל פתוח, עם צעיף ענק וגביע על הגג ❤️🖤 ואתה עובר לווילה המוזהבת!"
+  },
+  {
+   "id": "18131354659846573",
+   "text": "איתי, ביקשת משחק, קיבלת! ובריל של היום אתה גם מבקיע ⚽ הפועל מחכים לתורם 😄"
+  },
+  {
+   "id": "18121033411964856",
+   "text": "רשמתי, איתי 👑 מעכשיו המלך יודע איך קוראים לך"
+  },
+  {
+   "id": "18074117837736546",
+   "text": "עיריית ספיר כבר עומדת בכיכר, והנשיא מקשיב לכל תלונה 😄 אולי מחר משהו חדש?"
+  },
+  {
+   "id": "17906933025598540",
+   "text": "יש לנו כבר ארבעה מגרשים! תגיב מכבי, הפועל או ביתר ותיכנס לסגל ⚽"
+  },
+  {
+   "id": "18131045329885782",
+   "text": "רעיון גדול, עופק! המלך חושב עליו ברצינות 🗺️ אולי יום אחד נטייל בממלכה מבפנים"
+  }
+ ]
+}

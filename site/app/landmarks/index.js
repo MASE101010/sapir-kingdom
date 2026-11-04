@@ -20,5 +20,6 @@ import { ZOO } from './zoo.js';                // day 17: ספארי ספיר
 import { CINEMA } from './cinema.js';          // day 18: ספיר סינמה
 import { GYM } from './gym.js';                // day 19: חדר כושר ספיר
 import { WATERPARK } from './waterpark.js';    // day 20: פארק המים ספיר
+import { FANCLUB } from './fanclub.js';        // day 21: מועדון האוהדים של הפועל ספיר
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK, FANCLUB].map(l => [l.key, l]));

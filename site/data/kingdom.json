@@ -1,6 +1,6 @@
 {
   "note": "The kingdom's state. Written by the daily run (CLAUDE.md). day: today's day number; landmarks: what stands, on which lot, built on which day, at whose asking; history: how many residents stood at the end of each day; upgraded: Instagram name -> extra storeys; visit: whose door Michael walks to today; status: one line about what Michael is doing.",
-  "day": 20,
+  "day": 21,
   "landmarks": [
     {
       "key": "castle",
@@ -163,6 +163,14 @@
       "by": [
         "mgmgmgkhs"
       ]
+    },
+    {
+      "key": "fanclub",
+      "lot": 20,
+      "day": 21,
+      "by": [
+        "eilam.lev99"
+      ]
     }
   ],
   "history": [
@@ -184,16 +192,17 @@
     371,
     378,
     383,
-    383
+    383,
+    386
   ],
   "upgraded": {},
-  "status": "פארק המים ספיר נפתח! 🌊 מגלשת ספירלה, מגלשת טורבו, בריכת גלים ודלי זהב ענק שנשפך",
+  "status": "נפתח מועדון האוהדים של הפועל ספיר! ❤️🖤 צעיף ענק, גביע הדרבי על הגג, ובמסך: בית\"ר נגד מכבי",
   "dm": false,
   "updated": "2026-11-03T20:01:41.798Z",
   "news": {
-    "day": 20,
-    "line": "נפתח פארק המים ספיר: ספירלה, טורבו, בריכת גלים ודלי זהב ענק",
-    "landmark": "waterpark"
+    "day": 21,
+    "line": "נפתח מועדון האוהדים של הפועל ספיר: צעיף ענק, גביע זהב ומסך עם שידור חי",
+    "landmark": "fanclub"
   },
   "reels": {
     "1": "18129295480834389",
@@ -255,6 +264,14 @@
     "notes": [
       {
         "u": "sapirkingdom",
+        "text": "שנגיע ל־500 עוקבים! 🙏"
+      },
+      {
+        "u": "sapirkingdom",
+        "text": "שבית\"ר ומכבי ישחקו עוד משחק ⚽"
+      },
+      {
+        "u": "sapirkingdom",
         "text": "שנגיע ל־1000 עוקבים! 🙏"
       },
       {
@@ -297,7 +314,8 @@
     "day16_eve": 441,
     "day17_eve": 469,
     "day18_eve": 474,
-    "day19_eve": 479
+    "day19_eve": 479,
+    "day20_eve": 484
   },
   "states": {
     "prison": {

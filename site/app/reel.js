@@ -110,7 +110,7 @@ export async function startReel({ renderer, data, day }) {
   const houses = ep.houses ? { ...ep.houses, t0: lineAt(ep.houses.line, ep.houses.dt), dur: ep.houses.dur ?? 5 } : null;
   const rises = [ep.rise].flat().filter(Boolean).map(r => ({ ...r, t0: lineAt(r.line, r.dt), dur: r.dur ?? 4.5 }));
   // effects: drawn over the frame (overlay.js), or moving the camera (shake, punch); flashes and vignettes go under the cards
-  const fx = (ep.fx ?? []).map(f => ({ ...f, t0: lineAt(f.line, f.dt), t1: lineAt(f.line, f.dt) + (f.dur ?? 1.2), under: f.under ?? ['flash', 'vignette'].includes(f.type) }));
+  const fx = (ep.fx ?? []).map(f => ({ ...f, t0: lineAt(f.line, f.dt), t1: f.untilLine != null ? lineAt(f.untilLine) - .15 : lineAt(f.line, f.dt) + (f.dur ?? 1.2), under: f.under ?? ['flash', 'vignette'].includes(f.type) }));
   // the dragons: gathered round a place for a while (swarm), one of them breathing fire (fire)
   const swarms = [ep.swarm].flat().filter(Boolean).map(w => ({ ...w, t0: lineAt(w.line, w.dt), t1: w.until != null ? lineAt(w.until, w.udt) : lineAt(w.line, w.dt) + (w.dur ?? 8) }));
   const fires = [ep.fire].flat().filter(Boolean).map(f => ({ ...f, t0: lineAt(f.line, f.dt), t1: lineAt(f.line, f.dt) + (f.dur ?? 2.5) }));
