@@ -62,5 +62,12 @@
   "trial": true,
   "about": "14:00 Israel (Tuesday), approved by Michael on 2.11 20:55 (built 2.11: פארק המים ספיר)",
   "done": "2026-11-03T12:04:23.106Z"
+ },
+ {
+  "day": 21,
+  "at": "2026-11-04T12:00:00Z",
+  "branch": "day21",
+  "trial": true,
+  "about": "14:00 Israel (Wednesday), approved by Michael on 4.11 11:13 (built 3.11: מועדון האוהדים של הפועל ספיר)"
  }
 ]
