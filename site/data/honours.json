@@ -20,7 +20,8 @@
       "asaf.2509",
       "shahar.horesh111",
       "shaybarak07",
-      "eran.buyum"
+      "eran.buyum",
+      "ori_david_baruch"
     ]
   },
   "built": {
@@ -158,6 +159,12 @@
         "mgmgmgkhs"
       ],
       "day": 22
+    },
+    "hotel": {
+      "by": [
+        "ofek_bell"
+      ],
+      "day": 23
     }
   }
 }

@@ -127,7 +127,7 @@ export async function startReel({ renderer, data, day }) {
     if (w) { const at = focus(w.target, t); world.life.swarm = { x: at.x, z: at.z, R: w.R ?? 70, H: w.H ?? 60, k: clamp(Math.min((t - w.t0 + e) / e, (w.t1 + e - t) / e)) }; } else world.life.swarm = null;
     world.life.fire = Math.max(0, ...fires.map(f => clamp(Math.min((t - f.t0) / .35, (f.t1 - t) / .5))));
     world.life.fireDragon = ep.fireDragon ?? 0;
-    for (const s of states) world.setState(s.key, s.kind, (s.from ?? 0) + (1 - (s.from ?? 0)) * clamp((t - s.t0) / s.dur));
+    for (const s of states) world.setState(s.key, s.kind, (s.from ?? 0) + ((s.to ?? 1) - (s.from ?? 0)) * clamp((t - s.t0) / s.dur));   // day 23: to (the super rebuilt, burn 1 to 0)
     // new dragons flying in from far away: before t0 they are not there, over dur they come home
     // a dragon landing on its perch during the reel (ep.perch: { dragon, at, ry, line, dt, dur }); before it lands it flies as usual
     // day 10: from: [x, y, z] (and fromRy) moves it from one perch to another; net: { line, dt, dur } drops the net on it
