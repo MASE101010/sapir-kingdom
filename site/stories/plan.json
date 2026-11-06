@@ -494,5 +494,25 @@
   "image": "stories/day23-3.jpg",
   "after": "reel:23",
   "about": "18:30 מפתח הזהב ori_david_baruch"
+ },
+ {
+  "id": "day24-1",
+  "at": "2026-11-07T08:00:00Z",
+  "image": "stories/day24-1.jpg",
+  "about": "10:00 בוקר טוב, חידה: פעמון, לוח ועיפרון ענק"
+ },
+ {
+  "id": "day24-2",
+  "at": "2026-11-07T12:45:00Z",
+  "image": "stories/day24-2.jpg",
+  "after": "reel:24",
+  "about": "בית ספר ספיר: תלמיד או מורה?"
+ },
+ {
+  "id": "day24-3",
+  "at": "2026-11-07T16:30:00Z",
+  "image": "stories/day24-3.jpg",
+  "after": "reel:24",
+  "about": "18:30 מפתח הזהב eyal124676"
  }
 ]
