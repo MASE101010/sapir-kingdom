@@ -1,0 +1,562 @@
+{
+ "day": 23,
+ "lines": [
+  "[excited] חֲמֵשׁ מֵאוֹת עוקבים! וּבְיוֹם עשרים ושלושה... הַסּוּפֶּר חוזר!",
+  "[excited] הַדְּרָקוֹן שָׂרַף אוֹתוֹ, וְאַתֶּם בְּנִיתֶם אוֹתוֹ מֵחָדָשׁ!",
+  "[excited] וְעַכְשָׁו, Ofek כתב לנו בתגובות:",
+  "[excited] אולי הפעם תִּבְנוּ אֶת בֵּית הַמָּלוֹן, Sapir Hotel?",
+  "[excited] אז תָּכִינוּ מִזְוָדוֹת... כי בנינו את Sapir Hotel!",
+  "[excited] אַחַת עֶשְׂרֵה קוֹמוֹת, עִם מַעֲלִית זְכוּכִית!",
+  "[excited] בְּרֵכָה, מִזְרָקָה, וּשְׁטִיחַ אָדֹם עַד הַדֶּלֶת!",
+  "[excited] וְהַלַּיְלָה הָרִאשׁוֹן? עַל חֶשְׁבּוֹן הַמֶּלֶךְ!",
+  "[excited] וְהָאוֹרֵחַ הָרִאשׁוֹן... הַדְּרָקוֹן!",
+  "[excited] הוּא עָשָׂה צֶ'ק אִין, וְנִשְׁכַּב עַל הַגַּג!",
+  "[excited] וְעוֹד רעיונות מֵהַתְּגוּבוֹת: בֵּית סֵפֶר Sapir, וְאִישׁ גָּדֵר... אולי מחר!",
+  "[excited] וּמַפְתֵּחַ הזהב הולך ל... Ori!",
+  "[excited] Ori, הַוִּילָה הַמּוּזְהֶבֶת שֶׁלְּךָ מְחַכָּה!",
+  "[excited] רוצים וִילָה? שתפו את הריל בסטורי, וקבלו בית מוזהב!",
+  "[excited] אז מה בונים מחר? תגיבו בתגובות!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "top": 330,
+ "mix": "day23.mix.mp3",
+ "say": {
+  "Sapir Hotel": "ספיר הוטל",
+  "Sapir": "ספיר",
+  "Ofek": "אופק",
+  "Ori": "אורי"
+ },
+ "homes": {
+  "ori_david_baruch": 8
+ },
+ "rise": {
+  "key": "hotel",
+  "line": 4,
+  "dt": 1.6,
+  "dur": 1.6
+ },
+ "states": [
+  {
+   "key": "super",
+   "kind": "burn",
+   "line": 0,
+   "dt": 3.4,
+   "dur": 4.2,
+   "from": 1,
+   "to": 0
+  }
+ ],
+ "perch": {
+  "dragon": 4,
+  "from": [
+   121,
+   14.5,
+   50.1
+  ],
+  "fromRy": -1.963,
+  "at": [
+   246.8,
+   38.2,
+   -243.97
+  ],
+  "ry": -0.7854,
+  "line": 8,
+  "dt": -1.8,
+  "dur": 3.4,
+  "arc": 40
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:super",
+   "dist": 78,
+   "yaw": -15,
+   "pitch": 24,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": "landmark:hotel",
+   "dist": 95,
+   "yaw": -20,
+   "pitch": 32,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 4,
+   "target": "landmark:hotel",
+   "dist": 125,
+   "yaw": -12,
+   "pitch": 20,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": [
+    241.1,
+    17,
+    -241.1
+   ],
+   "dist": 62,
+   "yaw": -35,
+   "pitch": 6,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 6,
+   "target": "landmark:hotel",
+   "dist": 60,
+   "yaw": 35,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "target": [
+    235,
+    4,
+    -235
+   ],
+   "dist": 30,
+   "yaw": -45,
+   "pitch": 24,
+   "orbit": 1,
+   "ease": 0.7
+  },
+  {
+   "line": 8,
+   "target": "landmark:hotel",
+   "dist": 165,
+   "yaw": 15,
+   "pitch": 14,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 9,
+   "target": [
+    246.8,
+    37,
+    -243.97
+   ],
+   "dist": 46,
+   "yaw": -25,
+   "pitch": 20,
+   "orbit": 4,
+   "ease": 0.7
+  },
+  {
+   "line": 10,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 20,
+   "pitch": 38,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 11,
+   "dt": 1.85,
+   "target": "house:ori_david_baruch",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 13,
+   "target": "statue",
+   "dist": 70,
+   "yaw": 10,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 14,
+   "target": "statue",
+   "dist": 64,
+   "pitch": 30,
+   "yaw": -20,
+   "orbit": 6,
+   "ease": 0.8
+  },
+  {
+   "line": 15,
+   "target": "castle",
+   "dist": 260,
+   "yaw": 10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "יום 23"
+  },
+  {
+   "type": "comment",
+   "line": 2,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 4,
+   "u": "ofek_bell",
+   "text": "אולי הפעם תצרו את בית המלון ספיר הוטל",
+   "likes": 2
+  },
+  {
+   "type": "idcard",
+   "line": 4,
+   "dt": 0.05,
+   "dur": 1.5,
+   "u": "ofek_bell",
+   "honours": [
+    "אדריכל · ספיר הוטל"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dt": 1.8,
+   "dur": 2.4,
+   "text": "נבנה · ספיר הוטל 🏨"
+  },
+  {
+   "type": "idcard",
+   "line": 11,
+   "dt": 1.9,
+   "dur": 1.4,
+   "u": "ori_david_baruch",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 14,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "מה בונים מחר? 👇",
+   "sub": "תגיבו בתגובות"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 0,
+   "dt": 0.1,
+   "dur": 1.8
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "500 עוקבים! 🎉",
+   "y": 1130,
+   "size": 110,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 3.4,
+   "dur": 4.4,
+   "text": "🛒 סופר ספיר חוזר",
+   "y": 330,
+   "size": 100,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 1.4,
+   "text": "🔥🐉",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 1,
+   "dt": 1.5,
+   "dur": 1.8,
+   "text": "🔨✨",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": 6
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.2,
+   "dur": 1.4,
+   "text": "🧳",
+   "x": 540,
+   "y": 1080,
+   "size": 200,
+   "rot": -8
+  },
+  {
+   "type": "confetti",
+   "line": 4,
+   "dt": 3.2,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 4,
+   "dt": 3.2,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "banner",
+   "line": 7,
+   "dt": 1.2,
+   "dur": 1.8,
+   "text": "על חשבון המלך 👑",
+   "y": 330,
+   "size": 100,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "🛎️ צ'ק אין",
+   "y": 330,
+   "size": 110,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "shake",
+   "line": 8,
+   "dt": 1.5,
+   "dur": 0.4
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 1.6,
+   "dur": 2.0,
+   "text": "🏫",
+   "x": 330,
+   "y": 1060,
+   "size": 200,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 2.8,
+   "dur": 1.6,
+   "text": "🚧",
+   "x": 750,
+   "y": 1060,
+   "size": 200,
+   "rot": 8
+  },
+  {
+   "type": "confetti",
+   "line": 11,
+   "dt": 1.9,
+   "dur": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 13,
+   "dt": 0.3,
+   "dur": 2.4,
+   "text": "✨🏠",
+   "x": 540,
+   "y": 1080,
+   "size": 200,
+   "rot": -6
+  }
+ ],
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0
+  },
+  {
+   "name": "sparkle",
+   "line": 0,
+   "dt": 3.4
+  },
+  {
+   "name": "boing",
+   "line": 1,
+   "dt": 0.1
+  },
+  {
+   "name": "sparkle",
+   "line": 1,
+   "dt": 1.5
+  },
+  {
+   "name": "pop",
+   "line": 2
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 4,
+   "dt": 1.6
+  },
+  {
+   "name": "boom",
+   "line": 4,
+   "dt": 3.2
+  },
+  {
+   "name": "sparkle",
+   "line": 4,
+   "dt": 3.3
+  },
+  {
+   "name": "whoosh",
+   "line": 5,
+   "dt": 0.2
+  },
+  {
+   "name": "ding",
+   "line": 6,
+   "dt": 0.1
+  },
+  {
+   "name": "kaching",
+   "line": 7,
+   "dt": 1.2
+  },
+  {
+   "name": "whoosh",
+   "line": 8,
+   "dt": -0.4
+  },
+  {
+   "name": "roar",
+   "line": 8,
+   "dt": 1.5
+  },
+  {
+   "name": "ding",
+   "line": 9,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 10
+  },
+  {
+   "name": "pop",
+   "line": 10,
+   "dt": 1.6
+  },
+  {
+   "name": "boing",
+   "line": 10,
+   "dt": 2.8
+  },
+  {
+   "name": "kaching",
+   "line": 11,
+   "dt": 1.9
+  },
+  {
+   "name": "whoosh",
+   "line": 12,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 13,
+   "dt": 0.3
+  },
+  {
+   "name": "tada",
+   "line": 14,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 15
+  }
+ ],
+ "caption": "יום 23 בממלכה של משפחת ספיר: 500 עוקבים, והסופר חוזר! 🛒 ונפתח ספיר הוטל, והדרקון עשה צ'ק אין על הגג 🏨🐉\nמה בונים מחר? תגיבו בתגובות, וכל עוקב מקבל בית 👑\n#ממלכה #משפחתספיר #מלון #דרקון #בונים",
+ "firstComment": "מה בונים מחר? 👇 התגובה עם הכי הרבה לייקים נבנית! (ומי ששם את הריל בסטורי ומתייג @sapirkingdom מקבל בית מוזהב ✨)",
+ "notes": "Day 23 (built 6.11 morning, a day late): winner @ofek_bell 'אולי הפעם תצרו את בית המלון ספיר הוטל' (2 likes, the first comment asking for a place; ties go to the earlier, and the school had 2 too). Skipped: @itamaryaaran 'אני רוצה גם וילה' (4 likes, a request for his own house, not a place in the kingdom: answered with the golden house by sharing), @eladshwar 'בית ספר ספיר ותיכון ספיר' (2 likes, runner up, אולי מחר), @liam.liam.7355 'איש גדר' (1 like, a job, runner up). Maccabi Tel Aviv / Haifa, Teddy, Sami Ofer, Barcelona, Egged: real clubs, stadiums and brands. 500 followers reached on day 22's evening: the burned super (day 12) is rebuilt (states super burn 1 to 0) and the dragon that sat on it moves to the hotel's roof (perch). Gold key: (22*7919)%4 of the four citizens who joined on day 22 = ori_david_baruch. Ofek already lives in the golden villa.",
+ "replies": [
+  {
+   "id": "18083785742341936",
+   "text": "אופק, ספיר הוטל נבנה! 🏨 והלילה הראשון על חשבון המלך, רק תיזהר מהדרקון על הגג 🐉"
+  },
+  {
+   "id": "18119690102050536",
+   "text": "בית ספר ספיר? רעיון של מורה אמיתי 📚 אולי מחר!"
+  },
+  {
+   "id": "17918480640265982",
+   "text": "רוצה וילה? שתף את הריל בסטורי ותתייג אותנו, והבית שלך מוזהב ✨"
+  },
+  {
+   "id": "17884463979533688",
+   "text": "וילה מגיעה למי שמשתף את הריל בסטורי ומתייג @sapirkingdom 🏠✨"
+  },
+  {
+   "id": "17976257535146349",
+   "text": "איש גדר! 😂 אם זה יקבל הכי הרבה לייקים, אני בונה לך גדר מלכותית"
+  },
+  {
+   "id": "18016846055970453",
+   "text": "רכבת אוהדים בין המגרשים? אהבתי 🚂 שמתי ברשימה"
+  },
+  {
+   "id": "18603291196066100",
+   "text": "האולפן וההיכל ברשימה! תביא לייקים ואני בונה 📺🏀"
+  },
+  {
+   "id": "18642366715010305",
+   "text": "מכבי ספיר כבר בממלכה, ירוק לבן 💚 אבל אוהדים צהוב כחול מקבלים מקום ביציע!"
+  }
+ ]
+}
