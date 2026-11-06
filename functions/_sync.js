@@ -7,7 +7,7 @@
 // Instagram allows only so many calls an hour, so a sync runs at most once every GAP ms, and backs off after a limit error.
 import { addResident, igToken } from './_lib.js';
 import { HOMES, COMMON } from '../site/app/catalog.js';
-import { reply, SOLDIER, SOLDIER_HOME, BAD, teamOf, squadOf, PILOT, CLERK, wishText, wishOk, voteOf } from './_replies.js';
+import { reply, SOLDIER, SOLDIER_HOME, BAD, teamOf, squadOf, PILOT, CLERK, STUDENT, TEACHER, subjectOf, wishText, wishOk, voteOf } from './_replies.js';
 const G = 'https://graph.instagram.com/v21.0', GAP = 8000, BACKOFF = 10 * 60e3;
 const say = [n => `ברוכים הבאים לממלכה! הבית שלך, מספר ${n}, כבר עומד 🏠 חפשו את השם שלכם באתר שבביו`,
   n => `נבנה לך בית! מספר ${n}. כנסו לאתר שבביו ותמצאו אותו 👑`, n => `תושב חדש! בית מספר ${n} בממלכה הוא שלך. הקישור בביו 🏰`,
@@ -166,11 +166,16 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
         const t = m[1].toLowerCase().replace(/\.+$/, ''); if (t === SELF(env) || t === a.u || tagged.includes(t) || tagged.length >= 3) continue;
         if (await env.DB.prepare('SELECT n FROM residents WHERE u = ?').bind(t).first('n')) continue;
         const h = await addResident(env, t, 'tag', a.u); if (h) tagged.push(h.u); }
-      const pilot = !wt && !vote && !team && PILOT.test(a.text ?? '') && !BAD.test(a.text ?? '');   // "טייס": a pilot of נתס"ר
+      // day 24: בית ספר ספיר. "מורה לציור" makes a teacher of that subject, "תלמיד" a student (a pilot or a clerk keeps their job)
+      let school = null; const st = a.text ?? '', okSchool = !wt && !vote && !team && !BAD.test(st);
+      if (okSchool && TEACHER.test(st)) school = { job: 'teacher', subject: subjectOf(st) }; else if (okSchool && STUDENT.test(st)) school = { job: 'student' };
+      if (school && (school.job === 'student' || school.subject)) { const r0 = await env.DB.prepare("UPDATE residents SET job = ?, subject = ?, changed = ? WHERE u = ? AND (job IS NULL OR job IN ('student', 'teacher'))").bind(school.job, school.subject ?? null, Date.now(), a.u).run();
+        if (!r0.meta?.changes) school = null; }
+      const pilot = !wt && !vote && !team && !school && PILOT.test(a.text ?? '') && !BAD.test(a.text ?? '');   // "טייס": a pilot of נתס"ר
       if (pilot) await env.DB.prepare("UPDATE residents SET job = 'pilot', changed = ? WHERE u = ? AND job IS NULL").bind(Date.now(), a.u).run();
-      const clerk = !wt && !vote && !team && !pilot && CLERK.test(a.text) && !BAD.test(a.text ?? '');   // "עובד": a job at עיריית ספיר (day 13)
+      const clerk = !wt && !vote && !team && !school && !pilot && CLERK.test(a.text) && !BAD.test(a.text ?? '');   // "עובד": a job at עיריית ספיר (day 13)
       if (clerk) await env.DB.prepare("UPDATE residents SET job = 'clerk', changed = ? WHERE u = ? AND job IS NULL").bind(Date.now(), a.u).run();
-      const r = await post(env, `${a.id}/replies`, { message: reply(a, { fresh: a.house === 1, n: a.n, citizen: !!a.citizen, team, pilot, clerk, tagged, wish, vote }) });   // the king answers what they wrote
+      const r = await post(env, `${a.id}/replies`, { message: reply(a, { fresh: a.house === 1, n: a.n, citizen: !!a.citizen, team, pilot, clerk, school, tagged, wish, vote }) });   // the king answers what they wrote
       await env.DB.prepare('UPDATE comments SET replied = CASE WHEN ? THEN (CASE WHEN replied > 0 THEN 0 ELSE COALESCE(replied, 0) END) - 1 ELSE 1 END WHERE id = ?').bind(r.error ? 1 : 0, a.id).run(); if (!r.error) replied++;   // a failed answer is tried again
     }
     return { ran: true, read: comments.length, waiting: waiting.map(w => w.u), invites, citizens, replied };

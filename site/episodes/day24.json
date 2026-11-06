@@ -1,0 +1,640 @@
+{
+ "day": 24,
+ "lines": [
+  "[excited] יום עשרים וארבעה... והמלך הֶחְלִיט: בונים בֵּית סֵפֶר!",
+  "[excited] וְאֶת הָרַעְיוֹן נָתַן Elad, בתגובות!",
+  "[excited] אז קחו תִּיקִים וְקַלְמָרִים... ברוכים הבאים לבית ספר Sapir!",
+  "[excited] עִם עִפָּרוֹן עֲנָק בַּכְּנִיסָה!",
+  "[excited] מגדל שָׁעוֹן, וּפַעֲמוֹן שֶׁמְּצַלְצֵל לַהַפְסָקָה!",
+  "[excited] וְחָצֵר עִם כַּדּוּרְסַל, כַּדּוּרֶגֶל, וְקַלָּאס!",
+  "[excited] וְעַל הַלּוּחַ כָּתוּב: אין שיעורי בית!",
+  "[excited] ועכשיו הכי חשוב: אַתֶּם הַתַּלְמִידִים, וְאַתֶּם הַמּוֹרִים!",
+  "[excited] רוצים לִלְמֹד? תגיבו: תַּלְמִיד!",
+  "[excited] רוצים לְלַמֵּד? תגיבו: מוֹרֶה, וּמָה תְּלַמְּדוּ!",
+  "[excited] מוֹרֶה לְצִיּוּר, מוֹרֶה לְמָתֵמָטִיקָה, מוֹרֶה לְכַדּוּרֶגֶל...",
+  "[excited] וְהַתַּפְקִיד נִכְתָּב לָכֶם בִּתְעוּדַת הַתּוֹשָׁב!",
+  "[excited] וּמֵהַתְּגוּבוֹת: רַכֶּבֶת לַמִּגְרָשׁ של הַפּוֹעֵל... אולי מחר!",
+  "[excited] וּמַפְתֵּחַ הזהב הולך ל... Eyal!",
+  "[excited] Eyal, הַוִּילָה הַמּוּזְהֶבֶת מְחַכָּה לְךָ!",
+  "[excited] אז מה בונים מחר? תגיבו בתגובות!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "top": 330,
+ "mix": "day24.mix.mp3",
+ "say": {
+  "Sapir": "ספיר",
+  "Elad": "אלעד",
+  "Eyal": "אייל"
+ },
+ "homes": {
+  "eyal124676": 8,
+  "eladshwar": 8
+ },
+ "rise": {
+  "key": "school",
+  "line": 2,
+  "dt": 1.8,
+  "dur": 1.6
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "statue",
+   "dist": 72,
+   "yaw": 15,
+   "pitch": 26,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "landmark:school",
+   "dist": 95,
+   "yaw": -20,
+   "pitch": 32,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": "landmark:school",
+   "dist": 115,
+   "yaw": -10,
+   "pitch": 18,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": [
+    326.7,
+    10,
+    315.4
+   ],
+   "dist": 30,
+   "yaw": -115,
+   "pitch": 10,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 4,
+   "target": [
+    346.5,
+    15,
+    346.5
+   ],
+   "dist": 36,
+   "yaw": -150,
+   "pitch": 12,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 5,
+   "target": "landmark:school",
+   "dist": 60,
+   "yaw": 35,
+   "pitch": 32,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 6,
+   "target": [
+    339.7,
+    2.6,
+    350.3
+   ],
+   "dist": 15,
+   "yaw": -135,
+   "pitch": 8,
+   "orbit": 0.5,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "target": "landmark:school",
+   "dist": 88,
+   "yaw": 15,
+   "pitch": 20,
+   "orbit": 5,
+   "ease": 0.8
+  },
+  {
+   "line": 8,
+   "target": "landmark:school",
+   "dist": 52,
+   "yaw": -30,
+   "pitch": 26,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 9,
+   "target": [
+    347.1,
+    3.5,
+    330.3
+   ],
+   "dist": 30,
+   "yaw": -60,
+   "pitch": 14,
+   "orbit": 1.5,
+   "ease": 0.7
+  },
+  {
+   "line": 11,
+   "target": "landmark:school",
+   "dist": 70,
+   "yaw": -50,
+   "pitch": 24,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 12,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 20,
+   "pitch": 38,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 13,
+   "dt": 1.85,
+   "target": "house:eyal124676",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 15,
+   "target": "statue",
+   "dist": 66,
+   "pitch": 30,
+   "yaw": -20,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 16,
+   "target": "castle",
+   "dist": 260,
+   "yaw": 10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "יום 24"
+  },
+  {
+   "type": "comment",
+   "line": 1,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 2,
+   "u": "eladshwar",
+   "text": "בית ספר ספיר ותיכון ספיר",
+   "likes": 2
+  },
+  {
+   "type": "idcard",
+   "line": 2,
+   "dt": 0.05,
+   "dur": 1.6,
+   "u": "eladshwar",
+   "honours": [
+    "אדריכל · בית ספר ספיר"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 2,
+   "dt": 2.0,
+   "dur": 2.2,
+   "text": "נבנה · בית ספר ספיר 🏫"
+  },
+  {
+   "type": "idcard",
+   "line": 13,
+   "dt": 1.95,
+   "dur": 1.4,
+   "u": "eyal124676",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 15,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "מה בונים מחר? 👇",
+   "sub": "תגיבו בתגובות"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "banner",
+   "line": 0,
+   "dt": 2.2,
+   "dur": 2.4,
+   "text": "👑 המלך החליט",
+   "y": 1130,
+   "size": 100,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 0.1,
+   "dur": 1.5,
+   "text": "🎒✏️",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": -6
+  },
+  {
+   "type": "confetti",
+   "line": 2,
+   "dt": 3.4,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 2,
+   "dt": 3.4,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.3,
+   "dur": 1.4,
+   "text": "✏️",
+   "x": 800,
+   "y": 1080,
+   "size": 200,
+   "rot": 10
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 1.2,
+   "dur": 1.6,
+   "text": "🔔",
+   "x": 800,
+   "y": 1080,
+   "size": 200,
+   "rot": -10
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.8,
+   "dur": 1.0,
+   "text": "🏀",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 1.6,
+   "dur": 1.0,
+   "text": "⚽",
+   "x": 540,
+   "y": 1080,
+   "size": 170,
+   "rot": 6
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 2.3,
+   "dur": 0.8,
+   "text": "🟨",
+   "x": 780,
+   "y": 1080,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "banner",
+   "line": 6,
+   "dt": 1.0,
+   "dur": 1.6,
+   "text": "אין שיעורי בית! 🎉",
+   "y": 330,
+   "size": 100,
+   "band": "#2f5a46",
+   "color": "#ffffff"
+  },
+  {
+   "type": "banner",
+   "line": 7,
+   "dt": 1.6,
+   "dur": 1.6,
+   "text": "🎒 תלמידים · מורים 📚",
+   "y": 330,
+   "size": 96,
+   "band": "#13213b",
+   "color": "#e8b323"
+  },
+  {
+   "type": "banner",
+   "line": 8,
+   "dt": 0.8,
+   "dur": 2.0,
+   "text": "תגיבו: תלמיד 🎒",
+   "y": 330,
+   "size": 110,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 0.8,
+   "dur": 4.6,
+   "text": "תגיבו: מורה + מה תלמדו 📚",
+   "y": 330,
+   "size": 92,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 1.3,
+   "text": "🎨",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 1.4,
+   "dur": 1.4,
+   "text": "➕",
+   "x": 540,
+   "y": 1080,
+   "size": 170,
+   "rot": 6
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 2.9,
+   "dur": 1.4,
+   "text": "⚽",
+   "x": 780,
+   "y": 1080,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "banner",
+   "line": 11,
+   "dt": 0.3,
+   "dur": 2.2,
+   "text": "📚 מורה לציור · בית ספר ספיר",
+   "y": 330,
+   "size": 84,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "sticker",
+   "line": 12,
+   "dt": 0.6,
+   "dur": 2.4,
+   "text": "🚂",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": -6
+  },
+  {
+   "type": "confetti",
+   "line": 13,
+   "dt": 1.95,
+   "dur": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 15,
+   "dt": 0.3,
+   "dur": 1.8,
+   "text": "👇",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": 0
+  }
+ ],
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0
+  },
+  {
+   "name": "ding",
+   "line": 0,
+   "dt": 2.2
+  },
+  {
+   "name": "pop",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 2,
+   "dt": 1.8
+  },
+  {
+   "name": "boom",
+   "line": 2,
+   "dt": 3.4
+  },
+  {
+   "name": "sparkle",
+   "line": 2,
+   "dt": 3.5
+  },
+  {
+   "name": "whoosh",
+   "line": 3
+  },
+  {
+   "name": "boing",
+   "line": 3,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 4
+  },
+  {
+   "name": "ding",
+   "line": 4,
+   "dt": 1.2
+  },
+  {
+   "name": "ding",
+   "line": 4,
+   "dt": 1.6
+  },
+  {
+   "name": "whoosh",
+   "line": 5
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 0.8
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 1.6
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 2.3
+  },
+  {
+   "name": "scratch",
+   "line": 6,
+   "dt": 1.0
+  },
+  {
+   "name": "tada",
+   "line": 6,
+   "dt": 1.2
+  },
+  {
+   "name": "whoosh",
+   "line": 7
+  },
+  {
+   "name": "ding",
+   "line": 8,
+   "dt": 0.8
+  },
+  {
+   "name": "ding",
+   "line": 9,
+   "dt": 0.8
+  },
+  {
+   "name": "pop",
+   "line": 10,
+   "dt": 0.1
+  },
+  {
+   "name": "pop",
+   "line": 10,
+   "dt": 1.4
+  },
+  {
+   "name": "pop",
+   "line": 10,
+   "dt": 2.9
+  },
+  {
+   "name": "sparkle",
+   "line": 11,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 12
+  },
+  {
+   "name": "boing",
+   "line": 12,
+   "dt": 0.6
+  },
+  {
+   "name": "kaching",
+   "line": 13,
+   "dt": 1.95
+  },
+  {
+   "name": "whoosh",
+   "line": 14,
+   "dt": 0.2
+  },
+  {
+   "name": "tada",
+   "line": 15,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 16
+  }
+ ],
+ "caption": "יום 24 בממלכה של משפחת ספיר: המלך החליט, בונים בית ספר! 🏫✏️\nרוצים ללמוד? תגיבו \"תלמיד\". רוצים ללמד? תגיבו \"מורה\" ומה תלמדו 📚 ומה בונים מחר? גם בתגובות 👑\n#ממלכה #משפחתספיר #ביתספר #בונים",
+ "firstComment": "🎒 תלמיד או 📚 מורה? תגיבו כאן! למשל \"מורה לציור\" או \"תלמיד\", והמלך רושם אתכם לבית ספר ספיר. ומה בונים מחר? התגובה עם הכי הרבה לייקים נבנית!",
+ "notes": "Day 24: Michael picked the school himself (6.11), with every resident a student ('תלמיד') or a teacher ('מורה' and the subject: residents.job = 'student' / 'teacher', residents.subject; migration 0035, functions/_replies.js STUDENT, TEACHER, subjectOf). Architect: @eladshwar, whose comment on day 22 asked for 'בית ספר ספיר ותיכון ספיר' (2 likes, the runner up that day) and again on day 23. Day 23's comments (the reel went up at 15:52, so few): @eilam.lev99 'a train to Hapoel Sapir's club and field' (1 like, runner up, אולי מחר); skipped @yarinbochi 'פסל ענק של בן גביר' (a real politician), @shaybarak07 (where is my news studio, a request repeated from day 22), @uriya_218 'הספיר בטט' (another city's name), @ofek_bell 'make the castle and the statue bigger' (would move a landmark). Gold key: no citizen joined on day 23, so drawn among the 160 citizens without a key, (23*7919)%160 = eyal124676 (the rule of days 19 and 20). The architect and the key move into the golden villa (migration 0036).",
+ "replies": [
+  {
+   "id": "18133940695808819",
+   "text": "אלעד, בית ספר ספיר נבנה! 🏫 ואתה האדריכל. עכשיו רק לבחור: תלמיד או מורה? 📚"
+  },
+  {
+   "id": "17873181885645163",
+   "text": "רכבת עד המגרש של הפועל ספיר? 🚂 נכנסה לריל של היום, תביא לייקים ואני בונה!"
+  },
+  {
+   "id": "18478322947112979",
+   "text": "אופק, הארמון והפסל כבר הכי גדולים בממלכה 👑 אבל אולי מחר נוסיף להם משהו נוצץ ✨"
+  },
+  {
+   "id": "17974859259177826",
+   "text": "האולפן וההיכל עדיין ברשימה שלי 📺🏀 מי שמביא הכי הרבה לייקים, נבנה!"
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 {
   "note": "The kingdom's state. Written by the daily run (CLAUDE.md). day: today's day number; landmarks: what stands, on which lot, built on which day, at whose asking; history: how many residents stood at the end of each day; upgraded: Instagram name -> extra storeys; visit: whose door Michael walks to today; status: one line about what Michael is doing.",
-  "day": 23,
+  "day": 24,
   "landmarks": [
     {
       "key": "castle",
@@ -187,6 +187,14 @@
       "by": [
         "ofek_bell"
       ]
+    },
+    {
+      "key": "school",
+      "lot": 23,
+      "day": 24,
+      "by": [
+        "eladshwar"
+      ]
     }
   ],
   "history": [
@@ -211,16 +219,17 @@
     383,
     386,
     391,
-    411
+    411,
+    413
   ],
   "upgraded": {},
-  "status": "חדש בממלכה: ספיר הוטל, מלון ענק עם בריכה ומעלית זכוכית, והסופר נבנה מחדש 🏨🛒",
+  "status": "חדש בממלכה: בית ספר ספיר, עם עיפרון ענק ומגדל שעון. רוצים ללמוד? תגיבו \"תלמיד\". רוצים ללמד? \"מורה\" ומה תלמדו 🏫",
   "dm": false,
   "updated": "2026-11-06T17:01:45.423Z",
   "news": {
-    "day": 23,
-    "line": "500 עוקבים! הסופר נבנה מחדש, ונפתח ספיר הוטל, והדרקון כבר עשה צ'ק אין על הגג 🏨🐉",
-    "landmark": "hotel"
+    "day": 24,
+    "line": "נפתח בית ספר ספיר! תגיבו \"תלמיד\" כדי ללמוד, או \"מורה\" ומה תלמדו כדי ללמד 🏫✏️",
+    "landmark": "school"
   },
   "reels": {
     "1": "18129295480834389",
@@ -341,7 +350,8 @@
     "day19_eve": 479,
     "day20_eve": 484,
     "day21_eve": 489,
-    "day22_eve": 500
+    "day22_eve": 500,
+    "day23_eve": 501
   },
   "states": {
     "prison": {
