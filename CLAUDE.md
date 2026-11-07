@@ -78,7 +78,9 @@ Michael approves the script first and makes the voice himself in ElevenLabs (voi
 with `[excited]` and no other tags). In the text sent to ElevenLabs every name is written in English letters (Sapir, Sapirland, Burj, Itay,
 Ido, Elad, Nevo, MPT...), never in Hebrew: the model reads Hebrew names wrong ("ואיתי" came out "veiti"). Captions show
 them in Hebrew through the episode's `say` map ({ "Itay": "איתי" }). A Hebrew word the model can read two ways gets nikud
-(מסלול הַמְרָאָה, not המראה, which came out "hamare"; also כֶּלֶא, מַפְתֵּחַ); captions drop the nikud. So: write `site/episodes/dayN.json`, send him the lines to approve, and stop. When
+(מסלול הַמְרָאָה, not המראה, which came out "hamare"; also כֶּלֶא, מַפְתֵּחַ); captions drop the nikud. Loanwords and slang need it
+most: on day 24 "קַלָּאס" (hopscotch) came out "calas" instead of "klas" (write קְלָאס); before generating, read every line
+as the model would and add nikud to anything it could read another way. So: write `site/episodes/dayN.json`, send him the lines to approve, and stop. When
 his mp3 comes back, `node reel/own-voice.mjs --day N --mp3 <file>` lines it up (pauses → phrases → words) and writes
 `dayN.mp3` and `dayN.voice.json` with `own: true`; commit the mp3 with `git add -f`. `reel/voice.mjs` then keeps it.
 Reels run about a minute (50 to 65 s, like the pages Michael measures us against), opening on action in the first second.
@@ -90,7 +92,8 @@ cannot read voices and the API's v3 does not sound like his MICHA on Eleven v4 (
 - A reel's sound is `dayN.mix.mp3` (`python3 reel/sound.py --day N`): music and effects made in code from the episode's
   `music` (sections happy / tense / stop) and `sfx` (whoosh, pop, ding, roar, sting, boom, scratch, boing, cricket,
   kaching, sparkle, snore, tada), ducked under the voice; set `"mix": "dayN.mix.mp3"`. Effects on screen: `fx`
-  (sticker, banner, flash, vignette, confetti, shake, punch). Show on screen everything the king talks about.
+  (sticker, banner, flash, vignette, confetti, shake, punch). Keep every text inside the frame (Michael saw banners and captions cut
+  at the sides; banners now shrink to fit), and an emoji at the end of a Hebrew line sits on its left. Show on screen everything the king talks about.
 - Render the reel yourself, send it to Michael, and when he approves commit it (`git add -f site/reels/dayN.mp4`):
   publish.yml then posts that file instead of rendering again. Michael wants each main reel posted twice: once as a trial reel (non-followers only: new eyes) and once
   ordinary, so publish the episode without `"trial"` and post the trial copy separately. Never leave `"trial"` on the only copy: since day 8 Instagram accepts trial reels, and a trial reel is shown only to

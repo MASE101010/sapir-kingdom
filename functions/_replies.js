@@ -46,6 +46,17 @@ export const PILOT = /(?<!\p{L})(אני\s+)?[ל]?(טייס|טייסת|טייסי
 export const CLERK = { test: t => { t = String(t ?? '').trim(); return t.split(/\s+/).length <= 5 && /(?<!\p{L})(עו?ב[ֹ]?[ֵ]?ד|עובדת|לעבוד)(?!\p{L})/u.test(t) && !/לא\s+עובד/u.test(t); } };
 const CLERKS = [() => 'ברוך הבא לעיריית ספיר! 🏛️ קיבלת עבודה רשמית בממלכה', () => 'התקבלת לעבודה! 🏛️ השולחן שלך בעירייה כבר מחכה', () => 'עיריית ספיר מברכת את העובד החדש! 🏛️💼', () => 'יש לך משרה! 💼 מחר בבוקר בעירייה, ולא לאחר 😉'];
 const CLERK_WAIT = [() => 'המשרה שמורה לך! 🏛️ עכשיו רק לעקוב אחרי הממלכה, ומתחילים לעבוד', () => 'העירייה כבר הכינה לך שולחן 💼 תעקבו אחרי הממלכה, והעבודה שלכם', () => 'כמעט התקבלת! 🏛️ רק לעקוב, וזהו'];
+// day 24: בית ספר ספיר (Michael's pick). "תלמיד" signs you up as a student (residents.job = 'student');
+// "מורה" and what you teach ("מורה לציור") makes you that subject's teacher (job = 'teacher', residents.subject = 'ציור')
+export const STUDENT = /(?<!\p{L})(אני\s+)?(תלמיד|תלמידה|תלמידים|ללמוד)(?!\p{L})/u;
+export const TEACHER = /(?<!\p{L})(אני\s+)?(?:רוצה\s+להיות\s+)?(מורה|מורים|מורות|ללמד)(?!\p{L})/u;
+/** what a teacher teaches: the words after "מורה" ("מורה לציור" → "ציור", "מורה למתמטיקה ומדעים" → "מתמטיקה ומדעים"), at most 3 words and 22 letters */
+export function subjectOf(text) { const m = String(text ?? '').match(/(?<!\p{L})(?:מורה|מורים|מורות|ללמד)\s+([\p{L}\s'"״׳-]{2,40})/u); if (!m) return null;
+  let s = m[1].replace(/[!?.,]+/g, ' ').trim().split(/\s+/).slice(0, 3).join(' ').replace(/^ל(?=\p{L}{2})/u, '').replace(/^(את|על)\s+/u, '').trim();
+  if (/^(אני|בבית|בבית\s+ספר|שלכם|שלי|כאן|פה)$/u.test(s) || s.length < 2) return null; return s.length > 22 ? s.slice(0, 22).replace(/\s+\S*$/u, '') : s; }
+const STUDENTS = [() => 'נרשמת לבית ספר ספיר! 🎒 התיק מוכן, נתראה בצלצול', () => 'ברוך הבא לכיתה! 🎒📚 יש לך מקום בשורה הראשונה', () => 'תלמיד חדש בבית ספר ספיר! ✏️ בלי שיעורי בית, המלך הבטיח 😄', () => 'הצלצול צלצל 🔔 נרשמת כתלמיד בבית ספר ספיר!'];
+const TEACHERS = [s => `ברוך הבא לחדר המורים! 📚 מעכשיו אתה המורה ל${s} של בית ספר ספיר`, s => `יש לנו מורה ל${s}! 🍎 הכיתה שלך כבר מחכה`, s => `המלך מינה אותך למורה ל${s} 👑📚 שיהיה שיעור מעולה!`, s => `הלוח מוכן והגיר ביד ✍️ אתה המורה ל${s} בבית ספר ספיר`];
+const TEACHER_ASK = [() => 'מורה חדש! 🍎 ומה תלמד? תגיב "מורה ל" ואת המקצוע, למשל "מורה לציור"', () => 'חדר המורים מחכה לך 📚 רק תגיד מה תלמד: "מורה למתמטיקה", "מורה לציור"...'];
 const PILOTS = [() => 'ברוך הבא לצוות של נתס"ר! ✈️ אתה טייס רשמי של הממלכה', () => 'קיבלת כנפיים! ✈️ מעכשיו אתה טייס בנמל התעופה ספיר', () => 'הקברניט מדבר: ברוך הבא לטייסת של הממלכה 🛫', () => 'המטוס שלך מחכה על המסלול ✈️ גויסת לטייסי נתס"ר!'];
 export const teamOf = text => Object.entries(TEAMS).find(([, t]) => t.re.test(String(text ?? '')))?.[0];
 const SIGNED = [(n, s) => `ברוך הבא ל${n}! ⚽ קיבלת חולצה מספר ${s}`, (n, s) => `חתמת ב${n}! 🖊️⚽ מספר ${s} שלך, תתחיל להתאמן`, (n, s) => `${n} מחתימה שחקן חדש! 🔥 חולצה מספר ${s}`, (n, s) => `הסגל של ${n} גדל! ⚽ אתה מספר ${s}, מחר בוחרים צבע מדים`];
@@ -76,7 +87,7 @@ const CITY = /תל\s*בטטה|telbatata|tel\s*batata|מעתיק|העתק|חיק�
 const HOUSE_ASK = /^(אפשר|אני\s+רוצה|תבנו\s+לי|תבנה\s+לי|רוצה|אשמח\s+ל)?\s*(גם\s+)?(בית|ביית|ביתת|בית\s+משלי|בית\s+בבקשה)[\s?!.]*$/u;
 
 /** the answer to one comment. fresh: their house was built just now (n); citizen: they follow */
-export function reply({ id, u, text }, { fresh = false, n, citizen = false, team = null, pilot = false, clerk = false, tagged = [], wish: wishState = null, vote = null } = {}) {
+export function reply({ id, u, text }, { fresh = false, n, citizen = false, team = null, pilot = false, clerk = false, school = null, tagged = [], wish: wishState = null, vote = null } = {}) {
   const seed = hash(id), t = String(text ?? '').trim(), w = wish(t), num = n?.toLocaleString?.('he-IL') ?? n;
   const tail = fresh ? (citizen ? ` · נבנה לך בית מספר ${num}, ואתם כבר אזרחים 👑` : ` · נבנה לך בית מספר ${num} 🏠 לאזרחות: עקבו וכתבו לי "בית" בפרטי`) : '';
   let head;
@@ -85,6 +96,7 @@ export function reply({ id, u, text }, { fresh = false, n, citizen = false, team
   else if (vote) head = pick(citizen ? VOTED : VOTE_WAIT, seed)(CANDIDATES[vote].name);
   else if (wishState != null) head = wishState === 1 ? pick(citizen ? WISHES : WISH_WAIT, seed)() : pick(WISH_CHECK, seed)();
   else if (team) head = team.full ? pick(FULL, seed)(TEAMS[team.key].name) : pick(SIGNED, seed)(TEAMS[team.key].name, team.shirt);
+  else if (school) head = school.job === 'student' ? pick(STUDENTS, seed)() : school.subject ? pick(TEACHERS, seed)(school.subject) : pick(TEACHER_ASK, seed)();
   else if (pilot) head = pick(PILOTS, seed)();
   else if (clerk) head = pick(citizen ? CLERKS : CLERK_WAIT, seed)();
   else if (SOLDIER.test(t)) head = pick(ARMY, seed)();
