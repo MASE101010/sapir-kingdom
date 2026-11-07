@@ -22,7 +22,8 @@
       "shaybarak07",
       "eran.buyum",
       "ori_david_baruch",
-      "eyal124676"
+      "eyal124676",
+      "avranamyamin"
     ]
   },
   "built": {
@@ -172,6 +173,12 @@
         "eladshwar"
       ],
       "day": 24
+    },
+    "train": {
+      "by": [
+        "eilam.lev99"
+      ],
+      "day": 25
     }
   }
 }

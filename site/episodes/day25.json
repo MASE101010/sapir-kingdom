@@ -1,0 +1,535 @@
+{
+ "day": 25,
+ "lines": [
+  "[excited] יום עשרים וחמישה... ותקשיבו לזה: Choo Choo!",
+  "[excited] Eilam כתב לנו בתגובות:",
+  "[excited] רַכֶּבֶת מֵהַמּוֹעֲדוֹן שֶׁל הַפּוֹעֵל, עַד הַמִּגְרָשׁ... עִם צִיּוּרִים!",
+  "[excited] אז עֲלוּ לַקָּרוֹן... כי בנינו את רַכֶּבֶת הָאוֹהֲדִים שֶׁל הַפּוֹעֵל Sapir!",
+  "[excited] אֲדֻמָּה, שְׁחֹרָה, וּמְצֻיֶּרֶת: כַּדּוּרִים, כּוֹכָבִים, וּלְבָבוֹת!",
+  "[excited] תַּחֲנָה עִם שָׁעוֹן, רָצִיף, וְאוֹהֲדִים עִם צְעִיפִים!",
+  "[excited] וְהִיא עוֹבֶרֶת בַּמִּנְהָרָה... וּמַגִּיעָה לַמַּחְסוֹם!",
+  "[excited] Eilam, אַתָּה גַּם תַּלְמִיד וְגַם שַׂחְקָן? בָּרוּר שֶׁאֶפְשָׁר!",
+  "[excited] וּבְבֵית הַסֵּפֶר כְּבָר יֵשׁ מוֹרִים, וַאֲפִלּוּ שִׁעוּר בְּקַבָּלַת הַשּׁוֹנֶה!",
+  "[excited] רוצים לִלְמֹד? תגיבו: תַּלְמִיד! רוצים לְלַמֵּד? מוֹרֶה, וּמָה תְּלַמְּדוּ!",
+  "[excited] וּמֵהַתְּגוּבוֹת: Gaming Park עָתִידִי... אולי מחר!",
+  "[excited] וּמַפְתֵּחַ הזהב הולך ל... Avraham!",
+  "[excited] Avraham, הַוִּילָה הַמּוּזְהֶבֶת מְחַכָּה לְךָ!",
+  "[excited] אז מה בונים מחר? תגיבו בתגובות!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "top": 330,
+ "mix": "day25.mix.mp3",
+ "say": {
+  "Sapir": "ספיר",
+  "Eilam": "עילם",
+  "Avraham": "אברהם",
+  "Choo": "צ'ו",
+  "Gaming": "גיימינג",
+  "Park": "פארק"
+ },
+ "homes": {
+  "avranamyamin": 8
+ },
+ "rise": {
+  "key": "train",
+  "line": 3,
+  "dt": 1.3,
+  "dur": 1.6
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:fanclub",
+   "dist": 85,
+   "yaw": -15,
+   "pitch": 24,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "landmark:train",
+   "dist": 95,
+   "yaw": -20,
+   "pitch": 32,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 3,
+   "target": "landmark:train",
+   "dist": 110,
+   "yaw": -10,
+   "pitch": 22,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "landmark:train",
+   "dist": 58,
+   "yaw": 25,
+   "pitch": 32,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 5,
+   "target": [
+    -347.9,
+    4,
+    347.9
+   ],
+   "dist": 28,
+   "yaw": 135,
+   "pitch": 12,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 6,
+   "target": [
+    -350.0,
+    3,
+    317.5
+   ],
+   "dist": 34,
+   "yaw": -70,
+   "pitch": 18,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "target": "landmark:school",
+   "dist": 70,
+   "yaw": -30,
+   "pitch": 26,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 8,
+   "target": [
+    347.1,
+    3.5,
+    330.3
+   ],
+   "dist": 30,
+   "yaw": -60,
+   "pitch": 14,
+   "orbit": 1.5,
+   "ease": 0.7
+  },
+  {
+   "line": 9,
+   "target": "landmark:school",
+   "dist": 62,
+   "yaw": 35,
+   "pitch": 32,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 10,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 20,
+   "pitch": 38,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 11,
+   "dt": 1.85,
+   "target": "house:avranamyamin",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 13,
+   "target": "statue",
+   "dist": 66,
+   "pitch": 30,
+   "yaw": -20,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 14,
+   "target": "castle",
+   "dist": 260,
+   "yaw": 10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "יום 25"
+  },
+  {
+   "type": "comment",
+   "line": 1,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 3,
+   "u": "eilam.lev99",
+   "text": "רכבת המועדון האוהדים של הפועל ספיר עד למגרש של הפועל ספיר ושיהיה על הרכבת ציורים של הפועל ספיר",
+   "likes": 1
+  },
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 0.05,
+   "dur": 1.2,
+   "u": "eilam.lev99",
+   "honours": [
+    "אדריכל · רכבת האוהדים"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 1.6,
+   "dur": 2.6,
+   "text": "נבנה · רכבת האוהדים של הפועל ספיר 🚂"
+  },
+  {
+   "type": "idcard",
+   "line": 7,
+   "dt": 0.1,
+   "dur": 3.6,
+   "u": "eilam.lev99",
+   "honours": [
+    "🎒 תלמיד",
+    "⚽ הפועל ספיר #19"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 11,
+   "dt": 1.9,
+   "dur": 1.4,
+   "u": "avranamyamin",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "מה בונים מחר? 👇",
+   "sub": "תגיבו בתגובות"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 2.6,
+   "dur": 1.8,
+   "text": "🚂💨",
+   "x": 540,
+   "y": 1080,
+   "size": 200,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.2,
+   "dur": 1.1,
+   "text": "🎟️",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": -8
+  },
+  {
+   "type": "confetti",
+   "line": 3,
+   "dt": 3.8,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 3,
+   "dt": 3.8,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 2.0,
+   "dur": 0.9,
+   "text": "⚽",
+   "x": 300,
+   "y": 1080,
+   "size": 160,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 2.6,
+   "dur": 0.9,
+   "text": "⭐",
+   "x": 540,
+   "y": 1080,
+   "size": 160,
+   "rot": 6
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 3.4,
+   "dur": 1.0,
+   "text": "❤️🖤",
+   "x": 780,
+   "y": 1080,
+   "size": 160,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 2.0,
+   "dur": 1.2,
+   "text": "🚧",
+   "x": 540,
+   "y": 1080,
+   "size": 180,
+   "rot": 6
+  },
+  {
+   "type": "banner",
+   "line": 8,
+   "dt": 2.0,
+   "dur": 2.2,
+   "text": "📚 מורה לקבלת השונה",
+   "y": 330,
+   "size": 96,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 0.6,
+   "dur": 2.0,
+   "text": "תגיבו: תלמיד 🎒",
+   "y": 330,
+   "size": 110,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 2.7,
+   "dur": 2.6,
+   "text": "תגיבו: מורה + מה תלמדו 📚",
+   "y": 330,
+   "size": 92,
+   "band": "#0f6f73",
+   "color": "#ffffff"
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 0.8,
+   "dur": 2.4,
+   "text": "🎮",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": -6
+  },
+  {
+   "type": "confetti",
+   "line": 11,
+   "dt": 1.9,
+   "dur": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 13,
+   "dt": 0.3,
+   "dur": 1.8,
+   "text": "👇",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": 0
+  }
+ ],
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0
+  },
+  {
+   "name": "whoosh",
+   "line": 0,
+   "dt": 2.6
+  },
+  {
+   "name": "pop",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 3,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": 1.3
+  },
+  {
+   "name": "boom",
+   "line": 3,
+   "dt": 3.8
+  },
+  {
+   "name": "sparkle",
+   "line": 3,
+   "dt": 3.9
+  },
+  {
+   "name": "whoosh",
+   "line": 4
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 2.0
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 2.6
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 3.4
+  },
+  {
+   "name": "ding",
+   "line": 5,
+   "dt": 0.8
+  },
+  {
+   "name": "whoosh",
+   "line": 6
+  },
+  {
+   "name": "ding",
+   "line": 6,
+   "dt": 2.0
+  },
+  {
+   "name": "ding",
+   "line": 6,
+   "dt": 2.3
+  },
+  {
+   "name": "pop",
+   "line": 7,
+   "dt": 0.1
+  },
+  {
+   "name": "sparkle",
+   "line": 8,
+   "dt": 2.0
+  },
+  {
+   "name": "ding",
+   "line": 9,
+   "dt": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 9,
+   "dt": 2.7
+  },
+  {
+   "name": "whoosh",
+   "line": 10
+  },
+  {
+   "name": "boing",
+   "line": 10,
+   "dt": 0.8
+  },
+  {
+   "name": "kaching",
+   "line": 11,
+   "dt": 1.9
+  },
+  {
+   "name": "whoosh",
+   "line": 12,
+   "dt": 0.2
+  },
+  {
+   "name": "tada",
+   "line": 13,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 14
+  }
+ ],
+ "caption": "יום 25 בממלכה של משפחת ספיר: יצאה לדרך רכבת האוהדים של הפועל ספיר! 🚂❤️🖤 אדומה, שחורה ומצוירת, מהמועדון עד המגרש\nמה בונים מחר? תגיבו בתגובות, וגם \"תלמיד\" או \"מורה\" ומה תלמדו 📚\n#ממלכה #משפחתספיר #רכבת #הפועל",
+ "firstComment": "🚂 מה בונים מחר? התגובה עם הכי הרבה לייקים נבנית! ובבית ספר ספיר: תגיבו \"תלמיד\", או \"מורה\" ומה תלמדו 📚",
+ "notes": "Day 25 (day 24's reel went up at 19:00, the comments read at 20:00): winner @eilam.lev99 'רכבת המועדון האוהדים של הפועל ספיר עד למגרש של הפועל ספיר ושיהיה על הרכבת ציורים של הפועל ספיר' (1 like; his own earlier comment, 2 likes, asked whether he can be a student and a Hapoel player too, a question, answered in the reel: yes). Skipped: @yarinbochi 'פסל ענק של בן גביר' (1 like, a real politician), @ofek_bell 'gaming park, the futuristic park with holograms' (0 likes, runner up, אולי מחר), @roee.cohen_11 'ספירלנד כמו פארק שעשועים' (ספירלנד is built). Students and teachers signed up: ofek_bell, eilam.lev99 (students), nika_trav (teacher: קבלת השונה). Gold key: (24*7919)%2 of the two citizens who joined on day 24 = avranamyamin (said as Avraham).",
+ "replies": [
+  {
+   "id": "18165142036523901",
+   "text": "עילם, הרכבת יצאה לדרך! 🚂 אדומה, שחורה ומצוירת, בדיוק כמו שביקשת"
+  },
+  {
+   "id": "18146446798592454",
+   "text": "בטח שאפשר! 🎒⚽ גם תלמיד בבית ספר ספיר וגם שחקן בהפועל, הכל נכתב בתעודה שלך"
+  },
+  {
+   "id": "18093208046234732",
+   "text": "גיימינג פארק עם הולוגרמות? 🎮 נכנס לריל של היום, תביא לייקים!"
+  },
+  {
+   "id": "18416832523083628",
+   "text": "מורה לקבלת השונה 💛 השיעור הכי חשוב בבית הספר, ברוכים הבאים לחדר המורים"
+  }
+ ]
+}
