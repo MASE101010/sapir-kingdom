@@ -35,7 +35,7 @@ function site({ plan, residents, kingdom, honours }) {
   world.setWishes(data.wishes ?? []);   // the royal wall's notes (day 11), from api/delta
   world.setVotes(data.votes ?? {});     // the royal elections' count
   // the elections' live count (day 11): a small board under the header, read again every 20 s; a click flies to the stage
-  if (world.lm.elections) {
+  if (world.lm.elections && kingdom.ballot) {   // day 25: Michael took the board off the front page (kingdom.ballot to bring it back)
     const bal = $('ballot'); bal.hidden = false; bal.onclick = () => { const l = world.lm.elections; flyTo(l.at[0], l.at[1], 110); };
     const draw = votes => { const max = Math.max(1, ...CANDIDATES.map(c => votes[c.key] ?? 0)), lead = CANDIDATES.reduce((a, c) => (votes[c.key] ?? 0) > (votes[a.key] ?? 0) ? c : a, CANDIDATES[0]);
       bal.innerHTML = `<h4>🗳️ הבחירות לנשיאות</h4>${CANDIDATES.map(c => `<div class="row" style="--c:${c.bg}"><img src="img/candidates/${c.key}-cut.png" alt=""><span>${esc(c.name)}${c === lead && votes[c.key] ? ' 👑' : ''}<i class="bar" style="--w:${Math.round((votes[c.key] ?? 0) / max * 100)}"></i></span><b>${(votes[c.key] ?? 0).toLocaleString('he-IL')}</b></div>`).join('')}<small>מצביעים בתגובה: שם המועמד</small>`;

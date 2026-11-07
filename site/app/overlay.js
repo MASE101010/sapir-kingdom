@@ -15,6 +15,7 @@ function box(g, x, y, w, h, r, fill = CREAM, line = 7, shadow = 14) {
 }
 function text(g, s, x, y, { font, color = INK, align = 'center', dir = 'rtl', stroke = 0, strokeColor = NAVY, drop = 0 } = {}) {
   g.font = font; g.direction = dir; g.textAlign = align; g.textBaseline = 'alphabetic'; g.lineJoin = 'round';
+  if (dir === 'rtl' && /[\u0590-\u05FF]/.test(s)) s = '\u202B' + s + '\u202C';   // day 25: embed Hebrew as RTL, so an emoji at the end sits on the left
   if (drop) { g.lineWidth = stroke; g.strokeStyle = strokeColor; g.strokeText(s, x, y + drop); g.fillStyle = strokeColor; g.fillText(s, x, y + drop); }
   if (stroke) { g.lineWidth = stroke; g.strokeStyle = strokeColor; g.strokeText(s, x, y); }
   g.fillStyle = color; g.fillText(s, x, y);
@@ -151,8 +152,12 @@ function effect(g, f, t) {
       text(g, f.text, 0, 0, { font: emoji ? `${f.size ?? 140}px ${EMOJI}` : `400 ${f.size ?? 110}px ${DISPLAY}`, color: f.color ?? GOLD, stroke: emoji ? 0 : 20, drop: emoji ? 0 : 8, dir: 'rtl' }); break; }
     case 'banner': { const s = 1 + .7 * (1 - backOut(age / .3)), sh = age < .4 ? (rnd(Math.floor(t * 60)) - .5) * 24 : 0;
       g.translate(540 + sh, f.y ?? 760); g.rotate((f.rot ?? -4) * Math.PI / 180); g.scale(s, s);
-      if (f.band) { g.fillStyle = f.band; g.fillRect(-620, -(f.size ?? 120) * .95, 1240, (f.size ?? 120) * 1.3); }
-      text(g, f.text, 0, 0, { font: `400 ${f.size ?? 120}px ${DISPLAY}`, color: f.color ?? '#fff', stroke: 24, strokeColor: f.stroke ?? NAVY, drop: 10 }); break; }
+      // day 25: the text shrinks to fit inside the frame (it was cut at the sides), and dark text on a band gets a thin stroke
+      // in the band's colour instead of a thick navy one (navy on navy could not be read)
+      let size = f.size ?? 120; g.font = `400 ${size}px ${DISPLAY}`; const tw = g.measureText(f.text).width; if (tw > 900) size = Math.floor(size * 900 / tw);
+      const color = f.color ?? '#fff', dark = /^#[0-3]/.test(color);
+      if (f.band) { g.fillStyle = f.band; g.fillRect(-620, -size * .95, 1240, size * 1.3); }
+      text(g, f.text, 0, 0, { font: `400 ${size}px ${DISPLAY}`, color, stroke: dark ? 8 : 22, strokeColor: f.stroke ?? (dark && f.band ? f.band : NAVY), drop: dark ? 0 : 10 }); break; }
     case 'news': {                                   // a TV news flash: a red header with LIVE, the channel, the clock, and a ticker below
       const sl = backOut(age / .4), y0 = f.y ?? 250;
       g.translate((1 - sl) * 1100, 0);
