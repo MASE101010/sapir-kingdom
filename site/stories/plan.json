@@ -514,5 +514,25 @@
   "image": "stories/day24-3.jpg",
   "after": "reel:24",
   "about": "18:30 מפתח הזהב eyal124676"
+ },
+ {
+  "id": "day25-1",
+  "at": "2026-11-08T08:00:00Z",
+  "image": "stories/day25-1.jpg",
+  "about": "10:00 בוקר טוב, חידה: אדום, שחור, נוסע מהמועדון למגרש"
+ },
+ {
+  "id": "day25-2",
+  "at": "2026-11-08T12:45:00Z",
+  "image": "stories/day25-2.jpg",
+  "after": "reel:25",
+  "about": "רכבת האוהדים של הפועל ספיר"
+ },
+ {
+  "id": "day25-3",
+  "at": "2026-11-08T16:30:00Z",
+  "image": "stories/day25-3.jpg",
+  "after": "reel:25",
+  "about": "18:30 מפתח הזהב avranamyamin"
  }
 ]
