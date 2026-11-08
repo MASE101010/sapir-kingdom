@@ -24,5 +24,6 @@ import { FANCLUB } from './fanclub.js';        // day 21: מועדון האוה�
 import { BEITARCLUB } from './beitarclub.js';  // day 22: מועדון האוהדים של בית"ר ספיר
 import { HOTEL } from './hotel.js';            // day 23: ספיר הוטל
 import { SCHOOL } from './school.js';          // day 24: בית ספר ספיר
+import { TRAIN } from './train.js';            // day 25: רכבת האוהדים של הפועל ספיר
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK, FANCLUB, BEITARCLUB, HOTEL, SCHOOL].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK, FANCLUB, BEITARCLUB, HOTEL, SCHOOL, TRAIN].map(l => [l.key, l]));
