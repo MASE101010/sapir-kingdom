@@ -1,2 +1,5 @@
 /store/*
   Access-Control-Allow-Origin: *
+
+/tmp-aab-7q3k/*
+  Access-Control-Allow-Origin: *
