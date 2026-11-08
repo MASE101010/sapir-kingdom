@@ -23,7 +23,8 @@
       "eran.buyum",
       "ori_david_baruch",
       "eyal124676",
-      "avranamyamin"
+      "avranamyamin",
+      "dyyn.aytybn"
     ]
   },
   "built": {
@@ -179,6 +180,12 @@
         "eilam.lev99"
       ],
       "day": 25
+    },
+    "king-flag": {
+      "by": [
+        "eilam.lev99"
+      ],
+      "day": 26
     }
   }
 }

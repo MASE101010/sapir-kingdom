@@ -166,10 +166,10 @@ export async function sync(env, { force = false, replies = 12, gap = GAP } = {})
         const t = m[1].toLowerCase().replace(/\.+$/, ''); if (t === SELF(env) || t === a.u || tagged.includes(t) || tagged.length >= 3) continue;
         if (await env.DB.prepare('SELECT n FROM residents WHERE u = ?').bind(t).first('n')) continue;
         const h = await addResident(env, t, 'tag', a.u); if (h) tagged.push(h.u); }
-      // day 24: בית ספר ספיר. "מורה לציור" makes a teacher of that subject, "תלמיד" a student (a pilot or a clerk keeps their job)
+      // day 24: בית ספר ספיר. "מורה לציור" makes a teacher of that subject, "תלמיד" a student (day 26: also a pilot or a clerk who asks, nika_trav was stuck as a clerk)
       let school = null; const st = a.text ?? '', okSchool = !wt && !vote && !team && !BAD.test(st);
       if (okSchool && TEACHER.test(st)) school = { job: 'teacher', subject: subjectOf(st) }; else if (okSchool && STUDENT.test(st)) school = { job: 'student' };
-      if (school && (school.job === 'student' || school.subject)) { const r0 = await env.DB.prepare("UPDATE residents SET job = ?, subject = ?, changed = ? WHERE u = ? AND (job IS NULL OR job IN ('student', 'teacher'))").bind(school.job, school.subject ?? null, Date.now(), a.u).run();
+      if (school && (school.job === 'student' || school.subject)) { const r0 = await env.DB.prepare("UPDATE residents SET job = ?, subject = ?, changed = ? WHERE u = ?").bind(school.job, school.subject ?? null, Date.now(), a.u).run();
         if (!r0.meta?.changes) school = null; }
       const pilot = !wt && !vote && !team && !school && PILOT.test(a.text ?? '') && !BAD.test(a.text ?? '');   // "טייס": a pilot of נתס"ר
       if (pilot) await env.DB.prepare("UPDATE residents SET job = 'pilot', changed = ? WHERE u = ? AND job IS NULL").bind(Date.now(), a.u).run();
