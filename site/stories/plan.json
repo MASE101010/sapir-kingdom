@@ -534,5 +534,25 @@
   "image": "stories/day25-3.jpg",
   "after": "reel:25",
   "about": "18:30 מפתח הזהב avranamyamin"
+ },
+ {
+  "id": "day26-1",
+  "at": "2026-11-09T08:00:00Z",
+  "image": "stories/day26-1.jpg",
+  "about": "10:00 בוקר טוב, חידה: עשוי זהב ומניף דגל אדום"
+ },
+ {
+  "id": "day26-2",
+  "at": "2026-11-09T12:45:00Z",
+  "image": "stories/day26-2.jpg",
+  "after": "reel:26",
+  "about": "כיכר המלך של הפועל ספיר"
+ },
+ {
+  "id": "day26-3",
+  "at": "2026-11-09T16:30:00Z",
+  "image": "stories/day26-3.jpg",
+  "after": "reel:26",
+  "about": "18:30 מפתח הזהב dyyn.aytybn"
  }
 ]
