@@ -1,0 +1,27 @@
+# Publishes the legal/support pages of the "השם שלי: משמעות השם" app (folder myname-site/) to Cloudflare Pages
+# as the neutral site hashem-sheli.pages.dev. Unrelated to the kingdom's daily run.
+name: myname-site
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['myname-site/**', '.github/workflows/myname-site.yml']
+concurrency: { group: myname-site, cancel-in-progress: false }
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: cloudflare credentials (from KINGDOM_ENV)
+        env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
+        run: |
+          echo "$KINGDOM_ENV" | grep -E '^(CLOUDFLARE_API_TOKEN|CLOUDFLARE_ACCOUNT_ID)=' | while IFS= read -r line; do
+            v="${line#*=}"; echo "::add-mask::$v"; echo "$line" >> $GITHUB_ENV; done
+      - name: deploy to Cloudflare Pages
+        working-directory: myname-site
+        run: |
+          npx wrangler@3 pages project create hashem-sheli --production-branch main 2>/dev/null || echo "project exists"
+          npx wrangler@3 pages deploy . --project-name hashem-sheli --branch main --commit-dirty=true | tee ../myname-deploy.log
+          grep -o 'https://[a-z0-9.-]*pages.dev' ../myname-deploy.log | tail -1 | sed 's/^/::notice title=myname-site::/'
