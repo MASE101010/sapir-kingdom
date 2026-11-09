@@ -1,0 +1,488 @@
+{
+ "day": 26,
+ "lines": [
+  "[excited] יום עשרים ושישה... וְהַמֶּלֶךְ מֵנִיף דֶּגֶל אָדֹם!",
+  "[excited] Eilam כתב לנו בתגובות:",
+  "[excited] פֶּסֶל שֶׁל הַמֶּלֶךְ... אֲבָל בִּמְקוֹם שַׁרְבִיט, דֶּגֶל אָדֹם!",
+  "[excited] אז הָרִימוּ צְעִיפִים... כי בנינו את כִּכַּר הַמֶּלֶךְ שֶׁל הַפּוֹעֵל Sapir!",
+  "[excited] פֶּסֶל זָהָב עֲנָק, עִם צָעִיף אָדֹם!",
+  "[excited] וְהַדֶּגֶל? מִתְנוֹפֵף לְמַעְלָה, מֵעַל כֻּלָּם!",
+  "[excited] יֵשׁ גַּם מִסְגֶּרֶת לְ-Selfie עִם הַמֶּלֶךְ, וְתֹף עֲנָק!",
+  "[excited] וּבְבֵית הַסֵּפֶר: Tohar הִיא הַמְּנַהֶלֶת הַחֲדָשָׁה!",
+  "[excited] Nika, הַמּוֹרָה לְקַבָּלַת הַשּׁוֹנֶה, זֶה כְּבָר בַּתְּעוּדָה שֶׁלָּךְ!",
+  "[excited] וּמֵהַתְּגוּבוֹת: מִשְׂחָק בֵּין Beitar לַהַפּוֹעֵל... אולי מחר!",
+  "[excited] וּמַפְתֵּחַ הזהב הולך לְתוֹשָׁב מַזָּלִי בְּמִיּוּחָד!",
+  "[excited] הַוִּילָה הַמּוּזְהֶבֶת שֶׁלְּךָ מְחַכָּה!",
+  "[excited] רוצים לִלְמֹד אוֹ לְלַמֵּד? תגיבו: תַּלְמִיד, אוֹ מוֹרֶה!",
+  "[excited] אז מה בונים מחר? תגיבו בתגובות!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "top": 330,
+ "mix": "day26.mix.mp3",
+ "say": {
+  "Sapir": "ספיר",
+  "Eilam": "עילם",
+  "Tohar": "טוהר",
+  "Nika": "ניקה",
+  "Beitar": "בית\"ר",
+  "Selfie": "סלפי"
+ },
+ "homes": {
+  "dyyn.aytybn": 8
+ },
+ "rise": {
+  "key": "king-flag",
+  "line": 3,
+  "dt": 1.6,
+  "dur": 1.6
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:hapoel",
+   "dist": 90,
+   "yaw": -15,
+   "pitch": 24,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "landmark:king-flag",
+   "dist": 95,
+   "yaw": -20,
+   "pitch": 32,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 3,
+   "target": "landmark:king-flag",
+   "dist": 110,
+   "yaw": -10,
+   "pitch": 18,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": [
+    -335.9,
+    14,
+    -335.9
+   ],
+   "dist": 36,
+   "yaw": 45,
+   "pitch": 8,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 5,
+   "target": [
+    -333.3,
+    25,
+    -338.1
+   ],
+   "dist": 42,
+   "yaw": 25,
+   "pitch": 8,
+   "orbit": 1,
+   "ease": 0.7
+  },
+  {
+   "line": 6,
+   "target": "landmark:king-flag",
+   "dist": 52,
+   "yaw": 25,
+   "pitch": 22,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "target": "landmark:school",
+   "dist": 70,
+   "yaw": -30,
+   "pitch": 26,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 8,
+   "target": [
+    347.1,
+    3.5,
+    330.3
+   ],
+   "dist": 30,
+   "yaw": -60,
+   "pitch": 14,
+   "orbit": 1.5,
+   "ease": 0.7
+  },
+  {
+   "line": 9,
+   "target": "landmark:beitar-club",
+   "dist": 80,
+   "yaw": -15,
+   "pitch": 24,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 10,
+   "dt": 1.2,
+   "target": "house:dyyn.aytybn",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 12,
+   "target": "landmark:school",
+   "dist": 62,
+   "yaw": 35,
+   "pitch": 32,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 13,
+   "target": "statue",
+   "dist": 66,
+   "pitch": 30,
+   "yaw": -20,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 14,
+   "target": "castle",
+   "dist": 260,
+   "yaw": 10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "יום 26"
+  },
+  {
+   "type": "comment",
+   "line": 1,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 3,
+   "u": "eilam.lev99",
+   "text": "אפשר לבנות במגרש של הפועל ספיר פסל של המלך רק במקום שרביט עם דגל אדום",
+   "likes": 1
+  },
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 0.05,
+   "dur": 1.4,
+   "u": "eilam.lev99",
+   "honours": [
+    "אדריכל · כיכר המלך"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 1.9,
+   "dur": 2.4,
+   "text": "נבנה · כיכר המלך של הפועל ספיר 🚩"
+  },
+  {
+   "type": "idcard",
+   "line": 7,
+   "dt": 0.6,
+   "dur": 2.8,
+   "u": "toharasis14",
+   "honours": [
+    "🏫 מנהלת בית ספר ספיר"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 8,
+   "dt": 0.3,
+   "dur": 3.2,
+   "u": "nika_trav",
+   "honours": [
+    "📚 מורה לקבלת השונה"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 10,
+   "dt": 1.2,
+   "dur": 1.8,
+   "u": "dyyn.aytybn",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.2,
+   "dur": 3.0,
+   "text": "מה בונים מחר? 👇",
+   "sub": "תגיבו בתגובות"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 2.4,
+   "dur": 1.6,
+   "text": "🚩👑",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.2,
+   "dur": 1.3,
+   "text": "🧣",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": -8
+  },
+  {
+   "type": "confetti",
+   "line": 3,
+   "dt": 3.7,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 3,
+   "dt": 3.7,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 0.6,
+   "dur": 1.6,
+   "text": "📸",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 2.2,
+   "dur": 1.1,
+   "text": "🥁",
+   "x": 780,
+   "y": 1080,
+   "size": 170,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 0.8,
+   "dur": 2.6,
+   "text": "⚽",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": -6
+  },
+  {
+   "type": "confetti",
+   "line": 10,
+   "dt": 1.2,
+   "dur": 1.6
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.6,
+   "dur": 3.2,
+   "text": "תגיבו: תלמיד 🎒 או מורה 📚",
+   "y": 330,
+   "size": 96,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "sticker",
+   "line": 13,
+   "dt": 0.3,
+   "dur": 1.8,
+   "text": "👇",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": 0
+  }
+ ],
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0
+  },
+  {
+   "name": "whoosh",
+   "line": 0,
+   "dt": 2.4
+  },
+  {
+   "name": "pop",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 3,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": 1.6
+  },
+  {
+   "name": "boom",
+   "line": 3,
+   "dt": 3.7
+  },
+  {
+   "name": "sparkle",
+   "line": 3,
+   "dt": 3.8
+  },
+  {
+   "name": "whoosh",
+   "line": 4
+  },
+  {
+   "name": "sparkle",
+   "line": 5,
+   "dt": 0.6
+  },
+  {
+   "name": "pop",
+   "line": 6,
+   "dt": 0.6
+  },
+  {
+   "name": "boing",
+   "line": 6,
+   "dt": 2.2
+  },
+  {
+   "name": "whoosh",
+   "line": 7
+  },
+  {
+   "name": "ding",
+   "line": 7,
+   "dt": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 8,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 9
+  },
+  {
+   "name": "pop",
+   "line": 9,
+   "dt": 0.8
+  },
+  {
+   "name": "kaching",
+   "line": 10,
+   "dt": 1.2
+  },
+  {
+   "name": "whoosh",
+   "line": 11,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 12
+  },
+  {
+   "name": "ding",
+   "line": 12,
+   "dt": 0.6
+  },
+  {
+   "name": "tada",
+   "line": 13,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 14
+  }
+ ],
+ "caption": "יום 26 בממלכה של משפחת ספיר: פסל זהב ענק של המלך, שמניף את הדגל האדום של הפועל ספיר! 🚩👑\nמה בונים מחר? תגיבו בתגובות, ובבית הספר: \"תלמיד\" או \"מורה\" ומה תלמדו 📚\n#ממלכה #משפחתספיר #הפועל #פסל",
+ "firstComment": "🚩 מה בונים מחר? התגובה עם הכי הרבה לייקים נבנית! ובבית ספר ספיר יש כבר מנהלת: תגיבו \"תלמיד\", או \"מורה\" ומה תלמדו 📚",
+ "notes": "Day 26: three comments tied at 1 like on day 25's reel; the earliest wins: @eilam.lev99 'פסל של המלך רק במקום שרביט עם דגל אדום' (12:10:22). Skipped: @mgmgmgkhs 'bus stops for Beitar fans and a game against Hapoel' (1 like, one second later, runner up, אולי מחר), @eilam.lev99 'a graffiti wall with a quote of חוטף' (1 like, a real person's quote), @eladshwar TV studio and @ofek_bell gaming park (0 likes, repeated asks). Fixed: nika_trav was a clerk, so her 'מורה לקבלת השונה' did nothing (the day 24 code kept a clerk's job): now a school comment replaces any job, and migration 0038 makes her the teacher of קבלת השונה and toharasis14 (who asked) the principal. Gold key: no citizen joined on day 25, so among the citizens without a key, (25*7919)%n = dyyn.aytybn (not read out: the handle has no readable name).",
+ "replies": [
+  {
+   "id": "18023399078948092",
+   "text": "עילם, הפסל נבנה! 🚩👑 המלך מניף את הדגל האדום של הפועל, בדיוק כמו שביקשת"
+  },
+  {
+   "id": "18131318281892177",
+   "text": "משחק בית\"ר נגד הפועל? ⚽🔥 נכנס לריל של היום, תביא לייקים!"
+  },
+  {
+   "id": "18083110646375964",
+   "text": "ניקה, צודקת! תיקנתי, ועכשיו כתוב בתעודה שלך: מורה לקבלת השונה 📚💛"
+  },
+  {
+   "id": "17973499356192200",
+   "text": "גם וגם! 😄 תגיבי מכבי, הפועל או בית\"ר ותקבלי חולצה בקבוצה"
+  },
+  {
+   "id": "17915848047516862",
+   "text": "יובל, ההיכל עדיין ברשימה 🏀 מי שמביא הכי הרבה לייקים, נבנה!"
+  }
+ ]
+}
