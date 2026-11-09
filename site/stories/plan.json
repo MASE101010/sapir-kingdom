@@ -554,5 +554,25 @@
   "image": "stories/day26-3.jpg",
   "after": "reel:26",
   "about": "18:30 מפתח הזהב dyyn.aytybn"
+ },
+ {
+  "id": "day27-1",
+  "at": "2026-11-10T08:00:00Z",
+  "image": "stories/day27-1.jpg",
+  "about": "10:00 בוקר טוב, חידה: חזיר עשוי זהב שאוכל מטבעות"
+ },
+ {
+  "id": "day27-2",
+  "at": "2026-11-10T12:45:00Z",
+  "image": "stories/day27-2.jpg",
+  "after": "reel:27",
+  "about": "הקופה הראשית של הממלכה"
+ },
+ {
+  "id": "day27-3",
+  "at": "2026-11-10T16:30:00Z",
+  "image": "stories/day27-3.jpg",
+  "after": "reel:27",
+  "about": "18:30 מפתח הזהב yuval_aharoni27"
  }
 ]
