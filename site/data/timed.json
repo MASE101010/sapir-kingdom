@@ -110,5 +110,12 @@
   "trial": true,
   "about": "14:00 Israel (Monday), approved by Michael on 8.11 22:48",
   "done": "2026-11-09T12:02:20.628Z"
+ },
+ {
+  "day": 27,
+  "at": "2026-11-10T12:00:00Z",
+  "branch": "day27",
+  "trial": true,
+  "about": "14:00 Israel (Tuesday), approved by Michael on 9.11 21:16"
  }
 ]
