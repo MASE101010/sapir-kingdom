@@ -1,0 +1,7 @@
+<!DOCTYPE html><meta charset="utf-8"><title>relay</title>
+<script>
+// Hands a file from this site to the page that opened/embedded it (used once to attach the App Review recording).
+(async()=>{const f=new URLSearchParams(location.search).get('f')||'app-review-recording.mp4';
+const b=await (await fetch(f)).blob(); const t=window.opener||window.parent;
+t.postMessage({relayName:f,relayBlob:b},'https://appstoreconnect.apple.com'); document.title='sent';})();
+</script>
