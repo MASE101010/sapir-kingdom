@@ -24,7 +24,9 @@
   "Nika": "ניקה",
   "Beitar": "בית\"ר",
   "Yuval": "יובל",
-  "Sapirland": "ספירלנד"
+  "Sapirland": "ספירלנד",
+  "קפה": "קופה",
+  "קפת": "קופת"
  },
  "homes": {
   "yuval_aharoni27": 8,
@@ -48,11 +50,11 @@
   },
   {
    "line": 1,
-   "target": "landmark:box-office",
-   "dist": 95,
-   "yaw": -20,
-   "pitch": 32,
-   "orbit": 5,
+   "target": "castle",
+   "dist": 380,
+   "yaw": -30,
+   "pitch": 40,
+   "orbit": 4,
    "ease": 0.01
   },
   {
@@ -190,7 +192,7 @@
    "type": "idcard",
    "line": 3,
    "dt": 0.05,
-   "dur": 1.4,
+   "dur": 2.0,
    "u": "orthegoat",
    "honours": [
     "אדריכל · הקופה הראשית"
@@ -199,7 +201,7 @@
   {
    "type": "label",
    "line": 3,
-   "dt": 1.9,
+   "dt": 2.3,
    "dur": 2.4,
    "text": "נבנה · הקופה הראשית של הממלכה 🎟️"
   },
