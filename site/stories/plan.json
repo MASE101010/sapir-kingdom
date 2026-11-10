@@ -574,5 +574,25 @@
   "image": "stories/day27-3.jpg",
   "after": "reel:27",
   "about": "18:30 מפתח הזהב yuval_aharoni27"
+ },
+ {
+  "id": "day28-1",
+  "at": "2026-11-11T08:00:00Z",
+  "image": "stories/day28-1.jpg",
+  "about": "10:00 בוקר טוב, חידה: כיפה טורקיז ושבעה קנים מזהב"
+ },
+ {
+  "id": "day28-2",
+  "at": "2026-11-11T12:45:00Z",
+  "image": "stories/day28-2.jpg",
+  "after": "reel:28",
+  "about": "בית הכנסת של הממלכה"
+ },
+ {
+  "id": "day28-3",
+  "at": "2026-11-11T16:30:00Z",
+  "image": "stories/day28-3.jpg",
+  "after": "reel:28",
+  "about": "18:30 מפתח הזהב shalevhazan111"
  }
 ]
