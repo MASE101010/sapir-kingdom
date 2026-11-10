@@ -26,5 +26,6 @@ import { HOTEL } from './hotel.js';            // day 23: ספיר הוטל
 import { SCHOOL } from './school.js';          // day 24: בית ספר ספיר
 import { TRAIN } from './train.js';            // day 25: רכבת האוהדים של הפועל ספיר
 import { KINGFLAG } from './kingflag.js';      // day 26: כיכר המלך של הפועל ספיר
+import { BOXOFFICE } from './boxoffice.js';    // day 27: הקופה הראשית של הממלכה
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK, FANCLUB, BEITARCLUB, HOTEL, SCHOOL, TRAIN, KINGFLAG].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK, FANCLUB, BEITARCLUB, HOTEL, SCHOOL, TRAIN, KINGFLAG, BOXOFFICE].map(l => [l.key, l]));

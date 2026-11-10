@@ -1,0 +1,559 @@
+{
+ "day": 27,
+ "lines": [
+  "[excited] יום עשרים ושבעה... וְהַמֶּלֶךְ פּוֹתֵחַ אֶת הַקֻּפָּה!",
+  "[excited] Orr כתב לנו בתגובות:",
+  "[excited] תִּבְנוּ קֻפָּה רָאשִׁית... וְקִבֵּל שְׁלוֹשָׁה לַיְקִים!",
+  "[excited] אז תּוֹצִיאוּ אֶת הָאַרְנָקִים... כי בנינו את הַקֻּפָּה הָרָאשִׁית שֶׁל הַמַּמְלָכָה!",
+  "[excited] עִם כַּרְטִיס זָהָב עֲנָק, לְכָל הַמַּמְלָכָה!",
+  "[excited] שְׁמוֹנֶה חַלּוֹנוֹת: Sapirland, הָאִצְטַדְיוֹן, הָרַכֶּבֶת, וּפַּארְק הַמַּיִם!",
+  "[excited] וְעַל הַגַּג? קֻפַּת חֲזִיר זָהָב עֲנָקִית!",
+  "[excited] וּמַטְבֵּעַ נוֹפֵל לְתוֹכָהּ, כָּל הַזְּמַן!",
+  "[excited] וּמֵהַתְּגוּבוֹת: פֶּסֶל שֶׁל הַמַּלְכָּה, וּפַּארְק עִם הוֹפָעוֹת... אולי מחר!",
+  "[excited] Nika, הַקְּבוּצָה שֶׁל Beitar מְלֵאָה, אֲבָל תִּשָּׁאֲרִי אִתָּנוּ בַּהַפּוֹעֵל!",
+  "[excited] וּמַפְתֵּחַ הזהב הולך ל... Yuval!",
+  "[excited] Yuval, הַוִּילָה הַמּוּזְהֶבֶת מְחַכָּה לְךָ!",
+  "[excited] וּבְבֵית הַסֵּפֶר: תגיבו תַּלְמִיד, אוֹ מוֹרֶה וּמָה תְּלַמְּדוּ!",
+  "[excited] אז מה בונים מחר? תגיבו בתגובות!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "top": 330,
+ "mix": "day27.mix.mp3",
+ "say": {
+  "Orr": "אור",
+  "Nika": "ניקה",
+  "Beitar": "בית\"ר",
+  "Yuval": "יובל",
+  "Sapirland": "ספירלנד",
+  "קפה": "קופה",
+  "קפת": "קופת"
+ },
+ "homes": {
+  "yuval_aharoni27": 8,
+  "orthegoat": 8
+ },
+ "rise": {
+  "key": "box-office",
+  "line": 3,
+  "dt": 1.6,
+  "dur": 1.6
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "statue",
+   "dist": 72,
+   "yaw": 15,
+   "pitch": 26,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "castle",
+   "dist": 380,
+   "yaw": -30,
+   "pitch": 40,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 3,
+   "target": "landmark:box-office",
+   "dist": 105,
+   "yaw": -10,
+   "pitch": 20,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "landmark:box-office",
+   "dist": 58,
+   "yaw": 0,
+   "pitch": 10,
+   "orbit": 1,
+   "ease": 0.7
+  },
+  {
+   "line": 5,
+   "target": [
+    346.5,
+    3.5,
+    -333.8
+   ],
+   "dist": 22,
+   "yaw": 45,
+   "pitch": 8,
+   "orbit": 4,
+   "ease": 0.7
+  },
+  {
+   "line": 6,
+   "target": [
+    340.1,
+    15,
+    -340.1
+   ],
+   "dist": 30,
+   "yaw": -45,
+   "pitch": 14,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "target": [
+    340.1,
+    17,
+    -340.1
+   ],
+   "dist": 20,
+   "yaw": -30,
+   "pitch": 22,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 20,
+   "pitch": 38,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 9,
+   "target": "landmark:hapoel",
+   "dist": 80,
+   "yaw": -15,
+   "pitch": 24,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 10,
+   "dt": 1.9,
+   "target": "house:yuval_aharoni27",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 12,
+   "target": "landmark:school",
+   "dist": 62,
+   "yaw": 35,
+   "pitch": 32,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 13,
+   "target": "statue",
+   "dist": 66,
+   "pitch": 30,
+   "yaw": -20,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 14,
+   "target": "castle",
+   "dist": 260,
+   "yaw": 10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "יום 27"
+  },
+  {
+   "type": "comment",
+   "line": 1,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 3,
+   "u": "orthegoat",
+   "text": "תבנו קופה ראשית",
+   "likes": 3
+  },
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 0.05,
+   "dur": 2.0,
+   "u": "orthegoat",
+   "honours": [
+    "אדריכל · הקופה הראשית"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 2.3,
+   "dur": 2.4,
+   "text": "נבנה · הקופה הראשית של הממלכה 🎟️"
+  },
+  {
+   "type": "idcard",
+   "line": 9,
+   "dt": 0.3,
+   "dur": 3.6,
+   "u": "nika_trav",
+   "honours": [
+    "⚽ הפועל ספיר #27",
+    "📚 מורה לקבלת השונה"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 10,
+   "dt": 1.9,
+   "dur": 1.4,
+   "u": "yuval_aharoni27",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.2,
+   "dur": 3.0,
+   "text": "מה בונים מחר? 👇",
+   "sub": "תגיבו בתגובות"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 2.4,
+   "dur": 1.6,
+   "text": "🎟️",
+   "x": 540,
+   "y": 1080,
+   "size": 200,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 2.0,
+   "dur": 1.3,
+   "text": "❤️❤️❤️",
+   "x": 540,
+   "y": 1080,
+   "size": 150,
+   "rot": 0
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.2,
+   "dur": 1.3,
+   "text": "👛",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": -8
+  },
+  {
+   "type": "confetti",
+   "line": 3,
+   "dt": 3.4,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 3,
+   "dt": 3.4,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 1.6,
+   "dur": 1.0,
+   "text": "🎢",
+   "x": 300,
+   "y": 1080,
+   "size": 160,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 2.4,
+   "dur": 1.0,
+   "text": "⚽",
+   "x": 540,
+   "y": 1080,
+   "size": 160,
+   "rot": 6
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 3.3,
+   "dur": 1.0,
+   "text": "🚂",
+   "x": 780,
+   "y": 1080,
+   "size": 160,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 1.4,
+   "dur": 1.6,
+   "text": "🐷✨",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": 6
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.4,
+   "dur": 2.0,
+   "text": "🪙",
+   "x": 780,
+   "y": 1080,
+   "size": 180,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 1.4,
+   "dur": 1.4,
+   "text": "👸",
+   "x": 330,
+   "y": 1080,
+   "size": 180,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 2.8,
+   "dur": 1.4,
+   "text": "🎤",
+   "x": 750,
+   "y": 1080,
+   "size": 180,
+   "rot": 8
+  },
+  {
+   "type": "confetti",
+   "line": 10,
+   "dt": 1.9,
+   "dur": 1.6
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.5,
+   "dur": 3.2,
+   "text": "תגיבו: תלמיד 🎒 או מורה 📚",
+   "y": 330,
+   "size": 96,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "sticker",
+   "line": 13,
+   "dt": 0.3,
+   "dur": 1.8,
+   "text": "👇",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": 0
+  }
+ ],
+ "music": {
+  "bpm": 128,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0
+  },
+  {
+   "name": "kaching",
+   "line": 0,
+   "dt": 2.4
+  },
+  {
+   "name": "pop",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 2.0
+  },
+  {
+   "name": "pop",
+   "line": 3,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": 1.6
+  },
+  {
+   "name": "boom",
+   "line": 3,
+   "dt": 3.4
+  },
+  {
+   "name": "sparkle",
+   "line": 3,
+   "dt": 3.5
+  },
+  {
+   "name": "whoosh",
+   "line": 4
+  },
+  {
+   "name": "whoosh",
+   "line": 5
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 1.6
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 2.4
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 3.3
+  },
+  {
+   "name": "whoosh",
+   "line": 6
+  },
+  {
+   "name": "boing",
+   "line": 6,
+   "dt": 1.4
+  },
+  {
+   "name": "kaching",
+   "line": 7,
+   "dt": 0.4
+  },
+  {
+   "name": "kaching",
+   "line": 7,
+   "dt": 1.6
+  },
+  {
+   "name": "whoosh",
+   "line": 8
+  },
+  {
+   "name": "pop",
+   "line": 8,
+   "dt": 1.4
+  },
+  {
+   "name": "pop",
+   "line": 8,
+   "dt": 2.8
+  },
+  {
+   "name": "whoosh",
+   "line": 9
+  },
+  {
+   "name": "kaching",
+   "line": 10,
+   "dt": 1.9
+  },
+  {
+   "name": "whoosh",
+   "line": 11,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 12
+  },
+  {
+   "name": "ding",
+   "line": 12,
+   "dt": 0.5
+  },
+  {
+   "name": "tada",
+   "line": 13,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 14
+  }
+ ],
+ "caption": "יום 27 בממלכה של משפחת ספיר: נפתחה הקופה הראשית! 🎟️ כרטיס זהב לכל הממלכה, וקופת חזיר זהב ענקית על הגג 🐷\nמה בונים מחר? תגיבו בתגובות, וכל עוקב מקבל בית 👑\n#ממלכה #משפחתספיר #קופה #בונים",
+ "firstComment": "🎟️ מה בונים מחר? התגובה עם הכי הרבה לייקים נבנית! ובבית ספר ספיר: תגיבו \"תלמיד\", או \"מורה\" ומה תלמדו 📚",
+ "notes": "Day 27: winner @orthegoat 'תבנו קופה ראשית' (3 likes, the top comment on day 26's reel). Skipped: @eladdadon1 'statue of two real people holding a green flag by Maccabi Haifa's stadium named after a real person' (1 like, real people and a real club), @nika_trav 'a statue of the queen with a Beitar scarf' (1 like, runner up, אולי מחר), @eilam.lev99 'פארק הירקון with live shows' (1 like, a real park's name; runner up as a park with shows) and 'a bakery with a quote of חתוף' (a real person's quote; the bakery is built). nika_trav asked many times to move from Hapoel to Beitar: Beitar's squad is full (30 of 30), so she stays at Hapoel (#27), said kindly in the reel. Gold key: no citizen joined on day 26, so among the citizens without a key, (26*7919)%n = yuval_aharoni27.",
+ "replies": [
+  {
+   "id": "17996581326115495",
+   "text": "אור, הקופה הראשית נפתחה! 🎟️ וקופת חזיר זהב ענקית על הגג, אתה האדריכל"
+  },
+  {
+   "id": "17871163893662043",
+   "text": "פסל של המלכה? 👸 נכנס לריל של היום, תביאי לייקים!"
+  },
+  {
+   "id": "17917071972471099",
+   "text": "פארק עם הופעות חיות 🎤 אהבתי! אולי מחר"
+  },
+  {
+   "id": "18110599781619053",
+   "text": "ניקה, הסגל של בית\"ר מלא 30 מתוך 30 😅 אז את נשארת אצלנו בהפועל, מספר 27 ❤️"
+  },
+  {
+   "id": "18111953582225410",
+   "text": "אלעד, האולפן עדיין ברשימה 📺 צריך לייקים!"
+  }
+ ]
+}
