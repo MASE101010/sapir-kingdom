@@ -1,0 +1,528 @@
+{
+ "day": 28,
+ "lines": [
+  "[excited] יום עשרים ושמונה... וְהַמֶּלֶךְ בּוֹנֶה בֵּית כְּנֶסֶת!",
+  "[excited] Orr כָּתַב לָנוּ בַּתְּגוּבוֹת:",
+  "[excited] תִּבְנוּ בֵּית כְּנֶסֶת... וְקִבֵּל שְׁמוֹנָה לַיְקִים!",
+  "[excited] אז תִּתְלַבְּשׁוּ יָפֶה... כי בָּנִינוּ אֶת בֵּית הַכְּנֶסֶת שֶׁל הַמַּמְלָכָה!",
+  "[excited] עִם כִּיפָּה טוּרְקִיז עֲנָקִית, וּשְׁנֵי מִגְדָּלִים!",
+  "[excited] חַלּוֹנוֹת צִבְעוֹנִיִּים, וּמָגֵן דָּוִד מִזָּהָב מֵעַל הַדְּלָתוֹת!",
+  "[excited] וּבַגִּנָּה? מְנוֹרַת זָהָב עֲנָקִית, עִם שִׁבְעָה קָנִים!",
+  "[excited] וְהַלֶּהָבוֹת שֶׁלָּהּ דּוֹלְקוֹת כָּל הַזְּמַן!",
+  "[excited] וּמֵהַתְּגוּבוֹת: פַּארְק עָתִידָנִי, וְרוּחוֹת עִם רֹאשׁ מְשֻׁלָּשׁ... אולי מחר!",
+  "[excited] Orr, זֶה כְּבָר הַבִּנְיָן הַשֵּׁנִי שֶׁלְּךָ! אַתָּה אַלּוּף!",
+  "[excited] וּמַפְתֵּחַ הזהב הולך ל... Shalev!",
+  "[excited] Shalev, הַוִּילָה הַמּוּזְהֶבֶת מְחַכָּה לְךָ!",
+  "[excited] שַׁתְּפוּ אֶת הָרִיל בַּסְּטוֹרִי, תַּיְּגוּ אוֹתָנוּ... וְהַבַּיִת שֶׁלָּכֶם מַזְהִיב!",
+  "[excited] אז מה בונים מחר? תגיבו בתגובות!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "top": 330,
+ "mix": "day28.mix.mp3",
+ "say": {
+  "Orr": "אור",
+  "Shalev": "שלו"
+ },
+ "homes": {
+  "shalevhazan111": 8
+ },
+ "rise": {
+  "key": "synagogue",
+  "line": 3,
+  "dt": 1.6,
+  "dur": 1.6
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "statue",
+   "dist": 72,
+   "yaw": 15,
+   "pitch": 26,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "castle",
+   "dist": 380,
+   "yaw": -30,
+   "pitch": 40,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 3,
+   "target": "landmark:synagogue",
+   "dist": 105,
+   "yaw": -10,
+   "pitch": 20,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "landmark:synagogue",
+   "dist": 78,
+   "yaw": 30,
+   "pitch": 26,
+   "orbit": 5,
+   "ease": 0.7
+  },
+  {
+   "line": 5,
+   "target": [
+    563.6,
+    9.5,
+    233.5
+   ],
+   "dist": 26,
+   "yaw": -112.5,
+   "pitch": 8,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 6,
+   "target": [
+    554.3,
+    6,
+    229.7
+   ],
+   "dist": 32,
+   "yaw": -87.5,
+   "pitch": 22,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "target": [
+    554.3,
+    9,
+    229.7
+   ],
+   "dist": 17,
+   "yaw": -132.5,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 20,
+   "pitch": 38,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 9,
+   "target": "house:orthegoat",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 10,
+   "dt": 1.9,
+   "target": "house:shalevhazan111",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 12,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -15,
+   "pitch": 40,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 13,
+   "target": "statue",
+   "dist": 66,
+   "pitch": 30,
+   "yaw": -20,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 14,
+   "target": "castle",
+   "dist": 260,
+   "yaw": 10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "יום 28"
+  },
+  {
+   "type": "comment",
+   "line": 1,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 3,
+   "u": "orthegoat",
+   "text": "תבנו בית כנסת",
+   "likes": 8
+  },
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 0.05,
+   "dur": 2.0,
+   "u": "orthegoat",
+   "honours": [
+    "אדריכל · בית הכנסת"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 2.3,
+   "dur": 2.4,
+   "text": "נבנה · בית הכנסת של הממלכה ✡️"
+  },
+  {
+   "type": "idcard",
+   "line": 9,
+   "dt": 0.2,
+   "dur": 3.2,
+   "u": "orthegoat",
+   "honours": [
+    "אדריכל · בית הכנסת",
+    "אדריכל · הקופה הראשית"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 10,
+   "dt": 1.9,
+   "dur": 1.4,
+   "u": "shalevhazan111",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.2,
+   "dur": 3.0,
+   "text": "מה בונים מחר? 👇",
+   "sub": "תגיבו בתגובות"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 2.2,
+   "dur": 1.4,
+   "text": "✡️",
+   "x": 540,
+   "y": 1080,
+   "size": 200,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 2.0,
+   "dur": 1.3,
+   "text": "❤️ 8",
+   "x": 540,
+   "y": 1080,
+   "size": 150,
+   "rot": 0
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.2,
+   "dur": 1.3,
+   "text": "👔",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": -8
+  },
+  {
+   "type": "confetti",
+   "line": 3,
+   "dt": 3.4,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 3,
+   "dt": 3.4,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.2,
+   "dur": 1.4,
+   "text": "🌈",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 1.0,
+   "dur": 1.6,
+   "text": "🕎",
+   "x": 780,
+   "y": 1080,
+   "size": 190,
+   "rot": 6
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.4,
+   "dur": 1.6,
+   "text": "🔥",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 1.1,
+   "dur": 1.4,
+   "text": "🚀",
+   "x": 330,
+   "y": 1080,
+   "size": 180,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 2.2,
+   "dur": 1.4,
+   "text": "👻",
+   "x": 750,
+   "y": 1080,
+   "size": 180,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 2.2,
+   "dur": 1.0,
+   "text": "🏆",
+   "x": 540,
+   "y": 1080,
+   "size": 180,
+   "rot": 0
+  },
+  {
+   "type": "confetti",
+   "line": 10,
+   "dt": 1.9,
+   "dur": 1.6
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.3,
+   "dur": 3.8,
+   "text": "שתפו בסטורי ותייגו אותנו ✨",
+   "y": 330,
+   "size": 90,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "sticker",
+   "line": 13,
+   "dt": 0.3,
+   "dur": 1.8,
+   "text": "👇",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": 0
+  }
+ ],
+ "music": {
+  "bpm": 124,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0
+  },
+  {
+   "name": "sparkle",
+   "line": 0,
+   "dt": 2.2
+  },
+  {
+   "name": "pop",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 2.0
+  },
+  {
+   "name": "pop",
+   "line": 3,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": 1.6
+  },
+  {
+   "name": "boom",
+   "line": 3,
+   "dt": 3.4
+  },
+  {
+   "name": "sparkle",
+   "line": 3,
+   "dt": 3.5
+  },
+  {
+   "name": "whoosh",
+   "line": 4
+  },
+  {
+   "name": "whoosh",
+   "line": 5
+  },
+  {
+   "name": "pop",
+   "line": 5,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 6
+  },
+  {
+   "name": "ding",
+   "line": 6,
+   "dt": 1.0
+  },
+  {
+   "name": "sparkle",
+   "line": 7,
+   "dt": 0.4
+  },
+  {
+   "name": "whoosh",
+   "line": 8
+  },
+  {
+   "name": "pop",
+   "line": 8,
+   "dt": 1.1
+  },
+  {
+   "name": "boing",
+   "line": 8,
+   "dt": 2.2
+  },
+  {
+   "name": "whoosh",
+   "line": 9
+  },
+  {
+   "name": "ding",
+   "line": 9,
+   "dt": 2.2
+  },
+  {
+   "name": "kaching",
+   "line": 10,
+   "dt": 1.9
+  },
+  {
+   "name": "whoosh",
+   "line": 11,
+   "dt": 0.1
+  },
+  {
+   "name": "whoosh",
+   "line": 12
+  },
+  {
+   "name": "ding",
+   "line": 12,
+   "dt": 0.3
+  },
+  {
+   "name": "tada",
+   "line": 13,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 14
+  }
+ ],
+ "caption": "יום 28 בממלכה של משפחת ספיר: נבנה בית הכנסת! ✡️ כיפה טורקיז, חלונות צבעוניים ומנורת זהב בגינה 🕎\nמה בונים מחר? תגיבו בתגובות, וכל עוקב מקבל בית 👑\n#ממלכה #משפחתספיר #ביתכנסת #בונים",
+ "firstComment": "✡️ מה בונים מחר? התגובה עם הכי הרבה לייקים נבנית! ומי שמשתף את הריל בסטורי ומתייג אותנו, הבית שלו מזהיב ✨",
+ "notes": "Day 28: winner @orthegoat 'תבנו בית כנסת' (8 likes, the top comment on day 27's reel; a place, not a religion fight; Michael was told before building and offered a swap). Skipped: @eilam.lev99 'a bakery next to Hapoel with a memorial to a real person' (2 likes, a real person), @mo_nkey363 'ghosts with triangle heads' (1 like, runner up, אולי מחר), @ofek_bell 'a futuristic park of the year 2300' (1 like, runner up, אולי מחר), @eilam.lev99 'a park with live shows and the graduation' (1 like). Gold key: no citizen joined on day 27 (mo_nkey363 joined, not a citizen), so among the citizens without a key, (27*7919)%n = shalevhazan111.",
+ "replies": [
+  {
+   "id": "18174732094458563",
+   "text": "אור, בית הכנסת של הממלכה נבנה! ✡️ כיפה טורקיז ומנורת זהב, וזה כבר הבניין השני שלך 🏆"
+  },
+  {
+   "id": "18097648802668941",
+   "text": "פארק עתידני עם מכוניות מעופפות 🚀 נכנס לריל של היום! אולי מחר"
+  },
+  {
+   "id": "18034162619874087",
+   "text": "רוחות עם ראש משולש 👻 המלך צחק, אולי מחר!"
+  },
+  {
+   "id": "17942390268381511",
+   "text": "פארק עם הופעות וסיום לימודים 🎤 עדיין ברשימה, תביא לייקים!"
+  }
+ ]
+}
