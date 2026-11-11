@@ -13,7 +13,7 @@ Michael approved on 11.11. From day 30 every reel is an episode of one season. T
 - CTA every episode: "מי גנב את הכתר? תגיבו מה אתם חושבים" + "מה נבנה כדי לתפוס אותו?" (the top build comment is built
   and becomes a trap or a tool in the next episode) + "תעקבו כדי לא לפספס את הפרק הבא".
 - The statue stands without its crown until the reveal.
-- Family friendly: no violence, no real people, the ending is sweet (the thief is forgiven and joins the kingdom).
+- Family friendly: no violence, no real people, the ending is sweet and funny (the thief is caught by the trap the followers built, and forgiven).
 - 35 to 45 seconds, title card "פרק N · גנב הכתר".
 
 ## Stories (3 a day)
