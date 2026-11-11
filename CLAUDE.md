@@ -72,6 +72,11 @@ in the kingdom. Residents appear only as their Instagram handle and their genera
 8. **Report** to Michael in Hebrew, three lines: the winner and what was built, residents now, the reel link
    (`https://www.instagram.com/reel/...` from the media id, or the Actions artifact).
 
+## Season 1: גנב הכתר (from day 30)
+
+Every reel from day 30 is an episode of a story season: read `story/crown.md` before building a day. The thief's
+identity is never written in this repo; never confirm or deny guesses before the reveal.
+
 ## The voice (for now: Michael's own)
 
 Michael approves the script first and makes the voice himself in ElevenLabs (voice MICHA, Eleven v4, every line starts
