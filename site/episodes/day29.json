@@ -1,0 +1,623 @@
+{
+ "day": 29,
+ "lines": [
+  "[excited] יום עשרים ותשעה... וְהַמֶּלֶךְ צוֹלֵל לַמַּיִם!",
+  "[excited] Orr כָּתַב לָנוּ בַּתְּגוּבוֹת:",
+  "[excited] יֵשׁ כְּבָר מָלוֹן? אָז תִּבְנוּ אַקְוַרְיוּם גָּדוֹל!",
+  "[excited] אז תָּבִיאוּ בֶּגֶד יָם... כי בָּנִינוּ אֶת הָאַקְוַרְיוּם הַגָּדוֹל שֶׁל הַמַּמְלָכָה!",
+  "[excited] נִכְנָסִים דֶּרֶךְ הַפֶּה, שֶׁל לִוְיָתָן עֲנָק!",
+  "[excited] וְהוּא גַּם מַתִּיז מַיִם, מֵהָרֹאשׁ!",
+  "[excited] וּבַפְּנִים? כָּרִישׁ, צָב, וְהָמוֹן דָּגִים צִבְעוֹנִיִּים!",
+  "[excited] יֵשׁ גַּם פִּינְגְּוִינִים, וּמוֹפָע שֶׁל כַּלְבֵי יָם!",
+  "[excited] וּמֵהַתְּגוּבוֹת: קַנְיוֹן עֲנָק, וּפַארְק עָתִידָנִי... אולי מחר!",
+  "[excited] Orr, שְׁלוֹשָׁה בִּנְיָנִים בִּשְׁלוֹשָׁה יָמִים! אַתָּה הָאַדְרִיכָל שֶׁל הַמַּמְלָכָה!",
+  "[excited] וּמַפְתֵּחַ הזהב הולך ל... Hada!",
+  "[excited] Hada, בְּרוּכִים הַבָּאִים לַוִּילָה הַמּוּזְהֶבֶת!",
+  "[excited] רוֹצִים בַּיִת מוּזְהָב? שַׁתְּפוּ אֶת הָרִיל בַּסְּטוֹרִי, וְתַיְּגוּ אוֹתָנוּ!",
+  "[excited] אז מה בונים מחר? תגיבו בתגובות!",
+  "[excited] וכל עוקב, מקבל בית!"
+ ],
+ "top": 330,
+ "mix": "day29.mix.mp3",
+ "say": {
+  "Orr": "אור",
+  "Hada": "הדה",
+  "אקוריום": "אקווריום",
+  "לויתן": "לווייתן"
+ },
+ "homes": {
+  "hada.d2013": 8
+ },
+ "rise": {
+  "key": "aquarium",
+  "line": 3,
+  "dt": 1.5,
+  "dur": 1.6
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": "statue",
+   "dist": 72,
+   "yaw": -25,
+   "pitch": 24,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "castle",
+   "dist": 380,
+   "yaw": 25,
+   "pitch": 40,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 3,
+   "target": "landmark:aquarium",
+   "dist": 105,
+   "yaw": -10,
+   "pitch": 20,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "landmark:aquarium",
+   "dist": 58,
+   "yaw": -12,
+   "pitch": 30,
+   "orbit": 2,
+   "ease": 0.7
+  },
+  {
+   "line": 5,
+   "target": [
+    232.3,
+    11,
+    560.8
+   ],
+   "dist": 26,
+   "yaw": -192.5,
+   "pitch": 16,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 6,
+   "target": [
+    238.8,
+    7,
+    576.5
+   ],
+   "dist": 32,
+   "yaw": -92.5,
+   "pitch": 10,
+   "orbit": 4,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "target": [
+    249.5,
+    2,
+    552.6
+   ],
+   "dist": 24,
+   "yaw": -197.5,
+   "pitch": 36,
+   "orbit": 3,
+   "ease": 0.7
+  },
+  {
+   "line": 7,
+   "dt": 1.6,
+   "target": [
+    214.8,
+    2,
+    568.1
+   ],
+   "dist": 24,
+   "yaw": -117.5,
+   "pitch": 34,
+   "orbit": 3,
+   "ease": 0.5
+  },
+  {
+   "line": 8,
+   "target": "castle",
+   "dist": 300,
+   "yaw": -20,
+   "pitch": 38,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 9,
+   "target": "house:orthegoat",
+   "dist": 42,
+   "yaw": 150,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 10,
+   "dt": 1.95,
+   "target": "house:hada.d2013",
+   "dist": 42,
+   "yaw": 160,
+   "pitch": 36,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 12,
+   "target": "castle",
+   "dist": 260,
+   "yaw": 15,
+   "pitch": 40,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 13,
+   "target": "statue",
+   "dist": 66,
+   "pitch": 30,
+   "yaw": 20,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 14,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "יום 29"
+  },
+  {
+   "type": "comment",
+   "line": 1,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 3,
+   "u": "orthegoat",
+   "text": "חחח לא ראיתי שיש כבר בית מלון, במקום תבנו אקווריום גדול",
+   "likes": 5
+  },
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 0.05,
+   "dur": 1.9,
+   "u": "orthegoat",
+   "honours": [
+    "אדריכל · האקווריום"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 2.2,
+   "dur": 2.4,
+   "text": "נבנה · האקווריום הגדול של הממלכה 🐠"
+  },
+  {
+   "type": "idcard",
+   "line": 9,
+   "dt": 0.2,
+   "dur": 4.2,
+   "u": "orthegoat",
+   "honours": [
+    "אדריכל · האקווריום",
+    "אדריכל · בית הכנסת",
+    "אדריכל · הקופה הראשית"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 10,
+   "dt": 1.95,
+   "dur": 1.4,
+   "u": "hada.d2013",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.2,
+   "dur": 3.0,
+   "text": "מה בונים מחר? 👇",
+   "sub": "תגיבו בתגובות"
+  }
+ ],
+ "fx": [
+  {
+   "type": "flash",
+   "line": 0,
+   "dur": 0.3
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 2.0,
+   "dur": 1.4,
+   "text": "🤿",
+   "x": 540,
+   "y": 1080,
+   "size": 200,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 0.6,
+   "dur": 1.0,
+   "text": "🏨",
+   "x": 330,
+   "y": 1080,
+   "size": 170,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 1.8,
+   "dur": 1.4,
+   "text": "🐠",
+   "x": 750,
+   "y": 1080,
+   "size": 180,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.2,
+   "dur": 1.3,
+   "text": "🩱",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": -8
+  },
+  {
+   "type": "confetti",
+   "line": 3,
+   "dt": 3.1,
+   "dur": 2
+  },
+  {
+   "type": "punch",
+   "line": 3,
+   "dt": 3.1,
+   "dur": 0.7,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 1.0,
+   "dur": 1.5,
+   "text": "🐳",
+   "x": 780,
+   "y": 1080,
+   "size": 190,
+   "rot": 6
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.6,
+   "dur": 1.4,
+   "text": "💦",
+   "x": 300,
+   "y": 1080,
+   "size": 180,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 0.6,
+   "dur": 1.0,
+   "text": "🦈",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 1.3,
+   "dur": 1.0,
+   "text": "🐢",
+   "x": 540,
+   "y": 1080,
+   "size": 170,
+   "rot": 0
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 2.0,
+   "dur": 1.4,
+   "text": "🐟",
+   "x": 780,
+   "y": 1080,
+   "size": 170,
+   "rot": 6
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.3,
+   "dur": 1.3,
+   "text": "🐧",
+   "x": 300,
+   "y": 1080,
+   "size": 180,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 1.7,
+   "dur": 1.2,
+   "text": "🦭",
+   "x": 780,
+   "y": 1080,
+   "size": 180,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 1.0,
+   "dur": 1.4,
+   "text": "🛍️",
+   "x": 330,
+   "y": 1080,
+   "size": 180,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 2.2,
+   "dur": 1.4,
+   "text": "🚀",
+   "x": 750,
+   "y": 1080,
+   "size": 180,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 2.6,
+   "dur": 1.4,
+   "text": "🏆",
+   "x": 540,
+   "y": 1080,
+   "size": 180,
+   "rot": 0
+  },
+  {
+   "type": "confetti",
+   "line": 10,
+   "dt": 1.95,
+   "dur": 1.6
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.3,
+   "dur": 4.2,
+   "text": "שתפו בסטורי ותייגו אותנו ✨",
+   "y": 330,
+   "size": 90,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "sticker",
+   "line": 13,
+   "dt": 0.3,
+   "dur": 1.6,
+   "text": "👇",
+   "x": 540,
+   "y": 1080,
+   "size": 190,
+   "rot": 0
+  }
+ ],
+ "music": {
+  "bpm": 124,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "tada",
+   "line": 0
+  },
+  {
+   "name": "whoosh",
+   "line": 0,
+   "dt": 2.0
+  },
+  {
+   "name": "pop",
+   "line": 1
+  },
+  {
+   "name": "boing",
+   "line": 2,
+   "dt": 0.6
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 1.8
+  },
+  {
+   "name": "pop",
+   "line": 3,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": 1.5
+  },
+  {
+   "name": "boom",
+   "line": 3,
+   "dt": 3.1
+  },
+  {
+   "name": "sparkle",
+   "line": 3,
+   "dt": 3.2
+  },
+  {
+   "name": "whoosh",
+   "line": 4
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 1.0
+  },
+  {
+   "name": "whoosh",
+   "line": 5
+  },
+  {
+   "name": "sparkle",
+   "line": 5,
+   "dt": 0.6
+  },
+  {
+   "name": "whoosh",
+   "line": 6
+  },
+  {
+   "name": "pop",
+   "line": 6,
+   "dt": 0.6
+  },
+  {
+   "name": "pop",
+   "line": 6,
+   "dt": 1.3
+  },
+  {
+   "name": "pop",
+   "line": 6,
+   "dt": 2.0
+  },
+  {
+   "name": "whoosh",
+   "line": 7
+  },
+  {
+   "name": "boing",
+   "line": 7,
+   "dt": 1.7
+  },
+  {
+   "name": "whoosh",
+   "line": 8
+  },
+  {
+   "name": "pop",
+   "line": 8,
+   "dt": 1.0
+  },
+  {
+   "name": "pop",
+   "line": 8,
+   "dt": 2.2
+  },
+  {
+   "name": "whoosh",
+   "line": 9
+  },
+  {
+   "name": "ding",
+   "line": 9,
+   "dt": 2.6
+  },
+  {
+   "name": "kaching",
+   "line": 10,
+   "dt": 1.95
+  },
+  {
+   "name": "whoosh",
+   "line": 12
+  },
+  {
+   "name": "ding",
+   "line": 12,
+   "dt": 0.3
+  },
+  {
+   "name": "tada",
+   "line": 13,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 14
+  }
+ ],
+ "caption": "יום 29 בממלכה של משפחת ספיר: נבנה האקווריום הגדול! 🐳 נכנסים דרך הפה של לווייתן, ובפנים כריש, צב והמון דגים 🐠\nמה בונים מחר? תגיבו בתגובות, וכל עוקב מקבל בית 👑\n#ממלכה #משפחתספיר #אקווריום #בונים",
+ "firstComment": "🐳 מה בונים מחר? התגובה עם הכי הרבה לייקים נבנית! ומי שמשתף את הריל בסטורי ומתייג אותנו, הבית שלו מזהיב ✨",
+ "notes": "Day 29: winner @orthegoat 'חחח לא ראיתי שיש פה כבר בית מלון במקום תבנו אקווריום גדול' (5 likes, top comment on day 28's reel; his third win in a row). Skipped: @orthegoat 'תבנו תבית מלון' (4 likes, the hotel was built on day 23), @eilam.lev99 'a park with events, shows, end of year and holidays' (1 like, runner up), @toharasis14 'a big mall' (0, runner up), @ofek_bell 'a futuristic park' (0, his 4th day asking, runner up). Gold key: no one joined on day 28, so among the citizens without a key, (28*7919)%n = hada.d2013.",
+ "replies": [
+  {
+   "id": "18078966044757627",
+   "text": "אור, האקווריום הגדול נבנה! 🐳 נכנסים דרך הפה של לווייתן, וזה כבר הבניין השלישי שלך ברצף 🏆"
+  },
+  {
+   "id": "17990435087880064",
+   "text": "המלון כבר עומד מיום 23 🏨 תחפש אותו באתר, יש לו גם דרקון על הגג!"
+  },
+  {
+   "id": "18116617412041397",
+   "text": "פארק עם הופעות וחגים 🎤 עלה בריל של היום! אולי מחר"
+  },
+  {
+   "id": "18165282955526860",
+   "text": "קניון ענק 🛍️ המלך כבר מודד את המגרש, תביאי לייקים!"
+  },
+  {
+   "id": "18035696012910208",
+   "text": "יום 4 ואתה לא מוותר 🚀 פארק עתידני נכנס לריל של היום, תאסוף לייקים!"
+  }
+ ]
+}
