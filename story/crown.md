@@ -6,7 +6,7 @@ Michael approved on 11.11. From day 30 every reel is an episode of one season. T
 - The thief is a NEW character nobody has seen. The audience guesses from video to video. Its identity is NOT written
   anywhere in this public repo (the running session keeps it); never confirm or deny a guess in replies, comments, stories,
   `functions/_replies.js` or the site before the reveal episode.
-- Whoever guesses right in the comments before the reveal gets a gift from the king: he grants them a wish (built in the
+- Whoever guesses right in the comments before the reveal (Michael decides when) gets a gift from the king: he grants them a wish (built in the
   kingdom on the reveal day or the day after), plus the honour "בלש הממלכה 🔍" on their ID card.
 - Each reel: the hook in the first second (action, no title card), THEN the king says the day ("יום 30 בממלכה...") so the
   count stays consistent, then the episode: one new clue, the day's build used in the plot, a cliffhanger.
@@ -21,7 +21,8 @@ Michael approved on 11.11. From day 30 every reel is an episode of one season. T
 - after the reel: "מי החשוד שלכם? תענו לסטורי".
 - 18:30 an exclusive clue that is only in the story ("הרמז הזה רק בסטורי").
 
-## Episodes (planned, 7)
+## Episodes
 1. day 30: the crown is gone (night, alarm, empty statue), the first clue.
-2. to 6. one clue a day, a red herring or two (the dragon, a ghost with a triangle head from @mo_nkey363's comment, a shadow).
-7. the reveal, the right guessers, the wish.
+Then one clue a day, open ended, with red herrings (the dragon, a ghost with a triangle head from @mo_nkey363's comment,
+a shadow, new suspects). Clues are HARD: small, ambiguous, each one fits more than one suspect. The reveal happens ONLY
+when Michael says so, never on a planned day.
