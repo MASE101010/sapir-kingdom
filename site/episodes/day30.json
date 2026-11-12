@@ -9,7 +9,7 @@
   "[excited] הַכֶּתֶר שֶׁלִּי, נֶעֱלַם!",
   "[excited] הַגַּנָּב הִשְׁאִיר אַחֲרָיו רַק דָּבָר אֶחָד...",
   "[excited] נוֹצָה צִבְעוֹנִית אַחַת!",
-  "[excited] אָז מִי הַגַּנָּב? הַדְּרָקוֹן? הָרוּחַ? אוֹ הַצֵּל עִם הַגְּלִימָה?",
+  "[excited] אָז מִי הַגַּנָּב?",
   "[excited] מִי שֶׁיְּנַחֵשׁ נָכוֹן, יְקַבֵּל מִמֶּנִּי מִשְׁאָלָה!",
   "[excited] תַּגִּיבוּ: מִי לְדַעְתְּכֶם גָּנַב אֶת הַכֶּתֶר?",
   "[excited] וּמָה נִבְנֶה מָחָר, כְּדֵי לִתְפֹּס אוֹתוֹ?",
@@ -232,26 +232,6 @@
    "text": "רמז 1 · נוצה צבעונית 🪶"
   },
   {
-   "type": "suspects",
-   "line": 8,
-   "dt": 0,
-   "dur": 4.5,
-   "list": [
-    {
-     "e": "🐉",
-     "name": "הדרקון"
-    },
-    {
-     "e": "👻",
-     "name": "הרוח"
-    },
-    {
-     "e": "🧙",
-     "name": "הצל בגלימה"
-    }
-   ]
-  },
-  {
    "type": "cta",
    "line": 10,
    "dt": 0.1,
@@ -409,6 +389,17 @@
    "size": 90,
    "band": "#e8b323",
    "color": "#13213b"
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 0.1,
+   "dur": 1.3,
+   "text": "❓",
+   "x": 540,
+   "y": 1080,
+   "size": 230,
+   "rot": 0
   }
  ],
  "music": {
@@ -496,21 +487,6 @@
    "dt": 0.2
   },
   {
-   "name": "pop",
-   "line": 8,
-   "dt": 0.3
-  },
-  {
-   "name": "pop",
-   "line": 8,
-   "dt": 0.65
-  },
-  {
-   "name": "pop",
-   "line": 8,
-   "dt": 1.0
-  },
-  {
    "name": "kaching",
    "line": 9,
    "dt": 0.4
@@ -526,11 +502,16 @@
   {
    "name": "tada",
    "line": 12
+  },
+  {
+   "name": "sting",
+   "line": 8,
+   "dt": 0.1
   }
  ],
  "caption": "פרק 1 · גנב הכתר 👑 יום 30 בממלכה: בחצות, כשמגדל השעון החדש צלצל... הכתר של המלך נעלם! הגנב השאיר רק נוצה צבעונית אחת 🪶\nמי גנב את הכתר? תגיבו את הניחוש שלכם, ומי שינחש נכון יקבל משאלה מהמלך 🎁 תעקבו כדי לא לפספס את הפרק הבא\n#ממלכה #משפחתספיר #גנבהכתר #תעלומה",
  "firstComment": "🔍 החקירה התחילה! מי לדעתכם גנב את הכתר? ומה נבנה מחר כדי לתפוס אותו? התגובה עם הכי הרבה לייקים נבנית 👑",
- "notes": "Day 30, season 1 episode 1 (גנב הכתר). Build: @orthegoat 'תבנו תביג בן שבלונדון' (5 likes, top comment on day 29's reel; a clock tower in the spirit of the London one, no brand). Skipped: @eilam.lev99 'a Hapoel bakery on the stadium' (1 like, runner up), @eilam.lev99 'graffiti on the Maccabi stadium that says only Hapoel' (1 like, a jab at another club's fans), @eilam.lev99 'a park with shows and events' (1 like, runner up). Gold key: alonkingw2013 (joined day 29, (29*7919)%count), shown in the 18:30 story, not in the reel (the episode is the story).",
+ "notes": "Day 30, season 1 episode 1 (גנב הכתר). Build: @orthegoat 'תבנו תביג בן שבלונדון' (5 likes, top comment on day 29's reel; a clock tower in the spirit of the London one, no brand). Skipped: @eilam.lev99 'a Hapoel bakery on the stadium' (1 like, runner up), @eilam.lev99 'graffiti on the Maccabi stadium that says only Hapoel' (1 like, a jab at another club's fans), @eilam.lev99 'a park with shows and events' (1 like, runner up). Gold key: alonkingw2013 (joined day 29, (29*7919)%count), shown in the 18:30 story, not in the reel (the episode is the story). Michael (12.11): no suspects list for now, the audience guesses with no base; line 8 was cut to 'אז מי הגנב?' (the suspects part of the voice removed).",
  "replies": [
   {
    "id": "18210246139373902",
@@ -550,7 +531,7 @@
   },
   {
    "id": "18130107064646093",
-   "text": "רוחות עם ראש משולש... 👻 תסתכל טוב בריל של היום"
+   "text": "רוחות עם ראש משולש... 👻 בממלכה הכל אפשרי. תסתכל טוב בריל של היום"
   }
  ]
 }
