@@ -121,6 +121,8 @@ export async function startReel({ renderer, data, day }) {
   // day 12: what happens to a landmark during the reel (ep.states: [{ key, kind: 'burn' | 'open', line, dt, dur, from }]); after the
   // reel's states, the kingdom's own (kingdom.json states) hold, so the escaped dragon's prison stays open in later reels
   const states = [ep.states].flat().filter(Boolean).map(s => ({ ...s, t0: lineAt(s.line, s.dt), dur: s.dur ?? 2 }));
+  // day 30: night (ep.night: [{ line, dt, until, udt }]): the sky goes dark between those lines, day again after
+  const nights = [ep.night].flat().filter(Boolean).map(n => ({ t0: lineAt(n.line, n.dt), t1: n.until != null ? lineAt(n.until, n.udt) : 1e9 }));
   const arrivals = [ep.arrive].flat().filter(Boolean).map(a => ({ ...a, t0: lineAt(a.line, a.dt), dur: a.dur ?? 5 }));
   function dragons(t) {
     const w = swarms.find(w => t > w.t0 - 3 && t < w.t1 + 3), e = w?.ease ?? 2.5;
@@ -137,6 +139,7 @@ export async function startReel({ renderer, data, day }) {
   }
   function seek(t) {
     dragons(t);
+    if (nights.length) world.daylight(nights.some(n => t >= n.t0 && t < n.t1) ? 23 : 12);
     if (houses) world.showHouses(houses.from + (houses.to - houses.from) * smooth((t - houses.t0) / houses.dur)); else world.showHouses(residents.length);
     for (const r of rises) world.rise(r.key, backOut((t - r.t0) / r.dur));
     world.animate((ep.clock ?? 900) + t); poseCamera(t);

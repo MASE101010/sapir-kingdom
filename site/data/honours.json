@@ -27,7 +27,8 @@
       "dyyn.aytybn",
       "yuval_aharoni27",
       "shalevhazan111",
-      "hada.d2013"
+      "hada.d2013",
+      "alonkingw2013"
     ]
   },
   "built": {
@@ -207,6 +208,12 @@
         "orthegoat"
       ],
       "day": 29
+    },
+    "clock-tower": {
+      "by": [
+        "orthegoat"
+      ],
+      "day": 30
     }
   }
 }
