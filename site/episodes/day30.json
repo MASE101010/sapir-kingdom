@@ -1,0 +1,537 @@
+{
+ "day": 30,
+ "lines": [
+  "[excited] רֶגַע... אֵיפֹה הַכֶּתֶר שֶׁלִּי?!",
+  "[excited] יוֹם שְׁלוֹשִׁים בַּמַּמְלָכָה... וּמִישֶׁהוּ גָּנַב לִי אֶת הַכֶּתֶר!",
+  "[excited] אֶתְמוֹל Orr בִּקֵּשׁ מִגְדַּל שָׁעוֹן, כְּמוֹ בְּלוֹנְדוֹן...",
+  "[excited] אָז בָּנִינוּ אֶת מִגְדַּל הַשָּׁעוֹן שֶׁל הַמַּמְלָכָה!",
+  "[excited] וּבְדִיּוּק בַּחֲצוֹת, כְּשֶׁהַשָּׁעוֹן צִלְצֵל שְׁתֵּים עֶשְׂרֵה...",
+  "[excited] הַכֶּתֶר שֶׁלִּי, נֶעֱלַם!",
+  "[excited] הַגַּנָּב הִשְׁאִיר אַחֲרָיו רַק דָּבָר אֶחָד...",
+  "[excited] נוֹצָה צִבְעוֹנִית אַחַת!",
+  "[excited] אָז מִי הַגַּנָּב?",
+  "[excited] מִי שֶׁיְּנַחֵשׁ נָכוֹן, יְקַבֵּל מִמֶּנִּי מִשְׁאָלָה!",
+  "[excited] תַּגִּיבוּ: מִי לְדַעְתְּכֶם גָּנַב אֶת הַכֶּתֶר?",
+  "[excited] וּמָה נִבְנֶה מָחָר, כְּדֵי לִתְפֹּס אוֹתוֹ?",
+  "[excited] תַּעַקְבוּ, כְּדֵי לֹא לְפַסְפֵס אֶת הַפֶּרֶק הַבָּא!"
+ ],
+ "top": 330,
+ "mix": "day30.mix.mp3",
+ "say": {
+  "Orr": "אור"
+ },
+ "night": [
+  {
+   "line": 0,
+   "until": 2
+  },
+  {
+   "line": 4,
+   "until": 7
+  }
+ ],
+ "states": [
+  {
+   "key": "castle",
+   "kind": "stolen",
+   "line": 0,
+   "dt": 0.45,
+   "dur": 0.05,
+   "from": 0,
+   "to": 1
+  }
+ ],
+ "rise": {
+  "key": "clock-tower",
+  "line": 3,
+  "dt": 0.6,
+  "dur": 1.6
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    0,
+    26,
+    24
+   ],
+   "dist": 34,
+   "yaw": 0,
+   "pitch": 8,
+   "orbit": 0,
+   "ease": 0.01
+  },
+  {
+   "line": 0,
+   "dt": 0.9,
+   "target": [
+    0,
+    24,
+    24
+   ],
+   "dist": 44,
+   "yaw": -25,
+   "pitch": 20,
+   "orbit": -6,
+   "ease": 0.6
+  },
+  {
+   "line": 2,
+   "target": "castle",
+   "dist": 380,
+   "yaw": 25,
+   "pitch": 40,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 3,
+   "target": "landmark:clock-tower",
+   "dist": 120,
+   "yaw": -10,
+   "pitch": 16,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": [
+    -233.3,
+    31,
+    563.1
+   ],
+   "dist": 26,
+   "yaw": 157.5,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.01
+  },
+  {
+   "line": 5,
+   "target": [
+    0,
+    24,
+    24
+   ],
+   "dist": 36,
+   "yaw": 15,
+   "pitch": 8,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 6,
+   "target": [
+    2.6,
+    11.2,
+    27.6
+   ],
+   "dist": 20,
+   "yaw": 30,
+   "pitch": 40,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": [
+    2.6,
+    11.2,
+    27.6
+   ],
+   "dist": 8,
+   "yaw": 25,
+   "pitch": 42,
+   "orbit": 4,
+   "ease": 0.4
+  },
+  {
+   "line": 8,
+   "target": "statue",
+   "dist": 70,
+   "yaw": -20,
+   "pitch": 22,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 9,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 10,
+   "pitch": 38,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 10,
+   "target": "statue",
+   "dist": 60,
+   "yaw": 20,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 12,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "פרק 1"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.5,
+   "dur": 3.0,
+   "text": "גנב הכתר 👑 · יום 30"
+  },
+  {
+   "type": "comment",
+   "line": 2,
+   "dt": 0,
+   "dur": 0,
+   "untilLine": 3,
+   "u": "orthegoat",
+   "text": "תבנו תביג בן שבלונדון",
+   "likes": 5
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 0.8,
+   "dur": 1.4,
+   "text": "נבנה · מגדל השעון של הממלכה 🕰️"
+  },
+  {
+   "type": "idcard",
+   "line": 3,
+   "dt": 2.2,
+   "dur": 0.6,
+   "u": "orthegoat",
+   "honours": [
+    "אדריכל · מגדל השעון"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 7,
+   "dt": 0.2,
+   "dur": 2.0,
+   "text": "רמז 1 · נוצה צבעונית 🪶"
+  },
+  {
+   "type": "cta",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 2.7,
+   "text": "מי גנב? 🔍",
+   "sub": "תגיבו בתגובות"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 2.3,
+   "text": "מה נבנה?",
+   "sub": "כדי לתפוס את הגנב"
+  }
+ ],
+ "fx": [
+  {
+   "type": "night",
+   "line": 0,
+   "dt": 0,
+   "under": true,
+   "alpha": 0.5,
+   "untilLine": 2
+  },
+  {
+   "type": "night",
+   "line": 4,
+   "dt": 0,
+   "under": true,
+   "alpha": 0.5,
+   "untilLine": 7
+  },
+  {
+   "type": "flash",
+   "line": 0,
+   "dt": 0.45,
+   "dur": 0.35,
+   "color": "#c2412d",
+   "alpha": 0.7
+  },
+  {
+   "type": "vignette",
+   "line": 0,
+   "dt": 0.45,
+   "dur": 1.8,
+   "color": "#c2412d",
+   "speed": 9
+  },
+  {
+   "type": "shake",
+   "line": 0,
+   "dt": 0.45,
+   "dur": 0.6
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.6,
+   "dur": 1.5,
+   "text": "🚨",
+   "x": 540,
+   "y": 1080,
+   "size": 220,
+   "rot": 0
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 1.6,
+   "dur": 1.4,
+   "text": "🇬🇧",
+   "x": 760,
+   "y": 1080,
+   "size": 170,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.8,
+   "dur": 2.4,
+   "text": "🕛",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "flash",
+   "line": 5,
+   "dt": 0.0,
+   "dur": 0.3
+  },
+  {
+   "type": "shake",
+   "line": 5,
+   "dt": 0.0,
+   "dur": 0.5
+  },
+  {
+   "type": "punch",
+   "line": 5,
+   "dt": 0.0,
+   "dur": 0.6,
+   "zoom": 0.2
+  },
+  {
+   "type": "vignette",
+   "line": 6,
+   "dt": 0,
+   "dur": 2.5,
+   "speed": 3
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.4,
+   "dur": 1.6,
+   "text": "🔍",
+   "x": 760,
+   "y": 1080,
+   "size": 190,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 0.4,
+   "dur": 2.4,
+   "text": "🎁",
+   "x": 540,
+   "y": 1080,
+   "size": 230,
+   "rot": 0
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 0.3,
+   "dur": 2.7,
+   "text": "מי שינחש נכון יקבל משאלה מהמלך 🎁",
+   "y": 330,
+   "size": 76,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "תעקבו לפרק הבא 👑",
+   "y": 330,
+   "size": 90,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 0.1,
+   "dur": 1.3,
+   "text": "❓",
+   "x": 540,
+   "y": 1080,
+   "size": 230,
+   "rot": 0
+  }
+ ],
+ "music": {
+  "bpm": 108,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 2
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 4
+    },
+    "tense"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0.45
+  },
+  {
+   "name": "boom",
+   "line": 0,
+   "dt": 0.45
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": 0.6
+  },
+  {
+   "name": "tada",
+   "line": 3,
+   "dt": 2.2
+  },
+  {
+   "name": "ding",
+   "line": 4,
+   "dt": 0.8
+  },
+  {
+   "name": "ding",
+   "line": 4,
+   "dt": 1.4
+  },
+  {
+   "name": "ding",
+   "line": 4,
+   "dt": 2.0
+  },
+  {
+   "name": "scratch",
+   "line": 5
+  },
+  {
+   "name": "sting",
+   "line": 5,
+   "dt": 0.1
+  },
+  {
+   "name": "cricket",
+   "line": 6
+  },
+  {
+   "name": "sparkle",
+   "line": 7,
+   "dt": 0.2
+  },
+  {
+   "name": "kaching",
+   "line": 9,
+   "dt": 0.4
+  },
+  {
+   "name": "pop",
+   "line": 10
+  },
+  {
+   "name": "pop",
+   "line": 11
+  },
+  {
+   "name": "tada",
+   "line": 12
+  },
+  {
+   "name": "sting",
+   "line": 8,
+   "dt": 0.1
+  }
+ ],
+ "caption": "פרק 1 · גנב הכתר 👑 יום 30 בממלכה: בחצות, כשמגדל השעון החדש צלצל... הכתר של המלך נעלם! הגנב השאיר רק נוצה צבעונית אחת 🪶\nמי גנב את הכתר? תגיבו את הניחוש שלכם, ומי שינחש נכון יקבל משאלה מהמלך 🎁 תעקבו כדי לא לפספס את הפרק הבא\n#ממלכה #משפחתספיר #גנבהכתר #תעלומה",
+ "firstComment": "🔍 החקירה התחילה! מי לדעתכם גנב את הכתר? ומה נבנה מחר כדי לתפוס אותו? התגובה עם הכי הרבה לייקים נבנית 👑",
+ "notes": "Day 30, season 1 episode 1 (גנב הכתר). Build: @orthegoat 'תבנו תביג בן שבלונדון' (5 likes, top comment on day 29's reel; a clock tower in the spirit of the London one, no brand). Skipped: @eilam.lev99 'a Hapoel bakery on the stadium' (1 like, runner up), @eilam.lev99 'graffiti on the Maccabi stadium that says only Hapoel' (1 like, a jab at another club's fans), @eilam.lev99 'a park with shows and events' (1 like, runner up). Gold key: alonkingw2013 (joined day 29, (29*7919)%count), shown in the 18:30 story, not in the reel (the episode is the story). Michael (12.11): no suspects list for now, the audience guesses with no base; line 8 was cut to 'אז מי הגנב?' (the suspects part of the voice removed).",
+ "replies": [
+  {
+   "id": "18210246139373902",
+   "text": "אור, מגדל השעון עומד! 🕰️ אבל בדיוק כשצלצל בחצות... קרה משהו. תראה בריל 👀"
+  },
+  {
+   "id": "18128160476479829",
+   "text": "מאפייה ליד האצטדיון 🥐 נכנסה לרשימה, תביא לייקים!"
+  },
+  {
+   "id": "18134330995864698",
+   "text": "פארק עם הופעות 🎤 יום 5 ואתה לא מוותר, אני אוהב את זה"
+  },
+  {
+   "id": "18129359735483351",
+   "text": "פארק עתידני 🚀 בממלכה זוכרים אותך, תאסוף לייקים!"
+  },
+  {
+   "id": "18130107064646093",
+   "text": "רוחות עם ראש משולש... 👻 בממלכה הכל אפשרי. תסתכל טוב בריל של היום"
+  }
+ ]
+}

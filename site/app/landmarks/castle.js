@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 // ארמון משפחת ספיר: the great palace on the hill in the middle of the kingdom (day 1), and in its front courtyard the
 // statue of King Michael, the king of the kingdom. Outer walls with eight towers and blue spires, a grand keep with three
 // roofs, a tall central tower crowned in gold, banners, a gate to the south (+z) with a wide stair, and the statue on a
@@ -17,7 +18,7 @@ function tower(p, x, z, r, h, roofH, banner = true) {
   if (banner) { p.box(x, h + 1.6 + roofH, z, .3, 4, .3, WOOD); p.box(x + 1.3, h + 3.4 + roofH, z, 2.6, 1.5, .12, BANNER); }
 }
 /** King Michael in stone and gold: the voxel figure, s times life size, facing +z */
-export function statue(p, x, z, y, s) {
+export function statue(p, x, z, y, s, crown = true) {
   const b = (w, h, d, c, dx, dy, dz) => p.box(x + dx * s, y + dy * s, z + dz * s, w * s, h * s, d * s, c);
   b(.84, 1.9, .84, BRONZE, -.5, 0, 0); b(.84, 1.9, .84, BRONZE, .5, 0, 0);                    // legs
   b(.9, .3, 1.15, DARK, -.5, 0, .12); b(.9, .3, 1.15, DARK, .5, 0, .12);                      // shoes
@@ -27,7 +28,7 @@ export function statue(p, x, z, y, s) {
   b(.22, 4.2, .22, BRONZE, 1.33, 2.4, 1.2); b(.7, .7, .7, GOLD, 1.33, 6.6, 1.2);              // the sceptre
   b(1.8, 1.7, 1.8, 0xe8c79a, 0, 4.05, 0); b(1.92, .55, 1.92, BRONZE, 0, 5.2, 0);              // head, hair
   b(1.86, .6, .32, BRONZE, 0, 3.95, .82); b(.32, .32, .1, 0x3a2a1a, -.45, 4.85, .92); b(.32, .32, .1, 0x3a2a1a, .45, 4.85, .92);  // beard, eyes
-  b(1.7, .45, 1.7, GOLD, 0, 5.75, 0); for (const [dx, dz] of [[-.65, -.65], [.65, -.65], [-.65, .65], [.65, .65], [0, .7]]) b(.36, .6, .36, GOLD, dx, 6.2, dz);  // the crown
+  if (crown) { b(1.7, .45, 1.7, GOLD, 0, 5.75, 0); for (const [dx, dz] of [[-.65, -.65], [.65, -.65], [-.65, .65], [.65, .65], [0, .7]]) b(.36, .6, .36, GOLD, dx, 6.2, dz); }  // the crown
 }
 export function drawCastle(p) {
   p.at(0, 0, 0, HILL);
@@ -62,11 +63,22 @@ export function drawCastle(p) {
   p.box(0, -.1, 22, 86, .25, 40, 0xe9e0cc);
   p.cyl(STATUE[0], 0, STATUE[1], 26, 1.2, DARK); p.cyl(STATUE[0], .1, STATUE[1], 23, 1.2, WATER);
   p.box(STATUE[0], 0, STATUE[1], 9, 7, 9, DARK); p.box(STATUE[0], 7, STATUE[1], 10, 1, 10, STONE);
-  statue(p, STATUE[0], STATUE[1], 8, 3);
+  statue(p, STATUE[0], STATUE[1], 8, 3, false);                                             // its crown is live (castleLive): it can be stolen
   for (const x of [-34, -24, 24, 34]) { p.box(x, 0, 16, 7, .6, 18, 0x86c766); p.tree(x, 10, 1.3); p.tree(x, 22, 1.1); }
 }
 export function castleLive(group) {
   group.add(sign('ארמון משפחת ספיר', { w: 30, h: 5, bg: '#13213b', fg: '#f2b632', border: '#f2b632', font: '400 {px}px Crown' }).at(0, HILL + 16.5, 46 + 4.2));
   group.add(sign('המלך מיכאל', { w: 8.6, h: 2, bg: '#e3d9c4', fg: '#13213b' }).at(STATUE[0], HILL + 3.4, STATUE[1] + 4.55));
+  // the statue's gold crown, live so it can be stolen (day 30, season 1: גנב הכתר). userData.stolen(k): 0 the crown is on his
+  // head, 1 it is gone and a single colourful feather lies on the pedestal (the first clue). kingdom.json states.castle.stolen
+  const S = 3, Y = HILL + 8, gold = new THREE.MeshLambertMaterial({ color: GOLD }), crown = new THREE.Group();
+  const cb = (w, h, d, dx, dy, dz) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w * S, h * S, d * S), gold); m.position.set(STATUE[0] + dx * S, Y + (dy + h / 2) * S, STATUE[1] + dz * S); crown.add(m); };
+  cb(1.7, .45, 1.7, 0, 5.75, 0); for (const [dx, dz] of [[-.65, -.65], [.65, -.65], [-.65, .65], [.65, .65], [0, .7]]) cb(.36, .6, .36, dx, 6.2, dz);
+  group.add(crown);
+  const feather = new THREE.Group(); feather.position.set(STATUE[0] + 2.6, HILL + 8.05, STATUE[1] + 3.6); feather.rotation.y = .5;
+  [[0xc8443a, 0], [0xe8b323, 1], [0x0f6f73, 2], [0x3b6fb6, 3], [0x7a4f9a, 4]].forEach(([c, k]) => { const m = new THREE.Mesh(new THREE.BoxGeometry(.5 - k * .05, .12, .55), new THREE.MeshLambertMaterial({ color: c })); m.position.set(k * .08, .06, k * .5); feather.add(m); });
+  { const q = new THREE.Mesh(new THREE.BoxGeometry(.08, .1, 3), new THREE.MeshLambertMaterial({ color: 0xf6eedd })); q.position.set(.15, .1, 1); feather.add(q); }
+  feather.visible = false; group.add(feather);
+  group.userData.stolen = k => { crown.visible = k < .5; feather.visible = k >= .5; };
 }
 export const CASTLE = { key: 'castle', name: 'ארמון משפחת ספיר', at: [0, 0], draw: drawCastle, live: castleLive, top: 74 };

@@ -52,6 +52,17 @@ function card(g, c, k, cx, y) {
       text(g, c.text ?? 'מה בונים מחר?', cx, y + 120, { font: `400 120px ${DISPLAY}`, color: GOLD, stroke: 24, drop: 10 });
       return 160 + pill(g, c.sub ?? 'תגיבו בתגובות', cx, y + 160, { fill: GOLD });
     }
+    case 'suspects': {                               // day 30 (season 1): the suspects as black silhouettes with a question mark, a dark file card
+      const list = c.list ?? [], H = 420; box(g, x, y, W, H, R, '#1d2436');
+      text(g, c.title ?? 'החשודים 🔍', cx, y + 92, { font: `400 74px ${DISPLAY}`, color: GOLD, stroke: 12, strokeColor: NAVY });
+      list.forEach((sp, i) => { const n = list.length, px = x + W - (i + .5) * W / n, py = y + 270, a = clamp((k.t - c.t0 - .25 - i * .35) / .3);
+        if (a <= 0) return; g.save(); g.globalAlpha = a; g.font = '150px "Noto Color Emoji", sans-serif'; g.textAlign = 'center'; g.direction = 'ltr';
+        g.filter = sp.clear ? 'none' : 'brightness(0)'; g.fillText(sp.e, px, py); g.filter = 'none';
+        text(g, sp.clear ? '✓' : '?', px + 70, py - 90, { font: `900 70px ${BODY}`, color: sp.clear ? '#7fd36a' : GOLD, stroke: 10, strokeColor: NAVY, dir: 'ltr' });
+        if (sp.name) text(g, sp.name, px, py + 80, { font: `800 38px ${BODY}`, color: '#ffffff' });
+        g.restore(); });
+      return H + 14;
+    }
     case 'counter': {
       const H = 400; box(g, x, y, W, H, R);
       text(g, 'מרשם התושבים', x + W - 44, y + 74, { font: `800 42px ${BODY}`, align: 'right' });
@@ -143,6 +154,7 @@ function effect(g, f, t) {
   if (a <= 0) return;
   g.save(); g.globalAlpha = a;
   switch (f.type) {
+    case 'night': g.globalAlpha = clamp(Math.min(age / .2, (f.t1 - t) / .3)) * (f.alpha ?? .5); g.fillStyle = f.color ?? '#0b1636'; g.fillRect(0, 0, 1080, 1920); break;   // day 30: a dark blue night over the frame (under the cards)
     case 'flash': g.globalAlpha = clamp(1 - age / life) * (f.alpha ?? .8); g.fillStyle = f.color ?? '#fff'; g.fillRect(0, 0, 1080, 1920); break;
     case 'vignette': { const p = .55 + .45 * Math.sin(age * (f.speed ?? 7)); const gr = g.createRadialGradient(540, 960, 380, 540, 960, 1150);
       gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, f.color ?? `rgba(200,20,20,${.55 * p + .2})`); g.fillStyle = gr; g.fillRect(0, 0, 1080, 1920); break; }
