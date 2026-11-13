@@ -1,0 +1,551 @@
+{
+ "day": 31,
+ "lines": [
+  "[excited] רֶגַע... הַנּוֹצָה הַזֹּאת, שֶׁל מִי הִיא?!",
+  "[excited] יוֹם שְׁלוֹשִׁים וְאַחַת בַּמַּמְלָכָה... וְהַחֲקִירָה נִמְשֶׁכֶת!",
+  "[excited] Orr בִּקֵּשׁ כֶּלֶא לַגַּנָּב... וְהַכֶּלֶא שֶׁלָּנוּ כְּבָר מְחַכֶּה לוֹ!",
+  "[excited] וְ-Eilam בִּקֵּשׁ תּוּכִּי... אָז בָּנִינוּ אֶת בֵּית הַתּוּכִּים שֶׁל הַמַּמְלָכָה!",
+  "[excited] אוּלַי הַנּוֹצָה נָפְלָה לְאֶחָד הַתּוּכִּים?",
+  "[excited] בָּדַקְנוּ אֶת כֻּלָּם... וּלְאַף אֶחָד מֵהֶם לֹא חֲסֵרָה נוֹצָה!",
+  "[excited] אָז הַנּוֹצָה, הִיא בִּכְלָל לֹא שֶׁל תּוּכִּי...",
+  "[excited] וְאָז, מָצָאנוּ עוֹד מַשֶּׁהוּ...",
+  "[excited] שֹׁבֶל שֶׁל פֵּרוּרֵי סֻכָּר צִבְעוֹנִיִּים... מֵהַפֶּסֶל, עַד דֶּלֶת הָאַרְמוֹן!",
+  "[excited] מִי מִסְתּוֹבֵב בַּלַּיְלָה עִם סֻכָּרִיּוֹת?",
+  "[excited] מִי שֶׁיְּנַחֵשׁ נָכוֹן, יְקַבֵּל מִמֶּנִּי מִשְׁאָלָה!",
+  "[excited] תַּגִּיבוּ: מִי לְדַעְתְּכֶם גָּנַב אֶת הַכֶּתֶר?",
+  "[excited] וּמָה נִבְנֶה מָחָר, כְּדֵי לִתְפֹּס אוֹתוֹ?",
+  "[excited] תַּעַקְבוּ, כְּדֵי לֹא לְפַסְפֵס אֶת הַפֶּרֶק הַבָּא!"
+ ],
+ "top": 330,
+ "mix": "day31.mix.mp3",
+ "say": {
+  "Orr": "אור",
+  "Eilam": "עילם"
+ },
+ "states": [
+  {
+   "key": "castle",
+   "kind": "crumbs",
+   "line": 7,
+   "dt": 0.6,
+   "dur": 3.2,
+   "from": 0,
+   "to": 1
+  }
+ ],
+ "rise": {
+  "key": "aviary",
+  "line": 3,
+  "dt": 2.2,
+  "dur": 1.6
+ },
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    2.6,
+    11.2,
+    27.6
+   ],
+   "dist": 10,
+   "yaw": 25,
+   "pitch": 50,
+   "orbit": 8,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    0,
+    24,
+    24
+   ],
+   "dist": 40,
+   "yaw": -15,
+   "pitch": 10,
+   "orbit": -5,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": "landmark:prison",
+   "dist": 85,
+   "yaw": 0,
+   "pitch": 18,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 3,
+   "target": "castle",
+   "dist": 380,
+   "yaw": -25,
+   "pitch": 40,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 3,
+   "dt": 2.0,
+   "target": "landmark:aviary",
+   "dist": 105,
+   "yaw": -10,
+   "pitch": 16,
+   "orbit": 6,
+   "ease": 0.5
+  },
+  {
+   "line": 4,
+   "target": [
+    -571.9,
+    8,
+    236.9
+   ],
+   "dist": 30,
+   "yaw": 140,
+   "pitch": 14,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": [
+    -571.9,
+    10,
+    236.9
+   ],
+   "dist": 19,
+   "yaw": 95,
+   "pitch": 8,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": [
+    2.6,
+    11.2,
+    27.6
+   ],
+   "dist": 7,
+   "yaw": -20,
+   "pitch": 40,
+   "orbit": -6,
+   "ease": 0.01
+  },
+  {
+   "line": 7,
+   "target": [
+    0,
+    24,
+    24
+   ],
+   "dist": 42,
+   "yaw": 25,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 7,
+   "dt": 1.2,
+   "target": [
+    -9,
+    3.3,
+    12
+   ],
+   "dist": 28,
+   "yaw": -50,
+   "pitch": 45,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 8,
+   "dt": 1.5,
+   "target": [
+    -2,
+    3.5,
+    6
+   ],
+   "dist": 24,
+   "yaw": -25,
+   "pitch": 32,
+   "orbit": 3,
+   "ease": 1.2
+  },
+  {
+   "line": 9,
+   "target": [
+    0,
+    24,
+    24
+   ],
+   "dist": 40,
+   "yaw": 10,
+   "pitch": 12,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 10,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 10,
+   "pitch": 38,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 11,
+   "target": "statue",
+   "dist": 60,
+   "yaw": 20,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 13,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -10,
+   "pitch": 40,
+   "orbit": 6,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "פרק 2"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.5,
+   "dur": 3.0,
+   "text": "גנב הכתר 👑 · יום 31"
+  },
+  {
+   "type": "comment",
+   "line": 2,
+   "dt": 0,
+   "dur": 2.2,
+   "u": "orthegoat",
+   "text": "תבנו בית כלא לגנב שיכנס לכלא",
+   "likes": 8
+  },
+  {
+   "type": "label",
+   "line": 2,
+   "dt": 2.3,
+   "dur": 1.4,
+   "text": "הכלא מחכה לגנב 🔒"
+  },
+  {
+   "type": "comment",
+   "line": 3,
+   "dt": 0,
+   "dur": 2.0,
+   "u": "eilam.lev99",
+   "text": "תוכי",
+   "likes": 1
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 2.4,
+   "dur": 1.8,
+   "text": "נבנה · בית התוכים של הממלכה 🦜"
+  },
+  {
+   "type": "label",
+   "line": 6,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "הנוצה לא של תוכי ❌"
+  },
+  {
+   "type": "label",
+   "line": 8,
+   "dt": 0.3,
+   "dur": 4.2,
+   "text": "רמז 2 · שובל פירורי סוכר 🍬"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "מי גנב? 🔍",
+   "sub": "תגיבו בתגובות"
+  },
+  {
+   "type": "cta",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.2,
+   "text": "מה נבנה?",
+   "sub": "כדי לתפוס את הגנב"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0.0,
+   "dur": 0.6,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.6,
+   "text": "🔍",
+   "x": 760,
+   "y": 1080,
+   "size": 200,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 2.3,
+   "dur": 1.3,
+   "text": "🔒",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.6,
+   "dur": 1.6,
+   "text": "🦜",
+   "x": 760,
+   "y": 1080,
+   "size": 180,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 1.2,
+   "dur": 2.0,
+   "text": "✅",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "shake",
+   "line": 6,
+   "dt": 0.0,
+   "dur": 0.4
+  },
+  {
+   "type": "vignette",
+   "line": 7,
+   "dt": 0,
+   "dur": 2.4,
+   "speed": 3
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 1.0,
+   "dur": 2.4,
+   "text": "🍬",
+   "x": 760,
+   "y": 1080,
+   "size": 180,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 0.2,
+   "dur": 1.8,
+   "text": "❓",
+   "x": 540,
+   "y": 1080,
+   "size": 220,
+   "rot": 0
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 0.4,
+   "dur": 2.4,
+   "text": "🎁",
+   "x": 540,
+   "y": 1080,
+   "size": 230,
+   "rot": 0
+  },
+  {
+   "type": "banner",
+   "line": 10,
+   "dt": 0.3,
+   "dur": 2.5,
+   "text": "מי שינחש נכון יקבל משאלה מהמלך 🎁",
+   "y": 330,
+   "size": 76,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "banner",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "תעקבו לפרק הבא 👑",
+   "y": 330,
+   "size": 90,
+   "band": "#e8b323",
+   "color": "#13213b"
+  }
+ ],
+ "music": {
+  "bpm": 108,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 2
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 6
+    },
+    "tense"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2
+  },
+  {
+   "name": "boom",
+   "line": 2,
+   "dt": 2.3
+  },
+  {
+   "name": "pop",
+   "line": 3
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": 2.2
+  },
+  {
+   "name": "tada",
+   "line": 3,
+   "dt": 3.8
+  },
+  {
+   "name": "whoosh",
+   "line": 4
+  },
+  {
+   "name": "boing",
+   "line": 4,
+   "dt": 0.6
+  },
+  {
+   "name": "ding",
+   "line": 5,
+   "dt": 1.2
+  },
+  {
+   "name": "scratch",
+   "line": 6
+  },
+  {
+   "name": "cricket",
+   "line": 7
+  },
+  {
+   "name": "sparkle",
+   "line": 8,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 8,
+   "dt": 1.0
+  },
+  {
+   "name": "sting",
+   "line": 9,
+   "dt": 0.2
+  },
+  {
+   "name": "kaching",
+   "line": 10,
+   "dt": 0.4
+  },
+  {
+   "name": "pop",
+   "line": 11
+  },
+  {
+   "name": "pop",
+   "line": 12
+  },
+  {
+   "name": "tada",
+   "line": 13
+  }
+ ],
+ "caption": "פרק 2 · גנב הכתר 👑 יום 31 בממלכה: הכלא מחכה לגנב, בית התוכים נבנה... והנוצה בכלל לא של תוכי! ואז מצאנו שובל של פירורי סוכר צבעוניים עד דלת הארמון 🍬\nמי גנב את הכתר? תגיבו את הניחוש שלכם, ומי שינחש נכון יקבל משאלה מהמלך 🎁 תעקבו לפרק הבא\n#ממלכה #משפחתספיר #גנבהכתר #תעלומה",
+ "firstComment": "🔍 רמז 2: פירורי סוכר צבעוניים מהפסל ועד דלת הארמון. מי גנב את הכתר? ומה נבנה מחר כדי לתפוס אותו? 👑",
+ "notes": "Day 31, season 1 episode 2. Top comment @orthegoat 'תבנו בית כלא לגנב שיכנס לכלא' (8 likes): the prison was built on day 10, so it appears in the plot ('the prison is waiting for the thief') and is not built again. Skipped: @clil70751 'בית בושת' (4 likes, not for children; the auto reply answered it with 'אהבתי', BAD now catches it), @eilam.lev99 'graffiti on the Maccabi stadium' (1 like, a jab at a club). Built: @eilam.lev99 'תוכי' (1 like) as בית התוכים. Gold key: dan_haimovich_ (clil70751, the only one who joined on day 30, is not a citizen; drawn among citizens without a key).",
+ "replies": [
+  {
+   "id": "17994742107058757",
+   "text": "אור, הכלא כבר מוכן ומחכה לגנב 🔒 עכשיו רק צריך לתפוס אותו. תראה בריל!"
+  },
+  {
+   "id": "17997037176111844",
+   "text": "עילם, בית התוכים נבנה! 🦜 והמלך בדק לכל תוכי את הנוצות..."
+  },
+  {
+   "id": "17910075750605825",
+   "text": "אתה?! 👑 המלך מסתכל עליך בעיניים חשדניות... 🔍"
+  },
+  {
+   "id": "18122320840968838",
+   "text": "יום 6 ואתה לא מוותר 🚀 פארק עתידני, תאסוף לייקים!"
+  },
+  {
+   "id": "18128863574513504",
+   "text": "רוחות עם ראש משולש 👻 בלילה בממלכה קורים דברים מוזרים..."
+  }
+ ]
+}

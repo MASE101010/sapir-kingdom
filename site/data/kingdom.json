@@ -1,6 +1,6 @@
 {
   "note": "The kingdom's state. Written by the daily run (CLAUDE.md). day: today's day number; landmarks: what stands, on which lot, built on which day, at whose asking; history: how many residents stood at the end of each day; upgraded: Instagram name -> extra storeys; visit: whose door Michael walks to today; status: one line about what Michael is doing.",
-  "day": 30,
+  "day": 31,
   "landmarks": [
     {
       "key": "castle",
@@ -243,6 +243,14 @@
       "by": [
         "orthegoat"
       ]
+    },
+    {
+      "key": "aviary",
+      "lot": 30,
+      "day": 31,
+      "by": [
+        "eilam.lev99"
+      ]
     }
   ],
   "history": [
@@ -274,16 +282,17 @@
     423,
     426,
     426,
-    427
+    427,
+    428
   ],
   "upgraded": {},
-  "status": "מישהו גנב את הכתר של המלך! 👑 החקירה התחילה, ומגדל השעון החדש שומר על הממלכה 🕰️",
+  "status": "החקירה נמשכת 🔍 בית התוכים נבנה, והנוצה בכלל לא של תוכי... ושובל של פירורי סוכר מוביל לארמון 🍬",
   "dm": false,
   "updated": "2026-11-13T17:03:02.124Z",
   "news": {
-    "day": 30,
-    "line": "נבנה מגדל השעון של הממלכה, ובאותו לילה... הכתר של המלך נעלם! 👑🔍",
-    "landmark": "clock-tower"
+    "day": 31,
+    "line": "נבנה בית התוכים של הממלכה! המלך בדק את כל התוכים... והנוצה בכלל לא שלהם 🦜🔍",
+    "landmark": "aviary"
   },
   "reels": {
     "1": "18129295480834389",
@@ -425,7 +434,8 @@
     "day26_eve": 510,
     "day27_eve": 514,
     "day28_eve": 515,
-    "day29_eve": 515
+    "day29_eve": 515,
+    "day30_eve": 515
   },
   "states": {
     "prison": {
@@ -441,7 +451,8 @@
       "president_bibkovich": 1
     },
     "castle": {
-      "stolen": 1
+      "stolen": 1,
+      "crumbs": 1
     }
   },
   "president": "bibkovich"
