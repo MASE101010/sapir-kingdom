@@ -634,5 +634,25 @@
   "image": "stories/day30-3.jpg",
   "after": "reel:30",
   "about": "18:30 רמז שרק בסטורי: השער היה נעול"
+ },
+ {
+  "id": "day31-1",
+  "at": "2026-11-14T08:00:00Z",
+  "image": "stories/day31-1.jpg",
+  "about": "10:00 טיזר: הנוצה, של מי היא?"
+ },
+ {
+  "id": "day31-2",
+  "at": "2026-11-14T12:45:00Z",
+  "image": "stories/day31-2.jpg",
+  "after": "reel:31",
+  "about": "מי גנב? פירורי סוכר + מפתח הזהב dan_haimovich_"
+ },
+ {
+  "id": "day31-3",
+  "at": "2026-11-14T16:30:00Z",
+  "image": "stories/day31-3.jpg",
+  "after": "reel:31",
+  "about": "18:30 רמז שרק בסטורי: מישהו צחק בחושך"
  }
 ]
