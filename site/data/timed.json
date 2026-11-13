@@ -142,5 +142,12 @@
   "trial": true,
   "about": "14:00 Israel (Friday), episode 1 of גנב הכתר, approved by Michael on 13.11 00:39",
   "done": "2026-11-13T12:02:32.560Z"
+ },
+ {
+  "day": 31,
+  "at": "2026-11-14T12:00:00Z",
+  "branch": "day31",
+  "trial": true,
+  "about": "14:00 Israel (Saturday), episode 2 of גנב הכתר, approved by Michael on 13.11 22:02"
  }
 ]
