@@ -89,5 +89,16 @@ export function castleLive(group) {
     m.rotation.y = k; crumbs.add(m); }
   crumbs.visible = false; group.add(crumbs);
   group.userData.crumbs = k => { crumbs.visible = k > .02; crumbs.children.forEach((m, i) => { m.visible = i / crumbs.children.length < k; }); };
+  // day 32 (episode 3): prints on the keep's front wall, left of the door: foot, hand, foot, hand round two wheels, as if
+  // someone had cartwheeled up the wall. userData.prints(k): k 0..1 shows them in order. kingdom.json states.castle.prints
+  const prints = new THREE.Group(), pm = new THREE.MeshLambertMaterial({ color: 0x3d2414 });
+  const pb = (g, w, h, x, y, r = 0) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, .12), pm); m.position.set(x, y, 0); m.rotation.z = r; g.add(m); };
+  for (const [cx, cy] of [[-25, HILL + 3.4], [-15.5, HILL + 3.4]]) for (let k = 0; k < 8; k++) {
+    const a = k / 8 * Math.PI * 2, g = new THREE.Group();
+    if (k % 2) { pb(g, .5, .55, 0, 0); for (let f = 0; f < 4; f++) pb(g, .1, .32, -.18 + f * .12, .42); pb(g, .1, .26, .32, .08, -.7); }   // a hand
+    else { pb(g, .38, .8, 0, 0); for (let f = 0; f < 5; f++) pb(g, .1, .1, -.16 + f * .08, .48 - Math.abs(f - 1) * .03); }               // a foot
+    g.scale.setScalar(1.5); g.position.set(cx + Math.sin(a) * 2.9, cy - Math.cos(a) * 2.9, 1.12); g.rotation.z = -a + (k % 2 ? Math.PI : 0); prints.add(g); }
+  prints.visible = false; group.add(prints);
+  group.userData.prints = k => { prints.visible = k > .02; prints.children.forEach((m, i) => { m.visible = i / prints.children.length < k; }); };
 }
 export const CASTLE = { key: 'castle', name: 'ארמון משפחת ספיר', at: [0, 0], draw: drawCastle, live: castleLive, top: 74 };

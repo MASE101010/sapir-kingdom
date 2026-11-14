@@ -1,0 +1,579 @@
+{
+ "day": 32,
+ "lines": [
+  "[excited] סִגְרוּ אֶת נְמַל הַתְּעוּפָה! אַף אֶחָד לֹא יוֹצֵא!",
+  "[excited] יוֹם שְׁלוֹשִׁים וּשְׁתַּיִם בַּמַּמְלָכָה... וְהַגַּנָּב עֲדַיִן חָפְשִׁי!",
+  "[excited] Orr בִּקֵּשׁ שְׂדֵה תְּעוּפָה... אָז סָגַרְנוּ אֶת שֶׁלָּנוּ, שֶׁהַגַּנָּב לֹא יִבְרַח!",
+  "[excited] וְ-Itamar בִּקֵּשׁ בַּיִת שֶׁל מְכַשֵּׁפָה, עָשׂוּי מִמַּמְתַּקִּים...",
+  "[excited] אָז בָּנִינוּ אֶת בֵּית הַמַּמְתַּקִּים שֶׁל הַמַּמְלָכָה!",
+  "[excited] מִי שֶׁמְּפַזֵּר פֵּרוּרֵי סֻכָּר... לֹא יַעֲמֹד בַּפִּתּוּי!",
+  "[excited] וּמֵעַל הַדֶּלֶת, מְחַכָּה לוֹ רֶשֶׁת גְּדוֹלָה...",
+  "[excited] וְאָז, עַל קִיר הָאַרְמוֹן... מָצָאנוּ טְבִיעוֹת!",
+  "[excited] רֶגֶל, יָד, רֶגֶל, יָד... בְּעִגּוּל!",
+  "[excited] מִי מִסְתּוֹבֵב כָּכָה עַל קִירוֹת?!",
+  "[excited] הַלַּיְלָה נִרְאֶה, מִי יָבוֹא לְבֵית הַמַּמְתַּקִּים...",
+  "[excited] מִי שֶׁיְּנַחֵשׁ נָכוֹן, יְקַבֵּל מִמֶּנִּי מִשְׁאָלָה!",
+  "[excited] תַּגִּיבוּ: מִי לְדַעְתְּכֶם גָּנַב אֶת הַכֶּתֶר?",
+  "[excited] וּמָה נִבְנֶה מָחָר, כְּדֵי לִתְפֹּס אוֹתוֹ?",
+  "[excited] תַּעַקְבוּ, כְּדֵי לֹא לְפַסְפֵס אֶת הַפֶּרֶק הַבָּא!"
+ ],
+ "top": 330,
+ "mix": "day32.mix.mp3",
+ "say": {
+  "Orr": "אור",
+  "Itamar": "איתמר"
+ },
+ "states": [
+  {
+   "key": "castle",
+   "kind": "prints",
+   "line": 7,
+   "dt": 0.8,
+   "dur": 3.0,
+   "from": 0,
+   "to": 1
+  }
+ ],
+ "rise": {
+  "key": "candy-house",
+  "line": 4,
+  "dt": 0.0,
+  "dur": 1.8
+ },
+ "night": [
+  {
+   "line": 10,
+   "until": 11
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:natsar",
+   "dist": 150,
+   "yaw": 25,
+   "pitch": 22,
+   "orbit": 10,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    0,
+    24,
+    24
+   ],
+   "dist": 40,
+   "yaw": -15,
+   "pitch": 10,
+   "orbit": -5,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": "landmark:natsar",
+   "dist": 110,
+   "yaw": -20,
+   "pitch": 18,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 3,
+   "target": "castle",
+   "dist": 380,
+   "yaw": -25,
+   "pitch": 40,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 4,
+   "target": "landmark:candy-house",
+   "dist": 95,
+   "yaw": -10,
+   "pitch": 16,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": [
+    -565.3,
+    6,
+    -234.2
+   ],
+   "dist": 30,
+   "yaw": 80,
+   "pitch": 12,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": [
+    -564.3,
+    8.4,
+    -233.0
+   ],
+   "dist": 26,
+   "yaw": 80,
+   "pitch": 8,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": [
+    0,
+    24,
+    24
+   ],
+   "dist": 42,
+   "yaw": 25,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 7,
+   "dt": 1.0,
+   "target": [
+    -20.2,
+    6.4,
+    1.1
+   ],
+   "dist": 40,
+   "yaw": 10,
+   "pitch": 8,
+   "orbit": 2,
+   "ease": 0.8
+  },
+  {
+   "line": 8,
+   "target": [
+    -20.2,
+    6.4,
+    1.1
+   ],
+   "dist": 26,
+   "yaw": 0,
+   "pitch": 3,
+   "orbit": 2,
+   "ease": 0.8
+  },
+  {
+   "line": 9,
+   "target": [
+    -15.5,
+    6.4,
+    1.1
+   ],
+   "dist": 17,
+   "yaw": -12,
+   "pitch": 3,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "target": "landmark:candy-house",
+   "dist": 70,
+   "yaw": 30,
+   "pitch": 12,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 11,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 10,
+   "pitch": 38,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 12,
+   "target": "statue",
+   "dist": 60,
+   "yaw": 20,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 14,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -10,
+   "pitch": 30,
+   "orbit": 5,
+   "ease": 0.01
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "פרק 3"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.5,
+   "dur": 3.0,
+   "text": "גנב הכתר 👑 · יום 32"
+  },
+  {
+   "type": "comment",
+   "line": 2,
+   "dt": 0,
+   "dur": 2.2,
+   "u": "orthegoat",
+   "text": "תבנו נתב\"ג",
+   "likes": 3
+  },
+  {
+   "type": "label",
+   "line": 2,
+   "dt": 2.3,
+   "dur": 1.6,
+   "text": "נמל התעופה נסגר ⛔"
+  },
+  {
+   "type": "comment",
+   "line": 3,
+   "dt": 0,
+   "dur": 2.6,
+   "u": "itamarsarusi",
+   "text": "את הבית של המכשפה של אמי ותמי",
+   "likes": 1
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dt": 0.3,
+   "dur": 2.4,
+   "text": "נבנה · בית הממתקים של הממלכה 🍭"
+  },
+  {
+   "type": "label",
+   "line": 6,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "מלכודת 🕸️"
+  },
+  {
+   "type": "label",
+   "line": 8,
+   "dt": 0.2,
+   "dur": 4.2,
+   "text": "רמז 3 · טביעות על הקיר"
+  },
+  {
+   "type": "cta",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "מי גנב? 🔍",
+   "sub": "תגיבו בתגובות"
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 2.2,
+   "text": "מה נבנה?",
+   "sub": "כדי לתפוס את הגנב"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0,
+   "dur": 0.6,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "⛔",
+   "x": 760,
+   "y": 1080,
+   "size": 200,
+   "rot": 8
+  },
+  {
+   "type": "shake",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 0.4
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 2.3,
+   "dur": 1.4,
+   "text": "✈️",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 1.2,
+   "dur": 2.0,
+   "text": "🍭",
+   "x": 760,
+   "y": 1080,
+   "size": 190,
+   "rot": 8
+  },
+  {
+   "type": "confetti",
+   "line": 4,
+   "dt": 1.4,
+   "dur": 1.8
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.6,
+   "dur": 1.8,
+   "text": "🍬",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "vignette",
+   "line": 7,
+   "dt": 0,
+   "dur": 2.6,
+   "speed": 3
+  },
+  {
+   "type": "shake",
+   "line": 7,
+   "dt": 1.8,
+   "dur": 0.4
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 0.2,
+   "dur": 1.8,
+   "text": "❓",
+   "x": 540,
+   "y": 1080,
+   "size": 220,
+   "rot": 0
+  },
+  {
+   "type": "night",
+   "line": 10,
+   "dt": 0,
+   "under": true,
+   "alpha": 0.5,
+   "untilLine": 11
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 0.8,
+   "dur": 1.8,
+   "text": "👀",
+   "x": 760,
+   "y": 1080,
+   "size": 200,
+   "rot": 6
+  },
+  {
+   "type": "sticker",
+   "line": 11,
+   "dt": 0.4,
+   "dur": 2.4,
+   "text": "🎁",
+   "x": 540,
+   "y": 1080,
+   "size": 230,
+   "rot": 0
+  },
+  {
+   "type": "banner",
+   "line": 11,
+   "dt": 0.3,
+   "dur": 2.5,
+   "text": "מי שינחש נכון יקבל משאלה מהמלך 🎁",
+   "y": 330,
+   "size": 76,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "banner",
+   "line": 14,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "תעקבו לפרק הבא 👑",
+   "y": 330,
+   "size": 90,
+   "band": "#e8b323",
+   "color": "#13213b"
+  }
+ ],
+ "music": {
+  "bpm": 108,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 3
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 7
+    },
+    "tense"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "boom",
+   "line": 0
+  },
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2
+  },
+  {
+   "name": "scratch",
+   "line": 2,
+   "dt": 2.3
+  },
+  {
+   "name": "pop",
+   "line": 3
+  },
+  {
+   "name": "whoosh",
+   "line": 4
+  },
+  {
+   "name": "tada",
+   "line": 4,
+   "dt": 1.4
+  },
+  {
+   "name": "sparkle",
+   "line": 5,
+   "dt": 0.6
+  },
+  {
+   "name": "boing",
+   "line": 6,
+   "dt": 0.3
+  },
+  {
+   "name": "cricket",
+   "line": 7
+  },
+  {
+   "name": "sting",
+   "line": 7,
+   "dt": 1.8
+  },
+  {
+   "name": "pop",
+   "line": 8,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 8,
+   "dt": 0.9
+  },
+  {
+   "name": "pop",
+   "line": 8,
+   "dt": 1.6
+  },
+  {
+   "name": "pop",
+   "line": 8,
+   "dt": 2.3
+  },
+  {
+   "name": "sting",
+   "line": 9,
+   "dt": 0.2
+  },
+  {
+   "name": "cricket",
+   "line": 10
+  },
+  {
+   "name": "kaching",
+   "line": 11,
+   "dt": 0.4
+  },
+  {
+   "name": "pop",
+   "line": 12
+  },
+  {
+   "name": "pop",
+   "line": 13
+  },
+  {
+   "name": "tada",
+   "line": 14
+  }
+ ],
+ "caption": "פרק 3 · גנב הכתר 👑 יום 32 בממלכה: סגרנו את נמל התעופה, בנינו בית ממתקים כמלכודת מתוקה... ועל קיר הארמון מצאנו טביעות מוזרות: רגל, יד, רגל, יד, בעיגול 🔍\nמי גנב את הכתר? תגיבו את הניחוש שלכם, ומי שינחש נכון יקבל משאלה מהמלך 🎁 תעקבו לפרק הבא\n#ממלכה #משפחתספיר #גנבהכתר #תעלומה",
+ "firstComment": "🔍 רמז 3: טביעות על קיר הארמון, רגל, יד, רגל, יד, בעיגול. מי גנב את הכתר? ומה נבנה מחר כדי לתפוס אותו? 👑",
+ "notes": "Day 32, season 1 episode 3. Top comment @orthegoat 'תבנו נתב\"ג' (3 likes): the airport (natsar) stands since day 9, so it is in the plot (closed so the thief cannot fly away) and not built again. Built: @itamarsarusi 'את הבית של המכשפה של אמי ותמי' (1 like, the earliest qualifying 1-like) as בית הממתקים, a generic gingerbread house with no names from the book. Skipped: @shirshnaider 'פסל של התינוק של במבה' (1 like, a brand), @orthegoat 'קבוצת ביתר אור' (1 like, a new club, not a place), @eilam.lev99 graffiti 'יאללה הפועל' on the Maccabi stadium (1 like, a jab at a club), @gefen.feiler Bamba park (a brand), 'בית בושת' (not for children). Gold key: gefen.feiler (the only citizen who joined on day 31).",
+ "replies": [
+  {
+   "id": "18187193425425826",
+   "text": "אור, סגרנו את נמל התעופה! ✈️⛔ הגנב לא יוצא מהממלכה. תראה בריל!"
+  },
+  {
+   "id": "18352019896255947",
+   "text": "איתמר, בית הממתקים נבנה! 🍭 ואתה האדריכל. עכשיו נראה מי יבוא לנשנש בלילה..."
+  },
+  {
+   "id": "18076966661746526",
+   "text": "פסל של תינוק חמוד? 😄 אולי מחר, בלי שמות של חטיפים 😉"
+  },
+  {
+   "id": "18018972500749605",
+   "text": "קבוצה חדשה?! ⚽ המלך שוקל... בינתיים יש מקום ביציע"
+  }
+ ]
+}
