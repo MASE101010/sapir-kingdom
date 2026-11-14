@@ -80,5 +80,14 @@ export function castleLive(group) {
   { const q = new THREE.Mesh(new THREE.BoxGeometry(.08, .1, 3), new THREE.MeshLambertMaterial({ color: 0xf6eedd })); q.position.set(.15, .1, 1); feather.add(q); }
   feather.visible = false; group.add(feather);
   group.userData.stolen = k => { crown.visible = k < .5; feather.visible = k >= .5; };
+  // day 31 (episode 2): a trail of coloured sugar crumbs from the pedestal toward the palace. userData.crumbs(k): k 0..1 shows it
+  const crumbs = new THREE.Group(), cc = [0xf3a6b8, 0xe8b323, 0x7fd36a, 0x4fc3e8, 0xf38a7a, 0xb57ad6, 0xffffff];
+  for (let k = 0; k < 60; k++) { const q = k / 60, m = new THREE.Mesh(new THREE.BoxGeometry(.32, .2, .32), new THREE.MeshLambertMaterial({ color: cc[k % cc.length] }));
+    const jx = ((k * 37) % 10) / 12 - .4, jz = ((k * 53) % 10) / 12 - .4;
+    if (k < 8) m.position.set(STATUE[0] - 2.8 - k * .25 + jx * .5, HILL + 8.1, STATUE[1] + 2.4 + k * .3 + jz * .5);           // on the pedestal, by the feather
+    else { const u = (k - 8) / 52; m.position.set(STATUE[0] - 14.5 + 14.5 * u * u + jx, HILL + .25, STATUE[1] - 2 - 19 * u + jz); }   // round the pool to the palace door
+    m.rotation.y = k; crumbs.add(m); }
+  crumbs.visible = false; group.add(crumbs);
+  group.userData.crumbs = k => { crumbs.visible = k > .02; crumbs.children.forEach((m, i) => { m.visible = i / crumbs.children.length < k; }); };
 }
 export const CASTLE = { key: 'castle', name: 'ארמון משפחת ספיר', at: [0, 0], draw: drawCastle, live: castleLive, top: 74 };
