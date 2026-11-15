@@ -1,0 +1,51 @@
+{
+ "day": 1108,
+ "lines": [
+  "[pause]"
+ ],
+ "top": 330,
+ "duration": 2,
+ "shots": [
+  {
+   "line": 0,
+   "ease": 0.01,
+   "target": "landmark:candy-house",
+   "dist": 75,
+   "yaw": 15,
+   "pitch": 20
+  }
+ ],
+ "cards": [
+  {
+   "type": "note",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "title": "בוקר טוב בלשים 🔍",
+   "text": "מישהו הפעיל את המלכודת בלילה...\nמה מצאנו בבוקר? 😱",
+   "foot": "פרק 4 עולה היום ב-14:00 👀"
+  }
+ ],
+ "fx": [
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "text": "🕸️",
+   "x": 860,
+   "y": 1720,
+   "size": 155
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "text": "🍭",
+   "x": 210,
+   "y": 1720,
+   "size": 155
+  }
+ ]
+}
