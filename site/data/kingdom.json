@@ -1,6 +1,6 @@
 {
   "note": "The kingdom's state. Written by the daily run (CLAUDE.md). day: today's day number; landmarks: what stands, on which lot, built on which day, at whose asking; history: how many residents stood at the end of each day; upgraded: Instagram name -> extra storeys; visit: whose door Michael walks to today; status: one line about what Michael is doing.",
-  "day": 32,
+  "day": 33,
   "landmarks": [
     {
       "key": "castle",
@@ -259,6 +259,12 @@
       "by": [
         "itamarsarusi"
       ]
+    },
+    {
+      "key": "watch-tower",
+      "lot": 32,
+      "day": 33,
+      "by": []
     }
   ],
   "history": [
@@ -292,16 +298,17 @@
     426,
     427,
     428,
-    430
+    430,
+    431
   ],
   "upgraded": {},
-  "status": "פרק 3 של גנב הכתר 🍭 נבנה בית הממתקים, מלכודת מתוקה לגנב, ונמל התעופה נסגר. ועל קיר הארמון... טביעות מוזרות 🔍",
+  "status": "פרק 4 של גנב הכתר 🔭 הרשת של בית הממתקים נפלה, ריקה! המלך בנה מגדל תצפית ושומר הלילה בעצמו",
   "dm": false,
   "updated": "2026-11-15T19:18:39.744Z",
   "news": {
-    "day": 32,
-    "line": "נבנה בית הממתקים של הממלכה! מלכודת מתוקה למי שמשאיר פירורי סוכר 🍭🔍",
-    "landmark": "candy-house"
+    "day": 33,
+    "line": "נבנה מגדל התצפית של הממלכה! עם טלסקופ ענק ופנס שמאיר את הלילה 🔭",
+    "landmark": "watch-tower"
   },
   "reels": {
     "1": "18129295480834389",
@@ -449,7 +456,8 @@
     "day28_eve": 515,
     "day29_eve": 515,
     "day30_eve": 515,
-    "day31_eve": 515
+    "day31_eve": 515,
+    "day32_eve": 515
   },
   "states": {
     "prison": {
@@ -468,6 +476,9 @@
       "stolen": 1,
       "crumbs": 1,
       "prints": 1
+    },
+    "candy-house": {
+      "fallen": 1
     }
   },
   "president": "bibkovich"

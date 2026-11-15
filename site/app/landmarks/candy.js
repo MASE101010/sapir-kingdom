@@ -72,7 +72,24 @@ export function candyHouseLive(group) {
   const net = new THREE.Group(), m = new THREE.MeshLambertMaterial({ color: 0x8a6a3e });
   for (let k = 0; k < 9; k++) { const s = new THREE.Mesh(new THREE.CylinderGeometry(.75, .75, 2.2, 10), m); s.rotation.z = Math.PI / 2; s.position.set(-8 + k * 2, 0, 0); net.add(s); }
   net.position.set(0, WH - .6, FZ + 1.6); group.add(net);
-  group.userData.tick = t => { net.rotation.x = Math.sin(t * 1.3) * .05; };
+  // day 33 (episode 4): the trap went off in the night and caught nobody. The fallen net lies open on the path, the big
+  // bowl of candies by the door is empty, and a small striped ball lies by the door. userData.fallen(k), kingdom.json
+  // states['candy-house'].fallen
+  const mesh = (geo, c) => new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ color: c }));
+  const bowl = new THREE.Group(); bowl.add(mesh(new THREE.CylinderGeometry(1.5, 1, 1.2, 14), 0xffffff)); bowl.children[0].position.y = 1.4;
+  const stand = mesh(new THREE.CylinderGeometry(.25, .5, 1, 8), 0xf3a6b8); stand.position.y = .5; bowl.add(stand);
+  const sweets = new THREE.Group(); [0xf3a6b8, 0x8fdcc0, 0xf6d84a, 0xd8443a, 0xa77bd6, 0x7cc4ea].forEach((c, i) => { for (let j = 0; j < 3; j++) {
+    const b = mesh(new THREE.SphereGeometry(.42, 8, 6), c), a = (i * 3 + j) * 2.4; b.position.set(Math.sin(a) * (.3 + j * .35), 2.1 + (j === 0 ? .45 : 0), Math.cos(a) * (.3 + j * .35)); sweets.add(b); } });
+  bowl.add(sweets); bowl.position.set(-4.6, 0, FZ + 2.4); group.add(bowl);
+  const flat = new THREE.Group(), rope = new THREE.MeshLambertMaterial({ color: 0x8a6a3e });
+  for (let k = 0; k < 8; k++) { const a = mesh(new THREE.BoxGeometry(9, .14, .18), 0x8a6a3e), b = mesh(new THREE.BoxGeometry(.18, .14, 9), 0x8a6a3e);
+    a.material = rope; b.material = rope; a.position.set(0, 0, -4 + k * 1.15); b.position.set(-4 + k * 1.15, 0, 0); flat.add(a, b); }
+  flat.position.set(6.5, .42, 7.5); flat.rotation.y = .25; flat.visible = false; group.add(flat);
+  const ball = new THREE.Group(); [0xd8443a, 0xf6d84a, 0x13213b].forEach((c, i) => { const q = mesh(new THREE.SphereGeometry(.32, 12, 8, i * Math.PI * 2 / 3, Math.PI * 2 / 3), c); ball.add(q); });
+  ball.position.set(1.8, .52, FZ + 2.6); ball.visible = false; group.add(ball);
+  let fallen = 0;
+  group.userData.fallen = k => { fallen = k; net.visible = k < .5; flat.visible = k >= .5; ball.visible = k >= .5; sweets.visible = k < .5; };
+  group.userData.tick = t => { net.rotation.x = Math.sin(t * 1.3) * .05; ball.rotation.y = fallen ? .6 : 0; };
   group.userData.tick(0);
 }
 
