@@ -29,7 +29,8 @@
       "shalevhazan111",
       "hada.d2013",
       "alonkingw2013",
-      "dan_haimovich_"
+      "dan_haimovich_",
+      "gefen.feiler"
     ]
   },
   "built": {
@@ -221,6 +222,12 @@
         "eilam.lev99"
       ],
       "day": 31
+    },
+    "candy-house": {
+      "by": [
+        "itamarsarusi"
+      ],
+      "day": 32
     }
   }
 }
