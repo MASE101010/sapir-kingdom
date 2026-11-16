@@ -1,0 +1,514 @@
+{
+ "day": 33,
+ "lines": [
+  "[excited] הָרֶשֶׁת נָפְלָה!",
+  "[excited] יוֹם שְׁלוֹשִׁים וְשָׁלוֹשׁ בַּמַּמְלָכָה... וּמִישֶׁהוּ בָּא בַּלַּיְלָה!",
+  "[excited] הָרֶשֶׁת שֶׁל בֵּית הַמַּמְתַּקִּים נָפְלָה... וְהִיא רֵיקָה!",
+  "[excited] וּקְעָרַת הַסֻּכָּרִיּוֹת? נִגְמְרָה עַד הַסּוֹף!",
+  "[excited] וּלְיַד הַדֶּלֶת מָצָאנוּ... כַּדּוּר צִבְעוֹנִי קָטָן.",
+  "[excited] מִי מְשַׂחֵק בְּכַדּוּרִים בְּאֶמְצַע הַלַּיְלָה?!",
+  "[excited] אַף תְּגוּבָה לֹא בִּקְּשָׁה מָקוֹם, אָז הַפַּעַם אֲנִי בָּחַרְתִּי!",
+  "[excited] בָּנִינוּ אֶת מִגְדַּל הַתַּצְפִּית שֶׁל הַמַּמְלָכָה!",
+  "[excited] עִם טֶלֶסְקוֹפּ עֲנָקִי, שֶׁרוֹאֶה אֶת כָּל הַמַּמְלָכָה!",
+  "[excited] וּפָנָס חָזָק, שֶׁמֵּאִיר אֶת הַלַּיְלָה!",
+  "[excited] הַלַּיְלָה... אֲנִי בְּעַצְמִי שׁוֹמֵר.",
+  "[excited] רֶגַע... מָה זֶה זָז שָׁם, לְיַד הָאַרְמוֹן?!",
+  "[excited] מִי שֶׁיְּנַחֵשׁ נָכוֹן, יְקַבֵּל מִמֶּנִּי מִשְׁאָלָה!",
+  "[excited] תַּגִּיבוּ: מִי גָּנַב אֶת הַכֶּתֶר, וּמָה נִבְנֶה מָחָר?",
+  "[excited] תַּעַקְבוּ, כְּדֵי לֹא לְפַסְפֵס אֶת הַפֶּרֶק הַבָּא!"
+ ],
+ "top": 330,
+ "mix": "day33.mix.mp3",
+ "say": {},
+ "states": [
+  {
+   "key": "candy-house",
+   "kind": "fallen",
+   "line": 0,
+   "dt": -5,
+   "dur": 0.01,
+   "from": 1,
+   "to": 1
+  }
+ ],
+ "rise": {
+  "key": "watch-tower",
+  "line": 7,
+  "dt": 0.0,
+  "dur": 1.8
+ },
+ "night": [
+  {
+   "line": 10,
+   "until": 12
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    -558.8,
+    0.6,
+    -238.5
+   ],
+   "dist": 17,
+   "yaw": 70,
+   "pitch": 34,
+   "orbit": 10,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "landmark:candy-house",
+   "dist": 80,
+   "yaw": 10,
+   "pitch": 18,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": [
+    -558.8,
+    0.6,
+    -238.5
+   ],
+   "dist": 16,
+   "yaw": 50,
+   "pitch": 40,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": [
+    -564.9,
+    2.0,
+    -229.0
+   ],
+   "dist": 9,
+   "yaw": 55,
+   "pitch": 24,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": [
+    -562.2,
+    0.5,
+    -234.9
+   ],
+   "dist": 4.2,
+   "yaw": 80,
+   "pitch": 38,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": [
+    -562.2,
+    0.5,
+    -234.9
+   ],
+   "dist": 3.2,
+   "yaw": 105,
+   "pitch": 32,
+   "orbit": 8,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": "castle",
+   "dist": 380,
+   "yaw": -25,
+   "pitch": 40,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 7,
+   "target": "landmark:watch-tower",
+   "dist": 130,
+   "yaw": -15,
+   "pitch": 14,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": [
+    -234.3,
+    39.5,
+    -557.8
+   ],
+   "dist": 24,
+   "yaw": 62,
+   "pitch": 14,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": [
+    -228.0,
+    38.8,
+    -561.9
+   ],
+   "dist": 18,
+   "yaw": -12,
+   "pitch": 8,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "target": "landmark:watch-tower",
+   "dist": 110,
+   "yaw": 30,
+   "pitch": 8,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 11,
+   "target": [
+    0,
+    30,
+    0
+   ],
+   "dist": 120,
+   "yaw": 20,
+   "pitch": 14,
+   "orbit": 2,
+   "ease": 0.01
+  },
+  {
+   "line": 12,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 10,
+   "pitch": 38,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 13,
+   "target": "statue",
+   "dist": 60,
+   "yaw": 20,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 14,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -10,
+   "pitch": 30,
+   "orbit": 5,
+   "ease": 0.01
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "פרק 4"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.5,
+   "dur": 3.0,
+   "text": "גנב הכתר 👑 · יום 33"
+  },
+  {
+   "type": "label",
+   "line": 2,
+   "dt": 0.3,
+   "dur": 2.6,
+   "text": "המלכודת נפלה... ריקה 🕸️"
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dt": 0.6,
+   "dur": 4.4,
+   "text": "רמז 4 · כדור צבעוני קטן"
+  },
+  {
+   "type": "label",
+   "line": 6,
+   "dt": 0.3,
+   "dur": 3.0,
+   "text": "הפעם המלך בחר 👑"
+  },
+  {
+   "type": "label",
+   "line": 7,
+   "dt": 0.3,
+   "dur": 2.6,
+   "text": "נבנה · מגדל התצפית של הממלכה 🔭"
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "מי גנב? 🔍",
+   "sub": "ומה נבנה מחר? תגיבו"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0,
+   "dur": 0.6,
+   "zoom": 0.25
+  },
+  {
+   "type": "shake",
+   "line": 0,
+   "dt": 0.1,
+   "dur": 0.5
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.0,
+   "text": "😱",
+   "x": 760,
+   "y": 1080,
+   "size": 200,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.8,
+   "dur": 1.8,
+   "text": "🍬",
+   "x": 300,
+   "y": 1080,
+   "size": 170,
+   "rot": -6
+  },
+  {
+   "type": "vignette",
+   "line": 4,
+   "dt": 0,
+   "dur": 3.0,
+   "speed": 3
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.2,
+   "dur": 1.8,
+   "text": "❓",
+   "x": 540,
+   "y": 1080,
+   "size": 220,
+   "rot": 0
+  },
+  {
+   "type": "confetti",
+   "line": 7,
+   "dt": 1.4,
+   "dur": 1.8
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 0.4,
+   "dur": 1.8,
+   "text": "🔭",
+   "x": 760,
+   "y": 1080,
+   "size": 190,
+   "rot": 8
+  },
+  {
+   "type": "night",
+   "line": 10,
+   "dt": 0,
+   "under": true,
+   "alpha": 0.5,
+   "untilLine": 12
+  },
+  {
+   "type": "sticker",
+   "line": 11,
+   "dt": 0.6,
+   "dur": 1.8,
+   "text": "👀",
+   "x": 540,
+   "y": 1080,
+   "size": 220,
+   "rot": 0
+  },
+  {
+   "type": "shake",
+   "line": 11,
+   "dt": 0.5,
+   "dur": 0.4
+  },
+  {
+   "type": "sticker",
+   "line": 12,
+   "dt": 0.4,
+   "dur": 2.4,
+   "text": "🎁",
+   "x": 540,
+   "y": 1080,
+   "size": 230,
+   "rot": 0
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.3,
+   "dur": 2.5,
+   "text": "מי שינחש נכון יקבל משאלה מהמלך 🎁",
+   "y": 330,
+   "size": 76,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "banner",
+   "line": 14,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "תעקבו לפרק הבא 👑",
+   "y": 330,
+   "size": 90,
+   "band": "#e8b323",
+   "color": "#13213b"
+  }
+ ],
+ "music": {
+  "bpm": 108,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 6
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 10
+    },
+    "tense"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "boom",
+   "line": 0
+  },
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "scratch",
+   "line": 2,
+   "dt": 0.4
+  },
+  {
+   "name": "boing",
+   "line": 3,
+   "dt": 0.8
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 0.6
+  },
+  {
+   "name": "sting",
+   "line": 5,
+   "dt": 0.2
+  },
+  {
+   "name": "ding",
+   "line": 6,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 7
+  },
+  {
+   "name": "tada",
+   "line": 7,
+   "dt": 1.4
+  },
+  {
+   "name": "sparkle",
+   "line": 8,
+   "dt": 0.4
+  },
+  {
+   "name": "ding",
+   "line": 9,
+   "dt": 0.3
+  },
+  {
+   "name": "cricket",
+   "line": 10
+  },
+  {
+   "name": "sting",
+   "line": 11,
+   "dt": 0.5
+  },
+  {
+   "name": "kaching",
+   "line": 12,
+   "dt": 0.4
+  },
+  {
+   "name": "pop",
+   "line": 13
+  },
+  {
+   "name": "tada",
+   "line": 14
+  }
+ ],
+ "caption": "מישהו נכנס למלכודת בלילה... והיא ריקה 😱🕸️\nפרק 4 · גנב הכתר 👑 יום 33 בממלכה של משפחת ספיר\nרמז 4: כדור צבעוני קטן ליד בית הממתקים 🔴 אז בנינו מגדל תצפית, והלילה המלך שומר בעצמו 🔭\n🔍 מי לדעתכם גנב את הכתר? כתבו ניחוש בתגובות, מי שינחש נכון יקבל משאלה מהמלך 🎁\n📤 שלחו לחבר שאוהב תעלומות, ותעקבו כדי לא לפספס את פרק 5\n#גנבהכתר #תעלומה #ממלכה #משפחתספיר #בלשים",
+ "firstComment": "🕵️ רמז 4: כדור צבעוני קטן. מה הוא אומר לכם על הגנב? ומה נבנה מחר כדי לתפוס אותו? התגובה עם הכי הרבה לייקים נבנית בממלכה! 👑",
+ "notes": "Day 33, season 1 episode 4. Day 32's reel got 2 comments from residents (plus the king's own): @eilam.lev99 'רוח עם ראש משולש' (1 like: a creature, not a place or a thing that stands, and maybe a guess about the thief, so neither built nor answered as a guess) and @eilam.lev99 graffiti 'יאללה הפועל' on the Maccabi stadium (1 like, a jab at a club, skipped again). Nothing qualified, so the king picked: מגדל התצפית, a tool in the story (watching the kingdom at night). Gold key: sh10mi_ohayon___ (the only new citizen since day 32's count; nobody was counted on day 32 itself).",
+ "replies": [
+  {
+   "id": "17913834450481439",
+   "text": "רוח עם ראש משולש? 👻 מעניין מאוד... המלך רושם כל ניחוש בספר הבלשים 🔍"
+  },
+  {
+   "id": "18098829866141849",
+   "text": "עילם, גרפיטי נגד קבוצה לא נכנס לממלכה 😅 אבל תביא רעיון למקום חדש, ואולי מחר הוא נבנה!"
+  }
+ ],
+ "thumbOffset": 2500
+}
