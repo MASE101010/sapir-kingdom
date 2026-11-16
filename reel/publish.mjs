@@ -8,7 +8,7 @@ const day = +process.argv[process.argv.indexOf('--day') + 1], { IG_TOKEN, IG_USE
 const ep = JSON.parse(readFileSync(`site/episodes/day${day}.json`, 'utf8')), wait = s => new Promise(r => setTimeout(r, s * 1000));
 const post = async (path, params, v) => { const r = await fetch(`${v ? G.replace('v21.0', v) : G}/${path}`, { method: 'POST', headers: { 'content-type': 'application/json', authorization: `Bearer ${IG_TOKEN}` }, body: JSON.stringify(params) }).then(r => r.json()); if (r.error) throw new Error(`${path}: ${r.error.message}`); return r; };
 const video_url = `${SITE_URL}/reels/day${day}.mp4?v=${Date.now()}`;
-const base = { media_type: 'REELS', video_url, caption: ep.caption, share_to_feed: true, ...(ep.collaborators?.length ? { collaborators: ep.collaborators } : {}) };
+const base = { media_type: 'REELS', video_url, caption: ep.caption, share_to_feed: true, ...(ep.thumbOffset != null ? { thumb_offset: ep.thumbOffset } : {}), ...(ep.collaborators?.length ? { collaborators: ep.collaborators } : {}) };
 // a trial reel (ep.trial): shown first to people who do not follow the kingdom, and shared to the followers by itself
 // when it does well. Newer API only; if Instagram refuses it, the reel goes up the ordinary way.
 // --record: the reel is already up but its id was lost (a failed commit): find it by its caption and only write it down
