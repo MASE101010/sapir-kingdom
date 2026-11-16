@@ -1,0 +1,474 @@
+{
+ "day": 3001,
+ "series": "you-decide",
+ "episode": 1,
+ "lines": [
+  "[excited] Nehorai זָכָה בַּעֲשָׂרָה מִילְיוֹן שְׁקָלִים!",
+  "[excited] רֶגַע, מִי זֶה Nehorai? תּוֹשָׁב רָגִיל בַּמַּמְלָכָה, שֶׁעוֹבֵד בַּסּוּפֶּר.",
+  "[excited] הַבֹּקֶר, בְּתוֹךְ כִּכַּר לֶחֶם, הוּא מָצָא... כַּרְטִיס זָהָב!",
+  "[excited] וְהַמֶּלֶךְ נָתַן לוֹ צֶ'ק שֶׁל עֲשָׂרָה מִילְיוֹן שְׁקָלִים!",
+  "[excited] וְעַכְשָׁו... אַתֶּם מַחְלִיטִים מָה הוּא עוֹשֶׂה עִם הַכֶּסֶף!",
+  "[excited] כָּל מָה שֶׁתִּבְחֲרוּ, קוֹרֶה בֶּאֱמֶת. וּלְכָל בְּחִירָה, יֵשׁ הַשְׁלָכוֹת!",
+  "[excited] אָז מָה הַצַּעַד הָרִאשׁוֹן שֶׁל Nehorai?",
+  "[excited] אַחַת: לִקְנוֹת וִילָה עֲנָקִית עִם בְּרֵכָה!",
+  "[excited] שְׁתַּיִם: לִקְנוֹת מָטוֹס פְּרָטִי, וְלָטוּס לְחֻפְשָׁה!",
+  "[excited] כִּתְבוּ בַּתְּגוּבוֹת: אַחַת, אוֹ שְׁתַּיִם!",
+  "[excited] מָה שֶׁהֲכִי הַרְבֵּה יִכְתְּבוּ, זֶה מָה שֶׁיִּקְרֶה בַּפֶּרֶק הַבָּא!",
+  "[excited] תַּעַקְבוּ, כְּדֵי לִרְאוֹת מָה קוֹרֶה לְ-Nehorai!"
+ ],
+ "top": 330,
+ "mix": "day3001.mix.mp3",
+ "say": {
+  "Nehorai": "נהוראי"
+ },
+ "actors": [
+  {
+   "id": "nehorai",
+   "look": {
+    "shirt": 16177226,
+    "pants": 3099258,
+    "hair": 2759184,
+    "skin": 14264191,
+    "apron": 1011571,
+    "shoes": 16777215
+   },
+   "scale": 1,
+   "keys": [
+    {
+     "line": 0,
+     "x": 0,
+     "z": 100,
+     "ry": 0,
+     "anim": "jump",
+     "cheque": true
+    },
+    {
+     "line": 1,
+     "x": 88,
+     "z": 30,
+     "ry": 40,
+     "anim": "walk"
+    },
+    {
+     "line": 1,
+     "dt": 3.2,
+     "from": "slide",
+     "x": 95,
+     "z": 38,
+     "ry": 40,
+     "anim": "walk"
+    },
+    {
+     "line": 2,
+     "dt": -0.2,
+     "x": 95,
+     "z": 38,
+     "ry": -60,
+     "anim": "think"
+    },
+    {
+     "line": 2,
+     "dt": 2.0,
+     "x": 95,
+     "z": 38,
+     "ry": -60,
+     "anim": "shock"
+    },
+    {
+     "line": 3,
+     "x": 0,
+     "z": 100,
+     "ry": 0,
+     "anim": "hold",
+     "cheque": true
+    },
+    {
+     "line": 4,
+     "x": 0,
+     "z": 100,
+     "ry": 0,
+     "anim": "think"
+    },
+    {
+     "line": 5,
+     "x": 0,
+     "z": 100,
+     "ry": 0,
+     "anim": "cheer"
+    },
+    {
+     "line": 6,
+     "x": 0,
+     "z": 100,
+     "ry": 0,
+     "anim": "think"
+    },
+    {
+     "line": 9,
+     "x": 0,
+     "z": 100,
+     "ry": 0,
+     "anim": "point"
+    },
+    {
+     "line": 10,
+     "x": 0,
+     "z": 100,
+     "ry": 0,
+     "anim": "cheer"
+    },
+    {
+     "line": 11,
+     "x": 0,
+     "z": 100,
+     "ry": 0,
+     "anim": "dance"
+    }
+   ],
+   "cheque": {
+    "text": "10,000,000 ₪",
+    "sub": "לנהוראי, מהמלך 👑"
+   }
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "actor:nehorai",
+   "dist": 7,
+   "yaw": 20,
+   "pitch": 6,
+   "orbit": 8,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "actor:nehorai",
+   "dist": 9,
+   "yaw": 35,
+   "pitch": 10,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": "actor:nehorai",
+   "dist": 5,
+   "yaw": 15,
+   "pitch": 4,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": "actor:nehorai",
+   "dist": 22,
+   "yaw": 0,
+   "pitch": 14,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 4,
+   "target": "actor:nehorai",
+   "dist": 5,
+   "yaw": -15,
+   "pitch": 3,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": "actor:nehorai",
+   "dist": 12,
+   "yaw": 25,
+   "pitch": 12,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": "actor:nehorai",
+   "dist": 6,
+   "yaw": 0,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": "house:gefen.feiler",
+   "dist": 28,
+   "yaw": 20,
+   "pitch": 22,
+   "orbit": 8,
+   "ease": 0.01
+  },
+  {
+   "line": 8,
+   "target": "landmark:natsar",
+   "dist": 110,
+   "yaw": -20,
+   "pitch": 16,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 9,
+   "target": "actor:nehorai",
+   "dist": 6,
+   "yaw": 0,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.01
+  },
+  {
+   "line": 10,
+   "target": "actor:nehorai",
+   "dist": 10,
+   "yaw": -25,
+   "pitch": 8,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 11,
+   "target": "actor:nehorai",
+   "dist": 14,
+   "yaw": 10,
+   "pitch": 10,
+   "orbit": 6,
+   "ease": 0.6
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dt": 0.0,
+   "dur": 3.0,
+   "text": "אתם מחליטים 🎮"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.4,
+   "dur": 2.6,
+   "text": "פרק 1 · נהוראי"
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 0.8,
+   "dur": 3.0,
+   "text": "10,000,000 ₪ 💰"
+  },
+  {
+   "type": "label",
+   "line": 7,
+   "dt": 0.0,
+   "dur": 3.0,
+   "text": "1️⃣ וילה ענקית עם בריכה 🏡"
+  },
+  {
+   "type": "label",
+   "line": 8,
+   "dt": 0.0,
+   "dur": 3.4,
+   "text": "2️⃣ מטוס פרטי וחופשה ✈️"
+  },
+  {
+   "type": "cta",
+   "line": 9,
+   "dt": 0.1,
+   "dur": 5.6,
+   "text": "1️⃣ או 2️⃣ ?",
+   "sub": "כתבו בתגובות 👇"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0,
+   "dur": 0.6,
+   "zoom": 0.25
+  },
+  {
+   "type": "confetti",
+   "line": 0,
+   "dt": 0,
+   "dur": 2.4
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.2,
+   "text": "💸",
+   "x": 860,
+   "y": 1300,
+   "size": 200,
+   "rot": 10
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.5,
+   "dur": 1.9,
+   "text": "💰",
+   "x": 220,
+   "y": 1300,
+   "size": 190,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 1.8,
+   "dur": 2.0,
+   "text": "🎫",
+   "x": 850,
+   "y": 1350,
+   "size": 200,
+   "rot": 8
+  },
+  {
+   "type": "shake",
+   "line": 2,
+   "dt": 2.0,
+   "dur": 0.4
+  },
+  {
+   "type": "confetti",
+   "line": 3,
+   "dt": 0.6,
+   "dur": 2.4
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.8,
+   "dur": 2.0,
+   "text": "🎮",
+   "x": 850,
+   "y": 1350,
+   "size": 220,
+   "rot": 0
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 0.4,
+   "dur": 1.8,
+   "text": "🤔",
+   "x": 850,
+   "y": 1350,
+   "size": 200,
+   "rot": 6
+  },
+  {
+   "type": "banner",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "תעקבו לפרק 2 🎮",
+   "y": 330,
+   "size": 90,
+   "band": "#e8b323",
+   "color": "#13213b"
+  }
+ ],
+ "music": {
+  "bpm": 118,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 6
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 9
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "kaching",
+   "line": 0
+  },
+  {
+   "name": "tada",
+   "line": 0,
+   "dt": 0.4
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 0.4
+  },
+  {
+   "name": "sting",
+   "line": 2,
+   "dt": 1.9
+  },
+  {
+   "name": "kaching",
+   "line": 3,
+   "dt": 0.6
+  },
+  {
+   "name": "sparkle",
+   "line": 4,
+   "dt": 0.6
+  },
+  {
+   "name": "boom",
+   "line": 5,
+   "dt": 1.6
+  },
+  {
+   "name": "ding",
+   "line": 6,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 7
+  },
+  {
+   "name": "whoosh",
+   "line": 8
+  },
+  {
+   "name": "pop",
+   "line": 9
+  },
+  {
+   "name": "pop",
+   "line": 9,
+   "dt": 0.8
+  },
+  {
+   "name": "tada",
+   "line": 11
+  }
+ ],
+ "caption": "נהוראי זכה ב-10,000,000 ₪ 💸 ואתם מחליטים מה הוא עושה עם הכסף!\nאתם מחליטים 🎮 פרק 1: הצעד הראשון של נהוראי\n1️⃣ וילה ענקית עם בריכה 🏡\n2️⃣ מטוס פרטי וחופשה ✈️\n👇 כתבו 1 או 2 בתגובות, מה שהכי הרבה יכתבו קורה בפרק הבא. ולכל בחירה יש השלכות...\n📤 שלחו לחבר שיצביע איתכם, ותעקבו כדי לראות מה קורה לנהוראי\n#אתםמחליטים #נהוראי #משפחתספיר #ממלכה #מיליונר",
+ "firstComment": "🗳️ ההצבעה פתוחה! 1️⃣ וילה עם בריכה או 2️⃣ מטוס פרטי? כתבו את המספר כאן 👇 מחר נראה מה קורה לנהוראי",
+ "thumbOffset": 4487,
+ "notes": "Series 'אתם מחליטים' (you decide), episode 1, posted as an extra reel on day 34 at 17:00. Nehorai is a fictional resident of the kingdom (not a real person or a resident's handle). Votes: comments '1' or '2' under this reel; the next episode shows the choice that got more comments, with consequences."
+}
