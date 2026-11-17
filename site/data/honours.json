@@ -32,7 +32,8 @@
       "dan_haimovich_",
       "gefen.feiler",
       "sh10mi_ohayon___",
-      "may.berko"
+      "may.berko",
+      "netagal56"
     ]
   },
   "built": {
@@ -238,6 +239,12 @@
     "detective-office": {
       "by": [],
       "day": 34
+    },
+    "show-park": {
+      "by": [
+        "eilam.lev99"
+      ],
+      "day": 35
     }
   }
 }

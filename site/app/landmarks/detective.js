@@ -84,6 +84,10 @@ export function detectiveOfficeLive(group) {
   const glint = new THREE.Mesh(new THREE.BoxGeometry(.5, 4.6, .1), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: .55 }));
   glint.position.set(0, H2 + 11, HZ + .9); group.add(glint);
   const lens = new THREE.Mesh(new THREE.CircleGeometry(3.1, 24), new THREE.MeshLambertMaterial({ color: 0x9fd3e6, side: THREE.DoubleSide })); lens.position.set(0, H2 + 11, HZ + .6); group.add(lens);
+  // day 35 (episode 6): a note pinned to the door in the night. userData.note(k), kingdom.json states['detective-office'].note
+  const note = sign('מי שצוחק אחרון... צוחק הכי טוב', { w: 4.6, h: .8, bg: '#fffbe8', fg: '#2b2f36', border: '#e8b323', font: '700 {px}px "Secular One", Rubik' });
+  note.at(0, 4.15, FZ + .36); note.rotation.z = -.05; note.visible = false; group.add(note);
+  group.userData.note = k => { note.visible = k > .5; };
   group.userData.tick = t => { glint.rotation.z = t * .8; };
   group.userData.tick(0);
 }
