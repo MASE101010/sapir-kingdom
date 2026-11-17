@@ -33,5 +33,6 @@ import { CLOCKTOWER } from './clocktower.js';    // day 30: מגדל השעון 
 import { AVIARY } from './aviary.js';    // day 31: בית התוכים של הממלכה
 import { CANDYHOUSE } from './candy.js';    // day 32: בית הממתקים של הממלכה
 import { WATCHTOWER } from './watchtower.js';    // day 33: מגדל התצפית של הממלכה (the king's pick)
+import { DETECTIVE } from './detective.js';    // day 34: משרד הבלשים של הממלכה (the king's pick)
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK, FANCLUB, BEITARCLUB, HOTEL, SCHOOL, TRAIN, KINGFLAG, BOXOFFICE, SYNAGOGUE, AQUARIUM, CLOCKTOWER, AVIARY, CANDYHOUSE, WATCHTOWER].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK, FANCLUB, BEITARCLUB, HOTEL, SCHOOL, TRAIN, KINGFLAG, BOXOFFICE, SYNAGOGUE, AQUARIUM, CLOCKTOWER, AVIARY, CANDYHOUSE, WATCHTOWER, DETECTIVE].map(l => [l.key, l]));

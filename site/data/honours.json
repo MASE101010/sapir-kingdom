@@ -31,7 +31,8 @@
       "alonkingw2013",
       "dan_haimovich_",
       "gefen.feiler",
-      "sh10mi_ohayon___"
+      "sh10mi_ohayon___",
+      "may.berko"
     ]
   },
   "built": {
@@ -233,6 +234,10 @@
     "watch-tower": {
       "by": [],
       "day": 33
+    },
+    "detective-office": {
+      "by": [],
+      "day": 34
     }
   }
 }

@@ -1,0 +1,496 @@
+{
+ "day": 34,
+ "lines": [
+  "[excited] מִישֶׁהוּ רָץ עַל הַחוֹמָה שֶׁל הָאַרְמוֹן!",
+  "[excited] יוֹם שְׁלוֹשִׁים וְאַרְבַּע בַּמַּמְלָכָה... וְזֶה מָה שֶׁרָאִיתִי בַּטֶּלֶסְקוֹפּ!",
+  "[excited] צֵל קָטָן, רָץ עַל חֶבֶל, בֵּין שְׁנֵי מִגְדְּלֵי הָאַרְמוֹן!",
+  "[excited] עַד שֶׁהִגַּעְתִּי... נִשְׁאַר רַק הַחֶבֶל.",
+  "[excited] מִי מְסֻגָּל לָרוּץ עַל חֶבֶל, בַּחֹשֶׁךְ?!",
+  "[excited] אָז הַיּוֹם, בָּנִינוּ אֶת מִשְׂרַד הַבַּלָּשִׁים שֶׁל הַמַּמְלָכָה!",
+  "[excited] עִם לוּחַ שֶׁל כָּל הָרְמָזִים: הַנּוֹצָה, הַפֵּרוּרִים, הַטְּבִיעוֹת, וְהַכַּדּוּר!",
+  "[excited] וְהַבַּלָּשִׁים הֲכִי טוֹבִים... זֶה אַתֶּם!",
+  "[excited] כְּבָר קִבַּלְנוּ נִחוּשִׁים מְעַנְיְנִים... אֲפִילוּ הָאָח הַקָּטָן שֶׁלִּי!",
+  "[excited] וְהַלַּיְלָה, מִישֶׁהוּ הִשְׁאִיר מַשֶּׁהוּ עַל הַדֶּלֶת שֶׁל הַמִּשְׂרָד...",
+  "[excited] מִי שֶׁיְּנַחֵשׁ נָכוֹן, יְקַבֵּל מִמֶּנִּי מִשְׁאָלָה!",
+  "[excited] תַּגִּיבוּ: מִי גָּנַב אֶת הַכֶּתֶר? וְאֵיזֶה מָקוֹם נִבְנֶה מָחָר?",
+  "[excited] תַּעַקְבוּ, כְּדֵי לֹא לְפַסְפֵס אֶת הַפֶּרֶק הַבָּא!"
+ ],
+ "top": 330,
+ "mix": "day34.mix.mp3",
+ "say": {},
+ "rise": {
+  "key": "detective-office",
+  "line": 5,
+  "dt": 0.0,
+  "dur": 1.8
+ },
+ "night": [
+  {
+   "line": 0,
+   "until": 3
+  },
+  {
+   "line": 9,
+   "until": 10
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    -46,
+    19,
+    23
+   ],
+   "dist": 45,
+   "yaw": -100,
+   "pitch": 3,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": [
+    -234.3,
+    39.5,
+    -557.8
+   ],
+   "dist": 20,
+   "yaw": 62,
+   "pitch": 12,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": [
+    -46,
+    18,
+    30
+   ],
+   "dist": 24,
+   "yaw": -115,
+   "pitch": 2,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 3,
+   "target": [
+    -46,
+    16,
+    23
+   ],
+   "dist": 60,
+   "yaw": -40,
+   "pitch": 12,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 4,
+   "target": [
+    -46,
+    18,
+    23
+   ],
+   "dist": 32,
+   "yaw": -100,
+   "pitch": 4,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": "landmark:detective-office",
+   "dist": 120,
+   "yaw": -15,
+   "pitch": 16,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 6,
+   "target": [
+    239.6,
+    5.4,
+    -557.4
+   ],
+   "dist": 22,
+   "yaw": -22.5,
+   "pitch": 12,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": "landmark:detective-office",
+   "dist": 60,
+   "yaw": 10,
+   "pitch": 12,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": [
+    237.5,
+    23,
+    -573.2
+   ],
+   "dist": 22,
+   "yaw": -10,
+   "pitch": 6,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": [
+    235.0,
+    3,
+    -567.2
+   ],
+   "dist": 12,
+   "yaw": -22.5,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 10,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 10,
+   "pitch": 38,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 11,
+   "target": "statue",
+   "dist": 60,
+   "yaw": 20,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 12,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -10,
+   "pitch": 30,
+   "orbit": 5,
+   "ease": 0.01
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "פרק 5"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.5,
+   "dur": 3.0,
+   "text": "גנב הכתר 👑 · יום 34"
+  },
+  {
+   "type": "label",
+   "line": 2,
+   "dt": 0.3,
+   "dur": 5.0,
+   "text": "רמז 5 · חבל בין המגדלים"
+  },
+  {
+   "type": "label",
+   "line": 5,
+   "dt": 0.3,
+   "dur": 2.6,
+   "text": "נבנה · משרד הבלשים של הממלכה 🔍"
+  },
+  {
+   "type": "label",
+   "line": 6,
+   "dt": 0.2,
+   "dur": 4.0,
+   "text": "לוח הרמזים: 🪶 🍬 🖐️ 🔴"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "מי גנב? 🔍",
+   "sub": "ואיזה מקום נבנה מחר?"
+  }
+ ],
+ "fx": [
+  {
+   "type": "night",
+   "line": 0,
+   "dt": 0,
+   "under": true,
+   "alpha": 0.5,
+   "untilLine": 3
+  },
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0,
+   "dur": 0.6,
+   "zoom": 0.25
+  },
+  {
+   "type": "vignette",
+   "line": 1,
+   "dt": 0,
+   "dur": 4.0,
+   "speed": 3
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 2.0,
+   "text": "😱",
+   "x": 760,
+   "y": 1080,
+   "size": 200,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 0.5,
+   "dur": 2.0,
+   "text": "🪢",
+   "x": 300,
+   "y": 1080,
+   "size": 180,
+   "rot": -6
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.2,
+   "dur": 1.8,
+   "text": "❓",
+   "x": 540,
+   "y": 1080,
+   "size": 220,
+   "rot": 0
+  },
+  {
+   "type": "confetti",
+   "line": 5,
+   "dt": 1.4,
+   "dur": 1.8
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.4,
+   "dur": 2.0,
+   "text": "🕵️",
+   "x": 760,
+   "y": 1080,
+   "size": 200,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 1.2,
+   "dur": 1.8,
+   "text": "😂",
+   "x": 300,
+   "y": 1080,
+   "size": 180,
+   "rot": -6
+  },
+  {
+   "type": "night",
+   "line": 9,
+   "dt": 0,
+   "under": true,
+   "alpha": 0.5,
+   "untilLine": 10
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 1.0,
+   "dur": 1.8,
+   "text": "👀",
+   "x": 540,
+   "y": 1080,
+   "size": 220,
+   "rot": 0
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 0.4,
+   "dur": 2.4,
+   "text": "🎁",
+   "x": 540,
+   "y": 1080,
+   "size": 230,
+   "rot": 0
+  },
+  {
+   "type": "banner",
+   "line": 10,
+   "dt": 0.3,
+   "dur": 2.5,
+   "text": "מי שינחש נכון יקבל משאלה מהמלך 🎁",
+   "y": 330,
+   "size": 76,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "תעקבו לפרק הבא 👑",
+   "y": 330,
+   "size": 90,
+   "band": "#e8b323",
+   "color": "#13213b"
+  }
+ ],
+ "music": {
+  "bpm": 108,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 5
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 9
+    },
+    "tense"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "boom",
+   "line": 0
+  },
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "cricket",
+   "line": 2
+  },
+  {
+   "name": "scratch",
+   "line": 3,
+   "dt": 0.5
+  },
+  {
+   "name": "sting",
+   "line": 4,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 5
+  },
+  {
+   "name": "tada",
+   "line": 5,
+   "dt": 1.4
+  },
+  {
+   "name": "pop",
+   "line": 6,
+   "dt": 0.6
+  },
+  {
+   "name": "pop",
+   "line": 6,
+   "dt": 1.4
+  },
+  {
+   "name": "pop",
+   "line": 6,
+   "dt": 2.2
+  },
+  {
+   "name": "pop",
+   "line": 6,
+   "dt": 3.0
+  },
+  {
+   "name": "ding",
+   "line": 7,
+   "dt": 0.4
+  },
+  {
+   "name": "boing",
+   "line": 8,
+   "dt": 1.2
+  },
+  {
+   "name": "cricket",
+   "line": 9
+  },
+  {
+   "name": "sting",
+   "line": 9,
+   "dt": 1.0
+  },
+  {
+   "name": "kaching",
+   "line": 10,
+   "dt": 0.4
+  },
+  {
+   "name": "pop",
+   "line": 11
+  },
+  {
+   "name": "tada",
+   "line": 12
+  }
+ ],
+ "caption": "מישהו רץ בלילה על חבל בין מגדלי הארמון 😱🪢\nפרק 5 · גנב הכתר 👑 יום 34 בממלכה של משפחת ספיר\nבנינו את משרד הבלשים של הממלכה עם לוח כל הרמזים: נוצה, פירורי סוכר, טביעות וכדור צבעוני 🔍\n🕵️ אתם הבלשים: מי לדעתכם גנב את הכתר? כתבו ניחוש בתגובות, מי שינחש נכון יקבל משאלה מהמלך 🎁\n🏗️ ואיזה מקום נבנה מחר? התגובה עם הכי הרבה לייקים נבנית!\n📤 שלחו לחבר שאוהב תעלומות, ותעקבו כדי לא לפספס את פרק 6\n#גנבהכתר #תעלומה #ממלכה #משפחתספיר #בלשים",
+ "firstComment": "🔍 רמז 5: חבל בין שני מגדלי הארמון. מי רץ עליו בחושך? ואיזה מקום תרצו שנבנה מחר בממלכה? התגובה עם הכי הרבה לייקים נבנית! 👑",
+ "notes": "Day 34, season 1 episode 5. Day 33's reel got three comments from residents (1 like each): @itamarsarusi 'ספיידרמן זזה שם' (a guess, and a brand character: not built, not confirmed or denied), @eilam.lev99 a wall of the hostages' names at the fans club (a political subject, skipped) and @eilam.lev99 'האח הקטן של המלך' (a guess, mentioned with a smile in the reel, neither confirmed nor denied). Nothing asked for a place, so the king picked: משרד הבלשים, with a board of every clue so far (a recap for new viewers). Gold key: nobody new was counted on day 33, so a citizen without a key, picked with the day as the seed: may.berko.",
+ "replies": [
+  {
+   "id": "18171193558470027",
+   "text": "איתמר, משהו באמת זז שם בלילה... 🕵️ ראית מה מצאנו בפרק 5?"
+  },
+  {
+   "id": "18442821835183434",
+   "text": "האח הקטן שלי?! 😂 המלך רשם את זה בספר הבלשים 🔍"
+  }
+ ],
+ "thumbOffset": 3292
+}

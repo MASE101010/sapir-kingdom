@@ -100,5 +100,14 @@ export function castleLive(group) {
     g.scale.setScalar(1.5); g.position.set(cx + Math.sin(a) * 2.9, cy - Math.cos(a) * 2.9, 1.12); g.rotation.z = -a + (k % 2 ? Math.PI : 0); prints.add(g); }
   prints.visible = false; group.add(prints);
   group.userData.prints = k => { prints.visible = k > .02; prints.children.forEach((m, i) => { m.visible = i / prints.children.length < k; }); };
+  // day 34 (episode 5): a rope stretched in the night along the left wall, from the front-left corner tower to the left
+  // middle tower, sagging a little above the battlements, with a knot at each end. userData.rope(k), states.castle.rope
+  const rope = new THREE.Group(), rm = new THREE.MeshLambertMaterial({ color: 0xc9a46a }), N = 30;
+  const A = new THREE.Vector3(-46, HILL + 21, 46), B = new THREE.Vector3(-46, HILL + 17.5, 0), at = f => A.clone().lerp(B, f).add(new THREE.Vector3(0, -2.2 * (1 - (2 * f - 1) ** 2), 0));
+  for (let k = 0; k < N; k++) { const p0 = at(k / N), p1 = at((k + 1) / N), m = new THREE.Mesh(new THREE.BoxGeometry(.32, .32, p0.distanceTo(p1) + .08), rm);
+    m.position.copy(p0).lerp(p1, .5); m.lookAt(p1); rope.add(m); }
+  for (const q of [A, B]) { const kn = new THREE.Mesh(new THREE.SphereGeometry(.75, 8, 6), rm); kn.position.copy(q); rope.add(kn); }
+  rope.visible = false; group.add(rope);
+  group.userData.rope = k => { rope.visible = k > .5; };
 }
 export const CASTLE = { key: 'castle', name: 'ארמון משפחת ספיר', at: [0, 0], draw: drawCastle, live: castleLive, top: 74 };
