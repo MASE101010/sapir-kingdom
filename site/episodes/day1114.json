@@ -1,0 +1,62 @@
+{
+ "day": 1114,
+ "lines": [
+  "[pause]"
+ ],
+ "top": 330,
+ "duration": 2,
+ "shots": [
+  {
+   "line": 0,
+   "ease": 0.01,
+   "target": "landmark:detective-office",
+   "dist": 70,
+   "yaw": 20,
+   "pitch": 14
+  }
+ ],
+ "cards": [
+  {
+   "type": "note",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "title": "בוקר טוב בלשים 🔍",
+   "text": "מישהו השאיר משהו בלילה\nעל הדלת של המשרד... 😱",
+   "foot": "פרק 6 עולה היום ב-14:00 👀"
+  }
+ ],
+ "fx": [
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "text": "🕵️",
+   "x": 860,
+   "y": 1720,
+   "size": 155
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "text": "📝",
+   "x": 210,
+   "y": 1720,
+   "size": 155
+  }
+ ],
+ "states": [
+  {
+   "key": "detective-office",
+   "kind": "note",
+   "line": 0,
+   "dt": -5,
+   "dur": 0.01,
+   "from": 0,
+   "to": 0
+  }
+ ]
+}
