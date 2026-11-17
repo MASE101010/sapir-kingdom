@@ -3,25 +3,21 @@
  "series": "you-decide",
  "episode": 1,
  "lines": [
-  "[excited] Nehorai זָכָה בַּעֲשָׂרָה מִילְיוֹן שְׁקָלִים!",
-  "[excited] רֶגַע, מִי זֶה Nehorai? תּוֹשָׁב רָגִיל בַּמַּמְלָכָה, שֶׁעוֹבֵד בַּסּוּפֶּר.",
+  "[excited] נֶהוֹרַאי זָכָה בַּעֲשָׂרָה מִילְיוֹן שְׁקָלִים!",
+  "[excited] רֶגַע, מִי זֶה נֶהוֹרַאי? תּוֹשָׁב רָגִיל בַּמַּמְלָכָה, שֶׁעוֹבֵד בַּסּוּפֶּר.",
   "[excited] הַבֹּקֶר, בְּתוֹךְ כִּכַּר לֶחֶם, הוּא מָצָא... כַּרְטִיס זָהָב!",
   "[excited] וְהַמֶּלֶךְ נָתַן לוֹ צֶ'ק שֶׁל עֲשָׂרָה מִילְיוֹן שְׁקָלִים!",
-  "[excited] וְעַכְשָׁו... אַתֶּם מַחְלִיטִים מָה הוּא עוֹשֶׂה עִם הַכֶּסֶף!",
+  "[excited] וְעַכְשָׁו... הוּא צָרִיךְ אֶת הָעֶזְרָה שֶׁלָּכֶם!",
   "[excited] כָּל מָה שֶׁתִּבְחֲרוּ, קוֹרֶה בֶּאֱמֶת. וּלְכָל בְּחִירָה, יֵשׁ הַשְׁלָכוֹת!",
-  "[excited] אָז מָה הַצַּעַד הָרִאשׁוֹן שֶׁל Nehorai?",
-  "[excited] אַחַת: לִקְנוֹת וִילָה עֲנָקִית עִם בְּרֵכָה!",
-  "[excited] שְׁתַּיִם: לִקְנוֹת מָטוֹס פְּרָטִי, וְלָטוּס לְחֻפְשָׁה!",
-  "[excited] כִּתְבוּ בַּתְּגוּבוֹת: אַחַת, אוֹ שְׁתַּיִם!",
-  "[excited] מָה שֶׁהֲכִי הַרְבֵּה יִכְתְּבוּ, זֶה מָה שֶׁיִּקְרֶה בַּפֶּרֶק הַבָּא!",
-  "[excited] תַּעַקְבוּ, כְּדֵי לִרְאוֹת מָה קוֹרֶה לְ-Nehorai!"
+  "[excited] אָז מָה נֶהוֹרַאי עוֹשֶׂה עִם עֲשָׂרָה מִילְיוֹן? אַתֶּם מַחְלִיטִים!",
+  "[excited] כִּתְבוּ בַּתְּגוּבוֹת אֶת הָרַעְיוֹן הֲכִי מְטֹרָף שֶׁלָּכֶם!",
+  "[excited] הָרַעְיוֹן עִם הֲכִי הַרְבֵּה לַייקִים... קוֹרֶה בַּפֶּרֶק הַבָּא!",
+  "[excited] רַק תִּזְכְּרוּ: כְּדֵי שֶׁהַתְּגוּבָה תִּקָּלֵט, צָרִיךְ לַעֲקֹב אַחֲרֵי הָעַמּוּד!",
+  "[excited] תַּעַקְבוּ, כְּדֵי לִרְאוֹת מָה קוֹרֶה לְנֶהוֹרַאי!"
  ],
  "top": 330,
  "mix": "day3001.mix.mp3",
- "say": {
-  "ל-Nehorai": "לנהוראי",
-  "Nehorai": "נהוראי"
- },
+ "say": {},
  "actors": [
   {
    "id": "nehorai",
@@ -105,6 +101,20 @@
      "anim": "think"
     },
     {
+     "line": 7,
+     "x": 0,
+     "z": 100,
+     "ry": 0,
+     "anim": "point"
+    },
+    {
+     "line": 8,
+     "x": 0,
+     "z": 100,
+     "ry": 0,
+     "anim": "cheer"
+    },
+    {
      "line": 9,
      "x": 0,
      "z": 100,
@@ -113,13 +123,6 @@
     },
     {
      "line": 10,
-     "x": 0,
-     "z": 100,
-     "ry": 0,
-     "anim": "cheer"
-    },
-    {
-     "line": 11,
      "x": 0,
      "z": 100,
      "ry": 0,
@@ -198,21 +201,21 @@
   },
   {
    "line": 7,
-   "target": "house:gefen.feiler",
-   "dist": 28,
-   "yaw": 20,
-   "pitch": 22,
-   "orbit": 8,
-   "ease": 0.01
+   "target": "actor:nehorai",
+   "dist": 5,
+   "yaw": -10,
+   "pitch": 3,
+   "orbit": 1,
+   "ease": 0.6
   },
   {
    "line": 8,
-   "target": "landmark:natsar",
-   "dist": 110,
-   "yaw": -20,
-   "pitch": 16,
-   "orbit": 6,
-   "ease": 0.01
+   "target": "actor:nehorai",
+   "dist": 11,
+   "yaw": 25,
+   "pitch": 10,
+   "orbit": 5,
+   "ease": 0.6
   },
   {
    "line": 9,
@@ -221,19 +224,10 @@
    "yaw": 0,
    "pitch": 4,
    "orbit": 0,
-   "ease": 0.01
-  },
-  {
-   "line": 10,
-   "target": "actor:nehorai",
-   "dist": 10,
-   "yaw": -25,
-   "pitch": 8,
-   "orbit": 4,
    "ease": 0.6
   },
   {
-   "line": 11,
+   "line": 10,
    "target": "actor:nehorai",
    "dist": 14,
    "yaw": 10,
@@ -266,25 +260,34 @@
   },
   {
    "type": "label",
-   "line": 7,
-   "dt": 0.0,
+   "line": 6,
+   "dt": 0.3,
    "dur": 3.0,
-   "text": "1️⃣ וילה ענקית עם בריכה 🏡"
+   "text": "מה נהוראי עושה עם 10 מיליון? 🤔"
   },
   {
-   "type": "label",
+   "type": "cta",
+   "line": 7,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "💬 הרעיון שלכם",
+   "sub": "כתבו בתגובות את הכי מטורף"
+  },
+  {
+   "type": "cta",
    "line": 8,
-   "dt": 0.0,
-   "dur": 3.4,
-   "text": "2️⃣ מטוס פרטי וחופשה ✈️"
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "👍 מנצח!",
+   "sub": "הכי הרבה לייקים קורה בפרק הבא"
   },
   {
    "type": "cta",
    "line": 9,
    "dt": 0.1,
-   "dur": 5.6,
-   "text": "1️⃣ או 2️⃣ ?",
-   "sub": "כתבו בתגובות 👇"
+   "dur": 4.0,
+   "text": "➕ עקבו",
+   "sub": "כדי שהתגובה שלכם תיקלט"
   }
  ],
  "fx": [
@@ -369,8 +372,32 @@
    "rot": 6
   },
   {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.5,
+   "dur": 2.0,
+   "text": "🤪",
+   "x": 850,
+   "y": 1350,
+   "size": 200,
+   "rot": 8
+  },
+  {
+   "type": "confetti",
+   "line": 8,
+   "dt": 0.8,
+   "dur": 1.6
+  },
+  {
+   "type": "punch",
+   "line": 9,
+   "dt": 0,
+   "dur": 0.6,
+   "zoom": 0.2
+  },
+  {
    "type": "banner",
-   "line": 11,
+   "line": 10,
    "dt": 0.1,
    "dur": 2.6,
    "text": "תעקבו לפרק 2 🎮",
@@ -396,7 +423,7 @@
    ],
    [
     {
-     "line": 9
+     "line": 8
     },
     "happy"
    ]
@@ -447,29 +474,31 @@
    "dt": 0.3
   },
   {
-   "name": "whoosh",
-   "line": 7
+   "name": "boing",
+   "line": 7,
+   "dt": 0.5
   },
   {
-   "name": "whoosh",
-   "line": 8
+   "name": "tada",
+   "line": 8,
+   "dt": 0.8
   },
   {
    "name": "pop",
    "line": 9
   },
   {
-   "name": "pop",
+   "name": "kaching",
    "line": 9,
-   "dt": 0.8
+   "dt": 1.5
   },
   {
    "name": "tada",
-   "line": 11
+   "line": 10
   }
  ],
- "caption": "נהוראי זכה ב-10,000,000 ₪ 💸 ואתם מחליטים מה הוא עושה עם הכסף!\nאתם מחליטים 🎮 פרק 1: הצעד הראשון של נהוראי\n1️⃣ וילה ענקית עם בריכה 🏡\n2️⃣ מטוס פרטי וחופשה ✈️\n👇 כתבו 1 או 2 בתגובות, מה שהכי הרבה יכתבו קורה בפרק הבא. ולכל בחירה יש השלכות...\n📤 שלחו לחבר שיצביע איתכם, ותעקבו כדי לראות מה קורה לנהוראי\n#אתםמחליטים #נהוראי #משפחתספיר #ממלכה #מיליונר",
- "firstComment": "🗳️ ההצבעה פתוחה! 1️⃣ וילה עם בריכה או 2️⃣ מטוס פרטי? כתבו את המספר כאן 👇 מחר נראה מה קורה לנהוראי",
- "thumbOffset": 4487,
- "notes": "Series 'אתם מחליטים' (you decide), episode 1, posted as an extra reel on day 34 at 17:00. Nehorai is a fictional resident of the kingdom (not a real person or a resident's handle). Votes: comments '1' or '2' under this reel; the next episode shows the choice that got more comments, with consequences."
+ "caption": "נהוראי זכה ב-10,000,000 ₪ 💸 ועכשיו אתם מחליטים מה הוא עושה עם הכסף!\nאתם מחליטים 🎮 פרק 1\n💬 כתבו בתגובות את הרעיון הכי מטורף שלכם, והרעיון עם הכי הרבה לייקים קורה בפרק הבא!\n➕ כדי שהתגובה שלכם תיקלט, צריך לעקוב אחרי העמוד\n📤 שלחו לחבר שיעשה לייק לרעיון שלכם\n#אתםמחליטים #נהוראי #משפחתספיר #ממלכה #מיליונר",
+ "firstComment": "🗳️ מה נהוראי עושה עם 10 מיליון? כתבו כאן את הרעיון הכי מטורף, תנו לייק לרעיונות שאתם הכי אוהבים, ותעקבו כדי שהתגובה תיקלט 👇",
+ "thumbOffset": 4246,
+ "notes": "Series 'אתם מחליטים' (you decide), episode 1, posted as an extra reel on day 34 at 17:00. Nehorai is a fictional resident of the kingdom (not a real person or a resident's handle). Michael (17.11): no options offered; the audience writes its own ideas in the comments, the safe idea with the most likes happens in the next episode, and the reel tells them to follow so their comment counts."
 }
