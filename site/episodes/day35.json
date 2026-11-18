@@ -1,0 +1,440 @@
+{
+ "day": 35,
+ "lines": [
+  "[excited] מִישֶׁהוּ הִשְׁאִיר פֶּתֶק עַל הַדֶּלֶת!",
+  "[excited] יוֹם שְׁלוֹשִׁים וְחָמֵשׁ בַּמַּמְלָכָה... וְזֶה מָה שֶׁכָּתוּב בּוֹ:",
+  "[excited] מִי שֶׁצּוֹחֵק אַחֲרוֹן... צוֹחֵק הֲכִי טוֹב!",
+  "[excited] מִי כּוֹתֵב כָּכָה?! וְלָמָּה הוּא צוֹחֵק?!",
+  "[excited] Eilam בִּקֵּשׁ פַּארְק עִם הוֹפָעוֹת... אָז בָּנִינוּ!",
+  "[excited] פַּארְק הַהוֹפָעוֹת שֶׁל הַמַּמְלָכָה!",
+  "[excited] וְהָעֶרֶב, הוֹפָעָה עֲנָקִית... וְכָל הַמַּמְלָכָה מֻזְמֶנֶת!",
+  "[excited] אִם הַגַּנָּב מִסְתַּתֵּר בֵּינֵינוּ... הוּא יִהְיֶה שָׁם.",
+  "[excited] וּבַחֲזָרָה הַלַּיְלָה... הָאוֹרוֹת עַל הַבָּמָה נִדְלְקוּ לְבַד!",
+  "[excited] מִי שֶׁיְּנַחֵשׁ נָכוֹן, יְקַבֵּל מִמֶּנִּי מִשְׁאָלָה!",
+  "[excited] תַּגִּיבוּ: מִי גָּנַב אֶת הַכֶּתֶר? וְאֵיזֶה מָקוֹם נִבְנֶה מָחָר?",
+  "[excited] תַּעַקְבוּ, כְּדֵי לֹא לְפַסְפֵס אֶת הַפֶּרֶק הַבָּא!"
+ ],
+ "top": 330,
+ "mix": "day35.mix.mp3",
+ "say": {
+  "Eilam": "עילם"
+ },
+ "rise": {
+  "key": "show-park",
+  "line": 5,
+  "dt": 0.0,
+  "dur": 1.8
+ },
+ "night": [
+  {
+   "line": 8,
+   "until": 9
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "landmark:detective-office",
+   "dist": 40,
+   "yaw": 5,
+   "pitch": 8,
+   "orbit": -6,
+   "ease": 0.01
+  },
+  {
+   "line": 0,
+   "dt": 0.9,
+   "target": [
+    234.84,
+    4.15,
+    -566.85
+   ],
+   "dist": 13,
+   "yaw": -22.5,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 2,
+   "target": [
+    234.84,
+    4.15,
+    -566.85
+   ],
+   "dist": 11,
+   "yaw": -22.5,
+   "pitch": 2,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": [
+    0,
+    24,
+    24
+   ],
+   "dist": 60,
+   "yaw": -15,
+   "pitch": 16,
+   "orbit": -5,
+   "ease": 0.01
+  },
+  {
+   "line": 4,
+   "target": "castle",
+   "dist": 380,
+   "yaw": -25,
+   "pitch": 40,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 5,
+   "target": "landmark:show-park",
+   "dist": 95,
+   "yaw": -10,
+   "pitch": 16,
+   "orbit": 6,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": [
+    581.1,
+    5,
+    -240.8
+   ],
+   "dist": 30,
+   "yaw": -67.5,
+   "pitch": 10,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": "landmark:show-park",
+   "dist": 55,
+   "yaw": 25,
+   "pitch": 22,
+   "orbit": -4,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": [
+    581.1,
+    5,
+    -240.8
+   ],
+   "dist": 26,
+   "yaw": -50,
+   "pitch": 6,
+   "orbit": 2,
+   "ease": 0.01
+  },
+  {
+   "line": 9,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 10,
+   "pitch": 38,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 10,
+   "target": "statue",
+   "dist": 60,
+   "yaw": 20,
+   "pitch": 28,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 11,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -10,
+   "pitch": 30,
+   "orbit": 5,
+   "ease": 0.01
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dt": 0.1,
+   "dur": 3.0,
+   "text": "פרק 6"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.5,
+   "dur": 2.6,
+   "text": "גנב הכתר 👑 · יום 35"
+  },
+  {
+   "type": "label",
+   "line": 2,
+   "dt": 0.3,
+   "dur": 5.2,
+   "text": "רמז 6 · הפתק על הדלת"
+  },
+  {
+   "type": "comment",
+   "line": 4,
+   "dt": 0,
+   "dur": 2.6,
+   "u": "eilam.lev99",
+   "text": "אפשר לבנות פארק עם הופעות חיות ואירועים",
+   "likes": 1
+  },
+  {
+   "type": "label",
+   "line": 5,
+   "dt": 0.3,
+   "dur": 2.6,
+   "text": "נבנה · פארק ההופעות של הממלכה 🎤"
+  },
+  {
+   "type": "cta",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "מי גנב? 🔍",
+   "sub": "ואיזה מקום נבנה מחר?"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0,
+   "dur": 0.6,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 1.8,
+   "text": "📝",
+   "x": 850,
+   "y": 1350,
+   "size": 200,
+   "rot": 8
+  },
+  {
+   "type": "vignette",
+   "line": 2,
+   "dt": 0,
+   "dur": 3.2,
+   "speed": 3
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.4,
+   "dur": 1.8,
+   "text": "😏",
+   "x": 540,
+   "y": 1350,
+   "size": 220,
+   "rot": 0
+  },
+  {
+   "type": "confetti",
+   "line": 5,
+   "dt": 1.4,
+   "dur": 1.8
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 0.6,
+   "dur": 2.0,
+   "text": "🎤",
+   "x": 850,
+   "y": 1350,
+   "size": 200,
+   "rot": 8
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.6,
+   "dur": 1.8,
+   "text": "👀",
+   "x": 540,
+   "y": 1350,
+   "size": 220,
+   "rot": 0
+  },
+  {
+   "type": "night",
+   "line": 8,
+   "dt": 0,
+   "under": true,
+   "alpha": 0.5,
+   "untilLine": 9
+  },
+  {
+   "type": "shake",
+   "line": 8,
+   "dt": 1.6,
+   "dur": 0.4
+  },
+  {
+   "type": "flash",
+   "line": 8,
+   "dt": 1.6,
+   "dur": 0.3
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 0.4,
+   "dur": 2.4,
+   "text": "🎁",
+   "x": 540,
+   "y": 1350,
+   "size": 230,
+   "rot": 0
+  },
+  {
+   "type": "banner",
+   "line": 9,
+   "dt": 0.3,
+   "dur": 2.5,
+   "text": "מי שינחש נכון יקבל משאלה מהמלך 🎁",
+   "y": 330,
+   "size": 76,
+   "band": "#e8b323",
+   "color": "#13213b"
+  },
+  {
+   "type": "banner",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "תעקבו לפרק הבא 👑",
+   "y": 330,
+   "size": 90,
+   "band": "#e8b323",
+   "color": "#13213b"
+  }
+ ],
+ "music": {
+  "bpm": 108,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 4
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 8
+    },
+    "tense"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0
+  },
+  {
+   "name": "pop",
+   "line": 0,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "scratch",
+   "line": 2,
+   "dt": 0.2
+  },
+  {
+   "name": "sting",
+   "line": 3,
+   "dt": 0.3
+  },
+  {
+   "name": "pop",
+   "line": 4
+  },
+  {
+   "name": "whoosh",
+   "line": 5
+  },
+  {
+   "name": "tada",
+   "line": 5,
+   "dt": 1.4
+  },
+  {
+   "name": "sparkle",
+   "line": 6,
+   "dt": 0.6
+  },
+  {
+   "name": "cricket",
+   "line": 7
+  },
+  {
+   "name": "boom",
+   "line": 8,
+   "dt": 1.6
+  },
+  {
+   "name": "kaching",
+   "line": 9,
+   "dt": 0.4
+  },
+  {
+   "name": "pop",
+   "line": 10
+  },
+  {
+   "name": "tada",
+   "line": 11
+  }
+ ],
+ "caption": "מישהו השאיר פתק על דלת משרד הבלשים: \"מי שצוחק אחרון... צוחק הכי טוב\" 😱📝\nפרק 6 · גנב הכתר 👑 יום 35 בממלכה של משפחת ספיר\nבנינו את פארק ההופעות, והערב כל הממלכה מוזמנת... אם הגנב מסתתר בינינו, הוא יהיה שם 🎤\n🔍 מי לדעתכם גנב את הכתר? כתבו ניחוש בתגובות, מי שינחש נכון יקבל משאלה מהמלך 🎁\n🏗️ ואיזה מקום נבנה מחר? התגובה עם הכי הרבה לייקים נבנית!\n📤 שלחו לחבר שאוהב תעלומות, ותעקבו כדי לא לפספס את פרק 7\n#גנבהכתר #תעלומה #ממלכה #משפחתספיר #בלשים",
+ "firstComment": "🔍 רמז 6: \"מי שצוחק אחרון... צוחק הכי טוב\". מי כתב את הפתק? ואיזה מקום תרצו שנבנה מחר? התגובה עם הכי הרבה לייקים נבנית! 👑",
+ "notes": "Day 35, season 1 episode 6. Built: @eilam.lev99 'אפשר לבנות פארק עם הופעות חיות ואירועים כמו חגים' (1 like, the earliest qualifying). Skipped: @itamarsarusi 'זה עכביש' and @eilam.lev99 'חתול' (guesses, neither confirmed nor denied), a request for a prison to catch the thief (built on day 10), a wall with a real footballer's name (a real person). Gold key: nobody new was counted on day 34, so a citizen without a key, seeded by the day: netagal56. The architect has lived in the villa since day 31.",
+ "replies": [
+  {
+   "id": "18127758425310356",
+   "text": "עילם, פארק ההופעות נבנה! 🎤 והערב כל הממלכה מוזמנת להופעה הגדולה. אתה האדריכל!"
+  },
+  {
+   "id": "18138207121656096",
+   "text": "עכביש?! 🕷️ המלך רשם את זה בספר הבלשים 🔍"
+  },
+  {
+   "id": "18134689801782253",
+   "text": "חתול?! 🐱 עוד ניחוש לספר הבלשים... מה דעתכם, בלשים?"
+  },
+  {
+   "id": "18117696806033016",
+   "text": "הכלא כבר מוכן ומחכה לגנב מיום 10! 🔒 עכשיו רק צריך לתפוס אותו 🔍"
+  }
+ ],
+ "thumbOffset": 3323
+}
