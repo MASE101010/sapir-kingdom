@@ -1,0 +1,433 @@
+{
+ "day": 36,
+ "top": 330,
+ "mix": "day36.mix.mp3",
+ "lines": [
+  "[excited] מִישֶׁהוּ הֶחְלִיף אֶת הַסֻּכָּר... בְּמֶלַח!",
+  "[excited] יוֹם שְׁלוֹשִׁים וָשֵׁשׁ בַּמַּמְלָכָה...",
+  "[excited] אֶתְמוֹל בַּהוֹפָעָה, הָאוֹרוֹת עַל הַבָּמָה נִדְלְקוּ לְבַד.",
+  "[excited] וְהַבֹּקֶר, הַתֵּה שֶׁלִּי הָיָה מָלוּחַ!",
+  "[excited] מִישֶׁהוּ הֶחְלִיף בַּמִּטְבָּח שֶׁל הָאַרְמוֹן אֶת הַסֻּכָּר בְּמֶלַח.",
+  "[excited] מִי שֶׁאוֹהֵב מְתִיחוֹת... לֹא יוּכַל לְהִתְאַפֵּק.",
+  "[excited] אָז בָּנִיתִי מַלְכֹּדֶת: מְבוֹךְ הַמַּרְאוֹת!",
+  "[excited] מִי שֶׁנִּכְנָס, רוֹאֶה אֶת עַצְמוֹ מֵאָה פְּעָמִים!",
+  "[excited] וְהַלַּיְלָה... מִישֶׁהוּ נִכְנַס לַמָּבוֹךְ... וְלֹא יָצָא.",
+  "[excited] מִי לְדַעְתְּכֶם גָּנַב אֶת הַכֶּתֶר?",
+  "[excited] וּמָה נִבְנֶה מָחָר כְּדֵי לִתְפֹּס אוֹתוֹ? כִּתְבוּ בַּתְּגוּבוֹת!",
+  "[excited] וְתַעַקְבוּ, כְּדֵי לֹא לְפַסְפֵס אֶת הַפֶּרֶק הַבָּא!"
+ ],
+ "thumbOffset": 2600,
+ "props": [
+  {
+   "id": "tea",
+   "kind": "teatable",
+   "x": 5,
+   "z": 103,
+   "ry": 0
+  }
+ ],
+ "states": [
+  {
+   "key": "mirror-maze",
+   "kind": "night",
+   "line": 0,
+   "dur": 0.01,
+   "from": 0,
+   "to": 0
+  },
+  {
+   "key": "mirror-maze",
+   "kind": "night",
+   "line": 8,
+   "dt": 0.6,
+   "dur": 1.6,
+   "from": 0,
+   "to": 1
+  }
+ ],
+ "night": [
+  {
+   "line": 2,
+   "until": 3
+  },
+  {
+   "line": 8,
+   "until": 9
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    5,
+    1.4,
+    103
+   ],
+   "dist": 3.2,
+   "yaw": -15,
+   "pitch": 22,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "castle",
+   "dist": 420,
+   "yaw": -30,
+   "pitch": 34,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": [
+    581.1,
+    5,
+    -240.8
+   ],
+   "dist": 46,
+   "yaw": -67,
+   "pitch": 12,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": [
+    5,
+    1.4,
+    103
+   ],
+   "dist": 4,
+   "yaw": 20,
+   "pitch": 18,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": [
+    5,
+    1.5,
+    103
+   ],
+   "dist": 2.6,
+   "yaw": -5,
+   "pitch": 10,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": "statue",
+   "dist": 72,
+   "pitch": 22,
+   "yaw": -20,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 6,
+   "target": "landmark:mirror-maze",
+   "dist": 70,
+   "yaw": 20,
+   "pitch": 24,
+   "orbit": 5,
+   "ease": 0.8
+  },
+  {
+   "line": 7,
+   "target": "landmark:mirror-maze",
+   "dist": 44,
+   "yaw": -25,
+   "pitch": 14,
+   "orbit": 9,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": "landmark:mirror-maze",
+   "dist": 26,
+   "yaw": 0,
+   "pitch": 8,
+   "orbit": 0,
+   "ease": 0.8
+  },
+  {
+   "line": 9,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -50,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 10,
+   "target": "landmark:mirror-maze",
+   "dist": 52,
+   "yaw": 30,
+   "pitch": 20,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 11,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 40,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.8
+  }
+ ],
+ "rise": {
+  "key": "mirror-maze",
+  "line": 6,
+  "dur": 3.4
+ },
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dur": 2.6,
+   "text": "פרק 7 · גנב הכתר"
+  },
+  {
+   "type": "label",
+   "line": 2,
+   "dt": 0.3,
+   "dur": 3,
+   "text": "אתמול בלילה · פארק ההופעות 🎤"
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dt": 0.2,
+   "dur": 4,
+   "text": "🔍 רמז 7: הסוכר הוחלף במלח 🧂"
+  },
+  {
+   "type": "label",
+   "line": 6,
+   "dt": 0.4,
+   "dur": 3.4,
+   "text": "בבנייה · מבוך המראות 🪞"
+  },
+  {
+   "type": "cta",
+   "line": 9,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "🔍 מי הגנב?",
+   "sub": "כתבו בתגובות את הניחוש שלכם"
+  },
+  {
+   "type": "cta",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 3.3,
+   "text": "🏗️ מה נבנה?",
+   "sub": "התגובה עם הכי הרבה לייקים נבנית"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 4,
+   "text": "➕ עקבו",
+   "sub": "כדי לא לפספס את הפרק הבא"
+  }
+ ],
+ "fx": [
+  {
+   "type": "shake",
+   "line": 0,
+   "dt": 0.9,
+   "dur": 0.5
+  },
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0.9,
+   "dur": 0.5,
+   "zoom": 0.2
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 1,
+   "dur": 1.8,
+   "text": "🧂",
+   "x": 860,
+   "y": 1330,
+   "size": 210,
+   "rot": 12
+  },
+  {
+   "type": "night",
+   "line": 2,
+   "untilLine": 3,
+   "under": true,
+   "alpha": 0.5
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.8,
+   "dur": 1.6,
+   "text": "🤢",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.4,
+   "dur": 1.8,
+   "text": "😏",
+   "x": 860,
+   "y": 1330,
+   "size": 180
+  },
+  {
+   "type": "confetti",
+   "line": 6,
+   "dt": 3,
+   "dur": 1.6
+  },
+  {
+   "type": "night",
+   "line": 8,
+   "untilLine": 9,
+   "under": true,
+   "alpha": 0.55
+  },
+  {
+   "type": "vignette",
+   "line": 8,
+   "dur": 3
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 2.2,
+   "dur": 1.6,
+   "text": "😱",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  }
+ ],
+ "music": {
+  "bpm": 112,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 1
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 2
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 3
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 8
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 9
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "scratch",
+   "line": 0,
+   "dt": 0.8
+  },
+  {
+   "name": "boing",
+   "line": 0,
+   "dt": 1
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "sting",
+   "line": 2,
+   "dt": 0.6
+  },
+  {
+   "name": "boing",
+   "line": 3,
+   "dt": 0.8
+  },
+  {
+   "name": "ding",
+   "line": 4,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 6
+  },
+  {
+   "name": "boom",
+   "line": 6,
+   "dt": 2.8
+  },
+  {
+   "name": "sparkle",
+   "line": 7,
+   "dt": 0.4
+  },
+  {
+   "name": "cricket",
+   "line": 8
+  },
+  {
+   "name": "sting",
+   "line": 8,
+   "dt": 2.2
+  },
+  {
+   "name": "pop",
+   "line": 9
+  },
+  {
+   "name": "pop",
+   "line": 10
+  },
+  {
+   "name": "tada",
+   "line": 11,
+   "dt": 0.5
+  }
+ ],
+ "caption": "פרק 7 · גנב הכתר 🪞 מישהו החליף את הסוכר במלח, והמלך בנה מלכודת למי שאוהב מתיחות!\n🔍 מי לדעתכם גנב את הכתר? ומה נבנה מחר כדי לתפוס אותו? כתבו בתגובות, התגובה עם הכי הרבה לייקים נבנית!\n➕ תעקבו כדי לא לפספס את הפרק הבא\n#גנבהכתר #משפחתספיר #ממלכה #בלשים",
+ "firstComment": "🔍 רמז 7: הסוכר במטבח של הארמון הוחלף במלח 🧂 מי עשה את זה? ואיזה מקום נבנה מחר כדי לתפוס אותו? התגובה עם הכי הרבה לייקים נבנית! 👑",
+ "notes": "No comment on day 35's reel asked for anything (the only comment was the kingdom's own), so the king picked (CLAUDE.md step 2): a mirror maze, a trap for whoever loves pranks. All 35 landmark lots were taken, so lots 35-39 were appended to plan.json (r 18, in the clear band between two rows of houses, covering no plot). Gold key: nobody new on day 35 is a citizen, so a citizen without a key was picked with the day as the seed: noga_buhnik."
+}

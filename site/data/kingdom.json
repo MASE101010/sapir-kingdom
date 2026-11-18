@@ -1,6 +1,6 @@
 {
   "note": "The kingdom's state. Written by the daily run (CLAUDE.md). day: today's day number; landmarks: what stands, on which lot, built on which day, at whose asking; history: how many residents stood at the end of each day; upgraded: Instagram name -> extra storeys; visit: whose door Michael walks to today; status: one line about what Michael is doing.",
-  "day": 35,
+  "day": 36,
   "landmarks": [
     {
       "key": "castle",
@@ -279,6 +279,12 @@
       "by": [
         "eilam.lev99"
       ]
+    },
+    {
+      "key": "mirror-maze",
+      "lot": 35,
+      "day": 36,
+      "by": []
     }
   ],
   "history": [
@@ -315,16 +321,17 @@
     430,
     431,
     431,
-    431
+    431,
+    435
   ],
   "upgraded": {},
-  "status": "פרק 6 של גנב הכתר 🎤 פתק מסתורי על דלת משרד הבלשים, ונבנה פארק ההופעות של הממלכה",
+  "status": "פרק 7 של גנב הכתר 🪞 מישהו החליף את הסוכר במלח, והמלך בנה את מבוך המראות כמלכודת",
   "dm": false,
   "updated": "2026-11-18T17:02:59.714Z",
   "news": {
-    "day": 35,
-    "line": "נבנה פארק ההופעות של הממלכה, עם במה ענקית ואורות! 🎤",
-    "landmark": "show-park"
+    "day": 36,
+    "line": "המלך בנה את מבוך המראות של הממלכה, מלכודת למי שאוהב מתיחות! 🪞",
+    "landmark": "mirror-maze"
   },
   "reels": {
     "1": "18129295480834389",
@@ -509,7 +516,8 @@
     },
     "detective-office": {
       "note": 1
-    }
+    },
+    "mirror-maze": {}
   },
   "president": "bibkovich"
 }

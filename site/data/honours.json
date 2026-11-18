@@ -33,7 +33,8 @@
       "gefen.feiler",
       "sh10mi_ohayon___",
       "may.berko",
-      "netagal56"
+      "netagal56",
+      "noga_buhnik"
     ]
   },
   "built": {
@@ -245,6 +246,10 @@
         "eilam.lev99"
       ],
       "day": 35
+    },
+    "mirror-maze": {
+      "by": [],
+      "day": 36
     }
   }
 }
