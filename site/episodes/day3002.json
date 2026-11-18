@@ -531,7 +531,7 @@
    "type": "cta",
    "line": 10,
    "dt": 0.1,
-   "dur": 3.2,
+   "dur": 2.6,
    "text": "💬 מה עכשיו?",
    "sub": "כתבו בתגובות את הרעיון שלכם"
   },
@@ -539,7 +539,7 @@
    "type": "cta",
    "line": 11,
    "dt": 0.1,
-   "dur": 3.2,
+   "dur": 2.9,
    "text": "👍 מנצח!",
    "sub": "הכי הרבה לייקים קורה בפרק הבא"
   },
@@ -654,17 +654,6 @@
    "line": 12,
    "dur": 0.6,
    "zoom": 0.2
-  },
-  {
-   "type": "banner",
-   "line": 12,
-   "dt": 1.2,
-   "dur": 2.6,
-   "text": "תעקבו לפרק 3 🎮",
-   "y": 330,
-   "size": 90,
-   "band": "#e8b323",
-   "color": "#13213b"
   }
  ],
  "music": {
@@ -790,5 +779,6 @@
  ],
  "caption": "נהוראי קנה פסל דרקון שמפליץ שוקולד 🐉🍫 ועכשיו השוקולד זורם לסופר!\nאתם מחליטים 🎮 פרק 2 · הרעיון של @itamarsarusi\n💬 מה נהוראי עושה עכשיו עם 8 מיליון? כתבו בתגובות את הרעיון הכי מטורף שלכם, והרעיון עם הכי הרבה לייקים קורה בפרק הבא!\n➕ כדי שהתגובה שלכם תיקלט, צריך לעקוב אחרי העמוד\n#אתםמחליטים #נהוראי #משפחתספיר #ממלכה #דרקון",
  "firstComment": "🗳️ מה נהוראי עושה עכשיו, כשיש לו 8 מיליון והבוס בדרך? כתבו כאן את הרעיון הכי מטורף, תנו לייק לרעיונות שאתם הכי אוהבים, ותעקבו כדי שהתגובה תיקלט 👇",
- "notes": "Series 'אתם מחליטים', episode 2. Comments on episode 1 (media 18442534552181458), all with 1 like: @itamarsarusi (15:07) a dragon statue that farts chocolate, @eilam.lev99 (16:59) to manage הפועל ספיר and buy its airship, @ofek_bell (17:21) a futuristic gaming park. Tie, so the earliest comment won. Money: 10,000,000 - 2,000,000 (the statue) = 8,000,000."
+ "notes": "Series 'אתם מחליטים', episode 2. Comments on episode 1 (media 18442534552181458), all with 1 like: @itamarsarusi (15:07) a dragon statue that farts chocolate, @eilam.lev99 (16:59) to manage הפועל ספיר and buy its airship, @ofek_bell (17:21) a futuristic gaming park. Tie, so the earliest comment won. Money: 10,000,000 - 2,000,000 (the statue) = 8,000,000.",
+ "thumbOffset": 3800
 }
