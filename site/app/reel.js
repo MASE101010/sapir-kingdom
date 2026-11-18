@@ -11,6 +11,7 @@ import { face } from './face.js';
 import { fingerprint } from './residents.js';
 import { drawOverlay, FONTS } from './overlay.js';
 import { castActors } from './actors.js';
+import { placeProps } from './props.js';
 
 const W = 1080, H = 1920;
 const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), smooth = x => { x = clamp(x); return x * x * (3 - 2 * x); };
@@ -54,6 +55,8 @@ export async function startReel({ renderer, data, day }) {
   const addr = addresses(data.plan.plots), cam = world.camera;
   // day 34: people who move through the reel (actors.js), and 'actor:<id>' as a shot target (yaw 0 is in front of their face)
   const actors = castActors(world.scene, ep.actors ?? [], lineAt);
+  // נהוראי episode 2: things built only for a reel (props.js), and 'prop:<id>' as a shot target (yaw 0 is its front)
+  const props = placeProps(world.scene, ep.props ?? [], lineAt);
 
   // where a shot looks
   const resident = u => residents.find(r => r.u === u);
@@ -64,6 +67,7 @@ export async function startReel({ renderer, data, day }) {
     if (spec?.startsWith('ball:')) { const b = world.lm[spec.slice(5)]?.group.userData.live?.ball; if (b) { b.updateWorldMatrix(true, false); return b.getWorldPosition(new THREE.Vector3()).add(new THREE.Vector3(0, 1, 0)); } }   // follows a match's ball
     if (spec?.startsWith('dragon:')) { const d = world.life.dragons[+spec.slice(7)]?.d; if (d) return d.position.clone(); }   // follows it
     if (spec?.startsWith('actor:')) { const h = actors.head(spec.slice(6)); if (h) return h; }
+    if (spec?.startsWith('prop:')) { const h = props.at(spec.slice(5)); if (h) return h; }
     if (spec?.startsWith('house:')) { const r = resident(spec.slice(6)), pl = r && data.plan.plots[r.plot]; if (pl) return new THREE.Vector3(pl[0], 5, pl[1]); }
     if (spec?.startsWith('model:')) { const m = world.models?.[spec.slice(6)]; if (m) { const sz = m.userData.size?.y ?? 10; return m.position.clone().add(new THREE.Vector3(0, sz * .55, 0)); } }   // a 3D model (models.js)
     if (spec?.startsWith('landmark:')) { const l = world.lm[spec.slice(9)]; if (l) return new THREE.Vector3(l.at[0], (l.mod.top ?? 20) * .35, l.at[1]); }
@@ -74,7 +78,7 @@ export async function startReel({ renderer, data, day }) {
     let i = shots.findLastIndex(s => s.t <= t); if (i < 0) i = 0;
     const s = shots[i], p = shots[i - 1] ?? s, f = smooth((t - s.t) / (s.ease ?? 1.6));
     // on a landmark, yaw 0 looks at its front (its lot is turned to face the castle)
-    const front = sh => typeof sh.target !== 'string' ? 0 : sh.target.startsWith('actor:') ? actors.facing(sh.target.slice(6)) * 180 / Math.PI : sh.target.startsWith('landmark:') ? (world.lm[sh.target.slice(9)]?.group.rotation.y ?? 0) * 180 / Math.PI
+    const front = sh => typeof sh.target !== 'string' ? 0 : sh.target.startsWith('actor:') ? actors.facing(sh.target.slice(6)) * 180 / Math.PI : sh.target.startsWith('prop:') ? props.facing(sh.target.slice(5)) * 180 / Math.PI : sh.target.startsWith('landmark:') ? (world.lm[sh.target.slice(9)]?.group.rotation.y ?? 0) * 180 / Math.PI
       : sh.follow && sh.target.startsWith('ride:') ? (() => { const [, key, i] = sh.target.split(':'), l = world.lm[key], car = l?.group.userData.rides?.train?.[+i || 0]; return car ? (l.group.rotation.y + car.rotation.y) * 180 / Math.PI : 0; })()
       : sh.follow && sh.target.startsWith('dragon:') ? (world.life.dragons[+sh.target.slice(7)]?.d.rotation.y ?? 0) * 180 / Math.PI : 0;   // follow: yaw 0 is in front of the dragon's face
     const params = sh => ({ target: focus(sh.target, t), dist: sh.dist ?? 300, yaw: front(sh) + (sh.yaw ?? -30) + (sh.orbit ?? 0) * (t - sh.t), pitch: sh.pitch ?? 32, fov: sh.fov ?? 38 });
@@ -146,7 +150,7 @@ export async function startReel({ renderer, data, day }) {
     if (nights.length) world.daylight(nights.some(n => t >= n.t0 && t < n.t1) ? 23 : 12);
     if (houses) world.showHouses(houses.from + (houses.to - houses.from) * smooth((t - houses.t0) / houses.dur)); else world.showHouses(residents.length);
     for (const r of rises) world.rise(r.key, backOut((t - r.t0) / r.dur));
-    world.animate((ep.clock ?? 900) + t); actors.update(t); poseCamera(t);
+    world.animate((ep.clock ?? 900) + t); actors.update(t); props.update(t); poseCamera(t);
     renderer.render(world.scene, cam);
     k.t = t; g.drawImage(renderer.domElement, 0, 0, W, H); drawOverlay(g, k, cards, chunks, fx);
   }

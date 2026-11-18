@@ -1,0 +1,794 @@
+{
+ "day": 3002,
+ "series": "you-decide",
+ "episode": 2,
+ "top": 330,
+ "mix": "day3002.mix.mp3",
+ "say": {
+  "Itamar": "איתמר"
+ },
+ "lines": [
+  "[excited] נֶהוֹרַאי קָנָה... דְּרָקוֹן שֶׁמַּפְלִיץ שׁוֹקוֹלָד!",
+  "[excited] אַתֶּם מַחְלִיטִים, פֶּרֶק שְׁנַיִם!",
+  "[excited] Itamar כָּתַב בַּתְּגוּבוֹת: פֶּסֶל דְּרָקוֹן, שֶׁמַּפְלִיץ שׁוֹקוֹלָד!",
+  "[excited] אָז נֶהוֹרַאי שִׁלֵּם שְׁנֵי מִילְיוֹן שְׁקָלִים... וּבָנָה אוֹתוֹ!",
+  "[excited] הוּא לָחַץ עַל הַכַּפְתּוֹר...",
+  "[excited] וְהַדְּרָקוֹן הִפְלִיץ!",
+  "[excited] שׁוֹקוֹלָד בְּכָל הָרְחוֹב! וְכָל הַשְּׁכֵנִים רָצוּ לִטְעֹם!",
+  "[excited] אֲבָל... הוּא לֹא מַפְסִיק לְהַפְלִיץ!",
+  "[excited] וְהַשּׁוֹקוֹלָד זוֹרֵם יָשָׁר לַסּוּפֶּר שֶׁל נֶהוֹרַאי!",
+  "[excited] נִשְׁאֲרוּ לוֹ שְׁמוֹנָה מִילְיוֹן... וְהַבּוֹס מֵהַסּוּפֶּר בַּדֶּרֶךְ!",
+  "[excited] מָה נֶהוֹרַאי עוֹשֶׂה עַכְשָׁו? כִּתְבוּ בַּתְּגוּבוֹת!",
+  "[excited] הָרַעְיוֹן עִם הֲכִי הַרְבֵּה לַייקִים... קוֹרֶה בַּפֶּרֶק הַבָּא!",
+  "[excited] וּכְדֵי שֶׁהַתְּגוּבָה תִּקָּלֵט, תַּעַקְבוּ אַחֲרֵי הָעַמּוּד!"
+ ],
+ "actors": [
+  {
+   "id": "nehorai",
+   "look": {
+    "shirt": 16177226,
+    "pants": 3099258,
+    "hair": 2759184,
+    "skin": 14264191,
+    "apron": 1011571,
+    "shoes": 16777215
+   },
+   "scale": 1,
+   "cheque": {
+    "text": "2,000,000 ₪",
+    "sub": "לפסל הדרקון 🐉"
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": 145,
+     "anim": "cheer"
+    },
+    {
+     "line": 1,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": -35,
+     "anim": "dance"
+    },
+    {
+     "line": 2,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": -35,
+     "anim": "think"
+    },
+    {
+     "line": 3,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": -35,
+     "anim": "hold",
+     "cheque": true
+    },
+    {
+     "line": 3,
+     "dt": 2.2,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": 145,
+     "anim": "shock"
+    },
+    {
+     "line": 4,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": 145,
+     "anim": "point"
+    },
+    {
+     "line": 5,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": 145,
+     "anim": "shock"
+    },
+    {
+     "line": 6,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": -35,
+     "anim": "jump"
+    },
+    {
+     "line": 7,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": 145,
+     "anim": "shock"
+    },
+    {
+     "line": 8,
+     "x": 83.2,
+     "z": 57.1,
+     "ry": 145,
+     "anim": "run"
+    },
+    {
+     "line": 8,
+     "dt": 1.2,
+     "from": "slide",
+     "x": 90,
+     "z": 47,
+     "ry": 145,
+     "anim": "run"
+    },
+    {
+     "line": 9,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": -35,
+     "anim": "shock"
+    },
+    {
+     "line": 10,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": -35,
+     "anim": "think"
+    },
+    {
+     "line": 11,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": -35,
+     "anim": "point"
+    },
+    {
+     "line": 12,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": -35,
+     "anim": "cheer"
+    }
+   ]
+  },
+  {
+   "id": "kid1",
+   "scale": 0.8,
+   "look": {
+    "shirt": 15967928,
+    "pants": 3099258,
+    "hair": 4861984,
+    "skin": 14857359
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 71.6,
+     "z": 50.2,
+     "ry": 90,
+     "anim": "idle",
+     "hide": true
+    },
+    {
+     "line": 6,
+     "dt": 0.2,
+     "x": 71.6,
+     "z": 50.2,
+     "ry": 90,
+     "anim": "run"
+    },
+    {
+     "line": 6,
+     "dt": 1.5999999999999999,
+     "from": "slide",
+     "x": 82.8,
+     "z": 48.2,
+     "ry": 90,
+     "anim": "run"
+    },
+    {
+     "line": 6,
+     "dt": 1.7,
+     "x": 82.8,
+     "z": 48.2,
+     "ry": 90,
+     "anim": "jump"
+    },
+    {
+     "line": 9,
+     "x": 82.8,
+     "z": 48.2,
+     "ry": 90,
+     "anim": "cheer"
+    }
+   ]
+  },
+  {
+   "id": "kid2",
+   "scale": 0.8,
+   "look": {
+    "shirt": 9428160,
+    "pants": 3099258,
+    "hair": 2759184,
+    "skin": 14857359
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 94.1,
+     "z": 63.5,
+     "ry": 200,
+     "anim": "idle",
+     "hide": true
+    },
+    {
+     "line": 6,
+     "dt": 0.4,
+     "x": 94.1,
+     "z": 63.5,
+     "ry": 200,
+     "anim": "run"
+    },
+    {
+     "line": 6,
+     "dt": 1.7999999999999998,
+     "from": "slide",
+     "x": 89.6,
+     "z": 50.6,
+     "ry": 200,
+     "anim": "run"
+    },
+    {
+     "line": 6,
+     "dt": 1.9,
+     "x": 89.6,
+     "z": 50.6,
+     "ry": 200,
+     "anim": "dance"
+    },
+    {
+     "line": 9,
+     "x": 89.6,
+     "z": 50.6,
+     "ry": 200,
+     "anim": "cheer"
+    }
+   ]
+  },
+  {
+   "id": "kid3",
+   "scale": 0.8,
+   "look": {
+    "shirt": 8176874,
+    "pants": 3099258,
+    "hair": 13211418,
+    "skin": 14857359
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 96.7,
+     "z": 45.8,
+     "ry": 270,
+     "anim": "idle",
+     "hide": true
+    },
+    {
+     "line": 6,
+     "dt": 0.6000000000000001,
+     "x": 96.7,
+     "z": 45.8,
+     "ry": 270,
+     "anim": "run"
+    },
+    {
+     "line": 6,
+     "dt": 2.0,
+     "from": "slide",
+     "x": 88.7,
+     "z": 45.0,
+     "ry": 270,
+     "anim": "run"
+    },
+    {
+     "line": 6,
+     "dt": 2.1,
+     "x": 88.7,
+     "z": 45.0,
+     "ry": 270,
+     "anim": "cheer"
+    },
+    {
+     "line": 9,
+     "x": 88.7,
+     "z": 45.0,
+     "ry": 270,
+     "anim": "cheer"
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "id": "dragon",
+   "kind": "chocodragon",
+   "x": 78,
+   "z": 62,
+   "ry": -35,
+   "scale": 1.15,
+   "keys": [
+    {
+     "line": 0,
+     "rise": 1,
+     "fart": true,
+     "puddle": 3
+    },
+    {
+     "line": 1,
+     "fart": false
+    },
+    {
+     "line": 2,
+     "rise": 1,
+     "puddle": 0
+    },
+    {
+     "line": 3,
+     "rise": 0
+    },
+    {
+     "line": 3,
+     "dt": 2.4,
+     "rise": 1
+    },
+    {
+     "line": 5,
+     "fart": true,
+     "puddle": 0
+    },
+    {
+     "line": 6,
+     "puddle": 5
+    },
+    {
+     "line": 7,
+     "puddle": 8
+    },
+    {
+     "line": 8,
+     "puddle": 10
+    },
+    {
+     "line": 9,
+     "puddle": 18
+    }
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "prop:dragon",
+   "dist": 30,
+   "yaw": -95,
+   "pitch": 8,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "actor:nehorai",
+   "dist": 7,
+   "yaw": 10,
+   "pitch": 6,
+   "orbit": 6,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": "actor:nehorai",
+   "dist": 9,
+   "yaw": -20,
+   "pitch": 8,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": "prop:dragon",
+   "dist": 38,
+   "yaw": 15,
+   "pitch": 12,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "actor:nehorai",
+   "dist": 5,
+   "yaw": -160,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": "prop:dragon",
+   "dist": 28,
+   "yaw": -100,
+   "pitch": 6,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 6,
+   "target": [
+    85,
+    3,
+    52
+   ],
+   "dist": 40,
+   "yaw": 120,
+   "pitch": 24,
+   "orbit": 6,
+   "ease": 1.0
+  },
+  {
+   "line": 7,
+   "target": "actor:nehorai",
+   "dist": 6,
+   "yaw": 0,
+   "pitch": 5,
+   "orbit": 0,
+   "ease": 0.01
+  },
+  {
+   "line": 8,
+   "target": [
+    88,
+    2,
+    48
+   ],
+   "dist": 62,
+   "yaw": 240,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 9,
+   "target": "actor:nehorai",
+   "dist": 8,
+   "yaw": 15,
+   "pitch": 6,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "target": "actor:nehorai",
+   "dist": 6,
+   "yaw": 0,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 11,
+   "target": "prop:dragon",
+   "dist": 34,
+   "yaw": -90,
+   "pitch": 10,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 12,
+   "target": "actor:nehorai",
+   "dist": 10,
+   "yaw": 20,
+   "pitch": 8,
+   "orbit": 6,
+   "ease": 0.6
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dur": 2.6,
+   "text": "אתם מחליטים 🎮"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.3,
+   "dur": 2.3,
+   "text": "פרק 2 · נהוראי"
+  },
+  {
+   "type": "comment",
+   "line": 2,
+   "dur": 3.6,
+   "u": "itamarsarusi",
+   "text": "בנו פסל של דרקון עם אש שמפליץ שוקולד",
+   "likes": 1
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 0.5,
+   "dur": 3,
+   "text": "-2,000,000 ₪ 💸"
+  },
+  {
+   "type": "label",
+   "line": 9,
+   "dt": 0.2,
+   "dur": 3.2,
+   "text": "נשארו 8,000,000 ₪ 💰"
+  },
+  {
+   "type": "cta",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "💬 מה עכשיו?",
+   "sub": "כתבו בתגובות את הרעיון שלכם"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "👍 מנצח!",
+   "sub": "הכי הרבה לייקים קורה בפרק הבא"
+  },
+  {
+   "type": "cta",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 4,
+   "text": "➕ עקבו",
+   "sub": "כדי שהתגובה שלכם תיקלט"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dur": 0.6,
+   "zoom": 0.25
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 2,
+   "text": "🍫",
+   "x": 860,
+   "y": 1320,
+   "size": 200,
+   "rot": 10
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.6,
+   "dur": 1.7,
+   "text": "🐉",
+   "x": 220,
+   "y": 1320,
+   "size": 190,
+   "rot": -8
+  },
+  {
+   "type": "confetti",
+   "line": 3,
+   "dt": 2.4,
+   "dur": 2
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.4,
+   "dur": 1.6,
+   "text": "🔴",
+   "x": 860,
+   "y": 1330,
+   "size": 170
+  },
+  {
+   "type": "shake",
+   "line": 5,
+   "dur": 0.6
+  },
+  {
+   "type": "punch",
+   "line": 5,
+   "dur": 0.6,
+   "zoom": 0.22
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.3,
+   "dur": 1.8,
+   "text": "💨",
+   "x": 860,
+   "y": 1320,
+   "size": 220,
+   "rot": -10
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 1,
+   "dur": 2,
+   "text": "😋",
+   "x": 220,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.3,
+   "dur": 1.8,
+   "text": "😱",
+   "x": 860,
+   "y": 1330,
+   "size": 200
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 1.4,
+   "dur": 2,
+   "text": "😬",
+   "x": 860,
+   "y": 1330,
+   "size": 200
+  },
+  {
+   "type": "punch",
+   "line": 12,
+   "dur": 0.6,
+   "zoom": 0.2
+  },
+  {
+   "type": "banner",
+   "line": 12,
+   "dt": 1.2,
+   "dur": 2.6,
+   "text": "תעקבו לפרק 3 🎮",
+   "y": 330,
+   "size": 90,
+   "band": "#e8b323",
+   "color": "#13213b"
+  }
+ ],
+ "music": {
+  "bpm": 124,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 4
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 5
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 7
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 10
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "scratch",
+   "line": 0
+  },
+  {
+   "name": "boing",
+   "line": 0,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 0.2
+  },
+  {
+   "name": "kaching",
+   "line": 3,
+   "dt": 0.4
+  },
+  {
+   "name": "boom",
+   "line": 3,
+   "dt": 2.3
+  },
+  {
+   "name": "tada",
+   "line": 3,
+   "dt": 2.6
+  },
+  {
+   "name": "ding",
+   "line": 4,
+   "dt": 0.5
+  },
+  {
+   "name": "scratch",
+   "line": 5
+  },
+  {
+   "name": "boing",
+   "line": 5,
+   "dt": 0.1
+  },
+  {
+   "name": "boing",
+   "line": 5,
+   "dt": 0.6
+  },
+  {
+   "name": "sparkle",
+   "line": 6,
+   "dt": 0.5
+  },
+  {
+   "name": "sting",
+   "line": 7,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 8
+  },
+  {
+   "name": "sting",
+   "line": 9,
+   "dt": 1.2
+  },
+  {
+   "name": "pop",
+   "line": 10
+  },
+  {
+   "name": "tada",
+   "line": 11,
+   "dt": 0.6
+  },
+  {
+   "name": "kaching",
+   "line": 12,
+   "dt": 1.2
+  }
+ ],
+ "caption": "נהוראי קנה פסל דרקון שמפליץ שוקולד 🐉🍫 ועכשיו השוקולד זורם לסופר!\nאתם מחליטים 🎮 פרק 2 · הרעיון של @itamarsarusi\n💬 מה נהוראי עושה עכשיו עם 8 מיליון? כתבו בתגובות את הרעיון הכי מטורף שלכם, והרעיון עם הכי הרבה לייקים קורה בפרק הבא!\n➕ כדי שהתגובה שלכם תיקלט, צריך לעקוב אחרי העמוד\n#אתםמחליטים #נהוראי #משפחתספיר #ממלכה #דרקון",
+ "firstComment": "🗳️ מה נהוראי עושה עכשיו, כשיש לו 8 מיליון והבוס בדרך? כתבו כאן את הרעיון הכי מטורף, תנו לייק לרעיונות שאתם הכי אוהבים, ותעקבו כדי שהתגובה תיקלט 👇",
+ "notes": "Series 'אתם מחליטים', episode 2. Comments on episode 1 (media 18442534552181458), all with 1 like: @itamarsarusi (15:07) a dragon statue that farts chocolate, @eilam.lev99 (16:59) to manage הפועל ספיר and buy its airship, @ofek_bell (17:21) a futuristic gaming park. Tie, so the earliest comment won. Money: 10,000,000 - 2,000,000 (the statue) = 8,000,000."
+}
