@@ -65,12 +65,83 @@ function chocoDragon() {
   return root;
 }
 
-const builders = { chocodragon: chocoDragon };
+/** a little table outside the palace with the king's tea: a cup with steam, the sugar jar (full of salt!) and a spilled pile */
+function teaTable() {
+  const root = new THREE.Group(), WOOD = 0x8a6240, WHITE = 0xf7f5ee, GOLD = 0xe8b323, NAVY = 0x13213b;
+  box(root, 2.4, .12, 1.6, WOOD, 0, 1.05, 0); for (const [x, z] of [[-1, -.6], [1, -.6], [-1, .6], [1, .6]]) box(root, .12, 1.05, .12, WOOD, x, .52, z);
+  box(root, 2.6, .03, 1.8, WHITE, 0, 1.13, 0); for (const s of [-1, 1]) box(root, 2.6, .35, .03, WHITE, 0, .97, s * .9);
+  box(root, .12, .35, 1.8, GOLD, -1.25, .97, 0); box(root, .12, .35, 1.8, GOLD, 1.25, .97, 0);
+  // the cup: a saucer, a cup with a handle, tea inside, steam
+  const cupG = new THREE.Group(); cupG.position.set(-.55, 1.15, .2); root.add(cupG);
+  const cyl = (r1, r2, h, c, y) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(r1, r2, h, 20), new THREE.MeshLambertMaterial({ color: c })); m.position.y = y; cupG.add(m); return m; };
+  cyl(.34, .3, .04, WHITE, .02); cyl(.22, .16, .3, WHITE, .19); cyl(.2, .2, .02, 0x9a5a2a, .33); cyl(.235, .235, .03, GOLD, .32);
+  const handle = new THREE.Mesh(new THREE.TorusGeometry(.09, .025, 8, 16), new THREE.MeshLambertMaterial({ color: WHITE })); handle.position.set(.25, .2, 0); cupG.add(handle);
+  const steam = Array.from({ length: 6 }, () => { const m = new THREE.Mesh(new THREE.SphereGeometry(.08, 8, 6), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: .5, depthWrite: false })); cupG.add(m); return m; });
+  // the jar: glass with a gold lid, full of white grains, a label that says סוכר
+  const jar = new THREE.Group(); jar.position.set(.45, 1.15, -.1); root.add(jar);
+  const glass = new THREE.Mesh(new THREE.CylinderGeometry(.28, .28, .7, 20), new THREE.MeshLambertMaterial({ color: 0xdff2fa, transparent: true, opacity: .45 })); glass.position.y = .35; jar.add(glass);
+  const grains = new THREE.Mesh(new THREE.CylinderGeometry(.25, .25, .5, 20), new THREE.MeshLambertMaterial({ color: 0xffffff })); grains.position.y = .27; jar.add(grains);
+  const lid = new THREE.Mesh(new THREE.CylinderGeometry(.3, .3, .1, 20), new THREE.MeshLambertMaterial({ color: GOLD })); lid.position.y = .75; jar.add(lid);
+  const c = document.createElement('canvas'); c.width = 256; c.height = 128; const g = c.getContext('2d');
+  const draw = () => { g.fillStyle = '#fffbe8'; g.fillRect(0, 0, 256, 128); g.strokeStyle = '#13213b'; g.lineWidth = 8; g.strokeRect(4, 4, 248, 120);
+    g.fillStyle = '#13213b'; g.textAlign = 'center'; g.direction = 'rtl'; g.font = '900 72px "Secular One", Rubik, sans-serif'; g.fillText('סוכר', 128, 92); };
+  draw(); const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+  const label = new THREE.Mesh(new THREE.PlaneGeometry(.42, .21), new THREE.MeshBasicMaterial({ map: tex })); label.position.set(0, .36, .285); jar.add(label);
+  // a spoon and a little spilled pile of salt, a salt shaker that says מלח (the swap)
+  box(root, .5, .03, .06, 0xc9c9c9, -.05, 1.17, .45, 0, .4); const pile = new THREE.Mesh(new THREE.ConeGeometry(.16, .1, 12), new THREE.MeshLambertMaterial({ color: 0xffffff })); pile.position.set(.15, 1.2, .5); root.add(pile);
+  const plaqueM = plaque('המטבח של הארמון 👑', 'הבוקר, תה של המלך ☕'); plaqueM.scale.setScalar(.42); plaqueM.position.set(0, .7, .93); root.add(plaqueM);
+  root.userData = { plaque: plaqueM, labelRedraw: () => { draw(); tex.needsUpdate = true; },
+    update(t) { steam.forEach((m, i) => { const ph = (t * .5 + i / steam.length) % 1; m.position.set(Math.sin(ph * 6 + i) * .06, .4 + ph * .9, 0); m.scale.setScalar(.6 + ph * 1.8); m.material.opacity = .5 * (1 - ph); }); } };
+  return root;
+}
+
+/** a chocolate river: a winding channel with stone banks, a wooden bridge, a dock, rubber rings floating down it with
+ * little riders, and a ticket gate with a price sign. rise (0..1) fills it; the rings drift along it over time */
+function chocoRiver(spec) {
+  const root = new THREE.Group(), STONE = 0xd8ccb2, WOOD = 0x8a6240, WOOD2 = 0x6e4a2e, GOLD = 0xe8b323, NAVY = 0x13213b;
+  const L = 46, path = u => new THREE.Vector3(Math.sin(u * Math.PI * 2.2) * 5, 0, -u * L);           // local, from 0 to -L
+  const fill = new THREE.Group(); root.add(fill);
+  const segs = 40;
+  for (let i = 0; i < segs; i++) {
+    const a = path(i / segs), b = path((i + 1) / segs), mid = a.clone().add(b).multiplyScalar(.5), len = a.distanceTo(b) + .4, ang = Math.atan2(b.x - a.x, b.z - a.z);
+    const m = new THREE.Mesh(new THREE.BoxGeometry(5.2, .3, len), new THREE.MeshLambertMaterial({ color: i % 3 ? CHOC : CHOC2 })); m.position.copy(mid); m.position.y = .1; m.rotation.y = ang; fill.add(m);
+    for (const s of [-1, 1]) { const st = new THREE.Mesh(new THREE.BoxGeometry(.9, .55, len), new THREE.MeshLambertMaterial({ color: (i + (s > 0)) % 2 ? STONE : 0xe9dfc9 }));
+      st.position.set(mid.x + Math.cos(ang) * s * 3.05, .27, mid.z - Math.sin(ang) * s * 3.05); st.rotation.y = ang; root.add(st); }
+  }
+  // swirls on the surface
+  const swirls = Array.from({ length: 14 }, (_, i) => { const m = new THREE.Mesh(new THREE.TorusGeometry(.45 + (i % 3) * .2, .07, 6, 18), new THREE.MeshLambertMaterial({ color: MILK })); m.rotation.x = -Math.PI / 2; fill.add(m); return m; });
+  // the bridge over the middle, the dock at the start
+  const bm = path(.5); const bridge = new THREE.Group(); bridge.position.set(bm.x, 0, bm.z); root.add(bridge);
+  box(bridge, 8.4, .25, 2.2, WOOD, 0, .95, 0); for (const s of [-1, 1]) { box(bridge, 8.4, .12, .12, WOOD2, 0, 1.9, s * 1); for (let k = 0; k < 6; k++) box(bridge, .14, 1, .14, WOOD2, -3.8 + k * 1.52, 1.4, s * 1); }
+  for (const s of [-1, 1]) box(bridge, 1.2, .95, 2.2, 0xe9dfc9, s * 3.9, .47, 0);
+  box(root, 5.6, .2, 2.4, WOOD, 0, .45, 1.6); for (const x of [-2.6, 2.6]) box(root, .25, 1.2, .25, WOOD2, x, .3, 2.7);
+  // the ticket gate: two posts, an arch with the sign (canvas), a booth
+  const gate = new THREE.Group(); gate.position.set(6.5, 0, 2.5); gate.rotation.y = -.5; root.add(gate);
+  for (const x of [-2.4, 2.4]) { box(gate, .7, 4.6, .7, NAVY, x, 2.3, 0); const b = new THREE.Mesh(new THREE.SphereGeometry(.45, 10, 8), new THREE.MeshLambertMaterial({ color: GOLD })); b.position.set(x, 4.9, 0); gate.add(b); }
+  const sg = plaque('נהר השוקולד 🍫', 'כניסה: 150 ₪'); sg.scale.setScalar(.95); sg.position.set(0, 3.6, .38); gate.add(sg);
+  box(gate, 5.6, 1.9, .3, NAVY, 0, 3.6, 0);
+  // the rubber rings with riders, drifting down
+  const RING = [0xf3a6b8, 0x8fdcc0, 0xf6d84a, 0x7cc4ea, 0xc9b2ec, 0xf28c28];
+  const rings = Array.from({ length: 7 }, (_, i) => { const g = new THREE.Group(); fill.add(g);
+    const t = new THREE.Mesh(new THREE.TorusGeometry(.75, .32, 10, 20), new THREE.MeshLambertMaterial({ color: RING[i % RING.length] })); t.rotation.x = -Math.PI / 2; t.position.y = .35; g.add(t);
+    box(g, .5, .7, .35, [0x13213b, 0xc2412d, 0x0f6f73, 0xe8b323][i % 4], 0, .75, 0); box(g, .42, .42, .42, 0xe2b48f, 0, 1.3, 0); box(g, .45, .12, .45, 0x2a1a10, 0, 1.55, 0);
+    for (const s of [-1, 1]) box(g, .14, .5, .14, 0xe2b48f, s * .34, 1.15, 0, 0, 0, s * -.9);
+    return g; });
+  root.userData = { plaque: sg, update(t, val) {
+    const rise = val('rise', 1); fill.position.y = (rise - 1) * .6; fill.scale.set(1, Math.max(.01, rise), 1); fill.visible = rise > .02;
+    const on = val('float', 0);
+    rings.forEach((g, i) => { const u = ((t * .028 + i / rings.length) % 1), p = path(u); g.position.set(p.x + Math.sin(t + i) * .5, .2, p.z); g.rotation.y = t * .6 + i; g.visible = on > .5; });
+    swirls.forEach((m, i) => { const u = ((t * .02 + i / swirls.length) % 1), p = path(u); m.position.set(p.x + ((i * 7) % 5 - 2) * .5, .27, p.z); m.rotation.z = t * (i % 2 ? 1 : -1); });
+  } };
+  return root;
+}
+
+const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver };
 
 /** the props of a reel: build them, and each frame set them as their keyframes say */
 export function placeProps(scene, list = [], lineAt) {
   const all = list.map(spec => {
-    const g = builders[spec.kind](); g.position.set(spec.x, spec.y ?? 0, spec.z); g.rotation.y = (spec.ry ?? 0) * Math.PI / 180; g.scale.setScalar(spec.scale ?? 1); scene.add(g);
+    const g = builders[spec.kind](spec); g.position.set(spec.x, spec.y ?? 0, spec.z); g.rotation.y = (spec.ry ?? 0) * Math.PI / 180; g.scale.setScalar(spec.scale ?? 1); scene.add(g);
     const keys = (spec.keys ?? [{ line: 0 }]).map(k => ({ ...k, t: lineAt(k.line, k.dt) })).sort((p, q) => p.t - q.t);
     return { id: spec.id, g, s: spec.scale ?? 1, keys };
   });
@@ -82,8 +153,9 @@ export function placeProps(scene, list = [], lineAt) {
     const f = Math.min(1, Math.max(0, (t - a.t) / Math.max(.01, b.t - a.t))), e = f * f * (3 - 2 * f); return a[name] + (b[name] - a[name]) * e;
   };
   function update(t) {
-    if (!fresh && document.fonts.status === 'loaded') { fresh = true; for (const p of all) p.g.userData.plaque?.userData.redraw?.(); }
+    if (!fresh && document.fonts.status === 'loaded') { fresh = true; for (const p of all) { p.g.userData.plaque?.userData.redraw?.(); p.g.userData.labelRedraw?.(); } }
     for (const p of all) {
+      if (p.g.userData.update) { p.g.userData.update(t, (name, dflt) => val(p.keys, t, name, dflt)); continue; }
       const u = p.g.userData, rise = val(p.keys, t, 'rise', 1), r = val(p.keys, t, 'puddle', 0);
       u.statue.position.y = 3.25 - (1 - rise) * 14; u.statue.visible = rise > .02;
       const on = p.keys.filter(k => k.fart != null && k.t <= t).at(-1), fartT = on?.fart ? t - on.t : -1;
