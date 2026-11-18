@@ -6,6 +6,17 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 const { SITE_URL, EXPORT_TOKEN, IG_TOKEN } = process.env;
 const kingdom = JSON.parse(readFileSync('site/data/kingdom.json', 'utf8')), day = kingdom.day;
 
+// ONLY=<day>: just the comments on that day's reel (e.g. 3001, a נהוראי episode), into inbox/day<ONLY>.json, nothing else
+if (process.env.ONLY) {
+  const d = process.env.ONLY, media = kingdom.reels?.[d]; if (!media) throw new Error(`no reel for ${d}`);
+  let comments = [], url = `https://graph.instagram.com/v21.0/${media}/comments?fields=id,text,username,like_count,timestamp&limit=50&access_token=${IG_TOKEN}`;
+  while (url) { const page = await fetch(url).then(r => r.json()); if (page.error) throw new Error(page.error.message); comments.push(...page.data); url = page.paging?.next; }
+  comments = comments.map(c => ({ id: c.id, u: c.username, text: c.text, likes: c.like_count ?? 0, at: c.timestamp })).sort((a, b) => b.likes - a.likes || a.at.localeCompare(b.at));
+  mkdirSync('inbox', { recursive: true });
+  writeFileSync(`inbox/day${d}.json`, JSON.stringify({ day: +d, media, counted: new Date().toISOString(), comments }, null, 1));
+  console.log(`inbox/day${d}.json: ${comments.length} comments`); process.exit(0);
+}
+
 const live = await fetch(`${SITE_URL}/api/export`, { headers: { authorization: `Bearer ${EXPORT_TOKEN}` } }).then(r => { if (!r.ok) throw new Error(`export ${r.status}`); return r.json(); });
 const old = JSON.parse(readFileSync('site/data/residents.json', 'utf8'));
 // only ever appended to: the same people in the same order (a plot may change: a resident moved in with a friend)

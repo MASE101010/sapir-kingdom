@@ -2,7 +2,7 @@
 name: ingest
 on:
   schedule: [{ cron: '0 13 * * *' }]      # 16:00 in Israel in summer time, 15:00 in winter
-  workflow_dispatch:
+  workflow_dispatch: { inputs: { only: { description: 'only the comments on the reel of this day (e.g. 3001)', default: '' } } }
 concurrency: { group: kingdom, cancel-in-progress: false }
 permissions: { contents: write }
 jobs:
@@ -16,6 +16,7 @@ jobs:
         env: { KINGDOM_ENV: '${{ secrets.KINGDOM_ENV }}' }
       - if: env.READY == '1'
         run: node tools/ingest.mjs
+        env: { ONLY: '${{ inputs.only }}' }
       - if: env.READY == '1'
         run: |
           git config user.name "kingdom-bot"; git config user.email "kingdom-bot@users.noreply.github.com"
