@@ -89,8 +89,7 @@ function teaTable() {
   const label = new THREE.Mesh(new THREE.PlaneGeometry(.42, .21), new THREE.MeshBasicMaterial({ map: tex })); label.position.set(0, .36, .285); jar.add(label);
   // a spoon and a little spilled pile of salt, a salt shaker that says מלח (the swap)
   box(root, .5, .03, .06, 0xc9c9c9, -.05, 1.17, .45, 0, .4); const pile = new THREE.Mesh(new THREE.ConeGeometry(.16, .1, 12), new THREE.MeshLambertMaterial({ color: 0xffffff })); pile.position.set(.15, 1.2, .5); root.add(pile);
-  const plaqueM = plaque('המטבח של הארמון 👑', 'הבוקר, תה של המלך ☕'); plaqueM.scale.setScalar(.42); plaqueM.position.set(0, .7, .93); root.add(plaqueM);
-  root.userData = { plaque: plaqueM, labelRedraw: () => { draw(); tex.needsUpdate = true; },
+  root.userData = { labelRedraw: () => { draw(); tex.needsUpdate = true; },
     update(t) { steam.forEach((m, i) => { const ph = (t * .5 + i / steam.length) % 1; m.position.set(Math.sin(ph * 6 + i) * .06, .4 + ph * .9, 0); m.scale.setScalar(.6 + ph * 1.8); m.material.opacity = .5 * (1 - ph); }); } };
   return root;
 }
@@ -99,9 +98,9 @@ function teaTable() {
  * little riders, and a ticket gate with a price sign. rise (0..1) fills it; the rings drift along it over time */
 function chocoRiver(spec) {
   const root = new THREE.Group(), STONE = 0xd8ccb2, WOOD = 0x8a6240, WOOD2 = 0x6e4a2e, GOLD = 0xe8b323, NAVY = 0x13213b;
-  const L = 46, path = u => new THREE.Vector3(Math.sin(u * Math.PI * 2.2) * 5, 0, -u * L);           // local, from 0 to -L
+  const L = spec.len ?? 46, W = spec.wiggle ?? 5, path = u => new THREE.Vector3(Math.sin(u * Math.PI * 2.2) * W, 0, -u * L);           // local, from 0 to -L
   const fill = new THREE.Group(); root.add(fill);
-  const segs = 40;
+  const segs = Math.round(L * .9);
   for (let i = 0; i < segs; i++) {
     const a = path(i / segs), b = path((i + 1) / segs), mid = a.clone().add(b).multiplyScalar(.5), len = a.distanceTo(b) + .4, ang = Math.atan2(b.x - a.x, b.z - a.z);
     const m = new THREE.Mesh(new THREE.BoxGeometry(5.2, .3, len), new THREE.MeshLambertMaterial({ color: i % 3 ? CHOC : CHOC2 })); m.position.copy(mid); m.position.y = .1; m.rotation.y = ang; fill.add(m);
