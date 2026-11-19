@@ -1,0 +1,1164 @@
+{
+ "day": 3004,
+ "series": "you-decide",
+ "episode": 4,
+ "top": 330,
+ "mix": "day3004.mix.mp3",
+ "thumbOffset": 3200,
+ "lines": [
+  "[excited] הַדְּרָקוֹן שֶׁל נֶהוֹרַאי... הִפְסִיק לְהַפְלִיץ!",
+  "[excited] אַתֶּם מַחְלִיטִים, פֶּרֶק אַרְבָּעָה!",
+  "[excited] נְהַר הַשּׁוֹקוֹלָד הִתְרוֹקֵן, וְכֻלָּם עוֹמְדִים בַּתּוֹר וּמְחַכִּים!",
+  "[excited] עוֹד לֹא הִגִּיעוּ רַעְיוֹנוֹת, אָז נֶהוֹרַאי הֶחְלִיט לְבַד!",
+  "[excited] הוּא קָנָה נוֹצָה עֲנָקִית, בַּחֲצִי מִילְיוֹן שְׁקָלִים!",
+  "[excited] וְדִגְדֵּג אֶת הַדְּרָקוֹן... בַּבֶּטֶן!",
+  "[excited] הַדְּרָקוֹן צָחַק... וְהִפְלִיץ הֲכִי חָזָק בָּעוֹלָם!",
+  "[excited] הַנָּהָר הִתְמַלֵּא בִּשְׁנִיָּה, וְהַבּוֹס קִבֵּל מִקְלַחַת שׁוֹקוֹלָד!",
+  "[excited] כֻּלָּם קָפְצוּ לַנָּהָר!",
+  "[excited] נִשְׁאֲרוּ לוֹ שִׁשָּׁה מִילְיוֹן וּשְׁמוֹנֶה מֵאוֹת אֶלֶף!",
+  "[excited] אֲבָל עַכְשָׁו... הַדְּרָקוֹן לֹא מַפְסִיק לִצְחֹק!",
+  "[excited] מָה נֶהוֹרַאי עוֹשֶׂה עַכְשָׁו? כִּתְבוּ בַּתְּגוּבוֹת!",
+  "[excited] הָרַעְיוֹן עִם הֲכִי הַרְבֵּה לַייקִים... קוֹרֶה בַּפֶּרֶק הַבָּא!",
+  "[excited] וּכְדֵי שֶׁהַתְּגוּבָה תִּקָּלֵט, תַּעַקְבוּ אַחֲרֵי הָעַמּוּד!"
+ ],
+ "actors": [
+  {
+   "id": "nehorai",
+   "look": {
+    "shirt": 16177226,
+    "pants": 3099258,
+    "hair": 2759184,
+    "skin": 14264191,
+    "apron": 1011571,
+    "shoes": 16777215
+   },
+   "cheque": {
+    "text": "6,800,000 ₪",
+    "sub": "הנוצה של נהוראי 🪶"
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 81.6,
+     "z": 49.9,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 1,
+     "x": 81.6,
+     "z": 49.9,
+     "ry": -125,
+     "anim": "dance"
+    },
+    {
+     "line": 2,
+     "x": 81.6,
+     "z": 49.9,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 3,
+     "x": 81.6,
+     "z": 49.9,
+     "ry": -125,
+     "anim": "think"
+    },
+    {
+     "line": 4,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": 160,
+     "anim": "point"
+    },
+    {
+     "line": 5,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": 160,
+     "anim": "hold"
+    },
+    {
+     "line": 6,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": 160,
+     "anim": "shock"
+    },
+    {
+     "line": 7,
+     "x": 74.9,
+     "z": 70.8,
+     "ry": 160,
+     "anim": "jump"
+    },
+    {
+     "line": 8,
+     "x": 81.6,
+     "z": 49.9,
+     "ry": -125,
+     "anim": "cheer"
+    },
+    {
+     "line": 9,
+     "x": 81.6,
+     "z": 49.9,
+     "ry": -125,
+     "anim": "hold",
+     "cheque": true
+    },
+    {
+     "line": 10,
+     "x": 81.6,
+     "z": 49.9,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 11,
+     "x": 81.6,
+     "z": 49.9,
+     "ry": -125,
+     "anim": "think"
+    },
+    {
+     "line": 12,
+     "x": 81.6,
+     "z": 49.9,
+     "ry": -125,
+     "anim": "point"
+    },
+    {
+     "line": 13,
+     "x": 81.6,
+     "z": 49.9,
+     "ry": -125,
+     "anim": "cheer"
+    }
+   ]
+  },
+  {
+   "id": "boss",
+   "scale": 1.05,
+   "look": {
+    "shirt": 3096419,
+    "pants": 2830134,
+    "hair": 9408399,
+    "skin": 14857359,
+    "logo": 12730669,
+    "shoes": 1776411
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 86.6,
+     "z": 55.2,
+     "ry": -60,
+     "anim": "idle"
+    },
+    {
+     "line": 2,
+     "x": 86.6,
+     "z": 55.2,
+     "ry": -60,
+     "anim": "shock"
+    },
+    {
+     "line": 3,
+     "x": 86.6,
+     "z": 55.2,
+     "ry": -60,
+     "anim": "think"
+    },
+    {
+     "line": 6,
+     "x": 86.6,
+     "z": 55.2,
+     "ry": -60,
+     "anim": "idle"
+    },
+    {
+     "line": 6,
+     "dt": 1.2,
+     "x": 86.6,
+     "z": 55.2,
+     "ry": -60,
+     "anim": "shock"
+    },
+    {
+     "line": 7,
+     "x": 86.6,
+     "z": 55.2,
+     "ry": -60,
+     "anim": "shock"
+    },
+    {
+     "line": 8,
+     "x": 86.6,
+     "z": 55.2,
+     "ry": -60,
+     "anim": "cheer"
+    },
+    {
+     "line": 10,
+     "x": 86.6,
+     "z": 55.2,
+     "ry": -60,
+     "anim": "shock"
+    }
+   ]
+  },
+  {
+   "id": "q0",
+   "scale": 1,
+   "look": {
+    "shirt": 15967928,
+    "pants": 3099258,
+    "hair": 4861984,
+    "skin": 14857359
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 86.4,
+     "z": 65.7,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 2,
+     "x": 86.4,
+     "z": 65.7,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 3,
+     "x": 86.4,
+     "z": 65.7,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 8,
+     "x": 86.4,
+     "z": 65.7,
+     "ry": -125,
+     "anim": "jump"
+    },
+    {
+     "line": 10,
+     "x": 86.4,
+     "z": 65.7,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 11,
+     "x": 86.4,
+     "z": 65.7,
+     "ry": -125,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "id": "q1",
+   "scale": 0.85,
+   "look": {
+    "shirt": 9428160,
+    "pants": 3099258,
+    "hair": 2759184,
+    "skin": 14857359
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 87.4,
+     "z": 66.9,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 2,
+     "x": 87.4,
+     "z": 66.9,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 3,
+     "x": 87.4,
+     "z": 66.9,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 8,
+     "x": 87.4,
+     "z": 66.9,
+     "ry": -125,
+     "anim": "cheer"
+    },
+    {
+     "line": 10,
+     "x": 87.4,
+     "z": 66.9,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 11,
+     "x": 87.4,
+     "z": 66.9,
+     "ry": -125,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "id": "q2",
+   "scale": 0.85,
+   "look": {
+    "shirt": 8176874,
+    "pants": 3099258,
+    "hair": 13211418,
+    "skin": 14857359
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 89,
+     "z": 67.5,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 2,
+     "x": 89,
+     "z": 67.5,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 3,
+     "x": 89,
+     "z": 67.5,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 8,
+     "x": 89,
+     "z": 67.5,
+     "ry": -125,
+     "anim": "jump"
+    },
+    {
+     "line": 10,
+     "x": 89,
+     "z": 67.5,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 11,
+     "x": 89,
+     "z": 67.5,
+     "ry": -125,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "id": "q3",
+   "scale": 1,
+   "look": {
+    "shirt": 16177226,
+    "pants": 3099258,
+    "hair": 2759184,
+    "skin": 14857359
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 90.1,
+     "z": 68.8,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 2,
+     "x": 90.1,
+     "z": 68.8,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 3,
+     "x": 90.1,
+     "z": 68.8,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 8,
+     "x": 90.1,
+     "z": 68.8,
+     "ry": -125,
+     "anim": "cheer"
+    },
+    {
+     "line": 10,
+     "x": 90.1,
+     "z": 68.8,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 11,
+     "x": 90.1,
+     "z": 68.8,
+     "ry": -125,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "id": "q4",
+   "scale": 0.85,
+   "look": {
+    "shirt": 13218540,
+    "pants": 3099258,
+    "hair": 4861984,
+    "skin": 14857359
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 91.6,
+     "z": 69.4,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 2,
+     "x": 91.6,
+     "z": 69.4,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 3,
+     "x": 91.6,
+     "z": 69.4,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 8,
+     "x": 91.6,
+     "z": 69.4,
+     "ry": -125,
+     "anim": "jump"
+    },
+    {
+     "line": 10,
+     "x": 91.6,
+     "z": 69.4,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 11,
+     "x": 91.6,
+     "z": 69.4,
+     "ry": -125,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "id": "q5",
+   "scale": 0.85,
+   "look": {
+    "shirt": 15895592,
+    "pants": 3099258,
+    "hair": 2759184,
+    "skin": 14857359
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 92.7,
+     "z": 70.6,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 2,
+     "x": 92.7,
+     "z": 70.6,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 3,
+     "x": 92.7,
+     "z": 70.6,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 8,
+     "x": 92.7,
+     "z": 70.6,
+     "ry": -125,
+     "anim": "cheer"
+    },
+    {
+     "line": 10,
+     "x": 92.7,
+     "z": 70.6,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 11,
+     "x": 92.7,
+     "z": 70.6,
+     "ry": -125,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "id": "q6",
+   "scale": 1,
+   "look": {
+    "shirt": 1011571,
+    "pants": 3099258,
+    "hair": 4861984,
+    "skin": 14857359
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 94.2,
+     "z": 71.2,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 2,
+     "x": 94.2,
+     "z": 71.2,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 3,
+     "x": 94.2,
+     "z": 71.2,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 8,
+     "x": 94.2,
+     "z": 71.2,
+     "ry": -125,
+     "anim": "jump"
+    },
+    {
+     "line": 10,
+     "x": 94.2,
+     "z": 71.2,
+     "ry": -125,
+     "anim": "shock"
+    },
+    {
+     "line": 11,
+     "x": 94.2,
+     "z": 71.2,
+     "ry": -125,
+     "anim": "idle"
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "id": "dragon",
+   "kind": "chocodragon",
+   "x": 78,
+   "z": 62,
+   "ry": -35,
+   "scale": 1.15,
+   "keys": [
+    {
+     "line": 0,
+     "rise": 1,
+     "fart": false,
+     "puddle": 0
+    },
+    {
+     "line": 6,
+     "dt": 0.6,
+     "fart": true
+    },
+    {
+     "line": 10,
+     "puddle": 0
+    },
+    {
+     "line": 10,
+     "dt": 2.4,
+     "puddle": 16
+    }
+   ]
+  },
+  {
+   "id": "river",
+   "kind": "chocoriver",
+   "x": 81.4,
+   "z": 57.1,
+   "ry": -35,
+   "len": 27,
+   "wiggle": 3,
+   "keys": [
+    {
+     "line": 0,
+     "rise": 0.25,
+     "float": 0
+    },
+    {
+     "line": 2,
+     "rise": 0.25
+    },
+    {
+     "line": 2,
+     "dt": 1.5,
+     "rise": 0
+    },
+    {
+     "line": 6,
+     "dt": 0.8,
+     "rise": 0
+    },
+    {
+     "line": 7,
+     "dt": 0.4,
+     "rise": 1
+    },
+    {
+     "line": 8,
+     "float": 1
+    }
+   ]
+  },
+  {
+   "id": "feather",
+   "kind": "feather",
+   "x": 73.41,
+   "z": 68.55,
+   "ry": 145,
+   "keys": [
+    {
+     "line": 0,
+     "rise": 0,
+     "tickle": 0
+    },
+    {
+     "line": 4,
+     "rise": 0
+    },
+    {
+     "line": 4,
+     "dt": 1.2,
+     "rise": 1
+    },
+    {
+     "line": 5,
+     "tickle": 0
+    },
+    {
+     "line": 5,
+     "dt": 0.4,
+     "tickle": 1
+    },
+    {
+     "line": 6,
+     "dt": 1.4,
+     "tickle": 1
+    },
+    {
+     "line": 6,
+     "dt": 2,
+     "tickle": 0
+    }
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "prop:dragon",
+   "dist": 20,
+   "yaw": 10,
+   "pitch": 8,
+   "orbit": 2,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "actor:nehorai",
+   "dist": 6,
+   "yaw": 10,
+   "pitch": 6,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": [
+    85.3,
+    2,
+    62.9
+   ],
+   "dist": 24,
+   "yaw": 30,
+   "pitch": 18,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": "actor:nehorai",
+   "dist": 7,
+   "yaw": -15,
+   "pitch": 6,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "prop:dragon",
+   "dist": 32,
+   "yaw": 0,
+   "pitch": 10,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 5,
+   "target": "prop:dragon",
+   "dist": 18,
+   "yaw": 25,
+   "pitch": 2,
+   "orbit": 2,
+   "ease": 0.8
+  },
+  {
+   "line": 6,
+   "target": "prop:dragon",
+   "dist": 28,
+   "yaw": -100,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 7,
+   "target": "actor:boss",
+   "dist": 7,
+   "yaw": 0,
+   "pitch": 6,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": [
+    85.3,
+    2,
+    62.9
+   ],
+   "dist": 22,
+   "yaw": 30,
+   "pitch": 16,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 9,
+   "target": "actor:nehorai",
+   "dist": 8,
+   "yaw": 0,
+   "pitch": 8,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "target": "prop:dragon",
+   "dist": 24,
+   "yaw": 10,
+   "pitch": 8,
+   "orbit": 2,
+   "ease": 0.01
+  },
+  {
+   "line": 11,
+   "target": "actor:nehorai",
+   "dist": 6,
+   "yaw": 0,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 12,
+   "target": [
+    88.9,
+    1,
+    46.5
+   ],
+   "dist": 30,
+   "yaw": 80,
+   "pitch": 24,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 13,
+   "target": "actor:nehorai",
+   "dist": 10,
+   "yaw": 20,
+   "pitch": 8,
+   "orbit": 6,
+   "ease": 0.6
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dur": 2.4,
+   "text": "אתם מחליטים 🎮"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.3,
+   "dur": 2.1,
+   "text": "פרק 4 · נהוראי"
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 0.3,
+   "dur": 3,
+   "text": "נהוראי מחליט לבד 🤔"
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dt": 0.4,
+   "dur": 3,
+   "text": "-500,000 ₪ 🪶"
+  },
+  {
+   "type": "label",
+   "line": 9,
+   "dt": 0.2,
+   "dur": 3,
+   "text": "יש לו 6,800,000 ₪ 💰"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "💬 מה עכשיו?",
+   "sub": "כתבו בתגובות את הרעיון שלכם"
+  },
+  {
+   "type": "cta",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.9,
+   "text": "👍 מנצח!",
+   "sub": "הכי הרבה לייקים קורה בפרק הבא"
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 4,
+   "text": "➕ עקבו",
+   "sub": "כדי שהתגובה שלכם תיקלט"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dur": 0.6,
+   "zoom": 0.22
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 1.4,
+   "dur": 1.8,
+   "text": "😶",
+   "x": 860,
+   "y": 1320,
+   "size": 200,
+   "rot": 10
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 1.6,
+   "dur": 1.6,
+   "text": "😩",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.4,
+   "dur": 1.8,
+   "text": "🪶",
+   "x": 860,
+   "y": 1330,
+   "size": 200,
+   "rot": -12
+  },
+  {
+   "type": "shake",
+   "line": 6,
+   "dt": 0.6,
+   "dur": 0.6
+  },
+  {
+   "type": "punch",
+   "line": 6,
+   "dt": 0.6,
+   "dur": 0.5,
+   "zoom": 0.2
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 0.8,
+   "dur": 1.6,
+   "text": "💨",
+   "x": 860,
+   "y": 1320,
+   "size": 210,
+   "rot": -10
+  },
+  {
+   "type": "confetti",
+   "line": 7,
+   "dt": 0.4,
+   "dur": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 1.4,
+   "dur": 1.8,
+   "text": "😂",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 0.3,
+   "dur": 1.6,
+   "text": "🛟",
+   "x": 220,
+   "y": 1330,
+   "size": 180
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 0.6,
+   "dur": 1.8,
+   "text": "🤑",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "shake",
+   "line": 10,
+   "dt": 1,
+   "dur": 0.5
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 1.2,
+   "dur": 1.6,
+   "text": "🤣",
+   "x": 860,
+   "y": 1330,
+   "size": 200
+  },
+  {
+   "type": "punch",
+   "line": 13,
+   "dur": 0.6,
+   "zoom": 0.2
+  }
+ ],
+ "music": {
+  "bpm": 124,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 1
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 2
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 4
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 10
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 11
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "scratch",
+   "line": 0,
+   "dt": 0.4
+  },
+  {
+   "name": "cricket",
+   "line": 0,
+   "dt": 1.2
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "cricket",
+   "line": 2,
+   "dt": 1
+  },
+  {
+   "name": "pop",
+   "line": 3,
+   "dt": 0.3
+  },
+  {
+   "name": "kaching",
+   "line": 4,
+   "dt": 0.4
+  },
+  {
+   "name": "sparkle",
+   "line": 4,
+   "dt": 1.2
+  },
+  {
+   "name": "boing",
+   "line": 5,
+   "dt": 0.5
+  },
+  {
+   "name": "boing",
+   "line": 5,
+   "dt": 1.1
+  },
+  {
+   "name": "boom",
+   "line": 6,
+   "dt": 0.6
+  },
+  {
+   "name": "boing",
+   "line": 6,
+   "dt": 1.2
+  },
+  {
+   "name": "scratch",
+   "line": 7,
+   "dt": 1.2
+  },
+  {
+   "name": "tada",
+   "line": 8,
+   "dt": 0.3
+  },
+  {
+   "name": "kaching",
+   "line": 9,
+   "dt": 0.4
+  },
+  {
+   "name": "boing",
+   "line": 10,
+   "dt": 1
+  },
+  {
+   "name": "sting",
+   "line": 10,
+   "dt": 1.4
+  },
+  {
+   "name": "pop",
+   "line": 11
+  },
+  {
+   "name": "tada",
+   "line": 12,
+   "dt": 0.6
+  },
+  {
+   "name": "kaching",
+   "line": 13,
+   "dt": 1.2
+  }
+ ],
+ "caption": "הדרקון הפסיק להפליץ... אז נהוראי דגדג אותו עם נוצה ענקית 🪶😂\nאתם מחליטים 🎮 פרק 4 · הפעם נהוראי החליט לבד!\n💬 הדרקון לא מפסיק לצחוק... מה נהוראי עושה עכשיו עם 6.8 מיליון? כתבו בתגובות, הרעיון עם הכי הרבה לייקים קורה בפרק הבא!\n➕ כדי שהתגובה שלכם תיקלט, צריך לעקוב אחרי העמוד\n#אתםמחליטים #נהוראי #משפחתספיר #שוקולד #ממלכה",
+ "firstComment": "🗳️ הדרקון לא מפסיק לצחוק ולהפליץ שוקולד! מה נהוראי עושה עכשיו? כתבו כאן את הרעיון הכי מטורף, תנו לייק לרעיונות שאתם אוהבים, ותעקבו כדי שהתגובה תיקלט 👇",
+ "notes": "Series אתם מחליטים, episode 4. Comments on episode 3 (media 18003139107035942) at 19:15, about an hour after it went up: only the kingdom's own first comment, no idea yet, so Nehorai decided by himself (and the reel says so): a giant feather to tickle the dragon. Money: 7,300,000 - 500,000 (the feather) = 6,800,000."
+}
