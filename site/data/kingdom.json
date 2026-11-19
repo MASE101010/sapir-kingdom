@@ -1,6 +1,6 @@
 {
   "note": "The kingdom's state. Written by the daily run (CLAUDE.md). day: today's day number; landmarks: what stands, on which lot, built on which day, at whose asking; history: how many residents stood at the end of each day; upgraded: Instagram name -> extra storeys; visit: whose door Michael walks to today; status: one line about what Michael is doing.",
-  "day": 36,
+  "day": 37,
   "landmarks": [
     {
       "key": "castle",
@@ -285,6 +285,12 @@
       "lot": 35,
       "day": 36,
       "by": []
+    },
+    {
+      "key": "kennel",
+      "lot": 36,
+      "day": 37,
+      "by": []
     }
   ],
   "history": [
@@ -322,16 +328,17 @@
     431,
     431,
     431,
-    435
+    435,
+    438
   ],
   "upgraded": {},
-  "status": "פרק 7 של גנב הכתר 🪞 מישהו החליף את הסוכר במלח, והמלך בנה את מבוך המראות כמלכודת",
+  "status": "פרק 8 של גנב הכתר 🐕 במבוך המראות נמצא פתק בכתב מראה, והמלך בנה תחנת כלבי גישוש",
   "dm": false,
   "updated": "2026-11-19T17:06:34.516Z",
   "news": {
-    "day": 36,
-    "line": "המלך בנה את מבוך המראות של הממלכה, מלכודת למי שאוהב מתיחות! 🪞",
-    "landmark": "mirror-maze"
+    "day": 37,
+    "line": "המלך בנה את תחנת כלבי הגישוש של הממלכה, האף שלהם מוצא כל אחד! 🐕",
+    "landmark": "kennel"
   },
   "reels": {
     "1": "18129295480834389",
@@ -520,7 +527,8 @@
     "detective-office": {
       "note": 1
     },
-    "mirror-maze": {}
+    "mirror-maze": {},
+    "kennel": {}
   },
   "president": "bibkovich"
 }
