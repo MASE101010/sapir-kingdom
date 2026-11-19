@@ -186,7 +186,7 @@ function feather(spec) {
   const COL = [0xf3a6b8, 0xc9b2ec, 0x7cc4ea, 0x8fdcc0, 0xf6d84a, 0xf28c28];
   for (let k = 0; k < 16; k++) { const y = 2.6 + k * .42, w = 1.2 + Math.sin(k / 15 * Math.PI) * 1.6; for (const s of [-1, 1]) { const m = box(quill, w, .34, .12, COL[k % COL.length], s * (w / 2 + .05), y, 0); m.rotation.z = s * .35; } }
   box(quill, .5, .5, .5, GOLD, 0, .3, 0);
-  const pl = plaque('הנוצה של נהוראי 🪶', '500,000 ₪'); pl.scale.setScalar(.6); pl.position.set(0, .9, 1.25); root.add(pl);
+  const pl = plaque('הנוצה של נהוראי 🪶', '500,000 ₪'); pl.scale.setScalar(.6); pl.position.set(0, .9, -1.25); pl.rotation.y = Math.PI; root.add(pl);
   root.userData = { plaque: pl, update(t, val) { const r = val('rise', 1), tk = val('tickle', 0); root.visible = r > .02; root.scale.setScalar(Math.max(.01, r));
     arm.rotation.z = Math.sin(t * 13) * .28 * tk; arm.rotation.x = Math.sin(t * 9) * .1 * tk; } };
   return root;
