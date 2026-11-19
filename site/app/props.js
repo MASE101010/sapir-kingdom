@@ -3,7 +3,8 @@
 //   ep.props = [{ id, kind, x, z, ry, scale, keys: [{ line, dt, rise, fart, puddle }] }]
 // rise (0..1) lifts it out of the ground, puddle (metres) is the radius of whatever it spills (eased between keys), and
 // fart: true sets it off from that key until a key with fart: false.
-// Kinds: 'chocodragon' (episode 2, @itamarsarusi's idea: a dragon statue that farts chocolate).
+// Kinds: 'chocodragon' (episode 2, @itamarsarusi's idea: a dragon statue that farts chocolate), 'teatable', 'chocoriver',
+// 'mirrornote' and 'dogs' (גנב הכתר episode 8), 'feather' (episode 4: Nehorai tickles the dragon).
 import * as THREE from 'three';
 
 const mat = new Map(), M = c => { if (!mat.has(c)) mat.set(c, new THREE.MeshLambertMaterial({ color: c })); return mat.get(c); };
@@ -135,7 +136,63 @@ function chocoRiver(spec) {
   return root;
 }
 
-const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver };
+
+/** a note on the floor in mirror writing (episode 8 of גנב הכתר): a sheet of paper, the words drawn backwards; a little
+ * hand mirror lies beside it, and in the mirror the words read the right way round */
+function mirrorNote(spec) {
+  const root = new THREE.Group();
+  const c = document.createElement('canvas'); c.width = 512; c.height = 360; const g = c.getContext('2d');
+  const draw = (flip) => { g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#fffaf0'; g.fillRect(0, 0, 512, 360); g.strokeStyle = '#d9cdb0'; g.lineWidth = 3;
+    for (let y = 90; y < 360; y += 60) { g.beginPath(); g.moveTo(30, y); g.lineTo(482, y); g.stroke(); }
+    if (flip) { g.translate(512, 0); g.scale(-1, 1); }
+    g.fillStyle = '#7a2a8a'; g.textAlign = 'center'; g.direction = 'rtl'; g.font = '900 92px "Secular One", Rubik, sans-serif';
+    g.fillText(spec.line1 ?? 'תודה', 256, 150); g.fillText(spec.line2 ?? 'על המשחק', 256, 270); };
+  const mk = (flip, w, h) => { const cc = document.createElement('canvas'); cc.width = 512; cc.height = 360; const tex = new THREE.CanvasTexture(cc); tex.colorSpace = THREE.SRGBColorSpace;
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: tex, transparent: true }));
+    m.userData.redraw = () => { draw(flip); cc.getContext('2d').drawImage(c, 0, 0); tex.needsUpdate = true; }; m.userData.redraw(); return m; };
+  const paper = mk(true, 1.6, 1.12); paper.rotation.x = -Math.PI / 2; paper.rotation.z = .15; paper.position.set(0, .34, 0); root.add(paper);
+  // the hand mirror standing up behind it: a gold frame, a handle, and the words the right way round in the glass
+  const mirror = new THREE.Group(); mirror.position.set(.2, .3, -.9); mirror.rotation.x = -.25; root.add(mirror);
+  box(mirror, 1.5, 1.1, .08, 0xe8b323, 0, .75, 0); box(mirror, .2, .5, .08, 0xe8b323, 0, .05, 0);
+  const glass = mk(false, 1.3, .9); glass.position.set(0, .75, .05); mirror.add(glass);
+  root.userData = { labelRedraw: () => { paper.userData.redraw(); glass.userData.redraw(); }, update(t, val) { const r = val('rise', 1); root.visible = r > .02; mirror.scale.setScalar(Math.max(.01, val('mirror', 1))); } };
+  return root;
+}
+
+/** three sniffer dogs with their noses to the ground, tails wagging; rise (0..1) brings them in, sniff (0/1) sets the
+ * noses going and the tails wagging; they face +z */
+function dogs(spec) {
+  const root = new THREE.Group(), cols = [[0xa5703f, 0x2a2a2a], [0xd9a86a, 0xa5703f], [0x2a2a2a, 0xa5703f]];
+  const all = [[-1.8, 0, .1], [0, .9, 0], [1.8, -.2, -.1]].map(([x, z, r], i) => { const d = new THREE.Group(); d.position.set(x, 0, z); d.rotation.y = r; root.add(d);
+    const [c, c2] = cols[i], S = 1.8, b = (bx, by, bz, w, h, dd, col, par = d) => box(par, w * S, h * S, dd * S, col, bx * S, (by + h / 2) * S, bz * S);
+    b(0, .45, 0, .45, .4, 1, c); for (const [lx, lz] of [[-.15, .35], [.15, .35], [-.15, -.35], [.15, -.35]]) b(lx, 0, lz, .13, .48, .13, c);
+    const head = new THREE.Group(); head.position.set(0, .7 * S, .55 * S); d.add(head);
+    b(0, 0, .05, .38, .38, .38, c, head); b(0, -.02, .3, .2, .18, .22, 0xd9a86a, head); b(0, .05, .42, .08, .07, .05, 0x1b1b1b, head);
+    b(-.17, .12, 0, .08, .26, .14, c2, head); b(.17, .12, 0, .08, .26, .14, c2, head);
+    const tail = new THREE.Group(); tail.position.set(0, .8 * S, -.5 * S); d.add(tail); b(0, 0, -.05, .08, .32, .08, c, tail);
+    return { d, head, tail, i }; });
+  root.userData = { update(t, val) { const r = val('rise', 1), sn = val('sniff', 0); root.visible = r > .02; root.scale.setScalar(Math.max(.01, r));
+    all.forEach(({ head, tail, i }) => { head.rotation.x = sn * (.55 + Math.sin(t * 14 + i) * .12); tail.rotation.z = Math.sin(t * 16 + i * 2) * (.3 + sn * .5); }); } };
+  return root;
+}
+
+/** a giant feather on a wooden stand, its plume up against whatever is in front (+z); tickle (0/1) makes it swish */
+function feather(spec) {
+  const root = new THREE.Group(), WOOD = 0x8a6240, GOLD = 0xe8b323;
+  box(root, 2.4, .5, 2.4, WOOD, 0, .25, 0); box(root, .5, 2.4, .5, 0x6e4a2e, 0, 1.6, 0);
+  const arm = new THREE.Group(); arm.position.set(0, 2.8, 0); root.add(arm);
+  const quill = new THREE.Group(); quill.rotation.x = .55; arm.add(quill);
+  box(quill, .22, 9, .22, 0xf3ead6, 0, 4.5, 0);
+  const COL = [0xf3a6b8, 0xc9b2ec, 0x7cc4ea, 0x8fdcc0, 0xf6d84a, 0xf28c28];
+  for (let k = 0; k < 16; k++) { const y = 2.6 + k * .42, w = 1.2 + Math.sin(k / 15 * Math.PI) * 1.6; for (const s of [-1, 1]) { const m = box(quill, w, .34, .12, COL[k % COL.length], s * (w / 2 + .05), y, 0); m.rotation.z = s * .35; } }
+  box(quill, .5, .5, .5, GOLD, 0, .3, 0);
+  const pl = plaque('הנוצה של נהוראי 🪶', '500,000 ₪'); pl.scale.setScalar(.6); pl.position.set(0, .9, 1.25); root.add(pl);
+  root.userData = { plaque: pl, update(t, val) { const r = val('rise', 1), tk = val('tickle', 0); root.visible = r > .02; root.scale.setScalar(Math.max(.01, r));
+    arm.rotation.z = Math.sin(t * 13) * .28 * tk; arm.rotation.x = Math.sin(t * 9) * .1 * tk; } };
+  return root;
+}
+
+const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver, mirrornote: mirrorNote, dogs, feather };
 
 /** the props of a reel: build them, and each frame set them as their keyframes say */
 export function placeProps(scene, list = [], lineAt) {
