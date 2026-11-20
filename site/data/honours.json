@@ -34,7 +34,8 @@
       "sh10mi_ohayon___",
       "may.berko",
       "netagal56",
-      "noga_buhnik"
+      "noga_buhnik",
+      "orthegoat"
     ]
   },
   "built": {
@@ -250,6 +251,10 @@
     "mirror-maze": {
       "by": [],
       "day": 36
+    },
+    "kennel": {
+      "by": [],
+      "day": 37
     }
   }
 }
