@@ -192,7 +192,17 @@ function feather(spec) {
   return root;
 }
 
-const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver, mirrornote: mirrorNote, dogs, feather };
+
+/** a sponsor board on two posts (Nehorai episode 5): a big plaque with a title and a line under it; rise (0..1) brings it up */
+function board(spec) {
+  const root = new THREE.Group();
+  for (const sx of [-3.6, 3.6]) box(root, .35, 3.4, .35, 0x2b2f36, sx, 1.7, 0);
+  const pl = plaque(spec.text ?? 'ספונסר', spec.sub ?? ''); pl.scale.setScalar(spec.size ?? 1.1); pl.position.set(0, 3.3, .25); root.add(pl);
+  root.userData = { plaque: pl, update(t, val) { const r = val('rise', 1); root.visible = r > .02; root.position.y = (r - 1) * 5; } };
+  return root;
+}
+
+const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver, mirrornote: mirrorNote, dogs, feather, board };
 
 /** the props of a reel: build them, and each frame set them as their keyframes say */
 export function placeProps(scene, list = [], lineAt) {
