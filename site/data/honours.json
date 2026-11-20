@@ -35,7 +35,8 @@
       "may.berko",
       "netagal56",
       "noga_buhnik",
-      "orthegoat"
+      "orthegoat",
+      "ziv46297"
     ]
   },
   "built": {
@@ -255,6 +256,12 @@
     "kennel": {
       "by": [],
       "day": 37
+    },
+    "camroom": {
+      "by": [
+        "ofek_bell"
+      ],
+      "day": 38
     }
   }
 }
