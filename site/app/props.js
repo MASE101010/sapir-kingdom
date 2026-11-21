@@ -62,7 +62,13 @@ function chocoDragon() {
   const pool = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, .14, 40), choc(CHOC)); puddle.add(pool);
   const shine = new THREE.Mesh(new THREE.CylinderGeometry(.55, .55, .16, 30), choc(CHOC2)); shine.position.set(.25, .01, -.2); puddle.add(shine);
   const bubbles = Array.from({ length: 8 }, (_, i) => { const m = new THREE.Mesh(new THREE.SphereGeometry(.22, 8, 6), choc(MILK)); puddle.add(m); return m; });
-  root.userData = { statue, body, head, grin, eyes, fart, blobs, puffs, puddle, pool, shine, bubbles, plaque: pl };
+  // a fan's scarf round the neck (Nehorai episode 6): red and black stripes, two long ends hanging over the chest; key 'scarf'
+  const scarf = new THREE.Group(); scarf.position.set(0, 7.2, .7); scarf.rotation.x = -.25; body.add(scarf);
+  for (let k = 0; k < 4; k++) box(scarf, 3 - k * .05, .32, 3, k % 2 ? 0x1b1d21 : 0xc8102e, 0, -.48 + k * .32, 0);
+  for (const sx of [-.55, .55]) for (let k = 0; k < 6; k++) box(scarf, .75, .5, .25, k % 2 ? 0x1b1d21 : 0xc8102e, sx, -.75 - k * .5, 1.55 + k * .04, sx * .1);
+  for (const sx of [-.55, .55]) for (let k = 0; k < 4; k++) box(scarf, .1, .35, .1, 0xf3ead6, sx - .25 + k * .17, -3.85, 1.8);
+  scarf.visible = false;
+  root.userData = { statue, body, head, grin, eyes, fart, blobs, puffs, puddle, pool, shine, bubbles, plaque: pl, scarf };
   return root;
 }
 
@@ -202,7 +208,21 @@ function board(spec) {
   return root;
 }
 
-const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver, mirrornote: mirrorNote, dogs, feather, board };
+
+/** a camera on a pole with a striped sock pulled over it (גנב הכתר episode 10); key 'sock' (0..1) shows the sock */
+function sockCam(spec) {
+  const root = new THREE.Group(), DARK = 0x2b2f36;
+  box(root, .32, 5, .32, DARK, 0, 2.5, 0); box(root, .25, .25, .9, 0x9aa3ab, 0, 5.1, .4);
+  const cam = new THREE.Group(); cam.position.set(0, 5, .95); root.add(cam);
+  box(cam, .7, .6, 1.1, 0xf7f5ee, 0, 0, 0); box(cam, .4, .4, .2, 0x1b1b1b, 0, .05, .6); box(cam, .12, .12, .12, 0xc2412d, .22, .35, .4);
+  const sock = new THREE.Group(); cam.add(sock);
+  for (let k = 0; k < 6; k++) box(sock, .86, .74, .2, k % 2 ? 0xf7f5ee : 0x7cc4ea, 0, .02, .66 - k * .21);
+  box(sock, .9, .3, .5, 0x7cc4ea, 0, .45, .2); box(sock, .8, .5, .6, 0xf7f5ee, 0, .7, -.1); box(sock, .7, .4, .5, 0x7cc4ea, 0, 1.05, -.3);
+  root.userData = { update(t, val) { const s = val('sock', 1); sock.visible = s > .02; sock.scale.setScalar(Math.max(.01, s)); } };
+  return root;
+}
+
+const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver, mirrornote: mirrorNote, dogs, feather, board, sockcam: sockCam };
 
 /** the props of a reel: build them, and each frame set them as their keyframes say */
 export function placeProps(scene, list = [], lineAt) {
@@ -230,6 +250,7 @@ export function placeProps(scene, list = [], lineAt) {
       u.body.scale.set(1 + w, 1 - w * 1.2, 1 + w); u.body.rotation.x = fartT >= 0 ? -.05 + Math.sin(fartT * 9) * .03 : 0;
       u.grin.scale.set(fartT >= 0 ? 1.4 : 1, fartT >= 0 ? 2.4 : 1, 1); for (const e of u.eyes) e.scale.y = fartT >= 0 ? .25 : 1;
       u.fart.visible = fartT >= 0;
+      { const sc = val(p.keys, t, 'scarf', 0); u.scarf.visible = sc > .02; u.scarf.scale.setScalar(Math.max(.01, sc)); }
       u.blobs.forEach((m, i) => { const life = 1.25, ph = ((fartT + i * life / u.blobs.length) % life + life) % life, sp = 9 + (i % 5) * 1.3, side = ((i * 37) % 11 - 5) * .16;
         m.position.set(side * ph * 3, -ph * ph * 4.6 + ph * 1.2, -ph * sp); m.rotation.set(ph * 5, i, ph * 3); m.visible = fartT > i * .03; });
       u.puffs.forEach((m, i) => { const life = 1.6, ph = ((fartT + i * life / u.puffs.length) % life + life) % life;
