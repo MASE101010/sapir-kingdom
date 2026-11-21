@@ -1,0 +1,439 @@
+{
+ "day": 39,
+ "top": 330,
+ "mix": "day39.mix.mp3",
+ "lines": [
+  "[excited] מָה רָאֲתָה מַצְלֵמָה מִסְפָּר שֶׁבַע?! רַצְנוּ לִבְדֹּק...",
+  "[excited] יוֹם שְׁלוֹשִׁים וְתֵשַׁע בַּמַּמְלָכָה...",
+  "[excited] מִישֶׁהוּ שָׂם עַל הַמַּצְלֵמָה... גֶּרֶב!",
+  "[excited] גֶּרֶב קְטַנָּה, עִם פַּסִּים!",
+  "[excited] לְמִי יֵשׁ רֶגֶל כָּל כָּךְ קְטַנָּה?!",
+  "[excited] Ofek כָּתַב: שׁוֹמְרִים עִם פָּנָסִים, בְּכָל הַמַּמְלָכָה!",
+  "[excited] אָז בָּנִיתִי אֶת תַּחֲנַת הַשּׁוֹמְרִים שֶׁל הַמַּמְלָכָה!",
+  "[excited] כָּל לַיְלָה, עֶשְׂרִים שׁוֹמְרִים עִם פָּנָסִים!",
+  "[excited] אֲבָל בַּחֲצוֹת... כָּל הַפָּנָסִים כָּבוּ בְּבַת אַחַת!",
+  "[excited] מִי לְדַעְתְּכֶם גָּנַב אֶת הַכֶּתֶר?",
+  "[excited] וּמָה נִבְנֶה מָחָר כְּדֵי לִתְפֹּס אוֹתוֹ? כִּתְבוּ בַּתְּגוּבוֹת!",
+  "[excited] וְתַעַקְבוּ, כְּדֵי לֹא לְפַסְפֵס אֶת הַפֶּרֶק הַבָּא!"
+ ],
+ "thumbOffset": 2600,
+ "say": {
+  "Ofek": "אופק"
+ },
+ "props": [
+  {
+   "id": "sockcam",
+   "kind": "sockcam",
+   "x": 34.09,
+   "z": -179.33,
+   "ry": -11.25,
+   "keys": [
+    {
+     "line": 0,
+     "sock": 0
+    },
+    {
+     "line": 2,
+     "dt": 1,
+     "sock": 0
+    },
+    {
+     "line": 2,
+     "dt": 1.4,
+     "sock": 1
+    }
+   ]
+  }
+ ],
+ "states": [
+  {
+   "key": "guards",
+   "kind": "night",
+   "line": 8,
+   "dt": 1.8,
+   "dur": 0.3,
+   "from": 0,
+   "to": 1
+  }
+ ],
+ "night": [
+  {
+   "line": 7,
+   "until": 9
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    33.9,
+    4.8,
+    -178.4
+   ],
+   "dist": 10,
+   "yaw": 13.75,
+   "pitch": 8,
+   "orbit": 2,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "castle",
+   "dist": 420,
+   "yaw": -30,
+   "pitch": 34,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": [
+    33.9,
+    5,
+    -178.4
+   ],
+   "dist": 6.5,
+   "yaw": 8.75,
+   "pitch": 10,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "statue",
+   "dist": 60,
+   "pitch": 22,
+   "yaw": -20,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 5,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 200,
+   "pitch": 40,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 6,
+   "target": "landmark:guards",
+   "dist": 70,
+   "yaw": 20,
+   "pitch": 24,
+   "orbit": 5,
+   "ease": 0.8
+  },
+  {
+   "line": 7,
+   "target": "landmark:guards",
+   "dist": 34,
+   "yaw": -15,
+   "pitch": 12,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": "landmark:guards",
+   "dist": 30,
+   "yaw": 10,
+   "pitch": 10,
+   "orbit": 1,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -50,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 10,
+   "target": "landmark:guards",
+   "dist": 60,
+   "yaw": 30,
+   "pitch": 22,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 11,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 20,
+   "pitch": 32,
+   "orbit": 3,
+   "ease": 0.8
+  }
+ ],
+ "rise": {
+  "key": "guards",
+  "line": 6,
+  "dur": 3.2
+ },
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dur": 2.6,
+   "text": "פרק 10 · גנב הכתר"
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 0.2,
+   "dur": 3.4,
+   "text": "🔍 רמז 10: גרב עם פסים 🧦"
+  },
+  {
+   "type": "comment",
+   "line": 5,
+   "dur": 3.6,
+   "u": "ofek_bell",
+   "text": "ששוטרים או שומרים יסתובבו ברחבי הממלכה עם פנסים",
+   "likes": 0
+  },
+  {
+   "type": "label",
+   "line": 6,
+   "dt": 0.4,
+   "dur": 3,
+   "text": "בבנייה · תחנת השומרים 🔦"
+  },
+  {
+   "type": "idcard",
+   "line": 7,
+   "dt": 0.2,
+   "dur": 2.8,
+   "u": "ofek_bell",
+   "honours": [
+    "אדריכל · תחנת השומרים"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 9,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "🔍 מי הגנב?",
+   "sub": "כתבו בתגובות את הניחוש שלכם"
+  },
+  {
+   "type": "cta",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 3.3,
+   "text": "🏗️ מה נבנה?",
+   "sub": "התגובה עם הכי הרבה לייקים נבנית"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 4,
+   "text": "➕ עקבו",
+   "sub": "כדי לא לפספס את הפרק הבא"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 0.5,
+   "zoom": 0.2
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 1.4,
+   "dur": 1.6,
+   "text": "📹",
+   "x": 860,
+   "y": 1330,
+   "size": 190,
+   "rot": 10
+  },
+  {
+   "type": "punch",
+   "line": 2,
+   "dt": 1.4,
+   "dur": 0.5,
+   "zoom": 0.2
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 1.5,
+   "dur": 1.8,
+   "text": "🧦",
+   "x": 860,
+   "y": 1330,
+   "size": 210,
+   "rot": -10
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.6,
+   "dur": 1.8,
+   "text": "🦶",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "confetti",
+   "line": 6,
+   "dt": 2.8,
+   "dur": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 0.4,
+   "dur": 1.8,
+   "text": "🔦",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "night",
+   "line": 7,
+   "untilLine": 9,
+   "under": true,
+   "alpha": 0.5
+  },
+  {
+   "type": "shake",
+   "line": 8,
+   "dt": 1.8,
+   "dur": 0.5
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 2,
+   "dur": 1.8,
+   "text": "😱",
+   "x": 860,
+   "y": 1330,
+   "size": 200
+  }
+ ],
+ "music": {
+  "bpm": 112,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 1
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 2
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 5
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 8
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 9
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "whoosh",
+   "line": 0
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "boing",
+   "line": 2,
+   "dt": 1.4
+  },
+  {
+   "name": "pop",
+   "line": 3,
+   "dt": 0.2
+  },
+  {
+   "name": "cricket",
+   "line": 4,
+   "dt": 0.4
+  },
+  {
+   "name": "pop",
+   "line": 5
+  },
+  {
+   "name": "whoosh",
+   "line": 6
+  },
+  {
+   "name": "boom",
+   "line": 6,
+   "dt": 2.6
+  },
+  {
+   "name": "sparkle",
+   "line": 7,
+   "dt": 0.3
+  },
+  {
+   "name": "scratch",
+   "line": 8,
+   "dt": 1.8
+  },
+  {
+   "name": "sting",
+   "line": 8,
+   "dt": 2.1
+  },
+  {
+   "name": "pop",
+   "line": 9
+  },
+  {
+   "name": "pop",
+   "line": 10
+  },
+  {
+   "name": "tada",
+   "line": 11,
+   "dt": 0.5
+  }
+ ],
+ "caption": "פרק 10 · גנב הכתר 🧦 על מצלמה 7 מישהו שם גרב קטנה עם פסים... אז נבנתה תחנת השומרים של הממלכה (רעיון של @ofek_bell)!\n🔍 מי לדעתכם גנב את הכתר? ומה נבנה מחר כדי לתפוס אותו? כתבו בתגובות, התגובה עם הכי הרבה לייקים נבנית!\n➕ תעקבו כדי לא לפספס את הפרק הבא\n#גנבהכתר #משפחתספיר #ממלכה #בלשים",
+ "firstComment": "🔍 רמז 10: על מצלמה 7 מישהו שם גרב קטנה עם פסים 🧦 ולמה כל הפנסים כבו בחצות? איזה מקום נבנה מחר כדי לתפוס את הגנב? התגובה עם הכי הרבה לייקים נבנית! 👑",
+ "notes": "Winner: @ofek_bell (day 38 inbox): guards with flashlights all over the kingdom, the first comment asking for something that can stand in the kingdom once these were skipped: \"הגנב זה המלך\" (1 like, a guess), \"נהוראי יכול להיות הספונסר של הפועל ספיר\" (1 like, a Nehorai idea, not a place), and a memorial for the hostages (1 like, @eilam.lev99): a real-world national topic, left for Michael to decide, not built by the bot. Next at 0 likes: this one (12:27) before \"תעשו צבא ספיר\" (15:35). Card shows the idea part only. ofek_bell already lives in the golden villa. Gold key: nobody new on day 38, so a citizen without one with the day as the seed: hameiri15."
+}

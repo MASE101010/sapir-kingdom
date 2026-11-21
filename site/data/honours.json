@@ -36,7 +36,8 @@
       "netagal56",
       "noga_buhnik",
       "orthegoat",
-      "ziv46297"
+      "ziv46297",
+      "hameiri15"
     ]
   },
   "built": {
@@ -262,6 +263,12 @@
         "ofek_bell"
       ],
       "day": 38
+    },
+    "guards": {
+      "by": [
+        "ofek_bell"
+      ],
+      "day": 39
     }
   }
 }
