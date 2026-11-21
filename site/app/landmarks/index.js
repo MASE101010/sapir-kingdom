@@ -37,5 +37,6 @@ import { DETECTIVE } from './detective.js';    // day 34: משרד הבלשים 
 import { SHOWPARK } from './showpark.js';    // day 35: פארק ההופעות של הממלכה
 import { MIRRORMAZE } from './mirrormaze.js';    // day 36: מבוך המראות של הממלכה (the king's pick, the first small lot)
 import { KENNEL } from './kennel.js';    // day 37: תחנת כלבי הגישוש של הממלכה (the king's pick)
+import { CAMROOM } from './camroom.js';  // day 38: חדר המצלמות של הממלכה (@ofek_bell)
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK, FANCLUB, BEITARCLUB, HOTEL, SCHOOL, TRAIN, KINGFLAG, BOXOFFICE, SYNAGOGUE, AQUARIUM, CLOCKTOWER, AVIARY, CANDYHOUSE, WATCHTOWER, DETECTIVE, SHOWPARK, MIRRORMAZE, KENNEL].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK, FANCLUB, BEITARCLUB, HOTEL, SCHOOL, TRAIN, KINGFLAG, BOXOFFICE, SYNAGOGUE, AQUARIUM, CLOCKTOWER, AVIARY, CANDYHOUSE, WATCHTOWER, DETECTIVE, SHOWPARK, MIRRORMAZE, KENNEL, CAMROOM].map(l => [l.key, l]));
