@@ -224,7 +224,17 @@ function sockCam(spec) {
   return root;
 }
 
-const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver, mirrornote: mirrorNote, dogs, feather, board, sockcam: sockCam };
+
+/** light bulbs taken out of the lanterns, set down in a neat row (גנב הכתר episode 11); key 'rise' brings them in one by one */
+function bulbs(spec) {
+  const root = new THREE.Group(), n = spec.n ?? 20, all = [];
+  for (let i = 0; i < n; i++) { const b = new THREE.Group(); b.position.set((i - (n - 1) / 2) * .55, 0, 0); root.add(b);
+    box(b, .22, .25, .22, 0x9aa3ab, 0, .12, 0); const gl = new THREE.Mesh(new THREE.SphereGeometry(.2, 12, 10), new THREE.MeshLambertMaterial({ color: 0xfff2c4, emissive: 0x403010 })); gl.position.y = .42; b.add(gl); all.push(b); }
+  root.userData = { update(t, val) { const r = val('rise', 1); all.forEach((b, i) => { b.visible = r * n > i; }); } };
+  return root;
+}
+
+const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver, mirrornote: mirrorNote, dogs, feather, board, sockcam: sockCam, bulbs };
 
 /** the props of a reel: build them, and each frame set them as their keyframes say */
 export function placeProps(scene, list = [], lineAt) {
