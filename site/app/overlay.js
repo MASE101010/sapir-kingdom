@@ -80,7 +80,8 @@ function card(g, c, k, cx, y) {
       const lines = wrap(g, c.text, `700 50px ${BODY}`, 520).slice(0, 3), H = 190 + lines.length * 60; box(g, x, y, W, H, R);
       text(g, c.head ?? 'התגובה המנצחת', x + W - 44, y + 72, { font: `800 40px ${BODY}`, align: 'right' });
       if (c.img) g.drawImage(c.img, x + W - 44 - 130, y + 104, 130, 130);
-      text(g, `@${c.u}`, x + W - 200, y + 146, { font: `800 42px ${BODY}`, align: 'right', dir: 'ltr' });
+      if (c.u) text(g, `@${c.u}`, x + W - 200, y + 146, { font: `800 42px ${BODY}`, align: 'right', dir: 'ltr' });
+      else text(g, c.who ?? 'תושב בממלכה', x + W - 200, y + 146, { font: `800 42px ${BODY}`, align: 'right' });
       lines.forEach((l, i) => text(g, l, x + W - 200, y + 210 + i * 60, { font: `700 50px ${BODY}`, align: 'right' }));
       if (c.likes !== null) text(g, `♥ ${Number(c.likes ?? 0).toLocaleString('he-IL')}`, x + 44, y + 160, { font: `800 46px ${BODY}`, color: RED, align: 'left', dir: 'ltr' });
       return H + 14;

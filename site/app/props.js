@@ -22,13 +22,15 @@ function plaque(text, sub) {
 }
 
 /** a dragon statue on a pedestal, sitting up, wings half open, tail curled, facing +z; its rear points to -z */
-function chocoDragon() {
+function chocoDragon(spec = {}) {
   const root = new THREE.Group(), statue = new THREE.Group(); root.add(statue);
-  const G = 0x3f9a5a, G2 = 0x2f7a4a, BELLY = 0xf2d27a, GOLD = 0xe8b323, STONE = 0xe9dfc9, STONE2 = 0xd8ccb2;
+  // spec.white: the second dragon (Nehorai episode 7), cream white, farting white chocolate
+  const WH = !!spec.white, CHOC = WH ? 0xf3e6c8 : 0x5a3220, CHOC2 = WH ? 0xe8d6ae : 0x7a4528, MILK = WH ? 0xfff6e0 : 0x9b6238;
+  const G = WH ? 0xf1efe6 : 0x3f9a5a, G2 = WH ? 0xd9d4c4 : 0x2f7a4a, BELLY = WH ? 0xf7d6e0 : 0xf2d27a, GOLD = 0xe8b323, STONE = 0xe9dfc9, STONE2 = 0xd8ccb2;
   // the pedestal: two stone steps, a gold band, the plaque in front (live, Hebrew)
   box(root, 9, .6, 9, STONE2, 0, .3, 0); box(root, 7.6, 2.4, 7.6, STONE, 0, 1.8, 0); box(root, 7.8, .3, 7.8, GOLD, 0, 3.1, 0);
   for (const [x, z] of [[-3.6, 3.6], [3.6, 3.6], [-3.6, -3.6], [3.6, -3.6]]) { box(root, .6, .6, .6, GOLD, x, 3.4, z); }
-  const pl = plaque('הדרקון של נהוראי 🐉', 'מפליץ שוקולד · 2,000,000 ₪'); pl.position.set(0, 1.85, 3.82); root.add(pl);
+  const pl = plaque(spec.title ?? 'הדרקון של נהוראי 🐉', spec.sub ?? 'מפליץ שוקולד · 2,000,000 ₪'); pl.position.set(0, 1.85, 3.82); root.add(pl);
   statue.position.y = 3.25;
   const body = new THREE.Group(); statue.add(body);
   // sitting: a round belly and haunches, the chest rising, two short arms, the neck up and the head looking out
@@ -47,7 +49,7 @@ function chocoDragon() {
   for (let i = 0; i < 5; i++) box(body, .3, .9 - i * .1, .9, BELLY, 0, 8.6 - i * 1.5, -.2 - i * .35);   // spikes down the back
   // wings, half open
   for (const s of [-1, 1]) { const w = new THREE.Group(); w.position.set(s * 1.6, 5, -1); w.rotation.set(0, s * .5, s * .35); body.add(w);
-    box(w, 6, .4, .5, G2, s * 3, 2, 0, 0, 0, s * .5); box(w, .2, 4.6, 5.4, 0x7fd08a, s * 3.2, .8, -1.6, 0, 0, s * .12); }
+    box(w, 6, .4, .5, G2, s * 3, 2, 0, 0, 0, s * .5); box(w, .2, 4.6, 5.4, WH ? 0xf3c6d6 : 0x7fd08a, s * 3.2, .8, -1.6, 0, 0, s * .12); }
   // the tail, curling round to the front on the pedestal
   [[0, .5, -2.9], [-1.1, .4, -3.6], [-2.4, .35, -3.2], [-3.1, .3, -1.9], [-3.2, .3, -.4], [-2.6, .3, .9]].forEach(([x, y, z], i) => box(body, 1.6 - i * .18, 1.3 - i * .12, 1.6 - i * .18, i % 2 ? G2 : G, x, y, z));
   box(body, 1.2, .2, 1.4, GOLD, -2.2, .4, 1.8);
