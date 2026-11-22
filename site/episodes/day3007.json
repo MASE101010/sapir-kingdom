@@ -1,0 +1,726 @@
+{
+ "day": 3007,
+ "series": "you-decide",
+ "episode": 7,
+ "top": 330,
+ "mix": "day3007.mix.mp3",
+ "thumbOffset": 3000,
+ "lines": [
+  "[excited] נֶהוֹרַאי קָנָה... עוֹד דְּרָקוֹן!",
+  "[excited] אַתֶּם מַחְלִיטִים, פֶּרֶק שִׁבְעָה!",
+  "[excited] Itamar כָּתַב: דְּרָקוֹן שֶׁמַּפְלִיץ שׁוֹקוֹלָד לָבָן!",
+  "[excited] אָז נֶהוֹרַאי קָנָה אוֹתוֹ לְבֵיתָר, בְּמִילְיוֹן שְׁקָלִים!",
+  "[excited] וּמִי הֵבִיאָה אֶת הַדְּרָקוֹן? מְאַלֶּפֶת הַדְּרָקוֹנִים... טַלְיָה!",
+  "[excited] נֶהוֹרַאי רָאָה אוֹתָהּ... וְשָׁכַח אֵיךְ קוֹרְאִים לוֹ!",
+  "[excited] הוּא אָמַר לָהּ: שָׁלוֹם, אֲנִי... שׁוֹקוֹלָד!",
+  "[excited] טַלְיָה צָחֲקָה, וְהַדְּרָקוֹן הַלָּבָן הִפְלִיץ מֵהַהִתְרַגְּשׁוּת!",
+  "[excited] נִשְׁאֲרוּ לוֹ אַרְבָּעָה מִילְיוֹן וְשֵׁשׁ מֵאוֹת אֶלֶף!",
+  "[excited] וּבַסּוֹף הוּא אָזַר אֹמֶץ... וְהִזְמִין אוֹתָהּ לְדֵייט!",
+  "[excited] וְהִיא אָמְרָה: רַק אִם תָּבוֹא בְּלִי הַסִּינָר שֶׁל הַסּוּפֶּר!",
+  "[excited] מָה נֶהוֹרַאי עוֹשֶׂה עַכְשָׁו? כִּתְבוּ בַּתְּגוּבוֹת!",
+  "[excited] הָרַעְיוֹן עִם הֲכִי הַרְבֵּה לַייקִים... קוֹרֶה בַּפֶּרֶק הַבָּא!",
+  "[excited] וּכְדֵי שֶׁהַתְּגוּבָה תִּקָּלֵט, תַּעַקְבוּ אַחֲרֵי הָעַמּוּד!"
+ ],
+ "say": {
+  "Itamar": "איתמר"
+ },
+ "actors": [
+  {
+   "id": "nehorai",
+   "look": {
+    "shirt": 16177226,
+    "pants": 3099258,
+    "hair": 2759184,
+    "skin": 14264191,
+    "apron": 1011571,
+    "shoes": 16777215
+   },
+   "cheque": {
+    "text": "4,600,000 ₪",
+    "sub": "דרקון לבן לביתר 🤍"
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "shock"
+    },
+    {
+     "line": 1,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "dance"
+    },
+    {
+     "line": 2,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "point"
+    },
+    {
+     "line": 3,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "hold"
+    },
+    {
+     "line": 4,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "shock"
+    },
+    {
+     "line": 5,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "shock"
+    },
+    {
+     "line": 6,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "shock"
+    },
+    {
+     "line": 7,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "jump"
+    },
+    {
+     "line": 8,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "hold",
+     "cheque": true
+    },
+    {
+     "line": 9,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "think"
+    },
+    {
+     "line": 10,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "cheer"
+    },
+    {
+     "line": 11,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "think"
+    },
+    {
+     "line": 12,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "point"
+    },
+    {
+     "line": 13,
+     "x": -120.5,
+     "z": 157.8,
+     "ry": 135,
+     "anim": "cheer"
+    }
+   ]
+  },
+  {
+   "id": "talia",
+   "look": {
+    "shirt": 15895692,
+    "pants": 3885675,
+    "hair": 2759184,
+    "skin": 15251606,
+    "shoes": 16250350
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "idle",
+     "hide": true
+    },
+    {
+     "line": 1,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "idle",
+     "hide": true
+    },
+    {
+     "line": 2,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "idle",
+     "hide": true
+    },
+    {
+     "line": 3,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "idle",
+     "hide": true
+    },
+    {
+     "line": 4,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "cheer"
+    },
+    {
+     "line": 5,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "idle"
+    },
+    {
+     "line": 6,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "think"
+    },
+    {
+     "line": 7,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "cheer"
+    },
+    {
+     "line": 8,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "idle"
+    },
+    {
+     "line": 9,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "idle"
+    },
+    {
+     "line": 10,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "point"
+    },
+    {
+     "line": 11,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "idle"
+    },
+    {
+     "line": 12,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "idle"
+    },
+    {
+     "line": 13,
+     "x": -118.2,
+     "z": 155.5,
+     "ry": -45,
+     "anim": "dance"
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "id": "white",
+   "kind": "chocodragon",
+   "white": true,
+   "title": "הדרקון של ביתר 🐉",
+   "sub": "מפליץ שוקולד לבן · 1,000,000 ₪",
+   "x": -125.17,
+   "z": 150.63,
+   "ry": 45,
+   "scale": 1.15,
+   "keys": [
+    {
+     "line": 0,
+     "rise": 0,
+     "fart": false,
+     "puddle": 0
+    },
+    {
+     "line": 0,
+     "dt": 0.5,
+     "rise": 0
+    },
+    {
+     "line": 0,
+     "dt": 1.6,
+     "rise": 1
+    },
+    {
+     "line": 7,
+     "dt": 0.8,
+     "fart": true,
+     "puddle": 0
+    },
+    {
+     "line": 8,
+     "fart": false,
+     "puddle": 6
+    }
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": "prop:white",
+   "dist": 24,
+   "yaw": 10,
+   "pitch": 4,
+   "orbit": 2,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "actor:nehorai",
+   "dist": 6,
+   "yaw": 10,
+   "pitch": 6,
+   "orbit": 5,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": [
+    -137.9,
+    1,
+    137.9
+   ],
+   "dist": 70,
+   "yaw": 135,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 3,
+   "target": "actor:nehorai",
+   "dist": 7,
+   "yaw": -15,
+   "pitch": 6,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "actor:talia",
+   "dist": 6,
+   "yaw": 0,
+   "pitch": 6,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": [
+    -119.35,
+    2.2,
+    156.65
+   ],
+   "dist": 9,
+   "yaw": 45,
+   "pitch": 6,
+   "orbit": 1,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": "actor:nehorai",
+   "dist": 4.5,
+   "yaw": 0,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": "prop:white",
+   "dist": 30,
+   "yaw": -70,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": "actor:nehorai",
+   "dist": 8,
+   "yaw": 0,
+   "pitch": 8,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": [
+    -119.35,
+    2.2,
+    156.65
+   ],
+   "dist": 8,
+   "yaw": 40,
+   "pitch": 5,
+   "orbit": 1,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "target": "actor:talia",
+   "dist": 5,
+   "yaw": 0,
+   "pitch": 4,
+   "orbit": 1,
+   "ease": 0.6
+  },
+  {
+   "line": 11,
+   "target": "actor:nehorai",
+   "dist": 6,
+   "yaw": 0,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 12,
+   "target": [
+    -119.35,
+    2.2,
+    156.65
+   ],
+   "dist": 16,
+   "yaw": 60,
+   "pitch": 12,
+   "orbit": 5,
+   "ease": 0.6
+  },
+  {
+   "line": 13,
+   "target": [
+    -119.35,
+    2.2,
+    156.65
+   ],
+   "dist": 10,
+   "yaw": 30,
+   "pitch": 6,
+   "orbit": 6,
+   "ease": 0.6
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dur": 2.4,
+   "text": "אתם מחליטים 🎮"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.3,
+   "dur": 2.1,
+   "text": "פרק 7 · נהוראי"
+  },
+  {
+   "type": "comment",
+   "line": 2,
+   "dur": 3.6,
+   "u": "itamarsarusi",
+   "text": "קונה דרקון שמפליץ שוקולד לבן",
+   "likes": 1
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 0.4,
+   "dur": 2.8,
+   "text": "-1,000,000 ₪ 🤍"
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dt": 1.4,
+   "dur": 2.4,
+   "text": "טליה · מאלפת דרקונים 🐉"
+  },
+  {
+   "type": "label",
+   "line": 8,
+   "dt": 0.2,
+   "dur": 2.8,
+   "text": "יש לו 4,600,000 ₪ 💰"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 2.6,
+   "text": "💬 מה עכשיו?",
+   "sub": "כתבו בתגובות את הרעיון שלכם"
+  },
+  {
+   "type": "cta",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.9,
+   "text": "👍 מנצח!",
+   "sub": "הכי הרבה לייקים קורה בפרק הבא"
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 4,
+   "text": "➕ עקבו",
+   "sub": "כדי שהתגובה שלכם תיקלט"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 1.6,
+   "dur": 0.6,
+   "zoom": 0.22
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 1.8,
+   "dur": 1.6,
+   "text": "🐉🤍",
+   "x": 840,
+   "y": 1320,
+   "size": 170,
+   "rot": 10
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 1.6,
+   "dur": 1.8,
+   "text": "✨",
+   "x": 860,
+   "y": 1330,
+   "size": 180
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 0.6,
+   "dur": 2,
+   "text": "😳",
+   "x": 860,
+   "y": 1330,
+   "size": 200
+  },
+  {
+   "type": "punch",
+   "line": 6,
+   "dt": 1.2,
+   "dur": 0.5,
+   "zoom": 0.2
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 1.3,
+   "dur": 1.6,
+   "text": "🍫",
+   "x": 860,
+   "y": 1330,
+   "size": 200,
+   "rot": -10
+  },
+  {
+   "type": "shake",
+   "line": 7,
+   "dt": 0.8,
+   "dur": 0.6
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 1,
+   "dur": 1.6,
+   "text": "💨",
+   "x": 860,
+   "y": 1320,
+   "size": 210
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 0.6,
+   "dur": 1.8,
+   "text": "🤑",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "sticker",
+   "line": 9,
+   "dt": 1.2,
+   "dur": 1.8,
+   "text": "💌",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 0.8,
+   "dur": 1.8,
+   "text": "😂",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "punch",
+   "line": 13,
+   "dur": 0.6,
+   "zoom": 0.2
+  }
+ ],
+ "music": {
+  "bpm": 118,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 9
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 11
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "boom",
+   "line": 0,
+   "dt": 1.6
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2
+  },
+  {
+   "name": "kaching",
+   "line": 3,
+   "dt": 0.4
+  },
+  {
+   "name": "sparkle",
+   "line": 4,
+   "dt": 1.4
+  },
+  {
+   "name": "ding",
+   "line": 5,
+   "dt": 0.6
+  },
+  {
+   "name": "boing",
+   "line": 6,
+   "dt": 1.2
+  },
+  {
+   "name": "boom",
+   "line": 7,
+   "dt": 0.8
+  },
+  {
+   "name": "boing",
+   "line": 7,
+   "dt": 1.3
+  },
+  {
+   "name": "kaching",
+   "line": 8,
+   "dt": 0.4
+  },
+  {
+   "name": "sting",
+   "line": 9,
+   "dt": 1.2
+  },
+  {
+   "name": "scratch",
+   "line": 10,
+   "dt": 1
+  },
+  {
+   "name": "pop",
+   "line": 11
+  },
+  {
+   "name": "tada",
+   "line": 12,
+   "dt": 0.6
+  },
+  {
+   "name": "kaching",
+   "line": 13,
+   "dt": 1.2
+  }
+ ],
+ "caption": "נהוראי קנה דרקון שמפליץ שוקולד לבן לביתר 🐉🤍 ופגש את טליה, מאלפת הדרקונים... ושכח איך קוראים לו 😳\nאתם מחליטים 🎮 פרק 7 · הרעיון של @itamarsarusi\n💬 הדייט הראשון בדרך! מה נהוראי עושה עכשיו? כתבו בתגובות, הרעיון עם הכי הרבה לייקים קורה בפרק הבא!\n➕ כדי שהתגובה שלכם תיקלט, צריך לעקוב אחרי העמוד\n#אתםמחליטים #נהוראי #משפחתספיר #דייט #ממלכה",
+ "firstComment": "💌 נהוראי הזמין את טליה לדייט! מה הוא עושה עכשיו? כתבו כאן את הרעיון הכי מטורף, תנו לייק לרעיונות שאתם אוהבים, ותעקבו כדי שהתגובה תיקלט 👇",
+ "notes": "Series אתם מחליטים, episode 7, the first in Michael's new direction (21.11: his life, a girlfriend, dates, work, quitting, arguments). Comments on episode 6 (media 18191201209418225) at 19:05: one idea, @itamarsarusi (1 like, 15:55): a dragon that farts white chocolate (mapped by the bot reply 47 s later). It happens (for ביתר, the cliffhanger of episode 6), and it brings in טליה, a dragon trainer (fictional): he forgets his own name, asks her out, she says yes if he comes without the supermarket apron. Money: 5,600,000 - 1,000,000 = 4,600,000."
+}
