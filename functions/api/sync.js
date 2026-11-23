@@ -18,6 +18,15 @@ export async function onRequest({ request, env }) {
     const likes = []; if (new URL(request.url).searchParams.has('likes')) for (const m of media.data ?? []) { let url = `${G}/${m.id}/comments?fields=id,text,like_count,from&limit=50&access_token=${t}`;
       for (let i = 0; url && i < 10; i++) { const d = await fetch(url).then(r => r.json()); likes.push(...(d.data ?? []).map(c => [c.like_count ?? 0, c.from?.username, c.text])); url = d.paging?.next; } }
     likes.sort((a, b) => b[0] - a[0]);
+    // ?stats=1: every recent post with its insights and the daily follower gains, for the growth analysis (poll.yml with stats)
+    const stats = new URL(request.url).searchParams.has('stats') ? await (async () => {
+      const all = []; let url = `${G}/${env.IG_USER_ID}/media?fields=id,timestamp,caption,media_type,media_product_type,comments_count,like_count,permalink&limit=50&access_token=${t}`;
+      for (let i = 0; url && i < 3; i++) { const d = await fetch(url).then(r => r.json()); all.push(...(d.data ?? [])); url = d.paging?.next; }
+      for (const m of all) m.ins = await fetch(`${G}/${m.id}/insights?metric=reach,views,likes,comments,shares,saved,follows,profile_visits,total_interactions,ig_reels_avg_watch_time,ig_reels_video_view_total_time&access_token=${t}`).then(r => r.json()).catch(e => ({ error: String(e) }));
+      const now = Math.floor(Date.now() / 1000), fc = await fetch(`${G}/${env.IG_USER_ID}/insights?metric=follower_count,reach&period=day&since=${now - 29 * 86400}&until=${now}&access_token=${t}`).then(r => r.json());
+      const demo = await fetch(`${G}/${env.IG_USER_ID}/insights?metric=follower_demographics,engaged_audience_demographics&period=lifetime&timeframe=this_month&metric_type=total_value&breakdown=age&access_token=${t}`).then(r => r.json());
+      return { media: all, daily: fc, demo };
+    })() : null;
     const insights = new URL(request.url).searchParams.has('insights') ? {
       me: await fetch(`${G}/${env.IG_USER_ID}?fields=username,followers_count,follows_count,media_count&access_token=${t}`).then(r => r.json()),
       day: await fetch(`${G}/${env.IG_USER_ID}/insights?metric=reach,follower_count,profile_views,accounts_engaged,total_interactions,website_clicks&period=day&metric_type=total_value&access_token=${t}`).then(r => r.json()),
@@ -26,7 +35,7 @@ export async function onRequest({ request, env }) {
         return Promise.all(ids.map(async s => ({ id: s.k.slice(6), ins: await fetch(`${G}/${s.v}/insights?metric=reach,views,replies,shares,total_interactions,follows,profile_visits&access_token=${t}`).then(r => r.json()) }))); })(),
     } : null;
     const state = (await env.DB.prepare("SELECT k, v FROM state WHERE k LIKE 'sync%' OR k LIKE 'story%' OR k = 'clock_at' OR k = 'dm_since'").all()).results;
-    return json({ user: env.IG_USER_ID ?? null, insights, likes: likes.slice(0, 60), follow, conv, dmr, media, comments, state });
+    return json({ user: env.IG_USER_ID ?? null, insights, stats, likes: likes.slice(0, 60), follow, conv, dmr, media, comments, state });
   }
   if (new URL(request.url).searchParams.has('tick')) { await env.DB.prepare("INSERT INTO state (k, v) VALUES ('clock_at', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v").bind(String(Date.now())).run();   // the clock was here
     await stories(env, new URL(request.url).origin).catch(() => {}); }
