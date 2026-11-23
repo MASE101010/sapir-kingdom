@@ -20,9 +20,9 @@ export async function onRequest({ request, env }) {
     likes.sort((a, b) => b[0] - a[0]);
     // ?stats=1: every recent post with its insights and the daily follower gains, for the growth analysis (poll.yml with stats)
     const stats = new URL(request.url).searchParams.has('stats') ? await (async () => {
-      const all = []; let url = `${G}/${env.IG_USER_ID}/media?fields=id,timestamp,caption,media_type,media_product_type,comments_count,like_count,permalink&limit=50&access_token=${t}`;
-      for (let i = 0; url && i < 3; i++) { const d = await fetch(url).then(r => r.json()); all.push(...(d.data ?? [])); url = d.paging?.next; }
-      for (const m of all) m.ins = await fetch(`${G}/${m.id}/insights?metric=reach,views,likes,comments,shares,saved,follows,profile_visits,total_interactions,ig_reels_avg_watch_time,ig_reels_video_view_total_time&access_token=${t}`).then(r => r.json()).catch(e => ({ error: String(e) }));
+      const all = [], M = 'reach,views,likes,comments,shares,saved,follows,profile_visits,total_interactions,ig_reels_avg_watch_time';
+      let url = `${G}/${env.IG_USER_ID}/media?fields=id,timestamp,caption,media_product_type,comments_count,like_count,permalink,insights.metric(${M})&limit=40&access_token=${t}`;
+      for (let i = 0; url && i < 2; i++) { const d = await fetch(url).then(r => r.json()); if (d.error) { all.push({ error: d.error }); break; } all.push(...(d.data ?? [])); url = d.paging?.next; }
       const now = Math.floor(Date.now() / 1000), fc = await fetch(`${G}/${env.IG_USER_ID}/insights?metric=follower_count,reach&period=day&since=${now - 29 * 86400}&until=${now}&access_token=${t}`).then(r => r.json());
       const demo = await fetch(`${G}/${env.IG_USER_ID}/insights?metric=follower_demographics,engaged_audience_demographics&period=lifetime&timeframe=this_month&metric_type=total_value&breakdown=age&access_token=${t}`).then(r => r.json());
       return { media: all, daily: fc, demo };
