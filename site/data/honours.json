@@ -38,7 +38,8 @@
       "orthegoat",
       "ziv46297",
       "hameiri15",
-      "noamkishek1912"
+      "noamkishek1912",
+      "idan8491"
     ]
   },
   "built": {
@@ -274,6 +275,12 @@
     "newsroom": {
       "by": [],
       "day": 40
+    },
+    "gamepark": {
+      "by": [
+        "ofek_bell"
+      ],
+      "day": 41
     }
   }
 }
