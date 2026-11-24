@@ -1,0 +1,76 @@
+{
+ "day": 1137,
+ "lines": [
+  "[pause]"
+ ],
+ "top": 330,
+ "duration": 2,
+ "night": [
+  {
+   "line": 0,
+   "dt": -5
+  }
+ ],
+ "states": [
+  {
+   "key": "escape-room",
+   "kind": "night",
+   "line": 0,
+   "dt": -5,
+   "dur": 0.1,
+   "from": 1,
+   "to": 1
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "ease": 0.01,
+   "target": "landmark:escape-room",
+   "dist": 50,
+   "yaw": 20,
+   "pitch": 16
+  }
+ ],
+ "cards": [
+  {
+   "type": "note",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "title": "רמז שרק בסטורי 🤫",
+   "text": "בחדר הבריחה כל המנעולים נפתחו\nוכל המפתחות סודרו לפי צבעים 🌈",
+   "foot": "מי עשה את זה? 🤔 תענו לסטורי"
+  }
+ ],
+ "fx": [
+  {
+   "type": "night",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "under": true,
+   "alpha": 0.45
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "text": "🗝️",
+   "x": 860,
+   "y": 1720,
+   "size": 155
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": -5,
+   "dur": 20,
+   "text": "🌙",
+   "x": 210,
+   "y": 1720,
+   "size": 155
+  }
+ ]
+}
