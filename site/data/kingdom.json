@@ -1,6 +1,6 @@
 {
   "note": "The kingdom's state. Written by the daily run (CLAUDE.md). day: today's day number; landmarks: what stands, on which lot, built on which day, at whose asking; history: how many residents stood at the end of each day; upgraded: Instagram name -> extra storeys; visit: whose door Michael walks to today; status: one line about what Michael is doing.",
-  "day": 41,
+  "day": 42,
   "landmarks": [
     {
       "key": "castle",
@@ -321,6 +321,12 @@
       "by": [
         "ofek_bell"
       ]
+    },
+    {
+      "key": "escape-room",
+      "lot": 41,
+      "day": 42,
+      "by": []
     }
   ],
   "history": [
@@ -363,16 +369,17 @@
     444,
     444,
     445,
+    445,
     445
   ],
   "upgraded": {},
-  "status": "פרק 12 של גנב הכתר 🎮 הכבל של השידור נקשר בפפיון, ונבנה פארק הגיימינג העתידני",
+  "status": "פרק 13 של גנב הכתר 🔐 המלך בנה חדר בריחה שאי אפשר לנצח... ובבוקר הדלת הייתה פתוחה",
   "dm": false,
   "updated": "2026-11-24T17:03:30.448Z",
   "news": {
-    "day": 41,
-    "line": "נפתח פארק הגיימינג העתידני של הממלכה, עם הולוגרמות ודברים מעופפים! 🎮 (רעיון של ofek_bell)",
-    "landmark": "gamepark"
+    "day": 42,
+    "line": "נבנה חדר הבריחה של הממלכה, עם מנעול זהב ענק על הגג 🔐",
+    "landmark": "escape-room"
   },
   "reels": {
     "1": "18129295480834389",
@@ -581,7 +588,8 @@
     "camroom": {},
     "guards": {},
     "newsroom": {},
-    "gamepark": {}
+    "gamepark": {},
+    "escape-room": {}
   },
   "president": "bibkovich"
 }
