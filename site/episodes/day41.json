@@ -1,0 +1,414 @@
+{
+ "day": 41,
+ "top": 330,
+ "mix": "day41.mix.mp3",
+ "lines": [
+  "[excited] הַשִּׁידּוּר נִקְטַע... וּמָצָאנוּ אֶת הַכֶּבֶל, קָשׁוּר בְּפַפְּיוֹן!",
+  "[excited] יוֹם אַרְבָּעִים וְאַחַת בַּמַּמְלָכָה...",
+  "[excited] מִישֶׁהוּ קָשַׁר אֶת הַכֶּבֶל... כְּמוֹ מַתָּנָה.",
+  "[excited] הַגַּנָּב הַזֶּה רַק מְשַׂחֵק אִתָּנוּ!",
+  "[excited] אָז הֶחְלַטְתִּי: אִם הוּא אוֹהֵב מִשְׂחָקִים...",
+  "[excited] Ofek בִּקֵּשׁ שְׁנֵים עָשָׂר יוֹם... אָז בָּנִיתִי לוֹ פַּארְק Gaming עֲתִידָנִי!",
+  "[excited] עִם הוֹלוֹגְרָמוֹת, וּדְבָרִים מְעוֹפְפִים!",
+  "[excited] אֲבָל בַּלַּיְלָה, כְּשֶׁהַפַּארְק הָיָה סָגוּר...",
+  "[excited] מְכוֹנַת מִשְׂחָק אַחַת נִדְלְקָה לְבַד... וְכָתוּב עָלֶיהָ: רָמָה שְׁתַּיִם!",
+  "[excited] מִי לְדַעְתְּכֶם גָּנַב אֶת הַכֶּתֶר?",
+  "[excited] וּמָה נִבְנֶה מָחָר כְּדֵי לִתְפֹּס אוֹתוֹ? כִּתְבוּ בַּתְּגוּבוֹת!",
+  "[excited] וְתַעַקְבוּ, כְּדֵי לֹא לְפַסְפֵס אֶת הַפֶּרֶק הַבָּא!"
+ ],
+ "say": {
+  "Ofek": "אופק",
+  "Gaming": "גיימינג"
+ },
+ "thumbOffset": 2600,
+ "props": [
+  {
+   "id": "cable",
+   "kind": "cable",
+   "x": -181.79,
+   "z": -39.68,
+   "ry": 78.75,
+   "keys": [
+    {
+     "line": 0,
+     "rise": 1
+    }
+   ]
+  }
+ ],
+ "states": [
+  {
+   "key": "gamepark",
+   "kind": "night",
+   "line": 8,
+   "dt": 1.2,
+   "dur": 0.1,
+   "from": 0,
+   "to": 1
+  }
+ ],
+ "night": [
+  {
+   "line": 7,
+   "until": 9
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    -181.79,
+    1,
+    -39.68
+   ],
+   "dist": 9,
+   "yaw": 100,
+   "pitch": 22,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "castle",
+   "dist": 420,
+   "yaw": -30,
+   "pitch": 34,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": [
+    -181.79,
+    1.6,
+    -39.68
+   ],
+   "dist": 6,
+   "yaw": 150,
+   "pitch": 28,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": "landmark:newsroom",
+   "dist": 40,
+   "yaw": -15,
+   "pitch": 14,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 4,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 200,
+   "pitch": 40,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 5,
+   "target": "landmark:gamepark",
+   "dist": 72,
+   "yaw": 15,
+   "pitch": 26,
+   "orbit": 5,
+   "ease": 0.8
+  },
+  {
+   "line": 6,
+   "target": "landmark:gamepark",
+   "dist": 34,
+   "yaw": -20,
+   "pitch": 12,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": "landmark:gamepark",
+   "dist": 46,
+   "yaw": 25,
+   "pitch": 18,
+   "orbit": 2,
+   "ease": 0.8
+  },
+  {
+   "line": 8,
+   "target": [
+    185.64,
+    2.55,
+    28.72
+   ],
+   "dist": 4.6,
+   "yaw": -66,
+   "pitch": 10,
+   "orbit": 0,
+   "ease": 0.8
+  },
+  {
+   "line": 9,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -50,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 10,
+   "target": "landmark:gamepark",
+   "dist": 60,
+   "yaw": 30,
+   "pitch": 22,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 11,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 20,
+   "pitch": 32,
+   "orbit": 3,
+   "ease": 0.8
+  }
+ ],
+ "rise": {
+  "key": "gamepark",
+  "line": 5,
+  "dt": 1.9,
+  "dur": 2.4
+ },
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dur": 2.4,
+   "text": "פרק 12 · גנב הכתר"
+  },
+  {
+   "type": "label",
+   "line": 2,
+   "dt": 0.2,
+   "dur": 3.2,
+   "text": "🔍 רמז 12: הכבל קשור בפפיון 🎀"
+  },
+  {
+   "type": "comment",
+   "line": 5,
+   "dur": 3.6,
+   "u": "ofek_bell",
+   "text": "יום 12 שאני מבקש גיימינג פארק עתידני עם הולוגרמות ודברים מעופפים",
+   "likes": 0
+  },
+  {
+   "type": "label",
+   "line": 6,
+   "dt": 0.1,
+   "dur": 2.8,
+   "text": "נבנה · פארק הגיימינג 🎮"
+  },
+  {
+   "type": "cta",
+   "line": 9,
+   "dt": 0.1,
+   "dur": 1.5,
+   "text": "🔍 מי הגנב?",
+   "sub": "כתבו בתגובות את הניחוש שלכם"
+  },
+  {
+   "type": "cta",
+   "line": 10,
+   "dt": 0.1,
+   "dur": 3,
+   "text": "🏗️ מה נבנה?",
+   "sub": "התגובה עם הכי הרבה לייקים נבנית"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 4,
+   "text": "➕ עקבו",
+   "sub": "כדי לא לפספס את הפרק הבא"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 1.4,
+   "dur": 0.5,
+   "zoom": 0.2
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 1.8,
+   "dur": 1.6,
+   "text": "🎀",
+   "x": 860,
+   "y": 1330,
+   "size": 200,
+   "rot": 10
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.6,
+   "dur": 1.8,
+   "text": "😏",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "confetti",
+   "line": 5,
+   "dt": 3.7,
+   "dur": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 0.4,
+   "dur": 1.8,
+   "text": "🎮",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "vignette",
+   "line": 7,
+   "dur": 4
+  },
+  {
+   "type": "shake",
+   "line": 8,
+   "dt": 1.2,
+   "dur": 0.5
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 3.2,
+   "dur": 1.8,
+   "text": "😱",
+   "x": 860,
+   "y": 1330,
+   "size": 200
+  }
+ ],
+ "music": {
+  "bpm": 112,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 1
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 2
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 4
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 7
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 9
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sparkle",
+   "line": 0,
+   "dt": 1.4
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 0.4
+  },
+  {
+   "name": "ding",
+   "line": 3,
+   "dt": 0.4
+  },
+  {
+   "name": "whoosh",
+   "line": 4
+  },
+  {
+   "name": "pop",
+   "line": 5
+  },
+  {
+   "name": "boom",
+   "line": 5,
+   "dt": 3.7
+  },
+  {
+   "name": "tada",
+   "line": 6,
+   "dt": 0.3
+  },
+  {
+   "name": "cricket",
+   "line": 7
+  },
+  {
+   "name": "scratch",
+   "line": 8,
+   "dt": 1.2
+  },
+  {
+   "name": "sting",
+   "line": 8,
+   "dt": 3.2
+  },
+  {
+   "name": "pop",
+   "line": 9
+  },
+  {
+   "name": "pop",
+   "line": 10
+  },
+  {
+   "name": "tada",
+   "line": 11,
+   "dt": 0.5
+  }
+ ],
+ "caption": "פרק 12 · גנב הכתר 🎀 מצאנו את הכבל של השידור, קשור בפפיון כמו מתנה... ונפתח פארק הגיימינג העתידני!\n🔍 מי לדעתכם גנב את הכתר? ומה נבנה מחר כדי לתפוס אותו? כתבו בתגובות, התגובה עם הכי הרבה לייקים נבנית!\n➕ תעקבו כדי לא לפספס את הפרק הבא\n#גנבהכתר #משפחתספיר #ממלכה #גיימינג",
+ "firstComment": "🔍 רמז 12: הכבל של השידור נקשר בפפיון 🎀 ומי הדליק את מכונת המשחק בלילה? איזה מקום נבנה מחר כדי לתפוס את הגנב? התגובה עם הכי הרבה לייקים נבנית! 👑",
+ "notes": "Day 40's reel brought no comment asking for a place (the only one: eilam.lev99 asking to be in the news as a הפועל player, a resident request, not a place), so the king picked: the futuristic gaming park @ofek_bell had asked for twelve days running on the Nehorai reels (inbox day3007, 0 likes). Gold key: nobody new on day 40, so a citizen without one with the day as the seed: idan8491. ofek_bell already lives in a golden villa."
+}

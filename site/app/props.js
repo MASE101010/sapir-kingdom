@@ -234,7 +234,28 @@ function bulbs(spec) {
   return root;
 }
 
-const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver, mirrornote: mirrorNote, dogs, feather, board, sockcam: sockCam, bulbs };
+/** the newsroom's cut cable, coiled on the ground and tied with a red ribbon bow like a present, the cut plug sticking out
+ * (גנב הכתר episode 12). Keys: rise (0..1) */
+function cable(spec) {
+  const root = new THREE.Group(), body = new THREE.Group(); root.add(body);
+  const BLK = 0x23262c, RIB = 0xd8344a, RIB2 = 0xb0283c, CU = 0xd99a4a;
+  const ring = (r, y, c = BLK, t = .13) => { const m = new THREE.Mesh(new THREE.TorusGeometry(r, t, 10, 40), M(c)); m.rotation.x = Math.PI / 2; m.position.y = y; m.castShadow = true; body.add(m); return m; };
+  for (let k = 0; k < 7; k++) ring(1.1 - (k % 2) * .08, .13 + k * .22);
+  // the ribbon round the coil, crossing over the top, and a big bow
+  box(body, .28, 1.7, 2.5, RIB, 0, .85, 0); box(body, 2.5, 1.7, .28, RIB, 0, .85, 0);
+  box(body, .3, .06, 2.4, RIB, 0, 1.72, 0); box(body, 2.4, .06, .3, RIB, 0, 1.72, 0);
+  for (const s of [-1, 1]) { const l = new THREE.Mesh(new THREE.TorusGeometry(.42, .12, 8, 20), M(RIB)); l.position.set(s * .45, 2.1, 0); l.rotation.set(0, 0, s * .5); l.scale.set(1, .8, .6); l.castShadow = true; body.add(l);
+    box(body, .2, .6, .06, RIB2, s * .3, 1.55, .25, 0, 0, s * .5); }
+  box(body, .3, .3, .3, RIB2, 0, 2, 0);
+  // the cut end: a run of cable out of the coil with copper wires showing, and a little tag
+  box(body, 1.6, .22, .22, BLK, 1.85, .14, .5, 0, -.3, 0); box(body, .5, .3, .3, 0x3a3f47, 2.7, .16, .78, 0, -.3, 0);
+  for (const d of [-.07, .07]) box(body, .25, .05, .05, CU, 3.05, .2 + d, .9 + d, 0, -.3, 0);
+  box(body, .5, .32, .03, 0xf7f5ee, -.75, 1.2, .9, 0, .2, .1); box(body, .04, .3, .03, RIB, -.55, 1.45, .88);
+  root.userData = { update(t, val) { const r = val('rise', 1); body.scale.setScalar(Math.max(.001, r)); body.visible = r > .01; } };
+  return root;
+}
+
+const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver, mirrornote: mirrorNote, dogs, feather, board, sockcam: sockCam, bulbs, cable };
 
 /** the props of a reel: build them, and each frame set them as their keyframes say */
 export function placeProps(scene, list = [], lineAt) {
