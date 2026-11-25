@@ -1,0 +1,975 @@
+{
+ "day": 3010,
+ "series": "you-decide",
+ "episode": 10,
+ "top": 330,
+ "mix": "day3010.mix.mp3",
+ "thumbOffset": 22000,
+ "say": {
+  "Abuksis": "אבוקסיס"
+ },
+ "lines": [
+  "[excited] נֶהוֹרַאי שילם שש מאות אלף שקלים... כדי להיות הבוס של הַבּוֹסִית!",
+  "[excited] אתם מחליטים, פרק עשר!",
+  "[excited] Abuksis כתב: נֶהוֹרַאי מביא לטַלְיָה שש מאות אלף, והופך למנהל שלה!",
+  "[excited] נֶהוֹרַאי נכנס לסופר עם צ'ק ענק...",
+  "[excited] טַלְיָה, אַתְּ הַבּוֹסִית? אני קונה את התפקיד של המנהל!",
+  "[excited] טַלְיָה חשבה רגע... ולקחה את הצ'ק!",
+  "[excited] עכשיו נֶהוֹרַאי הוא המנהל! עם עניבה ותג זהב!",
+  "[excited] הפקודה הראשונה שלו: הפסקת גלידה לכל העובדים!",
+  "[excited] כולם הריעו... והבוס הישן הסתכל מהצד.",
+  "[excited] נשארו לנֶהוֹרַאי מיליון שקלים בדיוק.",
+  "[excited] אבל אז, ממול לסופר, עלה שלט חדש: הסופר של הבוס הישן!",
+  "[excited] מה נֶהוֹרַאי עושה עכשיו? כתבו בתגובות!",
+  "[excited] הרעיון עם הכי הרבה לייקים... קורה בפרק הבא!",
+  "[excited] וכדי שהתגובה תִּקָּלֵט, תעקבו אחרי העמוד!"
+ ],
+ "actors": [
+  {
+   "id": "nehorai",
+   "look": {
+    "shirt": 13111342,
+    "pants": 3099258,
+    "hair": 2759184,
+    "skin": 14264191,
+    "shoes": 16777215
+   },
+   "cheque": {
+    "text": "600,000 ₪",
+    "sub": "המנהל החדש 🏅",
+    "title": "צ'ק מנהוראי 💸"
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": -112.5,
+     "anim": "cheer",
+     "cheque": true
+    },
+    {
+     "line": 1,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": -112.5,
+     "anim": "cheer",
+     "cheque": false
+    },
+    {
+     "line": 2,
+     "x": 97.47,
+     "z": 33.84,
+     "ry": 45,
+     "anim": "idle",
+     "hide": true
+    },
+    {
+     "line": 3,
+     "x": 97.47,
+     "z": 33.84,
+     "ry": 45,
+     "anim": "walk",
+     "hide": false,
+     "cheque": true
+    },
+    {
+     "line": 3,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": 184.1,
+     "anim": "walk",
+     "dt": 2.2,
+     "from": "slide"
+    },
+    {
+     "line": 4,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": 184.1,
+     "anim": "point",
+     "cheque": true
+    },
+    {
+     "line": 5,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": 184.1,
+     "anim": "hold",
+     "cheque": false,
+     "dt": 1.4
+    },
+    {
+     "line": 6,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": -112.5,
+     "anim": "cheer"
+    },
+    {
+     "line": 7,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": -112.5,
+     "anim": "point"
+    },
+    {
+     "line": 8,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": -112.5,
+     "anim": "dance"
+    },
+    {
+     "line": 9,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": -112.5,
+     "anim": "jump"
+    },
+    {
+     "line": 10,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": -67.5,
+     "anim": "shock",
+     "dt": 2.5
+    },
+    {
+     "line": 11,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": -112.5,
+     "anim": "think"
+    },
+    {
+     "line": 12,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": -112.5,
+     "anim": "idle"
+    },
+    {
+     "line": 13,
+     "x": 105.91,
+     "z": 42.2,
+     "ry": -112.5,
+     "anim": "cheer"
+    }
+   ]
+  },
+  {
+   "id": "talia",
+   "look": {
+    "shirt": 3895222,
+    "pants": 3885675,
+    "hair": 2759184,
+    "skin": 15251606,
+    "shoes": 16250350
+   },
+   "cheque": {
+    "text": "600,000 ₪",
+    "sub": "תודה רבה 😄",
+    "title": "צ'ק מנהוראי 💸"
+   },
+   "keys": [
+    {
+     "line": 0,
+     "x": 105.75,
+     "z": 39.97,
+     "ry": -112.5,
+     "anim": "cheer"
+    },
+    {
+     "line": 4,
+     "x": 105.75,
+     "z": 39.97,
+     "ry": 4.1,
+     "anim": "idle"
+    },
+    {
+     "line": 5,
+     "x": 105.75,
+     "z": 39.97,
+     "ry": 4.1,
+     "anim": "think"
+    },
+    {
+     "line": 5,
+     "x": 105.75,
+     "z": 39.97,
+     "ry": 4.1,
+     "anim": "cheer",
+     "dt": 1.4,
+     "cheque": true
+    },
+    {
+     "line": 6,
+     "x": 105.75,
+     "z": 39.97,
+     "ry": -112.5,
+     "anim": "cheer",
+     "cheque": false
+    },
+    {
+     "line": 7,
+     "x": 105.75,
+     "z": 39.97,
+     "ry": -112.5,
+     "anim": "cheer"
+    },
+    {
+     "line": 9,
+     "x": 105.75,
+     "z": 39.97,
+     "ry": -112.5,
+     "anim": "idle"
+    },
+    {
+     "line": 10,
+     "x": 105.75,
+     "z": 39.97,
+     "ry": -67.5,
+     "anim": "shock",
+     "dt": 2.5
+    },
+    {
+     "line": 11,
+     "x": 105.75,
+     "z": 39.97,
+     "ry": -112.5,
+     "anim": "idle"
+    },
+    {
+     "line": 13,
+     "x": 105.75,
+     "z": 39.97,
+     "ry": -112.5,
+     "anim": "cheer"
+    }
+   ]
+  },
+  {
+   "id": "boss",
+   "look": {
+    "shirt": 3096419,
+    "pants": 2830134,
+    "hair": 9408399,
+    "skin": 14857359,
+    "logo": 12730669,
+    "shoes": 1776411
+   },
+   "scale": 1.05,
+   "keys": [
+    {
+     "line": 0,
+     "x": 104.76,
+     "z": 44.98,
+     "ry": -112.5,
+     "anim": "idle",
+     "hide": true
+    },
+    {
+     "line": 3,
+     "x": 104.76,
+     "z": 44.98,
+     "ry": 157.5,
+     "anim": "idle",
+     "hide": false
+    },
+    {
+     "line": 4,
+     "x": 104.76,
+     "z": 44.98,
+     "ry": 157.5,
+     "anim": "shock"
+    },
+    {
+     "line": 5,
+     "x": 104.76,
+     "z": 44.98,
+     "ry": 157.5,
+     "anim": "shock"
+    },
+    {
+     "line": 6,
+     "x": 104.76,
+     "z": 44.98,
+     "ry": 157.5,
+     "anim": "think"
+    },
+    {
+     "line": 8,
+     "x": 104.76,
+     "z": 44.98,
+     "ry": 157.5,
+     "anim": "think"
+    },
+    {
+     "line": 9,
+     "x": 104.76,
+     "z": 44.98,
+     "ry": -112.5,
+     "anim": "walk"
+    },
+    {
+     "line": 10,
+     "x": 104.0,
+     "z": 40.5,
+     "ry": -112.5,
+     "anim": "walk",
+     "from": "slide"
+    },
+    {
+     "line": 10,
+     "x": 93.0,
+     "z": 36.0,
+     "ry": -112.5,
+     "anim": "walk",
+     "dt": 2.6,
+     "from": "slide"
+    },
+    {
+     "line": 10,
+     "x": 93.0,
+     "z": 36.0,
+     "ry": 67.5,
+     "anim": "point",
+     "dt": 2.7
+    },
+    {
+     "line": 11,
+     "x": 93.0,
+     "z": 36.0,
+     "ry": 67.5,
+     "anim": "point"
+    }
+   ]
+  },
+  {
+   "id": "q0",
+   "look": {
+    "shirt": 15967928,
+    "pants": 3099258,
+    "hair": 4861984,
+    "skin": 14857359
+   },
+   "scale": 1,
+   "keys": [
+    {
+     "line": 0,
+     "x": 86.4,
+     "z": 65.7,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 7,
+     "x": 86.4,
+     "z": 65.7,
+     "ry": -125,
+     "anim": "cheer",
+     "dt": 1.4
+    },
+    {
+     "line": 8,
+     "x": 86.4,
+     "z": 65.7,
+     "ry": -125,
+     "anim": "dance"
+    },
+    {
+     "line": 9,
+     "x": 86.4,
+     "z": 65.7,
+     "ry": -125,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "id": "q1",
+   "look": {
+    "shirt": 9428160,
+    "pants": 3099258,
+    "hair": 2759184,
+    "skin": 14857359
+   },
+   "scale": 0.85,
+   "keys": [
+    {
+     "line": 0,
+     "x": 87.4,
+     "z": 66.9,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 7,
+     "x": 87.4,
+     "z": 66.9,
+     "ry": -125,
+     "anim": "cheer",
+     "dt": 1.4
+    },
+    {
+     "line": 8,
+     "x": 87.4,
+     "z": 66.9,
+     "ry": -125,
+     "anim": "dance"
+    },
+    {
+     "line": 9,
+     "x": 87.4,
+     "z": 66.9,
+     "ry": -125,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "id": "q2",
+   "look": {
+    "shirt": 8176874,
+    "pants": 3099258,
+    "hair": 13211418,
+    "skin": 14857359
+   },
+   "scale": 0.85,
+   "keys": [
+    {
+     "line": 0,
+     "x": 89,
+     "z": 67.5,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 7,
+     "x": 89,
+     "z": 67.5,
+     "ry": -125,
+     "anim": "cheer",
+     "dt": 1.4
+    },
+    {
+     "line": 8,
+     "x": 89,
+     "z": 67.5,
+     "ry": -125,
+     "anim": "dance"
+    },
+    {
+     "line": 9,
+     "x": 89,
+     "z": 67.5,
+     "ry": -125,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "id": "q3",
+   "look": {
+    "shirt": 16177226,
+    "pants": 3099258,
+    "hair": 2759184,
+    "skin": 14857359
+   },
+   "scale": 1,
+   "keys": [
+    {
+     "line": 0,
+     "x": 90.1,
+     "z": 68.8,
+     "ry": -125,
+     "anim": "idle"
+    },
+    {
+     "line": 7,
+     "x": 90.1,
+     "z": 68.8,
+     "ry": -125,
+     "anim": "cheer",
+     "dt": 1.4
+    },
+    {
+     "line": 8,
+     "x": 90.1,
+     "z": 68.8,
+     "ry": -125,
+     "anim": "dance"
+    },
+    {
+     "line": 9,
+     "x": 90.1,
+     "z": 68.8,
+     "ry": -125,
+     "anim": "idle"
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "id": "rival",
+   "kind": "board",
+   "x": 93.0,
+   "z": 36.0,
+   "ry": 67.5,
+   "text": "הסופר של הבוס הישן 😤",
+   "sub": "פתיחה חגיגית!",
+   "size": 1.3,
+   "keys": [
+    {
+     "line": 0,
+     "rise": 0
+    },
+    {
+     "line": 10,
+     "dt": 1.2,
+     "rise": 0
+    },
+    {
+     "line": 10,
+     "dt": 2.4,
+     "rise": 1
+    }
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    105.83,
+    1.8,
+    41.09
+   ],
+   "dist": 11,
+   "yaw": -90,
+   "pitch": 10,
+   "orbit": 2,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "actor:nehorai",
+   "dist": 6,
+   "yaw": -30,
+   "pitch": 6,
+   "orbit": 4,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": [
+    104.4,
+    4,
+    43.2
+   ],
+   "dist": 42,
+   "yaw": -112.5,
+   "pitch": 22,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 3,
+   "target": "actor:nehorai",
+   "dist": 8,
+   "yaw": -40,
+   "pitch": 10,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": [
+    105.83,
+    1.8,
+    41.09
+   ],
+   "dist": 7,
+   "yaw": -100,
+   "pitch": 8,
+   "orbit": 1,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": "actor:talia",
+   "dist": 5.5,
+   "yaw": -45,
+   "pitch": 6,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": "actor:nehorai",
+   "dist": 6,
+   "yaw": -30,
+   "pitch": 6,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": [
+    104.4,
+    3,
+    43.2
+   ],
+   "dist": 24,
+   "yaw": -112.5,
+   "pitch": 18,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": "actor:boss",
+   "dist": 5.5,
+   "yaw": 45,
+   "pitch": 6,
+   "orbit": 1,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": "actor:nehorai",
+   "dist": 6,
+   "yaw": -35,
+   "pitch": 6,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "target": [
+    93.0,
+    3.3,
+    36.0
+   ],
+   "dist": 26,
+   "yaw": 80,
+   "pitch": 20,
+   "orbit": 1,
+   "ease": 0.6
+  },
+  {
+   "line": 11,
+   "target": [
+    105.83,
+    1.8,
+    41.09
+   ],
+   "dist": 12,
+   "yaw": -100,
+   "pitch": 14,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 12,
+   "target": [
+    104.4,
+    4,
+    43.2
+   ],
+   "dist": 40,
+   "yaw": -100,
+   "pitch": 20,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 13,
+   "target": [
+    105.83,
+    1.8,
+    41.09
+   ],
+   "dist": 12,
+   "yaw": -120,
+   "pitch": 12,
+   "orbit": 5,
+   "ease": 0.6
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dur": 2.0,
+   "text": "אתם מחליטים 🎮"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.3,
+   "dur": 1.7,
+   "text": "פרק 10 · נהוראי"
+  },
+  {
+   "type": "comment",
+   "line": 2,
+   "dur": 4.6,
+   "u": "abuksis6767",
+   "text": "מביא לטליה 600000 והוא הופך למנהל שלה",
+   "likes": 0
+  },
+  {
+   "type": "label",
+   "line": 6,
+   "dt": 0.3,
+   "dur": 3,
+   "text": "🏅 המנהל: נהוראי"
+  },
+  {
+   "type": "label",
+   "line": 7,
+   "dt": 1.4,
+   "dur": 2.4,
+   "text": "🍦 הפסקת גלידה!"
+  },
+  {
+   "type": "label",
+   "line": 9,
+   "dt": 0.2,
+   "dur": 2.4,
+   "text": "💰 נשארו 1,000,000 ₪"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 2.4,
+   "text": "💬 מה עכשיו?",
+   "sub": "כתבו בתגובות את הרעיון שלכם"
+  },
+  {
+   "type": "cta",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.7,
+   "text": "👍 מנצח!",
+   "sub": "הכי הרבה לייקים קורה בפרק הבא"
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "➕ עקבו",
+   "sub": "כדי שהתגובה שלכם תיקלט"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 0.6,
+   "zoom": 0.22
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.5,
+   "dur": 2,
+   "text": "💸🏅",
+   "x": 840,
+   "y": 1320,
+   "size": 170,
+   "rot": 10
+  },
+  {
+   "type": "sticker",
+   "line": 4,
+   "dt": 0.8,
+   "dur": 1.6,
+   "text": "😮",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 1.5,
+   "dur": 1.6,
+   "text": "🤝",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "confetti",
+   "line": 6,
+   "dt": 0.2,
+   "dur": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 1.5,
+   "dur": 2,
+   "text": "🍦🍦",
+   "x": 840,
+   "y": 1330,
+   "size": 180
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 1.4,
+   "dur": 1.6,
+   "text": "😒",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "shake",
+   "line": 10,
+   "dt": 2.4,
+   "dur": 0.5
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 3.1,
+   "dur": 1.6,
+   "text": "😱",
+   "x": 860,
+   "y": 1330,
+   "size": 200
+  },
+  {
+   "type": "punch",
+   "line": 13,
+   "dur": 0.6,
+   "zoom": 0.2
+  }
+ ],
+ "music": {
+  "bpm": 118,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "happy"
+   ],
+   [
+    {
+     "line": 5
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 5,
+     "dt": 1.4
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 10
+    },
+    "stop"
+   ],
+   [
+    {
+     "line": 11
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "kaching",
+   "line": 0,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2
+  },
+  {
+   "name": "whoosh",
+   "line": 3,
+   "dt": 0.3
+  },
+  {
+   "name": "ding",
+   "line": 4,
+   "dt": 0.8
+  },
+  {
+   "name": "kaching",
+   "line": 5,
+   "dt": 1.4
+  },
+  {
+   "name": "tada",
+   "line": 6,
+   "dt": 0.2
+  },
+  {
+   "name": "pop",
+   "line": 7,
+   "dt": 1.4
+  },
+  {
+   "name": "sparkle",
+   "line": 7,
+   "dt": 1.5
+  },
+  {
+   "name": "scratch",
+   "line": 8,
+   "dt": 1.3
+  },
+  {
+   "name": "kaching",
+   "line": 9,
+   "dt": 0.3
+  },
+  {
+   "name": "boom",
+   "line": 10,
+   "dt": 2.4
+  },
+  {
+   "name": "sting",
+   "line": 10,
+   "dt": 3
+  },
+  {
+   "name": "pop",
+   "line": 11
+  },
+  {
+   "name": "tada",
+   "line": 12,
+   "dt": 0.6
+  },
+  {
+   "name": "kaching",
+   "line": 13,
+   "dt": 1.2
+  }
+ ],
+ "caption": "נהוראי קנה את התפקיד של המנהל מטליה ב-600,000 ₪ 🏅 והפקודה הראשונה שלו: הפסקת גלידה לכולם 🍦 אבל ממול נפתח... הסופר של הבוס הישן 😱\nאתם מחליטים 🎮 פרק 10 · הרעיון של @abuksis6767\n💬 מה נהוראי עושה עכשיו? כתבו בתגובות, הרעיון עם הכי הרבה לייקים קורה בפרק הבא!\n➕ כדי שהתגובה שלכם תיקלט, צריך לעקוב אחרי העמוד\n#אתםמחליטים #נהוראי #משפחתספיר #סופר",
+ "firstComment": "😱 הבוס הישן פתח סופר מתחרה ממול! מה נהוראי עושה עכשיו? כתבו כאן את הרעיון שלכם, תנו לייק לרעיונות שאתם אוהבים, ותעקבו כדי שהתגובה תיקלט 👇",
+ "notes": "Series אתם מחליטים, episode 10. Comments on episode 9 (media 18133001920829199): 'יורה לה בראש' (1 like) is violent and skipped; the safe ideas all had 0 likes, so the earliest wins: @abuksis6767 (15:34, mapped by the bot's reply 51 s later): Nehorai brings Talia 600,000 and becomes her manager. 1,600,000 - 600,000 = 1,000,000 left. Cliffhanger: the old boss opens a rival supermarket across the street."
+}
