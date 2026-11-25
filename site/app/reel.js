@@ -40,6 +40,8 @@ export async function startReel({ renderer, data, day }) {
   const residents = [...data.residents.slice(0, upTo - demo.length), ...demo.map((d, i) => ({ u: d.u, h: fingerprint(d.u), plot: last + 1 + i, day: ep.day, src: 'demo', gold: d.gold ? 1 : undefined, home: d.home }))];
   // ep.homes: a house style shown in this reel before the count catches up (a gold key winner's villa)
   for (const [u, h] of Object.entries(ep.homes ?? {})) { const r = residents.find(r => r.u === u); if (r) residents[residents.indexOf(r)] = { ...r, home: h }; }
+  // ep.gold: houses shown gilded in this reel before the count catches up (ליגת ספיר's player of the match)
+  for (const u of ep.gold ?? []) { const r = residents.find(r => r.u === u); if (r) residents[residents.indexOf(r)] = { ...r, gold: 1 }; }
   // a preview (?dev) may stand landmarks that are not built yet, to try them out
   const preview = new URLSearchParams(location.search).has('dev') ? ep.preview?.landmarks ?? [] : [];
   const world = new World(renderer, data.plan, residents, { ...data.kingdom, landmarks: [...(data.kingdom.landmarks ?? []), ...preview], visit: ep.visit ?? null });
