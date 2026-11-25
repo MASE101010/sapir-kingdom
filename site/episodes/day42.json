@@ -1,0 +1,477 @@
+{
+ "day": 42,
+ "top": 330,
+ "mix": "day42.mix.mp3",
+ "lines": [
+  "[excited] הגנב חושב שזה משחק? אז בנינו לו משחק שאי אפשר לְנַצֵּחַ!",
+  "[excited] יום ארבעים ושתיים בממלכה!",
+  "[excited] אתמול בלילה מכונת משחק נדלקה לבד, וכתבה רמה שתיים.",
+  "[excited] והבוקר, על הלוח בפארק, מישהו כתב רק שתי מילים: קַל מִדַּי!",
+  "[excited] אז החלטתי: אם הוא אוהב משחקים...",
+  "[excited] בניתי את חדר הבריחה של הממלכה!",
+  "[excited] מנעול זהב ענק על הגג, דלת כספת, חידות... ומבוך!",
+  "[excited] ומי שנכנס, לא יוצא בלי לפתור את כל החידות!",
+  "[excited] מַפְתֵּחַ הזהב של היום הולך ל-Eliya, כל הכבוד!",
+  "[excited] אבל בלילה, כשכולם ישנו... השעון של החדר התחיל לרוץ לבד.",
+  "[excited] ובבוקר הדלת הייתה פתוחה... ועל המסך: רמה שלוש!",
+  "[excited] מי לדעתכם הגנב? כתבו בתגובות!",
+  "[excited] רוצים לשחק בליגת Sapir? תגיבו מכבי, הפועל או ביתר!",
+  "[excited] ושתפו לסטורי עם תיוג, תקבלו בית מוזהב, ותעקבו!"
+ ],
+ "say": {
+  "Eliya": "אליה",
+  "Sapir": "ספיר"
+ },
+ "thumbOffset": 6000,
+ "props": [
+  {
+   "id": "easy",
+   "kind": "board",
+   "x": 175.61,
+   "z": 34.88,
+   "ry": -101.25,
+   "text": "קל מדי 😏",
+   "sub": "",
+   "size": 1.2,
+   "keys": [
+    {
+     "line": 0,
+     "rise": 0
+    },
+    {
+     "line": 3,
+     "dt": 3.3,
+     "rise": 0
+    },
+    {
+     "line": 3,
+     "dt": 3.9,
+     "rise": 1
+    }
+   ]
+  }
+ ],
+ "states": [
+  {
+   "key": "gamepark",
+   "kind": "night",
+   "line": 0,
+   "dur": 0.1,
+   "from": 1,
+   "to": 1
+  },
+  {
+   "key": "escape-room",
+   "kind": "night",
+   "line": 10,
+   "dt": 2.9,
+   "dur": 0.1,
+   "from": 0,
+   "to": 1
+  }
+ ],
+ "night": [
+  {
+   "line": 9,
+   "until": 11
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    185.64,
+    2.9,
+    28.72
+   ],
+   "dist": 4.2,
+   "yaw": -50,
+   "pitch": 14,
+   "orbit": 2,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "castle",
+   "dist": 420,
+   "yaw": -30,
+   "pitch": 34,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": [
+    185.64,
+    2.9,
+    28.72
+   ],
+   "dist": 5,
+   "yaw": -60,
+   "pitch": 16,
+   "orbit": -2,
+   "ease": 0.6
+  },
+  {
+   "line": 3,
+   "target": [
+    175.61,
+    3.3,
+    34.88
+   ],
+   "dist": 10,
+   "yaw": -125,
+   "pitch": 12,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 4,
+   "target": "statue",
+   "dist": 64,
+   "yaw": 15,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 5,
+   "target": "landmark:escape-room",
+   "dist": 72,
+   "yaw": 15,
+   "pitch": 26,
+   "orbit": 5,
+   "ease": 0.8
+  },
+  {
+   "line": 6,
+   "target": "landmark:escape-room",
+   "dist": 34,
+   "yaw": -20,
+   "pitch": 20,
+   "orbit": 4,
+   "ease": 0.6
+  },
+  {
+   "line": 7,
+   "target": "landmark:escape-room",
+   "dist": 22,
+   "yaw": 30,
+   "pitch": 10,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 8,
+   "target": "house:eliya_turjmam",
+   "dist": 40,
+   "yaw": 0,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 9,
+   "target": "landmark:escape-room",
+   "dist": 46,
+   "yaw": -25,
+   "pitch": 18,
+   "orbit": 2,
+   "ease": 0.8
+  },
+  {
+   "line": 10,
+   "target": [
+    -190.65,
+    7.45,
+    37.87
+   ],
+   "dist": 12,
+   "yaw": 101.25,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.8
+  },
+  {
+   "line": 11,
+   "target": "castle",
+   "dist": 260,
+   "yaw": -50,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 12,
+   "target": "landmark:hapoel",
+   "dist": 70,
+   "yaw": 20,
+   "pitch": 28,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 13,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 20,
+   "pitch": 32,
+   "orbit": 3,
+   "ease": 0.8
+  }
+ ],
+ "rise": {
+  "key": "escape-room",
+  "line": 5,
+  "dt": 0.2,
+  "dur": 2.4
+ },
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dur": 2.4,
+   "text": "פרק 13 · גנב הכתר"
+  },
+  {
+   "type": "label",
+   "line": 3,
+   "dt": 3.7,
+   "dur": 3.2,
+   "text": "🔍 רמז 13: על הלוח כתוב \"קל מדי\""
+  },
+  {
+   "type": "label",
+   "line": 6,
+   "dt": 0.1,
+   "dur": 3,
+   "text": "נבנה · חדר הבריחה 🔐"
+  },
+  {
+   "type": "idcard",
+   "line": 8,
+   "dur": 3.4,
+   "u": "eliya_turjmam",
+   "honours": [
+    "מפתח זהב 🔑"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 2,
+   "text": "🔍 מי הגנב?",
+   "sub": "כתבו בתגובות את הניחוש שלכם"
+  },
+  {
+   "type": "cta",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "⚽ ליגת ספיר",
+   "sub": "תגיבו מכבי, הפועל או ביתר ותשחקו"
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 4,
+   "text": "🏠 בית מוזהב",
+   "sub": "שתפו לסטורי עם תיוג @sapirkingdom ועקבו"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 0.5,
+   "zoom": 0.22
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 2.2,
+   "text": "🎮❓",
+   "x": 840,
+   "y": 1330,
+   "size": 190,
+   "rot": 8
+  },
+  {
+   "type": "shake",
+   "line": 2,
+   "dt": 1.2,
+   "dur": 0.5
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 4.4,
+   "dur": 1.8,
+   "text": "😏",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "confetti",
+   "line": 5,
+   "dt": 2.4,
+   "dur": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 6,
+   "dt": 0.4,
+   "dur": 1.8,
+   "text": "🔐",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "confetti",
+   "line": 8,
+   "dt": 0.4,
+   "dur": 1.4
+  },
+  {
+   "type": "vignette",
+   "line": 9,
+   "dur": 6
+  },
+  {
+   "type": "shake",
+   "line": 10,
+   "dt": 2.9,
+   "dur": 0.5
+  },
+  {
+   "type": "sticker",
+   "line": 10,
+   "dt": 3.6,
+   "dur": 1.8,
+   "text": "😱",
+   "x": 860,
+   "y": 1330,
+   "size": 200
+  }
+ ],
+ "music": {
+  "bpm": 112,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 1
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 2
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 4
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 9
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 11
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "boom",
+   "line": 0,
+   "dt": 0.2
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "scratch",
+   "line": 2,
+   "dt": 1.2
+  },
+  {
+   "name": "pop",
+   "line": 3,
+   "dt": 0.4
+  },
+  {
+   "name": "ding",
+   "line": 3,
+   "dt": 3.9
+  },
+  {
+   "name": "whoosh",
+   "line": 4
+  },
+  {
+   "name": "pop",
+   "line": 5
+  },
+  {
+   "name": "boom",
+   "line": 5,
+   "dt": 2.4
+  },
+  {
+   "name": "tada",
+   "line": 6,
+   "dt": 0.3
+  },
+  {
+   "name": "sparkle",
+   "line": 8,
+   "dt": 0.3
+  },
+  {
+   "name": "cricket",
+   "line": 9
+  },
+  {
+   "name": "sting",
+   "line": 10,
+   "dt": 2.9
+  },
+  {
+   "name": "pop",
+   "line": 11
+  },
+  {
+   "name": "kaching",
+   "line": 12
+  },
+  {
+   "name": "tada",
+   "line": 13,
+   "dt": 0.5
+  }
+ ],
+ "caption": "פרק 13 · גנב הכתר 🔐 הגנב חושב שזה משחק? אז המלך בנה לו חדר בריחה שאי אפשר לנצח... ובבוקר הדלת הייתה פתוחה, ועל המסך: רמה 3!\n🔍 מי לדעתכם הגנב? ⚽ רוצים לשחק בליגת ספיר? תגיבו מכבי, הפועל או ביתר!\n🏠 שתפו לסטורי עם תיוג @sapirkingdom ותקבלו בית מוזהב, ותעקבו כדי לא לפספס\n#גנבהכתר #משפחתספיר #ממלכה #חדרבריחה",
+ "firstComment": "🔍 רמז 13: על הלוח בפארק מישהו כתב \"קל מדי\" 😏 מי לדעתכם הגנב? ומה נבנה מחר כדי לתפוס אותו? התגובה עם הכי הרבה לייקים נבנית! ⚽ ולליגת ספיר: תגיבו מכבי, הפועל או ביתר 👑",
+ "notes": "Day 41's reel brought no comment asking for a buildable place: 'לבנות מקום לזכרם של החטופים' (eilam.lev99, 1 like) waits for Michael's answer (he asked us not to build it before he decides); 'מישהו שמנסה להרוג את המלך' (violence) skipped; 'אנטיוכוס' and 'היה משחק כיף נב הגנב' are not requests. So the king picked: an escape room, a game the crown thief (who left 'רמה 2') cannot win. Lot 41. Gold key: nobody joined on day 41, so a citizen without a key, seeded with the day: eliya_turjmam."
+}

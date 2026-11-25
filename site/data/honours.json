@@ -39,7 +39,8 @@
       "ziv46297",
       "hameiri15",
       "noamkishek1912",
-      "idan8491"
+      "idan8491",
+      "eliya_turjmam"
     ]
   },
   "built": {
@@ -281,6 +282,10 @@
         "ofek_bell"
       ],
       "day": 41
+    },
+    "escape-room": {
+      "by": [],
+      "day": 42
     }
   }
 }
