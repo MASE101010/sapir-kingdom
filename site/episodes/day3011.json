@@ -6,7 +6,8 @@
  "mix": "day3011.mix.mp3",
  "thumbOffset": 30000,
  "say": {
-  "-SUPER": "סופר"
+  "-SUPER": "סופר",
+  "SUPER": "סופר"
  },
  "lines": [
   "[excited] מלחמת מחירים! חלב בחמישה שקלים!",
