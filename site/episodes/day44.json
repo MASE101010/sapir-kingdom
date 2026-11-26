@@ -1,0 +1,471 @@
+{
+ "day": 44,
+ "top": 330,
+ "mix": "day44.mix.mp3",
+ "lines": [
+  "[excited] הגנב הבטיח לנו: נתראה בהופעה הגדולה!",
+  "[excited] יום ארבעים וארבעה בממלכה!",
+  "[excited] ההופעה הגדולה בשבת... והגנב רוצה לַעֲלוֹת על הבמה!",
+  "[excited] אז הכנתי לו הפתעה משלי...",
+  "[excited] מאחורי הקלעים! חַדְרֵי הַלְבָּשָׁה, מַרְאוֹת עם נורות, ותלבושות!",
+  "[excited] ומעל דלת האמנים? רֶשֶׁת סודית שנופלת בלחיצת כפתור!",
+  "[excited] מַפְתֵּחַ הזהב של היום הולך ל-Avi, כל הכבוד!",
+  "[excited] בלילה כולנו התחבאנו מאחורי הווילון... ושמרנו על הכפתור.",
+  "[excited] והבוקר? הָרֶשֶׁת עדיין למעלה... ואף אחד לא נִתְפַּס!",
+  "[excited] אבל ליד הַמַּרְאָה, על מַסְמֵר, נתקעה פיסת בַּד עם מְשֻׁבָּצוֹת צבעוניות!",
+  "[excited] ועל לוּחַ ההופעות מישהו הוסיף מופע חדש: הפתעה למלך!",
+  "[excited] בשבת בשבע בערב, חוֹשְׂפִים מי גנב את הכתר!",
+  "[excited] כתבו עכשיו בתגובות את הניחוש האחרון שלכם!",
+  "[excited] מי שֶׁיְּנַחֵשׁ נכון יקבל משאלה מהמלך! תעקבו כדי לא לפספס!"
+ ],
+ "say": {
+  "-Avi": "אבי"
+ },
+ "thumbOffset": 30000,
+ "states": [
+  {
+   "key": "crown-museum",
+   "kind": "night",
+   "line": 0,
+   "dur": 0.1,
+   "from": 1,
+   "to": 1
+  },
+  {
+   "key": "crown-museum",
+   "kind": "night",
+   "line": 1,
+   "dur": 0.1,
+   "from": 1,
+   "to": 0
+  },
+  {
+   "key": "backstage",
+   "kind": "night",
+   "line": 8,
+   "dt": 0.2,
+   "dur": 0.1,
+   "from": 0,
+   "to": 1
+  }
+ ],
+ "night": [
+  {
+   "line": 0,
+   "until": 1
+  },
+  {
+   "line": 7,
+   "until": 8
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    93.31,
+    3.05,
+    -162.64
+   ],
+   "dist": 4.6,
+   "yaw": -30,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "castle",
+   "dist": 420,
+   "yaw": -30,
+   "pitch": 34,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": "landmark:show-park",
+   "dist": 80,
+   "yaw": 0,
+   "pitch": 22,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 3,
+   "target": "statue",
+   "dist": 95,
+   "yaw": 0,
+   "pitch": 34,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 4,
+   "target": "landmark:backstage",
+   "dist": 62,
+   "yaw": 15,
+   "pitch": 26,
+   "orbit": 5,
+   "ease": 0.8
+  },
+  {
+   "line": 5,
+   "target": [
+    98.8,
+    5,
+    171.15
+   ],
+   "dist": 15,
+   "yaw": -150,
+   "pitch": 22,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": "house:abynm37",
+   "dist": 40,
+   "yaw": 0,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 7,
+   "target": "landmark:backstage",
+   "dist": 44,
+   "yaw": -10,
+   "pitch": 30,
+   "orbit": 1,
+   "ease": 0.8
+  },
+  {
+   "line": 8,
+   "target": [
+    99.2,
+    3.5,
+    171.84
+   ],
+   "dist": 14,
+   "yaw": -150,
+   "pitch": 14,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": [
+    86.81,
+    2.75,
+    172.88
+   ],
+   "dist": 4.6,
+   "yaw": -150,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "target": [
+    92.46,
+    1.2,
+    160.17
+   ],
+   "dist": 18,
+   "yaw": -150,
+   "pitch": 6,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 11,
+   "target": "landmark:show-park",
+   "dist": 110,
+   "yaw": -20,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 12,
+   "target": "statue",
+   "dist": 95,
+   "yaw": -10,
+   "pitch": 34,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 13,
+   "target": "castle",
+   "dist": 300,
+   "yaw": 20,
+   "pitch": 32,
+   "orbit": 3,
+   "ease": 0.8
+  }
+ ],
+ "rise": {
+  "key": "backstage",
+  "line": 4,
+  "dt": 0.1,
+  "dur": 2.4
+ },
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dur": 2.4,
+   "text": "פרק 15 · גנב הכתר"
+  },
+  {
+   "type": "label",
+   "line": 4,
+   "dt": 0.1,
+   "dur": 3.2,
+   "text": "נבנה · מאחורי הקלעים 🎭"
+  },
+  {
+   "type": "label",
+   "line": 5,
+   "dt": 0.2,
+   "dur": 3,
+   "text": "🪤 רשת סודית מעל הדלת"
+  },
+  {
+   "type": "idcard",
+   "line": 6,
+   "dur": 3.2,
+   "u": "abynm37",
+   "honours": [
+    "מפתח זהב 🔑"
+   ]
+  },
+  {
+   "type": "label",
+   "line": 9,
+   "dt": 0.3,
+   "dur": 3.6,
+   "text": "🔍 רמז 15: בד עם משבצות צבעוניות"
+  },
+  {
+   "type": "cta",
+   "line": 11,
+   "dt": 0.1,
+   "dur": 2.8,
+   "text": "🎭 שבת · 19:00",
+   "sub": "חושפים מי גנב את הכתר!"
+  },
+  {
+   "type": "cta",
+   "line": 12,
+   "dt": 0.1,
+   "dur": 2.8,
+   "text": "🔍 הניחוש האחרון",
+   "sub": "כתבו בתגובות מי הגנב"
+  },
+  {
+   "type": "cta",
+   "line": 13,
+   "dt": 0.1,
+   "dur": 4,
+   "text": "🎁 משאלה מהמלך",
+   "sub": "למי שינחש נכון · תעקבו!"
+  }
+ ],
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 0.5,
+   "zoom": 0.22
+  },
+  {
+   "type": "sticker",
+   "line": 2,
+   "dt": 1.2,
+   "dur": 2,
+   "text": "🎤",
+   "x": 860,
+   "y": 1330,
+   "size": 180,
+   "rot": -8
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 0.4,
+   "dur": 1.8,
+   "text": "😏",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "confetti",
+   "line": 4,
+   "dt": 2.2,
+   "dur": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 5,
+   "dt": 1.2,
+   "dur": 2,
+   "text": "🔴",
+   "x": 860,
+   "y": 1330,
+   "size": 170
+  },
+  {
+   "type": "confetti",
+   "line": 6,
+   "dt": 0.3,
+   "dur": 1.3
+  },
+  {
+   "type": "vignette",
+   "line": 7,
+   "dur": 4
+  },
+  {
+   "type": "shake",
+   "line": 9,
+   "dt": 1.5,
+   "dur": 0.4
+  },
+  {
+   "type": "flash",
+   "line": 11,
+   "dt": 0.05,
+   "dur": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 13,
+   "dt": 0.4,
+   "dur": 1.6
+  }
+ ],
+ "music": {
+  "bpm": 112,
+  "gain": 0.3,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 1
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 7
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 11
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0.3
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "pop",
+   "line": 2,
+   "dt": 1.2
+  },
+  {
+   "name": "boing",
+   "line": 3,
+   "dt": 0.4
+  },
+  {
+   "name": "whoosh",
+   "line": 4
+  },
+  {
+   "name": "tada",
+   "line": 4,
+   "dt": 2.2
+  },
+  {
+   "name": "ding",
+   "line": 5,
+   "dt": 1.2
+  },
+  {
+   "name": "sparkle",
+   "line": 6,
+   "dt": 0.3
+  },
+  {
+   "name": "cricket",
+   "line": 7
+  },
+  {
+   "name": "snore",
+   "line": 8,
+   "dt": 0.5,
+   "gain": 0.4
+  },
+  {
+   "name": "scratch",
+   "line": 9
+  },
+  {
+   "name": "sting",
+   "line": 9,
+   "dt": 1.5
+  },
+  {
+   "name": "pop",
+   "line": 10
+  },
+  {
+   "name": "sting",
+   "line": 10,
+   "dt": 1.8
+  },
+  {
+   "name": "boom",
+   "line": 11
+  },
+  {
+   "name": "pop",
+   "line": 12
+  },
+  {
+   "name": "tada",
+   "line": 13,
+   "dt": 0.5
+  }
+ ],
+ "caption": "פרק 15 · גנב הכתר 🎭 לפני ההופעה הגדולה המלך בנה מאחורי הקלעים עם רשת סודית מעל דלת האמנים... ובבוקר: פיסת בד עם משבצות צבעוניות, ומופע חדש על הלוח: הפתעה למלך 😱\n🔍 בשבת בשעה 19:00 חושפים מי גנב את הכתר! כתבו עכשיו את הניחוש האחרון שלכם, מי שינחש נכון יקבל משאלה מהמלך 🎁\n🏠 שתפו לסטורי עם תיוג @sapirkingdom ותקבלו בית מוזהב, ותעקבו\n#גנבהכתר #משפחתספיר #ממלכה #ההופעההגדולה",
+ "firstComment": "🔍 רמז 15: פיסת בד עם משבצות צבעוניות נתקעה על מסמר ליד המראה 🎭 מי הגנב לדעתכם? זה הזמן לניחוש האחרון, בשבת בשעה 19:00 חושפים!",
+ "replies": [
+  {
+   "id": "18577957825073422",
+   "text": "אוהד אמיתי! 🔴 במשחק הבא נעשה חגיגה עם בלונים אדומים ודגלים ענקיים, כל הממלכה תהיה אדומה ⚽"
+  }
+ ],
+ "notes": "Day 43's reel brought no comment asking for a place: one asked for red flares at the next הפועל match (pyrotechnics, not a place to build; answered with balloons and flags instead), the rest were the kingdom's own replies. So the king picked: backstage for Saturday's big show, a trap with a net over the stage door (episode 15, the last before the reveal). Lot 43 appended in the band at 30 degrees (97.5, 168.9). Gold key: abynm37, the only resident who joined on day 43 (a citizen)."
+}

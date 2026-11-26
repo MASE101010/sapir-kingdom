@@ -43,5 +43,6 @@ import { NEWSROOM } from './newsroom.js';  // day 40: חדשות ספיר
 import { GAMEPARK } from './gamepark.js';  // day 41: פארק הגיימינג העתידני (@ofek_bell's idea, the king's pick)
 import { ESCAPEROOM } from './escaperoom.js';  // day 42: חדר הבריחה של הממלכה (the king's pick)
 import { CROWNMUSEUM } from './crownmuseum.js';  // day 43: מוזיאון הכתר (the king's pick, a trap for the thief)
+import { BACKSTAGE } from './backstage.js';  // day 44: מאחורי הקלעים (the king's pick, a trap before the big show)
 
-export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK, FANCLUB, BEITARCLUB, HOTEL, SCHOOL, TRAIN, KINGFLAG, BOXOFFICE, SYNAGOGUE, AQUARIUM, CLOCKTOWER, AVIARY, CANDYHOUSE, WATCHTOWER, DETECTIVE, SHOWPARK, MIRRORMAZE, KENNEL, CAMROOM, GUARDS, NEWSROOM, GAMEPARK, ESCAPEROOM, CROWNMUSEUM].map(l => [l.key, l]));
+export const LANDMARKS = Object.fromEntries([CASTLE, BAKERY, SUPER, BASE, SPIRLAND, MACCABI, HAPOEL, SPIRDONALDS, SPIRMALL, BURJ, NATSAR, BEITAR, PRISON, ELECTIONS, STATUES, CITYHALL, ARENA, BEITAR_ARENA, ZOO, CINEMA, GYM, WATERPARK, FANCLUB, BEITARCLUB, HOTEL, SCHOOL, TRAIN, KINGFLAG, BOXOFFICE, SYNAGOGUE, AQUARIUM, CLOCKTOWER, AVIARY, CANDYHOUSE, WATCHTOWER, DETECTIVE, SHOWPARK, MIRRORMAZE, KENNEL, CAMROOM, GUARDS, NEWSROOM, GAMEPARK, ESCAPEROOM, CROWNMUSEUM, BACKSTAGE].map(l => [l.key, l]));
