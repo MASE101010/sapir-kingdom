@@ -40,7 +40,8 @@
       "hameiri15",
       "noamkishek1912",
       "idan8491",
-      "eliya_turjmam"
+      "eliya_turjmam",
+      "aviadkol"
     ]
   },
   "built": {
@@ -286,6 +287,10 @@
     "escape-room": {
       "by": [],
       "day": 42
+    },
+    "crown-museum": {
+      "by": [],
+      "day": 43
     }
   }
 }
