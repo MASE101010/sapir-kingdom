@@ -84,7 +84,7 @@ with `[excited]` and no other tags). In the text sent to ElevenLabs every name i
 Ido, Elad, Nevo, MPT...), never in Hebrew: the model reads Hebrew names wrong ("ואיתי" came out "veiti"). Captions show
 them in Hebrew through the episode's `say` map ({ "Itay": "איתי" }). A Hebrew word the model can read two ways gets nikud
 (מסלול הַמְרָאָה, not המראה, which came out "hamare"; also כֶּלֶא, מַפְתֵּחַ); captions drop the nikud. Loanwords and slang need it
-most: on day 24 "קַלָּאס" (hopscotch) came out "calas" instead of "klas" (write קְלָאס); before generating, read every line
+most: on day 24 "קַלָּאס" (hopscotch) came out "calas" instead of "klas" (write קְלָאס); the word סופר (supermarket) is always written SUPER in English letters ("ל-SUPER", "ה-SUPER", say map { "SUPER": "סופר" }), since in Hebrew it came out "sofer" (Michael, 26.11); before generating, read every line
 as the model would and add nikud to anything it could read another way. So: write `site/episodes/dayN.json`, send him the lines to approve, and stop. When
 his mp3 comes back, `node reel/own-voice.mjs --day N --mp3 <file>` lines it up (pauses → phrases → words) and writes
 `dayN.mp3` and `dayN.voice.json` with `own: true`; commit the mp3 with `git add -f`. `reel/voice.mjs` then keeps it.
