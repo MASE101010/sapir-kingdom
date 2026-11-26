@@ -52,12 +52,12 @@ export function pose(a, anim, t, t0 = 0) {
 }
 
 /** a giant cheque, held up over the head: a white board with the amount (drawn on a canvas) */
-export function cheque(text = '10,000,000 ₪', sub = 'ממלכת משפחת ספיר') {
+export function cheque(text = '10,000,000 ₪', sub = 'ממלכת משפחת ספיר', title = 'צ\'ק מהמלך 👑') {
   const c = document.createElement('canvas'); c.width = 1024; c.height = 512; const g = c.getContext('2d');
   const draw = () => {
   g.fillStyle = '#fffdf3'; g.fillRect(0, 0, 1024, 512); g.strokeStyle = '#e8b323'; g.lineWidth = 28; g.strokeRect(14, 14, 996, 484);
   g.fillStyle = '#13213b'; g.textAlign = 'center'; g.direction = 'rtl';
-  g.font = '700 54px Rubik, sans-serif'; g.fillText('צ\'ק מהמלך 👑', 512, 110);
+  g.font = '700 54px Rubik, sans-serif'; g.fillText(title, 512, 110);
   g.font = '900 150px "Secular One", Rubik, sans-serif'; g.fillStyle = '#0f6f73'; g.fillText(text, 512, 300);
   g.font = '600 46px Rubik, sans-serif'; g.fillStyle = '#13213b'; g.fillText(sub, 512, 410); };
   draw(); const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
@@ -71,7 +71,7 @@ export function castActors(scene, list = [], lineAt) {
   const cast = list.map(spec => {
     const a = makeActor(spec.look), s = spec.scale ?? 1; a.root.scale.setScalar(s); scene.add(a.root);
     const keys = spec.keys.map(k => ({ ...k, t: lineAt(k.line, k.dt) })).sort((p, q) => p.t - q.t);
-    let prop = null; if (spec.cheque) { prop = cheque(spec.cheque.text, spec.cheque.sub); prop.position.set(0, 2.85, .25); a.body.add(prop); }
+    let prop = null; if (spec.cheque) { prop = cheque(spec.cheque.text, spec.cheque.sub, spec.cheque.title); prop.position.set(0, 2.85, .25); a.body.add(prop); }
     return { id: spec.id, a, s, keys, prop, spec };
   });
   let fresh = false;
