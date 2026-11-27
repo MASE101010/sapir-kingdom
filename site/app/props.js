@@ -255,7 +255,23 @@ function cable(spec) {
   return root;
 }
 
-const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver, mirrornote: mirrorNote, dogs, feather, board, sockcam: sockCam, bulbs, cable };
+/** a giant speckled egg on a nest, glowing a little (day 45: the teaser for the next season). Keys: rise (0..1), wobble (0..1) */
+function egg(spec) {
+  const root = new THREE.Group(), body = new THREE.Group(); root.add(body);
+  for (let k = 0; k < 14; k++) { const a = k / 14 * Math.PI * 2; box(root, 1.6, .5, .5, k % 2 ? 0x8a6240 : 0xa77d4f, Math.sin(a) * 2.3, .3, Math.cos(a) * 2.3, 0, a + .3, 0); }
+  box(root, 3.6, .3, 3.6, 0xc9a46a, 0, .2, 0);
+  const shell = new THREE.Mesh(new THREE.SphereGeometry(1.6, 28, 20), new THREE.MeshStandardMaterial({ color: 0xf3ead6, emissive: 0x2a6fa0, emissiveIntensity: .25, roughness: .4 }));
+  shell.scale.set(1, 1.35, 1); shell.position.y = 2.6; body.add(shell);
+  const SP = [0x7a5cc4, 0x0f6f73, 0xe8b323, 0xf3a6b8];
+  for (let i = 0; i < 34; i++) { const u = (i * 0.618) % 1, v = .15 + ((i * 0.37) % 1) * .75, a = u * Math.PI * 2, y = Math.cos(v * Math.PI), r = Math.sin(v * Math.PI);
+    const d = new THREE.Mesh(new THREE.SphereGeometry(.2 + (i % 3) * .07, 8, 6), M(SP[i % 4])); d.position.set(Math.sin(a) * r * 1.62, 2.6 + y * 1.35 * 1.62, Math.cos(a) * r * 1.62); d.scale.set(1, 1, .45); d.lookAt(0, 2.6, 0); body.add(d); }
+  const glow = new THREE.Mesh(new THREE.SphereGeometry(2.4, 20, 14), new THREE.MeshBasicMaterial({ color: 0x9fd8ff, transparent: true, opacity: .18, depthWrite: false })); glow.scale.set(1, 1.3, 1); glow.position.y = 2.6; body.add(glow);
+  root.userData = { update(t, val) { const r = val('rise', 1), w = val('wobble', 0); root.visible = r > .02; body.scale.setScalar(Math.max(.01, r));
+    body.rotation.z = Math.sin(t * 11) * .08 * w; body.rotation.x = Math.sin(t * 7) * .05 * w; glow.material.opacity = .14 + Math.sin(t * 3) * .06; } };
+  return root;
+}
+
+const builders = { chocodragon: chocoDragon, teatable: teaTable, chocoriver: chocoRiver, mirrornote: mirrorNote, dogs, feather, board, sockcam: sockCam, bulbs, cable, egg };
 
 /** the props of a reel: build them, and each frame set them as their keyframes say */
 export function placeProps(scene, list = [], lineAt) {

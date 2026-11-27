@@ -28,7 +28,29 @@ export function makeActor(look = {}) {
   box(head, .08, .1, .02, L.eyes, -.11, .3, .235); box(head, .08, .1, .02, L.eyes, .11, .3, .235);              // eyes
   const mouth = box(head, .18, .05, .02, 0x8a3a2a, 0, .14, .235);
   box(head, .07, .1, .07, L.skin, 0, .22, .25);                                                                  // nose
+  // day 45 (the end of season 1): the court jester. look.jester: [c1, c2, c3] gives a three-pointed hat in those colours (a
+  // little gold ball on each tip), a white ruff, the shirt in two colours (shirt and shirt2) and shoes with curled toes
+  if (L.jester) {
+    const J = L.jester; box(body, .3, .66, .35, L.shirt2 ?? J[1], .15, 1.15, .005);
+    for (const [y, c] of [[.95, J[2]], [1.3, J[0]]]) box(body, .14, .14, .36, c, -.15, y, .01);
+    box(body, .76, .14, .48, 0xf7f5ee, 0, 1.5, 0);
+    box(head, .58, .14, .54, J[0], 0, .58, 0);
+    [[-.32, .2, J[0]], [0, .62, J[1]], [.32, -.2, J[2]]].forEach(([x, rz, c], i) => {
+      const tip = new THREE.Group(); tip.position.set(x * .6, .64, 0); tip.rotation.z = rz * -1 + (i === 1 ? -rz : 0) + (i === 0 ? .7 : i === 2 ? -.7 : 0); head.add(tip);
+      const cone = new THREE.Mesh(new THREE.ConeGeometry(.16, .62, 8), M(c)); cone.position.y = .3; tip.add(cone);
+      const ball = new THREE.Mesh(new THREE.SphereGeometry(.08, 8, 6), M(0xe8b323)); ball.position.y = .64; tip.add(ball); });
+    for (const leg of [legL, legR]) { const t = new THREE.Mesh(new THREE.TorusGeometry(.09, .04, 6, 10, Math.PI * 1.3), M(L.shoes)); t.position.set(0, -.7, .27); t.rotation.y = Math.PI / 2; leg.add(t); }
+  }
   return { root, body, legL, legR, armL, armR, head, mouth };
+}
+
+/** a small gold crown with red, blue and green stones (the king's real one, as held up by the jester on day 45) */
+export function smallCrown() {
+  const g = new THREE.Group(), gold = new THREE.MeshStandardMaterial({ color: 0xf2c230, metalness: .6, roughness: .3 });
+  const band = new THREE.Mesh(new THREE.CylinderGeometry(.42, .38, .32, 16, 1, true), gold); band.material.side = THREE.DoubleSide; g.add(band);
+  for (let k = 0; k < 6; k++) { const a = k / 6 * Math.PI * 2, sp = new THREE.Mesh(new THREE.ConeGeometry(.1, .32, 6), gold); sp.position.set(Math.sin(a) * .39, .3, Math.cos(a) * .39); g.add(sp);
+    const st = new THREE.Mesh(new THREE.SphereGeometry(.06, 8, 6), M([0xd8344a, 0x2f8fd8, 0x45b36b][k % 3])); st.position.set(Math.sin(a) * .42, 0, Math.cos(a) * .42); g.add(st); }
+  return g;
 }
 
 /** pose an actor at time t (seconds) in an anim, started at t0 */
@@ -71,8 +93,9 @@ export function castActors(scene, list = [], lineAt) {
   const cast = list.map(spec => {
     const a = makeActor(spec.look), s = spec.scale ?? 1; a.root.scale.setScalar(s); scene.add(a.root);
     const keys = spec.keys.map(k => ({ ...k, t: lineAt(k.line, k.dt) })).sort((p, q) => p.t - q.t);
+    let crown = null; if (spec.crown) { crown = smallCrown(); crown.position.set(0, 2.55, .1); crown.visible = false; a.body.add(crown); }
     let prop = null; if (spec.cheque) { prop = cheque(spec.cheque.text, spec.cheque.sub, spec.cheque.title); prop.position.set(0, 2.85, .25); a.body.add(prop); }
-    return { id: spec.id, a, s, keys, prop, spec };
+    return { id: spec.id, a, s, keys, prop, crown, spec };
   });
   let fresh = false;
   function update(t) {
@@ -87,6 +110,7 @@ export function castActors(scene, list = [], lineAt) {
       pose(c.a, k.anim ?? 'idle', t, k.t);
       if (c.prop) c.prop.visible = !!k.cheque;
       if (c.prop && k.cheque) { c.a.armL.rotation.z = -2.9; c.a.armR.rotation.z = 2.9; }
+      if (c.crown) { c.crown.visible = !!k.crown; if (k.crown) { c.a.armL.rotation.z = -2.9; c.a.armR.rotation.z = 2.9; c.crown.rotation.y = t * 1.5; } }
     }
   }
   /** where to look at an actor: its head */

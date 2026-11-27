@@ -1,0 +1,733 @@
+{
+ "day": 45,
+ "top": 330,
+ "mix": "day45.mix.mp3",
+ "thumbOffset": 30000,
+ "lines": [
+  "[excited] הָרֶשֶׁת נפלה! תפסנו את גנב הכתר!",
+  "[excited] יום ארבעים וחמישה, הפרק האחרון של גנב הכתר!",
+  "[excited] בהופעה הגדולה, כל הממלכה יָשְׁבָה וחיכתה...",
+  "[excited] ובמופע הרביעי, הפתעה למלך, מישהו התגנב מאחורי הקלעים!",
+  "[excited] כובע צבעוני, בגד עם מְשֻׁבָּצוֹת... ונעליים עם קצה מְסֻלְסָל!",
+  "[excited] לחצתי על הכפתור... והָרֶשֶׁת נפלה!",
+  "[excited] הגנב הוא... ליצן הֶחָצֵר!",
+  "[excited] והכתר? הוא היה מוסתר בתוך הכובע שלו!",
+  "[excited] הליצן אמר סליחה, הוא רק רצה להיות מלך ליום אחד.",
+  "[excited] אז סלחתי לו! מהיום הוא ליצן ההופעות של הממלכה!",
+  "[excited] והכתר חזר לַפֶּסֶל, למקום שלו!",
+  "[excited] רק בלש אחד ניחש נכון: Turtle! הוא מקבל משאלה מהמלך!",
+  "[excited] מַפְתֵּחַ הזהב של היום הולך ל-Eliya, כל הכבוד!",
+  "[excited] אבל רגע... מה זאת הביצה הענקית ליד האגם?",
+  "[excited] עונה חדשה בקרוב! מה יֵצֵא ממנה? כתבו בתגובות!",
+  "[excited] ותעקבו, כדי לא לפספס את העונה הבאה!"
+ ],
+ "say": {
+  "Turtle": "טרטל",
+  "-Eliya": "אליה"
+ },
+ "actors": [
+  {
+   "id": "jester",
+   "look": {
+    "shirt": 12730669,
+    "shirt2": 15250211,
+    "pants": 8019140,
+    "hair": 2759184,
+    "shoes": 1011571,
+    "jester": [
+     12730669,
+     1011571,
+     15250211
+    ]
+   },
+   "crown": true,
+   "keys": [
+    {
+     "line": 0,
+     "x": 98.3,
+     "z": 170.29,
+     "ry": -150,
+     "anim": "shock"
+    },
+    {
+     "line": 2,
+     "x": 90.9,
+     "z": 163.47,
+     "ry": 47.3,
+     "anim": "walk",
+     "hide": true
+    },
+    {
+     "line": 3,
+     "x": 90.9,
+     "z": 163.47,
+     "ry": 47.3,
+     "anim": "walk"
+    },
+    {
+     "line": 4,
+     "x": 94.7,
+     "z": 167.05,
+     "ry": 47.3,
+     "anim": "walk",
+     "from": "slide"
+    },
+    {
+     "line": 5,
+     "x": 98.3,
+     "z": 170.29,
+     "ry": 47.3,
+     "anim": "walk",
+     "from": "slide"
+    },
+    {
+     "line": 5,
+     "dt": 1.4,
+     "x": 98.3,
+     "z": 170.29,
+     "ry": -150,
+     "anim": "shock"
+    },
+    {
+     "line": 6,
+     "x": 98.3,
+     "z": 170.29,
+     "ry": -150,
+     "anim": "shock"
+    },
+    {
+     "line": 7,
+     "x": 98.3,
+     "z": 170.29,
+     "ry": -150,
+     "anim": "hold",
+     "crown": true
+    },
+    {
+     "line": 8,
+     "x": 98.3,
+     "z": 170.29,
+     "ry": -150,
+     "anim": "think"
+    },
+    {
+     "line": 9,
+     "x": 98.3,
+     "z": 170.29,
+     "ry": -150,
+     "anim": "dance"
+    },
+    {
+     "line": 10,
+     "x": 98.3,
+     "z": 170.29,
+     "ry": -150,
+     "anim": "dance",
+     "hide": true
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "id": "egg",
+   "kind": "egg",
+   "x": -38,
+   "z": 160,
+   "ry": 0,
+   "scale": 1.6,
+   "keys": [
+    {
+     "line": 0,
+     "rise": 0
+    },
+    {
+     "line": 13,
+     "rise": 0
+    },
+    {
+     "line": 13,
+     "dt": 0.9,
+     "rise": 1,
+     "wobble": 0
+    },
+    {
+     "line": 14,
+     "wobble": 1
+    },
+    {
+     "line": 15,
+     "wobble": 0.3
+    }
+   ]
+  }
+ ],
+ "states": [
+  {
+   "key": "backstage",
+   "kind": "trap",
+   "line": 5,
+   "dt": 1.5,
+   "dur": 0.6,
+   "from": 0,
+   "to": 1
+  },
+  {
+   "key": "backstage",
+   "kind": "trap",
+   "line": 0,
+   "dur": 0.6,
+   "from": 0,
+   "to": 1
+  },
+  {
+   "key": "castle",
+   "kind": "stolen",
+   "line": 10,
+   "dt": 0.4,
+   "dur": 0.8,
+   "from": 1,
+   "to": 0
+  },
+  {
+   "key": "backstage",
+   "kind": "trap",
+   "line": 2,
+   "dur": 0.1,
+   "from": 1,
+   "to": 0
+  },
+  {
+   "key": "backstage",
+   "kind": "trap",
+   "line": 9,
+   "dt": 0.4,
+   "dur": 1.0,
+   "from": 1,
+   "to": 0
+  }
+ ],
+ "night": [
+  {
+   "line": 0,
+   "until": 10
+  }
+ ],
+ "shots": [
+  {
+   "line": 0,
+   "target": [
+    98.3,
+    2.5,
+    170.29
+   ],
+   "dist": 11,
+   "yaw": -135,
+   "pitch": 12,
+   "orbit": 2,
+   "ease": 0.01
+  },
+  {
+   "line": 1,
+   "target": "castle",
+   "dist": 400,
+   "yaw": -20,
+   "pitch": 32,
+   "orbit": 3,
+   "ease": 0.01
+  },
+  {
+   "line": 2,
+   "target": "landmark:show-park",
+   "dist": 90,
+   "yaw": -10,
+   "pitch": 24,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 3,
+   "target": "landmark:backstage",
+   "dist": 40,
+   "yaw": -10,
+   "pitch": 24,
+   "orbit": 1,
+   "ease": 0.8
+  },
+  {
+   "line": 4,
+   "target": "actor:jester",
+   "dist": 4.5,
+   "yaw": -40,
+   "pitch": 6,
+   "orbit": 2,
+   "ease": 0.6
+  },
+  {
+   "line": 5,
+   "target": [
+    98.3,
+    2.8,
+    170.29
+   ],
+   "dist": 13,
+   "yaw": -150,
+   "pitch": 10,
+   "orbit": 0,
+   "ease": 0.6
+  },
+  {
+   "line": 6,
+   "target": [
+    98.3,
+    1.7,
+    170.29
+   ],
+   "dist": 4.2,
+   "yaw": -150,
+   "pitch": 4,
+   "orbit": 0,
+   "ease": 0.4
+  },
+  {
+   "line": 7,
+   "target": [
+    98.3,
+    2.3,
+    170.29
+   ],
+   "dist": 5.5,
+   "yaw": -140,
+   "pitch": 4,
+   "orbit": 1,
+   "ease": 0.4
+  },
+  {
+   "line": 8,
+   "target": [
+    98.3,
+    1.7,
+    170.29
+   ],
+   "dist": 4.5,
+   "yaw": -165,
+   "pitch": 4,
+   "orbit": 1,
+   "ease": 0.6
+  },
+  {
+   "line": 9,
+   "target": [
+    98.3,
+    2,
+    170.29
+   ],
+   "dist": 9,
+   "yaw": -150,
+   "pitch": 8,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 10,
+   "target": "statue",
+   "dist": 70,
+   "yaw": 0,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.8
+  },
+  {
+   "line": 11,
+   "target": "house:turtle.595985",
+   "dist": 40,
+   "yaw": 0,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 12,
+   "target": "house:eliya_hajaj1234567",
+   "dist": 40,
+   "yaw": 0,
+   "pitch": 30,
+   "orbit": 4,
+   "ease": 0.8
+  },
+  {
+   "line": 13,
+   "target": [
+    -38,
+    3,
+    160
+   ],
+   "dist": 30,
+   "yaw": -160,
+   "pitch": 40,
+   "orbit": 2,
+   "ease": 0.8
+  },
+  {
+   "line": 14,
+   "target": [
+    -38,
+    4,
+    160
+   ],
+   "dist": 17,
+   "yaw": -185,
+   "pitch": 34,
+   "orbit": 3,
+   "ease": 0.6
+  },
+  {
+   "line": 15,
+   "target": "castle",
+   "dist": 260,
+   "yaw": 20,
+   "pitch": 30,
+   "orbit": 3,
+   "ease": 0.8
+  }
+ ],
+ "cards": [
+  {
+   "type": "title",
+   "line": 1,
+   "dur": 2.6,
+   "text": "פרק 16 · גנב הכתר"
+  },
+  {
+   "type": "label",
+   "line": 1,
+   "dt": 0.4,
+   "dur": 2.2,
+   "text": "🔍 החשיפה"
+  },
+  {
+   "type": "label",
+   "line": 6,
+   "dt": 0.9,
+   "dur": 3,
+   "text": "🃏 הגנב: ליצן החצר!"
+  },
+  {
+   "type": "label",
+   "line": 9,
+   "dt": 0.5,
+   "dur": 3,
+   "text": "🎭 ליצן ההופעות של הממלכה"
+  },
+  {
+   "type": "label",
+   "line": 10,
+   "dt": 0.4,
+   "dur": 2.6,
+   "text": "👑 הכתר חזר!"
+  },
+  {
+   "type": "idcard",
+   "line": 11,
+   "dt": 0.3,
+   "dur": 3.6,
+   "u": "turtle.595985",
+   "honours": [
+    "בלש הממלכה 🔍",
+    "משאלה מהמלך 🎁"
+   ]
+  },
+  {
+   "type": "idcard",
+   "line": 12,
+   "dt": 0.2,
+   "dur": 3,
+   "u": "eliya_hajaj1234567",
+   "honours": [
+    "מפתח זהב 🔑 · וילה מוזהבת"
+   ]
+  },
+  {
+   "type": "cta",
+   "line": 14,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "🥚 מה יצא מהביצה?",
+   "sub": "כתבו בתגובות את הניחוש שלכם"
+  },
+  {
+   "type": "cta",
+   "line": 15,
+   "dt": 0.1,
+   "dur": 3.4,
+   "text": "➕ עקבו",
+   "sub": "עונה 2 בקרוב · שתפו לסטורי = בית מוזהב"
+  }
+ ],
+ "homes": {
+  "eliya_hajaj1234567": 8
+ },
+ "fx": [
+  {
+   "type": "punch",
+   "line": 0,
+   "dt": 0.2,
+   "dur": 0.6,
+   "zoom": 0.25
+  },
+  {
+   "type": "shake",
+   "line": 0,
+   "dt": 0.3,
+   "dur": 0.5
+  },
+  {
+   "type": "sticker",
+   "line": 0,
+   "dt": 0.6,
+   "dur": 1.6,
+   "text": "🪤",
+   "x": 860,
+   "y": 1330,
+   "size": 180
+  },
+  {
+   "type": "flash",
+   "line": 1,
+   "dur": 0.3
+  },
+  {
+   "type": "sticker",
+   "line": 3,
+   "dt": 1.5,
+   "dur": 1.8,
+   "text": "👀",
+   "x": 860,
+   "y": 1330,
+   "size": 180
+  },
+  {
+   "type": "punch",
+   "line": 5,
+   "dt": 1.5,
+   "dur": 0.5,
+   "zoom": 0.2
+  },
+  {
+   "type": "shake",
+   "line": 5,
+   "dt": 1.6,
+   "dur": 0.5
+  },
+  {
+   "type": "flash",
+   "line": 6,
+   "dt": 0.9,
+   "dur": 0.3
+  },
+  {
+   "type": "confetti",
+   "line": 6,
+   "dt": 0.9,
+   "dur": 1.8
+  },
+  {
+   "type": "sticker",
+   "line": 7,
+   "dt": 1.2,
+   "dur": 1.8,
+   "text": "👑",
+   "x": 860,
+   "y": 1330,
+   "size": 190
+  },
+  {
+   "type": "sticker",
+   "line": 8,
+   "dt": 0.8,
+   "dur": 1.6,
+   "text": "🥺",
+   "x": 860,
+   "y": 1330,
+   "size": 180
+  },
+  {
+   "type": "confetti",
+   "line": 9,
+   "dt": 0.6,
+   "dur": 1.6
+  },
+  {
+   "type": "confetti",
+   "line": 10,
+   "dt": 0.5,
+   "dur": 2
+  },
+  {
+   "type": "confetti",
+   "line": 11,
+   "dt": 1.2,
+   "dur": 1.6
+  },
+  {
+   "type": "sticker",
+   "line": 13,
+   "dt": 1.2,
+   "dur": 1.8,
+   "text": "❓",
+   "x": 860,
+   "y": 1330,
+   "size": 180
+  },
+  {
+   "type": "shake",
+   "line": 14,
+   "dt": 0.4,
+   "dur": 0.4
+  },
+  {
+   "type": "punch",
+   "line": 15,
+   "dur": 0.5,
+   "zoom": 0.18
+  }
+ ],
+ "music": {
+  "bpm": 116,
+  "gain": 0.32,
+  "sections": [
+   [
+    0,
+    "tense"
+   ],
+   [
+    {
+     "line": 1
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 3
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 6,
+     "dt": 0.9
+    },
+    "happy"
+   ],
+   [
+    {
+     "line": 13
+    },
+    "tense"
+   ],
+   [
+    {
+     "line": 14
+    },
+    "happy"
+   ]
+  ]
+ },
+ "sfx": [
+  {
+   "name": "boom",
+   "line": 0,
+   "dt": 0.2
+  },
+  {
+   "name": "sting",
+   "line": 0,
+   "dt": 0.4
+  },
+  {
+   "name": "whoosh",
+   "line": 1
+  },
+  {
+   "name": "tada",
+   "line": 2,
+   "dt": 0.5,
+   "gain": 0.5
+  },
+  {
+   "name": "cricket",
+   "line": 3
+  },
+  {
+   "name": "pop",
+   "line": 4,
+   "dt": 0.5
+  },
+  {
+   "name": "ding",
+   "line": 5,
+   "dt": 1.0
+  },
+  {
+   "name": "boom",
+   "line": 5,
+   "dt": 1.5
+  },
+  {
+   "name": "scratch",
+   "line": 6
+  },
+  {
+   "name": "tada",
+   "line": 6,
+   "dt": 0.9
+  },
+  {
+   "name": "sparkle",
+   "line": 7,
+   "dt": 1.2
+  },
+  {
+   "name": "boing",
+   "line": 8,
+   "dt": 0.8
+  },
+  {
+   "name": "tada",
+   "line": 9,
+   "dt": 0.6
+  },
+  {
+   "name": "sparkle",
+   "line": 10,
+   "dt": 0.4
+  },
+  {
+   "name": "kaching",
+   "line": 11,
+   "dt": 1.2
+  },
+  {
+   "name": "sparkle",
+   "line": 12,
+   "dt": 0.2
+  },
+  {
+   "name": "sting",
+   "line": 13,
+   "dt": 1.0
+  },
+  {
+   "name": "boing",
+   "line": 14,
+   "dt": 0.4
+  },
+  {
+   "name": "pop",
+   "line": 15
+  }
+ ],
+ "caption": "פרק 16 · גנב הכתר, החשיפה! 🃏 הרשת נפלה מאחורי הקלעים, והגנב הוא... ליצן החצר! הכתר היה מוסתר בכובע שלו 👑 המלך סלח לו, ומהיום הוא ליצן ההופעות של הממלכה 🎭\n🔍 רק בלש אחד ניחש נכון: @turtle.595985 מקבל תג בלש הממלכה ומשאלה מהמלך!\n🥚 ומה זאת הביצה הענקית ליד האגם? עונה 2 בקרוב, כתבו בתגובות מה יצא ממנה, ותעקבו!\n#גנבהכתר #משפחתספיר #ממלכה #עונה2",
+ "firstComment": "🥚 מה לדעתכם יצא מהביצה הענקית? הניחוש הכי מצחיק ייכנס לעונה 2! ותודה לכל הבלשים שעקבו עם כל הרמזים 🔍👑",
+ "notes": "Day 45, the finale of season 1 (גנב הכתר), approved for Saturday 28.11 19:00. No landmark: the reveal. The thief is the court jester, caught by the backstage net; the crown comes back to the statue (castle.stolen 1 to 0). Only turtle.595985 guessed ליצן before the reveal (day 36, comment 18132651244696876): בלש הממלכה + a wish. No resident joined on day 44, so the gold key went by the fallback rule (citizens without a key, index (45*7919) % 159): eliya_hajaj1234567. Teaser for season 2: a giant glowing egg by the palace."
+}

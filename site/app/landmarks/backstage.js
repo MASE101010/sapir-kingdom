@@ -111,6 +111,15 @@ export function backstageLive(group) {
   patch.position.set(11.25, 2.75, 1.9); patch.rotation.z = -.25; patch.visible = false; group.add(patch);
   const nail = new THREE.Mesh(new THREE.CylinderGeometry(.04, .04, .3, 6), new THREE.MeshStandardMaterial({ color: 0x777777, metalness: .6 }));
   nail.rotation.x = Math.PI / 2; nail.position.set(11.45, 3.35, 1.9); group.add(nail);
+  // the trap (day 45): a net that drops from the beam over the stage door like a curtain on three sides; state 'trap' 0..1
+  const net = new THREE.Group(); net.position.set(0, 6.1, -1.6); group.add(net);
+  const rope = new THREE.MeshLambertMaterial({ color: 0x6b5a40 });
+  const strand = (w, h, d, x, y, z) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), rope); m.position.set(x, y, z); net.add(m); };
+  for (let i = 0; i <= 12; i++) { const x = -2.7 + i * .45; strand(.05, 6, .05, x, -3, 1.4); }
+  for (let i = 0; i <= 6; i++) { const z = -1.4 + i * .47; strand(.05, 6, .05, -2.7, -3, z); strand(.05, 6, .05, 2.7, -3, z); }
+  for (let j = 0; j <= 12; j++) { const y = -j * .5; strand(5.45, .05, .05, 0, y, 1.4); strand(.05, .05, 2.85, -2.7, y, 0); strand(.05, .05, 2.85, 2.7, y, 0); }
+  net.scale.y = .001; net.visible = false;
+  group.userData.trap = k => { net.visible = k > .01; net.scale.y = Math.max(.001, k); };
   group.userData.night = k => { const on = k > .5; patch.visible = on; if (on !== extra) { extra = on; draw(); } };
 }
 
