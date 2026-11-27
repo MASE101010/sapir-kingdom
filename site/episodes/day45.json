@@ -256,11 +256,15 @@
   },
   {
    "line": 4,
-   "target": "actor:jester",
-   "dist": 4.5,
-   "yaw": -40,
-   "pitch": 6,
-   "orbit": 2,
+   "target": [
+    96.6,
+    1.4,
+    168.8
+   ],
+   "dist": 8,
+   "yaw": -150,
+   "pitch": 34,
+   "orbit": 0,
    "ease": 0.6
   },
   {
@@ -274,7 +278,7 @@
    "yaw": -150,
    "pitch": 10,
    "orbit": 0,
-   "ease": 0.6
+   "ease": 0.01
   },
   {
    "line": 6,
